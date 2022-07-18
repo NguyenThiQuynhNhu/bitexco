@@ -1,0 +1,1 @@
+export default myid = 'com.building.vime.bitexco'

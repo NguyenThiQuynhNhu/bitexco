@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "75650851939",
+    "firebase_url": "https://app-building-bitexco-default-rtdb.firebaseio.com",
+    "project_id": "app-building-bitexco",
+    "storage_bucket": "app-building-bitexco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75650851939:android:6e68d468cc4940a68a8456",
+        "android_client_info": {
+          "package_name": "com.building.vime.bitexco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75650851939-1n79uamcunq34u4i7qoqamrpet1fpbnj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcKyDpZYLqhZUfV9njtUVG3XIll_zg3ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75650851939-1n79uamcunq34u4i7qoqamrpet1fpbnj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "75650851939-51hf2vt0i5mncoif72b0l1u03hqo5b4t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.building.vime.bitexco"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

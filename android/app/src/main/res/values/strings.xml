@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Bitexco property</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">yWNPrgFhuSnMXFBxE49rT9adEdw_EO_tnzD0s</string>
+</resources>
