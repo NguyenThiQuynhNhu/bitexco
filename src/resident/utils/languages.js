@@ -7,8 +7,20 @@ import LocalizedStrings from "react-native-localization";
 let Strings = new LocalizedStrings({
   vi: {
     home: {
+      categories: "Doanh mục chức năng",
       titleNews1: "Tin mới",
       titleNews2: "Bài viết khác",
+      projectInformation: "Thông tin dự án",
+      registeredUtility: "Tiện ích đã đăng ký",
+      registeredService: "Dịch vụ đã đăng ký",
+      survey: "Phiếu khảo sát",
+      carCard: "Thẻ xe",
+      contact: "Liên hệ",
+      buildingList: "Danh sách tòa nhà",
+      roleChange: "Đổi vai trò người dùng",
+      accountManagement: "Quản lý tài khoản",
+      moreNews: "Xem thêm",
+      help: "Hướng dẫn sử dụng App Bitexco",
     },
     message: {
       alert: "Thông báo",
@@ -293,8 +305,20 @@ let Strings = new LocalizedStrings({
   },
   en: {
     home: {
+      categories: "Functional categories",
       titleNews1: "News",
       titleNews2: "More posts",
+      projectInformation: "Project information",
+      registeredUtility: "Registered utility",
+      registeredService: "Registered Service",
+      survey: "Survey",
+      carCard: "Car card",
+      contact: "Contact",
+      buildingList: "Building List",
+      roleChange: "Role change",
+      accountManagement: "Account Management",
+      moreNews: "More news",
+      help: "Bitexco App User Guide",
     },
     message: {
       alert: "Alert",

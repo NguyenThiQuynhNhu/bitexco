@@ -317,7 +317,7 @@ class RequestDetailScreen extends Component {
       const { logo, towerName } = this.state.itemfromList;
       //console.log(this.props.data);
       return (
-        <ScrollView style={{ borderTopRightRadius: 20 }}>
+        <ScrollView style={{ borderTopRightRadius: 20, marginVertical: 10 }}>
           <View style={{ flex: 1, borderTopRightRadius: 20, marginTop: -20 }}>
             {/* Thông tin nha cung cap */}
             <VendorInfo
@@ -483,7 +483,7 @@ class RequestDetailScreen extends Component {
               onPress={() => this.props.navigation.goBack()}
               style={{ padding: 10 }}
             >
-              <MyIcon name="arrow" color="#fff" size={20} />
+              <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
           }
           body={
@@ -497,7 +497,7 @@ class RequestDetailScreen extends Component {
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "center",
-                color: "#ffffff",
+                color: "black",
               }}
               numberOfLines={2}
               lineBreakMode="tail"

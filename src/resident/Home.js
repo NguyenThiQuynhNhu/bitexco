@@ -77,54 +77,6 @@ import { icons } from "../resources2/icons";
 
 import * as ImagePicker from "react-native-image-picker";
 
-const listMenuItem = [
-  {
-    id: 1,
-    name: "Thông tin dự án",
-    icon: icons.infoProject,
-  },
-  {
-    id: 2,
-    name: "Tiện ích đã đăng ký",
-    icon: icons.utils,
-  },
-  {
-    id: 3,
-    name: "Dịch vụ đã đăng ký",
-    icon: icons.registeredService,
-  },
-  {
-    id: 4,
-    name: "Phiếu khảo sát",
-    icon: icons.survey,
-  },
-  {
-    id: 5,
-    name: "Thẻ xe",
-    icon: icons.card,
-  },
-  {
-    id: 6,
-    name: "Liên hệ",
-    icon: icons.contact,
-  },
-  {
-    id: 7,
-    name: "Danh sách tòa nhà",
-    icon: icons.towerList,
-  },
-  {
-    id: 8,
-    name: "Đổi vai trò người dùng",
-    icon: icons.person,
-  },
-  {
-    id: 9,
-    name: "Quản lý tài khoản",
-    icon: icons.personSt,
-  },
-];
-
 export const IconText = ({ style, icon, text }) => {
   return (
     <View style={{ flexDirection: "row", alignItems: "center", ...style }}>
@@ -989,14 +941,20 @@ class HomeScreen extends Component {
               paddingHorizontal: 20,
             }}
           >
-            {/* {Strings.home.titleNews2} */}
-            Tin tức
+            {Strings.home.titleNews1}
           </Text>
-          <View style={{ flexDirection: "row" }}>
+          <View
+            style={{
+              flexDirection: "row",
+              display: "flex",
+              justifyContent: "space-between",
+              justifyContent: "center",
+            }}
+          >
             <Text
               style={{
                 fontFamily: "OpenSans-Regular",
-                paddingHorizontal: 10,
+                paddingHorizontal: 5,
                 marginTop: 10,
                 letterSpacing: 0,
                 marginBottom: 10,
@@ -1004,11 +962,18 @@ class HomeScreen extends Component {
                 color: "#afaeae",
               }}
             >
-              Xem thêm
+              {Strings.home.moreNews}
             </Text>
-            <Image
-              source={require("../resources2/more.png")}
-              style={{ marginTop: 15, marginBottom: 10, marginRight: 20 }}
+            <MyIcon
+              name="arrow-right"
+              size={14}
+              color="#afaeae"
+              style={{
+                marginTop: 12,
+                letterSpacing: 0,
+                marginBottom: 10,
+                marginRight: 10,
+              }}
             />
           </View>
         </View>
@@ -1261,6 +1226,53 @@ class HomeScreen extends Component {
   };
 
   render() {
+    const listMenuItem = [
+      {
+        id: 1,
+        name: Strings.home.projectInformation,
+        icon: icons.infoProject,
+      },
+      {
+        id: 2,
+        name: Strings.home.registeredUtility,
+        icon: icons.utils,
+      },
+      {
+        id: 3,
+        name: Strings.home.registeredService,
+        icon: icons.registeredService,
+      },
+      {
+        id: 4,
+        name: Strings.home.survey,
+        icon: icons.survey,
+      },
+      {
+        id: 5,
+        name: Strings.home.carCard,
+        icon: icons.card,
+      },
+      {
+        id: 6,
+        name: Strings.home.contact,
+        icon: icons.contact,
+      },
+      {
+        id: 7,
+        name: Strings.home.buildingList,
+        icon: icons.towerList,
+      },
+      {
+        id: 8,
+        name: Strings.home.roleChange,
+        icon: icons.person,
+      },
+      {
+        id: 9,
+        name: Strings.home.accountManagement,
+        icon: icons.personSt,
+      },
+    ];
     console.log("props", this.props);
     console.log(this.state);
     const { user, badge } = this.props;
@@ -1328,7 +1340,7 @@ class HomeScreen extends Component {
           rightView={
             <View>
               <View style={{ flexDirection: "row" }}>
-                {/* {this.props.data && this.props.data.rules.length > 0 ? (
+                {this.props.data && this.props.data.rules.length > 0 ? (
                   <TouchableOpacity
                     onPress={() =>
                       this.setState({
@@ -1337,23 +1349,9 @@ class HomeScreen extends Component {
                       })
                     }
                   >
-                    <MyIcon
-                      name="ic_quy_dinh"
-                      color={
-                        this.props.data && this.props.data.rules.length > 0
-                          ? "#fff"
-                          : colors.gray1
-                      }
-                      size={20}
-                      style={{ paddingHorizontal: 10 }}
-                    />
+                    <MyIcon name="ic_quy_dinh1" color="black" size={20} />
                   </TouchableOpacity>
-                ) : null} */}
-                <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("ruleDetail")}
-                >
-                  <MyIcon name="ic_quy_dinh1" color="black" size={20} />
-                </TouchableOpacity>
+                ) : null}
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("notification")}
                 >
@@ -1389,7 +1387,7 @@ class HomeScreen extends Component {
                 backgroundColor: "white",
               }}
             >
-              Doanh mục chức năng
+              {Strings.home.categories}
             </Text>
             <Image
               source={require("../resources2/line.png")}
@@ -1504,7 +1502,13 @@ class HomeScreen extends Component {
             </SafeAreaView>
           </View>
           {this.renderContent()}
-          <View style={{ marginBottom: 10, backgroundColor: "white" }}>
+          <View
+            style={{
+              marginBottom: 10,
+              backgroundColor: "white",
+              paddingVertical: 10,
+            }}
+          >
             <Text
               style={{
                 fontFamily: "OpenSans-Bold",
@@ -1519,7 +1523,7 @@ class HomeScreen extends Component {
                 paddingHorizontal: 20,
               }}
             >
-              Hướng dẫn sử dụng App Bitexco
+              {Strings.home.help}
             </Text>
             <Image
               source={require("../resources2/banner.png")}

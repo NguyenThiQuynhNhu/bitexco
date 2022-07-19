@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, View, StatusBar } from "react-native";
 import responsive from "../../../resources2/responsive";
 
 import colors from "../../theme/colors";
@@ -8,16 +8,21 @@ import Device from "../../utils/device";
 const NavBar = ({ leftButton, body, rightView, style }) => (
   <ImageBackground
     source={require("../../../resources2/bgHeader.png")}
-    style={{
-      width: "100%",
-      height: responsive.h(80),
-    }}
+    style={{ marginTop: -2, marginBottom: 10 }}
   >
+    <StatusBar
+      barStyle="light-content"
+      backgroundColor="transparent"
+      translucent={true}
+    />
     <View
       style={{
-        ...Device.defaultNavBarStyle(),
-        // backgroundColor: colors.appTheme,
-        // marginBottom: -15,
+        marginTop: Platform.OS == "ios" ? 0 : StatusBar.currentHeight,
+        backgroundColor: "transparent",
+        height: 50,
+        justifyContent: "center",
+        //...Device.defaultNavBarStyle(),
+        ...style,
       }}
     >
       <View

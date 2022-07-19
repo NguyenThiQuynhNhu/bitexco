@@ -99,7 +99,7 @@ export default createBottomTabNavigator(
                     top: Devices.isTablet ? -15 : -10,
                   }}
                 >
-                  {Strings.tabbar.notification}
+                  {/* {Strings.tabbar.notification} */}
                 </Text>
               </View>
             );
