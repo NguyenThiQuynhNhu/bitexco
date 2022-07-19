@@ -90,6 +90,7 @@ export default createBottomTabNavigator(
                 >
                   <Image
                     source={require("../resources2/Tabbar/icontabbar.png")}
+                    style={{ height: 50 }}
                   />
                 </View>
                 <Text
