@@ -31,11 +31,10 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
-          paddingHorizontal: responsive.w(12),
-          marginBottom: 10,
+          paddingHorizontal: responsive.w(6),
           borderRadius: 12,
           marginVertical: 10,
-          marginHorizontal: responsive.w(12),
+          marginHorizontal: 10,
           justifyContent: "center",
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
@@ -57,14 +56,15 @@ class ListItem extends PureComponent {
           <ImageProgress
             //circle={true}
             style={{
-              height: responsive.h(116),
-              borderTopLeftRadius: 12,
-              borderBottomLeftRadius: 12,
-              width: responsive.w(212),
+              height: responsive.h(111),
+              borderRadius: 12,
+              width: responsive.w(170),
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: responsive.h(10),
             }}
             source={{ uri: logo }}
           />
-
           <View
             style={{
               display: "flex",
@@ -77,10 +77,9 @@ class ListItem extends PureComponent {
               numberOfLines={1}
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 15,
+                fontSize: responsive.h(15),
                 fontWeight: "600",
                 fontStyle: "normal",
-                letterSpacing: 0,
                 textAlign: "left",
                 color: "#282828",
                 maxWidth: responsive.w(82),
@@ -91,7 +90,7 @@ class ListItem extends PureComponent {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 12,
+                fontSize: responsive.h(12),
                 fontWeight: "normal",
                 fontStyle: "normal",
                 // letterSpacing: 0,
@@ -106,14 +105,12 @@ class ListItem extends PureComponent {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 13,
+                fontSize: responsive.h(13),
                 fontWeight: "600",
                 fontStyle: "normal",
-                letterSpacing: 0,
                 textAlign: "left",
                 color: "#888888",
-                maxWidth: responsive.w(210),
-                paddingBottom: 5,
+                maxWidth: responsive.w(222),
               }}
               numberOfLines={2}
               lineBreakMode="tail"
@@ -126,6 +123,7 @@ class ListItem extends PureComponent {
                 display: "flex",
                 justifyContent: "space-between",
                 flexDirection: "row",
+                marginVertical: responsive.h(8),
               }}
             >
               <Text
