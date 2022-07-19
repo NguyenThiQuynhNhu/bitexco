@@ -162,7 +162,7 @@ class PaymentScreen extends Component {
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "center",
-                color: "#ffffff",
+                color: "black",
               }}
             >
               {Strings.tabbar.payment}

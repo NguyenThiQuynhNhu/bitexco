@@ -8,5 +8,4 @@ export const icons = {
   towerList: "danh-sch-ta-nh",
   person: "i-vai-tr-ng-dng",
   personSt: "qun-l-ti-khon",
-  call: "../icons/call.png",
 };
