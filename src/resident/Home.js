@@ -77,6 +77,8 @@ import { icons } from "../resources2/icons";
 
 import * as ImagePicker from "react-native-image-picker";
 
+// icon
+
 export const IconText = ({ style, icon, text }) => {
   return (
     <View style={{ flexDirection: "row", alignItems: "center", ...style }}>
@@ -1312,7 +1314,7 @@ class HomeScreen extends Component {
                 </Text>
                 <View style={{ display: "flex", flexDirection: "row" }}>
                   <MyIcon
-                    name="call1"
+                    name="call"
                     color="black"
                     size={12}
                     style={{
@@ -1457,11 +1459,20 @@ class HomeScreen extends Component {
                       size={responsive.h(34)}
                       style={{ alignSelf: "center" }}
                     /> */}
-                      <Image
+                      {/* <Image
                         source={item.icon}
                         style={{
                           // height: responsive.h(40),
                           // width: responsive.w(40),
+                          alignSelf: "center",
+                          marginVertical: responsive.h(10),
+                        }}
+                      /> */}
+                      <MyIcon
+                        name={item.icon}
+                        size={responsive.h(40)}
+                        color="black"
+                        style={{
                           alignSelf: "center",
                           marginVertical: responsive.h(10),
                         }}

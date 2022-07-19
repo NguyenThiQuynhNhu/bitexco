@@ -36,6 +36,7 @@ import { color } from "react-native-reanimated";
 import { app } from "firebase";
 import responsive from "../resources2/responsive";
 import DistableScreen from "../resident/screens/Distable";
+
 const Devices = require("react-native-device-detection");
 // const DeviceInfo = require('react-native-device-info');
 export default createBottomTabNavigator(
@@ -104,7 +105,7 @@ export default createBottomTabNavigator(
               </View>
             );
           case "payment":
-            iconTab = "message";
+            iconTab = "thanh-ton";
             badge = screenProps.badge.badgePaymentR;
             text = Strings.tabbar.payment;
             return (
@@ -150,7 +151,7 @@ export default createBottomTabNavigator(
             break;
           case "requests":
             // return <IconBadgeNotification tintColor={tintColor} />;
-            iconTab = "message-square";
+            iconTab = "phn-nh";
             badge = screenProps.badge.badgeRequestR;
             text = Strings.tabbar.request;
             return (
@@ -195,7 +196,7 @@ export default createBottomTabNavigator(
             );
             break;
           case "home":
-            iconTab = "home11";
+            iconTab = "trang-ch";
             badge = screenProps.badge.badgeNotifyR;
             return (
               <View>
@@ -248,7 +249,7 @@ export default createBottomTabNavigator(
             break;
 
           case "utility":
-            iconTab = "ic_tab_tien_ich";
+            iconTab = "star";
             badge = 0;
             text = Strings.tabbar.utility;
             return (
