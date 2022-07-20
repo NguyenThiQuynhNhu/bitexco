@@ -180,6 +180,9 @@ class ServiceExtension extends Component {
         //onRefresh={() => this.setState({dataStatus: this.props.dataStatus}), () => this.props.refreshDataHandle()}
         data={data}
         numColumns={2}
+        contentContainerStyle={{
+          marginVertical: 10,
+        }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}
         ListFooterComponent={this.renderFooter}
@@ -425,6 +428,13 @@ class ServiceExtension extends Component {
             onEndReachedThreshold={0.5}
           />
         </View>
+        <View
+          style={{
+            backgroundColor: "#f5f5f5",
+            height: 15,
+            width: "100%",
+          }}
+        />
         {this._renderContent()}
         {/* <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('requestCreate')}

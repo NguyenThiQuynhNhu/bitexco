@@ -181,7 +181,7 @@ class PaymentScreen extends Component {
               onPress={() => this.props.navigation.navigate("paymentHistory")}
               style={{ padding: 10 }}
             >
-              <MyIcon size={24} name="history" color="#fff" />
+              <MyIcon size={24} name="history" color="black" />
             </TouchableOpacity>
           }
         />
