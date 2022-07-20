@@ -15,6 +15,7 @@ import colors from "../../../theme/colors";
 import fontsize from "../../../theme/fontsize";
 import { Screen } from "../../../utils/device";
 import responsive from "../../../../resources2/responsive";
+import Device from "../../../../utils/device";
 // create a component
 class ListItem extends PureComponent {
   render() {
@@ -31,10 +32,10 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
-          paddingHorizontal: responsive.w(6),
+          padding: 5,
           borderRadius: 12,
-          marginVertical: 10,
-          marginHorizontal: 10,
+          marginVertical: 5,
+          // marginHorizontal: 10,
           justifyContent: "center",
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
@@ -46,30 +47,31 @@ class ListItem extends PureComponent {
           },
           shadowRadius: 10,
           shadowOpacity: 1,
-          //   marginHorizontal: 10,
-          height: responsive.h(216),
-          width: responsive.w(182),
+          marginHorizontal: responsive.h(8),
+          height: responsive.h(220),
+          width: responsive.w(186),
         }}
         onPress={onPress}
       >
         <View>
-          <ImageProgress
-            //circle={true}
-            style={{
-              height: responsive.h(111),
-              borderRadius: 12,
-              width: responsive.w(170),
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: responsive.h(10),
-            }}
-            source={{ uri: logo }}
-          />
+          <View>
+            <ImageProgress
+              //circle={true}
+              style={{
+                height: responsive.h(111),
+                borderRadius: 12,
+                width: responsive.w(170),
+                marginBottom: responsive.h(10),
+              }}
+              source={{ uri: logo }}
+            />
+          </View>
           <View
             style={{
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              maxWidth: responsive.w(222),
             }}
           >
             <Text
@@ -82,7 +84,7 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 textAlign: "left",
                 color: "#282828",
-                maxWidth: responsive.w(82),
+                maxWidth: responsive.w(100),
               }}
             >
               {title}
@@ -124,6 +126,7 @@ class ListItem extends PureComponent {
                 justifyContent: "space-between",
                 flexDirection: "row",
                 marginVertical: responsive.h(8),
+                maxWidth: responsive.w(222),
               }}
             >
               <Text

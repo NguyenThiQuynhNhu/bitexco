@@ -179,6 +179,7 @@ class ServiceExtension extends Component {
         onRefresh={() => this._onRefresh()}
         //onRefresh={() => this.setState({dataStatus: this.props.dataStatus}), () => this.props.refreshDataHandle()}
         data={data}
+        numColumns={2}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}
         ListFooterComponent={this.renderFooter}
