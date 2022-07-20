@@ -37,7 +37,7 @@ target 'vime' do
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
-  #pod 'RNMomosdk', :path => '../node_modules/react-native-momosdk'
+  pod 'RNMomosdk', :path => '../node_modules/react-native-momosdk'
   
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
@@ -47,12 +47,30 @@ target 'vime' do
 
   pod 'CodePush', :path => '../node_modules/react-native-code-push'
 
+  pod 'react-native-fcm', :path => '../node_modules/react-native-fcm'
+
+  pod 'ReactNativeLocalization', :path => '../node_modules/react-native-localization'
+
+  pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
+  pod 'rn-fetch-blob', :path => '../node_modules/rn-fetch-blob'
+
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
   post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
             config.build_settings['SWIFT_VERSION'] = '4.2'
         end
     end
+    find_and_replace("../node_modules/react-native/React/CxxBridge/RCTCxxBridge.mm",
+    "_initializeModules:(NSArray<id<RCTBridgeModule>> *)modules", "_initializeModules:(NSArray<Class> *)modules")
+    find_and_replace("../node_modules/react-native/ReactCommon/turbomodule/core/platform/ios/RCTTurboModuleManager.mm",
+    "RCTBridgeModuleNameForClass(module))", "RCTBridgeModuleNameForClass(Class(module)))")
 end 
 
   target 'vimeTests' do
@@ -60,7 +78,7 @@ end
     # Pods for testing
   end
 
-  use_native_modules!
+  #use_native_modules!
 end
 
 target 'vime-tvOS' do
@@ -71,4 +89,16 @@ target 'vime-tvOS' do
     # Pods for testing
   end
 
+end
+def find_and_replace(dir, findstr, replacestr)
+  Dir[dir].each do |name|
+      text = File.read(name)
+      replace = text.gsub(findstr,replacestr)
+      if text != replace
+          puts "Fix: " + name
+          File.open(name, "w") { |file| file.puts replace }
+          STDOUT.flush
+      end
+  end
+  Dir[dir + '*/'].each(&method(:find_and_replace))
 end
