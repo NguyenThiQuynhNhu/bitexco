@@ -58,15 +58,17 @@ class ListItem extends PureComponent {
               borderRadius: 45,
               height: 40,
               width: 40,
-              backgroundColor: "#fff200",
+              backgroundColor: "#fff",
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 10,
+              borderWidth: 1,
+              borderColor: "#afaeae"
             }}
           >
-            <MyIcon name="file-text" size={20} color={colors.appTheme} />
+            <MyIcon name="file-text" size={20} color="#afaeae" />
           </View>
-          {!isReply ? (
+          {/* {!isReply ? (
             <View
               style={{
                 borderRadius: 45,
@@ -78,7 +80,7 @@ class ListItem extends PureComponent {
                 bottom: 10,
               }}
             />
-          ) : null}
+          ) : null} */}
           <View
             style={{ flex: 1, justifyContent: "space-between", margin: 10 }}
           >
