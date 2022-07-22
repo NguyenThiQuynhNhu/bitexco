@@ -58,7 +58,7 @@ let Strings = new LocalizedStrings({
     },
     tabbar: {
       home: "Trang chủ",
-      // notification: 'Thông báo',
+      notification: 'Thông báo',
       request: "Phản ánh",
       more: "Thêm",
       my: "Của tôi",
@@ -356,7 +356,7 @@ let Strings = new LocalizedStrings({
     },
     tabbar: {
       home: "Home",
-      notification: "Anouncement",
+      notification: "Notification",
       request: "Response",
       more: "More",
       my: "My",

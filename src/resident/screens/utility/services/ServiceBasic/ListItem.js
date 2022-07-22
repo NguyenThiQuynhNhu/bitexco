@@ -44,7 +44,7 @@ class ListItem extends PureComponent {
           },
           shadowRadius: 10,
           shadowOpacity: 1,
-          marginHorizontal: 10,
+          marginHorizontal: responsive.h(8),
           height: responsive.h(220),
           width: responsive.w(186),
         }}
@@ -52,58 +52,54 @@ class ListItem extends PureComponent {
       >
         <View>
           <ImageProgress
-            style={{
-              height: responsive.h(111),
-              borderRadius: 12,
-              width: responsive.w(170),
-              justifyContent: "center",
-              alignItems: "center",
-              marginBottom: responsive.h(10),
-            }}
+        style={{
+          height: responsive.h(111),
+          borderRadius: 12,
+          width: responsive.w(170),
+          marginBottom: responsive.h(10),
+        }}
             source={{ uri: logo }}
           />
 
           <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              maxWidth: responsive.w(222),
-            }}
+               style={{
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                maxWidth: responsive.w(222),
+              }}
           >
             <Text
-              lineBreakMode="tail"
-              numberOfLines={1}
-              style={{
-                fontFamily: "Inter-SemiBold",
-                fontSize: responsive.h(15),
-                fontWeight: "600",
-                fontStyle: "normal",
-                textAlign: "left",
-                color: "#282828",
-                maxWidth: responsive.w(82),
-              }}
+            lineBreakMode="tail"
+            numberOfLines={1}
+            style={{
+              fontFamily: "Inter-SemiBold",
+              fontSize: responsive.h(15),
+              fontWeight: "600",
+              fontStyle: "normal",
+              textAlign: "left",
+              color: "#282828",
+              maxWidth: responsive.w(100),
+            }}
             >
               {serviceName}
             </Text>
             <Text
-              style={{
-                fontFamily: "Inter-Regular",
-                fontSize: 12,
-                fontWeight: "normal",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: converStatusToColor(statusId),
-              }}
+                 style={{
+                  fontFamily: "Inter-Regular",
+                  fontSize: responsive.h(12),
+                  fontWeight: "normal",
+                  fontStyle: "normal",
+                  // letterSpacing: 0,
+  
+                  color: converStatusToColor(statusId),
+                }}
             >
               {statusName}
             </Text>
           </View>
           <View>
             <Text
-              lineBreakMode="tail"
-              numberOfLines={2}
               style={{
                 fontFamily: "Inter-Regular",
                 fontSize: responsive.h(13),
@@ -112,7 +108,10 @@ class ListItem extends PureComponent {
                 textAlign: "left",
                 color: "#888888",
                 maxWidth: responsive.w(222),
+                height: responsive.h(40),
               }}
+              numberOfLines={2}
+              lineBreakMode="tail"
             >
               {description}
             </Text>

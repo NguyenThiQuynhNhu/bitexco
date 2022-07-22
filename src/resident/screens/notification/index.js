@@ -168,7 +168,7 @@ class NotificationScreen extends Component {
                         <TouchableOpacity
                             onPress={() => this.setState({ isShowSearch: false }, onClearText)}
                             style={{ padding: 10 }}>
-                            <Text style={{ color: '#fff' }}>{Strings.app.cancel}</Text>
+                            <Text style={{ color: 'black' }}>{Strings.app.cancel}</Text>
                         </TouchableOpacity>
                     }
                 /> :
@@ -192,7 +192,7 @@ class NotificationScreen extends Component {
                             fontStyle: "normal",
                             letterSpacing: 0,
                             textAlign: "center",
-                            color: "#ffffff"
+                            color: "black"
                         }}>{Strings.tabbar.notification}</Text>}
                         rightView={
                             <TouchableOpacity
@@ -201,7 +201,7 @@ class NotificationScreen extends Component {
                                 <MyIcon
                                     size={24}
                                     name="search"
-                                    color="#fff" />
+                                    color="black" />
                             </TouchableOpacity>
                         }
                     />}

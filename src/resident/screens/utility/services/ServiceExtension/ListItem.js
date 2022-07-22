@@ -112,6 +112,7 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 textAlign: "left",
                 color: "#888888",
+                height: responsive.h(40),
                 maxWidth: responsive.w(222),
               }}
               numberOfLines={2}

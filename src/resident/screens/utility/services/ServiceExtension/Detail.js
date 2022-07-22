@@ -46,6 +46,7 @@ import NavBar from "../../../../components/common/NavBar";
 import CommentView from "./CommentView";
 import FeedbackView from "./FeedbackView";
 import fontSize from "../../../../theme/fontsize";
+import responsive from "../../../../../resources2/responsive";
 
 // create a component
 class ServiceExtensionDetailScreen extends Component {
@@ -139,17 +140,10 @@ class ServiceExtensionDetailScreen extends Component {
     return (
       <View
         style={{
-          borderRadius: 16,
           padding: 10,
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.08)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 12,
-          shadowOpacity: 1,
+          borderBottomWidth: 1,
+          borderBottomColor: "#eaeaea",
           marginHorizontal: 20,
           marginVertical: 10,
         }}
@@ -186,7 +180,7 @@ class ServiceExtensionDetailScreen extends Component {
               }}
             >
               {isCustomer ? (
-                <View />
+                null
               ) : (
                 <View
                   style={{
@@ -200,6 +194,7 @@ class ServiceExtensionDetailScreen extends Component {
                     style={{
                       margin: 2,
                       marginHorizontal: 5,
+                      marginVertical: responsive.h(5),
                       fontSize: fontsize.micro,
                       color: "#fff",
                       fontFamily: "Inter-Regular",
@@ -214,6 +209,8 @@ class ServiceExtensionDetailScreen extends Component {
                   fontFamily: "Inter-SemiBold",
                   fontSize: 16,
                   fontWeight: "600",
+                  marginVertical: responsive.h(5),
+
                   textAlign: "left",
                   color: "#292929",
                   flex: 0.8,
@@ -239,6 +236,8 @@ class ServiceExtensionDetailScreen extends Component {
                     fontSize: fontsize.micro,
                     color: converStatusToColorService(statusId),
                     fontFamily: "Inter-Regular",
+                    marginVertical: responsive.h(5),
+
                   }}
                 >
                   {statusName}
@@ -249,9 +248,11 @@ class ServiceExtensionDetailScreen extends Component {
             <Text
               style={{
                 fontSize: fontsize.micro,
-                color: colors.gray1,
+                color: "#929292",
                 fontFamily: "Inter-Regular",
                 marginTop: 5,
+                marginVertical: responsive.h(5),
+
               }}
             >
               {moment(dateActive).format("DD/MM/YYYY HH:mm")}
@@ -273,11 +274,13 @@ class ServiceExtensionDetailScreen extends Component {
         )}
         <Text
           style={{
-            fontFamily: "Inter-Regular",
+            fontFamily: "Inter-Medium",
             fontSize: 13,
             textAlign: "left",
             color: "#3d3d3d",
             marginTop: 10,
+            marginVertical: responsive.h(5),
+
           }}
         >
           {description}
@@ -342,14 +345,10 @@ class ServiceExtensionDetailScreen extends Component {
             style={{
               borderRadius: 16,
               backgroundColor: "#ffffff",
-              shadowColor: "rgba(0, 0, 0, 0.1)",
-              elevation: 2,
-              shadowOffset: {
-                width: 0,
-                height: 4,
-              },
-              shadowRadius: 10,
-              shadowOpacity: 1,
+              borderWidth: 1,
+              borderBottomWidth: 2,
+              borderColor: "#eaeaea",
+              borderBottomColorColor: "#eaeaea",
               marginHorizontal: 20,
               marginTop: 5,
               marginBottom: 20,
@@ -408,10 +407,11 @@ class ServiceExtensionDetailScreen extends Component {
                 <Text
                   style={{
                     marginVertical: 5,
-                    fontFamily: "Inter-Regular",
-                    fontSize: 13,
+                    fontFamily: "Inter-SemiBold",
+                    fontSize: 14,
                     textAlign: "left",
-                    color: "#ff3d00",
+                    color: "#d4d4d4",
+                    maxWidth: responsive.w(200)
                   }}
                 >
                   {employeeName} - {departmentName}
@@ -422,9 +422,9 @@ class ServiceExtensionDetailScreen extends Component {
             <View
               style={{
                 flexDirection: "row",
-                marginBottom: 10,
+                marginVertical: 5,
                 paddingHorizontal: 10,
-                marginTop: 10,
+                marginTop: 5,
                 justifyContent: "space-between",
               }}
             >
@@ -477,23 +477,7 @@ class ServiceExtensionDetailScreen extends Component {
                 </Text>
               </Text>
             </View>
-            {description ? (
-              <View style={{ marginBottom: 15, paddingHorizontal: 10 }}>
-                <Text style={styles.textTitle}>
-                  {Strings.serviceBasicBooking.message}
-                </Text>
-                <Text
-                  style={{
-                    ...styles.textInfo,
-                    marginLeft: 5,
-                    fontStyle: "italic",
-                    marginTop: 5,
-                  }}
-                >
-                  {description}
-                </Text>
-              </View>
-            ) : null}
+            
             {/* Nội dung */}
             {/*
                         <View style={{ marginTop: 10, paddingBottom: 10 }}>
@@ -523,13 +507,6 @@ class ServiceExtensionDetailScreen extends Component {
                             <Text style={{ textAlign: 'justify', fontStyle: 'italic', color: colors.appTheme }}>{description}</Text>
                         </View> */}
           </View>
-          <View
-            style={{
-              marginHorizontal: 20,
-              height: 1,
-              backgroundColor: "#d4d4d4",
-            }}
-          />
           {/* Chat */}
           <View>
             <FlatList
@@ -706,6 +683,18 @@ const styles = StyleSheet.create({
     margin: 20,
     flexDirection: "row",
     alignItems: "center",
+  },
+  textTitle: {
+    fontFamily: "Inter-Medium",
+    fontSize: 13,
+    textAlign: "left",
+    color: "#aeaeae",
+  },
+  textInfo: {
+    fontFamily: "Inter-Medium",
+    fontSize: 13,
+    textAlign: "left",
+    color: "#aeaeae",
   },
 });
 const mapStateToProps = (state) => ({

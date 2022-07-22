@@ -1359,7 +1359,7 @@ class HomeScreen extends Component {
                   </TouchableOpacity>
                 ) : null}
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("notification")}
+                  onPress={() => this.props.navigation.navigate("notificationResident")}
                 >
                   <MyIcon
                     name="home2"
@@ -1383,9 +1383,7 @@ class HomeScreen extends Component {
           >
             <Text
               style={{
-                fontFamily: "OpenSans-Regular",
-                fontStyle: "normal",
-                fontWeight: "700",
+                fontFamily: "Inter-SemiBold",
                 textAlign: "center",
                 fontSize: responsive.h(20),
                 color: "black",
@@ -1475,7 +1473,7 @@ class HomeScreen extends Component {
                       /> */}
                       <MyIcon
                         name={item.icon}
-                        size={responsive.h(40)}
+                        size={responsive.h(31)}
                         color="black"
                         style={{
                           alignSelf: "center",
@@ -1486,9 +1484,7 @@ class HomeScreen extends Component {
                         style={{
                           color: "black",
                           fontSize: responsive.h(14),
-                          fontFamily: "OpenSans-Regular",
-                          fontStyle: "normal",
-                          fontWeight: "700",
+                          fontFamily: "Inter-SemiBold",
                           maxWidth: responsive.w(70),
                           textAlign: "center",
                         }}

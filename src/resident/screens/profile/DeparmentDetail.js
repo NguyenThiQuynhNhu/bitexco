@@ -74,16 +74,10 @@ class DepartmentScreen extends Component {
           flex: 1,
           borderRadius: 16,
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.08)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 12,
-          shadowOpacity: 1,
+          borderWidth: 1,
           marginHorizontal: 20,
           marginVertical: 10,
+          borderColor: "#e5e5e5"
         }}
       >
         <View style={{ flexDirection: "row", padding: 10 }}>

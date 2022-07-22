@@ -45,6 +45,7 @@ import Strings from "../../../../utils/languages";
 import NavBar from "../../../../components/common/NavBar";
 import CommentView from "./CommentView";
 import fontSize from "../../../../theme/fontsize";
+import responsive from "../../../../../resources2/responsive";
 
 // create a component
 class ServiceBasicDetailScreen extends Component {
@@ -150,7 +151,7 @@ class ServiceBasicDetailScreen extends Component {
           shadowRadius: 12,
           shadowOpacity: 1,
           marginHorizontal: 20,
-          marginVertical: 10,
+          marginVertical: responsive.h(10),
         }}
       >
         <View style={{ flexDirection: "row" }}>
@@ -186,12 +187,12 @@ class ServiceBasicDetailScreen extends Component {
               }}
             >
               {isCustomer ? (
-                <View />
+                null
               ) : (
                 <View
                   style={{
                     marginRight: 5,
-                    marginVertical: 5,
+                    marginVertical: responsive.h(5),
                     backgroundColor: colors.gray1,
                     borderRadius: 15,
                   }}
@@ -215,7 +216,7 @@ class ServiceBasicDetailScreen extends Component {
                   fontSize: 16,
                   fontWeight: "600",
                   textAlign: "left",
-                  color: "#292929",
+                  color: "#afaeae",
                   flex: 0.8,
                 }}
               >
@@ -286,14 +287,13 @@ class ServiceBasicDetailScreen extends Component {
     return (
       <View
         style={{
-          marginRight: 10,
-          marginVertical: 5,
+          marginVertical: responsive.h(5),
           backgroundColor: colors.grayBorder,
           borderRadius: 15,
         }}
       >
         <Text
-          style={{ margin: 5, marginHorizontal: 10, color: colors.appTheme }}
+          style={{ margin: 5, marginHorizontal: 10, color: "#808182", fontFamily: "Inter-SemiBold" , fontSize: 13}}
         >
           {item}
         </Text>
@@ -360,17 +360,13 @@ class ServiceBasicDetailScreen extends Component {
               style={{
                 borderRadius: 16,
                 backgroundColor: "#ffffff",
-                shadowColor: "rgba(0, 0, 0, 0.1)",
-                elevation: 2,
-                shadowOffset: {
-                  width: 0,
-                  height: 4,
-                },
-                shadowRadius: 10,
-                shadowOpacity: 1,
-                marginHorizontal: 20,
+                 marginHorizontal: 20,
                 marginBottom: 20,
                 marginTop: 5,
+                borderWidth: 1,
+                borderBottomWidth: 2,
+                borderColor: "#eaeaea",
+                borderBottomColorColor: "#eaeaea"
               }}
             >
               <View
@@ -403,7 +399,7 @@ class ServiceBasicDetailScreen extends Component {
                     <View
                       style={{
                         marginRight: 10,
-                        marginVertical: 5,
+                        marginVertical: responsive.h(5),
                         backgroundColor: "#feefef",
                         borderRadius: 15,
                       }}
@@ -423,11 +419,12 @@ class ServiceBasicDetailScreen extends Component {
                   </View>
                   <Text
                     style={{
-                      marginVertical: 5,
-                      fontFamily: "Inter-Regular",
-                      fontSize: 13,
+                      marginVertical: responsive.h(5),
+                      fontFamily: "Inter-SemiBold",
+                      fontSize: 14,
                       textAlign: "left",
-                      color: "#ff3d00",
+                      color: "#afaeae",
+                      maxWidth: responsive.w(200)
                     }}
                   >
                     {employeeName} - {departmentName}
@@ -441,6 +438,7 @@ class ServiceBasicDetailScreen extends Component {
                   marginBottom: 10,
                   paddingHorizontal: 10,
                   marginTop: 10,
+                  marginVertical: responsive.h(5),
                   justifyContent: "space-between",
                 }}
               >
@@ -457,6 +455,7 @@ class ServiceBasicDetailScreen extends Component {
                   flexDirection: "row",
                   marginBottom: 10,
                   paddingHorizontal: 10,
+                  marginVertical: responsive.h(5),
                   justifyContent: "space-between",
                 }}
               >
@@ -472,6 +471,7 @@ class ServiceBasicDetailScreen extends Component {
                   flexDirection: "row",
                   marginBottom: 10,
                   paddingHorizontal: 10,
+                  marginVertical: responsive.h(5),
                   justifyContent: "space-between",
                 }}
               >
@@ -481,7 +481,7 @@ class ServiceBasicDetailScreen extends Component {
                 <Text
                   style={{
                     ...styles.textInfo,
-                    color: "#ff624d",
+                    color: "#9b9b9b",
                     marginLeft: 5,
                   }}
                 >
@@ -491,19 +491,19 @@ class ServiceBasicDetailScreen extends Component {
                       fontFamily: "Inter",
                       fontSize: 11,
                       textAlign: "right",
-                      color: "#6f6f6f",
+                      color: "#9b9b9b",
                     }}
                   >
                     VNĐ
                   </Text>
                 </Text>
               </View>
-              <View style={{ marginBottom: 10, paddingHorizontal: 10 }}>
+              <View style={{ marginBottom: 10, paddingHorizontal: 10, marginVertical: responsive.h(5) }}>
                 <Text style={styles.textTitle}>
                   {Strings.serviceBasicBooking.time}
                 </Text>
                 <FlatList
-                  style={{ alignSelf: "flex-start", marginLeft: 5 }}
+                  style={{ alignSelf: "flex-start", marginTop: 5 }}
                   scrollEnabled={false}
                   data={zoneTimes}
                   keyExtractor={(index) => `${index}`}
@@ -513,7 +513,7 @@ class ServiceBasicDetailScreen extends Component {
                 />
               </View>
               {description ? (
-                <View style={{ marginBottom: 15, paddingHorizontal: 10 }}>
+                <View style={{ marginBottom: 15, paddingHorizontal: 5 }}>
                   <Text style={styles.textTitle}>
                     {Strings.serviceBasicBooking.message}
                   </Text>
@@ -531,13 +531,13 @@ class ServiceBasicDetailScreen extends Component {
               ) : null}
             </View>
 
-            <View
+            {/* <View
               style={{
                 marginHorizontal: 20,
                 height: 1,
                 backgroundColor: "#d4d4d4",
               }}
-            />
+            /> */}
             {/* Chat */}
             <View>
               <FlatList
@@ -699,18 +699,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textTitle: {
-    fontFamily: "Inter-Medium",
-    fontSize: 14,
-    fontWeight: "500",
+    fontFamily: "Inter-SemiBold",
+    fontSize: 13,
     textAlign: "left",
-    color: "#3d3d3d",
+    color: "#505050",
   },
   textInfo: {
-    fontFamily: "Inter-Medium",
-    fontSize: 14,
-    fontWeight: "600",
+    fontFamily: "Inter-SemiBold",
+    fontSize: 13,
     textAlign: "left",
-    color: "#282828",
+    color: "#505050",
   },
 });
 const mapStateToProps = (state) => ({

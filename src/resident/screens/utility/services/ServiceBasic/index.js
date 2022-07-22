@@ -184,14 +184,28 @@ class ServiceBasic extends Component {
         </View>
       );
     }
-    // if (emptyData) {
-    //     return <ErrorContent title={Strings.app.emptyData} onTouchScreen={() => this.props.refreshDataHandle(),() => this.setState({dataStatus: this.props.dataStatus})} />
-    // }
-    // if (error && error.hasError) {
-    //     return (
-    //         <ErrorContent title={Strings.app.error} onTouchScreen={() => this.props.refreshDataHandle(), () => this.setState({dataStatus: this.props.dataStatus})} />
-    //     )
-    // }
+    if (emptyData) {
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => {
+            this.props.refreshDataHandle(),
+              this.setState({ dataStatus: this.props.dataStatus });
+          }}
+        />
+      );
+    }
+    if (error && error.hasError) {
+      return (
+        <ErrorContent
+          title={Strings.app.error}
+          onTouchScreen={() => {
+            this.props.refreshDataHandle(),
+              this.setState({ dataStatus: this.props.dataStatus });
+          }}
+        />
+      );
+    }
     return (
       <FlatList
         keyExtractor={(item, index) => `${index}`}

@@ -113,6 +113,8 @@ class ListItem extends PureComponent {
                 textAlign: "left",
                 color: "#888888",
                 maxWidth: responsive.w(222),
+                height: responsive.h(40),
+
               }}
               numberOfLines={2}
               lineBreakMode="tail"
