@@ -198,7 +198,7 @@ class CarCardCreateScreen extends Component {
         return (
             <View style={styles.container}>
                 <NavBar
-                    leftButton={<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ padding: 10 }}><MyIcon name="arrow" color="#fff" size={20} /></TouchableOpacity>}
+                    leftButton={<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ padding: 10 }}><MyIcon name="arrow" color="black" size={20} /></TouchableOpacity>}
                     body={<Text style={{
                         padding: 10,
                         width: Screen.width - 124,
@@ -208,7 +208,7 @@ class CarCardCreateScreen extends Component {
                         fontStyle: "normal",
                         letterSpacing: 0,
                         textAlign: "center",
-                        color: "#ffffff",
+                        color: "black",
 
                     }} numberOfLines={2} lineBreakMode="tail">{Strings.carCard.name}</Text>}
                     rightView={
@@ -217,7 +217,7 @@ class CarCardCreateScreen extends Component {
                                 onPress={() => { this.onNext() }}
                                 style={{ flexDirection: 'row', paddingHorizontal: 10, alignItems: 'center' }}
                             >
-                                <MyIcon name="paperplane" color="#fff" size={24} />
+                                <MyIcon name="paperplane" color="black" size={24} />
                             </TouchableOpacity>
                         </View>
                     }
