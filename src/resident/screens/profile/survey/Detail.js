@@ -266,7 +266,7 @@ class SurveyDetailScreen extends Component {
         return (
             <View style={styles.container}>
                 <NavBar
-                    leftButton={<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ padding: 10 }}><MyIcon name="arrow" color="#fff" size={20} /></TouchableOpacity>}
+                    leftButton={<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ padding: 10 }}><MyIcon name="arrow" color="black" size={20} /></TouchableOpacity>}
                     body={<Text style={{
                         padding: 10,
                         width: Screen.width - 124,
@@ -276,14 +276,14 @@ class SurveyDetailScreen extends Component {
                         fontStyle: "normal",
                         letterSpacing: 0,
                         textAlign: "center",
-                        color: "#ffffff",
+                        color: "black",
 
                     }} numberOfLines={2} lineBreakMode="tail">{this.props.navigation.state.params.name}</Text>}
                     rightView={
                         <TouchableOpacity
                             onPress={() => this.state.isAnswer ? null : this._onSubmit()}
                             style={{ padding: 10 }}>
-                            <MyIcon name="reply" color={this.state.isAnswer ? colors.appTheme : '#fff'} size={20} />
+                            <MyIcon name="reply" color={this.state.isAnswer ? colors.appTheme : 'black'} size={20} />
                         </TouchableOpacity>
                     }
                 />

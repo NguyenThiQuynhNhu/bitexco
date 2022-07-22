@@ -144,20 +144,20 @@ class HotlineListScreen extends Component {
             <View style={styles.container}>
 
                 <NavBar
-                    leftButton={<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ padding: 10 }}><MyIcon name="arrow" color="#fff" size={20} /></TouchableOpacity>}
+                    leftButton={<TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{ padding: 10 }}><MyIcon name="arrow" color="black" size={20} /></TouchableOpacity>}
                     body={<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{  fontFamily: "Inter-Bold",
                     fontSize: 20,
                     fontWeight: "bold",
                     fontStyle: "normal",
                     letterSpacing: 0,
                     textAlign: "center",
-                    color: "#ffffff"  }}>{Strings.department.titleHoline}</Text></View>}
+                    color: "black"  }}>{Strings.department.titleHoline}</Text></View>}
                     rightView={
                         <TouchableOpacity style={{ padding: 10 }}>
                             <MyIcon
                                 size={20}
                                 name="search"
-                                color="transparent" />
+                                color="black" />
                         </TouchableOpacity>
                     }
                 />

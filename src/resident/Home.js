@@ -945,39 +945,43 @@ class HomeScreen extends Component {
           >
             {Strings.home.titleNews1}
           </Text>
-          <View
-            style={{
-              flexDirection: "row",
-              display: "flex",
-              justifyContent: "space-between",
-              justifyContent: "center",
-            }}
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("listNewsEm")}
           >
-            <Text
+            <View
               style={{
-                fontFamily: "OpenSans-Regular",
-                paddingHorizontal: 5,
-                marginTop: 10,
-                letterSpacing: 0,
-                marginBottom: 10,
-                fontsize: fontsize.medium,
-                color: "#afaeae",
+                flexDirection: "row",
+                display: "flex",
+                justifyContent: "space-between",
+                justifyContent: "center",
               }}
             >
-              {Strings.home.moreNews}
-            </Text>
-            <MyIcon
-              name="arrow-right"
-              size={14}
-              color="#afaeae"
-              style={{
-                marginTop: 12,
-                letterSpacing: 0,
-                marginBottom: 10,
-                marginRight: 10,
-              }}
-            />
-          </View>
+              <Text
+                style={{
+                  fontFamily: "OpenSans-Regular",
+                  paddingHorizontal: 5,
+                  marginTop: 10,
+                  letterSpacing: 0,
+                  marginBottom: 10,
+                  fontsize: fontsize.medium,
+                  color: "#afaeae",
+                }}
+              >
+                {Strings.home.moreNews}
+              </Text>
+              <MyIcon
+                name="arrow-right"
+                size={14}
+                color="#afaeae"
+                style={{
+                  marginTop: 12,
+                  letterSpacing: 0,
+                  marginBottom: 10,
+                  marginRight: 10,
+                }}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
 
         {errorNotify && errorNotify.hasError ? (
@@ -1154,78 +1158,78 @@ class HomeScreen extends Component {
       </View>
     );
   };
-  renderListMenu = ({ item }) => {
-    return (
-      <TouchableOpacity
-        onPress={() => {
-          switch (item.id) {
-            case 1:
-              break;
-            case 2:
-              break;
-            case 3:
-              break;
-            case 4:
-              break;
-            case 5:
-              break;
-            case 6:
-              break;
-            case 7:
-              break;
-            case 8:
-              break;
-            case 9:
-              break;
-          }
-        }}
-        style={{
-          height: responsive.h(130),
-          width: responsive.w(128),
-          alignItems: "center",
-          borderBottomWidth: 2,
-          borderRightWidth: 2,
-          borderColor: "#f5f5f5",
-          justifyContent: "center",
-        }}
-      >
-        <View
-          style={{
-            paddingVertical: responsive.h(7),
-            paddingHorizontal: responsive.w(25),
-          }}
-        >
-          {/* <MyIcon
-            name={item.icon}
-            size={responsive.h(34)}
-            style={{ alignSelf: "center" }}
-          /> */}
-          <Image
-            source={item.icon}
-            style={{
-              // height: responsive.h(40),
-              // width: responsive.w(40),
-              alignSelf: "center",
-              marginVertical: responsive.h(10),
-            }}
-          />
-          <Text
-            style={{
-              color: "black",
-              fontSize: responsive.h(14),
-              fontFamily: "OpenSans-Regular",
-              fontStyle: "normal",
-              fontWeight: "700",
-              maxWidth: responsive.w(70),
-              textAlign: "center",
-            }}
-          >
-            {item.name}
-          </Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
+  // renderListMenu = ({ item }) => {
+  //   return (
+  //     <TouchableOpacity
+  //       onPress={() => {
+  //         switch (item.id) {
+  //           case 1:
+  //             break;
+  //           case 2:
+  //             break;
+  //           case 3:
+  //             break;
+  //           case 4:
+  //             break;
+  //           case 5:
+  //             break;
+  //           case 6:
+  //             break;
+  //           case 7:
+  //             break;
+  //           case 8:
+  //             break;
+  //           case 9:
+  //             break;
+  //         }
+  //       }}
+  //       style={{
+  //         height: responsive.h(130),
+  //         width: responsive.w(128),
+  //         alignItems: "center",
+  //         borderBottomWidth: 2,
+  //         borderRightWidth: 2,
+  //         borderColor: "#f5f5f5",
+  //         justifyContent: "center",
+  //       }}
+  //     >
+  //       <View
+  //         style={{
+  //           paddingVertical: responsive.h(7),
+  //           paddingHorizontal: responsive.w(25),
+  //         }}
+  //       >
+  //         {/* <MyIcon
+  //           name={item.icon}
+  //           size={responsive.h(34)}
+  //           style={{ alignSelf: "center" }}
+  //         /> */}
+  //         <Image
+  //           source={item.icon}
+  //           style={{
+  //             // height: responsive.h(40),
+  //             // width: responsive.w(40),
+  //             alignSelf: "center",
+  //             marginVertical: responsive.h(10),
+  //           }}
+  //         />
+  //         <Text
+  //           style={{
+  //             color: "black",
+  //             fontSize: responsive.h(14),
+  //             fontFamily: "OpenSans-Regular",
+  //             fontStyle: "normal",
+  //             fontWeight: "700",
+  //             maxWidth: responsive.w(70),
+  //             textAlign: "center",
+  //           }}
+  //         >
+  //           {item.name}
+  //         </Text>
+  //       </View>
+  //     </TouchableOpacity>
+  //   );
+  // };
 
   render() {
     const listMenuItem = [
@@ -1355,7 +1359,7 @@ class HomeScreen extends Component {
                   </TouchableOpacity>
                 ) : null}
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("notification")}
+                  onPress={() => this.props.navigation.navigate("notificationResident")}
                 >
                   <MyIcon
                     name="home2"
@@ -1379,9 +1383,7 @@ class HomeScreen extends Component {
           >
             <Text
               style={{
-                fontFamily: "OpenSans-Regular",
-                fontStyle: "normal",
-                fontWeight: "700",
+                fontFamily: "Inter-SemiBold",
                 textAlign: "center",
                 fontSize: responsive.h(20),
                 color: "black",
@@ -1427,6 +1429,7 @@ class HomeScreen extends Component {
                           this.props.navigation.navigate("carCardList");
                           break;
                         case 6:
+                          this.props.navigation.navigate("hotline");
                           break;
                         case 7:
                           this.props.navigation.navigate("building");
@@ -1470,7 +1473,7 @@ class HomeScreen extends Component {
                       /> */}
                       <MyIcon
                         name={item.icon}
-                        size={responsive.h(40)}
+                        size={responsive.h(31)}
                         color="black"
                         style={{
                           alignSelf: "center",
@@ -1481,9 +1484,7 @@ class HomeScreen extends Component {
                         style={{
                           color: "black",
                           fontSize: responsive.h(14),
-                          fontFamily: "OpenSans-Regular",
-                          fontStyle: "normal",
-                          fontWeight: "700",
+                          fontFamily: "Inter-SemiBold",
                           maxWidth: responsive.w(70),
                           textAlign: "center",
                         }}

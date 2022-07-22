@@ -40,6 +40,7 @@ import {
 import Strings from "../../../../utils/languages";
 import NavBar from "../../../../components/common/NavBar";
 import { MyIcon } from "../../../../theme/icons";
+import responsive from "../../../../../resources2/responsive";
 
 // create a component
 class ServiceBasic extends Component {
@@ -183,14 +184,28 @@ class ServiceBasic extends Component {
         </View>
       );
     }
-    // if (emptyData) {
-    //     return <ErrorContent title={Strings.app.emptyData} onTouchScreen={() => this.props.refreshDataHandle(),() => this.setState({dataStatus: this.props.dataStatus})} />
-    // }
-    // if (error && error.hasError) {
-    //     return (
-    //         <ErrorContent title={Strings.app.error} onTouchScreen={() => this.props.refreshDataHandle(), () => this.setState({dataStatus: this.props.dataStatus})} />
-    //     )
-    // }
+    if (emptyData) {
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => {
+            this.props.refreshDataHandle(),
+              this.setState({ dataStatus: this.props.dataStatus });
+          }}
+        />
+      );
+    }
+    if (error && error.hasError) {
+      return (
+        <ErrorContent
+          title={Strings.app.error}
+          onTouchScreen={() => {
+            this.props.refreshDataHandle(),
+              this.setState({ dataStatus: this.props.dataStatus });
+          }}
+        />
+      );
+    }
     return (
       <FlatList
         keyExtractor={(item, index) => `${index}`}
@@ -198,6 +213,10 @@ class ServiceBasic extends Component {
         onRefresh={() => this._onRefresh()}
         //onRefresh={() => this.setState({dataStatus: this.props.dataStatus}), () => this.props.refreshDataHandle()}
         data={data}
+        numColumns={2}
+        contentContainerStyle={{
+          marginVertical: 10,
+        }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}
         ListFooterComponent={this.renderFooter}
@@ -303,7 +322,7 @@ class ServiceBasic extends Component {
                 }}
                 style={{
                   flex: 1,
-                  margin: Platform.OS == "ios" ? 5 : 10,
+                  // margin: Platform.OS == "ios" ? 5 : 10,
                   marginHorizontal: 10,
                 }}
               />
@@ -421,6 +440,13 @@ class ServiceBasic extends Component {
             onEndReachedThreshold={0.5}
           />
         </View>
+        <View
+          style={{
+            backgroundColor: "#f5f5f5",
+            height: 15,
+            width: "100%",
+          }}
+        />
         {this._renderContent()}
         {/* <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('requestCreate')}

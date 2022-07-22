@@ -164,14 +164,28 @@ class ServiceExtension extends Component {
         </View>
       );
     }
-    // if (emptyData) {
-    //     return <ErrorContent title={Strings.app.emptyData} onTouchScreen={() => this.props.refreshDataHandle(), () => this.setState({dataStatus: this.props.dataStatus})} />
-    // }
-    // if (error && error.hasError) {
-    //     return (
-    //         <ErrorContent title={Strings.app.error} onTouchScreen={() => this.props.refreshDataHandle(), () => this.setState({dataStatus: this.props.dataStatus})} />
-    //     )
-    // }
+    if (emptyData) {
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => {
+            this.props.refreshDataHandle(),
+              this.setState({ dataStatus: this.props.dataStatus });
+          }}
+        />
+      );
+    }
+    if (error && error.hasError) {
+      return (
+        <ErrorContent
+          title={Strings.app.error}
+          onTouchScreen={() => {
+            this.props.refreshDataHandle(),
+              this.setState({ dataStatus: this.props.dataStatus });
+          }}
+        />
+      );
+    }
     return (
       <FlatList
         keyExtractor={(item, index) => `${index}`}
@@ -179,6 +193,10 @@ class ServiceExtension extends Component {
         onRefresh={() => this._onRefresh()}
         //onRefresh={() => this.setState({dataStatus: this.props.dataStatus}), () => this.props.refreshDataHandle()}
         data={data}
+        numColumns={2}
+        contentContainerStyle={{
+          marginVertical: 10,
+        }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}
         ListFooterComponent={this.renderFooter}
@@ -424,6 +442,13 @@ class ServiceExtension extends Component {
             onEndReachedThreshold={0.5}
           />
         </View>
+        <View
+          style={{
+            backgroundColor: "#f5f5f5",
+            height: 15,
+            width: "100%",
+          }}
+        />
         {this._renderContent()}
         {/* <TouchableOpacity
                     onPress={() => this.props.navigation.navigate('requestCreate')}

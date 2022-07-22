@@ -469,6 +469,7 @@ class UtilityScreen extends Component {
         renderItem={this.renderItemBasic}
         ListFooterComponent={this.renderFooter}
         onEndReachedThreshold={0.5}
+        numColumns={2}
         onMomentumScrollBegin={() => {
           this.onEndReachedCalledDuringMomentum = false;
         }}
@@ -561,6 +562,7 @@ class UtilityScreen extends Component {
         data={dataEx}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItemEx}
+        numColumns={2}
         //style={{height: Screen.height - 380}}
         ListFooterComponent={this.renderFooter}
         onEndReachedThreshold={0.5}
