@@ -53,14 +53,16 @@ class ListItem extends PureComponent {
         style={{
           marginBottom: 10,
           borderRadius: 12,
-          backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
+          // backgroundColor: "#ffffff",
+          // shadowColor: "rgba(0, 0, 0, 0.1)",
+          // elevation: 2,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 4,
+          // },
+          borderWidth: 2,
+          borderColor: "#f1f1f1",
+          // shadowRadius: 10,
           shadowOpacity: 1,
           marginHorizontal: 10,
         }}
@@ -496,8 +498,13 @@ class CarCardScreen extends Component {
           onPress={() => this.props.navigation.navigate("carCardCreate", item)}
         />
       );
-    }
-    return null;
+    } else
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => this.props.refreshDataHandle()}
+        />
+      );
   };
   renderItem2 = ({ item }) => {
     if (!item.isMonthlyTicket && !item.isApproval) {
@@ -510,8 +517,13 @@ class CarCardScreen extends Component {
           onPress={() => this.props.navigation.navigate("carCardCreate", item)}
         />
       );
-    }
-    return null;
+    } else
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => this.props.refreshDataHandle()}
+        />
+      );
   };
   renderItem3 = ({ item }) => {
     if (!item.isMonthlyTicket && item.isStop) {
@@ -523,8 +535,13 @@ class CarCardScreen extends Component {
           onPress={() => this.props.navigation.navigate("carCardCreate", item)}
         />
       );
-    }
-    return null;
+    } else
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => this.props.refreshDataHandle()}
+        />
+      );
   };
   _renderContent() {
     const {
@@ -549,22 +566,22 @@ class CarCardScreen extends Component {
         </View>
       );
     }
-    if (emptyData) {
-      return (
-        <ErrorContent
-          title={Strings.app.emptyData}
-          onTouchScreen={() => this.props.refreshDataHandle()}
-        />
-      );
-    }
-    if (error && error.hasError) {
-      return (
-        <ErrorContent
-          title={Strings.app.error}
-          onTouchScreen={() => this.props.refreshDataHandle()}
-        />
-      );
-    }
+    // if (emptyData) {
+    //   return (
+    //     <ErrorContent
+    //       title={Strings.app.emptyData}
+    //       onTouchScreen={() => this.props.refreshDataHandle()}
+    //     />
+    //   );
+    // }
+    // if (error && error.hasError) {
+    //   return (
+    //     <ErrorContent
+    //       title={Strings.app.error}
+    //       onTouchScreen={() => this.props.refreshDataHandle()}
+    //     />
+    //   );
+    // }
     return (
       <FlatList
         keyExtractor={(item, index) => `${index}`}
@@ -573,13 +590,16 @@ class CarCardScreen extends Component {
         data={data}
         renderItem={
           this.state.type == 1
-            ? this.renderItem2
-            : this.state.type == 2
             ? this.renderItem1
-            : this.renderItem3
+            : this.state.type == 2
+            ? this.renderItem3
+            : this.renderItem2
         }
         onEndReachedThreshold={0.5}
         style={{ paddingHorizontal: 10, marginTop: 7 }}
+        contentContainerStyle={{
+          marginTop: 10,
+        }}
       />
     );
   }
@@ -615,11 +635,10 @@ class CarCardScreen extends Component {
             </Text>
           }
         />
-        <SafeAreaView>
+        <View>
           <ScrollView
-            horizontal={true}
+            horizontal
             contentContainerStyle={{
-              paddingHorizontal: 20,
               flex: 1,
               height: "100%",
             }}
@@ -629,11 +648,14 @@ class CarCardScreen extends Component {
                 style={{
                   fontFamily: "Inter-Bold",
                   fontSize: 14,
+                  paddingLeft: 20,
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  textAlign: "center",
                   color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 20,
+                  textAlign: "center",
+                  paddingVertical: 10,
                 }}
               >
                 {Strings.carCard.registrationCardText}
@@ -647,6 +669,7 @@ class CarCardScreen extends Component {
                   backgroundColor:
                     this.state.type == 1 ? colors.appTheme : "#f1f1f1",
                   marginTop: 5,
+                  paddingHorizontal: 20,
                 }}
               />
             </TouchableOpacity>
@@ -668,10 +691,10 @@ class CarCardScreen extends Component {
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  textAlign: "center",
-
-                  paddingLeft: 30,
                   color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 20,
+                  textAlign: "center",
+                  paddingVertical: 10,
                 }}
               >
                 {Strings.carCard.activityCardText}
@@ -679,7 +702,7 @@ class CarCardScreen extends Component {
               <View
                 style={{
                   // width: Platform.isPad ? 64 : 44,
-                  width: "130%",
+                  width: this.state.type == 2 ? "150%" : "130%",
                   height: 3,
                   borderRadius: 4,
                   backgroundColor:
@@ -688,49 +711,42 @@ class CarCardScreen extends Component {
                 }}
               />
             </TouchableOpacity>
-            <View
+
+            <TouchableOpacity
+              onPress={() => this.setState({ type: 3 })}
               style={{
-                marginHorizontal: 10,
+                flex: 1,
               }}
             >
-              <TouchableOpacity
-                onPress={() => this.setState({ type: 3 })}
+              <Text
                 style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 20,
+                  textAlign: "center",
+                  paddingVertical: 10,
                 }}
               >
-                <Text
-                  style={{
-                    fontFamily: "Inter-Bold",
-                    fontSize: 14,
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "center",
-                    paddingLeft: 10,
-                    color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  }}
-                >
-                  {Strings.carCard.cancellationCardText}
-                </Text>
-                <View
-                  style={{
-                    // width: Platform.isPad ? 64 : 44,
-                    width: "130%",
-
-                    height: 3,
-                    borderRadius: 4,
-                    backgroundColor:
-                      this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                    marginTop: 5,
-                  }}
-                />
-              </TouchableOpacity>
-            </View>
+                {Strings.carCard.cancellationCardText}
+              </Text>
+              <View
+                style={{
+                  // width: Platform.isPad ? 64 : 44,
+                  width: this.state.type == 3 ? "200%" : "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor:
+                    this.state.type == 3 ? colors.appTheme : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
           </ScrollView>
-        </SafeAreaView>
+        </View>
         {this._renderContent()}
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("carCardCreate")}

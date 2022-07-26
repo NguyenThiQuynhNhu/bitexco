@@ -117,7 +117,7 @@ class RequestDetailScreen extends Component {
     return listStar;
   }
 
-  renderItemChat = ({ item }) => {
+  renderItemChat = ({ item, index }) => {
     //console.log(this.props.user);
     const {
       dateActive,
@@ -136,17 +136,11 @@ class RequestDetailScreen extends Component {
           flexDirection: "row",
           borderRadius: 12,
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.08)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 12,
-          shadowOpacity: 1,
           marginHorizontal: 20,
           marginBottom: 10,
           padding: 10,
+          borderTopWidth: 0.5,
+          borderTopColor: "#d4d4d4",
         }}
       >
         <ImageProgress
@@ -401,20 +395,14 @@ class RequestDetailScreen extends Component {
               </View>
             )}
 
-            {/* Chat */}
-            <View
-              style={{
-                borderTopWidth: 0.5,
-                borderTopColor: "#d4d4d4",
-                margin: 20,
-              }}
-            />
-
             <FlatList
               //ItemSeparatorComponent={() => <View style={{ height: 10, backgroundColor: '#fff' }} />}
               data={historyContent || []}
               keyExtractor={(item, index) => `${index}`}
               renderItem={(item) => this.renderItemChat(item)}
+              contentContainerStyle={{
+                marginTop: 10,
+              }}
             />
 
             <Modal

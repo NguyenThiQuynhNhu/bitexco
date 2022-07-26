@@ -672,9 +672,9 @@ class HomeScreen extends Component {
     });
     this.props.getProfile({ type: "re", langId: this.props.langId });
   }
-  componentWillUnmount() {
-    this.props.resetStateByKey({ key: "state" });
-  }
+  // componentWillUnmount() {
+  //   this.props.resetStateByKey({ key: "state" });
+  // }
   renderItem = ({ item }) => {
     const {
       id,
