@@ -58,7 +58,7 @@ let Strings = new LocalizedStrings({
     },
     tabbar: {
       home: "Trang chủ",
-      notification: 'Thông báo',
+      notification: "Thông báo",
       request: "Phản ánh",
       more: "Thêm",
       my: "Của tôi",
@@ -219,6 +219,8 @@ let Strings = new LocalizedStrings({
       number: "Số lượng",
       des: "Diễn giải",
       amount: "Thành tiền",
+      cardPayment: "Thanh toán thẻ",
+      normalPayment: "Thanh toán thường",
     },
     department: {
       code: "Mã căn",
@@ -517,6 +519,8 @@ let Strings = new LocalizedStrings({
       number: "Number",
       des: "Description",
       amount: "Amount",
+      cardPayment: "Payment by card",
+      normalPayment: "Regular payment",
     },
     department: {
       code: "Apt No",

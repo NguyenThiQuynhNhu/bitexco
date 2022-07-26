@@ -273,7 +273,7 @@ class ServiceExtensionDetailScreen extends Component {
             fontFamily: "Inter-Medium",
             fontSize: 13,
             textAlign: "left",
-            color: "#3d3d3d",
+            color: "#505050",
             marginTop: 10,
             marginVertical: responsive.h(5),
           }}

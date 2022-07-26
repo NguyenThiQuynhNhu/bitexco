@@ -214,7 +214,7 @@ class ServiceBasicDetailScreen extends Component {
                   fontSize: 16,
                   fontWeight: "600",
                   textAlign: "left",
-                  color: "#afaeae",
+                  color: "#505050",
                   flex: 0.8,
                 }}
               >
@@ -268,10 +268,10 @@ class ServiceBasicDetailScreen extends Component {
         )}
         <Text
           style={{
-            fontFamily: "Inter-Regular",
+            fontFamily: "Inter-Medium",
             fontSize: 13,
             textAlign: "left",
-            color: "#3d3d3d",
+            color: "#505050",
             marginTop: 10,
           }}
         >
@@ -707,6 +707,18 @@ const styles = StyleSheet.create({
     margin: 20,
     flexDirection: "row",
     alignItems: "center",
+  },
+  textTitle: {
+    fontFamily: "Inter-SemiBold",
+    fontSize: 13,
+    textAlign: "left",
+    color: "#505050",
+  },
+  textInfo: {
+    fontFamily: "Inter-SemiBold",
+    fontSize: 13,
+    textAlign: "left",
+    color: "#505050",
   },
 });
 const mapStateToProps = (state) => ({

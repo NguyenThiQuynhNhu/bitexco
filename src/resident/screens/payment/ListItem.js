@@ -132,7 +132,7 @@ class ListItem extends PureComponent {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "right",
-                  color: isPaid ? colors.appTheme : "#ff624d",
+                  color: "#3ba250",
                 }}
               >
                 {amountIncurred
@@ -160,7 +160,7 @@ class ListItem extends PureComponent {
           <FeildText
             name={Strings.payment.debt}
             text={amountLeft.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            textStyle={{ fontWeight: "bold" }}
+            textStyle={{ fontWeight: "bold", color: "#3ba250" }}
             nameStyle={{}}
           />
         </View>
