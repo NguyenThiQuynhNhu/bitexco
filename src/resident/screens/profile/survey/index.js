@@ -63,7 +63,7 @@ class ListItem extends PureComponent {
               alignItems: "center",
               marginLeft: 10,
               borderWidth: 1,
-              borderColor: "#afaeae"
+              borderColor: "#afaeae",
             }}
           >
             <MyIcon name="file-text" size={20} color="#afaeae" />
@@ -251,11 +251,6 @@ class SurveyScreen extends Component {
             >
               {Strings.setting.surveySheet}
             </Text>
-          }
-          rightView={
-            <TouchableOpacity style={{ padding: 10 }}>
-              <MyIcon name="reply" color="black" size={20} />
-            </TouchableOpacity>
           }
         />
         {this._renderContent()}

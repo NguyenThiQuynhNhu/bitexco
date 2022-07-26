@@ -8,6 +8,8 @@ import {
   ActivityIndicator,
   Platform,
   Alert,
+  ScrollView,
+  SafeAreaView,
 } from "react-native";
 import { connect } from "react-redux";
 import { Screen } from "../../../utils/device";
@@ -28,6 +30,8 @@ import {
   deleteCarCardHandle,
   requestStopCarCardHandle,
 } from "../../../actions/carCard";
+import responsive from "../../../../resources2/responsive";
+
 class ListItem extends PureComponent {
   render() {
     const { item, onPress, deleteCard, type, requestStopCard } = this.props;
@@ -610,106 +614,123 @@ class CarCardScreen extends Component {
               {Strings.carCard.title}
             </Text>
           }
-          rightView={
-            <TouchableOpacity style={{ padding: 10 }}>
-              <MyIcon name="reply" color="black" size={20} />
-            </TouchableOpacity>
-          }
         />
-        <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginHorizontal: 20,
-            marginVertical: 10,
-            alignItems: "center",
-            padding: 10,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.setState({ type: 1 })}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        <SafeAreaView>
+          <ScrollView
+            horizontal={true}
+            contentContainerStyle={{
+              paddingHorizontal: 20,
+              flex: 1,
+              height: "100%",
+            }}
           >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
-              }}
-            >
-              {Strings.carCard.registrationCardText}
-            </Text>
-            <View
-              style={{
-                width: Platform.basic ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: this.state.type == 1 ? "#a3cd80" : "#fff",
-                marginTop: 5,
-              }}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.setState({ type: 1 })}>
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  textAlign: "center",
+                  color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
+                }}
+              >
+                {Strings.carCard.registrationCardText}
+              </Text>
+              <View
+                style={{
+                  // width: Platform.basic ? 64 : 44,
+                  width: "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor:
+                    this.state.type == 1 ? colors.appTheme : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() => this.setState({ type: 2 })}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
-              }}
+            <TouchableOpacity
+              onPress={() => this.setState({ type: 2 })}
+              style={
+                {
+                  // flex: 1,
+                  // justifyContent: "center",
+                  // alignItems: "center",
+                }
+              }
             >
-              {Strings.carCard.activityCardText}
-            </Text>
-            <View
-              style={{
-                width: Platform.isPad ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: this.state.type == 2 ? "#a3cd80" : "#fff",
-                marginTop: 5,
-              }}
-            />
-          </TouchableOpacity>
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  textAlign: "center",
 
-          <TouchableOpacity
-            onPress={() => this.setState({ type: 3 })}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-              }}
-            >
-              {Strings.carCard.cancellationCardText}
-            </Text>
+                  paddingLeft: 30,
+                  color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
+                }}
+              >
+                {Strings.carCard.activityCardText}
+              </Text>
+              <View
+                style={{
+                  // width: Platform.isPad ? 64 : 44,
+                  width: "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor:
+                    this.state.type == 2 ? colors.appTheme : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
             <View
               style={{
-                width: Platform.isPad ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: this.state.type == 3 ? "#a3cd80" : "#fff",
-                marginTop: 5,
+                marginHorizontal: 10,
               }}
-            />
-          </TouchableOpacity>
-        </View>
+            >
+              <TouchableOpacity
+                onPress={() => this.setState({ type: 3 })}
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Inter-Bold",
+                    fontSize: 14,
+                    fontWeight: "bold",
+                    fontStyle: "normal",
+                    letterSpacing: 0,
+                    textAlign: "center",
+                    paddingLeft: 10,
+                    color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
+                  }}
+                >
+                  {Strings.carCard.cancellationCardText}
+                </Text>
+                <View
+                  style={{
+                    // width: Platform.isPad ? 64 : 44,
+                    width: "130%",
+
+                    height: 3,
+                    borderRadius: 4,
+                    backgroundColor:
+                      this.state.type == 3 ? colors.appTheme : "#f1f1f1",
+                    marginTop: 5,
+                  }}
+                />
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </SafeAreaView>
         {this._renderContent()}
         <TouchableOpacity
           onPress={() => this.props.navigation.navigate("carCardCreate")}

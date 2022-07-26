@@ -1359,7 +1359,9 @@ class HomeScreen extends Component {
                   </TouchableOpacity>
                 ) : null}
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("notificationResident")}
+                  onPress={() =>
+                    this.props.navigation.navigate("notificationResident")
+                  }
                 >
                   <MyIcon
                     name="home2"

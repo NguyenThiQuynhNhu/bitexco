@@ -179,9 +179,7 @@ class ServiceExtensionDetailScreen extends Component {
                 justifyContent: "space-between",
               }}
             >
-              {isCustomer ? (
-                null
-              ) : (
+              {isCustomer ? null : (
                 <View
                   style={{
                     marginRight: 5,
@@ -237,7 +235,6 @@ class ServiceExtensionDetailScreen extends Component {
                     color: converStatusToColorService(statusId),
                     fontFamily: "Inter-Regular",
                     marginVertical: responsive.h(5),
-
                   }}
                 >
                   {statusName}
@@ -252,7 +249,6 @@ class ServiceExtensionDetailScreen extends Component {
                 fontFamily: "Inter-Regular",
                 marginTop: 5,
                 marginVertical: responsive.h(5),
-
               }}
             >
               {moment(dateActive).format("DD/MM/YYYY HH:mm")}
@@ -280,7 +276,6 @@ class ServiceExtensionDetailScreen extends Component {
             color: "#3d3d3d",
             marginTop: 10,
             marginVertical: responsive.h(5),
-
           }}
         >
           {description}
@@ -340,7 +335,7 @@ class ServiceExtensionDetailScreen extends Component {
         towerId,
       } = seviceBasic;
       return (
-        <ScrollView style={{ borderTopRightRadius: 20 }}>
+        <ScrollView>
           <View
             style={{
               borderRadius: 16,
@@ -348,7 +343,7 @@ class ServiceExtensionDetailScreen extends Component {
               borderWidth: 1,
               borderBottomWidth: 2,
               borderColor: "#eaeaea",
-              borderBottomColorColor: "#eaeaea",
+              borderBottomColor: "#eaeaea",
               marginHorizontal: 20,
               marginTop: 5,
               marginBottom: 20,
@@ -361,7 +356,7 @@ class ServiceExtensionDetailScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 padding: 10,
-                backgroundColor: "#fff",
+                // backgroundColor: "#fff",
               }}
             >
               <ImageProgress
@@ -411,7 +406,7 @@ class ServiceExtensionDetailScreen extends Component {
                     fontSize: 14,
                     textAlign: "left",
                     color: "#d4d4d4",
-                    maxWidth: responsive.w(200)
+                    maxWidth: responsive.w(200),
                   }}
                 >
                   {employeeName} - {departmentName}
@@ -438,7 +433,7 @@ class ServiceExtensionDetailScreen extends Component {
             <View
               style={{
                 flexDirection: "row",
-                marginBottom: 10,
+                marginVertical: 5,
                 paddingHorizontal: 10,
                 justifyContent: "space-between",
               }}
@@ -453,7 +448,7 @@ class ServiceExtensionDetailScreen extends Component {
             <View
               style={{
                 flexDirection: "row",
-                marginBottom: 10,
+                marginVertical: 5,
                 paddingHorizontal: 10,
                 justifyContent: "space-between",
               }}
@@ -477,7 +472,7 @@ class ServiceExtensionDetailScreen extends Component {
                 </Text>
               </Text>
             </View>
-            
+
             {/* Nội dung */}
             {/*
                         <View style={{ marginTop: 10, paddingBottom: 10 }}>
@@ -685,16 +680,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   textTitle: {
-    fontFamily: "Inter-Medium",
+    fontFamily: "Inter-SemiBold",
     fontSize: 13,
     textAlign: "left",
-    color: "#aeaeae",
+    color: "#505050",
   },
   textInfo: {
-    fontFamily: "Inter-Medium",
+    fontFamily: "Inter-SemiBold",
     fontSize: 13,
     textAlign: "left",
-    color: "#aeaeae",
+    color: "#505050",
   },
 });
 const mapStateToProps = (state) => ({

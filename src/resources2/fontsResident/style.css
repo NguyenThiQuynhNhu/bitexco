@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?c8rddt');
-  src:  url('fonts/icomoon.eot?c8rddt#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?c8rddt') format('truetype'),
-    url('fonts/icomoon.woff?c8rddt') format('woff'),
-    url('fonts/icomoon.svg?c8rddt#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?1tuc9j');
+  src:  url('fonts/icomoon.eot?1tuc9j#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?1tuc9j') format('truetype'),
+    url('fonts/icomoon.woff?1tuc9j') format('woff'),
+    url('fonts/icomoon.svg?1tuc9j#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,162 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-bn-giao-khch-hng-01:before {
+  content: "\e938";
+}
+.icon-bn-giao-ni-b-01:before {
+  content: "\e939";
+}
+.icon-ban-t-chc-01:before {
+  content: "\e93a";
+}
+.icon-bbq-01:before {
+  content: "\e93b";
+}
+.icon-ca-trc:before {
+  content: "\e93c";
+}
+.icon-checklist-01:before {
+  content: "\e93d";
+}
+.icon-CA-TI-01:before {
+  content: "\e93e";
+}
+.icon--ng-01:before {
+  content: "\e93f";
+}
+.icon-ng-xut-01:before {
+  content: "\e940";
+}
+.icon-danh-sch-ta-nh-01:before {
+  content: "\e941";
+}
+.icon-a-ch-01:before {
+  content: "\e942";
+}
+.icon-dch-v--ky-01:before {
+  content: "\e955";
+}
+.icon-dch-v-01:before {
+  content: "\e970";
+}
+.icon-in-01:before {
+  content: "\e971";
+}
+.icon-i-vai-tr-ng-dng-01:before {
+  content: "\e972";
+}
+.icon-gas-01:before {
+  content: "\e973";
+}
+.icon-gym-01:before {
+  content: "\e974";
+}
+.icon-h-s-php-l-01:before {
+  content: "\e975";
+}
+.icon-hon-thnh-01:before {
+  content: "\e976";
+}
+.icon-kho-st-01:before {
+  content: "\e977";
+}
+.icon-ktra-nh-k-01:before {
+  content: "\e978";
+}
+.icon-lin-h-01:before {
+  content: "\e979";
+}
+.icon-menu-01:before {
+  content: "\e97a";
+}
+.icon-ngoi-gi-01:before {
+  content: "\e97b";
+}
+.icon-nhn-vin-01:before {
+  content: "\e97c";
+}
+.icon-nhm-cng-ng-01:before {
+  content: "\e97d";
+}
+.icon-nhm-cv-01:before {
+  content: "\e97e";
+}
+.icon-notebook-01:before {
+  content: "\e97f";
+}
+.icon-nc-01:before {
+  content: "\e980";
+}
+.icon-pcng-ng-01:before {
+  content: "\e981";
+}
+.icon-phn-nh-01:before {
+  content: "\e982";
+}
+.icon-phiu--xut-01:before {
+  content: "\e983";
+}
+.icon-phiu-kho-st-01:before {
+  content: "\e984";
+}
+.icon-phng-ban-01:before {
+  content: "\e985";
+}
+.icon-qun-l-ti-khon-01:before {
+  content: "\e986";
+}
+.icon-tt-c-01:before {
+  content: "\e987";
+}
+.icon-tt-c-01-01:before {
+  content: "\e988";
+}
+.icon-thanh-ton-01:before {
+  content: "\e989";
+}
+.icon-th-xe-01:before {
+  content: "\e98a";
+}
+.icon-thi-cng-01:before {
+  content: "\e98b";
+}
+.icon-thng-bo-01:before {
+  content: "\e98c";
+}
+.icon-thng-tin-d-n-01:before {
+  content: "\e98d";
+}
+.icon-tin-ch-BQL-01:before {
+  content: "\e98e";
+}
+.icon-tin-ch-01:before {
+  content: "\e98f";
+}
+.icon-tm-kim-01:before {
+  content: "\e990";
+}
+.icon-tng-hp-01:before {
+  content: "\e991";
+}
+.icon-trang-ch-01:before {
+  content: "\e992";
+}
+.icon-trang-thng-bo-01:before {
+  content: "\e993";
+}
+.icon-vn-chuyn--01:before {
+  content: "\e994";
+}
+.icon-view-tin-tc-01:before {
+  content: "\e995";
+}
+.icon-x-l-01:before {
+  content: "\e996";
+}
+.icon-yu-cu-mi-01:before {
+  content: "\e997";
+}
 .icon-star:before {
   content: "\e934";
 }
@@ -373,7 +529,4 @@
 .icon-profile:before {
   content: "\e96f";
   color: #fff;
-}
-.icon-sphere:before {
-  content: "\e9c9";
 }

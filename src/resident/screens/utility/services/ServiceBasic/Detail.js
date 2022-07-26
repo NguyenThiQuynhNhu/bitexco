@@ -186,9 +186,7 @@ class ServiceBasicDetailScreen extends Component {
                 justifyContent: "space-between",
               }}
             >
-              {isCustomer ? (
-                null
-              ) : (
+              {isCustomer ? null : (
                 <View
                   style={{
                     marginRight: 5,
@@ -293,7 +291,13 @@ class ServiceBasicDetailScreen extends Component {
         }}
       >
         <Text
-          style={{ margin: 5, marginHorizontal: 10, color: "#808182", fontFamily: "Inter-SemiBold" , fontSize: 13}}
+          style={{
+            margin: 5,
+            marginHorizontal: 10,
+            color: "#808182",
+            fontFamily: "Inter-SemiBold",
+            fontSize: 13,
+          }}
         >
           {item}
         </Text>
@@ -360,13 +364,13 @@ class ServiceBasicDetailScreen extends Component {
               style={{
                 borderRadius: 16,
                 backgroundColor: "#ffffff",
-                 marginHorizontal: 20,
+                marginHorizontal: 20,
                 marginBottom: 20,
                 marginTop: 5,
                 borderWidth: 1,
                 borderBottomWidth: 2,
                 borderColor: "#eaeaea",
-                borderBottomColorColor: "#eaeaea"
+                borderBottomColorColor: "#eaeaea",
               }}
             >
               <View
@@ -424,7 +428,7 @@ class ServiceBasicDetailScreen extends Component {
                       fontSize: 14,
                       textAlign: "left",
                       color: "#afaeae",
-                      maxWidth: responsive.w(200)
+                      maxWidth: responsive.w(200),
                     }}
                   >
                     {employeeName} - {departmentName}
@@ -498,7 +502,13 @@ class ServiceBasicDetailScreen extends Component {
                   </Text>
                 </Text>
               </View>
-              <View style={{ marginBottom: 10, paddingHorizontal: 10, marginVertical: responsive.h(5) }}>
+              <View
+                style={{
+                  marginBottom: 10,
+                  paddingHorizontal: 10,
+                  marginVertical: responsive.h(5),
+                }}
+              >
                 <Text style={styles.textTitle}>
                   {Strings.serviceBasicBooking.time}
                 </Text>
@@ -697,18 +707,6 @@ const styles = StyleSheet.create({
     margin: 20,
     flexDirection: "row",
     alignItems: "center",
-  },
-  textTitle: {
-    fontFamily: "Inter-SemiBold",
-    fontSize: 13,
-    textAlign: "left",
-    color: "#505050",
-  },
-  textInfo: {
-    fontFamily: "Inter-SemiBold",
-    fontSize: 13,
-    textAlign: "left",
-    color: "#505050",
   },
 });
 const mapStateToProps = (state) => ({

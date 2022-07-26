@@ -106,7 +106,7 @@ export default createBottomTabNavigator(
               </View>
             );
           case "payment":
-            iconTab = "thanh-ton";
+            iconTab = "thanh-ton-01";
             badge = screenProps.badge.badgePaymentR;
             text = Strings.tabbar.payment;
             return (
@@ -152,7 +152,7 @@ export default createBottomTabNavigator(
             break;
           case "requests":
             // return <IconBadgeNotification tintColor={tintColor} />;
-            iconTab = "phn-nh";
+            iconTab = "phn-nh-01";
             badge = screenProps.badge.badgeRequestR;
             text = Strings.tabbar.request;
             return (
@@ -197,7 +197,7 @@ export default createBottomTabNavigator(
             );
             break;
           case "home":
-            iconTab = "trang-ch";
+            iconTab = "trang-ch-01";
             badge = screenProps.badge.badgeNotifyR;
             return (
               <View>
@@ -250,7 +250,7 @@ export default createBottomTabNavigator(
             break;
 
           case "utility":
-            iconTab = "star";
+            iconTab = "tin-ch-01";
             badge = 0;
             text = Strings.tabbar.utility;
             return (
