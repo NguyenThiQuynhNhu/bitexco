@@ -364,13 +364,6 @@ class UtilityScreen extends Component {
               renderItem={this.renderItem}
               numColumns={3}
             />
-            <View
-              style={{
-                backgroundColor: "#f5f5f5",
-                height: 15,
-                width: "100%",
-              }}
-            />
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
@@ -382,7 +375,6 @@ class UtilityScreen extends Component {
                 color: "#282828",
                 marginBottom: 0,
                 marginHorizontal: 20,
-                marginVertical: 20,
               }}
             >
               {this.state.basic
@@ -802,10 +794,17 @@ class UtilityScreen extends Component {
               height: "100%",
             }}
           >
-            <TouchableOpacity onPress={() => this.basicClick()}>
+            <TouchableOpacity
+              onPress={() => this.basicClick()}
+              style={{
+                width: 120,
+              }}
+            >
               <View
                 style={{
                   flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Text
@@ -826,7 +825,6 @@ class UtilityScreen extends Component {
                 </Text>
                 <View
                   style={{
-                    marginTop: 10,
                     borderRadius: 22 / 2,
                     width: 22,
                     height: 22,
@@ -869,18 +867,18 @@ class UtilityScreen extends Component {
 
             <TouchableOpacity
               onPress={() => this.exClick()}
-              style={
-                {
-                  // flex: 1,
-                  // justifyContent: "center",
-                  // alignItems: "center",
-                }
-              }
+              style={{
+                // flex: 1,
+                // justifyContent: "center",
+                // alignItems: "center",
+                width: 120,
+              }}
             >
               <View
                 style={{
                   flexDirection: "row",
-                  paddingLeft: 30,
+                  justifyContent: "center",
+                  alignItems: "center",
                 }}
               >
                 <Text
@@ -900,7 +898,6 @@ class UtilityScreen extends Component {
                 </Text>
                 <View
                   style={{
-                    marginTop: 10,
                     borderRadius: 22 / 2,
                     width: 22,
                     height: 22,
@@ -977,9 +974,7 @@ class UtilityScreen extends Component {
             </TouchableOpacity>
           </ScrollView>
         </View>
-
         {this.renderContent()}
-
         <Toast
           ref="toast"
           style={{

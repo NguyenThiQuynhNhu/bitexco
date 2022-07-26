@@ -2,12 +2,14 @@
 import React, { Component, PureComponent } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import fontSize from "../../../../theme/fontsize";
-import { MyIcon } from "../../../../theme/icons";
+
 import ImageProgress from "../../../../components/common/ImageProgress";
 import {
   converStatusToColor,
   converStatusToString,
-} from "../../../../utils/serviceBasic";
+  converStatusToColorServiceByString,
+} from "../../../../utils/request";
+import { MyIcon } from "../../../../theme/icons";
 
 import moment from "moment";
 import colors from "../../../../theme/colors";
@@ -22,7 +24,7 @@ class ListItem extends PureComponent {
       serviceName,
       description,
       statusName,
-      dateCreate,
+      dateBook,
       logo,
       statusId,
     } = item;
@@ -44,7 +46,7 @@ class ListItem extends PureComponent {
           },
           shadowRadius: 10,
           shadowOpacity: 1,
-          marginHorizontal: responsive.h(8),
+          marginHorizontal: 10,
           height: responsive.h(220),
           width: responsive.w(186),
         }}
@@ -52,48 +54,51 @@ class ListItem extends PureComponent {
       >
         <View>
           <ImageProgress
-        style={{
-          height: responsive.h(111),
-          borderRadius: 12,
-          width: responsive.w(170),
-          marginBottom: responsive.h(10),
-        }}
+            //circle={true}
+            style={{
+              height: responsive.h(111),
+              borderRadius: 12,
+              width: responsive.w(170),
+              justifyContent: "center",
+              alignItems: "center",
+              marginBottom: responsive.h(10),
+            }}
             source={{ uri: logo }}
           />
 
           <View
-               style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                maxWidth: responsive.w(222),
-              }}
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              maxWidth: responsive.w(222),
+            }}
           >
             <Text
-            lineBreakMode="tail"
-            numberOfLines={1}
-            style={{
-              fontFamily: "Inter-SemiBold",
-              fontSize: responsive.h(15),
-              fontWeight: "600",
-              fontStyle: "normal",
-              textAlign: "left",
-              color: "#282828",
-              maxWidth: responsive.w(100),
-            }}
+              lineBreakMode="tail"
+              numberOfLines={1}
+              style={{
+                fontFamily: "Inter-SemiBold",
+                fontSize: responsive.h(15),
+                fontWeight: "600",
+                fontStyle: "normal",
+                textAlign: "left",
+                color: "#282828",
+                maxWidth: responsive.w(100),
+              }}
             >
               {serviceName}
             </Text>
             <Text
-                 style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(12),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  // letterSpacing: 0,
-  
-                  color: converStatusToColor(statusId),
-                }}
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(12),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                // letterSpacing: 0,
+
+                color: converStatusToColor(statusId),
+              }}
             >
               {statusName}
             </Text>
@@ -107,8 +112,8 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 textAlign: "left",
                 color: "#888888",
-                maxWidth: responsive.w(222),
                 height: responsive.h(40),
+                maxWidth: responsive.w(222),
               }}
               numberOfLines={2}
               lineBreakMode="tail"
@@ -116,13 +121,13 @@ class ListItem extends PureComponent {
               {description}
             </Text>
           </View>
+
           <View
             style={{
-              display: "flex",
-              justifyContent: "space-between",
               flexDirection: "row",
-              marginVertical: responsive.h(8),
-              maxWidth: responsive.w(222),
+              alignItems: "center",
+              justifyContent: "space-between",
+              paddingTop: 5,
             }}
           >
             <Text
@@ -136,7 +141,7 @@ class ListItem extends PureComponent {
                 color: "#6f6f6f",
               }}
             >
-              {moment(dateCreate).format("DD/MM/YYYY")}
+              {moment(dateBook).format("DD/MM/YYYY")}
             </Text>
             <Text
               style={{
@@ -149,12 +154,12 @@ class ListItem extends PureComponent {
                 color: "#6f6f6f",
               }}
             >
-              {moment(dateCreate).format("HH:mm")}
+              {moment(dateBook).format("HH:mm")}
             </Text>
           </View>
         </View>
 
-        {/* {statusId == 1 && (
+        {/* {statusName == "Mới" && (
           <TouchableOpacity
             style={{
               borderRadius: 45,
@@ -170,11 +175,6 @@ class ListItem extends PureComponent {
             <MyIcon name="x" size={20} color="#fff" />
           </TouchableOpacity>
         )} */}
-        {/* <MyIcon
-                    name="triangle"
-                    size={20}
-                    color={converStatusToColor(statusId)}
-                    style={{ position: 'absolute', top: 0, right: 0, alignSelf: 'flex-start' }} /> */}
       </TouchableOpacity>
     );
   }
