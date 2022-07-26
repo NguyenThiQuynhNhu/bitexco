@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   processColor,
   Platform,
+  ScrollView,
 } from "react-native";
 import { connect } from "react-redux";
 
@@ -185,7 +186,126 @@ class PaymentScreen extends Component {
             </TouchableOpacity>
           }
         />
-        <View
+        <View>
+          <ScrollView
+            horizontal
+            contentContainerStyle={{
+              flex: 1,
+              height: "100%",
+            }}
+          >
+            <TouchableOpacity onPress={() => this.setState({ paid: false })}>
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  paddingLeft: 20,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  color: !this.state.paid ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 10,
+                  textAlign: "center",
+                  paddingVertical: 10,
+                }}
+              >
+                {Strings.payment.unpaidStatus}
+              </Text>
+              <View
+                style={{
+                  // width: Platform.basic ? 64 : 44,
+                  width: "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor: !this.state.paid
+                    ? colors.appTheme
+                    : "#f1f1f1",
+                  marginTop: 5,
+                  paddingHorizontal: 20,
+                }}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => this.setState({ paid: true })}
+              style={
+                {
+                  // flex: 1,
+                  // justifyContent: "center",
+                  // alignItems: "center",
+                }
+              }
+            >
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  color: this.state.paid ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 10,
+                  textAlign: "center",
+                  paddingLeft: 20,
+                  paddingVertical: 10,
+                }}
+              >
+                {Strings.payment.paidStatus}
+              </Text>
+
+              <View
+                style={{
+                  // width: Platform.isPad ? 64 : 44,
+                  width: this.state.paid ? "130%" : "160%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor: this.state.paid
+                    ? colors.appTheme
+                    : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                backgroundColor: "#fff",
+              }}
+              disabled={true}
+            >
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 20,
+                  textAlign: "center",
+                  paddingVertical: 10,
+                  color: "#fff",
+                }}
+              >
+                {}
+              </Text>
+              <View
+                style={{
+                  // width: Platform.isPad ? 64 : 44,
+                  width: this.state.type == 3 ? "130%" : "160%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor:
+                    this.state.type == 3 ? colors.appTheme : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
+
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -250,7 +370,7 @@ class PaymentScreen extends Component {
               }}
             />
           </TouchableOpacity>
-        </View>
+        </View> */}
         {this.renderContent()}
       </View>
     );

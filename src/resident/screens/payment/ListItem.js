@@ -88,15 +88,18 @@ class ListItem extends PureComponent {
           marginHorizontal: 20,
           marginVertical: 10,
           borderRadius: 12,
-          backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
+          // backgroundColor: "#ffffff",
+          // shadowColor: "rgba(0, 0, 0, 0.1)",
+          // elevation: 2,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 4,
+          // },
+          // shadowRadius: 10,
+          // shadowOpacity: 1,
+          borderWidth: 1,
+          borderBottomWidth: 2,
+          borderColor: "#f1f1f1",
         }}
       >
         {/* <ImageProgress circle={true} source={{ uri: user ? user.photoUrl : '' }} style={{ height: 50, width: 50 }} /> */}

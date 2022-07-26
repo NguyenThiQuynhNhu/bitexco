@@ -364,6 +364,13 @@ class UtilityScreen extends Component {
               renderItem={this.renderItem}
               numColumns={3}
             />
+            <View
+              style={{
+                backgroundColor: "#f5f5f5",
+                height: 15,
+                width: "100%",
+              }}
+            />
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
@@ -375,6 +382,7 @@ class UtilityScreen extends Component {
                 color: "#282828",
                 marginBottom: 0,
                 marginHorizontal: 20,
+                marginVertical: 20,
               }}
             >
               {this.state.basic
@@ -666,7 +674,7 @@ class UtilityScreen extends Component {
           }
         />
 
-        <View
+        {/* <View
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
@@ -785,8 +793,193 @@ class UtilityScreen extends Component {
               }}
             />
           </TouchableOpacity>
+        </View> */}
+        <View>
+          <ScrollView
+            horizontal
+            contentContainerStyle={{
+              flex: 1,
+              height: "100%",
+            }}
+          >
+            <TouchableOpacity onPress={() => this.basicClick()}>
+              <View
+                style={{
+                  flexDirection: "row",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Inter-Bold",
+                    fontSize: 14,
+                    paddingLeft: 20,
+                    fontWeight: "bold",
+                    fontStyle: "normal",
+                    letterSpacing: 0,
+                    color: "#3d3d3d",
+                    paddingHorizontal: 10,
+                    textAlign: "center",
+                    paddingVertical: 10,
+                  }}
+                >
+                  {Strings.serviceBasic.title}
+                </Text>
+                <View
+                  style={{
+                    marginTop: 10,
+                    borderRadius: 22 / 2,
+                    width: 22,
+                    height: 22,
+                    justifyContent: "center",
+                    backgroundColor: "#ffe800",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontFamily: "Inter-Medium",
+                      fontSize: 13,
+                      fontWeight: "500",
+                      fontStyle: "normal",
+                      letterSpacing: 0,
+                      textAlign: "center",
+                      color: "#3d3d3d",
+                    }}
+                  >
+                    {!this.props.data
+                      ? "0"
+                      : this.props.data.filter((o) => o.typeId == 0).length}
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  // width: Platform.basic ? 64 : 44,
+                  width: "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor: this.state.basic
+                    ? colors.appTheme
+                    : "#f1f1f1",
+                  marginTop: 5,
+                  paddingHorizontal: 20,
+                }}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => this.exClick()}
+              style={
+                {
+                  // flex: 1,
+                  // justifyContent: "center",
+                  // alignItems: "center",
+                }
+              }
+            >
+              <View
+                style={{
+                  flexDirection: "row",
+                  paddingLeft: 30,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Inter-Bold",
+                    fontSize: 14,
+                    fontWeight: "bold",
+                    fontStyle: "normal",
+                    letterSpacing: 0,
+                    color: "#3d3d3d",
+                    paddingHorizontal: 10,
+                    textAlign: "center",
+                    paddingVertical: 10,
+                  }}
+                >
+                  {Strings.serviceExtension.title}
+                </Text>
+                <View
+                  style={{
+                    marginTop: 10,
+                    borderRadius: 22 / 2,
+                    width: 22,
+                    height: 22,
+                    justifyContent: "center",
+                    backgroundColor: "#ffe800",
+                  }}
+                >
+                  <Text
+                    style={{
+                      fontFamily: "Inter-Medium",
+                      fontSize: 13,
+                      fontWeight: "500",
+                      fontStyle: "normal",
+                      letterSpacing: 0,
+                      textAlign: "center",
+                      color: "#3d3d3d",
+                    }}
+                  >
+                    {!this.props.data
+                      ? "0"
+                      : this.props.data.filter((o) => o.typeId == 1).length}
+                  </Text>
+                </View>
+              </View>
+
+              <View
+                style={{
+                  // width: Platform.isPad ? 64 : 44,
+                  width: this.state.basic ? "150%" : "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor: !this.state.basic
+                    ? colors.appTheme
+                    : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={{
+                flex: 1,
+                backgroundColor: "#fff",
+              }}
+              disabled={true}
+            >
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: 14,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
+                  paddingHorizontal: 20,
+                  textAlign: "center",
+                  paddingVertical: 10,
+                  color: "#fff",
+                }}
+              >
+                {}
+              </Text>
+              <View
+                style={{
+                  // width: Platform.isPad ? 64 : 44,
+                  width: this.state.type == 3 ? "200%" : "130%",
+                  height: 3,
+                  borderRadius: 4,
+                  backgroundColor:
+                    this.state.type == 3 ? colors.appTheme : "#f1f1f1",
+                  marginTop: 5,
+                }}
+              />
+            </TouchableOpacity>
+          </ScrollView>
         </View>
+
         {this.renderContent()}
+
         <Toast
           ref="toast"
           style={{
