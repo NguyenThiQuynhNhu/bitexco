@@ -1396,7 +1396,7 @@ class HomeScreen extends Component {
               {Strings.home.categories}
             </Text>
             <Image
-              source={require("../resources2/line.png")}
+              source={require("../resources/line.png")}
               height={responsive.h(5)}
               style={{
                 alignSelf: "center",
@@ -1540,7 +1540,7 @@ class HomeScreen extends Component {
               {Strings.home.help}
             </Text>
             <Image
-              source={require("../resources2/banner.png")}
+              source={require("../resources/banner.png")}
               style={{
                 height: responsive.h(160),
                 width: responsive.w(380),

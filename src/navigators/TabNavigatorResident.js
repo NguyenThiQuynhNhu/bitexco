@@ -203,7 +203,7 @@ export default createBottomTabNavigator(
               <View>
                 <View style={styles.MainView}>
                   <ImageBackground
-                    source={require("../resources2/Tabbar/tabbar.png")}
+                    source={require("../resources/Tabbar/tabbar.png")}
                     style={styles.image}
                   />
                   <View
