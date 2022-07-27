@@ -1,7 +1,6 @@
 import React from "react";
 import { ImageBackground, View, StatusBar } from "react-native";
-import responsive from "../../../resources2/responsive";
-
+import responsive from "../../../resources/responsive";
 import colors from "../../theme/colors";
 import Device from "../../utils/device";
 

@@ -30,8 +30,7 @@ import {
   deleteCarCardHandle,
   requestStopCarCardHandle,
 } from "../../../actions/carCard";
-import responsive from "../../../../resources2/responsive";
-
+import responsive from "../../../../resources/responsive";
 class ListItem extends PureComponent {
   render() {
     const { item, onPress, deleteCard, type, requestStopCard } = this.props;

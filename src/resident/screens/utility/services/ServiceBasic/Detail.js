@@ -46,7 +46,6 @@ import NavBar from "../../../../components/common/NavBar";
 import CommentView from "./CommentView";
 import fontSize from "../../../../theme/fontsize";
 import responsive from "../../../../../resources/responsive";
-
 // create a component
 class ServiceBasicDetailScreen extends Component {
   static navigationOptions = {

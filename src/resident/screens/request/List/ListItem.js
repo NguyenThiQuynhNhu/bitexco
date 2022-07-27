@@ -14,7 +14,7 @@ import moment from "moment";
 import colors from "../../../theme/colors";
 import fontsize from "../../../theme/fontsize";
 import { Screen } from "../../../utils/device";
-import responsive from "../../../../resources2/responsive";
+import responsive from "../../../../resources/responsive";
 import Device from "../../../../utils/device";
 // create a component
 class ListItem extends PureComponent {
@@ -114,7 +114,6 @@ class ListItem extends PureComponent {
                 color: "#888888",
                 maxWidth: responsive.w(222),
                 height: responsive.h(40),
-
               }}
               numberOfLines={2}
               lineBreakMode="tail"

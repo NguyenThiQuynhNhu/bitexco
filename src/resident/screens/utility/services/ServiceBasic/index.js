@@ -40,8 +40,7 @@ import {
 import Strings from "../../../../utils/languages";
 import NavBar from "../../../../components/common/NavBar";
 import { MyIcon } from "../../../../theme/icons";
-import responsive from "../../../../../resources/responsive";
-// create a component
+import responsive from "../../../../../resources/responsive"; // create a component
 class ServiceBasic extends Component {
   static navigationOptions = {
     header: null,

@@ -34,7 +34,7 @@ import PaymentScreen from "../resident/screens/payment";
 import HandoverScheduleScreen from "../resident/screens/handoverSchedule";
 import { color } from "react-native-reanimated";
 import { app } from "firebase";
-import responsive from "../resources2/responsive";
+import responsive from "../resources/responsive";
 import DistableScreen from "../resident/screens/Distable";
 
 const Devices = require("react-native-device-detection");

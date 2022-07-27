@@ -15,8 +15,7 @@ import moment from "moment";
 import colors from "../../../../theme/colors";
 import fontsize from "../../../../theme/fontsize";
 import { Screen } from "../../../../utils/device";
-import responsive from "../../../../../resources2/responsive";
-// create a component
+import responsive from "../../../../../resources/responsive"; // create a component
 class ListItem extends PureComponent {
   render() {
     const { item, onPress, deleteService } = this.props;
