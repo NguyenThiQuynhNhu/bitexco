@@ -46,6 +46,7 @@ import NavBar from "../../../../components/common/NavBar";
 import CommentView from "./CommentView";
 import fontSize from "../../../../theme/fontsize";
 import responsive from "../../../../../resources/responsive";
+import ConfirmPopup from "../../../../components/common/ConfirmPopUp";
 // create a component
 class ServiceBasicDetailScreen extends Component {
   static navigationOptions = {
@@ -586,6 +587,7 @@ class ServiceBasicDetailScreen extends Component {
                 />
               </KeyboardAvoidingView>
             </Modal>
+
             <Spinner
               visible={this.props.isLoadingReponse}
               textContent={Strings.app.progressing}

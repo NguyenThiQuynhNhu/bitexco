@@ -153,7 +153,7 @@ class DepartmentScreen extends Component {
         >
           <View style={{ display: "flex", flexDirection: "row" }}>
             <MyIcon
-              name="place1"
+              name="thng-tin-d-n-01"
               color="#fece1c"
               size={responsive.h(15)}
               style={{ lineHeight: 24 }}
