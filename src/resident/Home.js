@@ -73,7 +73,7 @@ import { loadDataHandle as loadDataHandleSurvey } from "../resident/actions/surv
 // } from '../actions/home';
 
 import responsive from "../resources/responsive";
-import { icons } from "../resources2/icons";
+import { icons } from "../resources/icons";
 
 import * as ImagePicker from "react-native-image-picker";
 

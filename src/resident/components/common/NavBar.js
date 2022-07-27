@@ -6,7 +6,7 @@ import Device from "../../utils/device";
 
 const NavBar = ({ leftButton, body, rightView, style }) => (
   <ImageBackground
-    source={require("../../../resources2/bgHeader.png")}
+    source={require("../../../resources/bgHeader.png")}
     style={{ marginTop: -2, marginBottom: 10, height: responsive.h(102) }}
   >
     <StatusBar
