@@ -36,8 +36,7 @@ import CheckBox from "../../components/common/CheckBox";
 import PrimaryButton from "../../components/common/PrimaryButton";
 import fontsize from "../../theme/fontsize";
 import NavBar from "../../components/common/NavBar";
-import responsive from "../../../resources2/responsive";
-
+import responsive from "../../../resources/responsive";
 class DepartmentScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null,
@@ -77,7 +76,7 @@ class DepartmentScreen extends Component {
           borderWidth: 1,
           marginHorizontal: 20,
           marginVertical: 10,
-          borderColor: "#e5e5e5"
+          borderColor: "#e5e5e5",
         }}
       >
         <View style={{ flexDirection: "row", padding: 10 }}>

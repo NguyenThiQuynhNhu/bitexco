@@ -46,7 +46,7 @@ import NavBar from "../../../../components/common/NavBar";
 import CommentView from "./CommentView";
 import FeedbackView from "./FeedbackView";
 import fontSize from "../../../../theme/fontsize";
-import responsive from "../../../../../resources2/responsive";
+import responsive from "../../../../../resources/responsive";
 
 // create a component
 class ServiceExtensionDetailScreen extends Component {
