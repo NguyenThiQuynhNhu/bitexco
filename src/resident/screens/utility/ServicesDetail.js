@@ -263,14 +263,14 @@ class ServicesScreen extends Component {
                 onPress={() => this.props.navigation.goBack()}
                 style={{ padding: 10 }}
               >
-                <MyIcon name="arrow" color="#fff" size={20} />
+                <MyIcon name="arrow" color="black" size={20} />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   alignSelf: "center",
-                  color: "#fff",
+                  color: "black",
                   fontSize: fontsize.larg,
                 }}
               >
@@ -297,7 +297,7 @@ class ServicesScreen extends Component {
               onPress={() => this.props.navigation.goBack()}
               style={{ padding: 10 }}
             >
-              <MyIcon name="arrow" color="#fff" size={20} />
+              <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
           }
           body={
@@ -310,7 +310,7 @@ class ServicesScreen extends Component {
                 lineHeight: 24,
                 letterSpacing: 0,
                 textAlign: "center",
-                color: "#ffffff",
+                color: "black",
               }}
             >
               {this.props.navigation.state.params.name}
