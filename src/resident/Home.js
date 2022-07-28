@@ -1283,6 +1283,7 @@ class HomeScreen extends Component {
     console.log(this.state);
     const { user, badge } = this.props;
     const uri = user ? { uri: user.photoUrl } : default_user;
+
     return (
       <View style={styles.container}>
         <NavBar
@@ -1694,7 +1695,10 @@ class HomeScreen extends Component {
               : response.type,
           fileName: response.fileName,
         };
-        this.props.updateProfile({ image, fullName: this.props.user.fullName });
+        this.props.updateProfile({
+          image,
+          fullName: this.props.user.fullName,
+        });
       }
     });
   };

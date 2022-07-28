@@ -1,50 +1,64 @@
-import React from 'react'
-import { Text, View, Platform } from 'react-native'
-import colors from '../../theme/colors'
-import Device from '../../utils/device'
-import LinearGradient from 'react-native-linear-gradient';
+import React from "react";
+import { Text, View, Platform, StatusBar } from "react-native";
+import colors from "../../theme/colors";
+import Device from "../../utils/device";
+import LinearGradient from "react-native-linear-gradient";
 
-const NavBar = ({ leftButton, body, rightView, backgroundColor, style, backgroundColor2 }) => {
-    return (
+const NavBar = ({
+  leftButton,
+  body,
+  rightView,
+  backgroundColor,
+  style,
+  backgroundColor2,
+}) => {
+  return (
+    <View
+      style={{
+        // backgroundColor: backgroundColor ? backgroundColor : colors.appTheme,
+        // ...Device.defaultNavBarStyle(),
+        // marginBottom: -30,
+        ...style,
+        height: 50,
+      }}
+    >
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent={true}
+      />
+      <View
+        style={{
+          //   backgroundColor: colors.appTheme,
+          marginHorizontal: 10,
+          //flex: 1,
+          flexDirection: "row",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginTop: 30,
+        }}
+      >
+        <View style={{ justifyContent: "center" }}>{leftButton}</View>
         <View
-            style={{
-                backgroundColor: backgroundColor ? backgroundColor : colors.appTheme,
-                ...Device.defaultNavBarStyle(),
-                marginBottom: -30,
-                ...style
-            }}
+          style={{
+            justifyContent: "center",
+            alignItems: "center",
+            flex: 1,
+            //...Device.defaultPaddingTop(),
+          }}
         >
-            <View style={{
-                height: 50,
-                backgroundColor: colors.appTheme,
-                marginHorizontal: 10,
-                //flex: 1,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-            }}>
-                <View style={{ justifyContent: 'center' }}>
-                    {leftButton}
-                </View>
-                <View style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flex: 1
-                    //...Device.defaultPaddingTop(),
-                }}>
-                    {body}
-                </View>
-                <View style={{ justifyContent: 'center' }}>
-                    {rightView}
-                </View>
-            </View>
-            <View style={{
-                height: 50,
-                backgroundColor: backgroundColor2 ? backgroundColor2 : '#ffffff' ,
-                borderTopRightRadius: 30,
-            }}>
-            </View>
-            {/* <View style={{
+          {body}
+        </View>
+        <View style={{ justifyContent: "center" }}>{rightView}</View>
+      </View>
+      <View
+        style={{
+          height: 50,
+          //   backgroundColor: backgroundColor2 ? backgroundColor2 : "#ffffff",
+          borderTopRightRadius: 30,
+        }}
+      />
+      {/* <View style={{
                     flex: 1,
                     justifyContent: 'center'
                 }}>
@@ -64,11 +78,8 @@ const NavBar = ({ leftButton, body, rightView, backgroundColor, style, backgroun
                         {rightView}
                     </View>
                 </View> */}
+    </View>
+  );
+};
 
-        </View>
-    )
-
-
-}
-
-export default NavBar
+export default NavBar;

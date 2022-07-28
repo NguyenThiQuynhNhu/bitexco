@@ -192,6 +192,18 @@ let Strings = new LocalizedStrings({
     home: {
       titleNews1: "Tin mới",
       titleNews2: "Bài viết khác",
+      electric: "Điện",
+      water: "Nước",
+      gas: "Gas",
+      shift: "Ca trực",
+      checkList: "Checklist",
+      proposalForm: "Phiếu đề xuất",
+      checkingDaily: "Kiểm tra định kỳ",
+      internalHandover: "Bàn giao nội bộ",
+      customerHandover: "Bàn giao khách hàng",
+      service: "Dịch vụ",
+      extension: "Tiện ích",
+      functionalCategories: "Doanh mục chức năng",
     },
   },
   en: {

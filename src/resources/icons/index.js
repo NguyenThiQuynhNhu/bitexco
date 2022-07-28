@@ -8,4 +8,13 @@ export const icons = {
   towerList: "danh-sch-ta-nh-01",
   person: "i-vai-tr-ng-dng-01",
   personSt: "qun-l-ti-khon-01",
+  electric: "in-01",
+  water: "nc-01",
+  gas: "gas-01",
+  shift: "ca-trc",
+  checkList: "checklist-01",
+  proposalForm: "phiu--xut-01",
+  checkingDaily: "ktra-nh-k-01",
+  internalHandover: "bn-giao-ni-b-01",
+  customerHandover: "bn-giao-khch-hng-01",
 };
