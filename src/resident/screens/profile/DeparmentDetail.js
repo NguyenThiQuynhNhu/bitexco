@@ -123,14 +123,14 @@ class DepartmentScreen extends Component {
           }}
         >
           <MyIcon
-            name="place1"
+            name="location"
             color="#fece1c"
             size={responsive.h(15)}
             style={{ lineHeight: 24, marginLeft: 10 }}
           />
           <Text
             style={{
-              fontFamily: "Inter-Medium",
+              fontFamily: "Inter-SemiBold",
               fontSize: 14,
               fontWeight: "500",
               fontStyle: "normal",
@@ -153,14 +153,14 @@ class DepartmentScreen extends Component {
         >
           <View style={{ display: "flex", flexDirection: "row" }}>
             <MyIcon
-              name="thng-tin-d-n-01"
+              name="cn-h"
               color="#fece1c"
               size={responsive.h(15)}
               style={{ lineHeight: 24 }}
             />
             <Text
               style={{
-                fontFamily: "Inter-Medium",
+                fontFamily: "Inter-SemiBold",
                 fontSize: 14,
                 fontWeight: "500",
                 fontStyle: "normal",
@@ -176,7 +176,7 @@ class DepartmentScreen extends Component {
 
           <Text
             style={{
-              fontFamily: "Inter-Medium",
+              fontFamily: "Inter-SemiBold",
               fontSize: 14,
               fontWeight: "500",
               fontStyle: "normal",
@@ -215,7 +215,7 @@ class DepartmentScreen extends Component {
               >
                 <Text
                   style={{
-                    fontFamily: "Inter-Medium",
+                    fontFamily: "Inter-SemiBold",
                     fontSize: 14,
                     paddingLeft: responsive.w(25),
                     fontWeight: "500",
