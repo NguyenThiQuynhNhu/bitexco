@@ -572,8 +572,6 @@ class ServiceExtensionDetailScreen extends Component {
                   style={{
                     height: responsive.h(86),
                     width: responsive.w(86),
-                    borderWidth: 1,
-                    borderColor: "black",
                   }}
                   source={{ uri: logo }}
                 />
