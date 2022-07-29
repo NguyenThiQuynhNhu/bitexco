@@ -1676,7 +1676,9 @@ class HomeScreen extends Component {
                 }}
               >
                 <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("serviceBasic")}
+                  onPress={() =>
+                    this.props.navigation.navigate("serviceExtension")
+                  }
                   style={{
                     width: 160,
                     height: 60,
@@ -1726,9 +1728,7 @@ class HomeScreen extends Component {
                     backgroundColor: "#f5f5f5",
                     borderRadius: 10,
                   }}
-                  onPress={() =>
-                    this.props.navigation.navigate("serviceExtension")
-                  }
+                  onPress={() => this.props.navigation.navigate("ServiceBasic")}
                 >
                   <View
                     style={{
