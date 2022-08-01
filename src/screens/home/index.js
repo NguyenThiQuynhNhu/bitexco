@@ -1728,7 +1728,7 @@ class HomeScreen extends Component {
                     backgroundColor: "#f5f5f5",
                     borderRadius: 10,
                   }}
-                  onPress={() => this.props.navigation.navigate("ServiceBasic")}
+                  onPress={() => this.props.navigation.navigate("serviceBasic")}
                 >
                   <View
                     style={{

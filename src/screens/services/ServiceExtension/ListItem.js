@@ -102,13 +102,13 @@ class ListItem extends PureComponent {
               </Text>
               <Text
                 style={{
-                  fontFamily: "Inter-Regular",
+                  fontFamily: "Inter-Me",
                   fontSize: responsive.h(14),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
-                  color: "#3d3d3d",
+                  color: "#888888",
                 }}
               >
                 MS: {apartmentName}
