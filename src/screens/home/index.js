@@ -1189,26 +1189,26 @@ class HomeScreen extends Component {
         name: Strings.home.gas,
         icon: icons.gas,
       },
-      {
-        id: 4,
-        name: Strings.home.shift,
-        icon: icons.shift,
-      },
-      {
-        id: 5,
-        name: Strings.home.checkList,
-        icon: icons.checkList,
-      },
-      {
-        id: 6,
-        name: Strings.home.proposalForm,
-        icon: icons.proposalForm,
-      },
-      {
-        id: 7,
-        name: Strings.home.checkingDaily,
-        icon: icons.checkingDaily,
-      },
+      // {
+      //   id: 4,
+      //   name: Strings.home.shift,
+      //   icon: icons.shift,
+      // },
+      // {
+      //   id: 5,
+      //   name: Strings.home.checkList,
+      //   icon: icons.checkList,
+      // },
+      // {
+      //   id: 6,
+      //   name: Strings.home.proposalForm,
+      //   icon: icons.proposalForm,
+      // },
+      // {
+      //   id: 7,
+      //   name: Strings.home.checkingDaily,
+      //   icon: icons.checkingDaily,
+      // },
       {
         id: 8,
         name: Strings.home.internalHandover,
@@ -1788,15 +1788,16 @@ class HomeScreen extends Component {
                           break;
                         case 5:
                           this.props.navigation.navigate("checklist", {
-                            isMaintenance: 1,
+                            isMaintenance: 0,
                           });
                           break;
                         case 6:
-                          this.props.navigation.navigate("requests");
-                          break;
-                        case 7:
                           this.props.navigation.navigate("proposal");
                           break;
+                        case 7:
+                          this.props.navigation.navigate("checklist", {
+                            isMaintenance: 1,
+                          });
                         case 8:
                           this.props.navigation.navigate("CheckList_NoiBo");
                           break;
@@ -1811,6 +1812,7 @@ class HomeScreen extends Component {
                       alignItems: "center",
                       borderBottomWidth: 2,
                       borderRightWidth: 2,
+                      borderLeftWidth: 2,
                       borderColor: "#f5f5f5",
                       justifyContent: "center",
                     }}
@@ -1863,7 +1865,6 @@ class HomeScreen extends Component {
                 contentContainerStyle={{
                   justifyContent: "center",
                   alignItems: "center",
-                  borderLeftWidth: 2,
                   borderTopWidth: 2,
                   borderColor: "#f5f5f5",
                   maxWidth: responsive.w(385),
