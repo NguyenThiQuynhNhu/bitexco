@@ -215,14 +215,16 @@ class ServiceExtensionDetailScreen extends Component {
                   backgroundColor: "#fff5eb",
                   borderRadius: responsive.h(15),
                   height: responsive.h(30),
+                  width: responsive.w(126),
+                  justifyContent: "center",
                 }}
               >
                 <Text
                   style={{
-                    margin: 5,
-                    paddingHorizontal: 10,
                     fontFamily: "Inter-Regular",
                     fontSize: fontsize.micro,
+                    textAlign: "center",
+
                     color: converStatusToColorService(statusId),
                   }}
                 >
@@ -323,7 +325,13 @@ class ServiceExtensionDetailScreen extends Component {
         }}
       >
         <Text
-          style={{ margin: 10, color: colors.blue, fontSize: fontsize.larg }}
+          style={{
+            margin: 10,
+            color: "black",
+            fontSize: fontsize.medium,
+            fontFamily: "Inter-SemiBold",
+            textAlign: "center",
+          }}
         >
           {moduleName}
         </Text>
@@ -510,6 +518,7 @@ class ServiceExtensionDetailScreen extends Component {
                   justifyContent: "center",
                   height: responsive.h(30),
                   alignItems: "center",
+                  width: responsive.w(126),
                   marginVertical: responsive.h(30),
                 }}
               >
