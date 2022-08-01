@@ -1680,10 +1680,11 @@ class HomeScreen extends Component {
                     this.props.navigation.navigate("serviceExtension")
                   }
                   style={{
-                    width: 160,
-                    height: 60,
+                    width: responsive.w(160),
+                    height: responsive.h(60),
                     backgroundColor: "#f5f5f5",
                     borderRadius: 10,
+                    justifyContent: "center",
                   }}
                 >
                   <View
@@ -1723,10 +1724,11 @@ class HomeScreen extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
-                    width: 160,
-                    height: 60,
+                    width: responsive.w(160),
+                    height: responsive.h(60),
                     backgroundColor: "#f5f5f5",
                     borderRadius: 10,
+                    justifyContent: "center",
                   }}
                   onPress={() => this.props.navigation.navigate("serviceBasic")}
                 >
