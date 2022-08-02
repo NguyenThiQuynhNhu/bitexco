@@ -1,3 +1,4 @@
+import responsive from "../resources/responsive";
 import colors from "./colors";
 import fontsize from "./fontsize";
 
@@ -8,7 +9,7 @@ export const container = {
 
 export const titleStyle = {
   fontFamily: "Inter-Bold",
-  fontSize: 20,
+  fontSize: responsive.h(20),
   fontWeight: "bold",
   textAlign: "center",
   color: "black",
