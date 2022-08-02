@@ -1811,7 +1811,8 @@ class HomeScreen extends Component {
                       width: responsive.w(128),
                       alignItems: "center",
                       borderBottomWidth: 2,
-                      borderRightWidth: 2,
+                      borderRightWidth:
+                        item.id === 1 || item.id === 2 || item.id === 3 ? 0 : 2,
                       borderLeftWidth: 2,
                       borderColor: "#f5f5f5",
                       justifyContent: "center",

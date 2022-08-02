@@ -327,10 +327,10 @@ class ServiceExtensionDetailScreen extends Component {
         <Text
           style={{
             margin: 10,
+            fontSize: responsive.h(16),
             color: "black",
-            fontSize: fontsize.medium,
-            fontFamily: "Inter-SemiBold",
             textAlign: "center",
+            fontFamily: "Inter-Medium",
           }}
         >
           {moduleName}

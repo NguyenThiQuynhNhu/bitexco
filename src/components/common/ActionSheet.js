@@ -76,8 +76,9 @@ class ActionSheet extends Component {
               >
                 <Text
                   style={{
-                    fontSize: FontSize.medium,
-                    fontFamily: "Inter-SemiBold",
+                    fontSize: responsive.h(16),
+                    textAlign: "center",
+                    fontFamily: "Inter-Bold",
                     color: "red",
                   }}
                 >
