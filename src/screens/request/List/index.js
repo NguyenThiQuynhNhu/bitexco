@@ -63,6 +63,7 @@ import PrimaryButton from "../../../components/common/PrimaryButton";
 import CircleView from "../../../components/common/CircleView";
 
 import ButtonDateFilter from "../../../components/statistics/ButtonFilter";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class ReuqestList extends Component {
@@ -318,52 +319,53 @@ class ReuqestList extends Component {
             </TouchableOpacity>
           }
           body={
-            <View style={{ justifyContent: "center" }}>
-              <Text
-                style={{
-                  fontFamily: "Inter-Bold",
-                  fontSize: 18,
-                  fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "center",
-                  color: "black",
-                }}
-              >
-                Công việc
-              </Text>
-              <Text
-                style={{
-                  color: "#fff",
-                  alignSelf: "center",
-                  fontSize: fontSize.small,
-                  fontWeight: "bold",
-                  fontFamily: "Inter-Bold",
-                }}
-              >
-                Nguồn: {converTypeToSource(typeId)}
-              </Text>
-            </View>
-          }
-          rightView={
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <View
-                style={{
-                  alignItems: "center",
-                  flexDirection: "row",
-                  marginLeft: 10,
-                }}
-              >
+            <View
+              style={{
+                flexDirection: "row",
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <View>
                 <Text
                   style={{
-                    marginRight: 10,
                     fontFamily: "Inter-Bold",
-                    fontSize: 14,
+                    fontSize: responsive.h(20),
                     fontWeight: "bold",
                     fontStyle: "normal",
                     letterSpacing: 0,
                     textAlign: "center",
-                    color: "#ffffff",
+                    color: "black",
+                  }}
+                >
+                  Công việc
+                </Text>
+                <Text
+                  style={{
+                    color: "#df2027",
+                    alignSelf: "center",
+                    fontSize: responsive.h(15),
+                    fontWeight: "bold",
+                    fontFamily: "Inter-Bold",
+                  }}
+                >
+                  Nguồn: {converTypeToSource(typeId)}
+                </Text>
+              </View>
+              <View
+                style={{
+                  alignItems: "center",
+                  flexDirection: "row",
+                  marginLeft: 60,
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Inter-Medium",
+                    fontSize: responsive.h(14),
+                    fontStyle: "normal",
+                    letterSpacing: 0,
+                    color: "black",
                   }}
                 >
                   Của tôi
@@ -371,16 +373,25 @@ class ReuqestList extends Component {
                 <Switch
                   value={this.props.isMine}
                   onValueChange={() => this._onValueChangeSwitch()}
-                  style={{ transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }] }}
+                  style={{
+                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }],
+                    height: 14,
+                  }}
+                  thumbColor="black"
+                  trackColor="#fffff"
+                  backgroundColor="ffff"
                 />
               </View>
-
+            </View>
+          }
+          rightView={
+            <View style={{ flex: 1, flexDirection: "row" }}>
               <View style={{ alignItems: "center", flexDirection: "row" }}>
                 <TouchableOpacity
                   onPress={() => this.setState({ showFilter: true })}
                   style={{}}
                 >
-                  <MyIcon name="search" size={30} color="#fff" />
+                  <MyIcon name="search" size={30} color="black" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -398,11 +409,15 @@ class ReuqestList extends Component {
                 }}
               />
             )}
+            contentContainerStyle={{
+              marginTop: 20,
+              marginVertical: 10,
+            }}
             data={dataStatus}
             keyExtractor={(item, index) => `${index}`}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            style={{ borderTopRightRadius: 20, marginTop: 5 }}
+            style={{ borderTopRightRadius: 20 }}
             renderItem={(item) => {
               return (
                 <ButtonFilter
@@ -433,6 +448,13 @@ class ReuqestList extends Component {
 
                     </ScrollView> */}
         </View>
+        <View
+          style={{
+            backgroundColor: "#f5f5f5",
+            height: 15,
+            width: "100%",
+          }}
+        />
 
         {this._renderContent()}
 
@@ -597,7 +619,7 @@ class ReuqestList extends Component {
               justifyContent: "center",
               alignItems: "center",
               position: "absolute",
-              bottom: 20,
+              bottom: responsive.h(100),
               right: 20,
             }}
           >

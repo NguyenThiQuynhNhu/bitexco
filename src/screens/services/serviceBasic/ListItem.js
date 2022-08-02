@@ -127,7 +127,7 @@ class ListItem extends PureComponent {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
-                  color: converStatusToColorServiceByString(statusName),
+                  color: converStatusToColor(statusName),
                 }}
               >
                 {statusName}
