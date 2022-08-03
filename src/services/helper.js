@@ -68,7 +68,7 @@ export async function get1(url, params = null) {
                     return -1;
                 }
             }
-            
+
         } catch (error) {
             console.log(`${helper.URL_API}`,error.response);
             //return ret;
@@ -127,7 +127,7 @@ export async function get(url, params = null) {
                     return -1;
                 }
             }
-            
+
         } catch (error) {
             console.log(`${helper.URL_API}`,error.response);
             //return ret;
@@ -179,13 +179,67 @@ export async function post(url, params = null) {
                     return -1;
                 }
             }
-            
+
         } catch (error) {
             console.log(`${helper.URL_API}`,error.response)
             return -1;
         }
 }
+export async function post2(url, scheduleApartmentId , params = null) {
+  console.log(`${helper.URL_API}` + url)
+  //console.log('params', params)
+  //console.log('helper.ret', `${helper.URL_API}` + url + `?idNew=${idNew}`)
+  await apiStorage.get(keys.idNew)
+      .then(async (data) => {
+          //return -1;
+          // console.log(data);
+          if (data.status === 1) {
+              idNew = Number(data.content)
+          } else {
+              throw new Error(data.content)
+          }
+      })
+      try {
+          if(helper.URL_API == 'https://apimyhome.dip.vn/api'){
+              console.log( `${helper.URL_API}` + url + `?idNew=${idNew}` + `&scheduleApartmentId=${scheduleApartmentId}`)
+              let ret = await axios.post(`${helper.URL_API}` + url + `?idNew=${idNew}` + `&scheduleApartmentId=${scheduleApartmentId}`, params, {
+                  headers: {
+                      Authorization: `bearer ${await firebase.auth().currentUser.getIdToken()}`
+                  },
+              });
+              //console.log('helper.ret', ret)
+              //return ret;
+              if (ret.status != undefined && ret.status === 200) {
+                console.log( `${helper.URL_API}` + url + `?idNew=${idNew}` + `&scheduleApartmentId=${scheduleApartmentId}`)
+                  return ret;
+              }
+              else {
+                console.log( `${helper.URL_API}` + url + `?idNew=${idNew}` + `&scheduleApartmentId=${scheduleApartmentId}`)
+                  return -1;
+              }
+          }else{
+            console.log( `${helper.URL_API}` + url + `?idNew=${idNew}` + `&scheduleApartmentId=${scheduleApartmentId}`)
 
+              let ret = await axios.post(`${helper.URL_API}` + url + `?idNew=${idNew}` + `&scheduleApartmentId=${scheduleApartmentId}`, params, {
+                  headers: {
+                      Authorization: `bearer ${await firebase.auth().currentUser.getIdToken()}`
+                  },
+              });
+              //console.log('helper.ret', ret)
+              //return ret;
+              if (ret.status != undefined && ret.status === 200) {
+                  return ret;
+              }
+              else {
+                  return -1;
+              }
+          }
+
+      } catch (error) {
+          console.log(`${helper.URL_API}`,error.response)
+          return -1;
+      }
+}
 export async function put(url, params = null) {
     try {
         if(helper.URL_API == 'https://apimyhome.dip.vn/api'){
@@ -215,7 +269,7 @@ export async function put(url, params = null) {
                 return -1;
             }
         }
-        
+
     } catch (error) {
         console.log(error.response)
         return -1;
