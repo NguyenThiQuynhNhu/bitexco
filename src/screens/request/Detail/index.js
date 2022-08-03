@@ -47,6 +47,7 @@ import TabRequestDetail from "../../../navigators/TabNavigator";
 import ActionSheet from "../../../components/common/ActionSheet";
 
 import NavBar from "../../../resident/components/common/NavBar";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class RequestDetailScreen extends Component {
@@ -242,112 +243,117 @@ class RequestDetailScreen extends Component {
           {/* Thông tin nha cung cap */}
           <View
             style={{
+              display: "flex",
               flexDirection: "row",
-              //borderBottomWidth: 1,
-              // borderColor: colors.grayBorder,
-              //padding: 20,
-              paddingBottom: 10,
-              backgroundColor: "#fff",
-              borderTopRightRadius: 20,
+              justifyContent: "space-between",
+              marginVertical: responsive.h(25),
             }}
           >
-            <View style={{ alignItems: "center" }}>
-              <ImageProgress
-                circle={true}
-                style={{
-                  height: 46,
-                  width: 46,
-                }}
-                source={{ uri: avatarResident }}
-              />
-              {/* <View style={{ marginTop: 10, backgroundColor: colorCode, paddingHorizontal: 20, paddingVertical: 5 }}>
+            <View
+              style={{
+                flexDirection: "row",
+                //borderBottomWidth: 1,
+                // borderColor: colors.grayBorder,
+                //padding: 20,
+                paddingBottom: 10,
+                backgroundColor: "#fff",
+                borderTopRightRadius: 20,
+              }}
+            >
+              <View>
+                <ImageProgress
+                  circle={true}
+                  style={{
+                    height: responsive.h(51),
+                    width: responsive.w(51),
+                    marginRight: responsive.w(10),
+                  }}
+                  source={{ uri: avatarResident }}
+                />
+                {/* <View style={{ marginTop: 10, backgroundColor: colorCode, paddingHorizontal: 20, paddingVertical: 5 }}>
                                 <Text style={{ color: '#fff' }}>{statusName}</Text>
                             </View> */}
+              </View>
+              <View>
+                <Text
+                  style={{
+                    fontFamily: "Inter-Bold",
+                    fontSize: responsive.h(15),
+                    color: "#000000",
+                  }}
+                >
+                  {residentName || userContact}
+                </Text>
+                <View>
+                  <View>
+                    {phoneContact.length > 0 && (
+                      <Text
+                        style={{
+                          fontFamily: "Inter-SemiBold",
+                          fontSize: responsive.h(15),
+                          letterSpacing: 0,
+                          // paddingVertical: responsive.h(5),
+                          color: "#000000",
+                        }}
+                      >
+                        {phoneContact}
+                      </Text>
+                    )}
+                    {contractName && (
+                      <Text
+                        style={{
+                          fontFamily: "Inter-Medium",
+                          fontSize: responsive.h(14),
+                          color: "#888888",
+                        }}
+                      >
+                        MS: {contractName}
+                      </Text>
+                    )}
+                  </View>
+                </View>
+              </View>
             </View>
             <View
-              style={{ flex: 1, marginLeft: 10, justifyContent: "flex-start" }}
+              style={{
+                alignItems: "flex-end",
+                justifyContent: "center",
+              }}
             >
-              <Text
-                style={{
-                  fontFamily: "Inter-Bold",
-                  fontSize: 16,
-                  fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  //textAlign: "center",
-                  color: "#000000",
-                }}
-              >
-                {residentName || userContact}
-              </Text>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <View>
-                  {phoneContact.length > 0 && (
-                    <Text
-                      style={{
-                        marginVertical: 5,
-                        fontFamily: "Inter-Regular",
-                        fontSize: 14,
-                        fontWeight: "normal",
-                        fontStyle: "normal",
-                        letterSpacing: 0,
-                        color: "#000000",
-                      }}
-                    >
-                      {phoneContact}
-                    </Text>
-                  )}
-                  {contractName && (
-                    <Text
-                      style={{
-                        fontFamily: "Inter-Regular",
-                        fontSize: 14,
-                        fontWeight: "normal",
-                        fontStyle: "normal",
-                        letterSpacing: 0,
-                        color: "#000000",
-                      }}
-                    >
-                      MS: {contractName}
-                    </Text>
-                  )}
-                </View>
-                {statusName && (
-                  <View
+              {statusName && (
+                <View
+                  style={{
+                    borderRadius: 16,
+                    // backgroundColor: colorCode,
+                    // paddingHorizontal: 20,
+                    // marginVertical: 5,
+                    // justifyContent: "center",
+                    paddingVertical: responsive.h(5),
+                    backgroundColor: "#fff2ee",
+                    width: responsive.h(108),
+                  }}
+                >
+                  <Text
                     style={{
-                      borderRadius: 8,
-                      backgroundColor: colorCode,
-                      paddingHorizontal: 20,
-                      alignItems: "center",
-                      marginVertical: 5,
-                      justifyContent: "center",
-                      paddingVertical: 5,
+                      color: "#3ba250",
+                      fontFamily: "Inter-Regular",
+                      fontSize: responsive.h(14),
+                      letterSpacing: 0,
+                      textAlign: "center",
                     }}
                   >
-                    <Text
-                      style={{
-                        color: "#fff",
-                        fontFamily: "Inter-SemiBold",
-                        fontSize: 15,
-                        fontWeight: "600",
-                        fontStyle: "normal",
-                        letterSpacing: 0,
-                        textAlign: "center",
-                      }}
-                    >
-                      {statusName}
-                    </Text>
-                  </View>
-                )}
-              </View>
-
-              <Text style={{ color: colors.gray1, marginTop: 5, fontSize: 14 }}>
+                    {statusName}
+                  </Text>
+                </View>
+              )}
+              <Text
+                style={{
+                  color: "#afaeae",
+                  marginTop: 5,
+                  fontSize: responsive.h(14),
+                  fontFamily: "Inter-Regular",
+                }}
+              >
                 {myFromNow(dateCreate)}
               </Text>
             </View>

@@ -142,5 +142,6 @@ export const myFromNow = (created_at) => {
   } else {
     time = moment(created_at).format("DD [tháng] MM [lúc] HH:mm");
   }
+
   return time;
 };
