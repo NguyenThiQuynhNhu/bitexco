@@ -25,10 +25,11 @@ import { MyIcon } from "../../theme/icons";
 import colors from "../../theme/colors";
 import ErrorContent from "../../components/common/ErrorContent";
 import Strings from "../../utils/languages";
-import NavBar from "../../components/common/NavBar";
 import Toast, { DURATION } from "react-native-easy-toast";
 import { refreshDataHandle } from "../../actions/notification";
 // import HTML from 'react-native-render-html';
+
+import NavBar from "../../../resident/components/common/NavBar";
 
 // create a component
 class NewsDetail extends Component {
