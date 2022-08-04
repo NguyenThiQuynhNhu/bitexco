@@ -9,6 +9,7 @@ import ImageProgress from "../../common/ImageProgress";
 import { myFromNow } from "../../../utils/request";
 import colors from "../../../theme/colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class ListItem extends PureComponent {
@@ -42,15 +43,17 @@ class ListItem extends PureComponent {
         >
           <View
             style={{
-              borderRadius: 45,
+              borderRadius: 30,
               height: 60,
               width: 60,
               //   backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
+              borderColor: "#f5f5f5",
+              borderWidth: 1,
             }}
           >
-            <Icon name={converTypeToIcon(2)} size={40} color={"#fff"} />
+            <MyIcon name="trang-thng-bo-01" size={30} color="#f5f5f5" />
 
             {/* {!isRead ? (
               <View
@@ -67,9 +70,7 @@ class ListItem extends PureComponent {
             ) : null} */}
           </View>
 
-          <View
-            style={{ flex: 1, justifyContent: "space-between", marginLeft: 10 }}
-          >
+          <View style={{ flex: 1, justifyContent: "center", marginLeft: 10 }}>
             <View style={{ flex: 1, justifyContent: "center" }}>
               <Text numberOfLines={3} lineBreakMode="tail">
                 <Text

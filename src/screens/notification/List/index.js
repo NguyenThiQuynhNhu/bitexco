@@ -264,11 +264,10 @@ class ProposalList extends Component {
               </Text>
               <Text
                 style={{
-                  fontFamily: "Inter-Bold",
+                  fontFamily: "Inter-Regular",
                   color: "#df2027",
                   alignSelf: "center",
                   fontSize: responsive.h(16),
-                  fontWeight: "bold",
                 }}
               >
                 Nhóm: {converTypeToString(typeId)}

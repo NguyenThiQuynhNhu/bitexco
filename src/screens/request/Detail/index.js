@@ -184,7 +184,13 @@ class RequestDetailScreen extends Component {
         }}
       >
         <Text
-          style={{ margin: 10, color: colors.blue, fontSize: fontsize.larg }}
+          style={{
+            margin: 10,
+            fontSize: responsive.h(16),
+            color: "black",
+            textAlign: "center",
+            fontFamily: "Inter-Medium",
+          }}
         >
           {moduleName}
         </Text>
