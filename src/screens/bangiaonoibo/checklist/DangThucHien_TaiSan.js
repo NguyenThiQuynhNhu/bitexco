@@ -827,6 +827,7 @@ class DangThucHien_TaiSan extends Component {
                 borderRadius: 8,
                 paddingLeft: 10,
                 color: colors.appTheme,
+                textAlignVertical: "top",
                 fontsize: responsive.h(14),
                 backgroundColor: "#ffff",
                 fontFamily: "Inter-Medium",
