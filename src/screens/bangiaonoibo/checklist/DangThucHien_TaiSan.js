@@ -75,6 +75,7 @@ const { width, height } = Dimensions.get("window");
 const icon_add = width / 7.3;
 
 import NavBar from "../../../resident/components/common/NavBar";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class DangThucHien_TaiSan extends Component {
@@ -255,11 +256,14 @@ class DangThucHien_TaiSan extends Component {
           }),
           "groupName"
         )}
-        ItemSeparatorComponent={() => (
-          <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />
-        )}
+        // ItemSeparatorComponent={() => (
+        //   <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />
+        // )}
         renderItem={({ item }) => this.renderItemNhom(item)}
-        style={{ marginTop: -20, borderTopRightRadius: 30 }}
+        // style={{ marginTop: -20, borderTopRightRadius: 30 }}
+        contentContainerStyle={{
+          marginHorizontal: responsive.w(20),
+        }}
       />
 
       // <View>
@@ -311,11 +315,18 @@ class DangThucHien_TaiSan extends Component {
         onPress={() => this.item_click(item)}
         style={{
           flex: 1,
-          backgroundColor: item.index % 2 === 0 ? "#fff" : colors.gray2,
+          // backgroundColor: item.index % 2 === 0 ? "#fff" : colors.gray2,
           paddingHorizontal: 18,
-          paddingVertical: 10,
-          borderColor: colors.grayBorder,
-          borderBottomWidth: 1,
+          // paddingVertical: 10,
+          // borderColor: colors.grayBorder,
+          // borderBottomWidth: 1,
+          width: "100%",
+          borderWidth: 1,
+          borderBottomWidth: 3,
+          borderRadius: 13,
+          padding: 10,
+          borderColor: "#f5f5f5",
+          marginBottom: 10,
         }}
       >
         <Text
@@ -323,10 +334,11 @@ class DangThucHien_TaiSan extends Component {
             flex: 1,
             paddingBottom: 10,
             color: item.IsNoQuality ? colors.red : "#000",
-            fontWeight: "bold",
-            fontSize: fontsize.medium,
+            fontSize: responsive.h(15),
             fontFamily: "Inter-Bold",
           }}
+          numberOfLines={1}
+          lineBreakMode="tail"
         >
           {item.name}
         </Text>
@@ -335,10 +347,17 @@ class DangThucHien_TaiSan extends Component {
           style={{
             color: colors.appTheme,
             fontWeight: "bold",
-            fontSize: fontsize.small,
+            fontSize: responsive.h(14),
           }}
         >
-          <Text style={{ color: colors.appTheme, fontStyle: "italic" }}>
+          <Text
+            style={{
+              color: "#888888",
+              fontStyle: "italic",
+              fontFamily: "Inter-Regular",
+              fontSize: responsive.h(14),
+            }}
+          >
             Ghi chú:{" "}
           </Text>
           {item.note}
@@ -350,14 +369,13 @@ class DangThucHien_TaiSan extends Component {
   renderItemToaNha = (item) => {
     //console.log(item)
     return (
-      <View key={item.key} style={{ marginTop: 1 }}>
+      <View key={item.key}>
         <Text
           style={{
-            backgroundColor: "#dcf2fa",
-            paddingHorizontal: 15,
-            paddingVertical: 5,
-            fontFamily: "Inter-Bold",
-            fontSize: fontsize.small,
+            fontFamily: "Inter-SemiBold",
+            fontSize: responsive.h(15),
+            color: "black",
+            paddingVertical: 10,
           }}
         >
           Tầng: {item.key}
@@ -377,12 +395,12 @@ class DangThucHien_TaiSan extends Component {
     });
 
     return (
-      <View key={item.key} style={{ backgroundColor: "#dcf2fa" }}>
+      <View key={item.key}>
         <Text
           style={{
-            padding: 10,
+            paddingTop: responsive.h(20),
             fontFamily: "Inter-Bold",
-            fontSize: fontsize.medium,
+            fontSize: responsive.h(16),
             color: colors.appTheme,
           }}
         >
@@ -490,7 +508,7 @@ class DangThucHien_TaiSan extends Component {
 
   renderImages() {
     return (
-      <View style={{ paddingHorizontal: 10, marginBottom: 20 }}>
+      <View style={{ marginBottom: 20 }}>
         {this.state.images.length > 0 ? (
           <ScrollView
             horizontal={true}
@@ -501,21 +519,30 @@ class DangThucHien_TaiSan extends Component {
               <View
                 style={{
                   justifyContent: "center",
-                  backgroundColor: colors.grayBorder,
+                  backgroundColor: "#ffff",
                   borderRadius: 5,
                   padding: 5,
                   marginTop: 10,
                   marginRight: 10,
-                  width: 90,
-                  height: 120,
+                  height: responsive.h(80),
                 }}
               >
                 <MyIcon
                   onPress={() => this._onAttachment()}
                   name="camera"
-                  size={80}
+                  size={responsive.h(20)}
                   color="gray"
                 />
+                <Text
+                  style={{
+                    textAlign: "center",
+                    color: colors.gray1,
+                    fontFamily: "Inter-Medium",
+                    fontsize: responsive.h(14),
+                  }}
+                >
+                  Nhấn vào để tải ảnh
+                </Text>
               </View>
             )}
             {this.state.images.map((eachImage, y) => {
@@ -561,7 +588,7 @@ class DangThucHien_TaiSan extends Component {
           <TouchableOpacity
             onPress={() => this._onAttachment()}
             style={{
-              backgroundColor: colors.grayBorder,
+              backgroundColor: "#ffff",
               borderRadius: 5,
               justifyContent: "center",
               alignItems: "center",
@@ -569,7 +596,17 @@ class DangThucHien_TaiSan extends Component {
               paddingVertical: 20,
             }}
           >
-            <MyIcon name="camera" size={80} color="gray" />
+            <MyIcon name="camera" size={responsive.h(20)} color="gray" />
+            <Text
+              style={{
+                textAlign: "center",
+                color: colors.gray1,
+                fontFamily: "Inter-Regular",
+                fontsize: responsive.h(14),
+              }}
+            >
+              Nhấn vào để tải ảnh
+            </Text>
           </TouchableOpacity>
         )}
         {/* <Spinner visible={this.props.isLoadingReponse} textContent={Strings.app.progressing} textStyle={{ color: '#FFF', fontSize: fontsize.small }} /> */}
@@ -601,7 +638,7 @@ class DangThucHien_TaiSan extends Component {
     );
 
     const btnJSX = (
-      <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <TouchableOpacity
           onPress={() => {
             this.setState({
@@ -615,14 +652,23 @@ class DangThucHien_TaiSan extends Component {
           style={{
             borderWidth: 1,
             borderColor: colors.appTheme,
-            width: "40%",
+            width: responsive.w(150),
+            height: responsive.h(40),
             borderRadius: 45,
             padding: 10,
-            alignSelf: "center",
             marginBottom: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Text style={{ color: colors.appTheme, alignSelf: "center" }}>
+          <Text
+            style={{
+              color: colors.appTheme,
+              alignSelf: "center",
+              fontsize: responsive.h(16),
+              fontFamily: "Inter-Bold",
+            }}
+          >
             {"Huỷ"}
           </Text>
         </TouchableOpacity>
@@ -635,14 +681,23 @@ class DangThucHien_TaiSan extends Component {
           }}
           style={{
             backgroundColor: colors.appTheme,
-            width: "40%",
+            width: responsive.w(150),
+            height: responsive.h(40),
             borderRadius: 45,
-            padding: 10,
             alignSelf: "center",
             marginBottom: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Text style={{ color: "#fff", alignSelf: "center" }}>
+          <Text
+            style={{
+              color: "#fff",
+              alignSelf: "center",
+              fontsize: responsive.h(16),
+              fontFamily: "Inter-Bold",
+            }}
+          >
             {"Thực hiện"}
           </Text>
         </TouchableOpacity>
@@ -660,51 +715,57 @@ class DangThucHien_TaiSan extends Component {
       >
         <View
           style={{
-            height: "80%",
-            width: "90%",
-            backgroundColor: "#fff",
+            backgroundColor: "#f2f2f2",
             borderRadius: 10,
+            height: responsive.h(508),
+            width: responsive.w(380),
+            paddingHorizontal: 20,
+            paddingVertical: 10,
           }}
         >
           <View
             style={{
-              padding: 20,
-              backgroundColor: colors.appTheme,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
+              padding: 10,
             }}
           >
             <Text
               style={{
                 alignSelf: "center",
-                color: "#fff",
+                color: "black",
                 fontWeight: "bold",
-                fontSize: fontsize.medium,
+                fontSize: responsive.h(16),
               }}
             >
               Bàn giao
             </Text>
           </View>
-          <ScrollView>
+          <View
+            style={{
+              height: 2,
+              backgroundColor: "#cfcfcf",
+            }}
+          />
+          <View>
             {/* {data && this.renderData(data)} */}
 
             {/* <Text style={{ margin:20,color:colors.appTheme,fontWeight:'bold',fontSize:20 }}>Hệ thống cửa nhôm kính, cửa đi, cửa sổ, vách kính</Text> */}
             <Text
               style={{
-                marginHorizontal: 20,
-                marginTop: 15,
+                marginHorizontal: 10,
                 fontWeight: "bold",
-                fontSize: 14,
+                fontSize: responsive.h(16),
+                color: "black",
+                paddingVertical: 5,
               }}
             >
               {this.state.item.name}
             </Text>
             <Text
               style={{
-                marginHorizontal: 20,
-                marginVertical: 10,
-                fontWeight: "400",
-                fontSize: 14,
+                marginHorizontal: 10,
+                fontSize: responsive.h(14),
+                color: "#888888",
+                fontFamily: "Inter-Medium",
               }}
             >
               {this.state.item.description}
@@ -726,7 +787,11 @@ class DangThucHien_TaiSan extends Component {
 
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
-                  style={{ marginRight: 10, fontWeight: "bold", fontSize: 14 }}
+                  style={{
+                    marginRight: 10,
+                    fontWeight: "bold",
+                    fontSize: responsive.h(14),
+                  }}
                 >
                   Đạt /
                   <Text
@@ -735,10 +800,9 @@ class DangThucHien_TaiSan extends Component {
                         ? colors.red
                         : colors.appTheme,
                       fontWeight: "bold",
-                      fontSize: 14,
+                      fontSize: responsive.h(14),
                     }}
                   >
-                    {" "}
                     Không đạt
                   </Text>
                 </Text>
@@ -747,20 +811,25 @@ class DangThucHien_TaiSan extends Component {
                   onValueChange={() => {
                     this.setState({ isKhongDat: !this.state.isKhongDat });
                   }}
+                  style={{
+                    height: responsive.h(14),
+                    marginVertical: 20,
+                  }}
                 />
               </View>
             </View>
 
             <TextInput
               style={{
-                height: 100,
+                height: responsive.h(100),
                 borderColor: colors.grayBorder,
                 borderWidth: 0.5,
-                margin: 10,
                 borderRadius: 8,
                 paddingLeft: 10,
                 color: colors.appTheme,
-                textAlignVertical: "top",
+                fontsize: responsive.h(14),
+                backgroundColor: "#ffff",
+                fontFamily: "Inter-Medium",
               }}
               underline={false}
               multiline
@@ -768,12 +837,12 @@ class DangThucHien_TaiSan extends Component {
               onChangeText={(text) => this.setState({ ghiChu: text })}
               value={this.state.ghiChu}
               placeholder="Ghi chú..."
-              placeholderTextColor={colors.gray1}
+              placeholderTextColor="#a5a5a5"
               //   multiline={true}
             />
 
             {this.renderImages()}
-          </ScrollView>
+          </View>
 
           {this.state.isSave ? loadingJSX : btnJSX}
         </View>
@@ -876,7 +945,16 @@ class DangThucHien_TaiSan extends Component {
     );
 
     const btnJSX = (
-      <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
+      <View
+        style={{
+          alignItems: "flex-start",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          marginBottom: 60,
+          padding: 10,
+          marginTop: 5,
+        }}
+      >
         <TouchableOpacity
           onPress={() => {
             this.setState({
@@ -889,16 +967,26 @@ class DangThucHien_TaiSan extends Component {
           }}
           style={{
             backgroundColor: "#fff",
-            width: "40%",
+            width: responsive.w(150),
+            height: responsive.h(40),
             borderRadius: 45,
             padding: 10,
             alignSelf: "center",
             marginBottom: 10,
             borderWidth: 1,
             borderColor: colors.appTheme,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Text style={{ color: colors.appTheme, alignSelf: "center" }}>
+          <Text
+            style={{
+              color: colors.appTheme,
+              alignSelf: "center",
+              fontFamily: "Inter-Bold",
+              fontSize: responsive.h(16),
+            }}
+          >
             {"Huỷ"}
           </Text>
         </TouchableOpacity>
@@ -909,14 +997,23 @@ class DangThucHien_TaiSan extends Component {
           }}
           style={{
             backgroundColor: colors.appTheme,
-            width: "40%",
+            width: responsive.w(150),
+            height: responsive.h(40),
             borderRadius: 45,
-            padding: 10,
             alignSelf: "center",
             marginBottom: 10,
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Text style={{ color: "#fff", alignSelf: "center" }}>
+          <Text
+            style={{
+              color: "#fff",
+              alignSelf: "center",
+              fontFamily: "Inter-Bold",
+              fontSize: responsive.h(16),
+            }}
+          >
             {"Thực hiện"}
           </Text>
         </TouchableOpacity>
@@ -930,38 +1027,48 @@ class DangThucHien_TaiSan extends Component {
           backgroundColor: colors.appOverView,
           justifyContent: "center",
           alignItems: "center",
+          padding: 10,
         }}
       >
         <View
           style={{
-            height: "80%",
-            width: "90%",
-            backgroundColor: "#fff",
+            height: responsive.h(584),
+            width: responsive.w(380),
+            backgroundColor: "#f2f2f2",
             borderRadius: 10,
+            paddingHorizontal: 10,
           }}
         >
           <View
             style={{
-              padding: 15,
-              backgroundColor: colors.appTheme,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
+              padding: 10,
             }}
           >
             <Text
               style={{
                 alignSelf: "center",
-                color: "#fff",
+                color: "black",
                 fontWeight: "bold",
-                fontSize:
-                  Platform.OS === "android" ? fontsize.medium : fontsize.larg,
+                fontSize: responsive.h(16),
                 fontFamily: "Inter-Bold",
+                paddingVertical: 10,
               }}
             >
               Thêm hạng mục kiểm tra
             </Text>
+            <View
+              style={{
+                height: 2,
+                backgroundColor: "#cfcfcf",
+                width: "100%",
+              }}
+            />
           </View>
-          <ScrollView>
+          <View
+            style={{
+              padding: 10,
+            }}
+          >
             <TouchableOpacity
               onPress={() => {
                 this.props.navigation.navigate("NhomListScreen", {
@@ -976,14 +1083,20 @@ class DangThucHien_TaiSan extends Component {
               }}
               style={{
                 padding: 10,
-                backgroundColor: colors.gray2,
+                backgroundColor: "#ffff",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                borderBottomWidth: 1,
-                borderBottomColor: colors.grayBorder,
+                borderRadius: 15,
+                marginBottom: 10,
               }}
             >
-              <Text style={{ paddingRight: 10 }}>
+              <Text
+                style={{
+                  paddingRight: 10,
+                  fontSize: responsive.h(14),
+                  color: "#a5a5a5",
+                }}
+              >
                 {this.state.nhom == ""
                   ? "Vui lòng chọn nhóm"
                   : this.state.nhom.name}
@@ -1008,11 +1121,18 @@ class DangThucHien_TaiSan extends Component {
                 backgroundColor: colors.gray2,
                 flexDirection: "row",
                 justifyContent: "space-between",
-                borderBottomWidth: 1,
-                borderBottomColor: colors.grayBorder,
+                borderRadius: 15,
+                backgroundColor: "#ffff",
+                marginVertical: 10,
               }}
             >
-              <Text style={{ paddingRight: 10 }}>
+              <Text
+                style={{
+                  paddingRight: 10,
+                  fontSize: responsive.h(14),
+                  color: "#a5a5a5",
+                }}
+              >
                 {this.state.tang == ""
                   ? "Vui lòng chọn tầng"
                   : this.state.tang.name}
@@ -1022,44 +1142,48 @@ class DangThucHien_TaiSan extends Component {
 
             <TextInput
               style={{
-                height: 100,
-                borderColor: colors.grayBorder,
-                borderWidth: 0.5,
-                margin: 10,
+                height: responsive.h(100),
+                width: "100%",
                 borderRadius: 8,
                 paddingLeft: 10,
                 color: colors.appTheme,
                 textAlignVertical: "top",
+                backgroundColor: "#ffff",
+                fontSize: responsive.h(14),
+                borderRadius: 16,
+                marginTop: 5,
               }}
               underline={true}
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({ hangmuc: text })}
               value={this.state.hangmuc}
               placeholder="Hạng mục kiểm tra..."
-              placeholderTextColor={colors.gray1}
+              placeholderTextColor="#a5a5a5"
               multiline={true}
             />
 
             <TextInput
               style={{
-                height: 100,
-                borderColor: colors.grayBorder,
-                borderWidth: 0.5,
-                margin: 10,
+                height: responsive.h(130),
+                width: "100%",
                 borderRadius: 8,
                 paddingLeft: 10,
                 color: colors.appTheme,
                 textAlignVertical: "top",
+                backgroundColor: "#ffff",
+                fontSize: responsive.h(14),
+                borderRadius: 16,
+                marginTop: 15,
               }}
               underline={false}
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({ mota: text })}
               value={this.state.mota}
               placeholder="Mô tả..."
-              placeholderTextColor={colors.gray1}
+              placeholderTextColor="#a5a5a5"
               multiline={true}
             />
-          </ScrollView>
+          </View>
 
           {this.state.isSave ? loadingJSX : btnJSX}
         </View>
@@ -1289,11 +1413,11 @@ class DangThucHien_TaiSan extends Component {
       >
         <Text
           style={{
-            fontWeight: "400",
             margin: 10,
-            color: colors.blue,
-            fontSize: fontsize.larg,
+            fontSize: responsive.h(16),
+            color: "black",
             textAlign: "center",
+            fontFamily: "Inter-Medium",
           }}
         >
           {name}
@@ -1443,7 +1567,7 @@ class DangThucHien_TaiSan extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "center",
-                  color: "",
+                  color: "black",
                 }}
               >
                 Danh mục tài sản
