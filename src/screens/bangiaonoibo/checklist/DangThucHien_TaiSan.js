@@ -717,7 +717,7 @@ class DangThucHien_TaiSan extends Component {
           style={{
             backgroundColor: "#f2f2f2",
             borderRadius: 10,
-            height: responsive.h(508),
+            maxHeight: responsive.h(600),
             width: responsive.w(380),
             paddingHorizontal: 20,
             paddingVertical: 10,
