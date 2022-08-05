@@ -213,41 +213,32 @@ class LoginScreen extends Component {
           source={require("../../resources/bitexcoGroup.png")}
           style={{
             width: Screen.width,
-            height: responsive.h(250),
+            height: responsive.h(300),
             // position: "absolute",
             // resizeMode: "stretch",
             // top: 0,
+            marginBottom: 10,
           }}
         />
-        <ImageBackground
-          resizeMode="contain"
-          source={require("../../resources/bghome.png")}
+
+        <View
           style={{
-            flex: 1,
-            width: "70%",
+            width: Screen.width,
+            height: Screen.height,
+            // justifyContent: "center",
+            // alignItems: "center",
           }}
         >
+          {/* <KeyboardAvoidingView behavior="position" keyboardVerticalOffset={20}> */}
           <View
             style={{
               width: Screen.width,
-              height: Screen.height,
-              // justifyContent: "center",
-              // alignItems: "center",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 30,
             }}
           >
-            <KeyboardAvoidingView
-              behavior="position"
-              keyboardVerticalOffset={20}
-            >
-              <View
-                style={{
-                  width: Screen.width,
-                  justifyContent: "center",
-                  alignItems: "center",
-                  marginTop: 30,
-                }}
-              >
-                {/* <Image
+            {/* <Image
                   source={logo}
                   style={{
                     width: Devices.isTablet ? 180 : 160,
@@ -260,15 +251,14 @@ class LoginScreen extends Component {
                   }}
                 /> */}
 
-                {isLoading || this.state.isLoading ? (
-                  <ActivityIndicator />
-                ) : (
-                  this.renderBody()
-                )}
-              </View>
-            </KeyboardAvoidingView>
+            {isLoading || this.state.isLoading ? (
+              <ActivityIndicator />
+            ) : (
+              this.renderBody()
+            )}
           </View>
-        </ImageBackground>
+          {/* </KeyboardAvoidingView> */}
+        </View>
         {/* <View style={{
                     width: Screen.width,
                     justifyContent: 'center',
