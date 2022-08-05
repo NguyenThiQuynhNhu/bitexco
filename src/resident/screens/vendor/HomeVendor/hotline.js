@@ -79,20 +79,24 @@ class HotlineListScreen extends Component {
         style={{
           flexDirection: "row",
           padding: 15,
-          borderWidth: 0.5,
-          borderColor: "rgb(206, 209, 212)",
-          backgroundColor: "#fff",
+          // borderWidth: 0.5,
+          // borderColor: "rgb(206, 209, 212)",
+          // backgroundColor: "#fff",
           margin: 20,
-          marginBottom: 0,
-          borderRadius: 10,
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
+          // borderRadius: 10,
+          // shadowColor: "rgba(0, 0, 0, 0.1)",
+          // elevation: 2,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 4,
+          // },
+          // shadowRadius: 10,
+          // shadowOpacity: 1,
+          borderRadius: 12,
+          borderWidth: 0.5,
+          borderColor: "#eaeaea",
+
+          borderBottomWidth: 2,
         }}
         onPress={() => {
           Linking.canOpenURL(`tel:${phone}`)

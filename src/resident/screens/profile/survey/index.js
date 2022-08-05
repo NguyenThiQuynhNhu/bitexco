@@ -33,15 +33,9 @@ class ListItem extends PureComponent {
           flexDirection: "row",
           marginBottom: 10,
           borderRadius: 12,
-          backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
+          borderWidth: 0.5,
+          borderBottomWidth: 2,
+          borderColor: "#eaeaea",
           marginHorizontal: 10,
         }}
         onPress={onPress}
@@ -58,7 +52,6 @@ class ListItem extends PureComponent {
               borderRadius: 45,
               height: 40,
               width: 40,
-              backgroundColor: "#fff",
               justifyContent: "center",
               alignItems: "center",
               marginLeft: 10,
