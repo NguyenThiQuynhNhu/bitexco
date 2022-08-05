@@ -9,6 +9,7 @@ import {
   TextInput,
   KeyboardAvoidingView,
   Platform,
+  ImageBackground,
 } from "react-native";
 
 import CodeInput from "react-native-confirmation-code-input";
@@ -52,13 +53,21 @@ export const BodyContent = (props) => {
     isLoginByPass,
   } = props;
   return (
-    <View
+    <ImageBackground
+      resizeMode="cover"
+      source={require("../../resources/bghome.png")}
       style={{
-        //flex: 1,
-        alignItems: "center",
+        width: Screen.width,
+        height: Screen.height,
       }}
     >
-      {/* <Text
+      <View
+        style={{
+          //flex: 1,
+          alignItems: choiceType || isLoginByPass ? null : "center",
+        }}
+      >
+        {/* <Text
                 style={{
                     fontSize: Platform.isPad ? 24 : 20,
                     textAlign: 'center',
@@ -67,142 +76,142 @@ export const BodyContent = (props) => {
             >
                {isRegister ? titleRegister : title}
             </Text> */}
-      <View
-        behavior={Platform.OS == "ios" ? "padding" : ""}
-        style={{
-          //flex: 1,
-          justifyContent: "center",
-        }}
-      >
-        {isCode ? (
-          <CodeInput
-            containerStyle={{ alignSelf: "center", flex: 0 }}
-            codeInputStyle={{ fontSize: 36, color: "#666666" }}
-            activeColor="black"
-            inactiveColor="gray"
-            cellBorderWidth={2}
-            keyboardType="phone-pad"
-            className={"border-b"}
-            space={10}
-            size={48}
-            codeLength={4}
-            inputPosition="left"
-            onFulfill={onFulfill}
-          />
-        ) : (
-          <View>
-            {!isType && (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  borderBottomWidth: 0.5,
-                  borderColor: "#cccccc",
-                  marginBottom: Platform.OS === "ios" ? 30 : 20,
-                  paddingBottom: 2,
-                }}
-              >
-                <TextInput
-                  style={{
-                    flex: 1,
-                    fontFamily: "Inter-Regular",
-                    fontSize: 16,
-                    fontWeight: "normal",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "left",
-                    color: "#262626",
-                  }}
-                  autoCapitalize="none"
-                  autoFocus={false}
-                  keyboardType="phone-pad"
-                  autoCorrect={false}
-                  maxLength={15}
-                  value={valuePhone}
-                  onChangeText={onChangePhone}
-                  placeholder={Strings.login.phone}
-                  placeholderTextColor="#cccccc"
-                  underlineColorAndroid="transparent"
-                  onSubmitEditing={onSubmitEditing}
-                />
-                <MyIcon name="phone" size={20} color="#cccccc" />
-              </View>
-            )}
-            {// hiện nhập mật khẩu
-            (isPass || isRegister) && (
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                  borderBottomWidth: 0.5,
-                  borderColor: "#cccccc",
-                  marginBottom: Platform.OS === "ios" ? 30 : 20,
-                  paddingBottom: 2,
-                }}
-              >
-                <TextInput
-                  style={{
-                    flex: 1,
-                    fontFamily: "Inter-Regular",
-                    fontSize: 16,
-                    fontWeight: "normal",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "left",
-                    color: "#262626",
-                  }}
-                  autoCapitalize="none"
-                  autoFocus={false}
-                  //keyboardType="phone-pad"
-                  autoCorrect={false}
-                  //maxLength={15}
-                  value={valuePass}
-                  onChangeText={onChangePassword}
-                  placeholder={Strings.login.password}
-                  placeholderTextColor="#cccccc"
-                  secureTextEntry={true}
-                  underlineColorAndroid="transparent"
-                  onSubmitEditing={onSubmitEditing}
-                />
-                <Icon name="lock" size={20} color="#cccccc" />
-              </View>
-            )}
-            {// hiện đăng ký
-            isRegister && (
-              <View>
+        <View
+          behavior={Platform.OS == "ios" ? "padding" : ""}
+          style={{
+            //flex: 1,
+            justifyContent: "center",
+          }}
+        >
+          {isCode ? (
+            <CodeInput
+              containerStyle={{ alignSelf: "center", flex: 0 }}
+              codeInputStyle={{ fontSize: 36, color: "#666666" }}
+              activeColor="black"
+              inactiveColor="gray"
+              cellBorderWidth={2}
+              keyboardType="phone-pad"
+              className={"border-b"}
+              space={10}
+              size={48}
+              codeLength={4}
+              inputPosition="left"
+              onFulfill={onFulfill}
+            />
+          ) : (
+            <View>
+              {!isType && (
                 <View
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
                     borderBottomWidth: 0.5,
+                    borderColor: "#cccccc",
                     marginBottom: Platform.OS === "ios" ? 30 : 20,
+                    paddingBottom: 2,
                   }}
                 >
                   <TextInput
                     style={{
                       flex: 1,
-                      fontSize: 24,
+                      fontFamily: "Inter-Regular",
+                      fontSize: 16,
+                      fontWeight: "normal",
+                      fontStyle: "normal",
+                      letterSpacing: 0,
+                      textAlign: "left",
+                      color: "#262626",
+                    }}
+                    autoCapitalize="none"
+                    autoFocus={false}
+                    keyboardType="phone-pad"
+                    autoCorrect={false}
+                    maxLength={15}
+                    value={valuePhone}
+                    onChangeText={onChangePhone}
+                    placeholder={Strings.login.phone}
+                    placeholderTextColor="#cccccc"
+                    underlineColorAndroid="transparent"
+                    onSubmitEditing={onSubmitEditing}
+                  />
+                  <MyIcon name="phone" size={20} color="#cccccc" />
+                </View>
+              )}
+              {// hiện nhập mật khẩu
+              (isPass || isRegister) && (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    borderBottomWidth: 0.5,
+                    borderColor: "#cccccc",
+                    marginBottom: Platform.OS === "ios" ? 30 : 20,
+                    paddingBottom: 2,
+                  }}
+                >
+                  <TextInput
+                    style={{
+                      flex: 1,
+                      fontFamily: "Inter-Regular",
+                      fontSize: 16,
+                      fontWeight: "normal",
+                      fontStyle: "normal",
+                      letterSpacing: 0,
+                      textAlign: "left",
+                      color: "#262626",
                     }}
                     autoCapitalize="none"
                     autoFocus={false}
                     //keyboardType="phone-pad"
                     autoCorrect={false}
                     //maxLength={15}
-                    value={valuePasswordRetype}
-                    onChangeText={onChangePasswordRetype}
-                    placeholder={Strings.login.passwordRetype}
-                    placeholderTextColor="#666666"
+                    value={valuePass}
+                    onChangeText={onChangePassword}
+                    placeholder={Strings.login.password}
+                    placeholderTextColor="#cccccc"
                     secureTextEntry={true}
                     underlineColorAndroid="transparent"
                     onSubmitEditing={onSubmitEditing}
                   />
-                  <Icon name="lock" size={20} color="#666666" />
+                  <Icon name="lock" size={20} color="#cccccc" />
                 </View>
-              </View>
-            )}
-          </View>
-        )}
-        {/* {// ở trang otp thì không hiện ra
+              )}
+              {// hiện đăng ký
+              isRegister && (
+                <View>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      alignItems: "center",
+                      borderBottomWidth: 0.5,
+                      marginBottom: Platform.OS === "ios" ? 30 : 20,
+                    }}
+                  >
+                    <TextInput
+                      style={{
+                        flex: 1,
+                        fontSize: 24,
+                      }}
+                      autoCapitalize="none"
+                      autoFocus={false}
+                      //keyboardType="phone-pad"
+                      autoCorrect={false}
+                      //maxLength={15}
+                      value={valuePasswordRetype}
+                      onChangeText={onChangePasswordRetype}
+                      placeholder={Strings.login.passwordRetype}
+                      placeholderTextColor="#666666"
+                      secureTextEntry={true}
+                      underlineColorAndroid="transparent"
+                      onSubmitEditing={onSubmitEditing}
+                    />
+                    <Icon name="lock" size={20} color="#666666" />
+                  </View>
+                </View>
+              )}
+            </View>
+          )}
+          {/* {// ở trang otp thì không hiện ra
                     (!isCode || !isType) &&
 
                     <TouchableOpacity
@@ -232,36 +241,36 @@ export const BodyContent = (props) => {
                     </TouchableOpacity>
 
                 } */}
-        {// ở trang chọn loại người dùng thì không hiện ra
-        !isType && !isRegister && (
-          <TouchableOpacity
-            style={{
-              marginTop: 50,
-              borderRadius: 45,
-              width: Screen.width * 0.8,
-              height: 50,
-              backgroundColor: colors.appTheme,
-              justifyContent: "center",
-            }}
-            onPress={isPass ? onPressByPass : onPress} // có hai hàm login tuỳ theo sử dụng mật khẩu hay otp
-          >
-            <Text
+          {// ở trang chọn loại người dùng thì không hiện ra
+          !isType && !isRegister && (
+            <TouchableOpacity
               style={{
-                fontFamily: "Inter-SemiBold",
-                fontSize: 18,
-                fontWeight: "600",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: "#ffffff",
+                marginTop: 50,
+                borderRadius: 45,
+                width: Screen.width * 0.8,
+                height: 50,
+                backgroundColor: colors.appTheme,
+                justifyContent: "center",
               }}
+              onPress={isPass ? onPressByPass : onPress} // có hai hàm login tuỳ theo sử dụng mật khẩu hay otp
             >
-              {textButton}
-            </Text>
-          </TouchableOpacity>
-        )}
+              <Text
+                style={{
+                  fontFamily: "Inter-SemiBold",
+                  fontSize: 18,
+                  fontWeight: "600",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  textAlign: "center",
+                  color: "#ffffff",
+                }}
+              >
+                {textButton}
+              </Text>
+            </TouchableOpacity>
+          )}
 
-        {/* {// ở trang otp thì không hiện ra
+          {/* {// ở trang otp thì không hiện ra
                     (!isCode && !isType && !isRegister) &&
                     <TouchableOpacity
                         style={{
@@ -281,144 +290,144 @@ export const BodyContent = (props) => {
 
                     </TouchableOpacity>
                 } */}
-        {isRegister && (
-          <TouchableOpacity
-            style={{
-              marginTop: 40,
-              borderRadius: 45,
-              width: Screen.width * 0.8,
-              height: 50,
-              backgroundColor: colors.appTheme,
-              justifyContent: "center",
-            }}
-            onPress={onPressRegister} // có hai hàm login tuỳ theo sử dụng mật khẩu hay otp
-          >
-            <Text style={{ color: "#fff", fontSize: 18, alignSelf: "center" }}>
-              {Strings.login.button3.toLocaleUpperCase()}
-            </Text>
-          </TouchableOpacity>
-        )}
-        {isType && (
-          <View
-            style={{
-              alignItems: "center",
-              //borderBottomWidth: 2,
-              marginBottom: Platform.OS === "ios" ? 30 : 20,
-            }}
-          >
-            {!isLoginByPass && (
-              <CodeInput
-                containerStyle={{ alignSelf: "center", flex: 0 }}
-                codeInputStyle={{ fontSize: 36, color: "#666666" }}
-                activeColor="black"
-                inactiveColor="gray"
-                cellBorderWidth={2}
-                keyboardType="phone-pad"
-                className={"border-b"}
-                space={10}
-                size={48}
-                codeLength={4}
-                inputPosition="left"
-                onFulfill={onFulfill}
-              />
-            )}
-
-            {(choiceType || isLoginByPass) && (
-              <View
-                style={{
-                  flexDirection: "row",
-                  //   alignItems: "center",
-                  display: "flex",
-                  justifyContent: "center",
-                  //borderBottomWidth: 2,
-                  marginTop: Platform.OS === "ios" ? 30 : 20,
-                }}
+          {isRegister && (
+            <TouchableOpacity
+              style={{
+                marginTop: 40,
+                borderRadius: 45,
+                width: Screen.width * 0.8,
+                height: 50,
+                backgroundColor: colors.appTheme,
+                justifyContent: "center",
+              }}
+              onPress={onPressRegister} // có hai hàm login tuỳ theo sử dụng mật khẩu hay otp
+            >
+              <Text
+                style={{ color: "#fff", fontSize: 18, alignSelf: "center" }}
               >
-                <TouchableOpacity
+                {Strings.login.button3.toLocaleUpperCase()}
+              </Text>
+            </TouchableOpacity>
+          )}
+          {isType && (
+            <View
+              style={{
+                // alignItems: "center",
+                //borderBottomWidth: 2,
+                marginBottom: Platform.OS === "ios" ? 30 : 20,
+              }}
+            >
+              {!isLoginByPass && (
+                <CodeInput
+                  containerStyle={{ alignSelf: "center", flex: 0 }}
+                  codeInputStyle={{ fontSize: 36, color: "#666666" }}
+                  activeColor="black"
+                  inactiveColor="gray"
+                  cellBorderWidth={2}
+                  keyboardType="phone-pad"
+                  className={"border-b"}
+                  space={10}
+                  size={48}
+                  codeLength={4}
+                  inputPosition="left"
+                  onFulfill={onFulfill}
+                />
+              )}
+
+              {(choiceType || isLoginByPass) && (
+                <View
                   style={{
-                    marginHorizontal: 5,
-                    width: (Screen.width * 0.7) / 2,
-                    padding: 10,
-                    justifyContent: "center",
-                    borderRadius: 24,
-                    borderStyle: "solid",
-                    borderWidth: 1,
-                    borderColor: colors.appTheme,
+                    flexDirection: "row",
+                    //   alignItems: "center",
+                    display: "flex",
+                    justifyContent: "space-around",
+                    marginHorizontal: 10,
+                    //borderBottomWidth: 2,
+                    marginTop: Platform.OS === "ios" ? 30 : 20,
                   }}
-                  onPress={onPressResident}
                 >
-                  <View
+                  <TouchableOpacity
                     style={{
-                      flexDirection: "row",
-                      paddingHorizontal: 10,
-                      alignItems: "center",
+                      width: responsive.w(160),
+                      height: responsive.h(50),
                       justifyContent: "center",
+                      borderRadius: 24,
+                      borderStyle: "solid",
+                      borderWidth: 1,
+                      borderColor: colors.appTheme,
                     }}
+                    onPress={onPressResident}
                   >
-                    <MyIcon
-                      name="profile1"
-                      color={colors.appTheme}
-                      size={18}
+                    <View
                       style={{
-                        marginHorizontal: 10,
+                        flexDirection: "row",
+                        paddingHorizontal: 10,
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
-                    />
+                    >
+                      <MyIcon
+                        name="profile1"
+                        color={colors.appTheme}
+                        size={18}
+                        style={{
+                          marginHorizontal: 10,
+                        }}
+                      />
+                      <Text
+                        style={{
+                          fontFamily: "Inter-SemiBold",
+                          fontSize: responsive.h(20),
+                          textAlign: "center",
+                          color: colors.appTheme,
+                        }}
+                      >
+                        Cư dân
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity
+                    style={{
+                      marginHorizontal: 5,
+                      width: responsive.w(160),
+                      height: responsive.h(50),
+                      padding: 10,
+                      justifyContent: "center",
+                      borderRadius: 24,
+                      borderStyle: "solid",
+                      borderWidth: 1,
+                      borderColor: colors.appTheme,
+                    }}
+                    onPress={onPressVendor}
+                  >
                     <Text
                       style={{
                         fontFamily: "Inter-SemiBold",
-                        fontSize: 18,
-                        fontWeight: "600",
-                        fontStyle: "normal",
-                        letterSpacing: 0,
+                        fontSize: responsive.h(20),
                         textAlign: "center",
                         color: colors.appTheme,
                       }}
                     >
-                      Cư dân
+                      Nhân viên
                     </Text>
-                  </View>
-                </TouchableOpacity>
+                  </TouchableOpacity>
+                </View>
+              )}
+            </View>
+          )}
+        </View>
 
-                <TouchableOpacity
-                  style={{
-                    marginHorizontal: 5,
-                    width: (Screen.width * 0.7) / 2,
-                    padding: 10,
-                    justifyContent: "center",
-                    borderRadius: 24,
-                    borderStyle: "solid",
-                    borderWidth: 1,
-                    borderColor: colors.appTheme,
-                  }}
-                  onPress={onPressVendor}
-                >
-                  <Text
-                    style={{
-                      fontFamily: "Inter-SemiBold",
-                      fontSize: responsive.h(20),
-                      textAlign: "center",
-                      color: colors.appTheme,
-                    }}
-                  >
-                    Nhân viên
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            )}
-          </View>
-        )}
-      </View>
-
-      {settingText && (
-        <View
-          style={{
-            marginBottom: 24,
-            width: Screen.width * 0.9,
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* {
+        {settingText && (
+          <View
+            style={{
+              marginBottom: 24,
+              width: Screen.width * 0.9,
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
+            {/* {
                         !isType &&
                         <TouchableOpacity
                         onPressOut={() => this.props.reSendOtpCode(this.props.phoneNumber)}
@@ -432,24 +441,25 @@ export const BodyContent = (props) => {
                             >{Strings.login.resent.toLocaleUpperCase()}</Text>
                         </TouchableOpacity>
                     } */}
-          <TouchableOpacity />
-          <TouchableOpacity onPressOut={changePhone}>
-            <Text
-              style={{
-                fontFamily: "Inter-SemiBold",
-                fontSize: responsive.h(15),
-                letterSpacing: 0,
-                textAlign: "center",
-                color: colors.appTheme,
-                textDecorationLine: "underline",
-              }}
-            >
-              {Strings.login.changephone}
-            </Text>
-          </TouchableOpacity>
-        </View>
-      )}
-    </View>
+            <TouchableOpacity />
+            <TouchableOpacity onPressOut={changePhone}>
+              <Text
+                style={{
+                  fontFamily: "Inter-SemiBold",
+                  fontSize: responsive.h(15),
+                  letterSpacing: 0,
+                  textAlign: "center",
+                  color: colors.appTheme,
+                  textDecorationLine: "underline",
+                }}
+              >
+                {Strings.login.changephone}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
+    </ImageBackground>
   );
 };
 const styles = StyleSheet.create({

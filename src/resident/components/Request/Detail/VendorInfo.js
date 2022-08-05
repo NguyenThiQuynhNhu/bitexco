@@ -10,6 +10,7 @@ import colors from "../../../theme/colors";
 import Strings from "../../../utils/languages";
 import ImageProgress from "../../common/ImageProgress";
 import fontSize from "../../../theme/fontsize";
+import responsive from "../../../../resources/responsive";
 
 // create a component
 const VendorInfo = (props) => {
@@ -30,40 +31,38 @@ const VendorInfo = (props) => {
         flex: 1,
         flexDirection: "row",
         alignItems: "center",
-        padding: 20,
+        justifyContent: "space-between",
         backgroundColor: "#fff",
-        borderTopRightRadius: 20,
-        marginRight: 5,
+        paddingHorizontal: 10,
+        paddingVertical: 20,
       }}
     >
-      <ImageProgress
-        circle={true}
-        style={{
-          height: 65,
-          width: 65,
-        }}
-        source={{ uri: logo }}
-      />
       <View
         style={{
-          flex: 1,
           flexDirection: "row",
-          justifyContent: "space-between",
-          marginLeft: 20,
-          borderTopRightRadius: 20,
+          marginLeft: 10,
         }}
       >
+        <ImageProgress
+          circle={true}
+          style={{
+            height: 70,
+            width: 70,
+          }}
+          source={{ uri: logo }}
+        />
         <View
           style={{
-            flex: 0.5,
             justifyContent: "space-between",
-            borderTopRightRadius: 20,
+            height: 50,
+            marginVertical: 10,
+            marginHorizontal: 10,
           }}
         >
           <Text
             style={{
-              fontFamily: "Inter-SemiBold",
-              fontSize: 16,
+              fontFamily: "Inter-Bold",
+              fontSize: responsive.h(14),
               fontWeight: "600",
               fontStyle: "normal",
               textAlign: "left",
@@ -75,7 +74,7 @@ const VendorInfo = (props) => {
           <Text
             style={{
               fontFamily: "Inter-Medium",
-              fontSize: 12,
+              fontSize: responsive.h(13),
               fontWeight: "500",
               fontStyle: "normal",
               textAlign: "left",
@@ -87,7 +86,7 @@ const VendorInfo = (props) => {
           <Text
             style={{
               fontFamily: "Inter-Regular",
-              fontSize: 12,
+              fontSize: responsive.h(12),
               fontWeight: "normal",
               fontStyle: "normal",
               textAlign: "left",
@@ -97,58 +96,60 @@ const VendorInfo = (props) => {
             {date}
           </Text>
         </View>
+      </View>
+      <View
+        style={{
+          alignItems: "flex-end",
+        }}
+      >
         <View
           style={{
-            flex: 0.5,
-            justifyContent: "space-between",
-            borderTopRightRadius: 20,
+            backgroundColor: "#fff5eb",
+            borderRadius: 15,
+            paddingHorizontal: responsive.w(5),
+            backgroundColor: "#feefef",
+            borderRadius: 15,
+            height: responsive.h(24),
+            maxWidth: responsive.w(108),
+            width: responsive.w(64),
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <View
+          <Text
             style={{
-              padding: 5,
-              borderRadius: 16,
-              backgroundColor: "#fff5eb",
+              fontSize: responsive.h(14),
+              color: converStatusToColor(statusKey),
+              fontFamily: "Inter-Regular",
             }}
           >
-            <Text
-              style={{
-                fontFamily: "Inter-Regular",
-                fontSize: 14,
-                fontWeight: "normal",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: converStatusToColor(statusKey),
-              }}
-            >
-              {converStatusToString(statusId)}
-            </Text>
-          </View>
-          <View
+            {converStatusToString(statusId)}
+          </Text>
+        </View>
+        <View
+          style={{
+            borderRadius: 15,
+            paddingHorizontal: responsive.w(5),
+            borderRadius: 15,
+            height: responsive.h(24),
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: colors.appTheme,
+            marginTop: 5,
+          }}
+        >
+          <Text
             style={{
-              padding: 5,
-              borderRadius: 16,
-              backgroundColor: colors.appTheme,
-              marginTop: 5,
+              marginHorizontal: 5,
+              fontSize: responsive.h(14),
+              color: "#ffff",
+              fontFamily: "Inter-Regular",
             }}
           >
-            <Text
-              style={{
-                fontFamily: "Inter-Regular",
-                fontSize: 14,
-                fontWeight: "normal",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: "#ffff",
-              }}
-            >
-              {userActive
-                ? `  ${userActive}`
-                : `  ${Strings.createRequest.unreceived}`}
-            </Text>
-          </View>
+            {userActive
+              ? `  ${userActive}`
+              : `  ${Strings.createRequest.unreceived}`}
+          </Text>
         </View>
       </View>
       {/* <Text style={{ fontSize: fontSize.larg }}>{towerName}</Text> */}

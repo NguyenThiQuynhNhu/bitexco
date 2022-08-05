@@ -44,6 +44,7 @@ import Strings from "../../utils/languages";
 import NavBar from "../../components/common/NavBar";
 import CommentView from "./CommentView";
 import FeedbackView from "./FeedbackView";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class RequestDetailScreen extends Component {
@@ -131,53 +132,194 @@ class RequestDetailScreen extends Component {
       statusKey,
     } = item;
     return (
+      // <View
+      //   style={{
+      //     flexDirection: "row",
+      //     borderRadius: 12,
+      //     backgroundColor: "#ffffff",
+      //     marginHorizontal: 20,
+      //     marginBottom: 10,
+      //     padding: 10,
+      //     borderTopWidth: 0.5,
+      //     borderTopColor: "#d4d4d4",
+      //   }}
+      // >
+      //   <ImageProgress
+      //     source={{
+      //       uri: `${
+      //         isCustomer ? this.props.user.photoUrl : avatarUrl || default_image
+      //       }`,
+      //     }}
+      //     circle={true}
+      //     style={{
+      //       height: 32,
+      //       width: 32,
+      //     }}
+      //   />
+
+      //   <View
+      //     style={{
+      //       width: Screen.width - 102,
+      //       justifyContent: "center",
+      //       marginLeft: 10,
+      //     }}
+      //   >
+      //     <View
+      //       style={{
+      //         flex: 1,
+      //         alignItems: "center",
+      //         flexDirection: "row",
+      //         justifyContent: "space-between",
+      //       }}
+      //     >
+      //       {isCustomer ? (
+      //         <View />
+      //       ) : (
+      //         <View
+      //           style={{
+      //             marginRight: 5,
+      //             marginVertical: 5,
+      //             backgroundColor: colors.gray1,
+      //             borderRadius: 15,
+      //           }}
+      //         >
+      //           <Text
+      //             style={{
+      //               margin: 2,
+      //               marginHorizontal: 5,
+      //               fontSize: fontsize.micro,
+      //               color: "#fff",
+      //             }}
+      //           >
+      //             BQL
+      //           </Text>
+      //         </View>
+      //       )}
+      //       <Text
+      //         style={{
+      //           fontWeight: "bold",
+      //           fontFamily: "Inter-SemiBold",
+      //           flex: 0.8,
+      //         }}
+      //       >
+      //         {isCustomer ? this.props.user.fullName : userName}
+      //       </Text>
+      //       <View
+      //         style={{
+      //           marginLeft: 10,
+      //           marginVertical: 5,
+      //           padding: 5,
+      //           borderRadius: 16,
+      //           backgroundColor: "#fff5eb",
+      //         }}
+      //       >
+      //         <Text
+      //           style={{
+      //             fontFamily: "Inter-Regular",
+      //             fontSize: 14,
+      //             fontWeight: "normal",
+      //             fontStyle: "normal",
+      //             letterSpacing: 0,
+      //             textAlign: "center",
+      //             color: converStatusToColor(statusKey),
+      //           }}
+      //         >
+      //           {statusName}
+      //         </Text>
+      //       </View>
+      //     </View>
+      //     {ratingMark === 0 || ratingMark === undefined ? (
+      //       <View />
+      //     ) : (
+      //       <View
+      //         style={{
+      //           flexDirection: "row",
+      //           alignItems: "center",
+      //           justifyContent: "center",
+      //         }}
+      //       >
+      //         {this.renderRateView(ratingMark)}
+      //       </View>
+      //     )}
+      //     <Text
+      //       style={{
+      //         marginTop: -5,
+      //         fontFamily: "Inter-Regular",
+      //         fontSize: 12,
+      //         fontWeight: "normal",
+      //         fontStyle: "normal",
+      //         letterSpacing: 0,
+      //         textAlign: "left",
+      //         color: "#7d8895",
+      //       }}
+      //     >
+      //       {moment(dateActive).format("DD/MM/YYYY HH:mm")}
+      //     </Text>
+      //     <Text
+      //       style={{
+      //         marginTop: 10,
+      //         fontFamily: "Inter-Regular",
+      //         fontSize: 14,
+      //         fontWeight: "normal",
+      //         fontStyle: "normal",
+      //         letterSpacing: 0,
+      //         textAlign: "left",
+      //         color: "#000000",
+      //       }}
+      //     >
+      //       {content}
+      //     </Text>
+      //   </View>
+      // </View>
       <View
         style={{
-          flexDirection: "row",
-          borderRadius: 12,
-          backgroundColor: "#ffffff",
-          marginHorizontal: 20,
-          marginBottom: 10,
+          borderRadius: 16,
           padding: 10,
-          borderTopWidth: 0.5,
-          borderTopColor: "#d4d4d4",
+          backgroundColor: "#ffffff",
+          // shadowColor: "rgba(0, 0, 0, 0.08)",
+          // elevation: 2,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 4,
+          // },
+          // shadowRadius: 12,
+          // shadowOpacity: 1,
+          marginHorizontal: 10,
+          marginVertical: responsive.h(10),
         }}
       >
-        <ImageProgress
-          source={{
-            uri: `${
-              isCustomer ? this.props.user.photoUrl : avatarUrl || default_image
-            }`,
-          }}
-          circle={true}
-          style={{
-            height: 32,
-            width: 32,
-          }}
-        />
-
         <View
           style={{
-            width: Screen.width - 102,
-            justifyContent: "center",
-            marginLeft: 10,
+            flexDirection: "row",
+            display: "flex",
+            justifyContent: "space-between",
           }}
         >
           <View
             style={{
-              flex: 1,
-              alignItems: "center",
               flexDirection: "row",
-              justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
-            {isCustomer ? (
-              <View />
-            ) : (
+            <ImageProgress
+              source={{
+                uri: `${
+                  isCustomer
+                    ? this.props.user.photoUrl
+                    : avatarUrl || default_image
+                }`,
+              }}
+              circle={true}
+              style={{
+                height: 32,
+                width: 32,
+              }}
+            />
+            {isCustomer ? null : (
               <View
                 style={{
                   marginRight: 5,
-                  marginVertical: 5,
+                  marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: 15,
                 }}
@@ -188,6 +330,7 @@ class RequestDetailScreen extends Component {
                     marginHorizontal: 5,
                     fontSize: fontsize.micro,
                     color: "#fff",
+                    fontFamily: "Inter-Regular",
                   }}
                 >
                   BQL
@@ -196,79 +339,77 @@ class RequestDetailScreen extends Component {
             )}
             <Text
               style={{
-                fontWeight: "bold",
                 fontFamily: "Inter-SemiBold",
-                flex: 0.8,
+                fontSize: responsive.h(14),
+                textAlign: "left",
+                paddingLeft: 10,
+                color: "#505050",
               }}
             >
               {isCustomer ? this.props.user.fullName : userName}
             </Text>
-            <View
-              style={{
-                marginLeft: 10,
-                marginVertical: 5,
-                padding: 5,
-                borderRadius: 16,
-                backgroundColor: "#fff5eb",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: 14,
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "center",
-                  color: converStatusToColor(statusKey),
-                }}
-              >
-                {statusName}
-              </Text>
-            </View>
           </View>
-          {ratingMark === 0 || ratingMark === undefined ? (
-            <View />
-          ) : (
-            <View
+
+          <View
+            style={{
+              backgroundColor: "#fff5eb",
+              borderRadius: 15,
+              paddingHorizontal: responsive.w(10),
+              backgroundColor: "#feefef",
+              borderRadius: 15,
+              height: responsive.h(24),
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 10,
+            }}
+          >
+            <Text
               style={{
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "center",
+                margin: 5,
+                marginHorizontal: 10,
+                fontSize: responsive.h(14),
+                color: converStatusToColor(statusId),
+                fontFamily: "Inter-Regular",
               }}
             >
-              {this.renderRateView(ratingMark)}
-            </View>
-          )}
-          <Text
-            style={{
-              marginTop: -5,
-              fontFamily: "Inter-Regular",
-              fontSize: 12,
-              fontWeight: "normal",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              textAlign: "left",
-              color: "#7d8895",
-            }}
-          >
-            {moment(dateActive).format("DD/MM/YYYY HH:mm")}
-          </Text>
-          <Text
-            style={{
-              marginTop: 10,
-              fontFamily: "Inter-Regular",
-              fontSize: 14,
-              fontWeight: "normal",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              textAlign: "left",
-              color: "#000000",
-            }}
-          >
-            {content}
-          </Text>
+              {converStatusToString(statusId)}
+            </Text>
+          </View>
         </View>
+        <Text
+          style={{
+            fontSize: responsive.h(11),
+            color: colors.gray1,
+            fontFamily: "Inter-Regular",
+            paddingLeft: responsive.w(45),
+          }}
+        >
+          {moment(dateActive).format("DD/MM/YYYY HH:mm")}
+        </Text>
+        {ratingMark === 0 || ratingMark === undefined ? (
+          <View />
+        ) : (
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {this.renderRateView(ratingMark)}
+          </View>
+        )}
+        <Text
+          style={{
+            fontFamily: "Inter-Medium",
+            fontSize: responsive.h(15),
+            textAlign: "left",
+            color: "#505050",
+            marginTop: 10,
+          }}
+        >
+          {content}
+        </Text>
       </View>
     );
   };
@@ -402,6 +543,17 @@ class RequestDetailScreen extends Component {
               renderItem={(item) => this.renderItemChat(item)}
               contentContainerStyle={{
                 marginTop: 10,
+              }}
+              ItemSeparatorComponent={() => {
+                return (
+                  <View
+                    style={{
+                      height: 1,
+                      backgroundColor: "#f5f5f5",
+                      marginHorizontal: 10,
+                    }}
+                  />
+                );
               }}
             />
 

@@ -338,7 +338,21 @@ class NewsScreen extends Component {
               <MyIcon name="arrow" size={20} color="black" />
             </TouchableOpacity>
           }
-          body={<Text style={titleStyle}>Tin tức</Text>}
+          body={
+            <Text
+              style={{
+                fontFamily: "Inter-Bold",
+                fontSize: 20,
+                fontWeight: "bold",
+                fontStyle: "normal",
+                letterSpacing: 0,
+                textAlign: "center",
+                color: "black",
+              }}
+            >
+              Tin tức
+            </Text>
+          }
         />
         {this.renderContent()}
       </View>

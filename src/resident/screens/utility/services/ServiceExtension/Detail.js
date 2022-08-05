@@ -139,121 +139,119 @@ class ServiceExtensionDetailScreen extends Component {
     return (
       <View
         style={{
+          borderRadius: 16,
           padding: 10,
           backgroundColor: "#ffffff",
-          borderBottomWidth: 1,
-          borderBottomColor: "#eaeaea",
+          // shadowColor: "rgba(0, 0, 0, 0.08)",
+          // elevation: 2,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 4,
+          // },
+          // shadowRadius: 12,
+          // shadowOpacity: 1,
           marginHorizontal: 20,
-          marginVertical: 10,
+          marginVertical: responsive.h(10),
         }}
       >
-        <View style={{ flexDirection: "row" }}>
-          <ImageProgress
-            source={{
-              uri: `${
-                isCustomer
-                  ? this.props.user.photoUrl
-                  : avatarUrl || default_image
-              }`,
-            }}
-            circle={true}
-            style={{
-              height: 32,
-              width: 32,
-            }}
-          />
-
+        <View
+          style={{
+            flexDirection: "row",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <View
             style={{
-              width: Screen.width - 102,
-              justifyContent: "center",
-              marginLeft: 10,
+              flexDirection: "row",
+              alignItems: "center",
             }}
           >
-            <View
-              style={{
-                flex: 1,
-                alignItems: "center",
-                flexDirection: "row",
-                justifyContent: "space-between",
+            <ImageProgress
+              source={{
+                uri: `${
+                  isCustomer
+                    ? this.props.user.photoUrl
+                    : avatarUrl || default_image
+                }`,
               }}
-            >
-              {isCustomer ? null : (
-                <View
-                  style={{
-                    marginRight: 5,
-                    marginVertical: 5,
-                    backgroundColor: colors.gray1,
-                    borderRadius: 15,
-                  }}
-                >
-                  <Text
-                    style={{
-                      margin: 2,
-                      marginHorizontal: 5,
-                      marginVertical: responsive.h(5),
-                      fontSize: fontsize.micro,
-                      color: "#fff",
-                      fontFamily: "Inter-Regular",
-                    }}
-                  >
-                    BQL
-                  </Text>
-                </View>
-              )}
-              <Text
-                style={{
-                  fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
-                  fontWeight: "600",
-                  marginVertical: responsive.h(5),
-
-                  textAlign: "left",
-                  color: "#292929",
-                  flex: 0.8,
-                }}
-              >
-                {isCustomer ? this.props.user.fullName : userName}
-              </Text>
+              circle={true}
+              style={{
+                height: 32,
+                width: 32,
+              }}
+            />
+            {isCustomer ? null : (
               <View
                 style={{
-                  marginLeft: 10,
-                  marginVertical: 5,
-                  backgroundColor: converStatusToColorService(statusId),
-                  borderRadius: 15,
-                  marginLeft: 10,
-                  backgroundColor: "#fff5eb",
+                  marginRight: 5,
+                  marginVertical: responsive.h(5),
+                  backgroundColor: colors.gray1,
                   borderRadius: 15,
                 }}
               >
                 <Text
                   style={{
-                    margin: 5,
-                    marginHorizontal: 10,
+                    margin: 2,
+                    marginHorizontal: 5,
                     fontSize: fontsize.micro,
-                    color: converStatusToColorService(statusId),
+                    color: "#fff",
                     fontFamily: "Inter-Regular",
-                    marginVertical: responsive.h(5),
                   }}
                 >
-                  {statusName}
+                  BQL
                 </Text>
               </View>
-            </View>
-
+            )}
             <Text
               style={{
-                fontSize: fontsize.micro,
-                color: "#929292",
-                fontFamily: "Inter-Regular",
-                marginTop: 5,
-                marginVertical: responsive.h(5),
+                fontFamily: "Inter-SemiBold",
+                fontSize: responsive.h(14),
+                textAlign: "left",
+                paddingLeft: 10,
+                color: "#505050",
               }}
             >
-              {moment(dateActive).format("DD/MM/YYYY HH:mm")}
+              {isCustomer ? this.props.user.fullName : userName}
+            </Text>
+          </View>
+
+          <View
+            style={{
+              backgroundColor: "#fff5eb",
+              borderRadius: 15,
+              paddingHorizontal: responsive.w(10),
+              backgroundColor: "#feefef",
+              borderRadius: 15,
+              height: responsive.h(24),
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: 10,
+            }}
+          >
+            <Text
+              style={{
+                margin: 5,
+                marginHorizontal: 10,
+                fontSize: responsive.h(14),
+                color: converStatusToColor(statusId),
+                fontFamily: "Inter-Regular",
+              }}
+            >
+              {converStatusToString(statusId)}
             </Text>
           </View>
         </View>
+        <Text
+          style={{
+            fontSize: responsive.h(11),
+            color: colors.gray1,
+            fontFamily: "Inter-Regular",
+            paddingLeft: responsive.w(45),
+          }}
+        >
+          {moment(dateActive).format("DD/MM/YYYY HH:mm")}
+        </Text>
         {ratingMark === 0 || ratingMark === undefined ? (
           <View />
         ) : (
@@ -270,11 +268,10 @@ class ServiceExtensionDetailScreen extends Component {
         <Text
           style={{
             fontFamily: "Inter-Medium",
-            fontSize: 13,
+            fontSize: responsive.h(15),
             textAlign: "left",
             color: "#505050",
             marginTop: 10,
-            marginVertical: responsive.h(5),
           }}
         >
           {description}
@@ -361,8 +358,8 @@ class ServiceExtensionDetailScreen extends Component {
               <ImageProgress
                 circle={true}
                 style={{
-                  height: 100,
-                  width: 100,
+                  height: 90,
+                  width: 90,
                 }}
                 source={{ uri: logo }}
               />
@@ -383,15 +380,19 @@ class ServiceExtensionDetailScreen extends Component {
                       marginVertical: 5,
                       backgroundColor: "#feefef",
                       borderRadius: 15,
+                      paddingHorizontal: responsive.w(10),
+                      backgroundColor: "#feefef",
+                      borderRadius: 15,
+                      height: responsive.h(24),
+                      justifyContent: "center",
+                      alignItems: "center",
                     }}
                   >
                     <Text
                       style={{
-                        margin: 5,
-                        marginHorizontal: 10,
                         color: converStatusToColorService(statusId),
                         fontFamily: "Inter-Regular",
-                        fontSize: 14,
+                        fontSize: responsive.h(14),
                       }}
                     >
                       {converStatusToString(statusId)}
@@ -400,11 +401,11 @@ class ServiceExtensionDetailScreen extends Component {
                 </View>
                 <Text
                   style={{
-                    marginVertical: 5,
+                    marginVertical: responsive.h(5),
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     textAlign: "left",
-                    color: "#d4d4d4",
+                    color: "#afaeae",
                     maxWidth: responsive.w(200),
                   }}
                 >
@@ -507,6 +508,17 @@ class ServiceExtensionDetailScreen extends Component {
               data={historys || []}
               keyExtractor={(item, index) => `${index}`}
               renderItem={(item) => this.renderItemChat(item)}
+              ItemSeparatorComponent={() => {
+                return (
+                  <View
+                    style={{
+                      height: 1,
+                      backgroundColor: "#f5f5f5",
+                      marginHorizontal: 10,
+                    }}
+                  />
+                );
+              }}
             />
           </View>
           <Modal
@@ -680,15 +692,17 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontFamily: "Inter-SemiBold",
-    fontSize: 13,
-    textAlign: "left",
-    color: "#505050",
+    fontSize: responsive.h(15),
+    fontWeight: "500",
+    // textAlign: "right",
+    color: "#3d3d3d",
   },
   textInfo: {
     fontFamily: "Inter-SemiBold",
-    fontSize: 13,
-    textAlign: "left",
-    color: "#505050",
+    fontSize: responsive.h(15),
+    fontWeight: "600",
+    // textAlign: "right",
+    color: "#282828",
   },
 });
 const mapStateToProps = (state) => ({
