@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Platform, StatusBar } from "react-native";
+import { Text, View, Platform, StatusBar, SafeAreaView } from "react-native";
 import colors from "../../theme/colors";
 import Device from "../../utils/device";
 import LinearGradient from "react-native-linear-gradient";
@@ -22,8 +22,11 @@ const NavBar = ({
         height: 50,
       }}
     >
+      <SafeAreaView
+        style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
+      />
       <StatusBar
-        barStyle="light-content"
+        barStyle="dark-content"
         backgroundColor="transparent"
         translucent={true}
       />

@@ -397,7 +397,8 @@ class ServiceExtensionDetailScreen extends Component {
                 display: "flex",
                 justifyContent: "space-between",
                 flexDirection: "row",
-                marginHorizontal: 20,
+                marginHorizontal: 10,
+                paddingVertical: 10,
               }}
             >
               <View
@@ -408,7 +409,7 @@ class ServiceExtensionDetailScreen extends Component {
                   //paddingTop: 20,
                   backgroundColor: "#fff",
                   borderTopRightRadius: 20,
-                  maxWidth: responsive.w(220),
+                  maxWidth: responsive.w(360),
                 }}
               >
                 <ImageProgress
@@ -435,13 +436,12 @@ class ServiceExtensionDetailScreen extends Component {
                     style={{
                       fontFamily: "Inter-Bold",
                       fontSize: responsive.h(15),
-                      textTransform: "uppercase",
                       fontWeight: "600",
                       textAlign: "left",
                       color: "#292929",
                     }}
-                    numberOfLines={1}
-                    lineBreakMode="tail"
+                    // numberOfLines={1}
+                    // lineBreakMode="tail"
                   >
                     {residentName}
                   </Text>
@@ -462,7 +462,7 @@ class ServiceExtensionDetailScreen extends Component {
                         style={{
                           marginVertical: 0,
                           fontFamily: "Inter-SemiBold",
-                          fontSize: 12,
+                          fontSize: responsive.h(13),
                           fontWeight: "500",
                           textAlign: "left",
                           color: "#292929",

@@ -405,7 +405,8 @@ class ServiceBasicDetailScreen extends Component {
                 display: "flex",
                 justifyContent: "space-between",
                 flexDirection: "row",
-                marginHorizontal: 20,
+                marginHorizontal: 10,
+                paddingVertical: 10,
               }}
             >
               <View
@@ -416,15 +417,15 @@ class ServiceBasicDetailScreen extends Component {
                   //paddingTop: 20,
                   backgroundColor: "#fff",
                   borderTopRightRadius: 20,
-                  maxWidth: responsive.w(220),
+                  maxWidth: responsive.w(360),
                 }}
               >
                 <ImageProgress
                   // circle={true}
                   style={{
-                    height: 51,
-                    width: 51,
-                    borderRadius: 51 / 2,
+                    height: 41,
+                    width: 41,
+                    borderRadius: 41 / 2,
                     // marginTop: 8,
                   }}
                   source={{ uri: this.props.navigation.state.params.avatar }}
@@ -432,24 +433,20 @@ class ServiceBasicDetailScreen extends Component {
                 <View
                   style={{
                     flex: 1,
-                    flexDirection: "column",
                     justifyContent: "space-between",
-                    marginHorizontal: 10,
-                    height: responsive.h(80),
-                    paddingVertical: 8,
+                    marginHorizontal: 5,
+                    // paddingVertical: 8,
                   }}
                 >
                   <Text
                     style={{
                       fontFamily: "Inter-Bold",
-                      fontSize: responsive.h(15),
-                      textTransform: "uppercase",
+                      fontSize: responsive.h(14),
                       fontWeight: "600",
                       textAlign: "left",
                       color: "#292929",
+                      paddingTop: 15,
                     }}
-                    numberOfLines={1}
-                    lineBreakMode="tail"
                   >
                     {residentName}
                   </Text>
@@ -470,11 +467,11 @@ class ServiceBasicDetailScreen extends Component {
                         style={{
                           marginVertical: 0,
                           fontFamily: "Inter-SemiBold",
-                          fontSize: 12,
+                          fontSize: responsive.h(13),
                           fontWeight: "500",
                           textAlign: "left",
                           color: "#292929",
-                          paddingVertical: 10,
+                          paddingVertical: 2,
                         }}
                       >
                         {residentPhone}
@@ -513,6 +510,7 @@ class ServiceBasicDetailScreen extends Component {
                       letterSpacing: 0,
                       textAlign: "left",
                       color: "#888888",
+                      paddingBottom: 15,
                     }}
                     numberOfLines={1}
                   >

@@ -260,7 +260,7 @@ class RequestAssignEmployee extends Component {
                 {moment(day).format("DD/MM/YYYY")}
               </Text>
             )}
-            <MyIcon name="calendar1" size={20} color={"rgba(0, 0, 0, 0.54)"} />
+            <MyIcon name="calendar2" size={20} color={"rgba(0, 0, 0, 0.54)"} />
             <DateTimePicker
               cancelTextIOS={Strings.createRequest.cancel}
               titleIOS={Strings.createRequest.titlePicker}
@@ -307,7 +307,7 @@ class RequestAssignEmployee extends Component {
             >
               {moment(time).format("HH:mm")}
             </Text>
-            <MyIcon name="clock1" size={20} color={"rgba(0, 0, 0, 0.54)"} />
+            <MyIcon name="clock2" size={20} color={"rgba(0, 0, 0, 0.54)"} />
             <DateTimePicker
               cancelTextIOS={Strings.app.cancel}
               titleIOS={Strings.createRequest.at}

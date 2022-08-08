@@ -13,7 +13,7 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
       style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
     />
     <StatusBar
-      barStyle="light-content"
+      barStyle="dark-content"
       backgroundColor="transparent"
       translucent={true}
     />

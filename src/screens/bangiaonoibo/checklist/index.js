@@ -530,15 +530,14 @@ class index extends Component {
           //   },
           //   shadowRadius: 10,
           //   shadowOpacity: 1,
-          height: responsive.h(178),
+          height: responsive.h(168),
           width: responsive.w(182),
-          paddingVertical: responsive.h(10),
-          paddingLeft: responsive.w(10),
           marginBottom: responsive.h(35),
           borderWidth: 0.5,
           borderColor: "#e1e1e1",
           borderBottomWidth: 2,
           marginHorizontal: 10,
+          padding: 5,
         }}
       >
         <TouchableOpacity
@@ -561,10 +560,10 @@ class index extends Component {
           >
             <View
               style={{
-                width: 48,
-                height: 48,
+                width: 41,
+                height: 41,
                 // backgroundColor:colors.gray1,
-                borderRadius: 48 / 2,
+                borderRadius: 41 / 2,
                 backgroundColor: "#e1e1e1",
                 justifyContent: "center",
                 alignItems: "center",
@@ -598,7 +597,7 @@ class index extends Component {
                 fontsize: responsive.h(15),
                 maxWidth: responsive.w(90),
               }}
-              numberOfLines={1}
+              numberOfLines={2}
               lineBreakMode="tail"
             >
               {`MS: ${item.apartmentName}`}
@@ -624,8 +623,9 @@ class index extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 11,
+                fontSize: responsive.h(14),
                 color: "#6f6f6f",
+                paddingBottom: responsive.h(5),
               }}
             >
               {moment(item.dateHandoverTo).format("HH:mm - DD/MM/YYYY ")}

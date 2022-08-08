@@ -654,7 +654,7 @@ class CreateScreen extends Component {
                     }}
                   />
                   <MyIcon
-                    name="calendar1"
+                    name="calendar2"
                     size={20}
                     color="rgba(0, 0, 0, 0.54)"
                   />
@@ -707,7 +707,7 @@ class CreateScreen extends Component {
                       this.setState({ isToggleTimeFrom: false });
                     }}
                   />
-                  <MyIcon name="clock1" size={20} color="rgba(0, 0, 0, 0.54)" />
+                  <MyIcon name="clock2" size={20} color="rgba(0, 0, 0, 0.54)" />
                 </TouchableOpacity>
               </View>
             )}

@@ -81,7 +81,7 @@ const ImageProgress = (props) => {
   }
   return (
     <Image
-      style={{ ...style, alignItems: "center", justifyContent: "center" }}
+      style={{ ...style }}
       renderError={() => (
         <ImageError resizeMode="contain" source={default_image} style={style} />
       )}

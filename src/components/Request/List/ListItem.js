@@ -340,18 +340,20 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               display: "flex",
               justifyContent: "space-between",
-              alignItems: "center",
+              // alignItems: "center",
             }}
           >
-            <ImageProgress
-              // circle={true}
-              style={{
-                height: 51,
-                width: 51,
-                borderRadius: 51 / 2,
-              }}
-              source={{ uri: avatarResident }}
-            />
+            <View style={{ marginTop: 10 }}>
+              <ImageProgress
+                // circle={true}
+                style={{
+                  height: 41,
+                  width: 41,
+                  borderRadius: 51 / 2,
+                }}
+                source={{ uri: avatarResident }}
+              />
+            </View>
             <View
               style={{
                 // flex: 1,
@@ -375,8 +377,8 @@ class ListItem extends PureComponent {
                   textTransform: "uppercase",
                   maxWidth: responsive.w(100),
                 }}
+                numberOfLines={2}
                 lineBreakMode="tail"
-                numberOfLines={1}
               >
                 {residentName}
               </Text>

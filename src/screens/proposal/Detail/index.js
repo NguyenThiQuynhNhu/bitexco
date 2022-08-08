@@ -34,11 +34,12 @@ import fontsize from "../../../theme/fontsize";
 import colors from "../../../theme/colors";
 import { MyIcon } from "../../../theme/icons";
 import Strings from "../../../utils/languages";
-import NavBar from "../../../components/common/NavBar";
 import ListItem from "../../../components/Checklist/Detail/ListItem";
 import moment from "moment";
 import { default_image } from "../../../theme/images";
 import Timeline from "react-native-timeline-flatlist";
+
+import NavBar from "../../../resident/components/common/NavBar";
 
 import CheckBox from "../../../components/common/CheckBox";
 
@@ -647,7 +648,7 @@ class ProposalDetailScreen extends Component {
         style={{ padding: 10 }}
         onPress={() => this.props.navigation.goBack(null)}
       >
-        <MyIcon name="arrow" size={22} color="#fff" />
+        <MyIcon name="arrow" size={22} color="black" />
       </TouchableOpacity>
     );
     const rightButton = (
@@ -655,7 +656,7 @@ class ProposalDetailScreen extends Component {
         style={{ padding: 10 }}
         onPress={() => this.setState({ showAction: true })}
       >
-        <MyIcon name="more-vertical" size={25} color="#fff" />
+        <MyIcon name="more-vertical" size={25} color="black" />
       </TouchableOpacity>
     );
     return (
@@ -665,7 +666,7 @@ class ProposalDetailScreen extends Component {
           body={
             <Text
               style={{
-                color: "#fff",
+                color: "black",
                 fontSize: fontsize.medium,
                 fontWeight: "bold",
                 alignSelf: "center",
