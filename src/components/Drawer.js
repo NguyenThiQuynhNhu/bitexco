@@ -631,7 +631,7 @@ class Drawer extends Component {
                 width: 55,
                 borderRadius: 30,
                 borderWidth: 5,
-                margin: 20,
+                margin: 10,
                 borderColor: "rgba(255,255,255,0.4)",
                 justifyContent: "center",
                 alignItems: "center",

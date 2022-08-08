@@ -1243,7 +1243,7 @@ class HomeScreen extends Component {
               <TouchableOpacity
                 onPress={() => this.props.navigation.openDrawer()}
               >
-                <MyIcon name="iconNavigationMenu24Px" size={22} color="black" />
+                <MyIcon name="iconNavigationMenu24Px" size={30} color="black" />
               </TouchableOpacity>
             }
             // body={<Text style={titleStyle}>TRANG CHỦ</Text>}
@@ -1259,7 +1259,7 @@ class HomeScreen extends Component {
                 <TouchableOpacity
                   onPress={() => this.props.navigation.navigate("notification")}
                 >
-                  <MyIcon name="thng-bo-01" size={22} color="black" />
+                  <MyIcon name="thng-bo-01" size={30} color="black" />
                   {this.props.badgeNotify !== 0 && (
                     <View style={styles.IconBadge}>
                       <Text style={{ color: "white", fontSize: 10 }}>
@@ -1301,7 +1301,7 @@ class HomeScreen extends Component {
               <View style={{ flex: 1, justifyContent: "center" }}>
                 <Text
                   style={{
-                    fontsize: responsive.h(18),
+                    fontsize: responsive.h(20),
                     fontFamily: "Inter-Bold",
                     color: "black",
                   }}

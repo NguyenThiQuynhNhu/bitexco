@@ -9,6 +9,9 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
     source={require("../../../resources/bgHeader.png")}
     style={{ marginTop: -2, marginBottom: 10, height: responsive.h(102) }}
   >
+    <SafeAreaView
+      style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
+    />
     <StatusBar
       barStyle="light-content"
       backgroundColor="transparent"

@@ -94,9 +94,9 @@ class ReduxNavigation extends Component {
                     <SafeAreaView style={{ flex: 0, backgroundColor: '#3478fb00', border: 0 }} />
                 </LinearGradient> */}
 
-        <SafeAreaView
+        {/* <SafeAreaView
           style={{ flex: 0, backgroundColor: colors.appTheme, border: 0 }}
-        />
+        /> */}
         <SafeAreaView style={{ flex: 1, backgroundColor: "#fff", border: 0 }}>
           {/* <StatusBar barStyle="light-content" /> */}
           <View
