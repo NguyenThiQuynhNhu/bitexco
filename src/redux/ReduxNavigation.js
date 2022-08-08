@@ -87,56 +87,21 @@ class ReduxNavigation extends Component {
     //console.log('nav',this.props)
     return (
       <Fragment>
-        {/* <LinearGradient
-                    start={{ x: 0, y: 1 }} end={{ x: 1, y: 0 }}
-                    //locations={[0,0.5,0.6]}
-                    colors={['#2238c3', '#3478fb']}>
-                    <SafeAreaView style={{ flex: 0, backgroundColor: '#3478fb00', border: 0 }} />
-                </LinearGradient> */}
-
-        {/* <SafeAreaView
-          style={{ flex: 0, backgroundColor: colors.appTheme, border: 0 }}
-        /> */}
-        <SafeAreaView style={{ flex: 1, backgroundColor: "#fff", border: 0 }}>
-          {/* <StatusBar barStyle="light-content" /> */}
-          <View
-            style={{
-              ...Device.defaultMarginBottom(),
-              flex: 1,
-              border: 0,
-              marginTop: -2,
-            }}
-          >
-            <AppWithNavigationState
-              screenProps={{
-                towerLogoUrl: this.props.towerLogoUrl,
-                badge: this.props.badge,
-              }}
+        <View style={{ flex: 1, backgroundColor: '#fff', border: 0 }}>
+          <View style={{
+            flex: 1, border: 0
+          }}>
+            <AppWithNavigationState screenProps={{ towerLogoUrl: this.props.towerLogoUrl, badge: this.props.badge }}
               state={nav}
-              dispatch={dispatch}
-            />
+              dispatch={dispatch} />
 
             {/* <ModalLogOut /> */}
-            {isLoading && (
-              <View
-                style={{
-                  position: "absolute",
-                  height: "100%",
-                  width: "100%",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: colors.appOverView,
-                }}
-              >
-                <ActivityIndicator
-                  animating
-                  size="small"
-                  color={colors.appTheme}
-                />
-              </View>
-            )}
+            {isLoading && <View style={{ position: 'absolute', height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center', backgroundColor: colors.appOverView }}>
+              <ActivityIndicator animating size="small" color={colors.appTheme} />
+            </View>}
+
           </View>
-        </SafeAreaView>
+        </View>
       </Fragment>
     );
   }
