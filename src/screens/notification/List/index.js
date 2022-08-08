@@ -19,7 +19,7 @@ import {
   Item,
 } from "react-native";
 import { connect } from "react-redux";
-import _ from "lodash";
+import _, { filter } from "lodash";
 import Toast, { DURATION } from "react-native-easy-toast";
 import FCM, { FCMEvent } from "react-native-fcm";
 

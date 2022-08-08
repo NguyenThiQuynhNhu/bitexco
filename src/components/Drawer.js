@@ -235,14 +235,17 @@ class Drawer extends Component {
         <TouchableOpacity
           style={{
             paddingTop: 20,
-            paddingHorizontal: 20,
+            // paddingHorizontal: 20,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
+            paddingLeft: 20,
           }}
         >
           <Text style={styles.textTitle}>Phản ánh</Text>
-          <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
+          >
             <Text
               style={{
                 marginRight: 10,

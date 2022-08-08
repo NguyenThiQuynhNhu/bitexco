@@ -1282,7 +1282,7 @@ class HomeScreen extends Component {
                   width: 55,
                   borderRadius: 30,
                   borderWidth: 5,
-                  margin: 20,
+                  margin: 10,
                   borderColor: "rgba(255,255,255,0.4)",
                   justifyContent: "center",
                   alignItems: "center",
@@ -1320,7 +1320,7 @@ class HomeScreen extends Component {
                   />
                   <Text
                     style={{
-                      fontsize: 14,
+                      fontsize: responsive.h(14),
                       fontFamily: "Inter-Medium",
                       color: "black",
                     }}
@@ -1340,130 +1340,134 @@ class HomeScreen extends Component {
               </View>
             </View>
           )}
-
-          <TouchableOpacity
-            onPress={() => {
-              this.props.navigation.navigate("requests");
-              this.props.resetRequest({
-                key: "isMine",
-                path: "",
-                value: !this.props.isMine,
-              });
-            }}
+          <View
             style={{
-              width: Screen.width - 20,
-              flexDirection: "row",
-              backgroundColor: "#fe494f",
-              borderRadius: 14,
-              padding: 15,
-              height: 90,
-              alignSelf: "center",
-              marginBottom: 30,
-              justifyContent: "space-between",
-              display: "flex",
+              padding: 10,
             }}
           >
             <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("requests");
+                this.props.resetRequest({
+                  key: "isMine",
+                  path: "",
+                  value: !this.props.isMine,
+                });
+              }}
               style={{
-                // maxWidth: 80,
-                justifyContent: "center",
+                width: "100%",
+                flexDirection: "row",
+                backgroundColor: "#fe494f",
+                borderRadius: 14,
+                padding: 15,
+                height: 90,
+                alignSelf: "center",
+                marginBottom: 30,
+                justifyContent: "space-between",
+                display: "flex",
               }}
             >
-              <View>
-                <MyIcon
-                  name="yu-cu-mi-01"
-                  size={28}
-                  color="#fff"
-                  style={{
-                    marginHorizontal: 20,
-                  }}
-                />
-                <Text
-                  style={{
-                    color: "#ffff",
-                    fontsize: 12,
-                    fontFamily: "Inter-Regular",
-                    textAlign: "center",
-                    paddingTop: 5,
-                  }}
-                >
-                  Yêu cầu mới
-                </Text>
+              <TouchableOpacity
+                style={{
+                  // maxWidth: 80,
+                  justifyContent: "center",
+                }}
+              >
+                <View>
+                  <MyIcon
+                    name="yu-cu-mi-01"
+                    size={28}
+                    color="#fff"
+                    style={{
+                      marginHorizontal: 20,
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "#ffff",
+                      fontsize: 12,
+                      fontFamily: "Inter-Regular",
+                      textAlign: "center",
+                      paddingTop: 5,
+                    }}
+                  >
+                    Yêu cầu mới
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <View>
+                  <MyIcon
+                    name="x-l-01"
+                    size={28}
+                    color="#fff"
+                    style={{ marginHorizontal: 20 }}
+                  />
+                  <Text
+                    style={{
+                      color: "#ffff",
+                      fontsize: 12,
+                      fontFamily: "Inter-Regular",
+                      textAlign: "center",
+                      paddingTop: 5,
+                    }}
+                  >
+                    Xử lý
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <View>
+                  <MyIcon
+                    name="hon-thnh-01"
+                    size={28}
+                    color="#fff"
+                    style={{ marginHorizontal: 20 }}
+                  />
+                  <Text
+                    style={{
+                      color: "#ffff",
+                      fontsize: 12,
+                      fontFamily: "Inter-Regular",
+                      textAlign: "center",
+                      paddingTop: 5,
+                    }}
+                  >
+                    Hoàn thành
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <TouchableOpacity>
+                <View>
+                  <MyIcon
+                    name="-ng-01"
+                    size={28}
+                    color="#fff"
+                    style={{ marginHorizontal: 20 }}
+                  />
+                  <Text
+                    style={{
+                      color: "#ffff",
+                      fontsize: 12,
+                      fontFamily: "Inter-Regular",
+                      textAlign: "center",
+                      paddingTop: 5,
+                    }}
+                  >
+                    Đã đóng
+                  </Text>
+                </View>
+              </TouchableOpacity>
+              <View
+                style={{
+                  position: "absolute",
+                  top: -10,
+                }}
+              >
+                {this.renderMenuStatusRequest(menus.request.dataStatus)}
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
-                <MyIcon
-                  name="x-l-01"
-                  size={28}
-                  color="#fff"
-                  style={{ marginHorizontal: 20 }}
-                />
-                <Text
-                  style={{
-                    color: "#ffff",
-                    fontsize: 12,
-                    fontFamily: "Inter-Regular",
-                    textAlign: "center",
-                    paddingTop: 5,
-                  }}
-                >
-                  Xử lý
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
-                <MyIcon
-                  name="hon-thnh-01"
-                  size={28}
-                  color="#fff"
-                  style={{ marginHorizontal: 20 }}
-                />
-                <Text
-                  style={{
-                    color: "#ffff",
-                    fontsize: 12,
-                    fontFamily: "Inter-Regular",
-                    textAlign: "center",
-                    paddingTop: 5,
-                  }}
-                >
-                  Hoàn thành
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View>
-                <MyIcon
-                  name="-ng-01"
-                  size={28}
-                  color="#fff"
-                  style={{ marginHorizontal: 20 }}
-                />
-                <Text
-                  style={{
-                    color: "#ffff",
-                    fontsize: 12,
-                    fontFamily: "Inter-Regular",
-                    textAlign: "center",
-                    paddingTop: 5,
-                  }}
-                >
-                  Đã đóng
-                </Text>
-              </View>
-            </TouchableOpacity>
-            <View
-              style={{
-                position: "absolute",
-                top: -10,
-              }}
-            >
-              {this.renderMenuStatusRequest(menus.request.dataStatus)}
-            </View>
 
-            {/* <View style={{ flex: 1 }}>
+              {/* <View style={{ flex: 1 }}>
               <View
                 style={{
                   flex: 1,
@@ -1528,7 +1532,8 @@ class HomeScreen extends Component {
                 {this.renderMenuStatusRequest(menus.request.dataStatus)}
               </View>
             </View> */}
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
         <View
           style={{
@@ -1649,7 +1654,7 @@ class HomeScreen extends Component {
               </View> */}
               <Text
                 style={{
-                  fontFamily: "Inter-SemiBold",
+                  fontFamily: "Inter-Medium",
                   textAlign: "center",
                   fontSize: responsive.h(20),
                   color: "black",
@@ -1840,7 +1845,7 @@ class HomeScreen extends Component {
                       /> */}
                       <MyIcon
                         name={item.icon}
-                        size={responsive.h(31)}
+                        size={responsive.h(40)}
                         color="black"
                         style={{
                           alignSelf: "center",
@@ -1851,7 +1856,7 @@ class HomeScreen extends Component {
                         style={{
                           color: "black",
                           fontSize: responsive.h(14),
-                          fontFamily: "Inter-SemiBold",
+                          fontFamily: "Inter-Medium",
                           maxWidth: responsive.w(70),
                           textAlign: "center",
                         }}

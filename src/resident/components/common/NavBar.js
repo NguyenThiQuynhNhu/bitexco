@@ -28,7 +28,7 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
         style={{
           height: responsive.h(80),
           backgroundColor: "transparent",
-          marginHorizontal: responsive.h(15),
+          marginHorizontal: responsive.h(10),
           //   flex: 1,
           flexDirection: "row",
           justifyContent: "space-between",
