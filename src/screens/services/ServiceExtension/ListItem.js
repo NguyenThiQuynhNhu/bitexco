@@ -104,7 +104,7 @@ class ListItem extends PureComponent {
               </Text>
               <Text
                 style={{
-                  fontFamily: "Inter-Me",
+                  fontFamily: "Inter-Medium",
                   fontSize: responsive.h(14),
                   fontWeight: "normal",
                   fontStyle: "normal",
