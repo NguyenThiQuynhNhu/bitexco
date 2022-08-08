@@ -1049,16 +1049,10 @@ class HomeScreen extends Component {
       emptyDataNotify,
       errorNotify,
     } = this.props;
-    //console.log(this.props)
+    console.log(this.props);
     if (initComponent) {
       return (
-        <View
-          style={
-            {
-              // paddingVertical: 20,
-            }
-          }
-        >
+        <View>
           <ActivityIndicator animating size="small" />
         </View>
       );
@@ -1085,30 +1079,32 @@ class HomeScreen extends Component {
         />
       );
     }
-    const { banner, fees } = data;
+    const { banner } = data;
     const pageData = data.newsNewest.map((o, index) => (
-      <TouchableOpacity
-        onPress={() =>
-          this.props.navigation.navigate("newsDetail", {
-            item: {
-              ...o,
-              towerId: this.props.towerId,
-              title: o.shortDescription,
-              towerName: this.props.user.towerName,
-            },
-            type: 1,
-          })
-        }
-      >
-        <ImageProgress
-          source={{ uri: o.imageUrl }}
-          style={{
-            height: responsive.h(180),
-            width: "100%",
-          }}
-        />
-      </TouchableOpacity>
+      // <TouchableOpacity
+      //   onPress={() =>
+      //     this.props.navigation.navigate("newsDetail", {
+      //       item: {
+      //         ...o,
+      //         towerId: this.props.towerId,
+      //         title: o.shortDescription,
+      //         towerName: this.props.user.towerName,
+      //       },
+      //       type: 1,
+      //     })
+      //   }
+      // >
+      <ImageProgress
+        source={{ uri: data.banner.link }}
+        style={{
+          height: responsive.h(180),
+          width: "100%",
+        }}
+      />
+
+      // </TouchableOpacity>
     ));
+
     return (
       <View style={{ flex: 1 }}>
         <View
@@ -1135,12 +1131,22 @@ class HomeScreen extends Component {
             paginationStyle={{ bottom: 5 }}
             showsButtons={false}
           >
-            {pageData}
+            {data !== undefined || data.length === 0 ? (
+              <Image
+                style={{
+                  height: responsive.h(180),
+                  width: "100%",
+                }}
+                source={default_baner}
+              />
+            ) : (
+              pageData
+            )}
           </Swiper>
         </View>
-        {!_.isNil(fees) &&
+        {/* {!_.isNil(fees) &&
           !_.isNil(fees.amountIncurred) &&
-          this.rednerItemFee(fees)}
+          this.rednerItemFee(fees)} */}
       </View>
     );
   }
