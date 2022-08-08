@@ -244,7 +244,12 @@ class RequestDetailScreen extends Component {
 
       return (
         <View
-          style={{ flex: 1, borderTopRightRadius: 20, paddingHorizontal: 20 }}
+          style={{
+            flex: 1,
+            borderTopRightRadius: 20,
+            paddingHorizontal: 10,
+            padding: 10,
+          }}
         >
           {/* Thông tin nha cung cap */}
           <View
@@ -266,13 +271,17 @@ class RequestDetailScreen extends Component {
                 borderTopRightRadius: 20,
               }}
             >
-              <View>
+              <View
+                style={{
+                  marginRight: 10,
+                }}
+              >
                 <ImageProgress
-                  circle={true}
+                  // circle={true}
                   style={{
-                    height: responsive.h(51),
-                    width: responsive.w(51),
-                    marginRight: responsive.w(10),
+                    height: 51,
+                    width: 51,
+                    borderRadius: 51 / 2,
                   }}
                   source={{ uri: avatarResident }}
                 />
@@ -300,6 +309,7 @@ class RequestDetailScreen extends Component {
                           letterSpacing: 0,
                           // paddingVertical: responsive.h(5),
                           color: "#000000",
+                          paddingVertical: 3,
                         }}
                       >
                         {phoneContact}
@@ -383,7 +393,7 @@ class RequestDetailScreen extends Component {
               }}
             >
               <LinearGradient
-                colors={[colors.appTheme, "#fff"]}
+                colors={["#fff", "#cecece"]}
                 style={styles.linearGradient}
               >
                 <View
@@ -396,6 +406,9 @@ class RequestDetailScreen extends Component {
                       padding: 10,
                       justifyContent: "center",
                       alignItems: "center",
+                      backgroundColor: colors.appTheme,
+                      borderTopLeftRadius: 16,
+                      borderTopRightRadius: 16,
                     }}
                   >
                     <Text
@@ -423,7 +436,7 @@ class RequestDetailScreen extends Component {
                       <MyIcon
                         name="calendar"
                         size={20}
-                        color="#fff"
+                        color="black"
                         style={{ margin: 10 }}
                       />
                       <TouchableOpacity
@@ -432,7 +445,7 @@ class RequestDetailScreen extends Component {
                             isToggleDate: true,
                           })
                         }
-                        style={{ backgroundColor: "#fff" }}
+                        style={{ backgroundColor: "#f5f5f5" }}
                       >
                         <Text style={{ margin: 20, marginVertical: 10 }}>
                           {this.state.dataRequest.dateProcess}
@@ -564,7 +577,7 @@ class RequestDetailScreen extends Component {
     const { showAction } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.props.navigation.goBack()}
       >
         <MyIcon name="arrow" size={22} color="black" />
@@ -573,7 +586,7 @@ class RequestDetailScreen extends Component {
     const rightButton =
       methodProcess.length > 0 ? (
         <TouchableOpacity
-          style={{ padding: 10 }}
+          style={{ paddingVertical: 10 }}
           onPress={() => this.setState({ showAction: true })}
         >
           <MyIcon name="more-vertical" size={25} color="black" />

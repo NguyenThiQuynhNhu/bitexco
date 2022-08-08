@@ -911,69 +911,75 @@ class DangThucHien_TaiSan extends Component {
     );
 
     const btnJSX = (
-      <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
-        <TouchableOpacity
-          onPress={() => {
-            this.setState({
-              isDat: false,
-              isKhongDat: false,
-              ghiChu: "",
-              showModal: false,
-              images: [],
-            });
-          }}
-          style={{
-            borderWidth: 1,
-            borderColor: colors.appTheme,
-            width: responsive.w(150),
-            height: responsive.h(40),
-            borderRadius: 45,
-            padding: 10,
-            marginBottom: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text
+      <View
+        style={{
+          bottom: 0,
+        }}
+      >
+        <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
+          <TouchableOpacity
+            onPress={() => {
+              this.setState({
+                isDat: false,
+                isKhongDat: false,
+                ghiChu: "",
+                showModal: false,
+                images: [],
+              });
+            }}
             style={{
-              color: colors.appTheme,
-              alignSelf: "center",
-              fontsize: responsive.h(16),
-              fontFamily: "Inter-Bold",
+              borderWidth: 1,
+              borderColor: colors.appTheme,
+              width: responsive.w(150),
+              height: responsive.h(40),
+              borderRadius: 45,
+              padding: 10,
+              marginBottom: 10,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            {"Huỷ"}
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: colors.appTheme,
+                alignSelf: "center",
+                fontsize: responsive.h(16),
+                fontFamily: "Inter-Bold",
+              }}
+            >
+              {"Huỷ"}
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => {
-            // this.setState({ showModal: false })
-            // alert(this.state.isBinhThuong + '')
-            this.item_thuchien();
-          }}
-          style={{
-            backgroundColor: colors.appTheme,
-            width: responsive.w(150),
-            height: responsive.h(40),
-            borderRadius: 45,
-            alignSelf: "center",
-            marginBottom: 10,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text
+          <TouchableOpacity
+            onPress={() => {
+              // this.setState({ showModal: false })
+              // alert(this.state.isBinhThuong + '')
+              this.item_thuchien();
+            }}
             style={{
-              color: "#fff",
+              backgroundColor: colors.appTheme,
+              width: responsive.w(150),
+              height: responsive.h(40),
+              borderRadius: 45,
               alignSelf: "center",
-              fontsize: responsive.h(16),
-              fontFamily: "Inter-Bold",
+              marginBottom: 10,
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
-            {"Thực hiện"}
-          </Text>
-        </TouchableOpacity>
+            <Text
+              style={{
+                color: "#fff",
+                alignSelf: "center",
+                fontsize: responsive.h(16),
+                fontFamily: "Inter-Bold",
+              }}
+            >
+              {"Thực hiện"}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
 
@@ -1085,8 +1091,8 @@ class DangThucHien_TaiSan extends Component {
                     this.setState({ isKhongDat: !this.state.isKhongDat });
                   }}
                   style={{
-                    height: responsive.h(14),
                     marginVertical: 20,
+                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }],
                   }}
                 />
               </View>
@@ -1228,7 +1234,7 @@ class DangThucHien_TaiSan extends Component {
           alignItems: "flex-start",
           flexDirection: "row",
           justifyContent: "space-between",
-          marginBottom: 60,
+          marginBottom: 20,
           padding: 10,
           marginTop: 5,
         }}

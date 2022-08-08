@@ -1882,10 +1882,16 @@ class HomeScreen extends Component {
                 }}
                 scrollEnabled={false}
               />
-              <Image
-                source={require("../../resources/bitexco.png")}
-                style={{ marginVertical: 20 }}
-              />
+              <View
+                style={{
+                  paddingVertical: 10,
+                }}
+              >
+                <Image
+                  source={require("../../resources/bitexco.png")}
+                  style={{ marginVertical: 20, width: "100%" }}
+                />
+              </View>
               {/* <FlatList
                 //scrollEnabled={false}
                 data={menus.more}

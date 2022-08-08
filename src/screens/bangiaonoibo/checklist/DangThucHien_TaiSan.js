@@ -812,7 +812,7 @@ class DangThucHien_TaiSan extends Component {
                     this.setState({ isKhongDat: !this.state.isKhongDat });
                   }}
                   style={{
-                    height: responsive.h(14),
+                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }],
                     marginVertical: 20,
                   }}
                 />

@@ -307,7 +307,7 @@ class ListItem extends PureComponent {
           borderRadius: 12,
           backgroundColor: "#ffffff",
           //   shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 1,
+          // elevation: 1,
           height: responsive.h(220),
           width: responsive.w(180),
           //   shadowOffset: {
@@ -318,9 +318,9 @@ class ListItem extends PureComponent {
           //   shadowOpacity: 1,
           //   marginVertical: 10,
           marginHorizontal: 10,
-          borderWidth: 1,
-          borderBottomWidth: 3,
-          borderColor: "#f5f5f5",
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
           padding: 10,
           paddingVertical: 15,
           marginBottom: responsive.h(30),
@@ -340,14 +340,15 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
             }}
           >
             <ImageProgress
-              circle={true}
+              // circle={true}
               style={{
-                height: responsive.h(51),
-                width: responsive.w(51),
-                marginTop: 8,
+                height: 51,
+                width: 51,
+                borderRadius: 51 / 2,
               }}
               source={{ uri: avatarResident }}
             />

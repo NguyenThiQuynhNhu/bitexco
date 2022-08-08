@@ -121,6 +121,7 @@ export const BodyContent = (props) => {
                       letterSpacing: 0,
                       textAlign: "left",
                       color: "#262626",
+                      padding: 10,
                     }}
                     autoCapitalize="none"
                     autoFocus={false}
@@ -159,6 +160,7 @@ export const BodyContent = (props) => {
                       letterSpacing: 0,
                       textAlign: "left",
                       color: "#262626",
+                      padding: 10,
                     }}
                     autoCapitalize="none"
                     autoFocus={false}

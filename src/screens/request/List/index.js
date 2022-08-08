@@ -312,7 +312,7 @@ class ReuqestList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
               onPress={() => this.props.navigation.goBack()}
             >
               <MyIcon name="arrow" size={22} color="black" />
@@ -326,7 +326,11 @@ class ReuqestList extends Component {
                 alignItems: "center",
               }}
             >
-              <View>
+              <View
+                style={{
+                  justifyContent: "flex-start",
+                }}
+              >
                 <Text
                   style={{
                     fontFamily: "Inter-Bold",
@@ -334,7 +338,7 @@ class ReuqestList extends Component {
                     fontWeight: "bold",
                     fontStyle: "normal",
                     letterSpacing: 0,
-                    textAlign: "center",
+                    // textAlign: "center",
                     color: "black",
                   }}
                 >
@@ -345,8 +349,7 @@ class ReuqestList extends Component {
                     color: "#df2027",
                     alignSelf: "center",
                     fontSize: responsive.h(15),
-                    fontWeight: "bold",
-                    fontFamily: "Inter-Bold",
+                    fontFamily: "Inter-Regular",
                   }}
                 >
                   Nguồn: {converTypeToSource(typeId)}

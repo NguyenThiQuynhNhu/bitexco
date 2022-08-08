@@ -49,11 +49,11 @@ class ListItem extends PureComponent {
               //   backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
-              borderColor: "#f5f5f5",
+              borderColor: "#d2d2d2",
               borderWidth: 1,
             }}
           >
-            <MyIcon name="trang-thng-bo-01" size={30} color="#f5f5f5" />
+            <MyIcon name="trang-thng-bo-01" size={30} color="#d2d2d2" />
 
             {/* {!isRead ? (
               <View

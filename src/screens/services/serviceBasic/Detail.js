@@ -420,10 +420,12 @@ class ServiceBasicDetailScreen extends Component {
                 }}
               >
                 <ImageProgress
-                  circle={true}
+                  // circle={true}
                   style={{
-                    height: responsive.h(50),
-                    width: responsive.w(50),
+                    height: 51,
+                    width: 51,
+                    borderRadius: 51 / 2,
+                    // marginTop: 8,
                   }}
                   source={{ uri: this.props.navigation.state.params.avatar }}
                 />
@@ -720,7 +722,7 @@ class ServiceBasicDetailScreen extends Component {
                   backgroundColor: "rgba(0, 0, 0,0.3)",
                 }}
               >
-                <LinearGradient
+                {/* <LinearGradient
                   colors={[colors.appTheme, "#fff"]}
                   style={styles.linearGradient}
                 >
@@ -734,6 +736,7 @@ class ServiceBasicDetailScreen extends Component {
                         padding: 10,
                         justifyContent: "center",
                         alignItems: "center",
+                        backgroundColor: colors.appTheme,
                       }}
                     >
                       <Text
@@ -797,6 +800,115 @@ class ServiceBasicDetailScreen extends Component {
                         }}
                       >
                         <MyIcon name="x" size={30} color={colors.appTheme} />
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        style={{
+                          marginLeft: 50,
+                          height: 50,
+                          width: 50,
+                          borderRadius: 25,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          backgroundColor: colors.appTheme,
+                        }}
+                        onPress={() =>
+                          this.setState({ isShowModal: false }, () => {
+                            this.props.updateRequestHandle({
+                              bookingId: id,
+                              statusId: this.state.statusId,
+                              description: content,
+                              towerName: this.props.user.towerName,
+                              employeeName: this.props.user.fullName,
+                              serviceName,
+                            });
+                          })
+                        }
+                      >
+                        <MyIcon name="check" size={30} color="#fff" />
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </LinearGradient> */}
+                <LinearGradient
+                  colors={["#fff", "#cecece"]}
+                  style={styles.linearGradient}
+                >
+                  <View
+                    style={{
+                      borderRadius: 16,
+                    }}
+                  >
+                    <View
+                      style={{
+                        padding: 10,
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: colors.appTheme,
+                        borderTopRightRadius: 16,
+                        borderTopLeftRadius: 16,
+                        height: responsive.h(55),
+                      }}
+                    >
+                      <Text
+                        style={{
+                          color: "white",
+                          fontFamily: "Inter-SemiBold",
+                          fontSize: 16,
+                          fontWeight: "600",
+                          fontStyle: "normal",
+                          letterSpacing: 0,
+                          textAlign: "center",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {this.state.title}
+                      </Text>
+                    </View>
+                    <View>
+                      <TextInput
+                        autoFocus
+                        autoCorrect={false}
+                        style={{
+                          backgroundColor: "#fff",
+                          height: 100,
+                          borderRadius: 8,
+                          borderWidth: 1,
+                          padding: 10,
+                          margin: 20,
+                          borderColor: colors.grayBorder,
+                          textAlignVertical: "top",
+                          fontFamily: "Inter-Regular",
+                          fontSize: 14,
+                        }}
+                        underlineColorAndroid="transparent"
+                        multiline={true}
+                        placeholder={Strings.app.description}
+                        onChangeText={(content) => this.setState({ content })}
+                      />
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        marginTop: 20,
+                        alignSelf: "center",
+                        marginBottom: 10,
+                      }}
+                    >
+                      <TouchableOpacity
+                        onPress={() => this.setState({ isShowModal: false })}
+                        style={{
+                          height: 50,
+                          width: 50,
+                          borderRadius: 25,
+                          justifyContent: "center",
+                          alignItems: "center",
+                          backgroundColor: "#ffffff",
+                          borderStyle: "solid",
+                          borderWidth: 1,
+                          borderColor: colors.gray1,
+                        }}
+                      >
+                        <MyIcon name="x" size={30} color={colors.gray1} />
                       </TouchableOpacity>
                       <TouchableOpacity
                         style={{

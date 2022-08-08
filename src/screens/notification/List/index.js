@@ -338,13 +338,14 @@ class ProposalList extends Component {
                 }}
               />
               <TouchableOpacity
-                onPress={() =>
+                onPress={() => {
+                  console.log("type id", typeId);
                   this.props.navigation.navigate("notificationType", {
                     id: user.towerId,
                     onSelected: (depSelected) =>
                       this.setState({ depSelected, typeId: depSelected.id }),
-                  })
-                }
+                  });
+                }}
                 style={{
                   padding: 10,
                   marginTop: 10,

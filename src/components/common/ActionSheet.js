@@ -39,7 +39,7 @@ class ActionSheet extends Component {
           <View style={{ flex: 1, justifyContent: "flex-end" }}>
             <View
               style={{
-                marginBottom: responsive.h(104),
+                marginBottom: responsive.h(10),
                 marginHorizontal: "5%",
                 width: "90%",
                 justifyContent: "center",

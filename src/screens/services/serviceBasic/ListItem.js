@@ -47,9 +47,9 @@ class ListItem extends PureComponent {
           //   shadowOpacity: 1,
           //   marginVertical: 10,
           marginHorizontal: 10,
-          borderWidth: 1,
-          borderBottomWidth: 3,
-          borderColor: "#f5f5f5",
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
           padding: 10,
         }}
       >
@@ -69,11 +69,12 @@ class ListItem extends PureComponent {
             }}
           >
             <ImageProgress
-              circle={true}
+              // circle={true}
               style={{
-                height: responsive.h(51),
-                width: responsive.w(51),
-                marginTop: 8,
+                height: 51,
+                width: 51,
+                // marginTop: 8,
+                borderRadius: 51 / 2,
               }}
               source={{ uri: logo }}
             />
