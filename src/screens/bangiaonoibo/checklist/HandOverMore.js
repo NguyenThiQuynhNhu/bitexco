@@ -731,7 +731,7 @@ class HandOverMore extends Component {
                     }
                   );
                 }}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <Text style={{ color: "#fff" }}>Huỷ</Text>
               </TouchableOpacity>

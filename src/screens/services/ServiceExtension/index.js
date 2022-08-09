@@ -334,7 +334,7 @@ class ServiceExtension extends Component {
                     }
                   );
                 }}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <Text style={{ color: "black" }}>Huỷ</Text>
               </TouchableOpacity>

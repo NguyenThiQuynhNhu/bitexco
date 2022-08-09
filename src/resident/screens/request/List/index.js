@@ -325,7 +325,7 @@ class ReuqestList extends Component {
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <Text style={{ color: "#fff" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
@@ -336,7 +336,7 @@ class ReuqestList extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("profile")}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <ImageProgress
                   style={{
@@ -369,7 +369,7 @@ class ReuqestList extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={24} name="search" color="black" />
               </TouchableOpacity>

@@ -342,9 +342,9 @@ class ServiceBasic extends Component {
                     }
                   );
                 }}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
-                <Text style={{ color: "#fff" }}>{Strings.app.cancel}</Text>
+                <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
             }
           />

@@ -252,7 +252,7 @@ class ServicesScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
@@ -273,7 +273,7 @@ class ServicesScreen extends Component {
           rightView={
             <TouchableOpacity
               //onPress={() => this.props.navigation.navigate('serviceExtensionResident', {name: this.props.navigation.state.params.name, dataId: data})}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <Icon name="history" size={24} color="transparent" />
             </TouchableOpacity>

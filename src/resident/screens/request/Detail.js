@@ -621,7 +621,7 @@ class RequestDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
@@ -650,7 +650,7 @@ class RequestDetailScreen extends Component {
             this.props.data.statusKey !== "dong" && (
               <TouchableOpacity
                 onPress={() => this.setState({ isShowModal: true })}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon name="reply" color="black" size={20} />
                 {/* <Text style={{ color: '#fff' }}>{this.props.data.statusKey !== 'hoan_thanh' ? Strings.detailRequest.feedback : Strings.detailRequest.rating}</Text> */}

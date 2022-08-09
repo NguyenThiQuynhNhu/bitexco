@@ -347,7 +347,7 @@ class ServiceExtension extends Component {
                     }
                   );
                 }}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <Text style={{ color: "#fff" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -358,7 +358,7 @@ class ServiceExtension extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon name="arrow" color="black" size={20} />
               </TouchableOpacity>
@@ -383,7 +383,7 @@ class ServiceExtension extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={24} name="search" color="black" />
               </TouchableOpacity>

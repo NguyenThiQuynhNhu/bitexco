@@ -206,7 +206,7 @@ class NotificationScreen extends Component {
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
@@ -217,7 +217,7 @@ class NotificationScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon name="arrow" size={20} color="black" />
               </TouchableOpacity>
@@ -240,7 +240,7 @@ class NotificationScreen extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={24} name="search" color="black" />
               </TouchableOpacity>

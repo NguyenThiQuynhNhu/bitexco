@@ -592,7 +592,7 @@ class RequestDetailScreen extends Component {
           <MyIcon name="more-vertical" size={25} color="black" />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={{ padding: 10 }}>
+        <TouchableOpacity style={{ paddingVertical: 10 }}>
           <MyIcon name="more-vertical" size={25} color={colors.appTheme} />
         </TouchableOpacity>
       );

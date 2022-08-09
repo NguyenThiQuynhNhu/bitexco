@@ -48,7 +48,7 @@ class ListTypeCar extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="#fff" size={20} />
             </TouchableOpacity>
@@ -66,11 +66,11 @@ class ListTypeCar extends Component {
               {Strings.carCard.carTypeText}
             </Text>
           }
-          rightView={
-            <View style={{ margin: 10 }}>
-              <MyIcon name="arrow" color={colors.appTheme} size={20} />
-            </View>
-          }
+          // rightView={
+          //   <View style={{ margin: 10 }}>
+          //     <MyIcon name="arrow" color={colors.appTheme} size={20} />
+          //   </View>
+          // }
         />
         <ListData
           api={{

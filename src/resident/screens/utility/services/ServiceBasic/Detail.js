@@ -627,7 +627,7 @@ class ServiceBasicDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
@@ -650,7 +650,7 @@ class ServiceBasicDetailScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.setState({ isShowModal: true })}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="reply" color="black" size={20} />
               {/* <Text style={{ color: '#fff' }}>{Strings.detailRequest.feedback}</Text> */}

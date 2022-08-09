@@ -148,7 +148,7 @@ class CreateScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
@@ -161,7 +161,7 @@ class CreateScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: 10,
+                  paddingVertical: 10,
                   alignItems: "center",
                 }}
               >

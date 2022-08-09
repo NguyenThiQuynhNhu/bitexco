@@ -140,7 +140,7 @@ class PaymentScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <ImageProgress
                 style={{
@@ -180,7 +180,7 @@ class PaymentScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("paymentHistory")}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon size={24} name="history" color="black" />
             </TouchableOpacity>

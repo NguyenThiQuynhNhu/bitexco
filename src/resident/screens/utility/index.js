@@ -630,7 +630,7 @@ class UtilityScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <ImageProgress
                 style={{
@@ -660,7 +660,7 @@ class UtilityScreen extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ padding: 10 }}>
+            <TouchableOpacity style={{ paddingVertical: 10 }}>
               <MyIcon size={20} name="search" color="transparent" />
             </TouchableOpacity>
           }

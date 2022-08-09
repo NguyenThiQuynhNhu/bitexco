@@ -23,8 +23,7 @@ import { get } from "../services/helper";
 import { MyIcon } from "../theme/icons";
 import colors from "../theme/colors";
 import ErrorContent from "../components/common/ErrorContent";
-import NavBar from "../components/common/NavBar";
-
+import NavBar from "../../components/common/NavBar";
 import Strings from "../utils/languages";
 
 // create a component
@@ -265,7 +264,7 @@ class RulesDetail extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon name="arrow" color="#fff" size={20} />
               </TouchableOpacity>
@@ -286,7 +285,7 @@ class RulesDetail extends Component {
               </Text>
             }
             rightView={
-              <TouchableOpacity style={{ padding: 10 }}>
+              <TouchableOpacity style={{ paddingVertical: 10 }}>
                 <MyIcon size={20} name="search" color="transparent" />
               </TouchableOpacity>
             }
@@ -308,9 +307,9 @@ class RulesDetail extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
-              <MyIcon name="arrow" color="#fff" size={20} />
+              <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
           }
           body={
@@ -322,15 +321,15 @@ class RulesDetail extends Component {
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "center",
-                color: "#ffffff",
+                color: "black",
               }}
             >
               {this.props.navigation.state.params.name}
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ padding: 10 }}>
-              <MyIcon size={20} name="search" color="transparent" />
+            <TouchableOpacity style={{ paddingVertical: 10 }}>
+              <MyIcon size={20} name="search" color="black" />
             </TouchableOpacity>
           }
         />

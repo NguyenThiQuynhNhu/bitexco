@@ -340,7 +340,7 @@ class ServiceBasic extends Component {
                     () => this.setState({ dataStatus: this.props.dataStatus })
                   );
                 }}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <Text style={{ color: "black" }}>Huỷ</Text>
               </TouchableOpacity>
