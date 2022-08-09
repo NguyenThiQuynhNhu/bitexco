@@ -135,7 +135,7 @@ export const BodyContent = (props) => {
                     underlineColorAndroid="transparent"
                     onSubmitEditing={onSubmitEditing}
                   />
-                  <MyIcon name="phone" size={20} color="#cccccc" />
+                  <MyIcon name="phone1" size={20} color="#cccccc" />
                 </View>
               )}
               {// hiện nhập mật khẩu
