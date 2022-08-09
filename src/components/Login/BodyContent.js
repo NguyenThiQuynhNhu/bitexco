@@ -175,7 +175,7 @@ export const BodyContent = (props) => {
                     underlineColorAndroid="transparent"
                     onSubmitEditing={onSubmitEditing}
                   />
-                  <Icon name="lock" size={20} color="#cccccc" />
+                  <MyIcon name="password" size={20} color="#cccccc" />
                 </View>
               )}
               {// hiện đăng ký
@@ -369,7 +369,7 @@ export const BodyContent = (props) => {
                       }}
                     >
                       <MyIcon
-                        name="profile1"
+                        name="user"
                         color={colors.appTheme}
                         size={18}
                         style={{
@@ -403,16 +403,33 @@ export const BodyContent = (props) => {
                     }}
                     onPress={onPressVendor}
                   >
-                    <Text
+                    <View
                       style={{
-                        fontFamily: "Inter-SemiBold",
-                        fontSize: responsive.h(20),
-                        textAlign: "center",
-                        color: colors.appTheme,
+                        flexDirection: "row",
+                        paddingHorizontal: 10,
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      Nhân viên
-                    </Text>
+                      <MyIcon
+                        name="icon-login"
+                        color={colors.appTheme}
+                        size={18}
+                        style={{
+                          marginHorizontal: 10,
+                        }}
+                      />
+                      <Text
+                        style={{
+                          fontFamily: "Inter-SemiBold",
+                          fontSize: responsive.h(20),
+                          textAlign: "center",
+                          color: colors.appTheme,
+                        }}
+                      >
+                        Nhân viên
+                      </Text>
+                    </View>
                   </TouchableOpacity>
                 </View>
               )}

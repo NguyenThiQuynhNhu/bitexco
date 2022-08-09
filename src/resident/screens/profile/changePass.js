@@ -229,7 +229,7 @@ class ChangePassScreen extends Component {
               underlineColorAndroid="transparent"
               //onSubmitEditing={onSubmitEditing}
             />
-            <Icon name="lock" size={18} color="#666666" />
+            <MyIcon name="password2" size={18} color="#666666" />
           </View>
           <View
             style={{
@@ -266,7 +266,7 @@ class ChangePassScreen extends Component {
               underlineColorAndroid="transparent"
               //onSubmitEditing={onSubmitEditing}
             />
-            <Icon name="lock" size={18} color="#666666" />
+            <MyIcon name="password2" size={18} color="#666666" />
           </View>
           <TouchableOpacity
             style={{

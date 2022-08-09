@@ -53,7 +53,7 @@ class ListItem extends PureComponent {
               borderWidth: 1,
             }}
           >
-            <MyIcon name="trang-thng-bo-01" size={30} color="#d2d2d2" />
+            <MyIcon name="megaphone-01" size={30} color="#d2d2d2" />
 
             {/* {!isRead ? (
               <View
