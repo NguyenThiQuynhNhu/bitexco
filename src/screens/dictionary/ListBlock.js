@@ -45,7 +45,7 @@ class ListBlock extends Component {
   render() {
     const leftButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.props.navigation.goBack()}
       >
         <MyIcon name="arrow" size={20} color="#fff" />

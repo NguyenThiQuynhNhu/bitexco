@@ -1554,7 +1554,7 @@ class DangThucHien_TaiSan extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={20} name="arrow" color="black" />
               </TouchableOpacity>
@@ -1592,7 +1592,7 @@ class DangThucHien_TaiSan extends Component {
                     }
                   );
                 }}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={20} name="plus" color="black" />
               </TouchableOpacity>

@@ -27,7 +27,7 @@ class ListTang extends Component {
     const data = this.props.navigation.state.params.tang;
     const leftButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.props.navigation.goBack()}
       >
         <MyIcon name="arrow" size={20} color="black" />

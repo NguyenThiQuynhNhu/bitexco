@@ -998,7 +998,7 @@ class ServiceExtensionDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="black" size={22} />
             </TouchableOpacity>
@@ -1020,7 +1020,7 @@ class ServiceExtensionDetailScreen extends Component {
             this.props.data.methodProcess && (
               <TouchableOpacity
                 onPress={() => this.setState({ showAction: true })}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon name="more-vertical" size={25} color="black" />
               </TouchableOpacity>

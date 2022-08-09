@@ -799,7 +799,7 @@ class CreateElectricScreen extends Component {
             <TouchableOpacity
               onPress={this._onSend}
               style={{
-                padding: 10,
+                paddingVertical: 10,
               }}
             >
               <MyIcon name="paperplane" color="black" size={24} />
@@ -807,7 +807,7 @@ class CreateElectricScreen extends Component {
           }
           leftButton={
             <TouchableOpacity
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
               onPress={() => this.props.navigation.goBack()}
             >
               <MyIcon name="arrow" size={20} color="black" />

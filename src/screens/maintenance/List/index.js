@@ -247,7 +247,7 @@ class MaintenanceList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
               onPress={() => this.props.navigation.goBack()}
             >
               <MyIcon name="arrow" size={20} color="#fff" />
@@ -282,7 +282,7 @@ class MaintenanceList extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.setState({ showFilter: true })}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="search" size={30} color="#fff" />
             </TouchableOpacity>

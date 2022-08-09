@@ -147,14 +147,17 @@ class RequestUpdateStatus extends Component {
     const { reason, content, statuspSelected } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.props.navigation.goBack()}
       >
         <MyIcon name="arrow" size={20} color="black" />
       </TouchableOpacity>
     );
     const rightButton = (
-      <TouchableOpacity style={{ padding: 10 }} onPress={this._onRequest}>
+      <TouchableOpacity
+        style={{ paddingVertical: 10 }}
+        onPress={this._onRequest}
+      >
         <MyIcon name="paperplane" size={24} color="black" />
       </TouchableOpacity>
     );

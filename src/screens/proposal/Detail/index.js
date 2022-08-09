@@ -645,7 +645,7 @@ class ProposalDetailScreen extends Component {
     } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.props.navigation.goBack(null)}
       >
         <MyIcon name="arrow" size={22} color="black" />
@@ -653,7 +653,7 @@ class ProposalDetailScreen extends Component {
     );
     const rightButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.setState({ showAction: true })}
       >
         <MyIcon name="more-vertical" size={25} color="black" />

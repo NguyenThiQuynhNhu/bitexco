@@ -835,7 +835,7 @@ class CreateGasScreen extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
               onPress={() => this.props.navigation.goBack()}
             >
               <MyIcon name="arrow" size={20} color="black" />
@@ -845,7 +845,7 @@ class CreateGasScreen extends Component {
             <TouchableOpacity
               onPress={this._onSend}
               style={{
-                padding: 10,
+                paddingVertical: 10,
               }}
             >
               <MyIcon name="paperplane" color="black" size={24} />

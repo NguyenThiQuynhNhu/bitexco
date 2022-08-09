@@ -344,7 +344,7 @@ class ServiceExtension extends Component {
           <NavBar
             leftButton={
               <TouchableOpacity
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
                 onPress={() => this.props.navigation.goBack(null)}
               >
                 <MyIcon name="arrow" size={22} color="black" />
@@ -354,7 +354,7 @@ class ServiceExtension extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ padding: 10 }}
+                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={25} name="search" color="black" />
               </TouchableOpacity>

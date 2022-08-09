@@ -282,7 +282,7 @@ class ChecklistList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
               onPress={() => this.props.navigation.goBack()}
             >
               <MyIcon name="arrow" size={22} color="black" />
@@ -308,7 +308,7 @@ class ChecklistList extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.setState({ showFilter: true })}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="search" size={25} color="black" />
             </TouchableOpacity>

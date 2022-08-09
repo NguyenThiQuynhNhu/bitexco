@@ -215,7 +215,7 @@ class SurveyStatisticScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon name="arrow" color="black" size={20} />
             </TouchableOpacity>
@@ -240,7 +240,7 @@ class SurveyStatisticScreen extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ padding: 10 }}>
+            <TouchableOpacity style={{ paddingVertical: 10 }}>
               <MyIcon name="reply" color="black" size={20} />
             </TouchableOpacity>
           }

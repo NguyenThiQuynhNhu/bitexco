@@ -738,7 +738,7 @@ class index extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ paddingVertical: 10 }}
             >
               <MyIcon size={20} name="arrow" color="black" />
             </TouchableOpacity>
@@ -759,7 +759,7 @@ class index extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ padding: 10 }}>
+            <TouchableOpacity style={{ paddingVertical: 10 }}>
               <MyIcon size={20} name="search" color="black" />
             </TouchableOpacity>
           }

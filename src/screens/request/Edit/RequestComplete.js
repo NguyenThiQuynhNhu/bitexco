@@ -250,7 +250,7 @@ class RequestComplete extends Component {
     const { images, content } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() => this.props.navigation.goBack()}
       >
         <MyIcon name="arrow" size={22} color="black" />
@@ -258,7 +258,7 @@ class RequestComplete extends Component {
     );
     const rightButton = (
       <TouchableOpacity
-        style={{ padding: 10 }}
+        style={{ paddingVertical: 10 }}
         onPress={() =>
           updateRequestHandle(
             {
