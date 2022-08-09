@@ -665,7 +665,7 @@ class DangThucHien_TaiSan extends Component {
             style={{
               color: colors.appTheme,
               alignSelf: "center",
-              fontsize: responsive.h(16),
+              fontSize: responsive.h(16),
               fontFamily: "Inter-Bold",
             }}
           >
@@ -694,7 +694,7 @@ class DangThucHien_TaiSan extends Component {
             style={{
               color: "#fff",
               alignSelf: "center",
-              fontsize: responsive.h(16),
+              fontSize: responsive.h(16),
               fontFamily: "Inter-Bold",
             }}
           >

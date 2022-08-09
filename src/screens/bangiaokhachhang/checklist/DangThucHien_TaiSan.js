@@ -811,7 +811,7 @@ class DangThucHien_TaiSan extends Component {
                     textAlign: "center",
                     color: colors.gray1,
                     fontFamily: "Inter-Medium",
-                    fontsize: responsive.h(14),
+                    fontSize: responsive.h(14),
                   }}
                 >
                   Nhấn vào để tải ảnh
@@ -875,7 +875,7 @@ class DangThucHien_TaiSan extends Component {
                 textAlign: "center",
                 color: colors.gray1,
                 fontFamily: "Inter-Regular",
-                fontsize: responsive.h(14),
+                fontSize: responsive.h(14),
               }}
             >
               Nhấn vào để tải ảnh
@@ -943,7 +943,7 @@ class DangThucHien_TaiSan extends Component {
               style={{
                 color: colors.appTheme,
                 alignSelf: "center",
-                fontsize: responsive.h(16),
+                fontSize: responsive.h(16),
                 fontFamily: "Inter-Bold",
               }}
             >
@@ -1107,7 +1107,7 @@ class DangThucHien_TaiSan extends Component {
                 paddingLeft: 10,
                 color: colors.appTheme,
                 textAlignVertical: "top",
-                fontsize: responsive.h(14),
+                fontSize: responsive.h(14),
                 backgroundColor: "#ffff",
                 fontFamily: "Inter-Medium",
               }}

@@ -283,7 +283,7 @@ class index extends Component {
               style={{
                 color: "#000",
                 fontFamily: "Inter-Regular",
-                fontsize: responsive.h(15),
+                fontSize: responsive.h(15),
                 maxWidth: responsive.w(90),
               }}
               numberOfLines={2}

@@ -648,7 +648,7 @@ class Drawer extends Component {
             <View style={{ flex: 1, justifyContent: "center" }}>
               <Text
                 style={{
-                  fontsize: responsive.h(18),
+                  fontSize: responsive.h(18),
                   fontFamily: "Inter-Bold",
                   color: "black",
                 }}
@@ -667,7 +667,7 @@ class Drawer extends Component {
                 />
                 <Text
                   style={{
-                    fontsize: 14,
+                    fontSize: 14,
                     fontFamily: "Inter-Medium",
                     color: "black",
                   }}
