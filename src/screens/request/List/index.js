@@ -312,10 +312,10 @@ class ReuqestList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={22} color="black" />
+              <MyIcon name="arrow" size={responsive.h(22)} color="black" />
             </TouchableOpacity>
           }
           body={
@@ -329,6 +329,7 @@ class ReuqestList extends Component {
               <View
                 style={{
                   justifyContent: "flex-start",
+                  alignItems: 'center'
                 }}
               >
                 <Text
@@ -358,16 +359,15 @@ class ReuqestList extends Component {
               <View
                 style={{
                   alignItems: "center",
+                  justifyContent: 'center',
                   flexDirection: "row",
-                  marginLeft: 60,
+                  marginLeft: responsive.h(60),
                 }}
               >
                 <Text
                   style={{
                     fontFamily: "Inter-Medium",
                     fontSize: responsive.h(14),
-                    fontStyle: "normal",
-                    letterSpacing: 0,
                     color: "black",
                   }}
                 >
@@ -377,8 +377,7 @@ class ReuqestList extends Component {
                   value={this.props.isMine}
                   onValueChange={() => this._onValueChangeSwitch()}
                   style={{
-                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }],
-                    height: 14,
+                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }]
                   }}
                   thumbColor="black"
                   trackColor="#fffff"
@@ -392,35 +391,32 @@ class ReuqestList extends Component {
               <View style={{ alignItems: "center", flexDirection: "row" }}>
                 <TouchableOpacity
                   onPress={() => this.setState({ showFilter: true })}
-                  style={{}}
+                  style={{padding: responsive.h(10)}}
                 >
-                  <MyIcon name="search" size={30} color="black" />
+                  <MyIcon name="search" size={responsive.h(25)} color="black" />
                 </TouchableOpacity>
               </View>
             </View>
           }
         />
 
-        <View style={{ marginTop: -25, borderTopRightRadius: 20 }}>
+        <View style={{ }}>
           <FlatList
             ItemSeparatorComponent={() => (
               <View
                 style={{
                   width: 1,
                   backgroundColor: colors.grayBorder,
-                  marginVertical: 10,
+                  marginVertical: responsive.h(10),
                 }}
               />
             )}
             contentContainerStyle={{
-              marginTop: 20,
-              marginVertical: 10,
             }}
             data={dataStatus}
             keyExtractor={(item, index) => `${index}`}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            style={{ borderTopRightRadius: 20 }}
             renderItem={(item) => {
               return (
                 <ButtonFilter
@@ -437,24 +433,11 @@ class ReuqestList extends Component {
             }}
             onEndReachedThreshold={0.5}
           />
-          {/* <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{
-                            backgroundColor: '#fff',
-                        }}
-                    >
-                        <ButtonFilter value={'tiep_nhan'} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} style={{ paddingHorizontal: 5 }} />
-                        <ButtonFilter value={'dang'} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={3} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={5} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-
-                    </ScrollView> */}
         </View>
         <View
           style={{
             backgroundColor: "#f5f5f5",
-            height: 15,
+            height: responsive.h(15),
             width: "100%",
           }}
         />
@@ -474,9 +457,9 @@ class ReuqestList extends Component {
             <View
               style={{
                 width: "90%",
-                margin: 20,
+                margin: responsive.h(20),
                 alignSelf: "center",
-                padding: 10,
+                padding: responsive.h(10),
                 backgroundColor: "#fff",
                 justifyContent: "space-between",
               }}
@@ -521,9 +504,9 @@ class ReuqestList extends Component {
                   })
                 }
                 style={{
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 5,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(5),
                   backgroundColor: colors.gray2,
                   flexDirection: "row",
                   justifyContent: "space-between",
@@ -536,11 +519,11 @@ class ReuqestList extends Component {
                     ? depSelected.name
                     : "Chọn phòng ban"}
                 </Text>
-                <MyIcon name="arrow-down" size={20} color={colors.gray1} />
+                <MyIcon name="arrow-down" size={responsive.h(20)} color={colors.gray1} />
               </TouchableOpacity>
 
               <View
-                style={{ flexDirection: "row", marginTop: 10, marginLeft: -10 }}
+                style={{ flexDirection: "row", marginTop: responsive.h(10), marginLeft: -responsive.h(10) }}
               >
                 <ButtonDateFilter
                   value={typeId == 0}
@@ -562,7 +545,7 @@ class ReuqestList extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  marginTop: 20,
+                  marginTop: responsive.h(20),
                   justifyContent: "center",
                 }}
               >
@@ -592,22 +575,22 @@ class ReuqestList extends Component {
                     )
                   }
                   text="Lọc dữ liệu"
-                  style={{ marginLeft: 10 }}
+                  style={{ marginLeft: responsive.h(10) }}
                 />
               </View>
             </View>
             <TouchableOpacity
               onPress={() => this.setState({ showFilter: false })}
               style={{
-                borderRadius: 45,
+                borderRadius: responsive.h(45),
                 backgroundColor: colors.appTheme,
-                padding: 10,
+                padding: responsive.h(10),
                 position: "absolute",
-                top: 5,
-                right: 5,
+                top: responsive.h(5),
+                right: responsive.h(5),
               }}
             >
-              <MyIcon name="no" color="#fff" size={10} />
+              <MyIcon name="no" color="#fff" size={responsive.h(10)} />
             </TouchableOpacity>
           </View>
         )}
@@ -616,17 +599,17 @@ class ReuqestList extends Component {
             onPress={() => this.props.navigation.navigate("requestCreate")}
             style={{
               backgroundColor: colors.appTheme,
-              width: 50,
-              height: 50,
-              borderRadius: 35,
+              width: responsive.h(50),
+              height: responsive.h(50),
+              borderRadius: responsive.h(35),
               justifyContent: "center",
               alignItems: "center",
               position: "absolute",
               bottom: responsive.h(100),
-              right: 20,
+              right: responsive.h(20),
             }}
           >
-            <MyIcon name="plus" size={20} color="#fff" />
+            <MyIcon name="plus" size={responsive.h(20)} color="#fff" />
           </TouchableOpacity>
         )}
 
@@ -635,8 +618,8 @@ class ReuqestList extends Component {
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>
