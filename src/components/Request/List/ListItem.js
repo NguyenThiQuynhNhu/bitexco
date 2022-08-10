@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import moment from "moment";
 import fontSize from "../../../theme/fontsize";
 import { MyIcon } from "../../../theme/icons";
+import { Screen } from "../../../utils/device";
 import {
   converStatusToColor,
   converStatusToString,
@@ -11,11 +12,10 @@ import {
 import ImageProgress from "../../common/ImageProgress";
 import { myFromNow } from "../../../utils/request";
 import responsive from "../../../resources/responsive";
-
 // create a component
 class ListItem extends PureComponent {
   render() {
-    const { item, onPress } = this.props;
+    const { item, onPress, index } = this.props;
     const {
       title,
       content,
@@ -32,305 +32,25 @@ class ListItem extends PureComponent {
 
     //console.log(item)
     return (
-      //   <TouchableOpacity
-      //     style={{
-      //       flexDirection: "row",
-      //       backgroundColor: "#fff",
-      //       borderRadius: 12,
-      //       backgroundColor: "#ffffff",
-      //       shadowColor: "rgba(0, 0, 0, 0.1)",
-      //       elevation: 2,
-      //       shadowOffset: {
-      //         width: 0,
-      //         height: 4,
-      //       },
-      //       shadowRadius: 10,
-      //       shadowOpacity: 1,
-      //       marginVertical: 10,
-      //       marginHorizontal: 20,
-      //     }}
-      //     onPress={onPress}
-      //   >
-      //     <View
-      //       style={{
-      //         flex: 1,
-      //         padding: 10,
-      //         alignItems: "flex-start",
-      //       }}
-      //     >
-      //       <View
-      //         style={{
-      //           flexDirection: "row",
-      //           alignItems: "flex-start",
-      //           backgroundColor: "#fff",
-      //         }}
-      //       >
-      //         <ImageProgress
-      //           circle={true}
-      //           style={{
-      //             height: 46,
-      //             width: 46,
-      //           }}
-      //           source={{ uri: avatarResident }}
-      //         />
-      //         <View
-      //           style={{
-      //             flex: 1,
-      //             justifyContent: "space-between",
-      //             marginLeft: 10,
-      //           }}
-      //         >
-      //           {residentName ? (
-      //             <View>
-      //               <Text
-      //                 style={{
-      //                   fontFamily: "Inter-Bold",
-      //                   fontSize: 14,
-      //                   fontWeight: "bold",
-      //                   fontStyle: "normal",
-      //                   letterSpacing: 0,
-      //                   textAlign: "left",
-      //                   color: colors.appTheme,
-      //                 }}
-      //               >
-      //                 {residentName}
-      //               </Text>
-      //               <View
-      //                 style={{
-      //                   flexDirection: "row",
-      //                   justifyContent: "space-between",
-      //                   alignItems: "center",
-      //                 }}
-      //               >
-      //                 <Text
-      //                   style={{
-      //                     fontFamily: "Inter-Regular",
-      //                     fontSize: 13,
-      //                     fontWeight: "normal",
-      //                     fontStyle: "normal",
-      //                     letterSpacing: 0,
-      //                     textAlign: "left",
-      //                     color: "#3d3d3d",
-      //                   }}
-      //                 >
-      //                   MS: {contractName}
-      //                 </Text>
-      //                 <View
-      //                   style={{
-      //                     //marginLeft: 10,
-      //                     marginVertical: 5,
-      //                     borderRadius: 16,
-      //                     backgroundColor: colorCode ? colorCode : "#fff200",
-      //                     //backgroundColor: converStatusToColor(statusKey),
-      //                   }}
-      //                 >
-      //                   <Text
-      //                     style={{
-      //                       margin: 2,
-      //                       marginHorizontal: 5,
-      //                       fontFamily: "Inter-Regular",
-      //                       fontSize: 12,
-      //                       fontWeight: "normal",
-      //                       fontStyle: "normal",
-      //                       letterSpacing: 0,
-      //                       textAlign: "left",
-      //                       color: "#fff",
-      //                     }}
-      //                   >
-      //                     {statusName}
-      //                   </Text>
-      //                 </View>
-      //               </View>
-      //               <Text
-      //                 style={{
-      //                   marginVertical: 0,
-      //                   fontFamily: "Inter-Regular",
-      //                   fontSize: 13,
-      //                   fontWeight: "normal",
-      //                   fontStyle: "normal",
-      //                   letterSpacing: 0,
-      //                   textAlign: "left",
-      //                   color: "#ff3d00",
-      //                 }}
-      //                 numberOfLines={1}
-      //               >
-      //                 {employeeName} - {departmentName}
-      //               </Text>
-      //             </View>
-      //           ) : (
-      //             <View>
-      //               <Text
-      //                 style={{
-      //                   fontFamily: "Inter-Bold",
-      //                   fontSize: 14,
-      //                   fontWeight: "bold",
-      //                   fontStyle: "normal",
-      //                   letterSpacing: 0,
-      //                   textAlign: "left",
-      //                   color: colors.appTheme,
-      //                 }}
-      //                 numberOfLines={1}
-      //               >
-      //                 {employeeName}
-      //               </Text>
-      //               <View
-      //                 style={{
-      //                   flexDirection: "row",
-      //                   justifyContent: "space-between",
-      //                   alignItems: "center",
-      //                 }}
-      //               >
-      //                 <Text
-      //                   style={{
-      //                     marginVertical: 0,
-      //                     fontFamily: "Inter-Regular",
-      //                     fontSize: 13,
-      //                     fontWeight: "normal",
-      //                     fontStyle: "normal",
-      //                     letterSpacing: 0,
-      //                     textAlign: "left",
-      //                     color: "#ff3d00",
-      //                   }}
-      //                   numberOfLines={1}
-      //                 >
-      //                   - {departmentName}
-      //                 </Text>
-
-      //                 <View
-      //                   style={{
-      //                     //marginLeft: 10,
-      //                     marginVertical: 5,
-      //                     borderRadius: 16,
-      //                     backgroundColor: colorCode ? colorCode : "#fff200",
-      //                     //backgroundColor: converStatusToColor(statusKey),
-      //                   }}
-      //                 >
-      //                   <Text
-      //                     style={{
-      //                       margin: 2,
-      //                       marginHorizontal: 5,
-      //                       fontFamily: "Inter-Regular",
-      //                       fontSize: 12,
-      //                       fontWeight: "normal",
-      //                       fontStyle: "normal",
-      //                       letterSpacing: 0,
-      //                       textAlign: "left",
-      //                       color: "#fff",
-      //                     }}
-      //                   >
-      //                     {statusName}
-      //                   </Text>
-      //                 </View>
-      //               </View>
-      //               {contractName ? (
-      //                 <Text
-      //                   style={{
-      //                     fontFamily: "Inter-Regular",
-      //                     fontSize: 13,
-      //                     fontWeight: "normal",
-      //                     fontStyle: "normal",
-      //                     letterSpacing: 0,
-      //                     textAlign: "left",
-      //                     color: "#3d3d3d",
-      //                   }}
-      //                 >
-      //                   MS: {contractName}
-      //                 </Text>
-      //               ) : null}
-      //             </View>
-      //           )}
-      //         </View>
-      //       </View>
-      //       <Text
-      //         style={{
-      //           marginTop: 15,
-      //           fontFamily: "Inter-SemiBold",
-      //           fontSize: 16,
-      //           fontWeight: "600",
-      //           fontStyle: "normal",
-      //           letterSpacing: 0,
-      //           textAlign: "left",
-      //           color: "#282828",
-      //         }}
-      //         numberOfLines={1}
-      //       >
-      //         {title}
-      //       </Text>
-      //       <Text
-      //         style={{
-      //           marginTop: 5,
-      //           fontFamily: "Inter-Regular",
-      //           fontSize: 13,
-      //           fontWeight: "normal",
-      //           fontStyle: "normal",
-      //           letterSpacing: 0,
-      //           textAlign: "left",
-      //           color: "#3d3d3d",
-      //         }}
-      //         numberOfLines={2}
-      //         lineBreakMode="tail"
-      //       >
-      //         {content}
-      //       </Text>
-      //       <View
-      //         style={{
-      //           width: "100%",
-      //           flexDirection: "row",
-      //           justifyContent: "flex-end",
-      //           alignItems: "center",
-      //           marginTop: 10,
-      //         }}
-      //       >
-      //         <Text />
-      //         <Text
-      //           style={{
-      //             fontFamily: "Inter-Regular",
-      //             fontSize: 11,
-      //             fontWeight: "normal",
-      //             fontStyle: "normal",
-      //             lineHeight: 22,
-      //             letterSpacing: 0,
-      //             textAlign: "left",
-      //             color: "#6f6f6f",
-      //           }}
-      //         >
-      //           {moment(dateCreate).format("DD/MM/YYYY HH:mm")}
-      //         </Text>
-      //       </View>
-      //     </View>
-      //   </TouchableOpacity>
 
       <TouchableOpacity
         onPress={onPress}
         style={{
           backgroundColor: "#fff",
-          borderRadius: 12,
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          //   shadowColor: "rgba(0, 0, 0, 0.1)",
-          // elevation: 1,
-          height: responsive.h(220),
-          width: responsive.w(180),
-          //   shadowOffset: {
-          //     width: 0,
-          //     height: 4,
-          //   },
-          //   shadowRadius: 10,
-          //   shadowOpacity: 1,
-          //   marginVertical: 10,
-          marginHorizontal: 10,
+          width: (Screen.width - responsive.h(30))/2,
+          margin: responsive.h(10),
+          marginRight: index % 2 == 0 && 0,
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
-          padding: 10,
-          paddingVertical: 15,
-          marginBottom: responsive.h(30),
-          marginVertical: responsive.h(20),
+          padding: responsive.h(10),
         }}
       >
         <View
           style={{
             flex: 1,
-
             display: "flex",
             justifyContent: "space-between",
           }}
@@ -339,43 +59,27 @@ class ListItem extends PureComponent {
             style={{
               flexDirection: "row",
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: 'flex-start',
               // alignItems: "center",
             }}
           >
-            <View style={{ marginTop: 10 }}>
               <ImageProgress
                 // circle={true}
                 style={{
-                  height: 41,
-                  width: 41,
-                  borderRadius: 51 / 2,
+                  height: responsive.h(41),
+                  width: responsive.h(41),
+                  borderRadius: responsive.h(22),
                 }}
                 source={{ uri: avatarResident }}
               />
-            </View>
-            <View
-              style={{
-                // flex: 1,
-                // marginLeft: 10,
-                // minHeight: 35,
-                // justifyContent: "space-between",
-                // flexDirection: "column",
-                marginVertical: 5,
-                maxWidth: responsive.w(100),
-              }}
-            >
+
+            <View style={{marginLeft: responsive.h(10), flex: 1}}>
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(15),
-                  fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
                   color: "black",
-                  textTransform: "uppercase",
-                  maxWidth: responsive.w(100),
+                  //textTransform: "uppercase",
                 }}
                 numberOfLines={2}
                 lineBreakMode="tail"
@@ -412,16 +116,15 @@ class ListItem extends PureComponent {
               </Text>
               <Text
                 style={{
-                  // margin: 2,
-                  // marginHorizontal: 5,
                   fontFamily: "Inter-Regular",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
                   color: converStatusToColor(statusName),
                 }}
+                numberOfLines={1}
               >
                 {statusName}
               </Text>
@@ -432,7 +135,7 @@ class ListItem extends PureComponent {
               style={{
                 // marginTop: 15,
                 fontFamily: "Inter-SemiBold",
-                fontSize: responsive.h(16),
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -447,7 +150,7 @@ class ListItem extends PureComponent {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(13),
+                  fontSize: responsive.h(14),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -474,7 +177,7 @@ class ListItem extends PureComponent {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(12),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   color: "#6f6f6f",
@@ -485,7 +188,7 @@ class ListItem extends PureComponent {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(12),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   color: "#6f6f6f",
@@ -496,11 +199,6 @@ class ListItem extends PureComponent {
             </View>
           </View>
         </View>
-        {/* <MyIcon
-                    name="triangle"
-                    size={20}
-                    color={converStatusToColor(statusId)}
-                    style={{ position: 'absolute', top: 0, right: 0, alignSelf: 'flex-start' }} /> */}
       </TouchableOpacity>
     );
   }

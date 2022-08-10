@@ -2,14 +2,15 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import ListItem from "./ListItem";
-
+import responsive from "../../../resources/responsive";
 // create a component
 class ListData extends Component {
-  renderItem = ({ item }) => {
+  renderItem = ({ item, index }) => {
     const { canNavigate, navigation } = this.props;
     return (
       <ListItem
         item={item}
+        index={index}
         onPress={() =>
           canNavigate ? navigation.navigate("requestDetail", item) : null
         }
@@ -22,7 +23,7 @@ class ListData extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -54,7 +55,7 @@ class ListData extends Component {
           this.onEndReachedCalledDuringMomentum = false;
         }}
         contentContainerStyle={{
-          alignItems: data.length > 1 ? "center" : null,
+          //alignItems: data.length > 1 ? "center" : null,
         }}
       />
     );
