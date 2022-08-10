@@ -548,7 +548,7 @@ class Drawer extends Component {
         {/* header */}
 
         {user && (
-            <View style={{ flexDirection: "row" }}>
+            <View style={{ flexDirection: "row", marginTop: Platform.OS == 'ios' ? 0 : StatusBar.currentHeight }}>
               <TouchableOpacity
                 //onPress={() => this._onAttachment()}
                 style={{
