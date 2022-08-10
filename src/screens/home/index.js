@@ -1301,7 +1301,7 @@ class HomeScreen extends Component {
               <View style={{ flex: 1, justifyContent: "center" }}>
                 <Text
                   style={{
-                    fontsize: responsive.h(20),
+                    fontSize: responsive.h(20),
                     fontFamily: "Inter-Bold",
                     color: "black",
                   }}
@@ -1320,7 +1320,7 @@ class HomeScreen extends Component {
                   />
                   <Text
                     style={{
-                      fontsize: responsive.h(14),
+                      fontSize: responsive.h(14),
                       fontFamily: "Inter-Medium",
                       color: "black",
                     }}
@@ -1385,7 +1385,7 @@ class HomeScreen extends Component {
                   <Text
                     style={{
                       color: "#ffff",
-                      fontsize: 12,
+                      fontSize: 12,
                       fontFamily: "Inter-Regular",
                       textAlign: "center",
                       paddingTop: 5,
@@ -1406,7 +1406,7 @@ class HomeScreen extends Component {
                   <Text
                     style={{
                       color: "#ffff",
-                      fontsize: 12,
+                      fontSize: 12,
                       fontFamily: "Inter-Regular",
                       textAlign: "center",
                       paddingTop: 5,
@@ -1427,7 +1427,7 @@ class HomeScreen extends Component {
                   <Text
                     style={{
                       color: "#ffff",
-                      fontsize: 12,
+                      fontSize: 12,
                       fontFamily: "Inter-Regular",
                       textAlign: "center",
                       paddingTop: 5,
@@ -1448,7 +1448,7 @@ class HomeScreen extends Component {
                   <Text
                     style={{
                       color: "#ffff",
-                      fontsize: 12,
+                      fontSize: 12,
                       fontFamily: "Inter-Regular",
                       textAlign: "center",
                       paddingTop: 5,
@@ -1814,7 +1814,7 @@ class HomeScreen extends Component {
                     style={{
                       height: responsive.h(130),
                       width: responsive.w(128),
-                      alignItems: "center",
+                      // alignItems: "center",
                       borderBottomWidth: 2,
                       borderRightWidth:
                         item.id === 1 || item.id === 2 || item.id === 3 ? 0 : 2,
@@ -1870,7 +1870,7 @@ class HomeScreen extends Component {
                 numColumns={3}
                 contentContainerStyle={{
                   justifyContent: "center",
-                  alignItems: "center",
+                  // alignItems: "center",
                   borderTopWidth: 2,
                   borderColor: "#f5f5f5",
                   maxWidth: responsive.w(385),

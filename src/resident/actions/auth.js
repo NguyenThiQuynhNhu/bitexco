@@ -22,7 +22,7 @@ import {
   SIGNIN_FAILURE,
 } from "./actionTypes";
 import FCM from "react-native-fcm";
-import { helper, get, post, getVersion } from "../services/helper";
+import { helper, get, post, getVersion, get2 } from "../services/helper";
 
 export const resetStateByKey = ({ key, path, value }) => ({
   type: AUTH_RESET_BY_KEY,
@@ -598,11 +598,15 @@ export const getProfile = (dataRequest) => async (dispatch) => {
           langId: 0,
         });
         console.log("getProfile2", ret1);
-        const url2 = "/Banner/GetDanhSachBanner";
-        const ret2 = await get(url2, {
+        const url2 = "/Banner/GetListBanner";
+        const ret2 = await get2(url2, {
           id: ret.data.id,
+          title: ret.data.title,
           link: ret.data.link,
-          isDisplay: ret.data.isDisplay,
+          imageLink: ret.data.imageLink,
+          display: ret.data.display,
+          header: ret.data.footer,
+          footer: ret.data.footer,
         });
         console.log("getProfile3", ret2);
 

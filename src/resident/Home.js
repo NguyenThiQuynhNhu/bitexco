@@ -1,5 +1,5 @@
 //import liraries
-import React, { Component } from "react";
+import React, { Component, useCallback } from "react";
 import {
   ImageBackground,
   View,
@@ -14,6 +14,7 @@ import {
   Modal,
   Image,
   SectionList,
+  Linking,
 } from "react-native";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -927,6 +928,7 @@ class HomeScreen extends Component {
 
             maxHeight: responsive.h(550),
             // marginHorizontal: 10,
+            padding: responsive.h(10),
           }}
         >
           <Text
@@ -938,9 +940,6 @@ class HomeScreen extends Component {
               letterSpacing: 0,
               textAlign: "left",
               color: "#000000",
-              marginTop: 10,
-              marginBottom: 10,
-              paddingHorizontal: 20,
             }}
           >
             {Strings.home.titleNews1}
@@ -1049,7 +1048,7 @@ class HomeScreen extends Component {
       emptyDataNotify,
       errorNotify,
     } = this.props;
-    console.log(this.props);
+    console.log("data get2", this.props);
     if (initComponent) {
       return (
         <View>
@@ -1080,30 +1079,51 @@ class HomeScreen extends Component {
       );
     }
     const { banner } = data;
-    const pageData = data.newsNewest.map((o, index) => (
-      // <TouchableOpacity
-      //   onPress={() =>
-      //     this.props.navigation.navigate("newsDetail", {
-      //       item: {
-      //         ...o,
-      //         towerId: this.props.towerId,
-      //         title: o.shortDescription,
-      //         towerName: this.props.user.towerName,
-      //       },
-      //       type: 1,
-      //     })
-      //   }
-      // >
-      <ImageProgress
-        source={{ uri: data.banner.link }}
-        style={{
-          height: responsive.h(180),
-          width: "100%",
-        }}
-      />
+    // const url = "google.com";
 
-      // </TouchableOpacity>
-    ));
+    // const OpenURLButton = () => {
+    //   const handlePress = useCallback(async () => {
+    //     // Checking if the link is supported for links with custom URL scheme.
+    //     const supported = await Linking.canOpenURL(url);
+
+    //     if (supported) {
+    //       // Opening the link with some app, if the URL scheme is "http" the web link shoculd be opened
+    //       // by some browser in the mobile
+    //       await Linking.openURL(url);
+    //     } else {
+    //       Alert.alert(`Don't know how to open this URL: ${url}`);
+    //     }
+    //   }, [url]);
+    //   return <TouchableOpacity onPress={() => handlePress} />;
+    // };
+
+    const pageData = data.banner.map(
+      (o, index) =>
+        data.banner[index].display &&
+        data.banner[index].header && (
+          <TouchableOpacity
+            onPress={() =>
+              Linking.canOpenURL(data.banner[index].link)
+                .then((supported) => {
+                  if (!supported) {
+                    console.log("Can't handle url: " + data.banner[index].link);
+                  } else {
+                    return Linking.openURL(`${data.banner[index].link}`);
+                  }
+                })
+                .catch((err) => console.error("An error occurred", err))
+            }
+          >
+            <ImageProgress
+              source={{ uri: data.banner[index].imageLink }}
+              style={{
+                height: responsive.h(180),
+                width: "100%",
+              }}
+            />
+          </TouchableOpacity>
+        )
+    );
 
     return (
       <View style={{ flex: 1 }}>
@@ -1131,7 +1151,9 @@ class HomeScreen extends Component {
             paginationStyle={{ bottom: 5 }}
             showsButtons={false}
           >
-            {data !== undefined || data.length === 0 ? (
+            {data.banner.length > 0 ? (
+              pageData
+            ) : (
               <Image
                 style={{
                   height: responsive.h(180),
@@ -1139,8 +1161,6 @@ class HomeScreen extends Component {
                 }}
                 source={default_baner}
               />
-            ) : (
-              pageData
             )}
           </Swiper>
         </View>
@@ -1148,6 +1168,200 @@ class HomeScreen extends Component {
           !_.isNil(fees.amountIncurred) &&
           this.rednerItemFee(fees)} */}
       </View>
+    );
+  }
+  renderBannerBottom() {
+    const {
+      isLoading,
+      data,
+      error,
+      initComponent,
+      user,
+      dataNotify,
+      isRefreshingNotify,
+      refreshDataHandle,
+      emptyDataNotify,
+      errorNotify,
+    } = this.props;
+    console.log("data get2", this.props);
+    if (initComponent) {
+      return (
+        <View>
+          <ActivityIndicator animating size="small" />
+        </View>
+      );
+    }
+    if (error && error.hasError) {
+      return (
+        <ErrorContent
+          title={Strings.app.error}
+          onTouchScreen={() => {
+            this.props.getProfile({ type: "re", langId: this.props.langId }),
+              this.props.refreshDataHandle();
+          }}
+        />
+      );
+    }
+    if (emptyDataNotify) {
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => {
+            this.props.getProfile({ type: "re", langId: this.props.langId }),
+              this.props.refreshDataHandle();
+          }}
+        />
+      );
+    }
+    // const { banner } = data;
+    // const url = "google.com";
+
+    // const OpenURLButton = () => {
+    //   const handlePress = useCallback(async () => {
+    //     // Checking if the link is supported for links with custom URL scheme.
+    //     const supported = await Linking.canOpenURL(url);
+
+    //     if (supported) {
+    //       // Opening the link with some app, if the URL scheme is "http" the web link shoculd be opened
+    //       // by some browser in the mobile
+    //       await Linking.openURL(url);
+    //     } else {
+    //       Alert.alert(`Don't know how to open this URL: ${url}`);
+    //     }
+    //   }, [url]);
+    //   return <TouchableOpacity onPress={() => handlePress} />;
+    // };
+
+    // const pageData = data.banner.map(
+    //   (o, index) =>
+    //     data.banner[index].display &&
+    //     data.banner[index].footer && (
+    //       <View
+    //         style={{
+    //           marginBottom: 10,
+    //           backgroundColor: "white",
+    //           paddingVertical: 10,
+    //         }}
+    //       >
+    //         <Text
+    //           style={{
+    //             fontFamily: "OpenSans-Bold",
+    //             fontSize: fontsize.medium,
+    //             fontWeight: "bold",
+    //             fontStyle: "normal",
+    //             letterSpacing: 0,
+    //             textAlign: "left",
+    //             color: "#000000",
+    //             marginTop: 10,
+    //             marginBottom: 10,
+    //             paddingHorizontal: 20,
+    //           }}
+    //         >
+    //           {data.banner[index].title}
+    //         </Text>
+    //         <TouchableOpacity
+    //           onPress={() =>
+    //             Linking.canOpenURL(data.banner[index].link)
+    //               .then((supported) => {
+    //                 if (!supported) {
+    //                   console.log(
+    //                     "Can't handle url: " + data.banner[index].link
+    //                   );
+    //                 } else {
+    //                   return Linking.openURL(`${data.banner[index].link}`);
+    //                 }
+    //               })
+    //               .catch((err) => console.error("An error occurred", err))
+    //           }
+    //         >
+    //           <Image
+    //             source={{ uri: data.banner[index].imageLink }}
+    //             style={{
+    //               height: responsive.h(160),
+    //               width: responsive.w(380),
+    //               alignSelf: "center",
+    //             }}
+    //           />
+
+    //           {/* <ImageProgress
+    //             source={{ uri: data.banner[index].imageLink }}
+    //             style={{
+    //               height: responsive.h(180),
+    //               width: "100%",
+    //             }}
+    //           /> */}
+    //         </TouchableOpacity>
+    //       </View>
+    //     )
+    // );
+
+    return (
+      <FlatList
+        data={data.banner || []}
+        horizontal
+        keyExtractor={(item, index) => `${index}`}
+        ListEmptyComponent={
+          <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <Text>{Strings.app.emptyData}</Text>
+          </View>
+        }
+        renderItem={({ item }) =>
+          item.display &&
+          item.footer && (
+            <View
+              style={{
+                padding: responsive.h(10),
+                backgroundColor: "#ffff",
+              }}
+            >
+              <Text
+                style={{
+                  fontFamily: "OpenSans-Bold",
+                  fontSize: fontsize.medium,
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  textAlign: "left",
+                  color: "#000000",
+                  marginVertical: responsive.h(10),
+                }}
+              >
+                {item.title}
+              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.canOpenURL(item.link)
+                    .then((supported) => {
+                      if (!supported) {
+                        console.log("Can't handle url: " + item.link);
+                      } else {
+                        return Linking.openURL(`${item.link}`);
+                      }
+                    })
+                    .catch((err) => console.error("An error occurred", err))
+                }
+              >
+                <Image
+                  source={{ uri: item.imageLink }}
+                  style={{
+                    height: responsive.h(180),
+                    width: responsive.w(Screen.width),
+                    alignSelf: "center",
+                  }}
+                />
+
+                {/* <ImageProgress
+                source={{ uri: data.banner[index].imageLink }}
+                style={{
+                  height: responsive.h(180),
+                  width: "100%",
+                }}
+              /> */}
+              </TouchableOpacity>
+            </View>
+          )
+        }
+      />
     );
   }
 
@@ -1523,38 +1737,7 @@ class HomeScreen extends Component {
             </SafeAreaView>
           </View>
           {this.renderContent()}
-          <View
-            style={{
-              marginBottom: 10,
-              backgroundColor: "white",
-              paddingVertical: 10,
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "OpenSans-Bold",
-                fontSize: fontsize.medium,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "left",
-                color: "#000000",
-                marginTop: 10,
-                marginBottom: 10,
-                paddingHorizontal: 20,
-              }}
-            >
-              {Strings.home.help}
-            </Text>
-            <Image
-              source={require("../resources/banner.png")}
-              style={{
-                height: responsive.h(160),
-                width: responsive.w(380),
-                alignSelf: "center",
-              }}
-            />
-          </View>
+          {this.renderBannerBottom()}
 
           <Modal
             animationType="slide"
