@@ -48,3 +48,12 @@ export const myFromNow=(created_at)=>{
     }
     return time
 }
+
+export const converIcon = (id) => {
+    switch (id) {
+        case 'dang_xu_ly': return 'x-l-01';
+        case 'hoan_thanh': return 'hon-thnh-01';
+        case 'dong': return '-ng-01';
+        default: return 'yu-cu-mi-01';
+    }
+}

@@ -61,9 +61,9 @@ class ActionSheet extends Component {
               </View>
               <TouchableOpacity
                 style={{
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 10,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(10),
                   alignItems: "center",
                   justifyContent: "center",
                   backgroundColor: "white",

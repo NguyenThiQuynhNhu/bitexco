@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 import { resetStateByKey, createRequestHandle } from '../../../actions/requestCreate';
 import fontsize from '../../../theme/fontsize';
 import Strings from '../../../utils/languages';
-
+import responsive from "../../../resources/responsive";
 // create a component
 class CreateCompleteScreen extends Component {
     static navigationOptions = ({ navigation }) => {

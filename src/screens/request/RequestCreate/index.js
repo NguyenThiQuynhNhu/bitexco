@@ -123,10 +123,10 @@ class CreateScreen extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={20} color="black" />
+              <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
           body={<Text style={titleStyle}>Tạo công việc</Text>}
@@ -141,22 +141,22 @@ class CreateScreen extends Component {
           //     </TouchableOpacity>
           //   }
         />
-        <KeyboardAwareScrollView style={{ borderTopRightRadius: 20 }}>
+        <KeyboardAwareScrollView>
           <View style={styles.container}>
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingBottom: 10,
-                borderTopRightRadius: 20,
+                paddingBottom: responsive.h(10),
+                borderTopRightRadius: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -165,19 +165,10 @@ class CreateScreen extends Component {
               >
                 {Strings.createRequest.title} (*)
               </Text>
-              {/* <TextInput
-                                maxLength={50}
-                                style={{ flex: 1, marginLeft: 20, paddingHorizontal: 0, paddingVertical: 0, fontSize: fontsize.small }}
-                                placeholder={Strings.createRequest.placeholderTitle}
-                                placeholderTextColor="#9e9e9e"
-                                value={this.state.title}
-                                underlineColorAndroid='transparent'
-                                onChangeText={(title) => { this.setState({ title }) }}
-                            /> */}
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 10,
+                  fontSize: responsive.h(10),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -195,18 +186,18 @@ class CreateScreen extends Component {
               style={{
                 width: "100%",
                 flex: 1,
-                height: 66,
-                padding: 10,
+                height: responsive.h(66),
+                padding: responsive.h(10),
                 textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
                 alignContent: "flex-start",
                 alignSelf: "flex-start",
                 fontSize: fontsize.small,
                 fontFamily: "Inter-Regular",
-                borderRadius: 8,
+                borderRadius: responsive.h(8),
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: "#cbcbcb",
-                marginBottom: 20,
+                marginBottom: responsive.h(20),
               }}
               placeholder={Strings.createRequest.placeholderTitle}
               placeholderTextColor="#6b6b6b"
@@ -276,7 +267,7 @@ class CreateScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingBottom: 20,
+                paddingBottom: responsive.h(20),
               }}
               onPress={() => this.setState({ showModalLevel: true })}
             >
@@ -284,12 +275,12 @@ class CreateScreen extends Component {
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
-                  marginRight: 10,
+                  marginRight: responsive.h(10),
                   flex: 0.4,
                 }}
               >
@@ -300,11 +291,11 @@ class CreateScreen extends Component {
                   justifyContent: "space-between",
                   flexDirection: "row",
                   alignItems: "center",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
-                  padding: 5,
+                  padding: responsive.h(5),
                   flex: 0.55,
                 }}
               >
@@ -312,7 +303,7 @@ class CreateScreen extends Component {
                   style={{
                     color: "#282828",
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "600",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -323,7 +314,7 @@ class CreateScreen extends Component {
                     ? levelSelected.value
                     : Strings.createRequest.placeholderPriority}
                 </Text>
-                <MyIcon size={14} color={"#C0C0C0"} name="arrow-down" />
+                <MyIcon size={responsive.h(14)} color={"#C0C0C0"} name="arrow-down" />
               </View>
             </TouchableOpacity>
 
@@ -332,14 +323,14 @@ class CreateScreen extends Component {
                 flexDirection: "row",
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                paddingBottom: 10,
+                paddingBottom: responsive.h(10),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -372,7 +363,7 @@ class CreateScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 10,
+                  fontSize: responsive.h(10),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -391,14 +382,14 @@ class CreateScreen extends Component {
               style={{
                 width: "100%",
                 flex: 1,
-                height: 100,
-                padding: 10,
+                height: responsive.h(100),
+                padding: responsive.h(10),
                 textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
                 alignContent: "flex-start",
                 alignSelf: "flex-start",
                 fontSize: fontsize.small,
                 fontFamily: "Inter-Regular",
-                borderRadius: 8,
+                borderRadius: responsive.h(8),
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: "#cbcbcb",
@@ -415,7 +406,7 @@ class CreateScreen extends Component {
               <ScrollView
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                style={{ marginTop: 20 }}
+                style={{ marginTop: responsive.h(20) }}
               >
                 {this.state.images.length < 5 && (
                   <View
@@ -423,16 +414,16 @@ class CreateScreen extends Component {
                       justifyContent: "center",
                       alignItems: "center",
                       backgroundColor: colors.grayBorder,
-                      borderRadius: 8,
-                      padding: 5,
-                      marginTop: 10,
-                      marginRight: 10,
+                      borderRadius: responsive.h(8),
+                      padding: responsive.h(5),
+                      marginTop: responsive.h(10),
+                      marginRight: responsive.h(10),
                     }}
                   >
                     <MyIcon
                       onPress={() => this._onAttachment()}
                       name="camera"
-                      size={40}
+                      size={responsive.h(40)}
                       color="#a8acaf"
                     />
                     <View
@@ -445,7 +436,7 @@ class CreateScreen extends Component {
                       <Text
                         style={{
                           fontFamily: "OpenSans-Regular",
-                          fontSize: 8,
+                          fontSize: responsive.h(8),
                           fontWeight: "normal",
                           fontStyle: "normal",
                           letterSpacing: 0,
@@ -464,9 +455,9 @@ class CreateScreen extends Component {
                     <View key={y}>
                       <Lightbox
                         style={{
-                          marginTop: 10,
-                          marginRight: 10,
-                          borderRadius: 5,
+                          marginTop: responsive.h(10),
+                          marginRight: responsive.h(10),
+                          borderRadius: responsive.h(5),
                           backgroundColor: "#eeeeee",
                         }}
                         activeProps={{
@@ -477,10 +468,10 @@ class CreateScreen extends Component {
                         <Image
                           source={{ uri: eachImage.uri }}
                           style={{
-                            width: 90,
-                            height: 120,
+                            width: responsive.w(90),
+                            height: responsive.h(120),
                             zIndex: 0,
-                            borderRadius: 8,
+                            borderRadius: responsive.h(8),
                           }}
                         />
                       </Lightbox>
@@ -493,14 +484,14 @@ class CreateScreen extends Component {
                           position: "absolute",
                           top: 0,
                           right: 0,
-                          borderRadius: 15,
+                          borderRadius: responsive.h(15),
                           marginTop: 0,
                           backgroundColor: "#505c5c5c",
                           zIndex: 1,
                           alignItems: "center",
                         }}
                       >
-                        <Text style={{ padding: 5, color: "#fff" }}> X </Text>
+                        <Text style={{ padding: responsive.h(5), color: "#fff", fontSize: responsive.h(14) }}> X </Text>
                       </TouchableOpacity>
                     </View>
                   );
@@ -512,13 +503,13 @@ class CreateScreen extends Component {
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: 20,
-                  paddingVertical: 20,
-                  borderRadius: 8,
+                  marginTop: responsive.h(20),
+                  paddingVertical: responsive.h(20),
+                  borderRadius: responsive.h(8),
                   backgroundColor: "#eaeaea",
                 }}
               >
-                <MyIcon name="camera" size={40} color="#a8acaf" />
+                <MyIcon name="camera" size={responsive.h(40)} color="#a8acaf" />
                 <View
                   style={{
                     borderRadius: 2,
@@ -529,7 +520,7 @@ class CreateScreen extends Component {
                   <Text
                     style={{
                       fontFamily: "OpenSans-Regular",
-                      fontSize: 8,
+                      fontSize: responsive.h(8),
                       fontWeight: "normal",
                       fontStyle: "normal",
                       letterSpacing: 0,
@@ -547,14 +538,14 @@ class CreateScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 20,
+                paddingVertical: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -577,8 +568,8 @@ class CreateScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginTop: -10,
-                  marginBottom: 20,
+                  marginTop: -responsive.h(10),
+                  marginBottom: responsive.h(20),
                 }}
               >
                 <TouchableOpacity
@@ -586,9 +577,9 @@ class CreateScreen extends Component {
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    padding: 10,
+                    padding: responsive.h(10),
                     flex: 0.45,
-                    borderRadius: 8,
+                    borderRadius: responsive.h(8),
                     borderStyle: "solid",
                     borderWidth: 1,
                     borderColor: "#cbcbcb",
@@ -608,7 +599,7 @@ class CreateScreen extends Component {
                         // fontSize: fontsize.larg,
                         flex: 1,
                         fontFamily: "Inter-SemiBold",
-                        fontSize: 14,
+                        fontSize: responsive.h(14),
                         fontWeight: "600",
                         fontStyle: "normal",
                         letterSpacing: 0,
@@ -625,7 +616,7 @@ class CreateScreen extends Component {
                       style={{
                         //marginLeft: 20,
                         fontFamily: "Inter-SemiBold",
-                        fontSize: 14,
+                        fontSize: responsive.h(14),
                         fontWeight: "600",
                         fontStyle: "normal",
                         letterSpacing: 0,
@@ -655,7 +646,7 @@ class CreateScreen extends Component {
                   />
                   <MyIcon
                     name="calendar2"
-                    size={20}
+                    size={responsive.h(20)}
                     color="rgba(0, 0, 0, 0.54)"
                   />
                 </TouchableOpacity>
@@ -664,13 +655,13 @@ class CreateScreen extends Component {
                     this.setState({ isToggleTimeFrom: true });
                   }}
                   style={{
-                    padding: 10,
+                    padding: responsive.h(10),
                     flexDirection: "row",
                     alignItems: "center",
                     justifyContent: "space-between",
                     // borderBottomWidth: 1,
                     // borderBottomColor: colors.grayBorder
-                    borderRadius: 8,
+                    borderRadius: responsive.h(8),
                     borderStyle: "solid",
                     borderWidth: 1,
                     borderColor: "#cbcbcb",
@@ -681,7 +672,7 @@ class CreateScreen extends Component {
                     style={{
                       //marginLeft: 20,
                       fontFamily: "Inter-SemiBold",
-                      fontSize: 14,
+                      fontSize: responsive.h(14),
                       fontWeight: "600",
                       fontStyle: "normal",
                       letterSpacing: 0,
@@ -707,7 +698,7 @@ class CreateScreen extends Component {
                       this.setState({ isToggleTimeFrom: false });
                     }}
                   />
-                  <MyIcon name="clock2" size={20} color="rgba(0, 0, 0, 0.54)" />
+                  <MyIcon name="clock2" size={responsive.h(20)} color="rgba(0, 0, 0, 0.54)" />
                 </TouchableOpacity>
               </View>
             )}
@@ -791,14 +782,14 @@ class CreateScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingBottom: 20,
+                paddingBottom: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -810,9 +801,9 @@ class CreateScreen extends Component {
               <TextInput
                 style={{
                   flex: 1,
-                  marginLeft: 20,
-                  paddingHorizontal: 10,
-                  paddingVertical: 5,
+                  marginLeft: responsive.h(20),
+                  paddingHorizontal: responsive.h(10),
+                  paddingVertical: responsive.h(5),
                   fontSize: fontsize.small,
                   fontFamily: "Inter-Regular",
                   borderRadius: 8,
@@ -835,14 +826,14 @@ class CreateScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingBottom: 20,
+                paddingBottom: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -854,12 +845,12 @@ class CreateScreen extends Component {
               <TextInput
                 style={{
                   flex: 1,
-                  marginLeft: 20,
-                  paddingHorizontal: 10,
-                  paddingVertical: 5,
+                  marginLeft: responsive.h(20),
+                  paddingHorizontal: responsive.h(10),
+                  paddingVertical: responsive.h(5),
                   fontSize: fontsize.small,
                   fontFamily: "Inter-Regular",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
@@ -886,7 +877,7 @@ class CreateScreen extends Component {
                   backgroundColor: colors.appTheme,
                   alignItems: "center",
                   justifyContent: "center",
-                  borderRadius: 25,
+                  borderRadius: responsive.h(25),
                 }}
                 onPress={this._onSend}
               >
@@ -909,8 +900,8 @@ class CreateScreen extends Component {
           style={{
             backgroundColor: colors.toast.warning,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
 
@@ -1072,10 +1063,10 @@ class CreateScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: responsive.h(20),
     backgroundColor: "#fff",
-    borderTopRightRadius: 20,
-    paddingBottom: 20,
+    borderTopRightRadius: responsive.h(20),
+    paddingBottom: responsive.h(20),
   },
   imageActive: {
     flex: 1,

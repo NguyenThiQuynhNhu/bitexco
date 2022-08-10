@@ -18,7 +18,7 @@ class History extends Component {
     return (
       <MyIcon
         name="star"
-        size={20}
+        size={responsive.h(20)}
         color={colors.appTheme}
         style={active ? styles.iconStarActive : styles.iconStarDeactive}
       />
@@ -76,8 +76,8 @@ class History extends Component {
         <View
           style={{
             alignContent: "space-between",
-            paddingRight: 5,
-            paddingTop: 10,
+            paddingRight: responsive.h(5),
+            paddingTop: responsive.h(10),
           }}
         >
           <Text
@@ -101,17 +101,15 @@ class History extends Component {
       rowData.statusName.length > 0
     ) {
       info = (
-        <View style={{ paddingTop: 10 }}>
+        <View style={{ paddingTop: responsive.h(10) }}>
           <View style={{ flex: 1, flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
-                borderRadius: 16,
+                borderRadius: responsive.h(16),
                 backgroundColor: "#fff5eb",
-                // paddingVertical: 5,
-                // paddingHorizontal: 20,
+                padding: responsive.h(5),
+                paddingHorizontal: responsive.h(10),
                 flexDirection: "row",
-                width: responsive.w(108),
-                height: responsive.h(25),
                 justifyContent: "center",
                 alignItems: "center",
               }}
@@ -132,7 +130,7 @@ class History extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(15),
                 textAlign: "center",
-                paddingHorizontal: 10,
+                paddingHorizontal: responsive.h(10),
                 color: "black",
               }}
             >
@@ -166,7 +164,7 @@ class History extends Component {
                 flexDirection: "row",
                 alignItems: "flex-start",
                 justifyContent: "flex-start",
-                paddingTop: 10,
+                paddingTop: responsive.h(10),
               }}
             >
               {this.renderRateView(rowData.ratingMark)}
@@ -178,7 +176,7 @@ class History extends Component {
 
     return (
       <View style={{ flex: 1, paddingTop: 0 }}>
-        <View style={{ marginTop: -5, marginBottom: 10 }}>
+        <View style={{ marginTop: -responsive.h(10), marginBottom: responsive.h(10) }}>
           {title}
           {info}
           {desc}
@@ -191,14 +189,14 @@ class History extends Component {
     return (
       <Timeline
         separator={false}
-        circleSize={18}
+        circleSize={responsive.h(18)}
         circleColor="#e4e4e4"
         lineColor="#e4e4e4"
         timeContainerStyle={{ maxWidth: 0, minWidth: 0 }}
-        descriptionStyle={{ color: "red", fontSize: 12 }}
+        descriptionStyle={{ color: "red", fontSize: responsive.h(12) }}
         titleStyle={{ fontSize: 12 }}
         options={{
-          style: { paddingTop: 5, marginTop: 20 },
+          style: { paddingTop: responsive.h(5), marginTop: responsive.h(20) },
         }}
         lineWidth={1}
         enableEmptySections={true}
@@ -220,7 +218,7 @@ const styles = StyleSheet.create({
     flex: 2,
     borderBottomWidth: 0,
     fontFamily: "Inter-Regular",
-    fontSize: 11,
+    fontSize: responsive.h(11),
     textAlign: "left",
     color: "#6f6f6f",
   },

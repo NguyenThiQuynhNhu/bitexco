@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import colors from '../../theme/colors'
-
+import responsive from "../../resources/responsive";
 // create a component
 const PrimaryButton = ({ text, textStyle, onPress, style, visible = true }) => {
 
@@ -12,9 +12,9 @@ const PrimaryButton = ({ text, textStyle, onPress, style, visible = true }) => {
             <TouchableOpacity onPress={onPress}>
                 <View
                     style={{
-                        borderRadius: 20,
-                        paddingVertical: 10,
-                        paddingHorizontal: 20,
+                        borderRadius: responsive.h(20),
+                        paddingVertical: responsive.h(10),
+                        paddingHorizontal: responsive.h(20),
                         justifyContent: 'center',
                         alignItems: 'center',
                         backgroundColor: colors.appTheme,
@@ -24,7 +24,7 @@ const PrimaryButton = ({ text, textStyle, onPress, style, visible = true }) => {
                 >
                     <Text style={{
                         fontFamily: "Inter-SemiBold",
-                        fontSize: 16,
+                        fontSize: responsive.h(16),
                         fontWeight: "600",
                         color: '#fff', ...textStyle
                     }}>{text}</Text>

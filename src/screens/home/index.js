@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import moment from "moment";
+import * as mineTypes from "react-native-mime-types";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import NavBar from "../../components/common/NavBar";
 import UpdateVersion from "../../components/common/UpdateVersion";
@@ -39,7 +40,9 @@ import { postFCMToken, delFCMTokenResident } from "../../actions/auth";
 import ImageProgress from "../../components/common/ImageProgress";
 import { default_baner } from "../../theme/images";
 import SwipeablePanel from "rn-swipeable-panel";
+import ImagePicker from "react-native-image-picker";
 import { converStatusToColor2 } from "../../resident/utils/serviceBasic";
+import { converIcon } from "../../resident/utils/request";
 import { resetStateByKey as resetRequest } from "../../actions/request";
 import { checkVersion } from "../../resident/actions/auth";
 import { color } from "react-native-reanimated";
@@ -176,7 +179,7 @@ class HomeScreen extends Component {
         if (notif.title.includes("bất thường")) {
           this.setState({ isUnnormal: true });
         }
-      } catch (error) {}
+      } catch (error) { }
       if (notif && Platform.OS === "android" && !notif.local_notification) {
         FCM.presentLocalNotification({
           body: notif.body,
@@ -457,7 +460,7 @@ class HomeScreen extends Component {
     if (
       nextProps.dataStatus != this.props.dataStatus ||
       nextProps.dataStatusServicesExtension !=
-        this.props.dataStatusServicesExtension ||
+      this.props.dataStatusServicesExtension ||
       nextProps.dataStatusServicesBasic != this.props.dataStatusServicesBasic
     ) {
       const menus = {
@@ -606,294 +609,6 @@ class HomeScreen extends Component {
       </View>
     );
   };
-
-  renderItemMenu = ({ item, index }) => {
-    const { id, name, icon, myIcon } = item;
-    const size = Screen.width / 4;
-    return (
-      <TouchableOpacity
-        style={{
-          width: (Screen.width - 50) / 3,
-          height: Screen.width / 3,
-          justifyContent: "center",
-          alignContent: "center",
-          alignItems: "center",
-          paddingVertical: Platform.isPad ? 40 : 20,
-          paddingHorizontal: 10,
-          //height: (Screen.height - 180) / 3,
-          marginHorizontal: 5,
-          marginVertical: 5,
-          borderRadius: 20,
-          backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.08)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 12,
-          shadowOpacity: 1,
-        }}
-        onPress={() => {
-          switch (id) {
-            case 1: {
-              return this.props.navigation.navigate("shiftList");
-            }
-            case 2: {
-              return this.props.navigation.navigate("requests");
-            }
-            case 3: {
-              return this.props.navigation.navigate("checklist", {
-                isMaintenance: 0,
-              });
-            }
-            case 4: {
-              return this.props.navigation.navigate("proposal");
-            }
-            case 5: {
-              return this.props.navigation.navigate("checklist", {
-                isMaintenance: 1,
-              });
-            }
-            case 6: {
-              return this.props.navigation.navigate("notification");
-            }
-            case 7: {
-              return this.props.navigation.navigate("electric");
-            }
-            case 8: {
-              return this.props.navigation.navigate("water");
-            }
-            case 9: {
-              //return this.props.navigation.navigate('water')
-              this.openPanel();
-              break;
-            }
-            case 10: {
-              //this.closePanel();
-              return this.props.navigation.navigate("shiftChange");
-            }
-            case 13: {
-              return this.props.navigation.navigate("gas");
-            }
-            case 14: {
-              return this.props.navigation.navigate("CheckList_NoiBo");
-            }
-            case 15: {
-              return this.props.navigation.navigate("CheckList_KhachHang");
-            }
-            case 16: {
-              return this.props.navigation.navigate("HandOverMore");
-            }
-            case 17: {
-              return this.props.navigation.navigate("Notification_Bangiao");
-            }
-            case 18: {
-              return this.props.navigation.navigate("ChecklistOfflineScreen");
-            }
-            case 19: {
-              return this.props.navigation.navigate("serviceExtension");
-            }
-            case 20: {
-              return this.props.navigation.navigate("serviceBasic");
-            }
-            case 21: {
-              return this.props.navigation.navigate("listNewsEm");
-            }
-            default:
-              break;
-          }
-        }}
-      >
-        <View
-          style={{
-            flex: 1,
-            width: (Screen.width - 50) / 3,
-          }}
-        >
-          <View
-            style={{
-              flex: 1,
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            {icon ? (
-              <Icon
-                name={icon}
-                size={Platform.isPad ? 90 : 50}
-                color={colors.appTheme}
-              />
-            ) : (
-              <MyIcon
-                name={myIcon}
-                size={Platform.isPad ? 90 : 50}
-                color={colors.appTheme}
-              />
-            )}
-            <Text
-              style={{
-                marginTop: 5,
-                fontSize: Platform.isPad ? 20 : 14,
-                color: "#000",
-                fontWeight: "bold",
-                textAlign: "center",
-                fontFamily: "Inter-SemiBold",
-              }}
-            >
-              {name}
-            </Text>
-          </View>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-  renderMenuStatusServicesBasic(menus) {
-    return (
-      <FlatList
-        horizontal={false}
-        scrollEnabled={false}
-        data={menus}
-        renderItem={({ item }) => {
-          const { statusId, total, statusName, statusKey } = item;
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate("serviceBasic", {
-                  idStatus: statusId,
-                });
-              }}
-              style={{
-                flexDirection: "row",
-                justifyContent: "center",
-                marginVertical: 2.5,
-              }}
-            >
-              <View
-                style={{
-                  borderRadius: 15,
-                  height: 25,
-                  width: 25,
-                  backgroundColor: converStatusToColor2(statusId),
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Text style={{ fontSize: 12, margin: 2, color: "#fff" }}>
-                  {total}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(item, index) => `${index}`}
-      />
-    );
-  }
-  renderMenuStatusServicesExtension(menus) {
-    return (
-      <FlatList
-        horizontal={false}
-        scrollEnabled={false}
-        data={menus}
-        renderItem={({ item }) => {
-          const { statusId, total, statusName, statusKey } = item;
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate("serviceExtension", {
-                  idStatus: statusId,
-                });
-              }}
-              style={{
-                marginVertical: 2.5,
-                flexDirection: "row",
-                justifyContent: "center",
-              }}
-            >
-              <View
-                style={{
-                  borderRadius: 15,
-                  height: 25,
-                  width: 25,
-                  backgroundColor: converStatusToColor2(statusId),
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Text style={{ fontSize: 12, margin: 2, color: "#fff" }}>
-                  {total}
-                </Text>
-              </View>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(item, index) => `${index}`}
-      />
-    );
-  }
-  renderMenuStatusRequest(menus) {
-    return (
-      <FlatList
-        horizontal={true}
-        scrollEnabled={false}
-        data={menus}
-        renderItem={({ item }) => {
-          const { id, name, total, colorCode } = item;
-          return (
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.dispatch({
-                  type: "ON_STATUS_CHANGE",
-                  payload: id,
-                });
-                this.props.navigation.navigate("requests", { idStatus: id });
-              }}
-              style={{
-                marginVertical: 20,
-                marginHorizontal: 35,
-                flexDirection: "row",
-                justifyContent: "center",
-              }}
-            >
-              {total !== 0 ? (
-                <View
-                  style={{
-                    borderRadius: 15,
-                    height: 17,
-                    width: 17,
-                    backgroundColor: "#e7bd23",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Text style={{ fontSize: 12, margin: 2, color: "black" }}>
-                    {total}
-                  </Text>
-                </View>
-              ) : null}
-              {/* <View
-                style={{
-                  borderRadius: 15,
-                  height: 17,
-                  width: 17,
-                  backgroundColor: "#e7bd23",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <Text style={{ fontSize: 12, margin: 2, color: "black" }}>
-                  {total}
-                </Text>
-              </View> */}
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(item, index) => `${index}`}
-      />
-    );
-  }
-
   renderItem = ({ item, index }) => {
     const {
       id,
@@ -1164,6 +879,74 @@ class HomeScreen extends Component {
       </TouchableOpacity>
     );
   };
+  renderMenuStatusRequest(menus) {
+    console.log('menus', menus)
+    return (
+      <FlatList
+        horizontal={true}
+        scrollEnabled={false}
+        data={menus}
+        renderItem={({ item }) => {
+          const { id, name, total, colorCode, statusKey } = item;
+          return (
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.dispatch({
+                  type: "ON_STATUS_CHANGE",
+                  payload: id,
+                });
+                this.props.navigation.navigate("requests", { idStatus: id });
+              }}
+              style={{
+                width: (Screen.width - responsive.h(40)) / 4,
+                alignItems: 'center',
+                justifyContent: "center",
+              }}
+            >
+
+              <MyIcon
+                name={converIcon(statusKey)}
+                size={responsive.h(30)}
+                color="#fff"
+                style={{}}
+              />
+              <Text
+                style={{
+                  color: "#ffff",
+                  fontSize: responsive.h(14),
+                  fontFamily: "Inter-SemiBold",
+                  textAlign: "center",
+                  marginTop: responsive.h(10),
+                }}
+              >
+                {name}
+              </Text>
+              {total !== 0 ? (
+                <View
+                  style={{
+                    borderRadius: responsive.h(15),
+                    height: responsive.h(17),
+                    width: responsive.h(17),
+                    backgroundColor: colorCode,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    position: 'absolute',
+                    top: 0,
+                    right: ((Screen.width - responsive.h(40)) / 8) - responsive.h(20)
+                  }}
+                >
+                  <Text style={{ fontSize: responsive.h(12), color: "black" }}>
+                    {total}
+                  </Text>
+                </View>
+              ) : null}
+            </TouchableOpacity>
+          );
+        }}
+        keyExtractor={(item, index) => `${index}`}
+      />
+    );
+  }
 
   render() {
     const { menus, menusMore } = this.state;
@@ -1171,7 +954,7 @@ class HomeScreen extends Component {
     const fullName = user !== null ? user.name : "";
     const towerName = user !== null ? user.towerName : "";
     const photoUrl = user ? user.photoUrl : "";
-    console.log(this.props.dataVendor);
+    //console.log('responsive.w(128)', responsive.w(128));
     console.log(user);
     const listMenuItem = [
       {
@@ -1227,62 +1010,50 @@ class HomeScreen extends Component {
         <ImageBackground
           source={require("../../resources/bgMenu.png")}
           style={{
-            // height: 250,
-            flex: 1,
+            //flex: 1,
+            paddingHorizontal: responsive.h(15)
           }}
           resizeMode="cover"
         >
           <NavBar
             // backgroundColor2={"#E5E5E5"}
             leftButton={
-              //   <IconButton
-              //     materialIcon="menu"
-              //     size={28}
-              //     color="#fff"
-              //   />
               <TouchableOpacity
                 onPress={() => this.props.navigation.openDrawer()}
               >
-                <MyIcon name="iconNavigationMenu24Px" size={30} color="black" />
+                <MyIcon name="iconNavigationMenu24Px" size={responsive.h(28)} color="black" />
               </TouchableOpacity>
             }
-            // body={<Text style={titleStyle}>TRANG CHỦ</Text>}
 
             rightView={
-              <View
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("notification")}
                 style={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignContent: "center",
+                  alignSelf: 'flex-end'
                 }}
               >
-                <TouchableOpacity
-                  onPress={() => this.props.navigation.navigate("notification")}
-                >
-                  <MyIcon name="thng-bo-01" size={30} color="black" />
-                  {this.props.badgeNotify !== 0 && (
-                    <View style={styles.IconBadge}>
-                      <Text style={{ color: "white", fontSize: 10 }}>
-                        {this.props.badgeNotify > 99
-                          ? "99+"
-                          : this.props.badgeNotify}
-                      </Text>
-                    </View>
-                  )}
-                </TouchableOpacity>
-              </View>
+                <MyIcon name="thng-bo-01" size={responsive.h(28)} color="black" />
+                {this.props.badgeNotify != 0 && (
+                  <View style={styles.IconBadge}>
+                    <Text style={{ color: "white", fontSize: responsive.h(10) }}>
+                      {this.props.badgeNotify > 99
+                        ? "99+"
+                        : this.props.badgeNotify}
+                    </Text>
+                  </View>
+                )}
+              </TouchableOpacity>
             }
           />
           {user && (
             <View style={{ flexDirection: "row" }}>
               <TouchableOpacity
-                onPress={() => this._onAttachment()}
+                //onPress={() => this._onAttachment()}
                 style={{
-                  height: 55,
-                  width: 55,
-                  borderRadius: 30,
+                  height: responsive.h(55),
+                  width: responsive.h(55),
+                  borderRadius: responsive.h(30),
                   borderWidth: 5,
-                  margin: 10,
                   borderColor: "rgba(255,255,255,0.4)",
                   justifyContent: "center",
                   alignItems: "center",
@@ -1294,28 +1065,28 @@ class HomeScreen extends Component {
                 <ImageProgress
                   source={{ uri: photoUrl }}
                   circle={true}
-                  style={{ height: 50, width: 50 }}
+                  style={{ height: responsive.h(50), width: responsive.h(50) }}
                 />
               </TouchableOpacity>
 
-              <View style={{ flex: 1, justifyContent: "center" }}>
+              <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
                 <Text
                   style={{
-                    fontSize: responsive.h(20),
+                    fontSize: responsive.h(16),
                     fontFamily: "Inter-Bold",
                     color: "black",
+                    marginBottom: responsive.h(5)
                   }}
                 >
                   {fullName}
                 </Text>
-                <View style={{ flexDirection: "row", display: "flex" }}>
+                <View style={{ flexDirection: "row", alignItems: 'center', display: "flex" }}>
                   <MyIcon
                     name="profile1"
-                    size={12}
+                    size={responsive.h(11)}
                     color="black"
                     style={{
-                      marginTop: 4,
-                      marginRight: 5,
+                      marginRight: responsive.h(5),
                     }}
                   />
                   <Text
@@ -1328,217 +1099,26 @@ class HomeScreen extends Component {
                     {towerName}
                   </Text>
                 </View>
-                {/* <Text
-                style={{
-                  color: "black",
-                  fontFamily: "OpenSans-Regular",
-                  fontSize: 20,
-                }}
-              >
-                {towerName}
-              </Text> */}
               </View>
             </View>
           )}
           <View
             style={{
-              padding: 10,
+              backgroundColor: "#fe494f",
+              borderRadius: responsive.h(14),
+              padding: responsive.h(15),
+              paddingHorizontal: responsive.h(10),
+              marginTop: responsive.h(10),
+              marginBottom: responsive.h(15)
             }}
           >
-            <TouchableOpacity
-              onPress={() => {
-                this.props.navigation.navigate("requests");
-                this.props.resetRequest({
-                  key: "isMine",
-                  path: "",
-                  value: !this.props.isMine,
-                });
-              }}
-              style={{
-                width: "100%",
-                flexDirection: "row",
-                backgroundColor: "#fe494f",
-                borderRadius: 14,
-                padding: 15,
-                height: 90,
-                alignSelf: "center",
-                marginBottom: 30,
-                justifyContent: "space-between",
-                display: "flex",
-              }}
-            >
-              <TouchableOpacity
-                style={{
-                  // maxWidth: 80,
-                  justifyContent: "center",
-                }}
-              >
-                <View>
-                  <MyIcon
-                    name="yu-cu-mi-01"
-                    size={28}
-                    color="#fff"
-                    style={{
-                      marginHorizontal: 20,
-                    }}
-                  />
-                  <Text
-                    style={{
-                      color: "#ffff",
-                      fontSize: 12,
-                      fontFamily: "Inter-Regular",
-                      textAlign: "center",
-                      paddingTop: 5,
-                    }}
-                  >
-                    Yêu cầu mới
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <View>
-                  <MyIcon
-                    name="x-l-01"
-                    size={28}
-                    color="#fff"
-                    style={{ marginHorizontal: 20 }}
-                  />
-                  <Text
-                    style={{
-                      color: "#ffff",
-                      fontSize: 12,
-                      fontFamily: "Inter-Regular",
-                      textAlign: "center",
-                      paddingTop: 5,
-                    }}
-                  >
-                    Xử lý
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <View>
-                  <MyIcon
-                    name="hon-thnh-01"
-                    size={28}
-                    color="#fff"
-                    style={{ marginHorizontal: 20 }}
-                  />
-                  <Text
-                    style={{
-                      color: "#ffff",
-                      fontSize: 12,
-                      fontFamily: "Inter-Regular",
-                      textAlign: "center",
-                      paddingTop: 5,
-                    }}
-                  >
-                    Hoàn thành
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <TouchableOpacity>
-                <View>
-                  <MyIcon
-                    name="-ng-01"
-                    size={28}
-                    color="#fff"
-                    style={{ marginHorizontal: 20 }}
-                  />
-                  <Text
-                    style={{
-                      color: "#ffff",
-                      fontSize: 12,
-                      fontFamily: "Inter-Regular",
-                      textAlign: "center",
-                      paddingTop: 5,
-                    }}
-                  >
-                    Đã đóng
-                  </Text>
-                </View>
-              </TouchableOpacity>
-              <View
-                style={{
-                  position: "absolute",
-                  top: -10,
-                }}
-              >
-                {this.renderMenuStatusRequest(menus.request.dataStatus)}
-              </View>
-
-              {/* <View style={{ flex: 1 }}>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MyIcon
-                  name={menus.request.myIcon}
-                  size={Platform.isPad ? 90 : 50}
-                  color={"#fff"}
-                />
-                <Text
-                  style={{
-                    fontSize: 16,
-                    color: "#fff",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    fontFamily: "Inter-SemiBold",
-                    marginVertical: 15,
-                  }}
-                >
-                  {menus.request.name}
-                </Text>
-                <TouchableOpacity
-                  style={{
-                    padding: 7,
-                    paddingHorizontal: 20,
-                    borderWidth: 1,
-                    borderColor: "#fff",
-                    borderRadius: 20,
-                    backgroundColor: "rgba(255, 255, 255, 0.2)",
-                  }}
-                  onPress={() => {
-                    this.props.navigation.navigate("requests");
-                    this.props.resetRequest({
-                      key: "isMine",
-                      path: "",
-                      value: !this.props.isMine,
-                    });
-                  }}
-                >
-                  <Text style={{ color: "#fff" }}>Của tôi</Text>
-                </TouchableOpacity>
-              </View>
-            </View>
-            <View
-              style={{
-                flex: 0.5,
-                flexDirection: "row",
-                justifyContent: "flex-end",
-              }}
-            >
-              <View
-                style={{
-                  backgroundColor: "#fff",
-                  borderRadius: 20,
-                  padding: 5,
-                  marginRight: 20,
-                }}
-              >
-                {this.renderMenuStatusRequest(menus.request.dataStatus)}
-              </View>
-            </View> */}
-            </TouchableOpacity>
+            {this.renderMenuStatusRequest(menus.request.dataStatus)}
           </View>
         </ImageBackground>
         <View
           style={{
             flex: 2,
-            marginHorizontal: 10,
+            marginHorizontal: responsive.h(15),
           }}
         >
           {this.props.user.towerId != null ? (
@@ -1546,119 +1126,13 @@ class HomeScreen extends Component {
               showsHorizontalScrollIndicator={false}
               showsVerticalScrollIndicator={false}
             >
-              {/* <View
-                style={{
-                  width: Screen.width - 20,
-                  flexDirection: "row",
-                  marginTop: 20,
-                  justifyContent: "space-between",
-                  marginBottom: 10,
-                  //   flex: 1,
-                }}
-              >
-                <TouchableOpacity
-                  style={{
-                    width: Screen.width / 2 - 15,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    backgroundColor: "#fff",
-                    borderRadius: 20,
-                    padding: 20,
-                  }}
-                  onPress={() => {
-                    this.props.navigation.navigate("serviceExtension");
-                  }}
-                >
-                  <View
-                    style={{
-                      flex: 0.5,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <MyIcon
-                      name1="Layer55png"
-                      name={menus.servicesEx.myIcon}
-                      size={Platform.isPad ? 90 : 50}
-                      color={colors.appTheme}
-                    />
-                    <Text
-                      style={{
-                        marginTop: 15,
-                        fontSize: 16,
-                        color: "#000",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        fontFamily: "Inter-SemiBold",
-                      }}
-                    >
-                      {menus.servicesEx.name}
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      flex: 0.5,
-                      justifyContent: "center",
-                      alignItems: "flex-end",
-                    }}
-                  >
-                    {this.renderMenuStatusServicesExtension(
-                      menus.servicesEx.dataStatus
-                    )}
-                  </View>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={{
-                    width: Screen.width / 2 - 15,
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    backgroundColor: "#fff",
-                    borderRadius: 20,
-                    padding: 20,
-                  }}
-                  onPress={() => {
-                    this.props.navigation.navigate("serviceBasic");
-                  }}
-                >
-                  <View
-                    style={{
-                      flex: 0.5,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <MyIcon
-                      name={menus.servicesBa.myIcon}
-                      size={Platform.isPad ? 90 : 50}
-                      color={colors.appTheme}
-                    />
-                    <Text
-                      style={{
-                        marginTop: 15,
-                        fontSize: 16,
-                        color: "#000",
-                        fontWeight: "bold",
-                        textAlign: "center",
-                        fontFamily: "Inter-SemiBold",
-                      }}
-                    >
-                      {menus.servicesBa.name}
-                    </Text>
-                  </View>
-                  <View style={{ flex: 0.5, alignItems: "flex-end" }}>
-                    {this.renderMenuStatusServicesBasic(
-                      menus.servicesBa.dataStatus
-                    )}
-                  </View>
-                </TouchableOpacity>
-              </View> */}
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
                   textAlign: "center",
                   fontSize: responsive.h(20),
                   color: "black",
-                  paddingTop: responsive.h(20),
+                  marginTop: responsive.h(20),
                   backgroundColor: "white",
                 }}
               >
@@ -1677,7 +1151,7 @@ class HomeScreen extends Component {
                   display: "flex",
                   justifyContent: "space-between",
                   flexDirection: "row",
-                  marginVertical: 20,
+                  marginVertical: responsive.h(20),
                 }}
               >
                 <TouchableOpacity
@@ -1686,16 +1160,16 @@ class HomeScreen extends Component {
                   }
                   style={{
                     width: responsive.w(160),
-                    height: responsive.h(60),
+                    //height: responsive.h(60),
                     backgroundColor: "#f5f5f5",
-                    borderRadius: 10,
+                    borderRadius: responsive.h(10),
                     justifyContent: "center",
                   }}
                 >
                   <View
                     style={{
-                      marginVertical: 10,
-                      marginHorizontal: 10,
+                      marginVertical: responsive.h(10),
+                      marginHorizontal: responsive.h(10),
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "center",
@@ -1703,24 +1177,24 @@ class HomeScreen extends Component {
                   >
                     <View
                       style={{
-                        height: 38,
-                        width: 38,
+                        height: responsive.h(40),
+                        width: responsive.h(40),
                         backgroundColor: "#e9e9e9",
-                        borderRadius: 19,
+                        borderRadius: responsive.h(20),
                         justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
-                      <MyIcon name="utility" color="black" size={22} />
+                      <MyIcon name="utility" color="black" size={responsive.h(22)} />
                     </View>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: responsive.h(16),
                         fontFamily: "Inter-Bold",
                         textTransform: "uppercase",
                         color: "black",
-                        paddingVertical: 10,
-                        paddingHorizontal: 10,
+                        paddingVertical: responsive.h(10),
+                        paddingHorizontal: responsive.h(10),
                       }}
                     >
                       {Strings.home.service}
@@ -1730,17 +1204,16 @@ class HomeScreen extends Component {
                 <TouchableOpacity
                   style={{
                     width: responsive.w(160),
-                    height: responsive.h(60),
+                    //height: responsive.h(60),
                     backgroundColor: "#f5f5f5",
-                    borderRadius: 10,
+                    borderRadius: responsive.h(10),
                     justifyContent: "center",
                   }}
                   onPress={() => this.props.navigation.navigate("serviceBasic")}
                 >
                   <View
                     style={{
-                      marginVertical: 10,
-                      marginHorizontal: 10,
+                      margin: responsive.h(10),
                       display: "flex",
                       flexDirection: "row",
                       justifyContent: "center",
@@ -1748,24 +1221,24 @@ class HomeScreen extends Component {
                   >
                     <View
                       style={{
-                        height: 38,
-                        width: 38,
+                        height: responsive.h(40),
+                        width: responsive.h(40),
                         backgroundColor: "#e9e9e9",
-                        borderRadius: 19,
+                        borderRadius: responsive.h(20),
                         justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
-                      <MyIcon name="ic_tab_tien_ich" color="black" size={22} />
+                      <MyIcon name="ic_tab_tien_ich" color="black" size={responsive.h(22)} style={{marginLeft: 3}} />
                     </View>
                     <Text
                       style={{
-                        fontSize: 16,
+                        fontSize: responsive.h(16),
                         fontFamily: "Inter-Bold",
                         textTransform: "uppercase",
                         color: "black",
-                        paddingVertical: 10,
-                        paddingHorizontal: 10,
+                        paddingVertical: responsive.h(10),
+                        paddingHorizontal: responsive.h(10),
                       }}
                     >
                       {Strings.home.extension}
@@ -1774,8 +1247,23 @@ class HomeScreen extends Component {
                 </TouchableOpacity>
               </View>
               <FlatList
+                keyExtractor={(item) => item.id}
+                numColumns={3}
+                contentContainerStyle={{
+                  justifyContent: "center",
+                  borderTopWidth: 2,
+                  borderLeftWidth: 2,
+                  borderColor: "#f5f5f5",
+                  //maxWidth: responsive.w(385),
+                  Width: responsive.w(385),
+                  maxHeight: responsive.h(391),
+                  alignSelf: "center",
+                  marginVertical: responsive.h(10),
+                  backgroundColor: "white",
+                }}
+                scrollEnabled={false}
                 data={listMenuItem}
-                renderItem={({ item }) => (
+                renderItem={({ item, index }) => (
                   <TouchableOpacity
                     onPress={() => {
                       switch (item.id) {
@@ -1813,12 +1301,10 @@ class HomeScreen extends Component {
                     }}
                     style={{
                       height: responsive.h(130),
-                      width: responsive.w(128),
-                      // alignItems: "center",
+                      width: ((Screen.width - responsive.h(15))/3) -8,
+                      alignItems: "center",
                       borderBottomWidth: 2,
-                      borderRightWidth:
-                        item.id === 1 || item.id === 2 || item.id === 3 ? 0 : 2,
-                      borderLeftWidth: 2,
+                      borderRightWidth: 2,
                       borderColor: "#f5f5f5",
                       justifyContent: "center",
                     }}
@@ -1826,23 +1312,9 @@ class HomeScreen extends Component {
                     <View
                       style={{
                         paddingVertical: responsive.h(7),
-                        paddingHorizontal: responsive.w(25),
+                        paddingHorizontal: responsive.h(25),
                       }}
                     >
-                      {/* <MyIcon
-                      name={item.icon}
-                      size={responsive.h(34)}
-                      style={{ alignSelf: "center" }}
-                    /> */}
-                      {/* <Image
-                        source={item.icon}
-                        style={{
-                          // height: responsive.h(40),
-                          // width: responsive.w(40),
-                          alignSelf: "center",
-                          marginVertical: responsive.h(10),
-                        }}
-                      /> */}
                       <MyIcon
                         name={item.icon}
                         size={responsive.h(40)}
@@ -1866,47 +1338,22 @@ class HomeScreen extends Component {
                     </View>
                   </TouchableOpacity>
                 )}
-                keyExtractor={(item) => item.id}
-                numColumns={3}
-                contentContainerStyle={{
-                  justifyContent: "center",
-                  // alignItems: "center",
-                  borderTopWidth: 2,
-                  borderColor: "#f5f5f5",
-                  maxWidth: responsive.w(385),
-                  Width: responsive.w(385),
-                  maxHeight: responsive.h(391),
-                  alignSelf: "center",
-                  marginVertical: responsive.h(10),
-                  backgroundColor: "white",
-                }}
-                scrollEnabled={false}
               />
               <View
                 style={{
-                  paddingVertical: 10,
+                  marginVertical: responsive.h(15)
                 }}
               >
                 <Image
+                resizeMode='stretch'
                   source={require("../../resources/bitexco.png")}
-                  style={{ marginVertical: 20, width: "100%" }}
+                  style={{ width: '100%', height: responsive.h(180) }}
                 />
               </View>
-              {/* <FlatList
-                //scrollEnabled={false}
-                data={menus.more}
-                renderItem={this.renderItemMenu}
-                horizontal={false}
-                numColumns={3}
-              /> */}
             </ScrollView>
           ) : (
             <Text>Vui lòng chọn toà nhà</Text>
           )}
-
-          {/* <View style={{ flex: 1 }}>
-                        {this.renderContent()}
-                    </View> */}
 
           {/* <TouchableOpacity
                         onPress={() => this.props.navigation.navigate('dashboard')}
@@ -1925,26 +1372,67 @@ class HomeScreen extends Component {
                         <Icon name='lock-pattern' size={ 30 } color='#fff' />
                     </TouchableOpacity> */}
         </View>
-        {/* <SwipeablePanel
-                    fullWidth
-                    isActive={this.state.swipeablePanelActive}
-                    onClose={this.closePanel}
-                    onPressCloseButton={this.closePanel}
-                    //closeOnTouchOutside={true}
-                    style={{ padding: 10 }}
-                    //showCloseButton={true}
-                >
-					<FlatList
-                        data={menusMore}
-                        renderItem={this.renderItemMenu}
-                        horizontal={false}
-                        numColumns={3}
-                        />
-				</SwipeablePanel> */}
       </View>
       // </ImageBackground>
     );
   }
+  _onAttachment = () => {
+    // if (this.props.images && _.size(this.props.images) < 5) {
+    const options = {
+      quality: 1.0,
+      maxWidth: 512,
+      maxHeight: 512,
+      storageOptions: {
+        skipBackup: true,
+      },
+      title: "Chọn hình ảnh",
+      takePhotoButtonTitle: "Chụp ảnh...",
+      chooseFromLibraryButtonTitle: "Chọn ảnh từ thư viện...",
+      cancelButtonTitle: "Bỏ qua",
+      permissionDenied: {
+        title: "Cấp quyền truy cập",
+        text: "Cho phép ứng dụng chụp ảnh và chọn từ thư viên ảnh...",
+        reTryTitle: "Thử lại",
+        okTitle: "Cho phép",
+      },
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      // console.log('Response showImagePicker = ', response);
+
+      if (response.didCancel) {
+        // console.log('User cancelled photo picker');
+      } else if (response.error) {
+        // console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        // console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const image = {
+          data: response.data,
+          uri: response.uri,
+          type:
+            Platform.OS === "ios"
+              ? mineTypes.lookup(response.uri)
+              : response.type,
+          fileName: response.fileName,
+        };
+
+        // const source = { uri: response.uri, data: response.data };
+        // You can also display the image using data:
+        // const source = { uri: `data:image/jpeg;base64,${response.data}` };
+        this.setState({ images: [...this.state.images, image] });
+        //this.props.addImageToList(image);
+      }
+    });
+    // } else {
+    //     Toast.show({
+    //         text: 'Bạn chỉ chọn được tối đa 5 hình',
+    //         position: 'bottom',
+    //         type: 'warning',
+    //         duration: 2000
+    //     });
+    // }
+  };
 }
 
 // define your styles
@@ -1953,12 +1441,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   IconBadge: {
-    top: -5,
-    right: 5,
+    top: responsive.h(-5),
+    right: responsive.w(5),
     position: "absolute",
-    borderRadius: 45,
-    minWidth: 12,
-    minHeight: 12,
+    borderRadius: responsive.w(45),
+    minWidth: responsive.w(12),
+    minHeight: responsive.w(12),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FF0000",

@@ -33,27 +33,26 @@ class ListItem extends PureComponent {
         <View
           style={{
             flex: 1,
-            padding: 20,
+            padding: responsive.h(20),
             flexDirection: "row",
             alignItems: "center",
             backgroundColor:
               isRead || Platform.OS != "ios" ? "#fff" : "#eeeeee",
-            borderTopRightRadius: Platform.OS === "ios" ? null : 50,
+            borderTopRightRadius: Platform.OS === "ios" ? null :  responsive.h(50),
           }}
         >
           <View
             style={{
-              borderRadius: 30,
-              height: 60,
-              width: 60,
-              //   backgroundColor: "#fff200",
+              borderRadius: responsive.h(30),
+              height: responsive.h(60),
+              width: responsive.h(60),
               justifyContent: "center",
               alignItems: "center",
               borderColor: "#d2d2d2",
               borderWidth: 1,
             }}
           >
-            <MyIcon name="megaphone-01" size={30} color="#d2d2d2" />
+            <MyIcon name="megaphone-01" size={responsive.h(30)} color="#d2d2d2" />
 
             {/* {!isRead ? (
               <View
@@ -70,13 +69,13 @@ class ListItem extends PureComponent {
             ) : null} */}
           </View>
 
-          <View style={{ flex: 1, justifyContent: "center", marginLeft: 10 }}>
+          <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
             <View style={{ flex: 1, justifyContent: "center" }}>
               <Text numberOfLines={3} lineBreakMode="tail">
                 <Text
                   style={{
                     fontFamily: "Inter-Bold",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "bold",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -88,6 +87,7 @@ class ListItem extends PureComponent {
                 </Text>{" "}
                 <Text
                   style={{
+                    fontSize: responsive.h(14),
                     fontFamily: "Inter-Medium",
                     color: isRead ? "#626262" : "#282828",
                     color: isRead ? "#626262" : "#282828",
@@ -97,6 +97,7 @@ class ListItem extends PureComponent {
                 </Text>{" "}
                 <Text
                   style={{
+                    fontSize: responsive.h(14),
                     fontWeight: "bold",
                     fontFamily: "Inter-Bold",
                     color: isRead ? "#626262" : "#282828",
@@ -119,7 +120,7 @@ class ListItem extends PureComponent {
                   color: isRead ? colors.gray1 : colors.appTheme,
                   color: "#a0a0a0",
                   fontFamily: "Inter-Bold",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   textAlign: "left",
                 }}
                 numberOfLines={2}

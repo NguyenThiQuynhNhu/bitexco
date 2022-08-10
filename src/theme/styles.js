@@ -1,7 +1,6 @@
 import responsive from "../resources/responsive";
 import colors from "./colors";
 import fontsize from "./fontsize";
-
 export const container = {
   flex: 1,
   backgroundColor: "#fff",

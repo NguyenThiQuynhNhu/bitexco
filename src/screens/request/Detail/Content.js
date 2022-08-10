@@ -26,14 +26,14 @@ class Content extends Component {
     const { data } = this.props;
     const { content, imageCustormer, imageAdmin, title } = data;
     return (
-      <ScrollView style={{ flex: 1, paddingHorizontal: 20, marginTop: 20 }}>
+      <ScrollView style={{ flex: 1, paddingHorizontal: responsive.h(20), marginTop: responsive.h(20) }}>
         <Text
           style={{
             fontFamily: "Inter-SemiBold",
             fontSize: responsive.h(15),
             textAlign: "left",
             color: "#282828",
-            marginBottom: 5,
+            marginBottom: responsive.h(5),
           }}
         >
           {title}
@@ -50,13 +50,13 @@ class Content extends Component {
         </Text>
 
         {imageCustormer.length !== 0 && (
-          <View style={{ marginTop: -10 }}>
+          <View style={{ marginTop: -responsive.h(10) }}>
             <ImageGallery data={imageCustormer} />
           </View>
         )}
 
         {imageAdmin.length !== 0 && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: responsive.h(10) }}>
             <ImageGallery data={imageAdmin} title="Ảnh nhân viên up" />
           </View>
         )}

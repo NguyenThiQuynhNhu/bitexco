@@ -7,7 +7,7 @@ import { resetStateByKey } from "../../../actions/requestCreate";
 import Strings from "../../../utils/languages";
 import { MyIcon } from "../../../theme/icons";
 import fontsize from "../../../theme/fontsize";
-
+import responsive from "../../../resources/responsive";
 import NavBar from "../../../resident/components/common/NavBar";
 // create a component
 
@@ -20,13 +20,13 @@ class ListItem extends PureComponent {
       <TouchableOpacity
         key={index}
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
           backgroundColor: "#fff",
-          paddingHorizontal: 10,
+          paddingHorizontal: responsive.h(10),
         }}
         onPress={() => this.props.onSelected(item)}
       >
-        <Text>{name}</Text>
+        <Text style={{fontSize: fontsize.small,}}>{name}</Text>
       </TouchableOpacity>
     );
   }
@@ -45,10 +45,10 @@ class ListStatus extends Component {
   render() {
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={20} color="black" />
+        <MyIcon name="arrow" size={responsive.h(20)} color="black" />
       </TouchableOpacity>
     );
 

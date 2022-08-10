@@ -13,6 +13,7 @@ import {
   Modal,
   StyleSheet,
   Alert,
+  SafeAreaView
 } from "react-native";
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-picker";
@@ -127,88 +128,6 @@ class Drawer extends Component {
   componentDidMount() {
     this.props.getRequestStatusTotal({ towerId: this.props.towerId });
     this.props.loadDataHandle();
-
-    // this.unsubscribe = FCM.on(FCMEvent.Notification, notif => {
-    //     console.log("Notification", notif);
-    //     const itemData = JSON.parse(notif.item);
-
-    //     // Tạo notification Local khi app đang chế độ foreground
-    //     if (Platform.OS === 'ios' && notif._notificationType === NotificationType.WillPresent && !notif.local_notification) {
-    //         // this notification is only to decide if you want to show the notification when user if in foreground.
-    //         // usually you can ignore it. just decide to show or not.
-    //         notif.finish(WillPresentNotificationResult.All)
-    //         this.props.AddItemToList(itemData)
-    //         return;
-    //     }
-
-    //     if (notif.opened_from_tray) {
-    //         console.log(itemData);
-
-    //         switch (notif.actionId) {
-    //             case "1"://Yêu cầu
-    //                 setTimeout(() => {
-    //                     this.props.navigation.navigate('requestDetail', { id: itemData.requestId, departmentId: itemData.departmentId, title: itemData.title })
-    //                 }, 500);
-    //                 break;
-
-    //             case "3"://Tiện ích
-    //                 setTimeout(() => {
-    //                     this.props.navigation.navigate('serviceBasicDetail', { id: itemData.id })
-    //                 }, 500);
-    //                 break;
-
-    //             case "4"://Dịch vụ
-    //                 setTimeout(() => {
-    //                     this.props.navigation.navigate('serviceExtensionDetail', { id: itemData.id })
-    //                 }, 500);
-    //                 break;
-    //         }
-
-    //         // if (notif.actionId == 1) {
-    //         //     setTimeout(() => {
-    //         //         this.props.navigation.navigate('requestDetail', { id: itemData.requestId, departmentId: itemData.departmentId, title: itemData.title })
-    //         //     }, 500)
-    //         // }
-    //         //Tin tức
-    //         // else if (notif.actionId == 2) {
-    //         //     setTimeout(() => {
-    //         //         this.props.navigation.navigate('newsDetail', { item: itemData, type: itemData.typeId })
-    //         //     }, 500)
-    //         // }
-    //     } else if (Platform.OS === 'android' && !notif.local_notification) {
-    //         FCM.presentLocalNotification({
-    //             vibrate: 500,
-    //             title: notif.title,
-    //             body: notif.body,
-    //             actionId: notif.actionId,
-    //             item: notif.item,
-    //             sound: 'default',
-    //             priority: 'high',
-    //             show_in_foreground: true
-    //         });
-    //         // this.props.AddItemToList(itemData)
-    //     }
-
-    //     if (Platform.OS === 'ios') {
-    //         //optional
-    //         //iOS requires developers to call completionHandler to end notification process. If you do not call it your background remote notifications could be throttled, to read more about it see the above documentation link.
-    //         //This library handles it for you automatically with default behavior (for remote notification, finish with NoData; for WillPresent, finish depend on "show_in_foreground"). However if you want to return different result, follow the following code to override
-    //         //notif._notificationType is available for iOS platfrom
-    //         switch (notif._notificationType) {
-    //             case NotificationType.Remote:
-    //                 notif.finish(RemoteNotificationResult.NewData) //other types available: RemoteNotificationResult.NewData, RemoteNotificationResult.ResultFailed
-    //                 break;
-    //             case NotificationType.NotificationResponse:
-    //                 notif.finish();
-    //                 break;
-    //             case NotificationType.WillPresent:
-    //                 notif.finish(WillPresentNotificationResult.All) //other types available: WillPresentNotificationResult.None
-    //                 // this type of notificaiton will be called only when you are in foreground.
-    //                 // if it is a remote notification, don't do any app logic here. Another notification callback will be triggered with type NotificationType.Remote
-    //                 break;
-    //         }
-    //     }
-    // });
   }
 
   componentWillUpdate(nextProps) {
@@ -234,23 +153,23 @@ class Drawer extends Component {
       <View>
         <TouchableOpacity
           style={{
-            paddingTop: 20,
+            marginTop: responsive.h(10),
             // paddingHorizontal: 20,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-            paddingLeft: 20,
+            paddingLeft : responsive.h(20),
           }}
         >
           <Text style={styles.textTitle}>Phản ánh</Text>
           <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
+            style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
           >
             <Text
               style={{
-                marginRight: 10,
+                marginRight : responsive.h(10),
                 fontFamily: "Inter-Bold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "bold",
                 textAlign: "left",
                 color: "#494856",
@@ -283,21 +202,23 @@ class Drawer extends Component {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            paddingVertical: 10,
+            paddingVertical : responsive.h(10),
           }}
         >
           <View
             style={{
-              borderRadius: 6,
+              borderRadius : responsive.h(6),
               backgroundColor: colors.grayBorder,
-              padding: 5,
+              padding : responsive.h(5),
               alignItems: "center",
               justifyContent: "center",
-              marginRight: 10,
-              marginLeft: 20,
+              marginRight : responsive.h(10),
+              marginLeft : responsive.h(20),
+              width: responsive.h(30), 
+              height: responsive.h(30), 
             }}
           >
-            <MyIcon name={converStatusToIcon(0)} color="black" size={18} />
+            <MyIcon name={converStatusToIcon(0)} color="black" size = {responsive.h(18)}/>
           </View>
 
           <Text style={styles.textInfo}>Tất cả</Text>
@@ -319,47 +240,49 @@ class Drawer extends Component {
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
-                  paddingVertical: 10,
+                  paddingVertical : responsive.h(10),
                 }}
               >
                 <View
                   style={{
-                    borderRadius: 6,
+                    borderRadius : responsive.h(6),
                     backgroundColor: colors.grayBorder,
-                    padding: 5,
+                    //padding : responsive.h(5),
                     alignItems: "center",
                     justifyContent: "center",
-                    marginRight: 10,
-                    marginLeft: 20,
+                    marginRight : responsive.h(10),
+                    marginLeft : responsive.h(20),
+                    width: responsive.h(30), 
+                    height: responsive.h(30), 
                   }}
                 >
                   <MyIcon
                     name={converStatusToIcon(id)}
                     color="black"
-                    size={18}
+                    size={responsive.h(18)}
                   />
                 </View>
                 <Text style={{ flex: 1, ...styles.textInfo }}>{name}</Text>
                 {total > 0 && (
                   <View
                     style={{
-                      marginLeft: 8,
-                      borderRadius: 10,
-                      height: 20,
-                      width: 20,
+                      marginLeft: responsive.h(8),
+                      borderRadius: responsive.h(10),
+                      height: responsive.h(20),
+                      width: responsive.h(20),
                       backgroundColor: colorCode,
                       alignItems: "center",
                       justifyContent: "center",
-                      marginHorizontal: 10,
+                      marginHorizontal: responsive.h(10),
                     }}
                   >
-                    <Text style={{ fontSize: 10, margin: 2, color: "#fff" }}>
+                    <Text style={{ fontSize: responsive.h(10), margin: responsive.h(2), color: "#fff" }}>
                       {total}
                     </Text>
                   </View>
                 )}
 
-                {/* {total && <Badge number={total} style={{ marginHorizontal: 10 }} />} */}
+                {/* {total && <Badge number={total} style={{ marginHorizontal: responsive.h(10) }} />} */}
               </TouchableOpacity>
             );
           }}
@@ -430,7 +353,7 @@ class Drawer extends Component {
               // style={{
               //     flexDirection: 'row',
               //     alignItems: 'center',
-              //     paddingVertical: 10
+              //     paddingVertical : responsive.h(10)
               // }}
             >
               {id != 4 ? (
@@ -438,21 +361,23 @@ class Drawer extends Component {
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
-                    paddingVertical: 10,
+                    paddingVertical : responsive.h(10),
                   }}
                 >
                   <View
                     style={{
-                      borderRadius: 6,
+                      borderRadius : responsive.h(6),
                       backgroundColor: colors.grayBorder,
-                      padding: 5,
+                      //padding : responsive.h(5),
                       alignItems: "center",
                       justifyContent: "center",
-                      marginRight: 10,
-                      marginLeft: 20,
+                      marginRight : responsive.h(10),
+                      marginLeft : responsive.h(20),
+                      width: responsive.h(30), 
+                      height: responsive.h(30), 
                     }}
                   >
-                    <MyIcon name={icon} color="black" size={18} />
+                    <MyIcon name={icon} color="black" size = {responsive.h(18)}/>
                   </View>
                   <Text style={{ flex: 1, ...styles.textInfo }}>{name}</Text>
                 </View>
@@ -463,21 +388,23 @@ class Drawer extends Component {
                       style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        paddingVertical: 10,
+                        paddingVertical : responsive.h(10),
                       }}
                     >
                       <View
                         style={{
-                          borderRadius: 6,
+                          borderRadius : responsive.h(6),
                           backgroundColor: colors.grayBorder,
-                          padding: 5,
+                          //padding : responsive.h(5),
                           alignItems: "center",
                           justifyContent: "center",
-                          marginRight: 10,
-                          marginLeft: 20,
+                          marginRight : responsive.h(10),
+                          marginLeft : responsive.h(20),
+                          width: responsive.h(30), 
+                      height: responsive.h(30), 
                         }}
                       >
-                        <MyIcon name={icon} color="black" size={18} />
+                        <MyIcon name={icon} color="black" size = {responsive.h(18)}/>
                       </View>
 
                       <Text style={{ flex: 1, ...styles.textInfo }}>
@@ -527,25 +454,15 @@ class Drawer extends Component {
               backgroundColor: colors.grayBorder,
               justifyContent: "center",
               alignItems: "center",
-              borderRadius: 25,
-              width: 45,
-              height: 45,
-              marginHorizontal: 20,
-              marginVertical: 10,
+              borderRadius: responsive.h(25),
+              width: responsive.h(45),
+              height: responsive.h(45),
+              marginHorizontal: responsive.h(20),
+              marginVertical: responsive.h(10),
             }}
           >
-            <MyIcon name="three-dot" size={25} color={colors.appTheme} />
+            <MyIcon name="three-dot" size={responsive.h(25)} color={colors.appTheme} />
           </View>
-          {/* <TouchableOpacity
-                        onPress={() => this.setState({ showListVendor: false })}
-                        style={{ padding: 10 }}>
-                        <MyIcon
-                            name="arrow-right"
-                            size={25}
-                            color={colors.gray1}
-                            style={{ alignSelf: 'flex-end' }}
-                        />
-                    </TouchableOpacity> */}
         </TouchableOpacity>
         <FlatList
           data={this.props.dataVendor}
@@ -568,21 +485,21 @@ class Drawer extends Component {
                         : "transparent",
                     justifyContent: "center",
                     alignItems: "center",
-                    borderRadius: 30,
-                    width: 45,
-                    height: 45,
-                    marginHorizontal: 20,
-                    marginVertical: 10,
+                    borderRadius: responsive.h(30),
+                    width: responsive.h(45),
+                    height: responsive.h(45),
+                    marginHorizontal: responsive.h(20),
+                    marginVertical: responsive.h(10),
                   }}
                 >
                   <ImageProgress
                     source={{ uri: logo }}
                     circle={true}
-                    style={{ width: 40, height: 40 }}
+                    style={{ width: responsive.h(40), height: responsive.h(40) }}
                   />
                 </View>
 
-                <Text style={{ flex: 1 }}>{name}</Text>
+                <Text style={{ flex: 1, fontSize: responsive.h(14) }}>{name}</Text>
               </TouchableOpacity>
             );
           }}
@@ -620,73 +537,73 @@ class Drawer extends Component {
           backgroundColor: colors.grayBorder,
         }}
       >
+        <SafeAreaView
+        style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
+      />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent={true}
+      />
         {/* header */}
 
         {user && (
-          <View style={{ flexDirection: "row" }}>
-            <TouchableOpacity
-              onPress={() => this._onAttachment()}
-              style={{
-                height: 55,
-                width: 55,
-                borderRadius: 30,
-                borderWidth: 5,
-                margin: 10,
-                borderColor: "rgba(255,255,255,0.4)",
-                justifyContent: "center",
-                alignItems: "center",
-                backgroundColor: this.props.isLoading ? "#fff" : "transparent",
-              }}
-            >
-              <ImageProgress
-                source={{ uri: photoUrl }}
-                circle={true}
-                style={{ height: 50, width: 50 }}
-              />
-            </TouchableOpacity>
-
-            <View style={{ flex: 1, justifyContent: "center" }}>
-              <Text
+            <View style={{ flexDirection: "row" }}>
+              <TouchableOpacity
+                //onPress={() => this._onAttachment()}
                 style={{
-                  fontSize: responsive.h(18),
-                  fontFamily: "Inter-Bold",
-                  color: "black",
+                  height: responsive.h(55),
+                  width: responsive.h(55),
+                  borderRadius: responsive.h(30),
+                  borderWidth: 5,
+                  borderColor: "rgba(255,255,255,0.4)",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: this.props.isLoading
+                    ? "#fff"
+                    : "transparent",
                 }}
               >
-                {fullName}
-              </Text>
-              <View style={{ flexDirection: "row", display: "flex" }}>
-                <MyIcon
-                  name="profile1"
-                  size={12}
-                  color="black"
-                  style={{
-                    marginTop: 4,
-                    marginRight: 5,
-                  }}
+                <ImageProgress
+                  source={{ uri: photoUrl }}
+                  circle={true}
+                  style={{ height: responsive.h(50), width: responsive.h(50) }}
                 />
+              </TouchableOpacity>
+
+              <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
                 <Text
                   style={{
-                    fontSize: 14,
-                    fontFamily: "Inter-Medium",
+                    fontSize: responsive.h(16),
+                    fontFamily: "Inter-Bold",
                     color: "black",
+                    marginBottom: responsive.h(5)
                   }}
                 >
-                  {towerName}
+                  {fullName}
                 </Text>
+                <View style={{ flexDirection: "row", alignItems: 'center', display: "flex" }}>
+                  <MyIcon
+                    name="profile1"
+                    size={responsive.h(11)}
+                    color="black"
+                    style={{
+                      marginRight: responsive.h(5),
+                    }}
+                  />
+                  <Text
+                    style={{
+                      fontSize: responsive.h(14),
+                      fontFamily: "Inter-Medium",
+                      color: "black",
+                    }}
+                  >
+                    {towerName}
+                  </Text>
+                </View>
               </View>
-              {/* <Text
-                style={{
-                  color: "black",
-                  fontFamily: "OpenSans-Regular",
-                  fontSize: 20,
-                }}
-              >
-                {towerName}
-              </Text> */}
             </View>
-          </View>
-        )}
+          )}
         {this.state.showListVendor ? (
           this.renderVendorList(user)
         ) : (
@@ -695,7 +612,7 @@ class Drawer extends Component {
               style={{
                 flexDirection: "row",
                 backgroundColor: "#ffff",
-                paddingHorizontal: 10,
+                paddingHorizontal: responsive.h(10),
               }}
             >
               {this.props.dataVendor.map((o, index) => {
@@ -722,17 +639,17 @@ class Drawer extends Component {
                             : "transparent",
                         justifyContent: "center",
                         alignItems: "center",
-                        borderRadius: 30,
-                        width: 45,
-                        height: 45,
-                        margin: 5,
-                        marginLeft: 5,
+                        borderRadius: responsive.h(30),
+                        width: responsive.h(45),
+                        height: responsive.h(45),
+                        margin: responsive.h(5),
+                        marginLeft: responsive.h(5),
                       }}
                     >
                       <ImageProgress
                         source={{ uri: o.logo }}
                         circle={true}
-                        style={{ height: 40, width: 40 }}
+                        style={{ height: responsive.h(40), width: responsive.h(40) }}
                       />
                     </TouchableOpacity>
                   );
@@ -741,21 +658,21 @@ class Drawer extends Component {
               {this.props.dataVendor.length > 3 && (
                 <TouchableOpacity
                   onPress={() => this.setState({ showListVendor: true })}
-                  style={{ padding: 10 }}
+                  style={{ padding: responsive.h(10) }}
                 >
                   <View
                     style={{
                       backgroundColor: "#fff",
                       justifyContent: "center",
                       alignItems: "center",
-                      borderRadius: 30,
-                      width: 50,
-                      height: 50,
+                      borderRadius: responsive.h(30),
+                      width: responsive.h(50),
+                      height: responsive.h(50),
                     }}
                   >
                     <MyIcon
                       name="three-dot"
-                      size={25}
+                      size={responsive.h(25)}
                       color={colors.appTheme}
                     />
                   </View>
@@ -772,7 +689,7 @@ class Drawer extends Component {
 
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("serviceBasic")}
-                style={{ paddingVertical: 20, paddingLeft: 20 }}
+                style={{ paddingVertical : responsive.h(20), paddingLeft : responsive.h(20) }}
               >
                 <Text style={styles.textTitle}>Tiện ích</Text>
               </TouchableOpacity>
@@ -783,14 +700,14 @@ class Drawer extends Component {
                 onPress={() =>
                   this.props.navigation.navigate("serviceExtension")
                 }
-                style={{ paddingVertical: 20, paddingLeft: 20 }}
+                style={{ paddingVertical : responsive.h(20), paddingLeft : responsive.h(20) }}
               >
                 <Text style={styles.textTitle}>Dịch vụ</Text>
               </TouchableOpacity>
 
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
               <View
-                style={{ paddingTop: 20, paddingLeft: 20, paddingBottom: 5 }}
+                style={{ paddingTop : responsive.h(20), paddingLeft : responsive.h(20), paddingBottom : responsive.h(5) }}
               >
                 <Text style={styles.textTitle}>Thống kê hệ thống</Text>
               </View>
@@ -798,7 +715,7 @@ class Drawer extends Component {
 
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
               <View
-                style={{ paddingTop: 20, paddingLeft: 20, paddingBottom: 5 }}
+                style={{ paddingTop : responsive.h(20), paddingLeft : responsive.h(20), paddingBottom : responsive.h(5) }}
               >
                 <Text style={styles.textTitle}>Hệ thống</Text>
               </View>
@@ -808,18 +725,10 @@ class Drawer extends Component {
                   ? this.state.menuSetting
                   : this.state.menuSetting1
               )}
-
-              {/* <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
-
-                            <TouchableOpacity
-                                onPress={() => this.props.navigation.navigate('deviceInfo')}
-                                style={{ paddingVertical: 20, paddingLeft: 20 }}>
-                                <Text style={{ color: colors.blueTextInput }}>Device Info (test)</Text>
-                            </TouchableOpacity>  */}
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
               <View
                 style={{
-                  height: 50,
+                  height: responsive.h(50),
                   flexDirection: "column",
                   backgroundColor: "#fff",
                   justifyContent: "center",
@@ -828,9 +737,9 @@ class Drawer extends Component {
               >
                 <Text
                   style={{
-                    marginBottom: 10,
+                    marginBottom: responsive.h(10),
                     fontFamily: "OpenSans-Regular",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     color: "#a0a0a0",
                   }}
                 >
@@ -865,14 +774,14 @@ class Drawer extends Component {
                   <Text>Đang tải</Text>
                 </View>
               ) : (
-                <View style={{ flex: 1, marginTop: 70, alignItems: "center" }}>
-                  <MyIcon name="accout" size={150} color="#ffffff" />
+                <View style={{ flex: 1, marginTop: responsive.h(70), alignItems: "center" }}>
+                  <MyIcon name="accout" size={responsive.h(150)} color="#ffffff" />
                   <Text
                     style={{
                       fontSize: fontSize.medium,
                       color: "#fff",
-                      marginTop: 20,
-                      margin: 20,
+                      marginTop: responsive.h(20),
+                      margin: responsive.h(20),
                       justifyContent: "center",
                       alignItems: "center",
                       textAlign: "center",
@@ -882,13 +791,13 @@ class Drawer extends Component {
                     Phiên đã hết hạn. Bạn có muốn đăng nhập lại?
                   </Text>
 
-                  <View style={{ flexDirection: "row", marginTop: 100 }}>
+                  <View style={{ flexDirection: "row", marginTop: responsive.h(100) }}>
                     <TouchableOpacity
                       onPress={() => this.setState({ isShowModalType: false })}
                       style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: "#ffffff",
@@ -897,14 +806,14 @@ class Drawer extends Component {
                         borderColor: colors.appTheme,
                       }}
                     >
-                      <MyIcon name="x" size={30} color={colors.appTheme} />
+                      <MyIcon name="x" size={responsive.h(30)} color={colors.appTheme} />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: 50,
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        marginLeft: responsive.h(50),
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: colors.appTheme,
@@ -916,7 +825,7 @@ class Drawer extends Component {
                         })
                       }
                     >
-                      <MyIcon name="check" size={30} color="#fff" />
+                      <MyIcon name="check" size={responsive.h(30)} color="#fff" />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -938,17 +847,17 @@ class Drawer extends Component {
                   }}
                 >
                   <ActivityIndicator />
-                  <Text>Đang tải</Text>
+                  <Text style={{fontSize: responsive.h(14),}}>Đang tải</Text>
                 </View>
               ) : (
-                <View style={{ flex: 1, marginTop: 70, alignItems: "center" }}>
+                <View style={{ flex: 1, marginTop: responsive.h(70), alignItems: "center" }}>
                   <MyIcon name="accout" size={150} color="#ffffff" />
                   <Text
                     style={{
                       fontSize: fontSize.medium,
                       color: "#fff",
-                      marginTop: 20,
-                      margin: 20,
+                      marginTop: responsive.h(20),
+                      margin: responsive.h(20),
                       justifyContent: "center",
                       alignItems: "center",
                       textAlign: "center",
@@ -958,13 +867,13 @@ class Drawer extends Component {
                     {Strings.profile.questionChangeUser}
                   </Text>
 
-                  <View style={{ flexDirection: "row", marginTop: 100 }}>
+                  <View style={{ flexDirection: "row", marginTop: responsive.h(100) }}>
                     <TouchableOpacity
                       onPress={() => this.setState({ isShowModalType: false })}
                       style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: "#ffffff",
@@ -973,14 +882,14 @@ class Drawer extends Component {
                         borderColor: colors.appTheme,
                       }}
                     >
-                      <MyIcon name="x" size={30} color={colors.appTheme} />
+                      <MyIcon name="x" size={responsive.h(30)} color={colors.appTheme} />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: 50,
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        marginLeft: responsive.h(50),
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: colors.appTheme,
@@ -994,7 +903,7 @@ class Drawer extends Component {
                         })
                       }
                     >
-                      <MyIcon name="check" size={30} color="#fff" />
+                      <MyIcon name="check" size={responsive.h(30)} color="#fff" />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -1060,14 +969,14 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontFamily: "Inter-SemiBold",
-    fontSize: 18,
+    fontSize: responsive.h(18),
     fontWeight: "600",
     textAlign: "left",
     color: "#000",
   },
   textInfo: {
     fontFamily: "OpenSans-Regular",
-    fontSize: 16,
+    fontSize: responsive.h(16),
     textAlign: "left",
     color: "#494856",
   },

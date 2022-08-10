@@ -105,20 +105,20 @@ class RequestDetailScreen extends Component {
         {isCustomer ? (
           <Image
             source={{ uri: `${this.props.user.photoUrl || default_image}` }}
-            style={{ height: 50, width: 50, borderRadius: 25 }}
+            style={{ height: responsive.h(50), width: responsive.h(50), borderRadius: responsive.h(25) }}
           />
         ) : (
           <View
             style={{
-              height: 50,
-              width: 50,
-              borderRadius: 25,
+              height: responsive.h(50),
+              width: responsive.h(50),
+              borderRadius: responsive.h(25),
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: colors.grayBorder,
             }}
           >
-            <MyIcon name="profile" size={20} color={colors.gray1} />
+            <MyIcon name="profile" size={responsive.h(20)} color={colors.gray1} />
           </View>
         )}
 
@@ -127,7 +127,7 @@ class RequestDetailScreen extends Component {
             flex: 1,
             alignItems: "flex-start",
             justifyContent: "center",
-            marginLeft: 10,
+            marginLeft: responsive.h(10),
           }}
         >
           <Text style={{ fontWeight: "bold" }}>
@@ -185,7 +185,7 @@ class RequestDetailScreen extends Component {
       >
         <Text
           style={{
-            margin: 10,
+            margin: responsive.h(10),
             fontSize: responsive.h(16),
             color: "black",
             textAlign: "center",
@@ -246,9 +246,7 @@ class RequestDetailScreen extends Component {
         <View
           style={{
             flex: 1,
-            borderTopRightRadius: 20,
-            paddingHorizontal: 10,
-            padding: 10,
+            padding: responsive.h(10),
           }}
         >
           {/* Thông tin nha cung cap */}
@@ -257,37 +255,29 @@ class RequestDetailScreen extends Component {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
-              marginVertical: responsive.h(25),
             }}
           >
             <View
               style={{
                 flexDirection: "row",
-                //borderBottomWidth: 1,
-                // borderColor: colors.grayBorder,
-                //padding: 20,
-                paddingBottom: 10,
-                backgroundColor: "#fff",
-                borderTopRightRadius: 20,
+                paddingBottom: responsive.h(10),
+                flex: 0.5
               }}
             >
               <View
                 style={{
-                  marginRight: 10,
+                  marginRight: responsive.h(10),
                 }}
               >
                 <ImageProgress
                   // circle={true}
                   style={{
-                    height: 51,
-                    width: 51,
-                    borderRadius: 51 / 2,
+                    height: responsive.h(51),
+                    width: responsive.h(51),
+                    borderRadius: responsive.h(26),
                   }}
                   source={{ uri: avatarResident }}
                 />
-                {/* <View style={{ marginTop: 10, backgroundColor: colorCode, paddingHorizontal: 20, paddingVertical: 5 }}>
-                                <Text style={{ color: '#fff' }}>{statusName}</Text>
-                            </View> */}
               </View>
               <View>
                 <Text
@@ -309,7 +299,7 @@ class RequestDetailScreen extends Component {
                           letterSpacing: 0,
                           // paddingVertical: responsive.h(5),
                           color: "#000000",
-                          paddingVertical: 3,
+                          paddingVertical: responsive.h(3),
                         }}
                       >
                         {phoneContact}
@@ -330,23 +320,21 @@ class RequestDetailScreen extends Component {
                 </View>
               </View>
             </View>
+
             <View
               style={{
                 alignItems: "flex-end",
-                justifyContent: "center",
+                flex: 0.5
               }}
             >
               {statusName && (
                 <View
                   style={{
-                    borderRadius: 16,
-                    // backgroundColor: colorCode,
-                    // paddingHorizontal: 20,
-                    // marginVertical: 5,
-                    // justifyContent: "center",
+                    borderRadius: responsive.h(16),
                     paddingVertical: responsive.h(5),
+                    paddingHorizontal: responsive.h(10),
                     backgroundColor: "#fff2ee",
-                    width: responsive.h(108),
+                    //width: responsive.h(108),
                   }}
                 >
                   <Text
@@ -365,7 +353,7 @@ class RequestDetailScreen extends Component {
               <Text
                 style={{
                   color: "#afaeae",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                   fontSize: responsive.h(14),
                   fontFamily: "Inter-Regular",
                 }}
@@ -373,6 +361,8 @@ class RequestDetailScreen extends Component {
                 {myFromNow(dateCreate)}
               </Text>
             </View>
+
+
           </View>
           {/* Nội dung */}
 
@@ -398,24 +388,24 @@ class RequestDetailScreen extends Component {
               >
                 <View
                   style={{
-                    borderRadius: 16,
+                    borderRadius: responsive.h(16),
                   }}
                 >
                   <View
                     style={{
-                      padding: 10,
+                      padding: responsive.h(10),
                       justifyContent: "center",
                       alignItems: "center",
                       backgroundColor: colors.appTheme,
-                      borderTopLeftRadius: 16,
-                      borderTopRightRadius: 16,
+                      borderTopLeftRadius: responsive.h(16),
+                      borderTopRightRadius: responsive.h(16),
                     }}
                   >
                     <Text
                       style={{
                         color: "white",
                         fontFamily: "Inter-SemiBold",
-                        fontSize: 18,
+                        fontSize: responsive.h(18),
                         fontWeight: "600",
                         fontStyle: "normal",
                         letterSpacing: 0,
@@ -435,9 +425,9 @@ class RequestDetailScreen extends Component {
                     >
                       <MyIcon
                         name="calendar"
-                        size={20}
+                        size={responsive.h(20)}
                         color="black"
-                        style={{ margin: 10 }}
+                        style={{ margin: responsive.h(10) }}
                       />
                       <TouchableOpacity
                         onPress={() =>
@@ -445,9 +435,9 @@ class RequestDetailScreen extends Component {
                             isToggleDate: true,
                           })
                         }
-                        style={{ backgroundColor: "#f5f5f5" }}
+                        style={{ }}
                       >
-                        <Text style={{ margin: 20, marginVertical: 10 }}>
+                        <Text style={{ fontSize: responsive.h(14), margin: responsive.h(10) }}>
                           {this.state.dataRequest.dateProcess}
                         </Text>
                       </TouchableOpacity>
@@ -458,15 +448,15 @@ class RequestDetailScreen extends Component {
                         autoCorrect={false}
                         style={{
                           backgroundColor: "#fff",
-                          height: 100,
-                          borderRadius: 8,
+                          height: responsive.h(100),
+                          borderRadius: responsive.h(8),
                           borderWidth: 1,
-                          margin: 10,
-                          marginLeft: 10,
+                          margin: responsive.h(10),
+                          marginLeft: responsive.h(10),
                           borderColor: colors.grayBorder,
                           textAlignVertical: "top",
                           fontFamily: "Inter-Regular",
-                          fontSize: 14,
+                          fontSize: responsive.h(14),
                         }}
                         underlineColorAndroid="transparent"
                         multiline={true}
@@ -485,17 +475,17 @@ class RequestDetailScreen extends Component {
                   <View
                     style={{
                       flexDirection: "row",
-                      marginTop: 20,
+                      marginTop: responsive.h(20),
                       alignSelf: "center",
-                      marginBottom: 10,
+                      marginBottom: responsive.h(10),
                     }}
                   >
                     <TouchableOpacity
                       onPress={() => this.setState({ isShowModal: false })}
                       style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: "#ffffff",
@@ -504,14 +494,14 @@ class RequestDetailScreen extends Component {
                         borderColor: colors.appTheme,
                       }}
                     >
-                      <MyIcon name="x" size={30} color={colors.appTheme} />
+                      <MyIcon name="x" size={responsive.h(30)} color={colors.appTheme} />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: 50,
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        marginLeft: responsive.h(50),
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: colors.appTheme,
@@ -530,7 +520,7 @@ class RequestDetailScreen extends Component {
                         })
                       }
                     >
-                      <MyIcon name="check" size={30} color="#fff" />
+                      <MyIcon name="check" size={responsive.h(30)} color="#fff" />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -577,23 +567,23 @@ class RequestDetailScreen extends Component {
     const { showAction } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={22} color="black" />
+        <MyIcon name="arrow" size={responsive.h(22)} color="black" />
       </TouchableOpacity>
     );
     const rightButton =
       methodProcess.length > 0 ? (
         <TouchableOpacity
-          style={{ paddingVertical: 10 }}
+          style={{ padding: responsive.h(10) }}
           onPress={() => this.setState({ showAction: true })}
         >
-          <MyIcon name="more-vertical" size={25} color="black" />
+          <MyIcon name="more-vertical" size={responsive.h(25)} color="black" />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={{ paddingVertical: 10 }}>
-          <MyIcon name="more-vertical" size={25} color={colors.appTheme} />
+        <TouchableOpacity style={{ padding: responsive.h(10) }}>
+          <MyIcon name="more-vertical" size={responsive.h(25)} color={colors.appTheme} />
         </TouchableOpacity>
       );
     return (
@@ -606,7 +596,7 @@ class RequestDetailScreen extends Component {
               lineBreakMode="tail"
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 textAlign: "center",
                 color: "black",
               }}
@@ -615,7 +605,7 @@ class RequestDetailScreen extends Component {
             </Text>
           }
           rightView={
-            data ? rightButton : <TouchableOpacity style={{ padding: 10 }} />
+            data ? rightButton : <TouchableOpacity style={{ padding: responsive.h(10) }} />
           }
         />
         {this.renderContent()}

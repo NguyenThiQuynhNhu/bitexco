@@ -5,6 +5,7 @@ import colors from '../../theme/colors';
 import fontsize from '../../theme/fontsize';
 const Devices = require('react-native-device-detection');
 import { Screen } from '../../utils/device'
+import responsive from "../../resources/responsive";
 // create a component
 const ButtonFilter = ({ value, text, onPress }) => {
     return (
@@ -13,12 +14,12 @@ const ButtonFilter = ({ value, text, onPress }) => {
         >
             <View
                 style={{
-                    marginLeft: 10,
-                    borderRadius: 45,
-                    padding: 5,
-                    paddingHorizontal: 10,
+                    marginLeft: responsive.h(10),
+                    borderRadius: responsive.h(45),
+                    padding: responsive.h(5),
+                    paddingHorizontal: responsive.h(10),
                     backgroundColor: value ? colors.appBackgroundButton : colors.gray2,
-                    width: Devices.isTablet ? (Screen.width / 5) : ((Screen.width - 50) / 4),
+                    width: Devices.isTablet ? (Screen.width / 5) : ((Screen.width - responsive.h(50)) / 4),
 
                 }}>
                 <Text style={{

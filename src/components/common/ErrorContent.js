@@ -5,7 +5,7 @@ import { MyIcon } from '../../theme/icons';
 import FontSize from '../../theme/fontsize';
 import Color from '../../theme/colors';
 import colors from '../../theme/colors';
-
+import responsive from "../../resources/responsive";
 // create a component
 const ErrorContent = (props) => {
     const { onTouchScreen, onPressButton, buttonText = 'Thử lại', logo, contentText, visibleButton = false, title } = props;
@@ -20,29 +20,29 @@ const ErrorContent = (props) => {
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
 
                     {/* <MyIcon name={"layers"} size={80} color={colors.grayBorder} /> */}
-                    <Image source={require('../../resources/empty-box.png')} style={{ width: 80, height: 80 }} />
+                    <Image source={require('../../resources/empty-box.png')} style={{ width: responsive.h(80), height: responsive.h(80) }} />
                     <Text style={{
                         fontFamily: "OpenSans-Regular",
-                        fontSize: 14,
+                        fontSize: responsive.h(14),
                         fontWeight: "normal",
                         fontStyle: "normal",
                         letterSpacing: 0,
                         textAlign: "left",
-                        color: "#cccccc", textAlign: 'center', marginHorizontal: 20
+                        color: "#cccccc", textAlign: 'center', marginHorizontal: responsive.h(20)
                     }}>{title}</Text>
                     {visibleButton ?
                         <TouchableOpacity
                             style={{
                                 backgroundColor: Color.appTheme,
-                                margin: 10,
-                                padding: 10,
+                                margin: responsive.h(10),
+                                padding: responsive.h(10),
                                 borderRadius: 5,
                                 justifyContent: 'center',
                                 alignItems: 'center'
                             }}
                             onPress={onPressButton}
                         >
-                            <Text style={{ color: 'white' }}>{buttonText}</Text>
+                            <Text style={{ color: 'white', fontSize: responsive.h(14) }}>{buttonText}</Text>
                         </TouchableOpacity> : null}
                 </View>
             </View>

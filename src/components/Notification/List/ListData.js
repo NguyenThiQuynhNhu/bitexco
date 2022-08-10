@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import FCM from "react-native-fcm";
 import { updateIsReadToList } from "../../../actions/notification";
 import { loadBadge } from "../../../actions/home";
+import responsive from "../../../resources/responsive";
 // create a component
 class ListData extends Component {
   renderItem = ({ item }) => {
@@ -71,7 +72,7 @@ class ListData extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -100,7 +101,7 @@ class ListData extends Component {
         onMomentumScrollBegin={() => {
           this.onEndReachedCalledDuringMomentum = false;
         }}
-        style={{ borderTopRightRadius: 20, marginTop: -16.5 }}
+        style={{ borderTopRightRadius: 20, marginTop: 0 }}
       />
     );
   }

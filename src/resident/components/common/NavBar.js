@@ -7,7 +7,12 @@ import Device from "../../utils/device";
 const NavBar = ({ leftButton, body, rightView, style }) => (
   <ImageBackground
     source={require("../../../resources/bgHeader.png")}
-    style={{ marginTop: -2, marginBottom: 10, height: responsive.h(102) }}
+    style={{
+       marginTop: -2, 
+       marginBottom: 10, 
+       height: responsive.h(102), 
+        justifyContent: "center",
+        alignItems: 'center' }}
   >
     <SafeAreaView
       style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
@@ -21,28 +26,26 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
       style={{
         marginTop: Platform.OS == "ios" ? 0 : StatusBar.currentHeight,
         backgroundColor: "transparent",
-        height: 50,
         justifyContent: "center",
+        alignItems: 'center',
+        flex: 1,
         //...Device.defaultNavBarStyle(),
         ...style,
       }}
     >
       <View
         style={{
-          height: responsive.h(80),
           backgroundColor: "transparent",
-          marginHorizontal: responsive.h(10),
-          //   flex: 1,
           flexDirection: "row",
           justifyContent: "space-between",
-          alignItems: "center",
+          //alignItems: "center",
         }}
       >
         <View style={{ justifyContent: "center" }}>{leftButton}</View>
         <View
           style={{
             justifyContent: "center",
-            alignItems: "center",
+            //alignItems: "center",
             flex: 1,
             //...Device.defaultPaddingTop(),
           }}
@@ -51,13 +54,6 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
         </View>
         <View style={{ justifyContent: "center" }}>{rightView}</View>
       </View>
-      {/* <View
-        style={{
-          height: 50,
-          backgroundColor: "#ffffff",
-          borderTopRightRadius: 25,
-        }}
-      /> */}
     </View>
   </ImageBackground>
 );

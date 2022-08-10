@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MyIcon } from "../../../theme/icons";
 import colors from "../../../theme/colors";
 import fontsize from "../../../theme/fontsize";
+import responsive from "../../../resources/responsive";
 // create a component
 const Lookup = ({
   fielName,
@@ -15,7 +16,6 @@ const Lookup = ({
 }) => {
   return (
     <View
-      style={{ borderTopRightRadius: 20 }}
       pointerEvents={visible ? "auto" : "none"}
     >
       <TouchableOpacity style={[styles.container]} onPress={onPress}>
@@ -23,11 +23,11 @@ const Lookup = ({
           style={{
             color: visible ? "#282828" : "gray",
             fontFamily: "Inter-Bold",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             fontWeight: "bold",
             fontStyle: "normal",
             textAlign: "left",
-            marginRight: 10,
+            marginRight: responsive.h(10),
             flex: 0.4,
           }}
         >
@@ -39,11 +39,11 @@ const Lookup = ({
             flexDirection: "row",
             alignItems: "center",
 
-            borderRadius: 8,
+            borderRadius: responsive.h(8),
             borderStyle: "solid",
             borderWidth: 1,
             borderColor: "#cbcbcb",
-            padding: 5,
+            padding: responsive.h(5),
             flex: 0.55,
           }}
         >
@@ -51,7 +51,7 @@ const Lookup = ({
             style={{
               color: visible ? "#282828" : "gray",
               fontFamily: "Inter-SemiBold",
-              fontSize: 14,
+              fontSize: responsive.h(14),
               fontWeight: "600",
               fontStyle: "normal",
               letterSpacing: 0,
@@ -61,7 +61,7 @@ const Lookup = ({
             {text}
           </Text>
           <MyIcon
-            size={14}
+            size={responsive.h(14)}
             color={visible ? "rgba(0, 0, 0, 0.54)" : colors.grayBorder}
             name="arrow-down"
           />

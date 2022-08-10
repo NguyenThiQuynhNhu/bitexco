@@ -243,14 +243,14 @@ class ProposalList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{padding: responsive.h(10)}}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={22} color="black" />
+              <MyIcon name="arrow" size={responsive.h(22)} color="black" />
             </TouchableOpacity>
           }
           body={
-            <View style={{ justifyContent: "center", marginVertical: 15 }}>
+            <View style={{ justifyContent: "center" }}>
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
@@ -277,9 +277,9 @@ class ProposalList extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.setState({ showFilter: true })}
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
             >
-              <MyIcon name="search" size={25} color="black" />
+              <MyIcon name="search" size={responsive.h(25)} color="black" />
             </TouchableOpacity>
           }
         />
@@ -298,9 +298,9 @@ class ProposalList extends Component {
             <View
               style={{
                 width: "90%",
-                margin: 20,
+                margin: responsive.h(20),
                 alignSelf: "center",
-                padding: 10,
+                padding: responsive.h(10),
                 backgroundColor: "#fff",
                 justifyContent: "space-between",
               }}
@@ -347,27 +347,29 @@ class ProposalList extends Component {
                   });
                 }}
                 style={{
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 5,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(5),
                   backgroundColor: colors.gray2,
                   flexDirection: "row",
                   justifyContent: "space-between",
                 }}
               >
-                <Text>
+                <Text style={{
+                  fontSize: responsive.h(14)
+                }}>
                   {this.props.depSelected
                     ? this.props.depSelected.name
                     : depSelected
                     ? depSelected.name
                     : "Chọn nhóm"}
                 </Text>
-                <MyIcon name="arrow-down" size={20} color={colors.gray1} />
+                <MyIcon name="arrow-down" size={responsive.h(20)} color={colors.gray1} />
               </TouchableOpacity>
               <View
                 style={{
                   flexDirection: "row",
-                  marginTop: 20,
+                  marginTop: responsive.h(20),
                   justifyContent: "center",
                 }}
               >
@@ -402,22 +404,22 @@ class ProposalList extends Component {
                     )
                   }
                   text="Lọc dữ liệu"
-                  style={{ marginLeft: 10 }}
+                  style={{ marginLeft: responsive.h(10) }}
                 />
               </View>
             </View>
             <TouchableOpacity
               onPress={() => this.setState({ showFilter: false })}
               style={{
-                borderRadius: 45,
+                borderRadius: responsive.h(45),
                 backgroundColor: colors.appTheme,
-                padding: 10,
+                padding: responsive.h(10),
                 position: "absolute",
-                top: 5,
-                right: 5,
+                top: responsive.h(5),
+                right: responsive.h(5),
               }}
             >
-              <MyIcon name="no" color="#fff" size={10} />
+              <MyIcon name="no" color="#fff" size={responsive.h(10)} />
             </TouchableOpacity>
           </View>
         )}
@@ -426,8 +428,8 @@ class ProposalList extends Component {
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

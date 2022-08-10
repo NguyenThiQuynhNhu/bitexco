@@ -16,7 +16,7 @@ import {
 } from "../../../utils/request";
 import colors from "../../../theme/colors";
 import { concat } from "lodash";
-
+import responsive from "../../../../resources/responsive";
 // create a component
 const ButtonFilter = (props) => {
   const {
@@ -42,16 +42,16 @@ const ButtonFilter = (props) => {
           alignItems: "center",
           minWidth: Platform.isPad ? Screen.width / 4 : Screen.width / 4,
           //paddingVertical: 1.5,
-          paddingHorizontal: 5,
-          marginTop: 10,
+          paddingHorizontal: responsive.h(5),
           flexDirection: "column",
           justifyContent: "center",
+          marginBottom: responsive.h(10),
         }}
       >
         <Text
           style={{
             fontFamily: value !== currentValue ? "Inter-Regular" : "Inter-Bold",
-            fontSize: 13,
+            fontSize: responsive.h(13),
             fontWeight: value !== currentValue ? "normal" : "bold",
             fontStyle: "normal",
             letterSpacing: 0,
@@ -65,10 +65,10 @@ const ButtonFilter = (props) => {
           style={{
             //right: -7,
             //position: 'absolute',
-            marginTop: 2.5,
-            borderRadius: 45,
-            minWidth: 20,
-            minHeight: 20,
+            marginTop: responsive.h(2.4),
+            borderRadius: responsive.h(45),
+            minWidth: responsive.h(20),
+            minHeight: responsive.h(20),
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: value !== currentValue ? "#fff" : "#fff5eb",
@@ -77,7 +77,7 @@ const ButtonFilter = (props) => {
           <Text
             style={{
               fontFamily: "Inter-Medium",
-              fontSize: 13,
+              fontSize: responsive.h(13),
               fontWeight: "500",
               fontStyle: "normal",
               letterSpacing: 0,

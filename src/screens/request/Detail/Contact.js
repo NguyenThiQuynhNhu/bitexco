@@ -27,7 +27,7 @@ const Info = ({ icon, value, style }) => {
     <View
       style={{
         flexDirection: "row",
-        marginVertical: 5,
+        marginVertical: responsive.h(5),
         justifyContent: "flex-start",
         alignItems: "center",
       }}
@@ -36,15 +36,16 @@ const Info = ({ icon, value, style }) => {
             {value === null ? <Text /> : <Text style={{ marginVertical: 10, fontSize: fontsize.medium }}>{value}</Text>} */}
       <View
         style={{
-          borderRadius: 6,
+          borderRadius: responsive.h(6),
           backgroundColor: "#df2027",
-          padding: 5,
           alignItems: "center",
           justifyContent: "center",
-          marginRight: 10,
+          marginRight: responsive.h(10),
+          width: responsive.h(35),
+          height: responsive.h(35)
         }}
       >
-        <MyIcon name={icon} color="#fff" size={18} />
+        <MyIcon name={icon} color="#fff" size={responsive.h(18)} />
       </View>
       {value === null ? (
         <Text />
@@ -78,17 +79,8 @@ class Contact extends Component {
     return (
       <View
         style={{
-          // borderRadius: 10, marginTop: 20, padding: 10, marginHorizontal: 20,
           backgroundColor: "#ffffff",
-          marginTop: 20,
-          // shadowColor: "rgba(0, 0, 0, 0.1)",
-          // elevation: 2,
-          // shadowOffset: {
-          //     width: 0,
-          //     height: 4
-          // },
-          // shadowRadius: 10,
-          // shadowOpacity: 1,
+          marginTop: responsive.h(20),
         }}
       >
         {/* <View style={{ flexDirection: 'row' }}>

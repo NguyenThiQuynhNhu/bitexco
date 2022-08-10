@@ -8,6 +8,7 @@ import {
   onVendorSelected,
 } from "../../../actions/requestCreate";
 import Strings from "../../../utils/languages";
+import responsive from "../../../resources/responsive";
 // create a component
 
 class ListItem extends PureComponent {
@@ -19,13 +20,13 @@ class ListItem extends PureComponent {
       <TouchableOpacity
         key={index}
         style={{
-          marginVertical: 20,
+          marginVertical: responsive.h(20),
           backgroundColor: "#fff",
-          marginHorizontal: 20,
+          marginHorizontal: responsive.h(20),
         }}
         onPress={() => this.props.onSelected(item)}
       >
-        <Text>{towerName}</Text>
+        <Text style={{fontSize: responsive.h(114)}}>{towerName}</Text>
       </TouchableOpacity>
     );
   }
