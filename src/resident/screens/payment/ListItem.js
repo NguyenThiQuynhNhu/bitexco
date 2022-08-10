@@ -7,13 +7,14 @@ import FontSize from "../../theme/fontsize";
 import colors from "../../theme/colors";
 import fontsize from "../../theme/fontsize";
 import Strings from "../../utils/languages";
+import responsive from "../../../resources/responsive";
 
 // create a component
 const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
   return (
     <View
       style={{
-        marginTop: 10,
+        marginTop: responsive.h(10),
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "flex-start",
@@ -23,7 +24,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
       <Text
         style={{
           fontFamily: "Inter-Medium",
-          fontSize: 14,
+          fontSize: responsive.h(14),
           fontWeight: "500",
           fontStyle: "normal",
           letterSpacing: 0,
@@ -37,7 +38,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
       <Text
         style={{
           fontFamily: "Inter",
-          fontSize: 16,
+          fontSize: responsive.h(16),
           fontWeight: "500",
           fontStyle: "normal",
           letterSpacing: 0,
@@ -51,7 +52,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
       <Text
         style={{
           fontFamily: "Inter-Regular",
-          fontSize: 11,
+          fontSize: responsive.h(11),
           fontWeight: "normal",
           fontStyle: "normal",
           letterSpacing: 0,
@@ -83,11 +84,11 @@ class ListItem extends PureComponent {
         onPress={onPress}
         style={{
           flexDirection: "row",
-          padding: 20,
+          padding: responsive.h(20),
           backgroundColor: "#fff",
-          marginHorizontal: 20,
-          marginVertical: 10,
-          borderRadius: 12,
+          marginHorizontal: responsive.h(20),
+          marginVertical: responsive.h(10),
+          borderRadius: responsive.h(12),
           // backgroundColor: "#ffffff",
           // shadowColor: "rgba(0, 0, 0, 0.1)",
           // elevation: 2,
@@ -97,8 +98,8 @@ class ListItem extends PureComponent {
           // },
           // shadowRadius: 10,
           // shadowOpacity: 1,
-          borderWidth: 1,
-          borderBottomWidth: 2,
+          borderWidth: responsive.h(1),
+          borderBottomWidth: responsive.h(2),
           borderColor: "#f1f1f1",
         }}
       >
@@ -108,7 +109,7 @@ class ListItem extends PureComponent {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -121,13 +122,13 @@ class ListItem extends PureComponent {
             <View
               style={{
                 flexDirection: "row",
-                marginTop: 10,
+                marginTop: responsive.h(10),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -142,7 +143,7 @@ class ListItem extends PureComponent {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(11),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -167,7 +168,7 @@ class ListItem extends PureComponent {
         <Text
           style={{
             fontFamily: "Inter-Regular",
-            fontSize: 11,
+            fontSize: responsive.h(11),
             fontWeight: "normal",
             fontStyle: "normal",
             letterSpacing: 0,

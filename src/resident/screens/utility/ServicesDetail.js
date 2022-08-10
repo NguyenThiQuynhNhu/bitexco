@@ -34,6 +34,7 @@ import Strings from "../../utils/languages";
 import RNFetchBlob from "rn-fetch-blob";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Screen } from "../../utils/device";
+import responsive from "../../../resources/responsive";
 // create a component
 class ServicesScreen extends Component {
   static navigationOptions = {
@@ -98,7 +99,7 @@ class ServicesScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -125,15 +126,15 @@ class ServicesScreen extends Component {
       } = data;
       const { name } = this.props.navigation.state.params;
       return (
-        <View style={{ flex: 1, marginTop: -20 }}>
+        <View style={{ flex: 1, marginTop: responsive.h(-20) }}>
           <ImageProgress
             source={{ uri: logo }}
             style={{
-              height: 194,
-              width: Screen.width - 40,
-              margin: 20,
+              height: responsive.h(194),
+              width: Screen.width - responsive.w(40),
+              margin: responsive.h(20),
               borderColor: colors.grayBorder,
-              borderRadius: 12,
+              borderRadius: responsive.h(12),
             }}
           />
           {/* <WebView
@@ -150,11 +151,11 @@ class ServicesScreen extends Component {
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
-              fontSize: 18,
+              fontSize: responsive.h(18),
               fontWeight: "600",
               fontStyle: "normal",
-              marginHorizontal: 20,
-              marginTop: 20,
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(20),
               letterSpacing: 0,
               textAlign: "left",
               color: "#3d3d3d",
@@ -167,14 +168,14 @@ class ServicesScreen extends Component {
               flexDirection: "row",
               justifyContent: "flex-start",
               alignItems: "center",
-              marginHorizontal: 20,
-              marginTop: 20,
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(20),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -187,13 +188,13 @@ class ServicesScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 12,
+                fontSize: responsive.h(12),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#6f6f6f",
-                marginLeft: 5,
+                marginLeft: responsive.w(5),
               }}
             >
               VNĐ
@@ -203,8 +204,8 @@ class ServicesScreen extends Component {
             style={{
               height: "60%",
               width: Screen.width,
-              paddingHorizontal: 20,
-              paddingBottom: 60,
+              paddingHorizontal: responsive.w(20),
+              paddingBottom: responsive.h(600),
             }}
           >
             <WebView
@@ -242,9 +243,9 @@ class ServicesScreen extends Component {
             }}
             style={{
               position: "absolute",
-              bottom: 20,
+              bottom: responsive.h(20),
               alignSelf: "center",
-              borderRadius: 12,
+              borderRadius: responsive.h(12),
             }}
           />
         </View>
@@ -261,9 +262,9 @@ class ServicesScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="black" size={20} />
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
@@ -271,7 +272,7 @@ class ServicesScreen extends Component {
                 style={{
                   alignSelf: "center",
                   color: "black",
-                  fontSize: fontsize.larg,
+                  fontSize: responsive.h(fontsize.larg),
                 }}
               >
                 {this.props.navigation.state.params.name}
@@ -280,7 +281,7 @@ class ServicesScreen extends Component {
           />
           <View
             style={{
-              paddingVertical: 20,
+              paddingVertical: responsive.h(20),
             }}
           >
             <ActivityIndicator animating size="small" />
@@ -295,19 +296,19 @@ class ServicesScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
-                lineHeight: 24,
+                lineHeight: responsive.h(24),
                 letterSpacing: 0,
                 textAlign: "center",
                 color: "black",
@@ -324,11 +325,11 @@ class ServicesScreen extends Component {
                   name: this.props.navigation.state.params.name,
                 })
               }
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
               <Icon
                 name="history"
-                size={24}
+                size={responsive.h(24)}
                 color="#fff"
                 //style={{marginHorizontal: 20}}
               />
@@ -346,7 +347,7 @@ class ServicesScreen extends Component {
                 : colors.toast.success,
             opacity: 1,
             borderRadius: 5,
-            padding: 10,
+            padding: responsive.h(10),
           }}
         />
       </View>

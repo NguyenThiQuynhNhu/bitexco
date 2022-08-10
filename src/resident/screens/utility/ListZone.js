@@ -9,6 +9,7 @@ import fontsize from "../../theme/fontsize";
 import { MyIcon } from "../../theme/icons";
 
 import NavBar from "../../../components/common/NavBar";
+import responsive from "../../../resources/responsive";
 // create a component
 
 class ListItem extends PureComponent {
@@ -20,13 +21,19 @@ class ListItem extends PureComponent {
       <TouchableOpacity
         key={index}
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
           backgroundColor: "#fff",
-          paddingHorizontal: 10,
+          paddingHorizontal: responsive.w(10),
         }}
         onPress={() => this.props.onSelected(item)}
       >
-        <Text>{name}</Text>
+        <Text
+          style={{
+            fontSize: responsive.h(14),
+          }}
+        >
+          {name}
+        </Text>
       </TouchableOpacity>
     );
   }
@@ -52,9 +59,9 @@ class ListZone extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
@@ -63,7 +70,7 @@ class ListZone extends Component {
                 alignSelf: "center",
                 color: "black",
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
               }}
             >

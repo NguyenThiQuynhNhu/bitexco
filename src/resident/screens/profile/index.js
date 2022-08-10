@@ -49,6 +49,7 @@ import {
   signIn,
 } from "../../../actions/auth";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import responsive from "../../../resources/responsive";
 const MenuPicker = ({ name, onPress, icon }) => {
   return (
     <TouchableOpacity
@@ -56,14 +57,14 @@ const MenuPicker = ({ name, onPress, icon }) => {
       style={{
         flexDirection: "row",
         alignItems: "center",
-        marginVertical: 10,
+        marginVertical: responsive.h(10),
       }}
     >
       <View
         style={{
-          width: 30,
-          height: 30,
-          borderRadius: 6,
+          width: responsive.h(30),
+          height: responsive.h(30),
+          borderRadius: responsive.h(6),
           backgroundColor: colors.gray2,
           alignItems: "center",
           justifyContent: "center",
@@ -71,7 +72,7 @@ const MenuPicker = ({ name, onPress, icon }) => {
       >
         <MyIcon
           name={icon}
-          size={20}
+          size={responsive.h(20)}
           color={"black"}
           //style={{ marginHorizontal: 20 }}
         />
@@ -80,13 +81,13 @@ const MenuPicker = ({ name, onPress, icon }) => {
       <Text
         style={{
           fontFamily: "OpenSans-Regular",
-          fontSize: 16,
+          fontSize: responsive.h(16),
           fontWeight: "normal",
           fontStyle: "normal",
           letterSpacing: 0,
           textAlign: "left",
           color: "#494856",
-          marginLeft: 10,
+          marginLeft: responsive.h(10),
         }}
       >
         {name}
@@ -139,18 +140,18 @@ class ProfileScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
-                padding: 10,
-                width: Screen.width - 124,
+                padding: responsive.h(10),
+                width: Screen.width - responsive.w(124),
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -214,11 +215,11 @@ class ProfileScreen extends Component {
               flex: 1,
               backgroundColor: "white",
               justifyContent: "space-between",
-              paddingHorizontal: 20,
+              paddingHorizontal: responsive.w(20),
             }}
           >
             <View>
-              <View style={{ paddingVertical: 10 }} />
+              <View style={{ paddingVertical: responsive.h(10) }} />
               <MenuPicker
                 icon="sphere"
                 name={Strings.profile.settinglanguage}
@@ -305,15 +306,21 @@ class ProfileScreen extends Component {
             colors={[colors.appTheme, "#fff"]}
             style={styles.linearGradient}
           >
-            <View style={{ flex: 1, marginTop: 70, alignItems: "center" }}>
-              <MyIcon name="switch1" size={150} color="#fff" />
+            <View
+              style={{
+                flex: 1,
+                marginTop: responsive.h(70),
+                alignItems: "center",
+              }}
+            >
+              <MyIcon name="switch1" size={responsive.h(150)} color="#fff" />
               <Text
                 style={{
                   fontWeight: "bold",
-                  fontSize: fontSize.small,
+                  fontSize: responsive.h(fontSize.small),
                   color: "#fff",
-                  marginTop: 20,
-                  margin: 20,
+                  marginTop: responsive.h(20),
+                  margin: responsive.h(20),
                   justifyContent: "center",
                   alignItems: "center",
                   textAlign: "center",
@@ -322,13 +329,15 @@ class ProfileScreen extends Component {
                 {Strings.profile.questionLogout}
               </Text>
 
-              <View style={{ flexDirection: "row", marginTop: 100 }}>
+              <View
+                style={{ flexDirection: "row", marginTop: responsive.h(100) }}
+              >
                 <TouchableOpacity
                   onPress={() => this.setState({ isShowModal: false })}
                   style={{
-                    height: 50,
-                    width: 50,
-                    borderRadius: 25,
+                    height: responsive.h(50),
+                    width: responsive.h(50),
+                    borderRadius: responsive.h(25),
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor: "#ffffff",
@@ -337,14 +346,18 @@ class ProfileScreen extends Component {
                     borderColor: colors.appTheme,
                   }}
                 >
-                  <MyIcon name="x" size={20} color={colors.appTheme} />
+                  <MyIcon
+                    name="x"
+                    size={responsive.h(20)}
+                    color={colors.appTheme}
+                  />
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
-                    marginLeft: 50,
-                    height: 50,
-                    width: 50,
-                    borderRadius: 25,
+                    marginLeft: responsive.w(50),
+                    height: responsive.h(50),
+                    width: responsive.h(50),
+                    borderRadius: responsive.h(25),
                     justifyContent: "center",
                     alignItems: "center",
                     backgroundColor: colors.appTheme,
@@ -359,7 +372,7 @@ class ProfileScreen extends Component {
                       );
                   }}
                 >
-                  <MyIcon name="check" size={20} color="#fff" />
+                  <MyIcon name="check" size={responsive.h(20)} color="#fff" />
                 </TouchableOpacity>
               </View>
               {this.state.isLogOut && (
@@ -443,20 +456,26 @@ class ProfileScreen extends Component {
                   }}
                 >
                   <ActivityIndicator />
-                  <Text style={{ fontSize: fontsize.small }}>
+                  <Text style={{ fontSize: responsive.h(fontsize.small) }}>
                     {Strings.app.loading}
                   </Text>
                 </View>
               ) : (
-                <View style={{ flex: 1, marginTop: 70, alignItems: "center" }}>
-                  <MyIcon name="accout" size={150} color="#fff" />
+                <View
+                  style={{
+                    flex: 1,
+                    marginTop: responsive.h(70),
+                    alignItems: "center",
+                  }}
+                >
+                  <MyIcon name="accout" size={responsive.h(150)} color="#fff" />
                   <Text
                     style={{
                       fontWeight: "bold",
-                      fontSize: fontSize.small,
+                      fontSize: responsive.h(fontSize.small),
                       color: "#fff",
-                      marginTop: 20,
-                      margin: 20,
+                      marginTop: responsive.h(20),
+                      margin: responsive.h(20),
                       justifyContent: "center",
                       alignItems: "center",
                       textAlign: "center",
@@ -465,13 +484,18 @@ class ProfileScreen extends Component {
                     {Strings.app.message}
                   </Text>
 
-                  <View style={{ flexDirection: "row", marginTop: 100 }}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginTop: responsive.h(100),
+                    }}
+                  >
                     <TouchableOpacity
                       onPress={() => this.setState({ isShowModalType: false })}
                       style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: "#ffffff",
@@ -480,14 +504,18 @@ class ProfileScreen extends Component {
                         borderColor: colors.appTheme,
                       }}
                     >
-                      <MyIcon name="x" size={30} color={colors.appTheme} />
+                      <MyIcon
+                        name="x"
+                        size={responsive.h(30)}
+                        color={colors.appTheme}
+                      />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: 50,
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        marginLeft: responsive.w(50),
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: colors.appTheme,
@@ -500,7 +528,11 @@ class ProfileScreen extends Component {
                       }
                       //onPress={() => this.props.loginUser({ phoneNumber: this.props.phoneNumber, type: 're', otpCode: this.props.otpCode })}
                     >
-                      <MyIcon name="check" size={30} color="#fff" />
+                      <MyIcon
+                        name="check"
+                        size={responsive.h(30)}
+                        color="#fff"
+                      />
                     </TouchableOpacity>
                   </View>
                 </View>
@@ -522,20 +554,26 @@ class ProfileScreen extends Component {
                   }}
                 >
                   <ActivityIndicator />
-                  <Text style={{ fontSize: fontsize.small }}>
+                  <Text style={{ fontSize: responsive.h(fontsize.small) }}>
                     {Strings.app.loading}
                   </Text>
                 </View>
               ) : (
-                <View style={{ flex: 1, marginTop: 70, alignItems: "center" }}>
-                  <MyIcon name="accout" size={150} color="#fff" />
+                <View
+                  style={{
+                    flex: 1,
+                    marginTop: responsive.h(70),
+                    alignItems: "center",
+                  }}
+                >
+                  <MyIcon name="accout" size={responsive.h(150)} color="#fff" />
                   <Text
                     style={{
                       fontWeight: "bold",
                       fontSize: fontSize.small,
                       color: "#fff",
-                      marginTop: 20,
-                      margin: 20,
+                      marginTop: responsive.h(20),
+                      margin: responsive.h(20),
                       justifyContent: "center",
                       alignItems: "center",
                       textAlign: "center",
@@ -544,29 +582,38 @@ class ProfileScreen extends Component {
                     {Strings.profile.questionChangeUser}
                   </Text>
 
-                  <View style={{ flexDirection: "row", marginTop: 100 }}>
+                  <View
+                    style={{
+                      flexDirection: "row",
+                      marginTop: responsive.h(100),
+                    }}
+                  >
                     <TouchableOpacity
                       onPress={() => this.setState({ isShowModalType: false })}
                       style={{
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: "#ffffff",
                         borderStyle: "solid",
-                        borderWidth: 1,
+                        borderWidth: responsive.h(1),
                         borderColor: colors.appTheme,
                       }}
                     >
-                      <MyIcon name="x" size={20} color={colors.appTheme} />
+                      <MyIcon
+                        name="x"
+                        size={responsive.h(20)}
+                        color={colors.appTheme}
+                      />
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: 50,
-                        height: 50,
-                        width: 50,
-                        borderRadius: 25,
+                        marginLeft: responsive.w(50),
+                        height: responsive.h(50),
+                        width: responsive.h(50),
+                        borderRadius: responsive.h(25),
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: colors.appTheme,
@@ -580,7 +627,11 @@ class ProfileScreen extends Component {
                         })
                       }
                     >
-                      <MyIcon name="check" size={20} color="#fff" />
+                      <MyIcon
+                        name="check"
+                        size={responsive.h(20)}
+                        color="#fff"
+                      />
                     </TouchableOpacity>
                   </View>
                 </View>

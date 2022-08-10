@@ -321,7 +321,7 @@ class ServiceBasic extends Component {
                 style={{
                   flex: 1,
                   // margin: Platform.OS == "ios" ? 5 : 10,
-                  marginHorizontal: 10,
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -342,7 +342,7 @@ class ServiceBasic extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
                 <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
@@ -353,7 +353,7 @@ class ServiceBasic extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
                 <MyIcon name="arrow" color="black" size={20} />
               </TouchableOpacity>
@@ -362,7 +362,7 @@ class ServiceBasic extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -378,9 +378,9 @@ class ServiceBasic extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon size={24} name="search" color="black" />
+                <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
@@ -406,7 +406,7 @@ class ServiceBasic extends Component {
                 style={{
                   width: 1,
                   backgroundColor: colors.grayBorder,
-                  marginVertical: 10,
+                  marginVertical: responsive.h(10),
                 }}
               />
             )}
@@ -416,10 +416,13 @@ class ServiceBasic extends Component {
             //pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-              marginVertical: 10,
+              marginVertical: responsive.h(10),
             }}
             //legacyImplementation={false}
-            style={{ borderTopRightRadius: 20, marginTop: -15 }}
+            style={{
+              borderTopRightRadius: responsive.h(20),
+              marginTop: responsive.h(-15),
+            }}
             renderItem={(item) => {
               //console.log('item',item)
               return (
@@ -441,7 +444,7 @@ class ServiceBasic extends Component {
         <View
           style={{
             backgroundColor: "#f5f5f5",
-            height: 15,
+            height: responsive.h(15),
             width: "100%",
           }}
         />
@@ -470,8 +473,8 @@ class ServiceBasic extends Component {
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

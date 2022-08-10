@@ -36,6 +36,7 @@ import { PieChart } from "react-native-charts-wrapper";
 import _ from "lodash";
 import Base64 from "crypto-js/enc-base64";
 import { WebView } from "react-native-webview";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class PaymentScreen extends Component {
@@ -124,7 +125,7 @@ class PaymentScreen extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -140,12 +141,12 @@ class PaymentScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
               <ImageProgress
                 style={{
-                  height: 40,
-                  width: 40,
+                  height: responsive.h(40),
+                  width: responsive.h(40),
                 }}
                 circle={true}
                 resizeMode="stretch"
@@ -158,7 +159,7 @@ class PaymentScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -180,7 +181,7 @@ class PaymentScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("paymentHistory")}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
               <MyIcon size={24} name="history" color="black" />
             </TouchableOpacity>
@@ -198,15 +199,15 @@ class PaymentScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
-                  paddingLeft: 20,
+                  fontSize: responsive.h(14),
+                  paddingLeft: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: !this.state.paid ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 10,
+                  paddingHorizontal: responsive.h(10),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.payment.unpaidStatus}
@@ -215,13 +216,13 @@ class PaymentScreen extends Component {
                 style={{
                   // width: Platform.basic ? 64 : 44,
                   width: "130%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor: !this.state.paid
                     ? colors.appTheme
                     : "#f1f1f1",
-                  marginTop: 5,
-                  paddingHorizontal: 20,
+                  marginTop: responsive.h(5),
+                  paddingHorizontal: responsive.w(20),
                 }}
               />
             </TouchableOpacity>
@@ -239,15 +240,15 @@ class PaymentScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.paid ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 10,
+                  paddingHorizontal: responsive.w(10),
                   textAlign: "center",
-                  paddingLeft: 20,
-                  paddingVertical: 10,
+                  paddingLeft: responsive.w(20),
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.payment.paidStatus}
@@ -257,12 +258,12 @@ class PaymentScreen extends Component {
                 style={{
                   // width: Platform.isPad ? 64 : 44,
                   width: this.state.paid ? "130%" : "160%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor: this.state.paid
                     ? colors.appTheme
                     : "#f1f1f1",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                 }}
               />
             </TouchableOpacity>
@@ -277,14 +278,14 @@ class PaymentScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 20,
+                  paddingHorizontal: responsive.w(20),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                   color: "#fff",
                 }}
               >
@@ -294,11 +295,11 @@ class PaymentScreen extends Component {
                 style={{
                   // width: Platform.isPad ? 64 : 44,
                   width: this.state.type == 3 ? "130%" : "160%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                 }}
               />
             </TouchableOpacity>

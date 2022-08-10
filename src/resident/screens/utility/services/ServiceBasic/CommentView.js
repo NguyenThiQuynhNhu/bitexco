@@ -29,17 +29,17 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
       >
         <View
           style={{
-            borderRadius: 16,
+            borderRadius: responsive.h(16),
           }}
         >
           <View
             style={{
-              padding: 10,
+              padding: responsive.h(10),
               justifyContent: "center",
               alignItems: "center",
               backgroundColor: colors.appTheme,
-              borderTopRightRadius: 16,
-              borderTopLeftRadius: 16,
+              borderTopRightRadius: responsive.h(16),
+              borderTopLeftRadius: responsive.h(16),
               height: responsive.h(55),
             }}
           >
@@ -47,7 +47,7 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
               style={{
                 color: "white",
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -65,15 +65,15 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
               autoCorrect={false}
               style={{
                 backgroundColor: "#fff",
-                height: 100,
-                borderRadius: 8,
-                borderWidth: 1,
-                padding: 10,
-                margin: 20,
+                height: responsive.h(100),
+                borderRadius: responsive.h(8),
+                borderWidth: responsive.h(1),
+                padding: responsive.h(10),
+                margin: responsive.h(20),
                 borderColor: colors.grayBorder,
                 textAlignVertical: "top",
                 fontFamily: "Inter-Regular",
-                fontSize: 14,
+                fontSize: responsive.h(14),
               }}
               onSubmitEditing={onYes}
               underlineColorAndroid="transparent"
@@ -85,40 +85,40 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
           <View
             style={{
               flexDirection: "row",
-              marginTop: 20,
+              marginTop: responsive.h(20),
               alignSelf: "center",
-              marginBottom: 10,
+              marginBottom: responsive.h(10),
             }}
           >
             <TouchableOpacity
               onPress={onClose}
               style={{
-                height: 50,
-                width: 50,
-                borderRadius: 25,
+                height: responsive.h(50),
+                width: responsive.h(50),
+                borderRadius: responsive.h(25),
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: "#ffffff",
                 borderStyle: "solid",
-                borderWidth: 1,
+                borderWidth: responsive.h(1),
                 borderColor: colors.gray1,
               }}
             >
-              <MyIcon name="x" size={30} color={colors.gray1} />
+              <MyIcon name="x" size={responsive.h(30)} color={colors.gray1} />
             </TouchableOpacity>
             <TouchableOpacity
               style={{
-                marginLeft: 50,
-                height: 50,
-                width: 50,
-                borderRadius: 25,
+                marginLeft: responsive.w(50),
+                height: responsive.h(50),
+                width: responsive.h(50),
+                borderRadius: responsive.h(25),
                 justifyContent: "center",
                 alignItems: "center",
                 backgroundColor: colors.appTheme,
               }}
               onPress={onYes}
             >
-              <MyIcon name="check" size={30} color="#fff" />
+              <MyIcon name="check" size={responsive.h(30)} color="#fff" />
             </TouchableOpacity>
           </View>
         </View>
@@ -133,12 +133,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     width: "90%",
     height: responsive.h(250),
-    borderRadius: 16,
-    borderBottomWidth: 2,
+    borderRadius: responsive.h(16),
+    borderBottomWidth: responsive.h(2),
     borderBottomColor: "#b1b1b1",
   },
   linearGradient: {
-    borderRadius: 16,
+    borderRadius: responsive.h(16),
   },
 });
 

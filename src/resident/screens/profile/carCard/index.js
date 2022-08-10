@@ -50,8 +50,8 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
-          marginBottom: 10,
-          borderRadius: 12,
+          marginBottom: responsive.h(10),
+          borderRadius: responsive.h(12),
           // backgroundColor: "#ffffff",
           // shadowColor: "rgba(0, 0, 0, 0.1)",
           // elevation: 2,
@@ -59,7 +59,7 @@ class ListItem extends PureComponent {
           //   width: 0,
           //   height: 4,
           // },
-          borderWidth: 2,
+          borderWidth: responsive.h(2),
           borderColor: "#f1f1f1",
           // shadowRadius: 10,
           shadowOpacity: 1,
@@ -76,28 +76,36 @@ class ListItem extends PureComponent {
         >
           <View
             style={{
-              borderRadius: 45,
-              height: 40,
-              width: 40,
+              borderRadius: responsive.h(45),
+              height: responsive.h(40),
+              width: responsive.h(40),
               backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: 10,
+              marginLeft: responsive.w(10),
             }}
           >
-            <MyIcon name="file-text" size={20} color={colors.appTheme} />
+            <MyIcon
+              name="file-text"
+              size={responsive.h(20)}
+              color={colors.appTheme}
+            />
           </View>
           <View
-            style={{ flex: 1, justifyContent: "space-between", margin: 10 }}
+            style={{
+              flex: 1,
+              justifyContent: "space-between",
+              margin: responsive.h(10),
+            }}
           >
             <Text
               lineBreakMode="tail"
               numberOfLines={2}
               style={{
                 flexDirection: "row",
-                width: Screen.width - 110,
+                width: Screen.width - responsive.w(110),
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 color: "#282828",
                 flex: 1,
@@ -110,10 +118,10 @@ class ListItem extends PureComponent {
               numberOfLines={2}
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 12,
+                fontSize: responsive.h(12),
                 color: "#6f6f6f",
                 flex: 1,
-                marginTop: 5,
+                marginTop: responsive.h(5),
               }}
             >
               {typeName}
@@ -122,7 +130,7 @@ class ListItem extends PureComponent {
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text
@@ -130,7 +138,7 @@ class ListItem extends PureComponent {
                 numberOfLines={2}
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   color: "#6f6f6f",
                   flex: 1,
                 }}
@@ -143,10 +151,10 @@ class ListItem extends PureComponent {
               numberOfLines={2}
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 12,
+                fontSize: responsive.h(12),
                 color: isConfirm ? colors.appTheme : "red",
                 flex: 1,
-                marginTop: 5,
+                marginTop: responsive.h(5),
               }}
             >
               {isConfirm
@@ -157,10 +165,10 @@ class ListItem extends PureComponent {
                 numberOfLines={2}
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   color: "red",
                   flex: 1,
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                   fontStyle: "italic",
                 }}
               >
@@ -172,13 +180,13 @@ class ListItem extends PureComponent {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(11),
                   color: "#6f6f6f",
                 }}
               >
@@ -189,36 +197,36 @@ class ListItem extends PureComponent {
           {!isConfirm && (
             <TouchableOpacity
               style={{
-                borderRadius: 45,
-                height: 40,
-                width: 40,
+                borderRadius: responsive.h(45),
+                height: responsive.h(40),
+                width: responsive.h(40),
                 backgroundColor: "red",
                 justifyContent: "center",
                 alignItems: "center",
-                marginRight: 10,
+                marginRight: responsive.w(10),
               }}
               onPress={() => deleteCard(item.cardID)}
             >
-              <MyIcon name="x" size={20} color="#fff" />
+              <MyIcon name="x" size={responsive.h(20)} color="#fff" />
             </TouchableOpacity>
           )}
         </View>
         {isMonthlyTicket && isRequest && (
           <TouchableOpacity
             style={{
-              borderRadius: 5,
+              borderRadius: responsive.h(5),
               backgroundColor: "#ff4800",
               justifyContent: "center",
               alignItems: "center",
-              padding: 10,
-              margin: 10,
+              padding: responsive.h(10),
+              margin: responsive.h(10),
             }}
             onPress={() => requestStopCard(item.cardID, false)}
           >
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#fff",
               }}
             >
@@ -229,19 +237,19 @@ class ListItem extends PureComponent {
         {isMonthlyTicket && !isRequest && (
           <TouchableOpacity
             style={{
-              borderRadius: 5,
+              borderRadius: responsive.h(5),
               backgroundColor: colors.appTheme,
               justifyContent: "center",
               alignItems: "center",
-              padding: 10,
-              margin: 10,
+              padding: responsive.h(10),
+              margin: responsive.h(10),
             }}
             onPress={() => requestStopCard(item.cardID, true)}
           >
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#fff",
               }}
             >
@@ -272,8 +280,8 @@ class ListItem3 extends PureComponent {
       <TouchableOpacity
         style={{
           flexDirection: "row",
-          marginBottom: 10,
-          borderRadius: 12,
+          marginBottom: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -283,7 +291,7 @@ class ListItem3 extends PureComponent {
           },
           shadowRadius: 10,
           shadowOpacity: 1,
-          marginHorizontal: 10,
+          marginHorizontal: responsive.h(10),
         }}
         onPress={onPress}
       >
@@ -296,19 +304,27 @@ class ListItem3 extends PureComponent {
         >
           <View
             style={{
-              borderRadius: 45,
-              height: 40,
-              width: 40,
+              borderRadius: responsive.h(45),
+              height: responsive.h(40),
+              width: responsive.h(40),
               backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: 10,
+              marginLeft: responsive.w(10),
             }}
           >
-            <MyIcon name="file-text" size={20} color={colors.appTheme} />
+            <MyIcon
+              name="file-text"
+              size={responsive.h(20)}
+              color={colors.appTheme}
+            />
           </View>
           <View
-            style={{ flex: 1, justifyContent: "space-between", margin: 10 }}
+            style={{
+              flex: 1,
+              justifyContent: "space-between",
+              margin: responsive.h(10),
+            }}
           >
             <Text
               lineBreakMode="tail"
@@ -317,7 +333,7 @@ class ListItem3 extends PureComponent {
                 flexDirection: "row",
                 width: Screen.width - 110,
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 color: "#282828",
                 flex: 1,
@@ -330,10 +346,10 @@ class ListItem3 extends PureComponent {
               numberOfLines={2}
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 12,
+                fontSize: responsive.h(12),
                 color: "#6f6f6f",
                 flex: 1,
-                marginTop: 5,
+                marginTop: responsive.h(5),
               }}
             >
               {typeName}
@@ -342,7 +358,7 @@ class ListItem3 extends PureComponent {
               style={{
                 flexDirection: "row",
                 alignItems: "center",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text
@@ -350,7 +366,7 @@ class ListItem3 extends PureComponent {
                 numberOfLines={2}
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   color: "#6f6f6f",
                   flex: 1,
                 }}
@@ -363,10 +379,10 @@ class ListItem3 extends PureComponent {
               numberOfLines={2}
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 12,
+                fontSize: responsive.h(12),
                 color: "red",
                 flex: 1,
-                marginTop: 5,
+                marginTop: responsive.h(5),
               }}
             >
               {Strings.carCard.cancelledText}
@@ -376,13 +392,13 @@ class ListItem3 extends PureComponent {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(11),
                   color: "#6f6f6f",
                 }}
               >
@@ -558,7 +574,7 @@ class CarCardScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -595,9 +611,12 @@ class CarCardScreen extends Component {
             : this.renderItem2
         }
         onEndReachedThreshold={0.5}
-        style={{ paddingHorizontal: 10, marginTop: 7 }}
+        style={{
+          paddingHorizontal: responsive.w(10),
+          marginTop: responsive.h(7),
+        }}
         contentContainerStyle={{
-          marginTop: 10,
+          marginTop: responsive.h(10),
         }}
       />
     );
@@ -609,18 +628,18 @@ class CarCardScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
-                padding: 10,
+                padding: responsive.h(10),
                 width: Screen.width - 124,
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -646,15 +665,15 @@ class CarCardScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
-                  paddingLeft: 20,
+                  fontSize: responsive.h(14),
+                  paddingLeft: responsive.w(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 20,
+                  paddingHorizontal: responsive.w(20),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.carCard.registrationCardText}
@@ -663,12 +682,12 @@ class CarCardScreen extends Component {
                 style={{
                   // width: Platform.basic ? 64 : 44,
                   width: "130%",
-                  height: 3,
+                  height: responsive.h(3),
                   borderRadius: 4,
                   backgroundColor:
                     this.state.type == 1 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
-                  paddingHorizontal: 20,
+                  marginTop: responsive.h(5),
+                  paddingHorizontal: responsive.w(20),
                 }}
               />
             </TouchableOpacity>
@@ -686,14 +705,14 @@ class CarCardScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 20,
+                  paddingHorizontal: responsive.w(20),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.carCard.activityCardText}
@@ -702,11 +721,11 @@ class CarCardScreen extends Component {
                 style={{
                   // width: Platform.isPad ? 64 : 44,
                   width: this.state.type == 2 ? "150%" : "130%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 2 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                 }}
               />
             </TouchableOpacity>
@@ -720,14 +739,14 @@ class CarCardScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 20,
+                  paddingHorizontal: responsive.w(20),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.carCard.cancellationCardText}
@@ -736,11 +755,11 @@ class CarCardScreen extends Component {
                 style={{
                   // width: Platform.isPad ? 64 : 44,
                   width: this.state.type == 3 ? "200%" : "130%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                 }}
               />
             </TouchableOpacity>
@@ -751,25 +770,25 @@ class CarCardScreen extends Component {
           onPress={() => this.props.navigation.navigate("carCardCreate")}
           style={{
             backgroundColor: colors.appTheme,
-            width: 50,
-            height: 50,
-            borderRadius: 35,
+            width: responsive.h(50),
+            height: responsive.h(50),
+            borderRadius: responsive.h(35),
             justifyContent: "center",
             alignItems: "center",
             position: "absolute",
-            bottom: 20,
-            right: 20,
+            bottom: responsive.h(20),
+            right: responsive.w(20),
           }}
         >
-          <MyIcon name="plus" size={20} color="#fff" />
+          <MyIcon name="plus" size={responsive.h(20)} color="#fff" />
         </TouchableOpacity>
         <Toast
           ref="toast"
           style={{
             backgroundColor: colors.toast.warning,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
         <Spinner

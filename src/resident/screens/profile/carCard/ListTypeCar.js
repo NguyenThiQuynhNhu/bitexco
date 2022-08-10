@@ -8,6 +8,7 @@ import Strings from "../../../utils/languages";
 import NavBar from "../../../components/common/NavBar";
 import fontsize from "../../../theme/fontsize";
 import { MyIcon } from "../../../theme/icons";
+import responsive from "../../../../resources/responsive";
 // create a component
 
 class ListItem extends PureComponent {
@@ -19,9 +20,9 @@ class ListItem extends PureComponent {
       <TouchableOpacity
         key={index}
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
           backgroundColor: "#fff",
-          paddingHorizontal: 10,
+          paddingHorizontal: responsive.w(10),
         }}
         onPress={() => this.props.onSelected(item)}
       >
@@ -48,9 +49,9 @@ class ListTypeCar extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="#fff" size={20} />
+              <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
@@ -59,7 +60,7 @@ class ListTypeCar extends Component {
                 alignSelf: "center",
                 color: "#fff",
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
               }}
             >

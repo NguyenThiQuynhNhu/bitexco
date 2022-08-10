@@ -51,6 +51,7 @@ import {
 import Strings from "../../../utils/languages";
 import NavBar from "../../../components/common/NavBar";
 import { default_user } from "../../../theme/images";
+import responsive from "../../../../resources/responsive";
 
 // create a component
 class ReuqestList extends Component {
@@ -187,7 +188,7 @@ class ReuqestList extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -224,7 +225,7 @@ class ReuqestList extends Component {
         //onRefresh={() => this.setState({dataStatus: this.props.dataStatus}), () => this.props.refreshDataHandle()}
         data={data}
         contentContainerStyle={{
-          marginVertical: 10,
+          marginVertical: responsive.h(10),
           justifyContent: "center",
         }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
@@ -282,7 +283,7 @@ class ReuqestList extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -314,9 +315,10 @@ class ReuqestList extends Component {
                 }
                 style={{
                   flex: 1,
-                  margin: Platform.OS == "ios" ? 15 : 20,
-                  marginHorizontal: 10,
-                  marginRight: 50,
+                  margin:
+                    Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
+                  marginHorizontal: responsive.w(10),
+                  marginRight: responsive.w(50),
                 }}
               />
             }
@@ -325,7 +327,7 @@ class ReuqestList extends Component {
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
                 <Text style={{ color: "#fff" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
@@ -336,12 +338,12 @@ class ReuqestList extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("profile")}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
                 <ImageProgress
                   style={{
-                    height: 40,
-                    width: 40,
+                    height: responsive.h(40),
+                    width: responsive.h(40),
                   }}
                   circle={true}
                   resizeMode="stretch"
@@ -355,7 +357,7 @@ class ReuqestList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -369,21 +371,26 @@ class ReuqestList extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon size={24} name="search" color="black" />
+                <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
         )}
-        <View style={{ marginHorizontal: 10, marginVertical: 10 }}>
+        <View
+          style={{
+            marginHorizontal: responsive.w(10),
+            marginVertical: responsive.h(10),
+          }}
+        >
           <FlatList
             ItemSeparatorComponent={() => (
               <View
                 style={{
                   width: 1,
                   backgroundColor: colors.grayBorder,
-                  marginVertical: 10,
+                  marginVertical: responsive.h(10),
                 }}
               />
             )}
@@ -393,7 +400,10 @@ class ReuqestList extends Component {
             //pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
-            style={{ borderTopRightRadius: 20, marginTop: -15 }}
+            style={{
+              borderTopRightRadius: responsive.h(20),
+              marginTop: responsive.h(-15),
+            }}
             renderItem={(item) => {
               return (
                 <View>
@@ -420,25 +430,25 @@ class ReuqestList extends Component {
           }
           style={{
             backgroundColor: "#ff2121",
-            width: 48,
-            height: 48,
-            borderRadius: 35,
+            width: responsive.h(48),
+            height: responsive.h(48),
+            borderRadius: responsive.h(35),
             justifyContent: "center",
             alignItems: "center",
             position: "absolute",
-            bottom: Devices.isTablet ? 150 : 60,
-            right: 20,
+            bottom: Devices.isTablet ? responsive.h(150) : responsive.h(60),
+            right: responsive.w(20),
           }}
         >
-          <MyIcon name="plus" size={20} color="#fff" />
+          <MyIcon name="plus" size={responsive.h(20)} color="#fff" />
         </TouchableOpacity>
         <Toast
           ref="toast"
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

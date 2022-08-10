@@ -41,6 +41,7 @@ import { Screen } from "../../utils/device";
 import { default_user } from "../../theme/images";
 // create a component
 import FCM from "react-native-fcm";
+import responsive from "../../../resources/responsive";
 class NotificationScreen extends Component {
   static navigationOptions = {
     header: null,
@@ -162,7 +163,7 @@ class NotificationScreen extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -195,9 +196,10 @@ class NotificationScreen extends Component {
                 onClearText={onClearText}
                 style={{
                   flex: 1,
-                  margin: Platform.OS == "ios" ? 15 : 20,
-                  marginHorizontal: 10,
-                  marginRight: 50,
+                  margin:
+                    Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
+                  marginHorizontal: responsive.w(10),
+                  marginRight: responsive.h(50),
                 }}
               />
             }
@@ -206,9 +208,16 @@ class NotificationScreen extends Component {
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
+                <Text
+                  style={{
+                    color: "black",
+                    fontSize: responsive.h(fontsize.small),
+                  }}
+                >
+                  {Strings.app.cancel}
+                </Text>
               </TouchableOpacity>
             }
           />
@@ -217,16 +226,16 @@ class NotificationScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" size={20} color="black" />
+                <MyIcon name="arrow" size={responsive.h(20)} color="black" />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -240,9 +249,9 @@ class NotificationScreen extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon size={24} name="search" color="black" />
+                <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
@@ -290,9 +299,9 @@ class NotificationScreen extends Component {
         //horizontal={false}
         //numColumns={2}
         style={{
-          borderTopRightRadius: 20,
-          marginHorizontal: Platform.OS === "ios" ? null : 20,
-          marginTop: -13,
+          borderTopRightRadius: responsive.h(20),
+          marginHorizontal: Platform.OS === "ios" ? null : responsive.w(20),
+          marginTop: responsive.h(-13),
         }}
         onEndReached={() => {
           if (

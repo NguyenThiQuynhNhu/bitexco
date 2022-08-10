@@ -30,9 +30,9 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
-          padding: 5,
-          borderRadius: 12,
-          marginVertical: 5,
+          padding: responsive.h(5),
+          borderRadius: responsive.h(12),
+          marginVertical: responsive.h(5),
           // marginHorizontal: 10,
           justifyContent: "center",
           backgroundColor: "#ffffff",
@@ -45,7 +45,7 @@ class ListItem extends PureComponent {
           },
           shadowRadius: 10,
           shadowOpacity: 1,
-          marginHorizontal: 10,
+          marginHorizontal: responsive.h(10),
           height: responsive.h(220),
           width: responsive.w(186),
         }}
@@ -56,7 +56,7 @@ class ListItem extends PureComponent {
             //circle={true}
             style={{
               height: responsive.h(111),
-              borderRadius: 12,
+              borderRadius: responsive.h(12),
               width: responsive.w(170),
               justifyContent: "center",
               alignItems: "center",
@@ -126,13 +126,13 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              paddingTop: 5,
+              paddingTop: responsive.h(5),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 11,
+                fontSize: responsive.h(11),
                 fontWeight: "normal",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -145,7 +145,7 @@ class ListItem extends PureComponent {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 11,
+                fontSize: responsive.h(11),
                 fontWeight: "normal",
                 fontStyle: "normal",
                 letterSpacing: 0,

@@ -315,14 +315,18 @@ class PaymentScreen extends Component {
               onPress={() => this.props.navigation.navigate("payment")}
               style={{ paddingVertical: 10 }}
             >
-              <MyIcon name="arrow" size={fontsize.medium} color="black" />
+              <MyIcon
+                name="arrow"
+                size={responsive.h(fontsize.medium)}
+                color="black"
+              />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -363,14 +367,18 @@ class PaymentScreen extends Component {
           <View>
             <View style={{ justifyContent: "center", alignItems: "center" }}>
               <Image
-                style={{ width: 100, height: 100, borderRadius: 10 }}
+                style={{
+                  width: responsive.h(100),
+                  height: responsive.h(100),
+                  borderRadius: responsive.h(10),
+                }}
                 source={{ uri: this.props.towerLogoUrl }}
               />
             </View>
             <Text
               style={{
                 fontFamily: "Inter",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "#282828",
@@ -382,16 +390,16 @@ class PaymentScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Medium",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#3d3d3d",
-                margin: 10,
+                margin: responsive.h(10),
               }}
             >
               Nhà cung cấp:{" "}
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                 }}
               >
@@ -401,16 +409,16 @@ class PaymentScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Medium",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#3d3d3d",
-                margin: 10,
+                margin: responsive.h(10),
               }}
             >
               Trạng thái:{" "}
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                 }}
               >
@@ -420,16 +428,16 @@ class PaymentScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Medium",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#3d3d3d",
-                margin: 10,
+                margin: responsive.h(10),
               }}
             >
               Mã đơn hàng:{" "}
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                 }}
               >
@@ -439,16 +447,16 @@ class PaymentScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Medium",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#3d3d3d",
-                margin: 10,
+                margin: responsive.h(10),
               }}
             >
               Mã giao dịch:{" "}
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                 }}
               >
@@ -458,16 +466,16 @@ class PaymentScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Medium",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 color: "#3d3d3d",
-                margin: 10,
+                margin: responsive.h(10),
               }}
             >
               Số tiền:{" "}
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   color: "red",
                 }}

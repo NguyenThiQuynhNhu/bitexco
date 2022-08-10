@@ -39,6 +39,7 @@ import {
 import Strings from "../../../../utils/languages";
 import NavBar from "../../../../components/common/NavBar";
 import { MyIcon } from "../../../../theme/icons";
+import responsive from "../../../../../resources/responsive";
 
 // create a component
 class ServiceExtension extends Component {
@@ -157,7 +158,7 @@ class ServiceExtension extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -195,7 +196,7 @@ class ServiceExtension extends Component {
         data={data}
         numColumns={2}
         contentContainerStyle={{
-          marginVertical: 10,
+          marginVertical: responsive.h(10),
         }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}
@@ -272,7 +273,7 @@ class ServiceExtension extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -325,8 +326,9 @@ class ServiceExtension extends Component {
                 }}
                 style={{
                   flex: 1,
-                  margin: Platform.OS == "ios" ? 5 : 10,
-                  marginHorizontal: 10,
+                  margin:
+                    Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
+                  marginHorizontal: responsive.w(10),
                 }}
               />
             }
@@ -347,7 +349,7 @@ class ServiceExtension extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
                 <Text style={{ color: "#fff" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -358,16 +360,16 @@ class ServiceExtension extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="black" size={20} />
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -385,7 +387,7 @@ class ServiceExtension extends Component {
                 onPress={() => this.setState({ isShowSearch: true })}
                 style={{ paddingVertical: 10 }}
               >
-                <MyIcon size={24} name="search" color="black" />
+                <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
@@ -411,7 +413,7 @@ class ServiceExtension extends Component {
                 style={{
                   width: 1,
                   backgroundColor: colors.grayBorder,
-                  marginVertical: 10,
+                  marginVertical: responsive.h(10),
                 }}
               />
             )}
@@ -424,7 +426,10 @@ class ServiceExtension extends Component {
             }}
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
-            style={{ borderTopRightRadius: 20, marginTop: -15 }}
+            style={{
+              borderTopRightRadius: responsive.h(20),
+              marginTop: responsive.h(-15),
+            }}
             renderItem={(item) => {
               return (
                 <View>
@@ -434,7 +439,7 @@ class ServiceExtension extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: 5 }}
+                    style={{ paddingHorizontal: responsive.w(5) }}
                   />
                 </View>
               );
@@ -445,7 +450,7 @@ class ServiceExtension extends Component {
         <View
           style={{
             backgroundColor: "#f5f5f5",
-            height: 15,
+            height: responsive.h(15),
             width: "100%",
           }}
         />
@@ -474,8 +479,8 @@ class ServiceExtension extends Component {
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

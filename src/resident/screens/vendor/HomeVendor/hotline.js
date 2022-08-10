@@ -28,6 +28,7 @@ import IconButton from "../../../components/common/IconButton";
 import ImageProgress from "../../../components/common/ImageProgress";
 import { MyIcon } from "../../../theme/icons";
 import colors from "../../../theme/colors";
+import responsive from "../../../../resources/responsive";
 
 // create a component
 
@@ -78,11 +79,11 @@ class HotlineListScreen extends Component {
       <TouchableOpacity
         style={{
           flexDirection: "row",
-          padding: 15,
+          padding: responsive.h(15),
           // borderWidth: 0.5,
           // borderColor: "rgb(206, 209, 212)",
           // backgroundColor: "#fff",
-          margin: 20,
+          margin: responsive.h(20),
           // borderRadius: 10,
           // shadowColor: "rgba(0, 0, 0, 0.1)",
           // elevation: 2,
@@ -92,7 +93,7 @@ class HotlineListScreen extends Component {
           // },
           // shadowRadius: 10,
           // shadowOpacity: 1,
-          borderRadius: 12,
+          borderRadius: responsive.h(12),
           borderWidth: 0.5,
           borderColor: "#eaeaea",
 
@@ -115,18 +116,24 @@ class HotlineListScreen extends Component {
         <ImageProgress
           circle={true}
           style={{
-            height: 60,
-            width: 60,
+            height: responsive.h(60),
+            width: responsive.h(60),
           }}
           source={{ uri: towerLogoUrl }}
         />
 
         <View style={{ flex: 1, justifyContent: "space-between" }}>
-          <View style={{ flex: 1, justifyContent: "center", marginLeft: 10 }}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              marginLeft: responsive.w(10),
+            }}
+          >
             <Text numberOfLines={4} lineBreakMode="tail">
               <Text
                 style={{
-                  fontSize: fontsize.medium,
+                  fontSize: responsive.h(fontsize.medium),
                   fontWeight: "bold",
                   color: colors.appTheme,
                 }}
@@ -137,8 +144,8 @@ class HotlineListScreen extends Component {
             <Text
               style={{
                 color: colors.gray1,
-                fontSize: fontsize.medium,
-                marginTop: 5,
+                fontSize: responsive.h(fontsize.medium),
+                marginTop: responsive.h(5),
               }}
             >
               {phone}
@@ -150,15 +157,15 @@ class HotlineListScreen extends Component {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              borderRadius: 25,
-              padding: 10,
+              borderRadius: responsive.h(25),
+              padding: responsive.h(10),
               backgroundColor: colors.appTheme,
-              width: 45,
-              height: 45,
+              width: responsive.h(45),
+              height: responsive.h(45),
               opacity: 0.6,
             }}
           >
-            <MyIcon name="call1" size={20} color="#fff" />
+            <MyIcon name="call1" size={responsive.h(20)} color="#fff" />
           </View>
         </View>
       </TouchableOpacity>
@@ -170,7 +177,7 @@ class HotlineListScreen extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -185,9 +192,9 @@ class HotlineListScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
@@ -201,7 +208,7 @@ class HotlineListScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -255,7 +262,7 @@ class HotlineListScreen extends Component {
         keyExtractor={(item, index) => `${index}`}
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
-        style={{ marginTop: -15 }}
+        style={{ marginTop: responsive.h(-15) }}
         onEndReached={() => {
           if (
             !this.onEndReachedCalledDuringMomentum &&

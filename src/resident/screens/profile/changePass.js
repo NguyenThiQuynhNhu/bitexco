@@ -33,6 +33,7 @@ import NavBar from "../../components/common/NavBar";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { Screen } from "../../utils/device";
 import { getProfile } from "../../actions/auth";
+import responsive from "../../../resources/responsive";
 class ChangePassScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null,
@@ -116,9 +117,9 @@ class ChangePassScreen extends Component {
             this.props.user.isChangePass && (
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="black" size={20} />
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             )
           }
@@ -133,10 +134,10 @@ class ChangePassScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
-                  lineHeight: 24,
+                  lineHeight: responsive.h(24),
                   letterSpacing: 0,
                   textAlign: "center",
                   color: "black",
@@ -153,7 +154,7 @@ class ChangePassScreen extends Component {
             flex: 1,
             alignItems: "center",
             //justifyContent: 'center',
-            padding: 20,
+            padding: responsive.h(20),
           }}
         >
           {/* <MyIcon
@@ -166,16 +167,17 @@ class ChangePassScreen extends Component {
             style={{
               flexDirection: "row",
               alignItems: "center",
-              borderBottomWidth: 0.5,
+              borderBottomWidth: responsive.h(0.5),
               borderColor: "#cccccc",
-              marginBottom: Platform.OS === "ios" ? 20 : 10,
+              marginBottom:
+                Platform.OS === "ios" ? responsive.h(20) : responsive.h(10),
             }}
           >
             <TextInput
               style={{
                 flex: 1,
                 fontFamily: "Inter-Regular",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "normal",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -202,14 +204,15 @@ class ChangePassScreen extends Component {
               alignItems: "center",
               borderBottomWidth: 0.5,
               borderColor: "#cccccc",
-              marginBottom: Platform.OS === "ios" ? 20 : 10,
+              marginBottom:
+                Platform.OS === "ios" ? responsive.h(20) : responsive.h(10),
             }}
           >
             <TextInput
               style={{
                 flex: 1,
                 fontFamily: "Inter-Regular",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "normal",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -229,7 +232,7 @@ class ChangePassScreen extends Component {
               underlineColorAndroid="transparent"
               //onSubmitEditing={onSubmitEditing}
             />
-            <MyIcon name="password2" size={18} color="#666666" />
+            <MyIcon name="password2" size={responsive.h(18)} color="#666666" />
           </View>
           <View
             style={{
@@ -237,14 +240,15 @@ class ChangePassScreen extends Component {
               alignItems: "center",
               borderBottomWidth: 0.5,
               borderColor: "#cccccc",
-              marginBottom: Platform.OS === "ios" ? 20 : 10,
+              marginBottom:
+                Platform.OS === "ios" ? responsive.h(20) : responsive.h(10),
             }}
           >
             <TextInput
               style={{
                 flex: 1,
                 fontFamily: "Inter-Regular",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "normal",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -270,10 +274,10 @@ class ChangePassScreen extends Component {
           </View>
           <TouchableOpacity
             style={{
-              marginTop: 50,
-              borderRadius: 45,
+              marginTop: responsive.h(50),
+              borderRadius: responsive.h(45),
               width: Screen.width * 0.8,
-              height: 40,
+              height: responsive.h(40),
               backgroundColor: colors.appTheme,
               justifyContent: "center",
             }}
@@ -282,10 +286,10 @@ class ChangePassScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "600",
                 fontStyle: "normal",
-                lineHeight: 28,
+                lineHeight: responsive.h(28),
                 letterSpacing: 0,
                 textAlign: "center",
                 color: "#ffffff",
@@ -299,8 +303,8 @@ class ChangePassScreen extends Component {
               style={{
                 color: "red",
                 fontStyle: "italic",
-                marginHorizontal: 20,
-                marginVertical: 40,
+                marginHorizontal: responsive.w(20),
+                marginVertical: responsive.h(40),
               }}
             >
               Đây là yêu cầu bắt buộc từ Ban quản lý tòa nhà. Vui lòng đổi mật
@@ -322,7 +326,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 10,
+    paddingVertical: responsive.h(10),
   },
 });
 

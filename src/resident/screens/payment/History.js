@@ -561,6 +561,7 @@ import { MyIcon } from "../../theme/icons";
 import colors from "../../theme/colors";
 import fontsize from "../../theme/fontsize";
 import Base64 from "crypto-js/enc-base64";
+import responsive from "../../../resources/responsive";
 // create a component
 
 class PaymentHistoryScreen extends Component {
@@ -675,16 +676,16 @@ class PaymentHistoryScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -708,15 +709,15 @@ class PaymentHistoryScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
-                  paddingLeft: 20,
+                  fontSize: responsive.h(14),
+                  paddingLeft: responsive.w(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 10,
+                  paddingHorizontal: responsive.w(10),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.payment.cardPayment}
@@ -725,12 +726,12 @@ class PaymentHistoryScreen extends Component {
                 style={{
                   // width: Platform.basic ? 64 : 44,
                   width: "130%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 1 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
-                  paddingHorizontal: 20,
+                  marginTop: responsive.h(5),
+                  paddingHorizontal: responsive.w(20),
                 }}
               />
             </TouchableOpacity>
@@ -748,15 +749,15 @@ class PaymentHistoryScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 10,
+                  paddingHorizontal: responsive.w(10),
                   textAlign: "center",
-                  paddingLeft: 20,
-                  paddingVertical: 10,
+                  paddingLeft: responsive.w(20),
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 {Strings.payment.normalPayment}
@@ -766,11 +767,11 @@ class PaymentHistoryScreen extends Component {
                 style={{
                   // width: Platform.isPad ? 64 : 44,
                   width: this.state.paid ? "130%" : "160%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 2 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                 }}
               />
             </TouchableOpacity>
@@ -785,14 +786,14 @@ class PaymentHistoryScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: 20,
+                  paddingHorizontal: responsive.w(20),
                   textAlign: "center",
-                  paddingVertical: 10,
+                  paddingVertical: responsive.h(10),
                   color: "#fff",
                 }}
               >
@@ -802,11 +803,11 @@ class PaymentHistoryScreen extends Component {
                 style={{
                   // width: Platform.isPad ? 64 : 44,
                   width: this.state.type == 3 ? "130%" : "160%",
-                  height: 3,
-                  borderRadius: 4,
+                  height: responsive.h(3),
+                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                 }}
               />
             </TouchableOpacity>
@@ -914,6 +915,7 @@ class PaymentHistoryScreen extends Component {
               fontWeight: "bold",
               fontFamily: "Inter-Bold",
               color: "red",
+              fontSize: responsive.h(fontsize.micro),
             }}
           >
             {errorTransInquiry.message}
@@ -925,7 +927,11 @@ class PaymentHistoryScreen extends Component {
       return (
         <View>
           <Text
-            style={{ margin: 20, fontWeight: "bold", fontFamily: "Inter-Bold" }}
+            style={{
+              margin: responsive.h(20),
+              fontWeight: "bold",
+              fontFamily: "Inter-Bold",
+            }}
           >
             Kết quả truy vấn: {errorTransInquiry.message}
           </Text>
@@ -949,7 +955,7 @@ class PaymentHistoryScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -1019,7 +1025,7 @@ class PaymentHistoryScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -1043,11 +1049,11 @@ class PaymentHistoryScreen extends Component {
       );
     }
     return (
-      <View style={{ flex: 1, marginBottom: 20 }}>
+      <View style={{ flex: 1, marginBottom: responsive.h(20) }}>
         <Text
           style={{
-            fontSize: 12,
-            marginHorizontal: 10,
+            fontSize: responsive.h(12),
+            marginHorizontal: responsive.w(10),
             fontStyle: "italic",
             color: "red",
           }}
@@ -1080,15 +1086,15 @@ class PaymentHistoryScreen extends Component {
             <View
               style={{
                 backgroundColor: "#fff",
-                marginHorizontal: 40,
-                marginVertical: 100,
+                marginHorizontal: responsive.w(40),
+                marginVertical: responsive.h(100),
               }}
             >
               <NavBar
                 body={
                   <Text
                     style={{
-                      fontSize: 20,
+                      fontSize: responsive.h(20),
                       fontWeight: "bold",
                       textAlign: "center",
                       color: "#ffffff",
@@ -1100,21 +1106,28 @@ class PaymentHistoryScreen extends Component {
                 rightView={null}
               />
               {this.renderContentTransInquiry()}
-              <View style={{ flexDirection: "row", margin: 10 }}>
+              <View style={{ flexDirection: "row", margin: responsive.h(10) }}>
                 <TouchableOpacity
                   style={{
                     flex: 1,
-                    height: 30,
-                    borderRadius: 5,
+                    height: responsive.h(30),
+                    borderRadius: responsive.h(5),
                     justifyContent: "center",
                     alignItems: "center",
                     borderColor: colors.appTheme,
-                    borderWidth: 1,
-                    borderRadius: 5,
+                    borderWidth: responsive.h(1),
+                    borderRadius: responsive.h(5),
                   }}
                   onPress={() => this.setState({ showTransInquiry: false })}
                 >
-                  <Text style={{ color: colors.appTheme }}>{"Bỏ qua"}</Text>
+                  <Text
+                    style={{
+                      color: colors.appTheme,
+                      fontSize: responsive.h(fontsize.medium),
+                    }}
+                  >
+                    {"Bỏ qua"}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -1202,11 +1215,11 @@ class PaymentHistoryScreen extends Component {
     return (
       <View
         style={{
-          padding: 20,
+          padding: responsive.h(20),
           backgroundColor: "#fff",
-          marginHorizontal: 20,
-          marginVertical: 10,
-          borderRadius: 12,
+          marginHorizontal: responsive.w(20),
+          marginVertical: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -1222,7 +1235,7 @@ class PaymentHistoryScreen extends Component {
         <Text
           style={{
             fontFamily: "Inter-Regular",
-            fontSize: 11,
+            fontSize: responsive.h(11),
             fontWeight: "normal",
             fontStyle: "normal",
             letterSpacing: 0,
@@ -1235,7 +1248,7 @@ class PaymentHistoryScreen extends Component {
         <Text
           style={{
             fontFamily: "Inter-Bold",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             fontWeight: "bold",
             color: "#282828",
           }}
@@ -1245,7 +1258,7 @@ class PaymentHistoryScreen extends Component {
         <Text
           style={{
             fontFamily: "Inter-Regular",
-            fontSize: 14,
+            fontSize: responsive.h(14),
             color: "#282828",
           }}
         >
@@ -1255,7 +1268,7 @@ class PaymentHistoryScreen extends Component {
           <Text
             style={{
               fontFamily: "Inter-Regular",
-              fontSize: 14,
+              fontSize: responsive.h(14),
               color: "#282828",
             }}
           >
@@ -1266,9 +1279,9 @@ class PaymentHistoryScreen extends Component {
         <Text
           style={{
             fontFamily: "Inter-Regular",
-            fontSize: 14,
+            fontSize: responsive.h(14),
             textAlign: "right",
-            marginVertical: 5,
+            marginVertical: responsive.h(5),
             color: id_pt != null && id_pt > 0 ? colors.appTheme : "red",
           }}
         >
@@ -1278,13 +1291,13 @@ class PaymentHistoryScreen extends Component {
           <TouchableOpacity
             style={{
               flex: 1,
-              height: 30,
-              borderRadius: 5,
+              height: responsive.h(30),
+              borderRadius: responsive.h(5),
               justifyContent: "center",
               alignItems: "center",
               borderColor: colors.appTheme,
-              borderWidth: 1,
-              borderRadius: 5,
+              borderWidth: responsive.h(1),
+              borderRadius: responsive.h(5),
             }}
             onPress={() =>
               Alert.alert("Xác nhận", "Bạn muốn truy vấn?", [

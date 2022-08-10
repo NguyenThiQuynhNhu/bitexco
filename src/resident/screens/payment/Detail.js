@@ -37,11 +37,12 @@ import Swiper from "react-native-swiper";
 import Base64 from "crypto-js/enc-base64";
 import moment from "moment";
 import { signOut } from "../../actions/auth";
+import responsive from "../../../resources/responsive";
 const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
   return (
     <View
       style={{
-        marginTop: 10,
+        marginTop: responsive.h(10),
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -51,7 +52,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
       <Text
         style={{
           fontFamily: "Inter-Medium",
-          fontSize: 14,
+          fontSize: responsive.h(14),
           fontWeight: "500",
           fontStyle: "normal",
           letterSpacing: 0,
@@ -65,7 +66,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
       <Text
         style={{
           fontFamily: "Inter",
-          fontSize: 14,
+          fontSize: responsive.h(14),
           fontWeight: "500",
           fontStyle: "normal",
           letterSpacing: 0,
@@ -84,7 +85,7 @@ const SearchField = ({}) => {
   return (
     <View
       style={{
-        marginTop: 10,
+        marginTop: responsive.h(10),
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",
@@ -99,8 +100,8 @@ const SearchField = ({}) => {
         style={{
           width: "100%",
           flex: 1,
-          height: 100,
-          padding: 5,
+          height: responsive.h(100),
+          padding: responsive.h(5),
           textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
           alignContent: "flex-start",
           alignSelf: "flex-start",
@@ -109,19 +110,19 @@ const SearchField = ({}) => {
         placeholderTextColor="#9e9e9e"
       />
       <TextInput
-        maxLength={500}
+        maxLength={responsive.h(500)}
         underline={false}
         multiline
         underlineColorAndroid="transparent"
         style={{
           width: "100%",
           flex: 1,
-          height: 100,
-          padding: 5,
+          height: responsive.h(100),
+          padding: responsive.h(5),
           textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
           alignContent: "flex-start",
           alignSelf: "flex-start",
-          fontSize: fontsize.small,
+          fontSize: responsive.h(fontsize.small),
         }}
         placeholderTextColor="#9e9e9e"
       />
@@ -225,11 +226,11 @@ class PaymentDetailScreen extends Component {
       <TouchableOpacity
         onPress={() => this.clickItem(item)}
         style={{
-          paddingHorizontal: 10,
-          marginBottom: 10,
-          paddingBottom: 10,
-          borderRadius: 5,
-          borderWidth: 0.5,
+          paddingHorizontal: responsive.w(10),
+          marginBottom: responsive.h(10),
+          paddingBottom: responsive.h(10),
+          borderRadius: responsive.h(5),
+          borderWidth: responsive.h(0.5),
           borderColor: colors.gray2,
         }}
       >
@@ -242,7 +243,10 @@ class PaymentDetailScreen extends Component {
         <Text
           numberOfLines={2}
           lineBreakMode="tail"
-          style={{ marginTop: 5, fontSize: fontsize.small }}
+          style={{
+            marginTop: responsive.h(5),
+            fontSize: responsive.h(fontsize.small),
+          }}
         >
           {description}
         </Text>
@@ -269,7 +273,7 @@ class PaymentDetailScreen extends Component {
   renderItemDetail = ({ item, index }) => {
     const { tenDM, donGia, thanhTien, soLuong } = item;
     return (
-      <View style={{ flex: 1, marginBottom: 5 }}>
+      <View style={{ flex: 1, marginBottom: responsive.h(5) }}>
         <FeildText
           name={tenDM}
           nameStyle={{ fontWeight: "bold", color: "#000" }}
@@ -420,10 +424,10 @@ class PaymentDetailScreen extends Component {
               onPress={() => this.getUrlViettelPayment()}
               style={{
                 backgroundColor: colors.appTheme,
-                marginVertical: 20,
-                borderRadius: 45,
-                width: 150,
-                height: 50,
+                marginVertical: responsive.h(20),
+                borderRadius: responsive.h(45),
+                width: responsive.h(150),
+                height: responsive.h(50),
                 justifyContent: "center",
               }}
             >
@@ -431,9 +435,9 @@ class PaymentDetailScreen extends Component {
               <Text
                 style={{
                   color: "#fff",
-                  fontSize: 18,
+                  fontSize: responsive.h(18),
                   alignSelf: "center",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                 }}
               >
                 {Strings.tabbar.payment}
@@ -454,7 +458,7 @@ class PaymentDetailScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -485,20 +489,20 @@ class PaymentDetailScreen extends Component {
     const pageData = items.map((o, index) => (
       <TouchableOpacity
         style={{
-          width: Screen.width - 40,
+          width: responsive.w(Screen.width - 40),
           //height: 120,
-          padding: 10,
-          borderRadius: 12,
+          padding: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
-          marginVertical: 5,
+          // shadowColor: "rgba(0, 0, 0, 0.1)",
+          // elevation: 2,
+          // shadowOffset: {
+          //   width: 0,
+          //   height: 4,
+          // },
+          // shadowRadius: 10,
+          // shadowOpacity: 1,
+          marginVertical: responsive.h(5),
         }}
         onPress={() => this.clickItem(o)}
       >
@@ -506,7 +510,7 @@ class PaymentDetailScreen extends Component {
           name={o.name}
           nameStyle={{
             fontFamily: "Inter",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             fontWeight: "600",
             fontStyle: "normal",
             letterSpacing: 0,
@@ -515,7 +519,7 @@ class PaymentDetailScreen extends Component {
           }}
           textStyle={{
             fontFamily: "Inter",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             fontWeight: "600",
             fontStyle: "normal",
             letterSpacing: 0,
@@ -530,9 +534,9 @@ class PaymentDetailScreen extends Component {
           numberOfLines={2}
           lineBreakMode="tail"
           style={{
-            marginTop: 5,
+            marginTop: responsive.h(5),
             fontFamily: "Inter",
-            fontSize: 12,
+            fontSize: responsive.h(12),
             fontWeight: "500",
             fontStyle: "normal",
             letterSpacing: 0,
@@ -546,26 +550,33 @@ class PaymentDetailScreen extends Component {
     ));
     return (
       <View
-        style={{ flex: 1, flexDirection: "column", borderTopRightRadius: 20 }}
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          borderTopRightRadius: responsive.h(20),
+        }}
       >
         <ScrollView
-          style={{ borderTopRightRadius: 20, marginTop: -20 }}
+          style={{
+            borderTopRightRadius: responsive.h(20),
+            marginTop: responsive.h(-20),
+          }}
           showsVerticalScrollIndicator={false}
         >
           <View
             style={{
               color: "#000",
               flex: 2,
-              marginBottom: 70,
+              marginBottom: responsive.h(70),
               backgroundColor: "#fff",
-              padding: 20,
-              borderTopRightRadius: 20,
+              padding: responsive.h(20),
+              borderTopRightRadius: responsive.h(20),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -577,18 +588,18 @@ class PaymentDetailScreen extends Component {
             </Text>
             <View
               style={{
-                borderRadius: 20,
+                borderRadius: responsive.h(20),
                 backgroundColor: "#ffffff",
-                shadowColor: "rgba(0, 0, 0, 0.1)",
-                elevation: 2,
-                shadowOffset: {
-                  width: 0,
-                  height: 4,
-                },
-                shadowRadius: 10,
-                shadowOpacity: 1,
-                padding: 10,
-                marginTop: 20,
+                // shadowColor: "rgba(0, 0, 0, 0.1)",
+                // elevation: 2,
+                // shadowOffset: {
+                //   width: 0,
+                //   height: 4,
+                // },
+                // shadowRadius: 10,
+                // shadowOpacity: 1,
+                padding: responsive.h(10),
+                marginTop: responsive.h(20),
               }}
             >
               <FeildText
@@ -598,7 +609,7 @@ class PaymentDetailScreen extends Component {
                 textStyle={{ color: colors.appTheme, fontWeight: "bold" }}
               />
               <FeildText
-                style={{ marginTop: 10 }}
+                style={{ marginTop: responsive.h(10) }}
                 name={Strings.payment.time}
                 text={time}
               />
@@ -623,18 +634,18 @@ class PaymentDetailScreen extends Component {
 
             <View
               style={{
-                borderRadius: 20,
+                borderRadius: responsive.h(20),
                 backgroundColor: "#ffffff",
                 shadowColor: "rgba(0, 0, 0, 0.1)",
-                elevation: 2,
+                elevation: responsive.h(2),
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: responsive.h(4),
                 },
-                shadowRadius: 10,
-                shadowOpacity: 1,
-                padding: 10,
-                marginTop: 20,
+                shadowRadius: responsive.h(10),
+                shadowOpacity: responsive.h(1),
+                padding: responsive.h(10),
+                marginTop: responsive.h(20),
               }}
             >
               {/* <FeildText name={Strings.payment.openingBalance} text={amountOldDebt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' đ'} /> */}
@@ -650,7 +661,7 @@ class PaymentDetailScreen extends Component {
               <View
                 style={{
                   height: 1,
-                  marginTop: 10,
+                  marginTop: responsive.h(10),
                   backgroundColor: colors.gray2,
                 }}
               />
@@ -685,15 +696,15 @@ class PaymentDetailScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "bold",
                 fontStyle: "normal",
-                lineHeight: 24,
+                lineHeight: responsive.h(24),
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#3d3d3d",
-                marginBottom: 10,
-                marginTop: 20,
+                marginBottom: responsive.h(10),
+                marginTop: responsive.h(20),
               }}
             >
               {Strings.payment.detailFee}
@@ -751,16 +762,20 @@ class PaymentDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" size={fontsize.medium} color="black" />
+              <MyIcon
+                name="arrow"
+                size={responsive.h(fontsize.medium)}
+                color="black"
+              />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -779,8 +794,8 @@ class PaymentDetailScreen extends Component {
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
         <Modal
@@ -815,15 +830,15 @@ class PaymentDetailScreen extends Component {
             <View
               style={{
                 width: "90%",
-                borderRadius: 5,
+                borderRadius: responsive.h(5),
               }}
             >
               <View
                 style={{
-                  borderRadius: 10,
+                  borderRadius: responsive.h(10),
                   justifyContent: "center",
                   backgroundColor: "#fff",
-                  padding: 10,
+                  padding: responsive.h(10),
                 }}
               >
                 <FlatList
@@ -842,15 +857,15 @@ class PaymentDetailScreen extends Component {
               <TouchableOpacity
                 onPress={() => this.setState({ isShowFeeDetail: false })}
                 style={{
-                  borderRadius: 45,
+                  borderRadius: responsive.h(45),
                   position: "absolute",
                   backgroundColor: "#505c5c5c",
-                  padding: 5,
-                  top: -10,
-                  right: -10,
+                  padding: responsive.h(5),
+                  top: responsive.h(-10),
+                  right: responsive.w(-10),
                 }}
               >
-                <MyIcon name="no" size={15} color="#fff" />
+                <MyIcon name="no" size={responsive.h(15)} color="#fff" />
               </TouchableOpacity>
             </View>
           </View>

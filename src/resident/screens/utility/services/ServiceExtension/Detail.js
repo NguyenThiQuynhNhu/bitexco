@@ -109,7 +109,7 @@ class ServiceExtensionDetailScreen extends Component {
     return (
       <MyIcon
         name="star"
-        size={20}
+        size={responsive.h(20)}
         color={colors.appTheme}
         style={active ? styles.iconStarActive : styles.iconStarDeactive}
       />
@@ -139,8 +139,8 @@ class ServiceExtensionDetailScreen extends Component {
     return (
       <View
         style={{
-          borderRadius: 16,
-          padding: 10,
+          borderRadius: responsive.h(16),
+          padding: responsive.h(10),
           backgroundColor: "#ffffff",
           // shadowColor: "rgba(0, 0, 0, 0.08)",
           // elevation: 2,
@@ -150,7 +150,7 @@ class ServiceExtensionDetailScreen extends Component {
           // },
           // shadowRadius: 12,
           // shadowOpacity: 1,
-          marginHorizontal: 20,
+          marginHorizontal: responsive.h(20),
           marginVertical: responsive.h(10),
         }}
       >
@@ -177,24 +177,24 @@ class ServiceExtensionDetailScreen extends Component {
               }}
               circle={true}
               style={{
-                height: 32,
-                width: 32,
+                height: responsive.h(32),
+                width: responsive.h(32),
               }}
             />
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: 5,
+                  marginRight: responsive.w(5),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
-                  borderRadius: 15,
+                  borderRadius: responsive.h(15),
                 }}
               >
                 <Text
                   style={{
-                    margin: 2,
-                    marginHorizontal: 5,
-                    fontSize: fontsize.micro,
+                    margin: responsive.h(2),
+                    marginHorizontal: responsive.w(5),
+                    fontSize: responsive.h(fontsize.micro),
                     color: "#fff",
                     fontFamily: "Inter-Regular",
                   }}
@@ -208,7 +208,7 @@ class ServiceExtensionDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: 10,
+                paddingLeft: responsive.w(10),
                 color: "#505050",
               }}
             >
@@ -219,20 +219,20 @@ class ServiceExtensionDetailScreen extends Component {
           <View
             style={{
               backgroundColor: "#fff5eb",
-              borderRadius: 15,
+              borderRadius: responsive.h(15),
               paddingHorizontal: responsive.w(10),
               backgroundColor: "#feefef",
-              borderRadius: 15,
+              borderRadius: responsive.h(15),
               height: responsive.h(24),
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 10,
+              marginTop: responsive.h(10),
             }}
           >
             <Text
               style={{
-                margin: 5,
-                marginHorizontal: 10,
+                margin: responsive.h(5),
+                marginHorizontal: responsive.h(10),
                 fontSize: responsive.h(14),
                 color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
@@ -271,7 +271,7 @@ class ServiceExtensionDetailScreen extends Component {
             fontSize: responsive.h(15),
             textAlign: "left",
             color: "#505050",
-            marginTop: 10,
+            marginTop: responsive.h(10),
           }}
         >
           {description}
@@ -334,15 +334,15 @@ class ServiceExtensionDetailScreen extends Component {
         <ScrollView>
           <View
             style={{
-              borderRadius: 16,
+              borderRadius: responsive.h(16),
               backgroundColor: "#ffffff",
-              borderWidth: 1,
-              borderBottomWidth: 2,
+              borderWidth: responsive.h(1),
+              borderBottomWidth: responsive.h(2),
               borderColor: "#eaeaea",
               borderBottomColor: "#eaeaea",
-              marginHorizontal: 20,
-              marginTop: 5,
-              marginBottom: 20,
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(5),
+              marginBottom: responsive.h(20),
             }}
           >
             {/* Thông tin nha cung cap */}
@@ -351,20 +351,24 @@ class ServiceExtensionDetailScreen extends Component {
                 flex: 1,
                 flexDirection: "row",
                 alignItems: "center",
-                padding: 10,
+                padding: responsive.h(10),
                 // backgroundColor: "#fff",
               }}
             >
               <ImageProgress
                 circle={true}
                 style={{
-                  height: 90,
-                  width: 90,
+                  height: responsive.h(90),
+                  width: responsive.h(90),
                 }}
                 source={{ uri: logo }}
               />
               <View
-                style={{ flex: 1, justifyContent: "center", marginLeft: 20 }}
+                style={{
+                  flex: 1,
+                  justifyContent: "center",
+                  marginLeft: responsive.w(20),
+                }}
               >
                 <View
                   style={{
@@ -376,13 +380,13 @@ class ServiceExtensionDetailScreen extends Component {
                 >
                   <View
                     style={{
-                      marginRight: 10,
-                      marginVertical: 5,
+                      marginRight: responsive.h(10),
+                      marginVertical: responsive.h(5),
                       backgroundColor: "#feefef",
-                      borderRadius: 15,
+                      borderRadius: responsive.h(15),
                       paddingHorizontal: responsive.w(10),
                       backgroundColor: "#feefef",
-                      borderRadius: 15,
+                      borderRadius: responsive.h(15),
                       height: responsive.h(24),
                       justifyContent: "center",
                       alignItems: "center",
@@ -417,39 +421,39 @@ class ServiceExtensionDetailScreen extends Component {
             <View
               style={{
                 flexDirection: "row",
-                marginVertical: 5,
-                paddingHorizontal: 10,
-                marginTop: 5,
+                marginVertical: responsive.h(5),
+                paddingHorizontal: responsive.w(10),
+                marginTop: responsive.h(5),
                 justifyContent: "space-between",
               }}
             >
               <Text style={styles.textTitle}>
                 {Strings.serviceExtension.amount}
               </Text>
-              <Text style={{ ...styles.textInfo, marginLeft: 5 }}>
+              <Text style={{ ...styles.textInfo, marginLeft: responsive.w(5) }}>
                 {amount}
               </Text>
             </View>
             <View
               style={{
                 flexDirection: "row",
-                marginVertical: 5,
-                paddingHorizontal: 10,
+                marginVertical: responsive.h(5),
+                paddingHorizontal: responsive.w(10),
                 justifyContent: "space-between",
               }}
             >
               <Text style={styles.textTitle}>
                 {Strings.serviceExtension.dateBook}
               </Text>
-              <Text style={{ ...styles.textInfo, marginLeft: 5 }}>
+              <Text style={{ ...styles.textInfo, marginLeft: responsive.w(5) }}>
                 {moment(dateBook).format("DD/MM/YYYY")}
               </Text>
             </View>
             <View
               style={{
                 flexDirection: "row",
-                marginVertical: 5,
-                paddingHorizontal: 10,
+                marginVertical: responsive.h(5),
+                paddingHorizontal: responsive.w(10),
                 justifyContent: "space-between",
               }}
             >
@@ -457,13 +461,17 @@ class ServiceExtensionDetailScreen extends Component {
                 {Strings.serviceExtension.totalPrice}
               </Text>
               <Text
-                style={{ ...styles.textInfo, color: "#ff624d", marginLeft: 5 }}
+                style={{
+                  ...styles.textInfo,
+                  color: "#ff624d",
+                  marginLeft: responsive.w(5),
+                }}
               >
                 {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                 <Text
                   style={{
                     fontFamily: "Inter",
-                    fontSize: 11,
+                    fontSize: responsive.h(11),
                     textAlign: "right",
                     color: "#6f6f6f",
                   }}
@@ -514,7 +522,7 @@ class ServiceExtensionDetailScreen extends Component {
                     style={{
                       height: 1,
                       backgroundColor: "#f5f5f5",
-                      marginHorizontal: 10,
+                      marginHorizontal: responsive.h(10),
                     }}
                   />
                 );
@@ -570,7 +578,10 @@ class ServiceExtensionDetailScreen extends Component {
           <Spinner
             visible={this.props.isLoadingReponse}
             textContent={Strings.app.progressing}
-            textStyle={{ color: "#FFF", fontSize: fontsize.small }}
+            textStyle={{
+              color: "#FFF",
+              fontSize: responsive.h(fontsize.small),
+            }}
           />
         </ScrollView>
       );
@@ -584,16 +595,16 @@ class ServiceExtensionDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -611,7 +622,7 @@ class ServiceExtensionDetailScreen extends Component {
                 onPress={() => this.setState({ isShowModal: true })}
                 style={{ paddingVertical: 10 }}
               >
-                <MyIcon name="reply" color="black" size={20} />
+                <MyIcon name="reply" color="black" size={responsive.h(20)} />
                 {/* <Text style={{ color: '#fff' }}>{this.props.data.seviceBasic.statusId !== 3 ? Strings.detailRequest.feedback : Strings.detailRequest.rating}</Text> */}
               </TouchableOpacity>
             )
@@ -624,7 +635,10 @@ class ServiceExtensionDetailScreen extends Component {
           overlayColor="rgba(255, 255, 255, 0.05)"
           color={colors.appTheme}
           textContent={Strings.app.loading}
-          textStyle={{ color: colors.appTheme, fontSize: fontsize.small }}
+          textStyle={{
+            color: colors.appTheme,
+            fontSize: responsive.h(fontsize.small),
+          }}
         />
         <Toast
           ref="toast"
@@ -661,32 +675,32 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     width: "90%",
-    borderRadius: 5,
+    borderRadius: responsive.h(5),
     backgroundColor: colors.primaryKeyColor,
   },
   cardView: {
-    borderRadius: 5,
+    borderRadius: responsive.h(5),
     flexDirection: "row",
-    margin: 5,
-    padding: 2,
+    margin: responsive.h(5),
+    padding: responsive.h(2),
     borderColor: "#fafafa",
-    borderWidth: 1,
+    borderWidth: responsive.h(1),
     backgroundColor: "white",
   },
   iconStarDeactive: {
-    margin: 5,
+    margin: responsive.h(5),
     opacity: 0.5,
   },
   iconStarActive: {
-    margin: 5,
+    margin: responsive.h(5),
   },
   wrapperTextIcon: {
     alignItems: "center",
     flexDirection: "row",
-    marginBottom: 10,
+    marginBottom: responsive.h(10),
   },
   swiperImage: {
-    margin: 20,
+    margin: responsive.h(20),
     flexDirection: "row",
     alignItems: "center",
   },

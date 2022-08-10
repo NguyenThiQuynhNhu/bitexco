@@ -43,6 +43,7 @@ import Icon2 from "react-native-vector-icons/MaterialCommunityIcons";
 import Icon3 from "react-native-vector-icons/MaterialIcons";
 import { default_user } from "../../theme/images";
 import { getDate, getDateTime, getDateApi } from "../../../utils/Common";
+import responsive from "../../../resources/responsive";
 // create a component
 class HandoverScheduleScreen extends Component {
   static navigationOptions = {
@@ -218,19 +219,19 @@ class HandoverScheduleScreen extends Component {
       return (
         <View
           style={{
-            marginTop: 10,
-            marginHorizontal: -10,
+            marginTop: responsive.h(10),
+            marginHorizontal: responsive.w(-10),
             backgroundColor: colors.gray2,
-            paddingTop: 10,
+            paddingTop: responsive.h(10),
             flex: 1,
           }}
         >
           <View
             style={{
-              padding: 10,
+              padding: responsive.h(10),
               backgroundColor: "#fff",
-              borderTopEndRadius: 50,
-              borderTopStartRadius: 50,
+              borderTopEndRadius: responsive.h(50),
+              borderTopStartRadius: responsive.h(50),
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
@@ -241,16 +242,16 @@ class HandoverScheduleScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: 10,
+                marginBottom: responsive.h(10),
               }}
             >
-              <MyIcon name="calendar" color="#000" size={20} />
+              <MyIcon name="calendar" color="#000" size={responsive.h(20)} />
               <Text
                 style={{
                   fontWeight: "bold",
                   color: "#000",
-                  marginLeft: 10,
-                  fontSize: fontsize.small,
+                  marginLeft: responsive.w(10),
+                  fontSize: responsive.h(fontsize.small),
                 }}
               >
                 {moment(this.state.date).format("DD/MM/YYYY")}
@@ -266,14 +267,18 @@ class HandoverScheduleScreen extends Component {
                 this.props.handoverSetProps({ isRefreshing: true, data: [] })
               }
             >
-              <MyIcon name={"layers"} size={100} color={colors.grayBorder} />
+              <MyIcon
+                name={"layers"}
+                size={responsive.h(100)}
+                color={colors.grayBorder}
+              />
               <Text
                 style={{
                   fontWeight: "bold",
                   color: "#cccccc",
                   fontSize: fontsize.small,
                   textAlign: "center",
-                  marginHorizontal: 20,
+                  marginHorizontal: responsive.w(20),
                 }}
               >
                 {Strings.app.error}
@@ -290,19 +295,19 @@ class HandoverScheduleScreen extends Component {
       return (
         <View
           style={{
-            marginTop: 10,
-            marginHorizontal: -10,
+            marginTop: responsive.h(10),
+            marginHorizontal: responsive.w(-10),
             backgroundColor: colors.gray2,
-            paddingTop: 10,
+            paddingTop: responsive.h(10),
             flex: 1,
           }}
         >
           <View
             style={{
-              padding: 10,
+              padding: responsive.h(10),
               backgroundColor: "#fff",
-              borderTopEndRadius: 50,
-              borderTopStartRadius: 50,
+              borderTopEndRadius: responsive.h(50),
+              borderTopStartRadius: responsive.h(50),
               flex: 1,
               justifyContent: "center",
               alignItems: "center",
@@ -313,16 +318,16 @@ class HandoverScheduleScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: 10,
+                marginBottom: responsive.h(10),
               }}
             >
-              <MyIcon name="calendar" color="#000" size={20} />
+              <MyIcon name="calendar" color="#000" size={responsive.h(20)} />
               <Text
                 style={{
                   fontWeight: "bold",
                   color: "#000",
-                  marginLeft: 10,
-                  fontSize: fontsize.small,
+                  marginLeft: responsive.w(10),
+                  fontSize: responsive.h(fontsize.small),
                 }}
               >
                 {moment(this.state.date).format("DD/MM/YYYY")}
@@ -338,14 +343,18 @@ class HandoverScheduleScreen extends Component {
                 this.props.handoverSetProps({ isRefreshing: true, data: [] })
               }
             >
-              <MyIcon name={"layers"} size={100} color={colors.grayBorder} />
+              <MyIcon
+                name={"layers"}
+                size={responsive.h(100)}
+                color={colors.grayBorder}
+              />
               <Text
                 style={{
                   fontWeight: "bold",
                   color: "#cccccc",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   textAlign: "center",
-                  marginHorizontal: 20,
+                  marginHorizontal: responsive.w(20),
                 }}
               >
                 {Strings.app.emptyData}
@@ -362,18 +371,18 @@ class HandoverScheduleScreen extends Component {
     return (
       <View
         style={{
-          marginTop: 10,
-          marginHorizontal: -10,
+          marginTop: responsive.h(10),
+          marginHorizontal: responsive.w(-10),
           backgroundColor: colors.gray2,
-          paddingTop: 10,
+          paddingTop: responsive.h(10),
         }}
       >
         <View
           style={{
-            padding: 10,
+            padding: responsive.h(10),
             backgroundColor: "#fff",
-            borderTopEndRadius: 50,
-            borderTopStartRadius: 50,
+            borderTopEndRadius: responsive.h(50),
+            borderTopStartRadius: responsive.h(50),
           }}
         >
           <View
@@ -381,16 +390,16 @@ class HandoverScheduleScreen extends Component {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "center",
-              marginBottom: 10,
+              marginBottom: responsive.h(10),
             }}
           >
-            <MyIcon name="calendar" color="#000" size={20} />
+            <MyIcon name="calendar" color="#000" size={responsive.h(20)} />
             <Text
               style={{
                 fontWeight: "bold",
                 color: "#000",
-                marginLeft: 10,
-                fontSize: fontsize.small,
+                marginLeft: responsive.w(10),
+                fontSize: responsive.h(fontsize.small),
               }}
             >
               {moment(this.state.date).format("DD/MM/YYYY")}
@@ -434,19 +443,19 @@ class HandoverScheduleScreen extends Component {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View
             style={{
-              height: 10,
-              width: 25,
+              height: responsive.h(10),
+              width: responsive.w(25),
               backgroundColor: "#f4ad41",
-              marginRight: 5,
-              marginLeft: -5,
-              borderTopEndRadius: 10,
-              borderBottomEndRadius: 10,
+              marginRight: responsive.w(5),
+              marginLeft: responsive.h(-5),
+              borderTopEndRadius: responsive.h(10),
+              borderBottomEndRadius: responsive.h(10),
             }}
           />
           {/* <Icon name='arrow-bold-right' size={ 20 } color='#f4ad41' style={{ marginRight: 5, marginLeft: -5 }}/> */}
           <Text
             style={{
-              fontSize: fontsize.small,
+              fontSize: responsive.h(fontsize.small),
               fontWeight: "bold",
               color: "#000",
             }}
@@ -459,15 +468,15 @@ class HandoverScheduleScreen extends Component {
         <View
           style={{
             flex: 1,
-            padding: 10,
+            padding: responsive.h(10),
             flexDirection: "row",
             alignItems: "center",
             backgroundColor: "#fff",
-            borderWidth: 1,
+            borderWidth: responsive.h(1),
             borderColor: colors.gray2,
-            marginVertical: 10,
-            marginHorizontal: 25,
-            borderRadius: 10,
+            marginVertical: responsive.h(10),
+            marginHorizontal: responsive.w(25),
+            borderRadius: responsive.h(10),
           }}
         >
           {/* <ImageProgress
@@ -487,29 +496,28 @@ class HandoverScheduleScreen extends Component {
                   <View
                     style={{
                       //flex: 1,
-                      padding: 10,
+                      padding: responsive.h(10),
                       //flexDirection: 'row',
                       alignItems: "center",
                       backgroundColor: "#fff",
-                      borderWidth: 1,
+                      borderWidth: responsive.h(1),
                       borderColor: colors.gray2,
-                      marginRight: 10,
+                      marginRight: responsive.w(10),
                       //marginHorizontal: 25,
-                      borderRadius: 50,
+                      borderRadius: responsive.h(50),
                     }}
                   >
                     <Icon2
                       name="home"
-                      size={20}
+                      size={responsive.h(20)}
                       color={colors.gray1}
-                      style={{}}
                     />
                   </View>
 
                   <View>
                     <Text
                       style={{
-                        fontSize: fontsize.small,
+                        fontSize: responsive.h(fontsize.small),
                         fontWeight: "bold",
                         color: "#000",
                         alignItems: "center",
@@ -518,13 +526,16 @@ class HandoverScheduleScreen extends Component {
                       {apartmentName}
                     </Text>
                     <Text
-                      style={{ fontSize: fontsize.small, color: colors.gray1 }}
+                      style={{
+                        fontSize: responsive.h(fontsize.small),
+                        color: colors.gray1,
+                      }}
                     >
                       {buildingChecklistName}
                     </Text>
                     <Text
                       style={{
-                        fontSize: fontsize.small,
+                        fontSize: responsive.h(fontsize.small),
                         color: colors.gray1,
                         fontStyle: "italic",
                       }}
@@ -558,12 +569,12 @@ class HandoverScheduleScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
               <ImageProgress
                 style={{
-                  height: 40,
-                  width: 40,
+                  height: responsive.h(40),
+                  width: responsive.h(40),
                 }}
                 circle={true}
                 resizeMode="stretch"
@@ -577,7 +588,7 @@ class HandoverScheduleScreen extends Component {
               style={{
                 alignSelf: "center",
                 color: "black",
-                fontSize: fontsize.medium,
+                fontSize: responsive.h(fontsize.medium),
               }}
             >
               {Strings.handoverSchedule.title.toLocaleUpperCase()}
@@ -586,9 +597,9 @@ class HandoverScheduleScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.props.refreshDataHandle()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <Icon name="cycle" color="black" size={20} />
+              <Icon name="cycle" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
         />
@@ -739,21 +750,21 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: responsive.h(30),
     fontWeight: "bold",
   },
   dot: {
-    width: 5,
-    height: 5,
-    marginHorizontal: 5,
-    borderRadius: 7,
+    width: responsive.h(5),
+    height: responsive.h(5),
+    marginHorizontal: responsive.w(5),
+    borderRadius: responsive.h(7),
     backgroundColor: "rgb(206, 209, 212)",
   },
   activeDot: {
-    width: 5,
-    height: 5,
-    marginHorizontal: 5,
-    borderRadius: 7,
+    width: responsive.h(5),
+    height: responsive.h(5),
+    marginHorizontal: responsive.w(5),
+    borderRadius: responsive.h(7),
     backgroundColor: "rgb(105, 109, 116)",
   },
 });

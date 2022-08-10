@@ -90,10 +90,10 @@ class ServicesScreen extends Component {
       <TouchableOpacity
         onPress={() => this.props.navigation.navigate("servicesDetail", item)}
         style={{
-          marginHorizontal: 20,
-          marginBottom: 20,
+          marginHorizontal: responsive.w(20),
+          marginBottom: responsive.h(20),
           backgroundColor: "#fff",
-          borderRadius: 12,
+          borderRadius: responsive.h(12),
           //backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -108,23 +108,23 @@ class ServicesScreen extends Component {
         <ImageProgress
           source={{ uri: logo }}
           style={{
-            height: 150,
+            height: responsive.h(150),
             width: "100%",
-            borderTopRightRadius: 12,
-            borderTopLeftRadius: 12,
+            borderTopRightRadius: responsive.h(12),
+            borderTopLeftRadius: responsive.h(12),
           }}
         />
         <Text
           style={{
             fontFamily: "Inter-SemiBold",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             fontWeight: "600",
             fontStyle: "normal",
-            lineHeight: 24,
+            lineHeight: responsive.h(24),
             letterSpacing: 0,
             textAlign: "left",
             color: "#3d3d3d",
-            margin: 10,
+            margin: responsive.h(10),
           }}
         >
           {name}
@@ -132,8 +132,8 @@ class ServicesScreen extends Component {
         <View
           style={{
             flexDirection: "row",
-            paddingHorizontal: 10,
-            paddingBottom: 10,
+            paddingHorizontal: responsive.w(10),
+            paddingBottom: responsive.h(10),
             justifyContent: "space-between",
             alignItems: "center",
           }}
@@ -150,7 +150,7 @@ class ServicesScreen extends Component {
                 <Text
                   style={{
                     fontFamily: "Inter-Medium",
-                    fontSize: 16,
+                    fontSize: responsive.h(16),
                     fontWeight: "500",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -163,13 +163,13 @@ class ServicesScreen extends Component {
                 <Text
                   style={{
                     fontFamily: "Inter-Medium",
-                    fontSize: 11,
+                    fontSize: responsive.h(11),
                     fontWeight: "500",
                     fontStyle: "normal",
                     letterSpacing: 0,
                     textAlign: "right",
                     color: "#6f6f6f",
-                    marginLeft: 5,
+                    marginLeft: responsive.h(5),
                   }}
                 >
                   VNĐ
@@ -179,7 +179,7 @@ class ServicesScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "500",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -208,7 +208,10 @@ class ServicesScreen extends Component {
                   },
                 })
               }
-              style={{ backgroundColor: colors.appTheme, borderRadius: 24 }}
+              style={{
+                backgroundColor: colors.appTheme,
+                borderRadius: responsive.h(24),
+              }}
             />
           </View>
         </View>
@@ -221,7 +224,7 @@ class ServicesScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -252,16 +255,16 @@ class ServicesScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",
@@ -273,9 +276,13 @@ class ServicesScreen extends Component {
           rightView={
             <TouchableOpacity
               //onPress={() => this.props.navigation.navigate('serviceExtensionResident', {name: this.props.navigation.state.params.name, dataId: data})}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <Icon name="history" size={24} color="transparent" />
+              <Icon
+                name="history"
+                size={responsive.h(24)}
+                color="transparent"
+              />
             </TouchableOpacity>
           }
         />
@@ -296,8 +303,8 @@ class ServicesScreen extends Component {
                 ? colors.toast.warning
                 : colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

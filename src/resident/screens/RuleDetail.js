@@ -25,6 +25,7 @@ import colors from "../theme/colors";
 import ErrorContent from "../components/common/ErrorContent";
 import NavBar from "../../components/common/NavBar";
 import Strings from "../utils/languages";
+import responsive from "../../resources/responsive";
 
 // create a component
 class RulesDetail extends Component {
@@ -134,7 +135,7 @@ class RulesDetail extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -156,10 +157,10 @@ class RulesDetail extends Component {
             style={{
               flexDirection: "row",
               alignSelf: "center",
-              marginBottom: 50,
+              marginBottom: responsive.h(50),
             }}
           >
-            <Text style={{ color: "#cccccc", marginLeft: 10 }}>
+            <Text style={{ color: "#cccccc", marginLeft: responsive.w(10) }}>
               {Strings.app.touchToRefresh}
             </Text>
           </View>
@@ -178,7 +179,13 @@ class RulesDetail extends Component {
     }
     if (this.state.data) {
       return (
-        <View style={{ flex: 1, marginHorizontal: 10, marginTop: -5 }}>
+        <View
+          style={{
+            flex: 1,
+            marginHorizontal: responsive.w(10),
+            marginTop: responsive.h(-5),
+          }}
+        >
           <WebView
             style={{ flex: 1 }}
             startInLoadingState={
@@ -202,7 +209,7 @@ class RulesDetail extends Component {
               <TouchableOpacity
                 style={{
                   flex: 1,
-                  height: 50,
+                  height: responsive.h(50),
                   flexDirection: "row",
                   backgroundColor: colors.appTheme,
                   alignItems: "center",
@@ -226,12 +233,12 @@ class RulesDetail extends Component {
                   }
                 }}
               >
-                <MyIcon name="download" size={30} color="#fff" />
+                <MyIcon name="download" size={responsive.h(30)} color="#fff" />
                 <Text
                   style={{
                     color: "#fff",
-                    marginLeft: 10,
-                    fontSize: fontsize.larg,
+                    marginLeft: responsive.w(10),
+                    fontSize: responsive.h(fontsize.larg),
                   }}
                 >
                   {Strings.app.download}
@@ -247,8 +254,8 @@ class RulesDetail extends Component {
                   ? colors.toast.warning
                   : colors.toast.success,
               opacity: 1,
-              borderRadius: 5,
-              padding: 10,
+              borderRadius: responsive.h(5),
+              padding: responsive.h(10),
             }}
           />
         </View>
@@ -264,16 +271,16 @@ class RulesDetail extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="#fff" size={20} />
+                <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -285,14 +292,18 @@ class RulesDetail extends Component {
               </Text>
             }
             rightView={
-              <TouchableOpacity style={{ paddingVertical: 10 }}>
-                <MyIcon size={20} name="search" color="transparent" />
+              <TouchableOpacity style={{ paddingVertical: responsive.h(10) }}>
+                <MyIcon
+                  size={responsive.h(20)}
+                  name="search"
+                  color="transparent"
+                />
               </TouchableOpacity>
             }
           />
           <View
             style={{
-              paddingVertical: 20,
+              paddingVertical: responsive.h(20),
             }}
           >
             <ActivityIndicator animating size="small" />
@@ -307,16 +318,16 @@ class RulesDetail extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -328,8 +339,8 @@ class RulesDetail extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ paddingVertical: 10 }}>
-              <MyIcon size={20} name="search" color="black" />
+            <TouchableOpacity style={{ paddingVertical: responsive.h(10) }}>
+              <MyIcon size={responsive.h(20)} name="search" color="black" />
             </TouchableOpacity>
           }
         />

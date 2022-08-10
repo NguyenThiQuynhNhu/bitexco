@@ -102,7 +102,7 @@ class RequestDetailScreen extends Component {
     return (
       <MyIcon
         name="star"
-        size={20}
+        size={responsive.h(20)}
         color={colors.appTheme}
         style={active ? styles.iconStarActive : styles.iconStarDeactive}
       />
@@ -273,8 +273,8 @@ class RequestDetailScreen extends Component {
       // </View>
       <View
         style={{
-          borderRadius: 16,
-          padding: 10,
+          borderRadius: responsive.h(16),
+          padding: responsive.h(10),
           backgroundColor: "#ffffff",
           // shadowColor: "rgba(0, 0, 0, 0.08)",
           // elevation: 2,
@@ -284,7 +284,7 @@ class RequestDetailScreen extends Component {
           // },
           // shadowRadius: 12,
           // shadowOpacity: 1,
-          marginHorizontal: 10,
+          marginHorizontal: responsive.w(10),
           marginVertical: responsive.h(10),
         }}
       >
@@ -311,24 +311,24 @@ class RequestDetailScreen extends Component {
               }}
               circle={true}
               style={{
-                height: 32,
-                width: 32,
+                height: responsive.h(32),
+                width: responsive.h(32),
               }}
             />
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: 5,
+                  marginRight: responsive.w(5),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
-                  borderRadius: 15,
+                  borderRadius: responsive.h(15),
                 }}
               >
                 <Text
                   style={{
-                    margin: 2,
-                    marginHorizontal: 5,
-                    fontSize: fontsize.micro,
+                    margin: responsive.h(2),
+                    marginHorizontal: responsive.w(5),
+                    fontSize: responsive.h(fontsize.micro),
                     color: "#fff",
                     fontFamily: "Inter-Regular",
                   }}
@@ -342,7 +342,7 @@ class RequestDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: 10,
+                paddingLeft: responsive.w(10),
                 color: "#505050",
               }}
             >
@@ -353,20 +353,20 @@ class RequestDetailScreen extends Component {
           <View
             style={{
               backgroundColor: "#fff5eb",
-              borderRadius: 15,
+              borderRadius: responsive.h(15),
               paddingHorizontal: responsive.w(10),
               backgroundColor: "#feefef",
-              borderRadius: 15,
+              borderRadius: responsive.h(15),
               height: responsive.h(24),
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 10,
+              marginTop: responsive.h(10),
             }}
           >
             <Text
               style={{
-                margin: 5,
-                marginHorizontal: 10,
+                margin: responsive.h(5),
+                marginHorizontal: responsive.w(10),
                 fontSize: responsive.h(14),
                 color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
@@ -405,7 +405,7 @@ class RequestDetailScreen extends Component {
             fontSize: responsive.h(15),
             textAlign: "left",
             color: "#505050",
-            marginTop: 10,
+            marginTop: responsive.h(10),
           }}
         >
           {content}
@@ -452,8 +452,19 @@ class RequestDetailScreen extends Component {
       const { logo, towerName } = this.state.itemfromList;
       //console.log(this.props.data);
       return (
-        <ScrollView style={{ borderTopRightRadius: 20, marginVertical: 10 }}>
-          <View style={{ flex: 1, borderTopRightRadius: 20, marginTop: -20 }}>
+        <ScrollView
+          style={{
+            borderTopRightRadius: responsive.h(20),
+            marginVertical: responsive.h(10),
+          }}
+        >
+          <View
+            style={{
+              flex: 1,
+              borderTopRightRadius: responsive.h(20),
+              marginTop: responsive.h(-20),
+            }}
+          >
             {/* Thông tin nha cung cap */}
             <VendorInfo
               data={{
@@ -474,7 +485,7 @@ class RequestDetailScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -486,9 +497,9 @@ class RequestDetailScreen extends Component {
               </Text>
               <Text
                 style={{
-                  marginTop: 5,
+                  marginTop: responsive.h(5),
                   fontFamily: "Inter-Regular",
-                  fontSize: 13,
+                  fontSize: responsive.h(13),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -507,8 +518,8 @@ class RequestDetailScreen extends Component {
                   //borderColor: colors.grayBorder,
                   //borderTopWidth: 10,
                   //borderBottomWidth: 10,
-                  marginTop: -10,
-                  marginHorizontal: 20,
+                  marginTop: responsive.h(-10),
+                  marginHorizontal: responsive.w(20),
                 }}
               >
                 <ImageGallery title="" data={imageCustormer} />
@@ -525,8 +536,9 @@ class RequestDetailScreen extends Component {
                   // marginHorizontal: -10,
                   // paddingLeft: 10,
                   // paddingBottom: 10
-                  marginTop: imageCustormer.length != 0 ? 20 : 0,
-                  marginHorizontal: imageCustormer.length != 0 ? 20 : 0,
+                  marginTop: imageCustormer.length != 0 ? responsive.h(20) : 0,
+                  marginHorizontal:
+                    imageCustormer.length != 0 ? responsive.w(20) : 0,
                 }}
               >
                 <ImageGallery
@@ -542,7 +554,7 @@ class RequestDetailScreen extends Component {
               keyExtractor={(item, index) => `${index}`}
               renderItem={(item) => this.renderItemChat(item)}
               contentContainerStyle={{
-                marginTop: 10,
+                marginTop: responsive.h(10),
               }}
               ItemSeparatorComponent={() => {
                 return (
@@ -550,7 +562,7 @@ class RequestDetailScreen extends Component {
                     style={{
                       height: 1,
                       backgroundColor: "#f5f5f5",
-                      marginHorizontal: 10,
+                      marginHorizontal: responsive.w(10),
                     }}
                   />
                 );
@@ -621,18 +633,18 @@ class RequestDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
-                padding: 10,
-                width: Screen.width - 124,
+                padding: responsive.h(10),
+                width: Screen.width - responsive.w(124),
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -650,9 +662,9 @@ class RequestDetailScreen extends Component {
             this.props.data.statusKey !== "dong" && (
               <TouchableOpacity
                 onPress={() => this.setState({ isShowModal: true })}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="reply" color="black" size={20} />
+                <MyIcon name="reply" color="black" size={responsive.h(20)} />
                 {/* <Text style={{ color: '#fff' }}>{this.props.data.statusKey !== 'hoan_thanh' ? Strings.detailRequest.feedback : Strings.detailRequest.rating}</Text> */}
               </TouchableOpacity>
             )
@@ -665,7 +677,10 @@ class RequestDetailScreen extends Component {
           overlayColor="rgba(255, 255, 255, 0.05)"
           color={colors.appTheme}
           textContent={Strings.app.loading}
-          textStyle={{ color: colors.appTheme, fontSize: fontsize.small }}
+          textStyle={{
+            color: colors.appTheme,
+            fontSize: responsive.h(fontsize.small),
+          }}
         />
         <Toast ref="toast" style={{ backgroundColor: colors.toast.success }} />
       </View>
@@ -694,32 +709,32 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     width: "90%",
-    borderRadius: 5,
+    borderRadius: responsive.h(5),
     backgroundColor: colors.primaryKeyColor,
   },
   cardView: {
-    borderRadius: 5,
+    borderRadius: responsive.h(5),
     flexDirection: "row",
-    margin: 5,
-    padding: 2,
+    margin: responsive.h(5),
+    padding: responsive.h(2),
     borderColor: "#fafafa",
-    borderWidth: 1,
+    borderWidth: responsive.w(1),
     backgroundColor: "white",
   },
   iconStarDeactive: {
-    margin: 5,
+    margin: responsive.h(5),
     opacity: 0.5,
   },
   iconStarActive: {
-    margin: 5,
+    margin: responsive.h(5),
   },
   wrapperTextIcon: {
     alignItems: "center",
     flexDirection: "row",
-    marginBottom: 10,
+    marginBottom: responsive.h(10),
   },
   swiperImage: {
-    margin: 20,
+    margin: responsive.h(20),
     flexDirection: "row",
     alignItems: "center",
   },

@@ -33,6 +33,7 @@ import {
   insSurveyHandle,
   checkAnswerSurvey,
 } from "../../../actions/surveyDetail";
+import responsive from "../../../../resources/responsive";
 class SurveyDetailScreen extends Component {
   constructor(props) {
     super(props);
@@ -100,8 +101,8 @@ class SurveyDetailScreen extends Component {
       <View
         style={{
           flexDirection: "row",
-          marginBottom: 10,
-          borderRadius: 12,
+          marginBottom: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -109,9 +110,9 @@ class SurveyDetailScreen extends Component {
             width: 0,
             height: 4,
           },
-          shadowRadius: 10,
+          shadowRadius: responsive.h(10),
           shadowOpacity: 1,
-          marginHorizontal: 10,
+          marginHorizontal: responsive.w(10),
         }}
       >
         <View
@@ -122,7 +123,11 @@ class SurveyDetailScreen extends Component {
           }}
         >
           <View
-            style={{ flex: 1, justifyContent: "space-between", margin: 10 }}
+            style={{
+              flex: 1,
+              justifyContent: "space-between",
+              margin: responsive.h(10),
+            }}
           >
             <Text
               lineBreakMode="tail"
@@ -132,7 +137,7 @@ class SurveyDetailScreen extends Component {
                 flex: 1,
                 width: Screen.width - 60,
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -155,7 +160,7 @@ class SurveyDetailScreen extends Component {
                         flexDirection: "row",
                         justifyContent: "flex-start",
                         alignItems: "center",
-                        marginBottom: 10,
+                        marginBottom: responsive.h(10),
                       }}
                       onPress={async () =>
                         isAnswer ? null : this.checkAnswer(id, itemAnswer.item)
@@ -163,8 +168,8 @@ class SurveyDetailScreen extends Component {
                     >
                       <View
                         style={{
-                          height: 20,
-                          width: 20,
+                          height: responsive.h(20),
+                          width: responsive.h(20),
                           alignItems: "center",
                           justifyContent: "center",
                           borderWidth: 1,
@@ -173,26 +178,29 @@ class SurveyDetailScreen extends Component {
                             this.state[`${id}${itemAnswer.item.id}`]
                               ? colors.appTheme
                               : "#000",
-                          borderRadius: 10,
+                          borderRadius: responsive.h(10),
                         }}
                       >
                         {itemAnswer.item.isReply ||
                         this.state[`${id}${itemAnswer.item.id}`] ? (
                           <Text
-                            style={{ color: colors.appTheme, fontSize: 15 }}
+                            style={{
+                              color: colors.appTheme,
+                              fontSize: responsive.h(15),
+                            }}
                           >
                             ✓
                           </Text>
                         ) : null}
                       </View>
-                      <Text style={{ flex: 1, marginLeft: 10 }}>
+                      <Text style={{ flex: 1, marginLeft: responsive.w(10) }}>
                         {itemAnswer.item.answerName}
                       </Text>
                     </TouchableOpacity>
                   );
                 }}
                 //onEndReachedThreshold={0.5}
-                style={{ marginTop: 10 }}
+                style={{ marginTop: responsive.h(10) }}
               />
             ) : (
               <TextInput
@@ -202,18 +210,18 @@ class SurveyDetailScreen extends Component {
                 style={{
                   width: "100%",
                   flex: 1,
-                  height: 50,
-                  padding: 10,
+                  height: responsive.h(50),
+                  padding: responsive.h(10),
                   textAlignVertical: Platform.OS === "ios" ? "auto" : "center",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   fontFamily: "Inter-Regular",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
-                  marginTop: 10,
+                  marginTop: responsive.h(10),
                 }}
                 placeholder={Strings.message.pleaseType}
                 placeholderTextColor="#6b6b6b"
@@ -314,7 +322,7 @@ class SurveyDetailScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -345,7 +353,10 @@ class SurveyDetailScreen extends Component {
         data={data}
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
-        style={{ paddingHorizontal: 10, marginTop: 7 }}
+        style={{
+          paddingHorizontal: responsive.w(10),
+          marginTop: responsive.h(7),
+        }}
       />
     );
   }
@@ -357,18 +368,18 @@ class SurveyDetailScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: 10 }}
+              style={{ padding: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
-                padding: 10,
+                padding: responsive.h(10),
                 width: Screen.width - 124,
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -397,7 +408,7 @@ class SurveyDetailScreen extends Component {
                 onPress={() => this._onSubmit()}
                 style={{ padding: 10 }}
               >
-                <MyIcon name="reply" color="black" size={20} />
+                <MyIcon name="reply" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             )
           }
@@ -405,10 +416,10 @@ class SurveyDetailScreen extends Component {
         <Text
           style={{
             //fontFamily: "Inter-SemiBold",
-            fontSize: 14,
+            fontSize: responsive.h(14),
             color: "red",
             fontStyle: "italic",
-            margin: 10,
+            margin: responsive.h(10),
           }}
         >
           {!this.state.isAnswer ? "" : Strings.surveyDetail.isAnswer}
@@ -425,7 +436,7 @@ class SurveyDetailScreen extends Component {
                 : colors.toast.warning,
             opacity: 1,
             borderRadius: 5,
-            padding: 10,
+            padding: responsive.h(10),
           }}
         />
       </View>

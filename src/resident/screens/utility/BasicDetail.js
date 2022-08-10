@@ -34,6 +34,7 @@ import Strings from "../../utils/languages";
 import { Screen } from "../../utils/device";
 import RNFetchBlob from "rn-fetch-blob";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import responsive from "../../../resources/responsive";
 // create a component
 class ServicesScreen extends Component {
   static navigationOptions = {
@@ -101,7 +102,7 @@ class ServicesScreen extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -132,19 +133,19 @@ class ServicesScreen extends Component {
         <View style={{ flex: 1 }}>
           <View
             style={{
-              width: Screen.width - 40,
-              marginHorizontal: 20,
-              height: 194,
-              borderRadius: 12,
+              width: Screen.width - responsive.w(40),
+              marginHorizontal: responsive.w(20),
+              height: responsive.h(194),
+              borderRadius: responsive.h(12),
             }}
           >
             <ImageProgress
               source={{ uri: logo }}
               style={{
-                height: 194,
-                width: Screen.width - 40,
+                height: responsive.h(194),
+                width: Screen.width - responsive.w(40),
                 borderColor: colors.grayBorder,
-                borderRadius: 12,
+                borderRadius: responsive.h(12),
                 backgroundColor: colors.gray2,
               }}
             />
@@ -152,11 +153,11 @@ class ServicesScreen extends Component {
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
-              fontSize: 18,
+              fontSize: responsive.h(18),
               fontWeight: "600",
               fontStyle: "normal",
-              marginHorizontal: 20,
-              marginTop: 20,
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(20),
               letterSpacing: 0,
               textAlign: "left",
               color: "#3d3d3d",
@@ -168,14 +169,14 @@ class ServicesScreen extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginHorizontal: 20,
-              marginTop: 15,
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(15),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -188,7 +189,7 @@ class ServicesScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -203,14 +204,14 @@ class ServicesScreen extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginHorizontal: 20,
-              marginTop: 15,
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(15),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -223,7 +224,7 @@ class ServicesScreen extends Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -235,7 +236,7 @@ class ServicesScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   color: "#a0a0a0",
                 }}
               >
@@ -260,10 +261,10 @@ class ServicesScreen extends Component {
           <View
             style={{
               height: "60%",
-              width: Screen.width - 40,
-              marginHorizontal: 20,
-              marginTop: 15,
-              paddingBottom: 80,
+              width: Screen.width - responsive.h(40),
+              marginHorizontal: responsive.w(20),
+              marginTop: responsive.h(15),
+              paddingBottom: responsive.h(80),
             }}
           >
             <WebView
@@ -302,10 +303,10 @@ class ServicesScreen extends Component {
             }
             style={{
               position: "absolute",
-              bottom: 10,
-              borderRadius: 45,
-              margin: 20,
-              width: 150,
+              bottom: responsive.h(10),
+              borderRadius: responsive.h(45),
+              margin: responsive.h(20),
+              width: responsive.h(150),
               alignSelf: "center",
             }}
           />
@@ -324,9 +325,9 @@ class ServicesScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="black" size={20} />
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
@@ -334,7 +335,7 @@ class ServicesScreen extends Component {
                 style={{
                   alignSelf: "center",
                   color: "black",
-                  fontSize: fontsize.medium,
+                  fontSize: responsive.h(fontsize.medium),
                 }}
               >
                 {this.props.navigation.state.params.name}
@@ -343,7 +344,7 @@ class ServicesScreen extends Component {
           />
           <View
             style={{
-              paddingVertical: 20,
+              paddingVertical: responsive.h(20),
             }}
           >
             <ActivityIndicator animating size="small" />
@@ -358,16 +359,16 @@ class ServicesScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -386,12 +387,12 @@ class ServicesScreen extends Component {
                   name: this.props.navigation.state.params.name,
                 })
               }
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
               {/* <Text style={{ color: '#fff', fontSize: fontsize.small }}>{Strings.setting.utilityRegister}</Text> */}
               <Icon
                 name="history"
-                size={24}
+                size={responsive.h(24)}
                 color="black"
                 //style={{marginHorizontal: 20}}
               />
@@ -408,8 +409,8 @@ class ServicesScreen extends Component {
                 ? colors.toast.warning
                 : colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

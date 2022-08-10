@@ -39,6 +39,7 @@ import IconButton from "../../../components/common/IconButton";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class BasicBookingScreen extends Component {
@@ -139,8 +140,8 @@ class BasicBookingScreen extends Component {
   renderItem = ({ item, index }) => {
     const { id, name, amountEmpty, description, isAvailable, isSelect } = item;
 
-    const sizeWidth = (Screen.width - 65) / 3;
-    const sizeHeight = Screen.width / 3 - 50;
+    const sizeWidth = (Screen.width - responsive.h(65)) / 3;
+    const sizeHeight = Screen.width / 3 - responsive.h(50);
     if (isAvailable)
       return (
         <TouchableOpacity
@@ -148,24 +149,24 @@ class BasicBookingScreen extends Component {
             this.props.onValueChange({ id, value: !isSelect });
           }}
           style={{
-            margin: 5,
-            marginVertical: 10,
-            borderBottomWidth: 5,
+            margin: responsive.h(5),
+            marginVertical: responsive.h(10),
+            borderBottomWidth: responsive.h(5),
             width: sizeWidth,
             height: sizeHeight,
             justifyContent: "center",
             alignItems: "center",
             borderColor: isSelect ? colors.appTheme : colors.gray2,
             borderBottomColor: isSelect ? colors.appTheme : colors.gray2,
-            borderWidth: 1,
-            padding: 5,
-            borderRadius: 12,
+            borderWidth: responsive.h(1),
+            padding: responsive.h(5),
+            borderRadius: responsive.h(12),
           }}
         >
           <Text
             style={{
               fontFamily: "Inter-Regular",
-              fontSize: 14,
+              fontSize: responsive.h(14),
               fontWeight: "normal",
               fontStyle: "normal",
               letterSpacing: 0,
@@ -177,8 +178,8 @@ class BasicBookingScreen extends Component {
           </Text>
           <Text
             style={{
-              marginTop: 10,
-              fontSize: fontsize.micro,
+              marginTop: responsive.h(10),
+              fontSize: responsive.h(fontsize.micro),
               color: "#282828",
             }}
           >
@@ -190,9 +191,9 @@ class BasicBookingScreen extends Component {
       return (
         <View
           style={{
-            margin: 5,
-            marginVertical: 10,
-            borderBottomWidth: 5,
+            margin: responsive.h(5),
+            marginVertical: responsive.h(10),
+            borderBottomWidth: responsive.h(5),
             width: sizeWidth,
             height: sizeHeight,
             justifyContent: "center",
@@ -200,7 +201,7 @@ class BasicBookingScreen extends Component {
             borderColor: colors.red,
             borderBottomColor: colors.red,
             borderWidth: 1,
-            borderRadius: 12,
+            borderRadius: responsive.h(12),
           }}
         >
           <Text
@@ -218,8 +219,8 @@ class BasicBookingScreen extends Component {
           </Text>
           <Text
             style={{
-              marginTop: 10,
-              fontSize: fontsize.micro,
+              marginTop: responsive.h(10),
+              fontSize: responsive.h(fontsize.micro),
               color: "#282828",
             }}
           >
@@ -260,25 +261,25 @@ class BasicBookingScreen extends Component {
       const { name } = this.props.navigation.state.params.name;
       return (
         <KeyboardAwareScrollView>
-          <View style={{ flex: 1, paddingHorizontal: 20 }}>
+          <View style={{ flex: 1, paddingHorizontal: responsive.h(20) }}>
             <Lookup
               fielName={Strings.serviceBasicBooking.position}
               textTile={{
                 fontFamily: "Inter-Medium",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "500",
                 fontStyle: "normal",
-                lineHeight: 24,
+                lineHeight: responsive.h(24),
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#282828",
               }}
               textInf={{
                 fontFamily: "Inter-Regular",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "normal",
                 fontStyle: "normal",
-                lineHeight: 21,
+                lineHeight: responsive.h(21),
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#282828",
@@ -301,13 +302,13 @@ class BasicBookingScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 20,
+                paddingVertical: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "500",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -322,9 +323,9 @@ class BasicBookingScreen extends Component {
               >
                 <Text
                   style={{
-                    marginRight: 10,
+                    marginRight: responsive.h(10),
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "600",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -337,7 +338,7 @@ class BasicBookingScreen extends Component {
                 <Text
                   style={{
                     fontFamily: "Inter-Regular",
-                    fontSize: 11,
+                    fontSize: responsive.h(11),
                     fontWeight: "normal",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -354,13 +355,13 @@ class BasicBookingScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                marginBottom: 20,
+                marginBottom: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "500",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -377,7 +378,7 @@ class BasicBookingScreen extends Component {
                   flexDirection: "row",
                   justifyContent: "flex-end",
                   backgroundColor: "#f8fff2",
-                  borderRadius: 12,
+                  borderRadius: responsive.h(12),
                   elevation: 3,
                 }}
               >
@@ -388,14 +389,19 @@ class BasicBookingScreen extends Component {
                 >
                   <View
                     style={{
-                      width: 50,
-                      height: 40,
+                      width: responsive.w(50),
+                      height: responsive.h(40),
                       alignItems: "center",
                       justifyContent: "space-between",
                       paddingTop: 5,
                     }}
                   >
-                    <Text style={{ fontSize: fontsize.larg, color: "#fff200" }}>
+                    <Text
+                      style={{
+                        fontSize: responsive.h(fontsize.larg),
+                        color: "#fff200",
+                      }}
+                    >
                       -
                     </Text>
                   </View>
@@ -403,16 +409,16 @@ class BasicBookingScreen extends Component {
 
                 <View
                   style={{
-                    width: 50,
-                    height: 40,
-                    paddingTop: 10,
+                    width: responsive.h(50),
+                    height: responsive.h(40),
+                    paddingTop: responsive.h(10),
                     alignItems: "center",
                   }}
                 >
                   <Text
                     style={{
                       fontFamily: "Inter-SemiBold",
-                      fontSize: 16,
+                      fontSize: responsive.h(16),
                       fontWeight: "600",
                       fontStyle: "normal",
                       letterSpacing: 0,
@@ -431,9 +437,9 @@ class BasicBookingScreen extends Component {
                 >
                   <View
                     style={{
-                      width: 50,
-                      height: 40,
-                      paddingTop: 5,
+                      width: responsive.w(50),
+                      height: responsive.h(40),
+                      paddingTop: responsive.h(5),
                       alignItems: "center",
                       justifyContent: "space-between",
                     }}
@@ -460,13 +466,13 @@ class BasicBookingScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  marginBottom: 20,
+                  marginBottom: responsive.h(20),
                 }}
               >
                 <Text
                   style={{
                     fontFamily: "Inter-Medium",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "500",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -481,19 +487,19 @@ class BasicBookingScreen extends Component {
                     flexDirection: "row",
                     justifyContent: "flex-end",
                     alignItems: "center",
-                    borderRadius: 8,
+                    borderRadius: responsive.h(8),
                     borderStyle: "solid",
                     borderWidth: 1,
                     borderColor: "#cbcbcb",
-                    padding: 10,
+                    padding: responsive.h(10),
                   }}
                 >
                   {this.props.language == "en" ? (
                     <Text
                       style={{
                         fontFamily: "Inter-Regular",
-                        marginRight: 10,
-                        fontSize: 14,
+                        marginRight: responsive.h(10),
+                        fontSize: responsive.h(14),
                         fontWeight: "normal",
                         fontStyle: "normal",
                         letterSpacing: 0,
@@ -507,8 +513,8 @@ class BasicBookingScreen extends Component {
                     <Text
                       style={{
                         fontFamily: "Inter-Regular",
-                        marginRight: 10,
-                        fontSize: 14,
+                        marginRight: responsive.w(10),
+                        fontSize: responsive.h(14),
                         fontWeight: "normal",
                         fontStyle: "normal",
                         letterSpacing: 0,
@@ -521,7 +527,7 @@ class BasicBookingScreen extends Component {
                   )}
                   <MyIcon
                     name="calendar"
-                    size={20}
+                    size={responsive.h(20)}
                     color="rgba(0, 0, 0, 0.54)"
                   />
                 </View>
@@ -532,7 +538,7 @@ class BasicBookingScreen extends Component {
                 flex: 1,
                 flexDirection: "column",
                 alignItems: "flex-start",
-                marginBottom: 20,
+                marginBottom: responsive.h(20),
                 //borderBottomColor: colors.gray2,
                 //borderBottomWidth: 1
               }}
@@ -540,7 +546,7 @@ class BasicBookingScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "500",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -585,7 +591,7 @@ class BasicBookingScreen extends Component {
 
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                marginBottom: 20,
+                marginBottom: responsive.h(20),
               }}
             >
               <View
@@ -598,7 +604,7 @@ class BasicBookingScreen extends Component {
                 <Text
                   style={{
                     fontFamily: "Inter-Medium",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "500",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -617,20 +623,20 @@ class BasicBookingScreen extends Component {
                 multiline
                 underlineColorAndroid="transparent"
                 style={{
-                  marginTop: 10,
+                  marginTop: responsive.h(10),
                   width: "100%",
                   flex: 1,
-                  height: 100,
-                  padding: 5,
+                  height: responsive.h(100),
+                  padding: responsive.h(5),
                   textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
                   fontFamily: "Inter-Regular",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                 }}
                 placeholder={Strings.serviceBasicBooking.messagePlaceholder}
                 placeholderTextColor="#6b6b6b"
@@ -712,9 +718,9 @@ class BasicBookingScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
@@ -722,7 +728,7 @@ class BasicBookingScreen extends Component {
               style={{
                 alignSelf: "center",
                 color: "black",
-                fontSize: fontsize.larg,
+                fontSize: responsive.h(fontsize.larg),
               }}
             >
               {this.props.navigation.state.params.name}
@@ -731,7 +737,7 @@ class BasicBookingScreen extends Component {
         />
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -746,16 +752,16 @@ class BasicBookingScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -789,11 +795,15 @@ class BasicBookingScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: 10,
+                  paddingHorizontal: responsive.w(10),
                   alignItems: "center",
                 }}
               >
-                <MyIcon name="paperplane" color="black" size={24} />
+                <MyIcon
+                  name="paperplane"
+                  color="black"
+                  size={responsive.h(24)}
+                />
               </TouchableOpacity>
             </View>
           }
@@ -811,8 +821,8 @@ class BasicBookingScreen extends Component {
                 ? colors.toast.warning
                 : colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

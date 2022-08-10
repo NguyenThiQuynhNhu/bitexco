@@ -34,6 +34,7 @@ import {
   refreshDataHandle,
   createCarCardHandle,
 } from "../../../actions/carCard";
+import responsive from "../../../../resources/responsive";
 class CarCardCreateScreen extends Component {
   constructor(props) {
     super(props);
@@ -221,18 +222,18 @@ class CarCardCreateScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
-                padding: 10,
-                width: Screen.width - 124,
+                padding: responsive.h(10),
+                width: Screen.width - responsive.w(124),
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -253,31 +254,38 @@ class CarCardCreateScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: 10,
+                  paddingHorizontal: responsive.w(10),
                   alignItems: "center",
                 }}
               >
-                <MyIcon name="paperplane" color="black" size={24} />
+                <MyIcon
+                  name="paperplane"
+                  color="black"
+                  size={responsive.h(24)}
+                />
               </TouchableOpacity>
             </View>
           }
         />
         <KeyboardAwareScrollView
-          style={{ borderTopRightRadius: 20, paddingHorizontal: 20 }}
+          style={{
+            borderTopRightRadius: responsive.h(20),
+            paddingHorizontal: responsive.w(20),
+          }}
         >
           <View style={styles.container}>
             <View
               style={{
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                borderTopRightRadius: 20,
+                borderTopRightRadius: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                 }}
               >
@@ -290,16 +298,16 @@ class CarCardCreateScreen extends Component {
                 style={{
                   width: "100%",
                   flex: 1,
-                  height: 40,
-                  padding: 10,
+                  height: responsive.h(40),
+                  padding: responsive.h(10),
                   textAlignVertical: "center",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   fontFamily: "Inter-Regular",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
-                  borderWidth: 1,
+                  borderWidth: responsive.h(1),
                   borderColor: "#cbcbcb",
                 }}
                 placeholder={Strings.carCard.placeholderOwner}
@@ -316,15 +324,15 @@ class CarCardCreateScreen extends Component {
               style={{
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                marginTop: 20,
-                borderTopRightRadius: 20,
+                marginTop: responsive.h(20),
+                borderTopRightRadius: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                 }}
               >
@@ -337,14 +345,14 @@ class CarCardCreateScreen extends Component {
                 style={{
                   width: "100%",
                   flex: 1,
-                  height: 40,
-                  padding: 10,
+                  height: responsive.h(40),
+                  padding: responsive.h(10),
                   textAlignVertical: "center",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   fontFamily: "Inter-Regular",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
@@ -363,15 +371,15 @@ class CarCardCreateScreen extends Component {
               style={{
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                marginTop: 20,
-                borderTopRightRadius: 20,
+                marginTop: responsive.h(20),
+                borderTopRightRadius: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                 }}
               >
@@ -384,14 +392,14 @@ class CarCardCreateScreen extends Component {
                 style={{
                   width: "100%",
                   flex: 1,
-                  height: 40,
-                  padding: 10,
+                  height: responsive.h(40),
+                  padding: responsive.h(10),
                   textAlignVertical: "center",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
                   fontSize: fontsize.small,
                   fontFamily: "Inter-Regular",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
@@ -410,15 +418,15 @@ class CarCardCreateScreen extends Component {
               style={{
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                marginVertical: 20,
-                borderTopRightRadius: 20,
+                marginVertical: responsive.h(20),
+                borderTopRightRadius: responsive.h(20),
               }}
             >
               <Text
                 style={{
                   color: "#282828",
                   fontFamily: "Inter-Bold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "bold",
                 }}
               >
@@ -431,14 +439,14 @@ class CarCardCreateScreen extends Component {
                 style={{
                   width: "100%",
                   flex: 1,
-                  height: 40,
-                  padding: 10,
+                  height: responsive.h(40),
+                  padding: responsive.h(10),
                   textAlignVertical: "center",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   fontFamily: "Inter-Regular",
-                  borderRadius: 8,
+                  borderRadius: responsive.h(8),
                   borderStyle: "solid",
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
@@ -473,7 +481,7 @@ class CarCardCreateScreen extends Component {
               <ScrollView
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                style={{ marginTop: 20 }}
+                style={{ marginTop: responsive.h(20) }}
               >
                 {this.state.images.length < 5 && (
                   <View
@@ -481,30 +489,30 @@ class CarCardCreateScreen extends Component {
                       justifyContent: "center",
                       alignItems: "center",
                       backgroundColor: colors.grayBorder,
-                      borderRadius: 8,
-                      padding: 5,
-                      marginTop: 10,
-                      marginRight: 10,
+                      borderRadius: responsive.h(8),
+                      padding: responsive.h(5),
+                      marginTop: responsive.h(10),
+                      marginRight: responsive.h(10),
                     }}
                   >
                     <MyIcon
                       onPress={() => this._onAttachment()}
                       name="image2"
-                      size={40}
+                      size={responsive.h(40)}
                       color="#a8acaf"
                     />
                     <View
                       style={{
-                        borderRadius: 2,
+                        borderRadius: responsive.h(2),
                         backgroundColor: "#abafb2",
-                        padding: 3,
+                        padding: responsive.h(3),
                         //borderTopRightRadius: 20,
                       }}
                     >
                       <Text
                         style={{
                           fontFamily: "OpenSans-Regular",
-                          fontSize: 8,
+                          fontSize: responsive.h(8),
                           fontWeight: "normal",
                           fontStyle: "normal",
                           letterSpacing: 0,
@@ -524,9 +532,9 @@ class CarCardCreateScreen extends Component {
                     <View key={y}>
                       <Lightbox
                         style={{
-                          marginTop: 10,
-                          marginRight: 10,
-                          borderRadius: 5,
+                          marginTop: responsive.h(10),
+                          marginRight: responsive.w(10),
+                          borderRadius: responsive.h(5),
                           backgroundColor: "#eeeeee",
                         }}
                         activeProps={{
@@ -537,10 +545,10 @@ class CarCardCreateScreen extends Component {
                         <Image
                           source={{ uri: eachImage.uri }}
                           style={{
-                            width: 90,
-                            height: 120,
+                            width: responsive.w(90),
+                            height: responsive.h(120),
                             zIndex: 0,
-                            borderRadius: 8,
+                            borderRadius: responsive.h(8),
                           }}
                         />
                       </Lightbox>
@@ -553,14 +561,18 @@ class CarCardCreateScreen extends Component {
                           position: "absolute",
                           top: 0,
                           right: 0,
-                          borderRadius: 15,
+                          borderRadius: responsive.h(15),
                           marginTop: 0,
                           backgroundColor: "#505c5c5c",
                           zIndex: 1,
                           alignItems: "center",
                         }}
                       >
-                        <Text style={{ padding: 5, color: "#fff" }}> X </Text>
+                        <Text
+                          style={{ padding: responsive.h(5), color: "#fff" }}
+                        >
+                          X
+                        </Text>
                       </TouchableOpacity>
                     </View>
                   );
@@ -572,24 +584,24 @@ class CarCardCreateScreen extends Component {
                 style={{
                   justifyContent: "center",
                   alignItems: "center",
-                  marginTop: 20,
-                  paddingVertical: 20,
-                  borderRadius: 8,
+                  marginTop: responsive.h(20),
+                  paddingVertical: responsive.h(20),
+                  borderRadius: responsive.h(8),
                   backgroundColor: "#eaeaea",
                 }}
               >
-                <MyIcon name="image2" size={40} color="#a8acaf" />
+                <MyIcon name="image2" size={responsive.h(40)} color="#a8acaf" />
                 <View
                   style={{
-                    borderRadius: 2,
+                    borderRadius: responsive.h(2),
                     backgroundColor: "#abafb2",
-                    padding: 3,
+                    padding: responsive.h(3),
                   }}
                 >
                   <Text
                     style={{
                       fontFamily: "OpenSans-Regular",
-                      fontSize: 8,
+                      fontSize: responsive.h(8),
                       fontWeight: "normal",
                       fontStyle: "normal",
                       letterSpacing: 0,
@@ -613,8 +625,8 @@ class CarCardCreateScreen extends Component {
           style={{
             backgroundColor: colors.toast.warning,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

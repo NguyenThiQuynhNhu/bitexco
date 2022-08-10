@@ -25,6 +25,7 @@ import Strings from "../../utils/languages";
 import NavBar from "../../components/common/NavBar";
 import { getProfile } from "../../actions/auth";
 import fontsize from "../../theme/fontsize";
+import responsive from "../../../resources/responsive";
 class SettingScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null,
@@ -55,9 +56,9 @@ class SettingScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="#fff" size={20} />
+                <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
@@ -67,7 +68,7 @@ class SettingScreen extends Component {
                   justifyContent: "center",
                   alignItems: "center",
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -75,23 +76,32 @@ class SettingScreen extends Component {
                   color: "#ffffff",
                 }}
               >
-                <Text style={{ fontSize: FontSize.medium, color: "#fff" }}>
+                <Text
+                  style={{
+                    fontSize: responsive.h(fontsize.medium),
+                    color: "#fff",
+                  }}
+                >
                   {Strings.setting.language}
                 </Text>
               </View>
             }
             rightView={
-              <View style={{ paddingVertical: 10 }}>
-                <MyIcon name="arrow" size={22} color={colors.appTheme} />
+              <View style={{ paddingVertical: responsive.h(10) }}>
+                <MyIcon
+                  name="arrow"
+                  size={responsive.h(22)}
+                  color={colors.appTheme}
+                />
               </View>
             }
           />
           <Text
             style={{
-              marginLeft: 10,
-              marginVertical: 10,
+              marginLeft: responsive.w(10),
+              marginVertical: responsive.h(10),
               fontFamily: "Inter-Bold",
-              fontSize: 14,
+              fontSize: responsive.h(14),
               fontWeight: "bold",
               fontStyle: "normal",
               letterSpacing: 0,
@@ -140,7 +150,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 10,
+    paddingVertical: responsive.h(10),
   },
 });
 

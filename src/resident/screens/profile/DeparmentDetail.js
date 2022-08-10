@@ -71,26 +71,32 @@ class DepartmentScreen extends Component {
       <View
         style={{
           flex: 1,
-          borderRadius: 16,
+          borderRadius: responsive.h(16),
           backgroundColor: "#ffffff",
-          borderWidth: 1,
-          marginHorizontal: 20,
-          marginVertical: 10,
+          borderWidth: responsive.h(1),
+          marginHorizontal: responsive.w(20),
+          marginVertical: responsive.h(10),
           borderColor: "#e5e5e5",
         }}
       >
-        <View style={{ flexDirection: "row", padding: 10 }}>
+        <View style={{ flexDirection: "row", padding: responsive.h(10) }}>
           <ImageProgress
             circle
             source={{ uri: logo }}
-            style={{ height: 48, width: 48 }}
+            style={{ height: responsive.h(48), width: responsive.h(48) }}
           />
-          <View style={{ flex: 1, marginLeft: 10, justifyContent: "center" }}>
+          <View
+            style={{
+              flex: 1,
+              marginLeft: responsive.w(10),
+              justifyContent: "center",
+            }}
+          >
             <Text
               style={{
                 color: colors.appTheme,
                 fontFamily: "Inter-Bold",
-                fontSize: 15,
+                fontSize: responsive.h(15),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -103,7 +109,7 @@ class DepartmentScreen extends Component {
               style={{
                 marginVertical: responsive.h(10),
                 fontFamily: "Inter-Bold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "left",
@@ -126,19 +132,22 @@ class DepartmentScreen extends Component {
             name="location"
             color="#fece1c"
             size={responsive.h(15)}
-            style={{ lineHeight: 24, marginLeft: 10 }}
+            style={{
+              lineHeight: responsive.h(24),
+              marginLeft: responsive.w(10),
+            }}
           />
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
-              fontSize: 14,
+              fontSize: responsive.h(14),
               fontWeight: "500",
               fontStyle: "normal",
-              lineHeight: 24,
+              lineHeight: responsive.h(24),
               letterSpacing: 0,
               textAlign: "left",
               color: "#3d3d3d",
-              marginHorizontal: 10,
+              marginHorizontal: responsive.w(10),
             }}
           >
             {Strings.setting.towerAddress}: {address}
@@ -148,7 +157,7 @@ class DepartmentScreen extends Component {
           style={{
             flexDirection: "row",
             justifyContent: "space-between",
-            padding: 10,
+            padding: responsive.h(10),
           }}
         >
           <View style={{ display: "flex", flexDirection: "row" }}>
@@ -156,18 +165,18 @@ class DepartmentScreen extends Component {
               name="cn-h"
               color="#fece1c"
               size={responsive.h(15)}
-              style={{ lineHeight: 24 }}
+              style={{ lineHeight: responsive.h(24) }}
             />
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 14,
+                fontSize: responsive.h(14),
                 fontWeight: "500",
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#3d3d3d",
-                marginHorizontal: 10,
+                marginHorizontal: responsive.w(10),
               }}
             >
               {Strings.department.code}
@@ -177,7 +186,7 @@ class DepartmentScreen extends Component {
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
-              fontSize: 14,
+              fontSize: responsive.h(14),
               fontWeight: "500",
               fontStyle: "normal",
               letterSpacing: 0,
@@ -195,7 +204,7 @@ class DepartmentScreen extends Component {
           ItemSeparatorComponent={() => (
             <View
               style={{
-                marginHorizontal: 10,
+                marginHorizontal: responsive.w(10),
                 height: 1,
                 backgroundColor: colors.gray2,
               }}
@@ -208,15 +217,15 @@ class DepartmentScreen extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: 10,
-                  marginBottom: 10,
+                  paddingHorizontal: responsive.w(10),
+                  marginBottom: responsive.h(10),
                   justifyContent: "space-between",
                 }}
               >
                 <Text
                   style={{
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     paddingLeft: responsive.w(25),
                     fontWeight: "500",
                     fontStyle: "normal",
@@ -245,7 +254,7 @@ class DepartmentScreen extends Component {
     if (initComponent || isLoading) {
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -266,7 +275,7 @@ class DepartmentScreen extends Component {
                 <Text
                   style={{
                     fontFamily: "Inter-Bold",
-                    fontSize: 20,
+                    fontSize: responsive.h(20),
                     fontWeight: "bold",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -281,9 +290,9 @@ class DepartmentScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="black" size={20} />
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
           />
@@ -297,13 +306,13 @@ class DepartmentScreen extends Component {
             onPress={this.onSubmit}
             text={Strings.department.save}
             style={{
-              marginBottom: 30,
+              marginBottom: responsive.h(30),
               alignSelf: "center",
               padding: 10,
               width: "50%",
               backgroundColor: "#afaeae",
-              height: 46,
-              borderRadius: 20,
+              height: responsive.h(46),
+              borderRadius: responsive.h(20),
             }}
           />
           <Modal
@@ -338,16 +347,16 @@ class DepartmentScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -361,7 +370,7 @@ class DepartmentScreen extends Component {
         />
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -392,7 +401,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingVertical: 10,
+    paddingVertical: responsive.h(10),
   },
 });
 

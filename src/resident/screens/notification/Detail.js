@@ -30,6 +30,7 @@ import { refreshDataHandle } from "../../actions/notification";
 // import HTML from 'react-native-render-html';
 
 import NavBar from "../../../resident/components/common/NavBar";
+import responsive from "../../../resources/responsive";
 
 // create a component
 class NewsDetail extends Component {
@@ -172,7 +173,7 @@ class NewsDetail extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -194,14 +195,14 @@ class NewsDetail extends Component {
             style={{
               flexDirection: "row",
               alignSelf: "center",
-              marginBottom: 50,
+              marginBottom: responsive.h(50),
             }}
           >
             <Text
               style={{
                 color: "#cccccc",
-                marginLeft: 10,
-                fontSize: fontsize.small,
+                marginLeft: responsive.l(10),
+                fontSize: responsive.h(fontsize.small),
               }}
             >
               {Strings.app.touchToRefresh}
@@ -222,7 +223,7 @@ class NewsDetail extends Component {
     }
     if (this.state.data) {
       return (
-        <View style={{ flex: 1, marginHorizontal: 20 }}>
+        <View style={{ flex: 1, marginHorizontal: responsive.w(20) }}>
           {/* <View style={{ height: '100%', width: '100%' }}> */}
           <WebView
             style={{ flex: 1 }}
@@ -287,22 +288,27 @@ class NewsDetail extends Component {
                   }
                 }}
                 style={{
-                  height: 50,
+                  height: responsive.h(50),
                   flex: 1,
                   flexDirection: "row",
                   backgroundColor: colors.appTheme,
                   borderColor: "#fff",
-                  borderRightWidth: this.state.data.fileUrl.length > 0 ? 1 : 0,
+                  borderRightWidth:
+                    this.state.data.fileUrl.length > 0 ? responsive.w(1) : 0,
                   alignItems: "center",
                   justifyContent: "center",
                 }}
               >
-                <MyIcon name="link" size={fontsize.small} color="#fff" />
+                <MyIcon
+                  name="link"
+                  size={responsive.h(fontsize.small)}
+                  color="#fff"
+                />
                 <Text
                   style={{
                     color: "#fff",
-                    marginLeft: 10,
-                    fontSize: fontsize.small,
+                    marginLeft: responsive.w(10),
+                    fontSize: responsive.h(fontsize.small),
                   }}
                 >
                   Liên kết
@@ -313,7 +319,7 @@ class NewsDetail extends Component {
               <TouchableOpacity
                 style={{
                   flex: 1,
-                  height: 50,
+                  height: responsive.h(50),
                   flexDirection: "row",
                   backgroundColor: colors.appTheme,
                   alignItems: "center",
@@ -337,12 +343,12 @@ class NewsDetail extends Component {
                   }
                 }}
               >
-                <MyIcon name="download" size={30} color="#fff" />
+                <MyIcon name="download" size={responsive.h(30)} color="#fff" />
                 <Text
                   style={{
                     color: "#fff",
-                    marginLeft: 10,
-                    fontSize: fontsize.small,
+                    marginLeft: responsive.w(10),
+                    fontSize: responsive.h(fontsize.small),
                   }}
                 >
                   {Strings.app.download}
@@ -358,8 +364,8 @@ class NewsDetail extends Component {
                   ? colors.toast.warning
                   : colors.toast.success,
               opacity: 1,
-              borderRadius: 5,
-              padding: 10,
+              borderRadius: responsive.h(5),
+              padding: responsive.h(10),
             }}
           />
         </View>
@@ -382,16 +388,16 @@ class NewsDetail extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ paddingVertical: responsive.h(10) }}
               >
-                <MyIcon name="arrow" color="black" size={20} />
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -405,7 +411,7 @@ class NewsDetail extends Component {
           />
           <View
             style={{
-              paddingVertical: 20,
+              paddingVertical: responsive.h(20),
             }}
           >
             <ActivityIndicator animating size="small" />
@@ -420,16 +426,16 @@ class NewsDetail extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ paddingVertical: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
