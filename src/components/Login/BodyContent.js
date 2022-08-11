@@ -93,7 +93,7 @@ export const BodyContent = (props) => {
               keyboardType="phone-pad"
               className={"border-b"}
               space={10}
-              size={48}
+              size={responsive.h(48)}
               codeLength={4}
               inputPosition="left"
               onFulfill={onFulfill}
@@ -107,21 +107,24 @@ export const BodyContent = (props) => {
                     alignItems: "center",
                     borderBottomWidth: 0.5,
                     borderColor: "#cccccc",
-                    marginBottom: Platform.OS === "ios" ? 30 : 20,
-                    paddingBottom: 2,
+                    marginBottom:
+                      Platform.OS === "ios"
+                        ? responsive.h(30)
+                        : responsive.h(20),
+                    paddingBottom: responsive.h(2),
                   }}
                 >
                   <TextInput
                     style={{
                       flex: 1,
                       fontFamily: "Inter-Regular",
-                      fontSize: 16,
+                      fontSize: responsive.h(16),
                       fontWeight: "normal",
                       fontStyle: "normal",
                       letterSpacing: 0,
                       textAlign: "left",
                       color: "#262626",
-                      padding: 10,
+                      padding: responsive.h(10),
                     }}
                     autoCapitalize="none"
                     autoFocus={false}
@@ -135,7 +138,11 @@ export const BodyContent = (props) => {
                     underlineColorAndroid="transparent"
                     onSubmitEditing={onSubmitEditing}
                   />
-                  <MyIcon name="phone1" size={20} color="#cccccc" />
+                  <MyIcon
+                    name="phone1"
+                    size={responsive.h(20)}
+                    color="#cccccc"
+                  />
                 </View>
               )}
               {// hiện nhập mật khẩu
@@ -146,21 +153,24 @@ export const BodyContent = (props) => {
                     alignItems: "center",
                     borderBottomWidth: 0.5,
                     borderColor: "#cccccc",
-                    marginBottom: Platform.OS === "ios" ? 30 : 20,
-                    paddingBottom: 2,
+                    marginBottom:
+                      Platform.OS === "ios"
+                        ? responsive.h(30)
+                        : responsive.h(20),
+                    paddingBottom: responsive.h(2),
                   }}
                 >
                   <TextInput
                     style={{
                       flex: 1,
                       fontFamily: "Inter-Regular",
-                      fontSize: 16,
+                      fontSize: responsive.h(16),
                       fontWeight: "normal",
                       fontStyle: "normal",
                       letterSpacing: 0,
                       textAlign: "left",
                       color: "#262626",
-                      padding: 10,
+                      padding: responsive.h(10),
                     }}
                     autoCapitalize="none"
                     autoFocus={false}
@@ -175,7 +185,11 @@ export const BodyContent = (props) => {
                     underlineColorAndroid="transparent"
                     onSubmitEditing={onSubmitEditing}
                   />
-                  <MyIcon name="password" size={20} color="#cccccc" />
+                  <MyIcon
+                    name="password"
+                    size={responsive.h(20)}
+                    color="#cccccc"
+                  />
                 </View>
               )}
               {// hiện đăng ký
@@ -186,13 +200,16 @@ export const BodyContent = (props) => {
                       flexDirection: "row",
                       alignItems: "center",
                       borderBottomWidth: 0.5,
-                      marginBottom: Platform.OS === "ios" ? 30 : 20,
+                      marginBottom:
+                        Platform.OS === "ios"
+                          ? responsive.h(30)
+                          : responsive.h(20),
                     }}
                   >
                     <TextInput
                       style={{
                         flex: 1,
-                        fontSize: 24,
+                        fontSize: responsive.h(24),
                       }}
                       autoCapitalize="none"
                       autoFocus={false}
@@ -207,7 +224,7 @@ export const BodyContent = (props) => {
                       underlineColorAndroid="transparent"
                       onSubmitEditing={onSubmitEditing}
                     />
-                    <Icon name="lock" size={20} color="#666666" />
+                    <Icon name="lock" size={responsive.h(20)} color="#666666" />
                   </View>
                 </View>
               )}
@@ -247,10 +264,10 @@ export const BodyContent = (props) => {
           !isType && !isRegister && (
             <TouchableOpacity
               style={{
-                marginTop: 50,
-                borderRadius: 45,
+                marginTop: responsive.h(50),
+                borderRadius: responsive.h(45),
                 width: Screen.width * 0.8,
-                height: 50,
+                height: responsive.h(50),
                 backgroundColor: colors.appTheme,
                 justifyContent: "center",
               }}
@@ -259,7 +276,7 @@ export const BodyContent = (props) => {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 18,
+                  fontSize: responsive.h(18),
                   fontWeight: "600",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -295,17 +312,21 @@ export const BodyContent = (props) => {
           {isRegister && (
             <TouchableOpacity
               style={{
-                marginTop: 40,
-                borderRadius: 45,
+                marginTop: responsive.h(40),
+                borderRadius: responsive.h(45),
                 width: Screen.width * 0.8,
-                height: 50,
+                height: responsive.h(50),
                 backgroundColor: colors.appTheme,
                 justifyContent: "center",
               }}
               onPress={onPressRegister} // có hai hàm login tuỳ theo sử dụng mật khẩu hay otp
             >
               <Text
-                style={{ color: "#fff", fontSize: 18, alignSelf: "center" }}
+                style={{
+                  color: "#fff",
+                  fontSize: responsive.h(18),
+                  alignSelf: "center",
+                }}
               >
                 {Strings.login.button3.toLocaleUpperCase()}
               </Text>
@@ -316,20 +337,24 @@ export const BodyContent = (props) => {
               style={{
                 // alignItems: "center",
                 //borderBottomWidth: 2,
-                marginBottom: Platform.OS === "ios" ? 30 : 20,
+                marginBottom:
+                  Platform.OS === "ios" ? responsive.h(30) : responsive.h(20),
               }}
             >
               {!isLoginByPass && (
                 <CodeInput
                   containerStyle={{ alignSelf: "center", flex: 0 }}
-                  codeInputStyle={{ fontSize: 36, color: "#666666" }}
+                  codeInputStyle={{
+                    fontSize: responsive.h(36),
+                    color: "#666666",
+                  }}
                   activeColor="black"
                   inactiveColor="gray"
                   cellBorderWidth={2}
                   keyboardType="phone-pad"
                   className={"border-b"}
                   space={10}
-                  size={48}
+                  size={responsive.h(48)}
                   codeLength={4}
                   inputPosition="left"
                   onFulfill={onFulfill}
@@ -343,9 +368,12 @@ export const BodyContent = (props) => {
                     //   alignItems: "center",
                     display: "flex",
                     justifyContent: "space-around",
-                    marginHorizontal: 10,
+                    marginHorizontal: responsive.h(10),
                     //borderBottomWidth: 2,
-                    marginTop: Platform.OS === "ios" ? 30 : 20,
+                    marginTop:
+                      Platform.OS === "ios"
+                        ? responsive.h(30)
+                        : responsive.h(20),
                   }}
                 >
                   <TouchableOpacity
@@ -353,7 +381,7 @@ export const BodyContent = (props) => {
                       width: responsive.w(160),
                       height: responsive.h(50),
                       justifyContent: "center",
-                      borderRadius: 24,
+                      borderRadius: responsive.h(24),
                       borderStyle: "solid",
                       borderWidth: 1,
                       borderColor: colors.appTheme,
@@ -363,7 +391,7 @@ export const BodyContent = (props) => {
                     <View
                       style={{
                         flexDirection: "row",
-                        paddingHorizontal: 10,
+                        paddingHorizontal: responsive.h(10),
                         alignItems: "center",
                         justifyContent: "center",
                       }}
@@ -373,7 +401,7 @@ export const BodyContent = (props) => {
                         color={colors.appTheme}
                         size={18}
                         style={{
-                          marginHorizontal: 10,
+                          marginHorizontal: responsive.h(10),
                         }}
                       />
                       <Text
@@ -391,12 +419,12 @@ export const BodyContent = (props) => {
 
                   <TouchableOpacity
                     style={{
-                      marginHorizontal: 5,
+                      marginHorizontal: responsive.h(5),
                       width: responsive.w(160),
                       height: responsive.h(50),
-                      padding: 10,
+                      padding: responsive.h(10),
                       justifyContent: "center",
-                      borderRadius: 24,
+                      borderRadius: responsive.h(24),
                       borderStyle: "solid",
                       borderWidth: 1,
                       borderColor: colors.appTheme,
@@ -406,7 +434,7 @@ export const BodyContent = (props) => {
                     <View
                       style={{
                         flexDirection: "row",
-                        paddingHorizontal: 10,
+                        paddingHorizontal: responsive.h(10),
                         alignItems: "center",
                         justifyContent: "center",
                       }}
@@ -416,7 +444,7 @@ export const BodyContent = (props) => {
                         color={colors.appTheme}
                         size={18}
                         style={{
-                          marginHorizontal: 10,
+                          marginHorizontal: responsive.h(10),
                         }}
                       />
                       <Text
@@ -440,7 +468,7 @@ export const BodyContent = (props) => {
         {settingText && (
           <View
             style={{
-              marginBottom: 24,
+              marginBottom: responsive.h(24),
               width: Screen.width * 0.9,
               flexDirection: "row",
               justifyContent: "space-between",

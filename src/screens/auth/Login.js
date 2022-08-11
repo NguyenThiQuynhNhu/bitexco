@@ -217,7 +217,7 @@ class LoginScreen extends Component {
             // position: "absolute",
             // resizeMode: "stretch",
             // top: 0,
-            marginBottom: 10,
+            marginBottom: responsive.h(10),
           }}
         />
 
@@ -235,7 +235,7 @@ class LoginScreen extends Component {
               width: Screen.width,
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 30,
+              marginTop: responsive.h(30),
             }}
           >
             {/* <Image
@@ -556,31 +556,31 @@ const styles = StyleSheet.create({
   },
   yinyang: {},
   yinyangMain: {
-    width: 100,
-    height: 100,
+    width: responsive.h(100),
+    height: responsive.h(100),
     borderColor: "red",
-    borderTopWidth: 2,
-    borderLeftWidth: 2,
-    borderBottomWidth: 50,
-    borderRightWidth: 2,
-    borderRadius: 50,
+    borderTopWidth: responsive.h(2),
+    borderLeftWidth: responsive.h(2),
+    borderBottomWidth: responsive.h(50),
+    borderRightWidth: responsive.h(2),
+    borderRadius: responsive.h(50),
   },
   yinyangBefore: {
     position: "absolute",
-    top: 24,
+    top: responsive.h(24),
     left: 0,
     borderColor: "red",
-    borderWidth: 24,
-    borderRadius: 30,
+    borderWidth: responsive.h(24),
+    borderRadius: responsive.h(30),
   },
   yinyangAfter: {
     position: "absolute",
-    top: 24,
-    right: 2,
+    top: responsive.h(24),
+    right: responsive.h(2),
     backgroundColor: "red",
     borderColor: "white",
-    borderWidth: 25,
-    borderRadius: 30,
+    borderWidth: responsive.h(25),
+    borderRadius: responsive.h(30),
   },
 });
 const mapStateToProps = (state) => ({

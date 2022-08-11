@@ -1331,7 +1331,6 @@ class HomeScreen extends Component {
                 style={{
                   fontFamily: "Inter-SemiBold",
                   fontSize: responsive.h(20),
-                  fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
