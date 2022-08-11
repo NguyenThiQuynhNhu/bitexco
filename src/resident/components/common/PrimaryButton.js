@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import PropTypes from "prop-types";
 import colors from "../../theme/colors";
+import responsive from "../../../resources/responsive";
 
 // create a component
 const PrimaryButton = ({ text, onPress, style }) => {
@@ -16,9 +17,9 @@ const PrimaryButton = ({ text, onPress, style }) => {
 // define your styles
 const styles = StyleSheet.create({
   container: {
-    borderRadius: 5,
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    borderRadius: responsive.h(5),
+    paddingHorizontal: responsive.h(20),
+    paddingVertical: responsive.h(10),
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: colors.appTheme,
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: "Inter-SemiBold",
-    fontSize: 18,
+    fontSize: responsive.h(18),
     fontWeight: "600",
     fontStyle: "normal",
     letterSpacing: 0,

@@ -85,7 +85,7 @@ const Group = ({ text, onPress }) => {
       style={{
         justifyContent: "center",
         alignItems: "center",
-        height: responsive.h(50),
+        height: responsived.h(50),
         backgroundColor: "rgba(255, 255, 255,0.8)",
         borderRadius: responsive.h(45),
       }}

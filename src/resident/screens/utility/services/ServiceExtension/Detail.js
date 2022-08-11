@@ -220,19 +220,13 @@ class ServiceExtensionDetailScreen extends Component {
             style={{
               backgroundColor: "#fff5eb",
               borderRadius: responsive.h(15),
-              paddingHorizontal: responsive.h(10),
+              padding: responsive.h(5),
               backgroundColor: "#feefef",
               borderRadius: responsive.h(15),
-              height: responsive.h(24),
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: responsive.h(10),
             }}
           >
             <Text
               style={{
-                margin: responsive.h(5),
-                marginHorizontal: responsive.h(10),
                 fontSize: responsive.h(14),
                 color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
@@ -380,23 +374,18 @@ class ServiceExtensionDetailScreen extends Component {
                 >
                   <View
                     style={{
-                      marginRight: responsive.h(10),
-                      marginVertical: responsive.h(5),
+                      backgroundColor: "#fff5eb",
+                      borderRadius: responsive.h(15),
+                      padding: responsive.h(5),
                       backgroundColor: "#feefef",
                       borderRadius: responsive.h(15),
-                      paddingHorizontal: responsive.h(10),
-                      backgroundColor: "#feefef",
-                      borderRadius: responsive.h(15),
-                      height: responsive.h(24),
-                      justifyContent: "center",
-                      alignItems: "center",
                     }}
                   >
                     <Text
                       style={{
-                        color: converStatusToColorService(statusId),
-                        fontFamily: "Inter-Regular",
                         fontSize: responsive.h(14),
+                        color: converStatusToColor(statusId),
+                        fontFamily: "Inter-Regular",
                       }}
                     >
                       {converStatusToString(statusId)}

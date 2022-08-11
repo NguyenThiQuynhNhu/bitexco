@@ -10,6 +10,7 @@ import fontsize from "../../theme/fontsize";
 import { IconText } from "../../Home";
 import { Screen } from "../../utils/device";
 import { MyIcon } from "../../../theme/icons";
+import responsive from "../../../resources/responsive";
 // create a component
 class ListItem extends PureComponent {
   render() {

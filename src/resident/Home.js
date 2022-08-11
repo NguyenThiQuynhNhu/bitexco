@@ -701,14 +701,14 @@ class HomeScreen extends Component {
         style={{
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          // // shadowColor: "rgba(0, 0, 0, 0.1)",
-          // // elevation: 2,
-          // // shadowOffset: {
-          // //   width: 0,
-          // //   height: 4,
-          // // },
-          // // shadowRadius: 14,
-          // shadowOpacity: 1,
+          shadowColor: "rgba(0, 0, 0, 0.1)",
+          elevation: 2,
+          shadowOffset: {
+            width: 0,
+            height: 4,
+          },
+          shadowRadius: 14,
+          shadowOpacity: 1,
           marginHorizontal: responsive.h(10),
           marginBottom: responsive.h(10),
           width: responsive.w(182),
@@ -945,9 +945,8 @@ class HomeScreen extends Component {
         >
           <Text
             style={{
-              fontFamily: "Inter-Medium",
-              fontSize: responsive.h(fontsize.medium),
-              fontWeight: "bold",
+              fontFamily: "Inter-SemiBold",
+              fontSize: responsive.h(20),
               fontStyle: "normal",
               letterSpacing: 0,
               textAlign: "left",
@@ -974,7 +973,7 @@ class HomeScreen extends Component {
                   marginTop: responsive.h(10),
                   letterSpacing: 0,
                   marginBottom: responsive.h(10),
-                  fontsize: responsive.h(fontsize.micro),
+                  fontsize: responsive.h(15),
                   color: "#afaeae",
                 }}
               >
@@ -982,7 +981,7 @@ class HomeScreen extends Component {
               </Text>
               <MyIcon
                 name="arrow-right"
-                size={responsive.h(fontsize.micro)}
+                size={responsive.h(15)}
                 color="#afaeae"
                 style={
                   {
@@ -1330,8 +1329,8 @@ class HomeScreen extends Component {
             >
               <Text
                 style={{
-                  fontFamily: "Inter-Medium",
-                  fontSize: responsive.h(fontsize.medium),
+                  fontFamily: "Inter-SemiBold",
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -1632,7 +1631,7 @@ class HomeScreen extends Component {
           >
             <Text
               style={{
-                fontFamily: "Inter-SemiBold",
+                fontFamily: "Inter-Medium",
                 textAlign: "center",
                 fontSize: responsive.h(20),
                 color: "black",

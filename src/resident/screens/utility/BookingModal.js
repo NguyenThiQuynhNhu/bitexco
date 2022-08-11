@@ -22,6 +22,7 @@ import ImageProgress from "../../components/common/ImageProgress";
 import fontsize from "../../theme/fontsize";
 
 import { createBookingHandle } from "../../actions/utilitiesServicesDetail";
+import responsive from "../../../resources/responsive";
 
 const TitleTextInput = ({
   editable = true,

@@ -284,14 +284,13 @@ class RequestDetailScreen extends Component {
           // },
           // shadowRadius: 12,
           // shadowOpacity: 1,
-          marginHorizontal: responsive.h(10),
-          marginVertical: responsive.h(10),
+          // marginHorizontal: responsive.h(10),
+          // marginVertical: responsive.h(10),
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            display: "flex",
             justifyContent: "space-between",
           }}
         >
@@ -299,6 +298,7 @@ class RequestDetailScreen extends Component {
             style={{
               flexDirection: "row",
               alignItems: "center",
+              flex: 0.8,
             }}
           >
             <ImageProgress
@@ -354,18 +354,15 @@ class RequestDetailScreen extends Component {
             style={{
               backgroundColor: "#fff5eb",
               borderRadius: responsive.h(15),
-              padding: responsive.h(10),
+              padding: responsive.h(5),
               backgroundColor: "#feefef",
               borderRadius: responsive.h(15),
-              height: responsive.h(24),
-              justifyContent: "center",
-              alignItems: "center",
             }}
           >
             <Text
               style={{
                 fontSize: responsive.h(14),
-                color: converStatusToColor(statusId),
+                color: converStatusToColor(statusKey),
                 fontFamily: "Inter-Regular",
               }}
             >

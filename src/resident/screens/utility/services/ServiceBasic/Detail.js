@@ -219,18 +219,13 @@ class ServiceBasicDetailScreen extends Component {
             style={{
               backgroundColor: "#fff5eb",
               borderRadius: responsive.h(15),
-              paddingHorizontal: responsive.h(10),
+              padding: responsive.h(5),
               backgroundColor: "#feefef",
-              height: responsive.h(24),
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: responsive.h(10),
+              borderRadius: responsive.h(15),
             }}
           >
             <Text
               style={{
-                margin: responsive.h(5),
-                marginHorizontal: responsive.h(10),
                 fontSize: responsive.h(14),
                 color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
@@ -405,20 +400,17 @@ class ServiceBasicDetailScreen extends Component {
                   >
                     <View
                       style={{
-                        marginRight: responsive.h(10),
-                        marginVertical: responsive.h(5),
-                        paddingHorizontal: responsive.h(10),
+                        backgroundColor: "#fff5eb",
+                        borderRadius: responsive.h(15),
+                        padding: responsive.h(5),
                         backgroundColor: "#feefef",
                         borderRadius: responsive.h(15),
-                        height: responsive.h(24),
                         justifyContent: "center",
                         alignItems: "center",
                       }}
                     >
                       <Text
                         style={{
-                          margin: responsive.h(5),
-                          marginHorizontal: responsive.h(10),
                           fontSize: responsive.h(14),
                           color: converStatusToColor(statusId),
                           fontFamily: "Inter-Regular",
@@ -569,24 +561,22 @@ class ServiceBasicDetailScreen extends Component {
               }}
             /> */}
             {/* Chat */}
-            <View>
-              <FlatList
-                data={historys || []}
-                keyExtractor={(item, index) => `${index}`}
-                renderItem={(item) => this.renderItemChat(item)}
-                ItemSeparatorComponent={() => {
-                  return (
-                    <View
-                      style={{
-                        height: 1,
-                        backgroundColor: "#f5f5f5",
-                        marginHorizontal: responsive.h(10),
-                      }}
-                    />
-                  );
-                }}
-              />
-            </View>
+            <FlatList
+              data={historys || []}
+              keyExtractor={(item, index) => `${index}`}
+              renderItem={(item) => this.renderItemChat(item)}
+              ItemSeparatorComponent={() => {
+                return (
+                  <View
+                    style={{
+                      height: 1,
+                      backgroundColor: "#f5f5f5",
+                      marginHorizontal: responsive.h(10),
+                    }}
+                  />
+                );
+              }}
+            />
             <Modal
               onRequestClose={() => null}
               transparent={true}

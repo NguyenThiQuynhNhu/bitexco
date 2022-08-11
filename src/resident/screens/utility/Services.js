@@ -26,6 +26,7 @@ import { MyIcon } from "../../theme/icons";
 import BookingModal from "./BookingModal";
 import Strings from "../../utils/languages";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import responsive from "../../../resources/responsive";
 // create a component
 class ServicesScreen extends Component {
   static navigationOptions = {

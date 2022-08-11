@@ -33,30 +33,27 @@ const VendorInfo = (props) => {
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: "#fff",
-        paddingHorizontal: 10,
-        paddingVertical: 20,
+        paddingHorizontal: responsive.h(10),
+        paddingVertical: responsive.h(20),
       }}
     >
       <View
         style={{
           flexDirection: "row",
-          marginLeft: 10,
         }}
       >
         <ImageProgress
           circle={true}
           style={{
-            height: 70,
-            width: 70,
+            height: responsive.h(70),
+            width: responsive.h(70),
           }}
           source={{ uri: logo }}
         />
         <View
           style={{
-            justifyContent: "space-between",
-            height: 50,
-            marginVertical: 10,
-            marginHorizontal: 10,
+            justifyContent: "center",
+            marginLeft: responsive.h(10),
           }}
         >
           <Text
@@ -106,10 +103,9 @@ const VendorInfo = (props) => {
           style={{
             backgroundColor: "#fff5eb",
             borderRadius: responsive.h(15),
-            padding: responsive.h(10),
+            padding: responsive.h(5),
             backgroundColor: "#feefef",
             borderRadius: responsive.h(15),
-            height: responsive.h(24),
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -126,19 +122,17 @@ const VendorInfo = (props) => {
         </View>
         <View
           style={{
-            borderRadius: 15,
-            paddingHorizontal: responsive.h(5),
-            borderRadius: 15,
-            height: responsive.h(24),
+            borderRadius: responsive.h(15),
+            padding: responsive.h(5),
+            backgroundColor: colors.appTheme,
+            borderRadius: responsive.h(15),
             justifyContent: "center",
             alignItems: "center",
-            backgroundColor: colors.appTheme,
-            marginTop: 5,
+            marginTop: responsive.h(5),
           }}
         >
           <Text
             style={{
-              marginHorizontal: 5,
               fontSize: responsive.h(14),
               color: "#ffff",
               fontFamily: "Inter-Regular",

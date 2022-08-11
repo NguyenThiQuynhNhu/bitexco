@@ -22,6 +22,7 @@ import {
   createBookingHandle,
   loadZoneTimeHandle,
 } from "../../actions/utilitiesBasicDetail";
+import responsive from "../../../resources/responsive";
 
 const TitleTextInput = ({
   editable = true,
