@@ -200,7 +200,7 @@ class NewsScreen extends Component {
             style={{
               flexDirection: "row",
               paddingVertical: responsive.h(20),
-              paddingHorizontal: responsive.w(10),
+              paddingHorizontal: responsive.h(10),
               paddingRight: 0,
               alignItems: "center",
             }}

@@ -151,7 +151,7 @@ class FeedbackView extends React.Component {
             backgroundColor: "#505c5c5c",
             padding: responsive.h(10),
             top: responsive.h(-10),
-            right: responsive.w(-10),
+            right: responsive.h(-10),
           }}
         >
           <MyIcon name="no" size={responsive.h(20)} color="#fff" />

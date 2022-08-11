@@ -256,7 +256,7 @@ class ListDataVendor extends Component {
             style={{
               flex: 1,
               margin: Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
-              marginHorizontal: responsive.w(10),
+              marginHorizontal: responsive.h(10),
             }}
           />
         </View>

@@ -108,7 +108,7 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
             </TouchableOpacity>
             <TouchableOpacity
               style={{
-                marginLeft: responsive.w(50),
+                marginLeft: responsive.h(50),
                 height: responsive.h(50),
                 width: responsive.h(50),
                 borderRadius: responsive.h(25),

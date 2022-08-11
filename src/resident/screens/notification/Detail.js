@@ -223,7 +223,7 @@ class NewsDetail extends Component {
     }
     if (this.state.data) {
       return (
-        <View style={{ flex: 1, marginHorizontal: responsive.w(20) }}>
+        <View style={{ flex: 1, marginHorizontal: responsive.h(20) }}>
           {/* <View style={{ height: '100%', width: '100%' }}> */}
           <WebView
             style={{ flex: 1 }}
@@ -307,7 +307,7 @@ class NewsDetail extends Component {
                 <Text
                   style={{
                     color: "#fff",
-                    marginLeft: responsive.w(10),
+                    marginLeft: responsive.h(10),
                     fontSize: responsive.h(fontsize.small),
                   }}
                 >
@@ -347,7 +347,7 @@ class NewsDetail extends Component {
                 <Text
                   style={{
                     color: "#fff",
-                    marginLeft: responsive.w(10),
+                    marginLeft: responsive.h(10),
                     fontSize: responsive.h(fontsize.small),
                   }}
                 >
@@ -424,10 +424,7 @@ class NewsDetail extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }

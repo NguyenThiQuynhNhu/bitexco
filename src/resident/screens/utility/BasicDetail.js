@@ -134,7 +134,7 @@ class ServicesScreen extends Component {
           <View
             style={{
               width: Screen.width - responsive.w(40),
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               height: responsive.h(194),
               borderRadius: responsive.h(12),
             }}
@@ -156,7 +156,7 @@ class ServicesScreen extends Component {
               fontSize: responsive.h(18),
               fontWeight: "600",
               fontStyle: "normal",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(20),
               letterSpacing: 0,
               textAlign: "left",
@@ -169,7 +169,7 @@ class ServicesScreen extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(15),
             }}
           >
@@ -204,7 +204,7 @@ class ServicesScreen extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(15),
             }}
           >
@@ -262,7 +262,7 @@ class ServicesScreen extends Component {
             style={{
               height: "60%",
               width: Screen.width - responsive.h(40),
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(15),
               paddingBottom: responsive.h(80),
             }}
@@ -357,10 +357,7 @@ class ServicesScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -387,7 +384,6 @@ class ServicesScreen extends Component {
                   name: this.props.navigation.state.params.name,
                 })
               }
-              style={{ paddingVertical: responsive.h(10) }}
             >
               {/* <Text style={{ color: '#fff', fontSize: fontsize.small }}>{Strings.setting.utilityRegister}</Text> */}
               <Icon

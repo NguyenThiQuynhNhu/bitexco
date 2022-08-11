@@ -116,7 +116,7 @@ class BookingModal extends Component {
                 <View
                   style={{
                     flex: 1,
-                    paddingHorizontal: responsive.w(15),
+                    paddingHorizontal: responsive.h(15),
                     paddingVertical: responsive.h(5),
                     justifyContent: "center",
                     borderRadius: responsive.h(16),
@@ -152,7 +152,7 @@ class BookingModal extends Component {
                   <View
                     style={{
                       width: "50%",
-                      paddingHorizontal: responsive.w(10),
+                      paddingHorizontal: responsive.h(10),
                     }}
                   >
                     <ImageProgress
@@ -169,7 +169,7 @@ class BookingModal extends Component {
                   <View
                     style={{
                       flexDirection: "column",
-                      paddingLeft: responsive.w(15),
+                      paddingLeft: responsive.h(15),
                       justifyContent: "space-between",
                       paddingVertical: responsive.h(10),
                     }}
@@ -214,7 +214,7 @@ class BookingModal extends Component {
                               letterSpacing: 0,
                               textAlign: "right",
                               color: "#6f6f6f",
-                              marginLeft: responsive.w(5),
+                              marginLeft: responsive.h(5),
                             }}
                           >
                             VNĐ
@@ -409,7 +409,7 @@ class BookingModal extends Component {
                             letterSpacing: 0,
                             textAlign: "right",
                             color: "#6f6f6f",
-                            marginLeft: responsive.w(5),
+                            marginLeft: responsive.h(5),
                           }}
                         >
                           VNĐ
@@ -475,7 +475,7 @@ class BookingModal extends Component {
                           <Text
                             style={{
                               fontFamily: "Inter-Regular",
-                              marginRight: responsive.w(10),
+                              marginRight: responsive.h(10),
                               fontSize: responsive.h(14),
                               fontWeight: "normal",
                               fontStyle: "normal",
@@ -490,7 +490,7 @@ class BookingModal extends Component {
                           <Text
                             style={{
                               fontFamily: "Inter-Regular",
-                              marginRight: responsive.w(10),
+                              marginRight: responsive.h(10),
                               fontSize: responsive.h(14),
                               fontWeight: "normal",
                               fontStyle: "normal",

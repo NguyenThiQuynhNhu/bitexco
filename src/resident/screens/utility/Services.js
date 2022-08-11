@@ -90,7 +90,7 @@ class ServicesScreen extends Component {
       <TouchableOpacity
         onPress={() => this.props.navigation.navigate("servicesDetail", item)}
         style={{
-          marginHorizontal: responsive.w(20),
+          marginHorizontal: responsive.h(20),
           marginBottom: responsive.h(20),
           backgroundColor: "#fff",
           borderRadius: responsive.h(12),
@@ -132,7 +132,7 @@ class ServicesScreen extends Component {
         <View
           style={{
             flexDirection: "row",
-            paddingHorizontal: responsive.w(10),
+            paddingHorizontal: responsive.h(10),
             paddingBottom: responsive.h(10),
             justifyContent: "space-between",
             alignItems: "center",
@@ -253,10 +253,7 @@ class ServicesScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -275,8 +272,7 @@ class ServicesScreen extends Component {
           }
           rightView={
             <TouchableOpacity
-              //onPress={() => this.props.navigation.navigate('serviceExtensionResident', {name: this.props.navigation.state.params.name, dataId: data})}
-              style={{ paddingVertical: responsive.h(10) }}
+            //onPress={() => this.props.navigation.navigate('serviceExtensionResident', {name: this.props.navigation.state.params.name, dataId: data})}
             >
               <Icon
                 name="history"

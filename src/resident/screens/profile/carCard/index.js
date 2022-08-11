@@ -82,7 +82,7 @@ class ListItem extends PureComponent {
               backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
             }}
           >
             <MyIcon
@@ -203,7 +203,7 @@ class ListItem extends PureComponent {
                 backgroundColor: "red",
                 justifyContent: "center",
                 alignItems: "center",
-                marginRight: responsive.w(10),
+                marginRight: responsive.h(10),
               }}
               onPress={() => deleteCard(item.cardID)}
             >
@@ -310,7 +310,7 @@ class ListItem3 extends PureComponent {
               backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
             }}
           >
             <MyIcon
@@ -581,22 +581,22 @@ class CarCardScreen extends Component {
         </View>
       );
     }
-    // if (emptyData) {
-    //   return (
-    //     <ErrorContent
-    //       title={Strings.app.emptyData}
-    //       onTouchScreen={() => this.props.refreshDataHandle()}
-    //     />
-    //   );
-    // }
-    // if (error && error.hasError) {
-    //   return (
-    //     <ErrorContent
-    //       title={Strings.app.error}
-    //       onTouchScreen={() => this.props.refreshDataHandle()}
-    //     />
-    //   );
-    // }
+    if (emptyData) {
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => this.props.refreshDataHandle()}
+        />
+      );
+    }
+    if (error && error.hasError) {
+      return (
+        <ErrorContent
+          title={Strings.app.error}
+          onTouchScreen={() => this.props.refreshDataHandle()}
+        />
+      );
+    }
     return (
       <FlatList
         keyExtractor={(item, index) => `${index}`}
@@ -612,7 +612,7 @@ class CarCardScreen extends Component {
         }
         onEndReachedThreshold={0.5}
         style={{
-          paddingHorizontal: responsive.w(10),
+          paddingHorizontal: responsive.h(10),
           marginTop: responsive.h(7),
         }}
         contentContainerStyle={{
@@ -626,10 +626,7 @@ class CarCardScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -637,7 +634,7 @@ class CarCardScreen extends Component {
             <Text
               style={{
                 padding: responsive.h(10),
-                width: Screen.width - 124,
+                // width: Screen.width - 124,
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(18),
                 fontWeight: "bold",
@@ -666,12 +663,12 @@ class CarCardScreen extends Component {
                 style={{
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(14),
-                  paddingLeft: responsive.w(20),
+                  paddingLeft: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                 }}
@@ -681,13 +678,13 @@ class CarCardScreen extends Component {
               <View
                 style={{
                   // width: Platform.basic ? 64 : 44,
-                  width: "130%",
+                  width: Screen.width / 3,
                   height: responsive.h(3),
                   borderRadius: 4,
                   backgroundColor:
                     this.state.type == 1 ? colors.appTheme : "#f1f1f1",
                   marginTop: responsive.h(5),
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                 }}
               />
             </TouchableOpacity>
@@ -710,7 +707,7 @@ class CarCardScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                 }}
@@ -720,7 +717,8 @@ class CarCardScreen extends Component {
               <View
                 style={{
                   // width: Platform.isPad ? 64 : 44,
-                  width: this.state.type == 2 ? "150%" : "130%",
+                  // width: this.state.type == 2 ? "150%" : "130%",
+                  width: Screen.width / 3,
                   height: responsive.h(3),
                   borderRadius: responsive.h(4),
                   backgroundColor:
@@ -744,7 +742,7 @@ class CarCardScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                 }}
@@ -754,7 +752,8 @@ class CarCardScreen extends Component {
               <View
                 style={{
                   // width: Platform.isPad ? 64 : 44,
-                  width: this.state.type == 3 ? "200%" : "130%",
+                  // width: this.state.type == 3 ? "200%" : "130%",
+                  width: Screen.width / 3,
                   height: responsive.h(3),
                   borderRadius: responsive.h(4),
                   backgroundColor:
@@ -777,7 +776,7 @@ class CarCardScreen extends Component {
             alignItems: "center",
             position: "absolute",
             bottom: responsive.h(20),
-            right: responsive.w(20),
+            right: responsive.h(20),
           }}
         >
           <MyIcon name="plus" size={responsive.h(20)} color="#fff" />

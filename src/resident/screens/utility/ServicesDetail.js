@@ -154,7 +154,7 @@ class ServicesScreen extends Component {
               fontSize: responsive.h(18),
               fontWeight: "600",
               fontStyle: "normal",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(20),
               letterSpacing: 0,
               textAlign: "left",
@@ -168,7 +168,7 @@ class ServicesScreen extends Component {
               flexDirection: "row",
               justifyContent: "flex-start",
               alignItems: "center",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(20),
             }}
           >
@@ -194,7 +194,7 @@ class ServicesScreen extends Component {
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#6f6f6f",
-                marginLeft: responsive.w(5),
+                marginLeft: responsive.h(5),
               }}
             >
               VNĐ
@@ -204,7 +204,7 @@ class ServicesScreen extends Component {
             style={{
               height: "60%",
               width: Screen.width,
-              paddingHorizontal: responsive.w(20),
+              paddingHorizontal: responsive.h(20),
               paddingBottom: responsive.h(600),
             }}
           >
@@ -294,10 +294,7 @@ class ServicesScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -325,7 +322,6 @@ class ServicesScreen extends Component {
                   name: this.props.navigation.state.params.name,
                 })
               }
-              style={{ paddingVertical: responsive.h(10) }}
             >
               <Icon
                 name="history"

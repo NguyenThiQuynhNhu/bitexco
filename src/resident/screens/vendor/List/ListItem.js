@@ -92,7 +92,7 @@ class ListItem extends Component {
               style={{
                 position: "absolute",
                 top: responsive.h(2),
-                right: responsive.w(1),
+                right: responsive.h(1),
               }}
               color="#fff"
             />

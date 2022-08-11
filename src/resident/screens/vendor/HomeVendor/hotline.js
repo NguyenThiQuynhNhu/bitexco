@@ -127,7 +127,7 @@ class HotlineListScreen extends Component {
             style={{
               flex: 1,
               justifyContent: "center",
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
             }}
           >
             <Text numberOfLines={4} lineBreakMode="tail">
@@ -190,10 +190,7 @@ class HotlineListScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }

@@ -342,7 +342,6 @@ class ServiceBasic extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
@@ -351,11 +350,8 @@ class ServiceBasic extends Component {
         ) : (
           <NavBar
             leftButton={
-              <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: responsive.h(10) }}
-              >
-                <MyIcon name="arrow" color="black" size={20} />
+              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
@@ -378,7 +374,6 @@ class ServiceBasic extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
@@ -433,7 +428,7 @@ class ServiceBasic extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: 5 }}
+                    style={{ paddingHorizontal: responsive.h(5) }}
                   />
                 </View>
               );

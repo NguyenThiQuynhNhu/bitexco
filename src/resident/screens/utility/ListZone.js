@@ -23,7 +23,7 @@ class ListItem extends PureComponent {
         style={{
           paddingVertical: responsive.h(20),
           backgroundColor: "#fff",
-          paddingHorizontal: responsive.w(10),
+          paddingHorizontal: responsive.h(10),
         }}
         onPress={() => this.props.onSelected(item)}
       >
@@ -57,10 +57,7 @@ class ListZone extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }

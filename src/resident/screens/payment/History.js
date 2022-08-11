@@ -674,10 +674,7 @@ class PaymentHistoryScreen extends Component {
       <View style={{ flex: 1 }}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -710,12 +707,12 @@ class PaymentHistoryScreen extends Component {
                 style={{
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(14),
-                  paddingLeft: responsive.w(20),
+                  paddingLeft: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                 }}
@@ -731,7 +728,7 @@ class PaymentHistoryScreen extends Component {
                   backgroundColor:
                     this.state.type == 1 ? colors.appTheme : "#f1f1f1",
                   marginTop: responsive.h(5),
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                 }}
               />
             </TouchableOpacity>
@@ -754,9 +751,9 @@ class PaymentHistoryScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   textAlign: "center",
-                  paddingLeft: responsive.w(20),
+                  paddingLeft: responsive.h(20),
                   paddingVertical: responsive.h(10),
                 }}
               >
@@ -791,7 +788,7 @@ class PaymentHistoryScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                   color: "#fff",
@@ -1053,7 +1050,7 @@ class PaymentHistoryScreen extends Component {
         <Text
           style={{
             fontSize: responsive.h(12),
-            marginHorizontal: responsive.w(10),
+            marginHorizontal: responsive.h(10),
             fontStyle: "italic",
             color: "red",
           }}
@@ -1086,7 +1083,7 @@ class PaymentHistoryScreen extends Component {
             <View
               style={{
                 backgroundColor: "#fff",
-                marginHorizontal: responsive.w(40),
+                marginHorizontal: responsive.h(40),
                 marginVertical: responsive.h(100),
               }}
             >
@@ -1217,7 +1214,7 @@ class PaymentHistoryScreen extends Component {
         style={{
           padding: responsive.h(20),
           backgroundColor: "#fff",
-          marginHorizontal: responsive.w(20),
+          marginHorizontal: responsive.h(20),
           marginVertical: responsive.h(10),
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",

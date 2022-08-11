@@ -220,10 +220,7 @@ class CarCardCreateScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -254,7 +251,6 @@ class CarCardCreateScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: responsive.w(10),
                   alignItems: "center",
                 }}
               >
@@ -270,7 +266,7 @@ class CarCardCreateScreen extends Component {
         <KeyboardAwareScrollView
           style={{
             borderTopRightRadius: responsive.h(20),
-            paddingHorizontal: responsive.w(20),
+            paddingHorizontal: responsive.h(20),
           }}
         >
           <View style={styles.container}>
@@ -533,7 +529,7 @@ class CarCardCreateScreen extends Component {
                       <Lightbox
                         style={{
                           marginTop: responsive.h(10),
-                          marginRight: responsive.w(10),
+                          marginRight: responsive.h(10),
                           borderRadius: responsive.h(5),
                           backgroundColor: "#eeeeee",
                         }}

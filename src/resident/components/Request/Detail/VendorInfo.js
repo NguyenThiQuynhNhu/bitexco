@@ -105,13 +105,11 @@ const VendorInfo = (props) => {
         <View
           style={{
             backgroundColor: "#fff5eb",
-            borderRadius: 15,
-            paddingHorizontal: responsive.w(5),
+            borderRadius: responsive.h(15),
+            padding: responsive.h(10),
             backgroundColor: "#feefef",
-            borderRadius: 15,
+            borderRadius: responsive.h(15),
             height: responsive.h(24),
-            maxWidth: responsive.w(108),
-            width: responsive.w(64),
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -129,7 +127,7 @@ const VendorInfo = (props) => {
         <View
           style={{
             borderRadius: 15,
-            paddingHorizontal: responsive.w(5),
+            paddingHorizontal: responsive.h(5),
             borderRadius: 15,
             height: responsive.h(24),
             justifyContent: "center",

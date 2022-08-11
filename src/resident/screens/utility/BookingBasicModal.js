@@ -105,7 +105,7 @@ class BookingBasicModal extends Component {
                 <View
                   style={{
                     flex: 1,
-                    paddingHorizontal: responsive.w(20),
+                    paddingHorizontal: responsive.h(20),
                     paddingVertical: responsive.h(5),
                     justifyContent: "center",
                   }}

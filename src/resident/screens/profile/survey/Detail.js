@@ -112,7 +112,7 @@ class SurveyDetailScreen extends Component {
           },
           shadowRadius: responsive.h(10),
           shadowOpacity: 1,
-          marginHorizontal: responsive.w(10),
+          marginHorizontal: responsive.h(10),
         }}
       >
         <View
@@ -193,7 +193,7 @@ class SurveyDetailScreen extends Component {
                           </Text>
                         ) : null}
                       </View>
-                      <Text style={{ flex: 1, marginLeft: responsive.w(10) }}>
+                      <Text style={{ flex: 1, marginLeft: responsive.h(10) }}>
                         {itemAnswer.item.answerName}
                       </Text>
                     </TouchableOpacity>
@@ -354,7 +354,7 @@ class SurveyDetailScreen extends Component {
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
         style={{
-          paddingHorizontal: responsive.w(10),
+          paddingHorizontal: responsive.h(10),
           marginTop: responsive.h(7),
         }}
       />
@@ -366,10 +366,7 @@ class SurveyDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ padding: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -404,10 +401,7 @@ class SurveyDetailScreen extends Component {
             //   />
             // </TouchableOpacity>
             this.state.isAnswer ? null : (
-              <TouchableOpacity
-                onPress={() => this._onSubmit()}
-                style={{ padding: 10 }}
-              >
+              <TouchableOpacity onPress={() => this._onSubmit()}>
                 <MyIcon name="reply" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             )

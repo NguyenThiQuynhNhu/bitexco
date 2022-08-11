@@ -203,7 +203,7 @@ class ReuqestList extends Component {
             style={{
               flexDirection: "row",
               paddingVertical: responsive.h(20),
-              paddingHorizontal: responsive.w(10),
+              paddingHorizontal: responsive.h(10),
               paddingRight: 0,
               alignItems: "center",
             }}
@@ -218,7 +218,7 @@ class ReuqestList extends Component {
             style={{
               flex: 1,
               margin: Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
-              marginHorizontal: responsive.w(10),
+              marginHorizontal: responsive.h(10),
             }}
           />
         </View>
@@ -271,7 +271,7 @@ class ReuqestList extends Component {
             alignItems: "center",
             position: "absolute",
             bottom: responsive.h(20),
-            right: responsive.w(20),
+            right: responsive.h(20),
           }}
         >
           <MyIcon name="plus" size={responsive.h(20)} color="#fff" />

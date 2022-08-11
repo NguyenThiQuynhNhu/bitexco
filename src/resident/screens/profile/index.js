@@ -138,10 +138,7 @@ class ProfileScreen extends Component {
         <NavBar
           //body={<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{ fontSize: fontSize.larg, color: '#fff' }}>{Strings.profile.setting.toLocaleUpperCase()}</Text></View>}
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -215,7 +212,7 @@ class ProfileScreen extends Component {
               flex: 1,
               backgroundColor: "white",
               justifyContent: "space-between",
-              paddingHorizontal: responsive.w(20),
+              paddingHorizontal: responsive.h(20),
             }}
           >
             <View>
@@ -354,7 +351,7 @@ class ProfileScreen extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
-                    marginLeft: responsive.w(50),
+                    marginLeft: responsive.h(50),
                     height: responsive.h(50),
                     width: responsive.h(50),
                     borderRadius: responsive.h(25),
@@ -512,7 +509,7 @@ class ProfileScreen extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: responsive.w(50),
+                        marginLeft: responsive.h(50),
                         height: responsive.h(50),
                         width: responsive.h(50),
                         borderRadius: responsive.h(25),
@@ -610,7 +607,7 @@ class ProfileScreen extends Component {
                     </TouchableOpacity>
                     <TouchableOpacity
                       style={{
-                        marginLeft: responsive.w(50),
+                        marginLeft: responsive.h(50),
                         height: responsive.h(50),
                         width: responsive.h(50),
                         borderRadius: responsive.h(25),

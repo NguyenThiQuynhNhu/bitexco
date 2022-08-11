@@ -141,7 +141,6 @@ class PaymentScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ paddingVertical: responsive.h(10) }}
             >
               <ImageProgress
                 style={{
@@ -181,7 +180,6 @@ class PaymentScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("paymentHistory")}
-              style={{ paddingVertical: responsive.h(10) }}
             >
               <MyIcon size={24} name="history" color="black" />
             </TouchableOpacity>
@@ -222,7 +220,7 @@ class PaymentScreen extends Component {
                     ? colors.appTheme
                     : "#f1f1f1",
                   marginTop: responsive.h(5),
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                 }}
               />
             </TouchableOpacity>
@@ -245,9 +243,9 @@ class PaymentScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.paid ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   textAlign: "center",
-                  paddingLeft: responsive.w(20),
+                  paddingLeft: responsive.h(20),
                   paddingVertical: responsive.h(10),
                 }}
               >
@@ -283,7 +281,7 @@ class PaymentScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                   color: "#fff",

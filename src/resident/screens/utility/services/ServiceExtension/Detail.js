@@ -184,7 +184,7 @@ class ServiceExtensionDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: responsive.w(5),
+                  marginRight: responsive.h(5),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
@@ -193,7 +193,7 @@ class ServiceExtensionDetailScreen extends Component {
                 <Text
                   style={{
                     margin: responsive.h(2),
-                    marginHorizontal: responsive.w(5),
+                    marginHorizontal: responsive.h(5),
                     fontSize: responsive.h(fontsize.micro),
                     color: "#fff",
                     fontFamily: "Inter-Regular",
@@ -208,7 +208,7 @@ class ServiceExtensionDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: responsive.w(10),
+                paddingLeft: responsive.h(10),
                 color: "#505050",
               }}
             >
@@ -220,7 +220,7 @@ class ServiceExtensionDetailScreen extends Component {
             style={{
               backgroundColor: "#fff5eb",
               borderRadius: responsive.h(15),
-              paddingHorizontal: responsive.w(10),
+              paddingHorizontal: responsive.h(10),
               backgroundColor: "#feefef",
               borderRadius: responsive.h(15),
               height: responsive.h(24),
@@ -247,7 +247,7 @@ class ServiceExtensionDetailScreen extends Component {
             fontSize: responsive.h(11),
             color: colors.gray1,
             fontFamily: "Inter-Regular",
-            paddingLeft: responsive.w(45),
+            paddingLeft: responsive.h(45),
           }}
         >
           {moment(dateActive).format("DD/MM/YYYY HH:mm")}
@@ -340,7 +340,7 @@ class ServiceExtensionDetailScreen extends Component {
               borderBottomWidth: responsive.h(2),
               borderColor: "#eaeaea",
               borderBottomColor: "#eaeaea",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
               marginTop: responsive.h(5),
               marginBottom: responsive.h(20),
             }}
@@ -367,7 +367,7 @@ class ServiceExtensionDetailScreen extends Component {
                 style={{
                   flex: 1,
                   justifyContent: "center",
-                  marginLeft: responsive.w(20),
+                  marginLeft: responsive.h(20),
                 }}
               >
                 <View
@@ -384,7 +384,7 @@ class ServiceExtensionDetailScreen extends Component {
                       marginVertical: responsive.h(5),
                       backgroundColor: "#feefef",
                       borderRadius: responsive.h(15),
-                      paddingHorizontal: responsive.w(10),
+                      paddingHorizontal: responsive.h(10),
                       backgroundColor: "#feefef",
                       borderRadius: responsive.h(15),
                       height: responsive.h(24),
@@ -422,7 +422,7 @@ class ServiceExtensionDetailScreen extends Component {
               style={{
                 flexDirection: "row",
                 marginVertical: responsive.h(5),
-                paddingHorizontal: responsive.w(10),
+                paddingHorizontal: responsive.h(10),
                 marginTop: responsive.h(5),
                 justifyContent: "space-between",
               }}
@@ -430,7 +430,7 @@ class ServiceExtensionDetailScreen extends Component {
               <Text style={styles.textTitle}>
                 {Strings.serviceExtension.amount}
               </Text>
-              <Text style={{ ...styles.textInfo, marginLeft: responsive.w(5) }}>
+              <Text style={{ ...styles.textInfo, marginLeft: responsive.h(5) }}>
                 {amount}
               </Text>
             </View>
@@ -438,14 +438,14 @@ class ServiceExtensionDetailScreen extends Component {
               style={{
                 flexDirection: "row",
                 marginVertical: responsive.h(5),
-                paddingHorizontal: responsive.w(10),
+                paddingHorizontal: responsive.h(10),
                 justifyContent: "space-between",
               }}
             >
               <Text style={styles.textTitle}>
                 {Strings.serviceExtension.dateBook}
               </Text>
-              <Text style={{ ...styles.textInfo, marginLeft: responsive.w(5) }}>
+              <Text style={{ ...styles.textInfo, marginLeft: responsive.h(5) }}>
                 {moment(dateBook).format("DD/MM/YYYY")}
               </Text>
             </View>
@@ -453,7 +453,7 @@ class ServiceExtensionDetailScreen extends Component {
               style={{
                 flexDirection: "row",
                 marginVertical: responsive.h(5),
-                paddingHorizontal: responsive.w(10),
+                paddingHorizontal: responsive.h(10),
                 justifyContent: "space-between",
               }}
             >
@@ -464,7 +464,7 @@ class ServiceExtensionDetailScreen extends Component {
                 style={{
                   ...styles.textInfo,
                   color: "#ff624d",
-                  marginLeft: responsive.w(5),
+                  marginLeft: responsive.h(5),
                 }}
               >
                 {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
@@ -593,10 +593,7 @@ class ServiceExtensionDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -620,7 +617,6 @@ class ServiceExtensionDetailScreen extends Component {
             this.props.data.seviceBasic.statusId !== 5 && (
               <TouchableOpacity
                 onPress={() => this.setState({ isShowModal: true })}
-                style={{ paddingVertical: 10 }}
               >
                 <MyIcon name="reply" color="black" size={responsive.h(20)} />
                 {/* <Text style={{ color: '#fff' }}>{this.props.data.seviceBasic.statusId !== 3 ? Strings.detailRequest.feedback : Strings.detailRequest.rating}</Text> */}

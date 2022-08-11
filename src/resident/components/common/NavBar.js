@@ -8,11 +8,13 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
   <ImageBackground
     source={require("../../../resources/bgHeader.png")}
     style={{
-       marginTop: -2, 
-       marginBottom: 10, 
-       height: responsive.h(102), 
-        justifyContent: "center",
-        alignItems: 'center' }}
+      marginTop: -2,
+      marginBottom: 10,
+      height: responsive.h(102),
+      justifyContent: "center",
+      paddingHorizontal: responsive.h(10),
+      alignItems: "center",
+    }}
   >
     <SafeAreaView
       style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
@@ -27,7 +29,7 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
         marginTop: Platform.OS == "ios" ? 0 : StatusBar.currentHeight,
         backgroundColor: "transparent",
         justifyContent: "center",
-        alignItems: 'center',
+        alignItems: "center",
         flex: 1,
         //...Device.defaultNavBarStyle(),
         ...style,

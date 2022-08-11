@@ -226,7 +226,7 @@ class PaymentDetailScreen extends Component {
       <TouchableOpacity
         onPress={() => this.clickItem(item)}
         style={{
-          paddingHorizontal: responsive.w(10),
+          paddingHorizontal: responsive.h(10),
           marginBottom: responsive.h(10),
           paddingBottom: responsive.h(10),
           borderRadius: responsive.h(5),
@@ -760,10 +760,7 @@ class PaymentDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon
                 name="arrow"
                 size={responsive.h(fontsize.medium)}
@@ -862,7 +859,7 @@ class PaymentDetailScreen extends Component {
                   backgroundColor: "#505c5c5c",
                   padding: responsive.h(5),
                   top: responsive.h(-10),
-                  right: responsive.w(-10),
+                  right: responsive.h(-10),
                 }}
               >
                 <MyIcon name="no" size={responsive.h(15)} color="#fff" />

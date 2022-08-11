@@ -149,7 +149,7 @@ class ServiceBasicDetailScreen extends Component {
           // },
           // shadowRadius: 12,
           // shadowOpacity: 1,
-          marginHorizontal: responsive.w(20),
+          marginHorizontal: responsive.h(20),
           marginVertical: responsive.h(10),
         }}
       >
@@ -207,7 +207,7 @@ class ServiceBasicDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: responsive.w(10),
+                paddingLeft: responsive.h(10),
                 color: "#505050",
               }}
             >
@@ -219,7 +219,7 @@ class ServiceBasicDetailScreen extends Component {
             style={{
               backgroundColor: "#fff5eb",
               borderRadius: responsive.h(15),
-              paddingHorizontal: responsive.w(10),
+              paddingHorizontal: responsive.h(10),
               backgroundColor: "#feefef",
               height: responsive.h(24),
               justifyContent: "center",
@@ -230,7 +230,7 @@ class ServiceBasicDetailScreen extends Component {
             <Text
               style={{
                 margin: responsive.h(5),
-                marginHorizontal: responsive.w(10),
+                marginHorizontal: responsive.h(10),
                 fontSize: responsive.h(14),
                 color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
@@ -245,7 +245,7 @@ class ServiceBasicDetailScreen extends Component {
             fontSize: responsive.h(11),
             color: colors.gray1,
             fontFamily: "Inter-Regular",
-            paddingLeft: responsive.w(45),
+            paddingLeft: responsive.h(45),
           }}
         >
           {moment(dateActive).format("DD/MM/YYYY HH:mm")}
@@ -285,8 +285,8 @@ class ServiceBasicDetailScreen extends Component {
           marginVertical: responsive.h(5),
           backgroundColor: colors.grayBorder,
           borderRadius: responsive.h(15),
-          height: responsive.h(24),
-          width: responsive.w(102),
+          padding: responsive.h(5),
+          paddingHorizontal: responsive.h(5),
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -363,7 +363,7 @@ class ServiceBasicDetailScreen extends Component {
               style={{
                 borderRadius: responsive.h(16),
                 backgroundColor: "#ffffff",
-                marginHorizontal: responsive.w(20),
+                marginHorizontal: responsive.h(20),
                 marginBottom: responsive.h(20),
                 marginTop: responsive.h(5),
                 borderWidth: responsive.h(1),
@@ -407,7 +407,7 @@ class ServiceBasicDetailScreen extends Component {
                       style={{
                         marginRight: responsive.h(10),
                         marginVertical: responsive.h(5),
-                        paddingHorizontal: responsive.w(10),
+                        paddingHorizontal: responsive.h(10),
                         backgroundColor: "#feefef",
                         borderRadius: responsive.h(15),
                         height: responsive.h(24),
@@ -447,7 +447,7 @@ class ServiceBasicDetailScreen extends Component {
                 style={{
                   flexDirection: "row",
                   marginBottom: responsive.h(10),
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   marginTop: responsive.h(10),
                   marginVertical: responsive.h(5),
                   justifyContent: "space-between",
@@ -457,7 +457,7 @@ class ServiceBasicDetailScreen extends Component {
                   {Strings.serviceBasicBooking.amountPeople}
                 </Text>
                 <Text
-                  style={{ ...styles.textInfo, marginLeft: responsive.w(5) }}
+                  style={{ ...styles.textInfo, marginLeft: responsive.h(5) }}
                 >
                   {amount}
                 </Text>
@@ -467,7 +467,7 @@ class ServiceBasicDetailScreen extends Component {
                 style={{
                   flexDirection: "row",
                   marginBottom: responsive.h(10),
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   marginVertical: responsive.h(5),
                   justifyContent: "space-between",
                 }}
@@ -476,7 +476,7 @@ class ServiceBasicDetailScreen extends Component {
                   {Strings.serviceBasicBooking.dateBook}
                 </Text>
                 <Text
-                  style={{ ...styles.textInfo, marginLeft: responsive.w(5) }}
+                  style={{ ...styles.textInfo, marginLeft: responsive.h(5) }}
                 >
                   {moment(dateBook).format("DD/MM/YYYY")}
                 </Text>
@@ -485,7 +485,7 @@ class ServiceBasicDetailScreen extends Component {
                 style={{
                   flexDirection: "row",
                   marginBottom: responsive.h(10),
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   marginVertical: responsive.h(5),
                   justifyContent: "space-between",
                 }}
@@ -497,7 +497,7 @@ class ServiceBasicDetailScreen extends Component {
                   style={{
                     ...styles.textInfo,
                     color: "#9b9b9b",
-                    marginLeft: responsive.w(5),
+                    marginLeft: responsive.h(5),
                   }}
                 >
                   {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
@@ -516,7 +516,7 @@ class ServiceBasicDetailScreen extends Component {
               <View
                 style={{
                   marginBottom: responsive.h(10),
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   marginVertical: responsive.h(5),
                 }}
               >
@@ -540,8 +540,8 @@ class ServiceBasicDetailScreen extends Component {
                 <View
                   style={{
                     marginBottom: responsive.h(15),
-                    paddingHorizontal: responsive.w(5),
-                    marginLeft: responsive.w(5),
+                    paddingHorizontal: responsive.h(5),
+                    marginLeft: responsive.h(5),
                   }}
                 >
                   <Text style={styles.textTitle}>
@@ -550,7 +550,7 @@ class ServiceBasicDetailScreen extends Component {
                   <Text
                     style={{
                       ...styles.textInfo,
-                      marginLeft: responsive.w(5),
+                      marginLeft: responsive.h(5),
                       fontStyle: "italic",
                       marginTop: responsive.h(5),
                     }}
@@ -580,7 +580,7 @@ class ServiceBasicDetailScreen extends Component {
                       style={{
                         height: 1,
                         backgroundColor: "#f5f5f5",
-                        marginHorizontal: responsive.w(10),
+                        marginHorizontal: responsive.h(10),
                       }}
                     />
                   );
@@ -638,10 +638,7 @@ class ServiceBasicDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -663,7 +660,6 @@ class ServiceBasicDetailScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.setState({ isShowModal: true })}
-              style={{ paddingVertical: responsive.h(10) }}
             >
               <MyIcon name="reply" color="black" size={responsive.h(20)} />
               {/* <Text style={{ color: '#fff' }}>{Strings.detailRequest.feedback}</Text> */}

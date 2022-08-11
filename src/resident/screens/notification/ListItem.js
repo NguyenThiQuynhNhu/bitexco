@@ -71,7 +71,7 @@ class ListItem extends PureComponent {
                   width: responsive.h(10),
                   backgroundColor: "red",
                   position: "absolute",
-                  right: responsive.w(10),
+                  right: responsive.h(10),
                   bottom: responsive.h(0),
                 }}
               />
@@ -82,7 +82,7 @@ class ListItem extends PureComponent {
             style={{
               flex: 1,
               justifyContent: "space-between",
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
             }}
           >
             <View style={{ flex: 1, justifyContent: "center" }}>

@@ -130,7 +130,7 @@ class Fee extends Component {
         </View>
         <View
           style={{
-            paddingHorizontal: responsive.w(10),
+            paddingHorizontal: responsive.h(10),
             flex: 1,
           }}
         >

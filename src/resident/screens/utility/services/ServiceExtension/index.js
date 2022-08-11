@@ -328,7 +328,7 @@ class ServiceExtension extends Component {
                   flex: 1,
                   margin:
                     Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
-                  marginHorizontal: responsive.w(10),
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -349,7 +349,6 @@ class ServiceExtension extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <Text style={{ color: "#fff" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -358,10 +357,7 @@ class ServiceExtension extends Component {
         ) : (
           <NavBar
             leftButton={
-              <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: responsive.h(10) }}
-              >
+              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
@@ -385,7 +381,6 @@ class ServiceExtension extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: 10 }}
               >
                 <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
@@ -422,7 +417,7 @@ class ServiceExtension extends Component {
             horizontal={true}
             //pagingEnabled={true}
             contentContainerStyle={{
-              marginVertical: 10,
+              marginVertical: responsive.h(10),
             }}
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
@@ -439,7 +434,7 @@ class ServiceExtension extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: responsive.w(5) }}
+                    style={{ paddingHorizontal: responsive.h(5) }}
                   />
                 </View>
               );

@@ -220,7 +220,7 @@ class HandoverScheduleScreen extends Component {
         <View
           style={{
             marginTop: responsive.h(10),
-            marginHorizontal: responsive.w(-10),
+            marginHorizontal: responsive.h(-10),
             backgroundColor: colors.gray2,
             paddingTop: responsive.h(10),
             flex: 1,
@@ -250,7 +250,7 @@ class HandoverScheduleScreen extends Component {
                 style={{
                   fontWeight: "bold",
                   color: "#000",
-                  marginLeft: responsive.w(10),
+                  marginLeft: responsive.h(10),
                   fontSize: responsive.h(fontsize.small),
                 }}
               >
@@ -278,7 +278,7 @@ class HandoverScheduleScreen extends Component {
                   color: "#cccccc",
                   fontSize: fontsize.small,
                   textAlign: "center",
-                  marginHorizontal: responsive.w(20),
+                  marginHorizontal: responsive.h(20),
                 }}
               >
                 {Strings.app.error}
@@ -296,7 +296,7 @@ class HandoverScheduleScreen extends Component {
         <View
           style={{
             marginTop: responsive.h(10),
-            marginHorizontal: responsive.w(-10),
+            marginHorizontal: responsive.h(-10),
             backgroundColor: colors.gray2,
             paddingTop: responsive.h(10),
             flex: 1,
@@ -326,7 +326,7 @@ class HandoverScheduleScreen extends Component {
                 style={{
                   fontWeight: "bold",
                   color: "#000",
-                  marginLeft: responsive.w(10),
+                  marginLeft: responsive.h(10),
                   fontSize: responsive.h(fontsize.small),
                 }}
               >
@@ -354,7 +354,7 @@ class HandoverScheduleScreen extends Component {
                   color: "#cccccc",
                   fontSize: responsive.h(fontsize.small),
                   textAlign: "center",
-                  marginHorizontal: responsive.w(20),
+                  marginHorizontal: responsive.h(20),
                 }}
               >
                 {Strings.app.emptyData}
@@ -372,7 +372,7 @@ class HandoverScheduleScreen extends Component {
       <View
         style={{
           marginTop: responsive.h(10),
-          marginHorizontal: responsive.w(-10),
+          marginHorizontal: responsive.h(-10),
           backgroundColor: colors.gray2,
           paddingTop: responsive.h(10),
         }}
@@ -398,7 +398,7 @@ class HandoverScheduleScreen extends Component {
               style={{
                 fontWeight: "bold",
                 color: "#000",
-                marginLeft: responsive.w(10),
+                marginLeft: responsive.h(10),
                 fontSize: responsive.h(fontsize.small),
               }}
             >
@@ -446,7 +446,7 @@ class HandoverScheduleScreen extends Component {
               height: responsive.h(10),
               width: responsive.w(25),
               backgroundColor: "#f4ad41",
-              marginRight: responsive.w(5),
+              marginRight: responsive.h(5),
               marginLeft: responsive.h(-5),
               borderTopEndRadius: responsive.h(10),
               borderBottomEndRadius: responsive.h(10),
@@ -475,7 +475,7 @@ class HandoverScheduleScreen extends Component {
             borderWidth: responsive.h(1),
             borderColor: colors.gray2,
             marginVertical: responsive.h(10),
-            marginHorizontal: responsive.w(25),
+            marginHorizontal: responsive.h(25),
             borderRadius: responsive.h(10),
           }}
         >
@@ -502,7 +502,7 @@ class HandoverScheduleScreen extends Component {
                       backgroundColor: "#fff",
                       borderWidth: responsive.h(1),
                       borderColor: colors.gray2,
-                      marginRight: responsive.w(10),
+                      marginRight: responsive.h(10),
                       //marginHorizontal: 25,
                       borderRadius: responsive.h(50),
                     }}
@@ -756,14 +756,14 @@ const styles = StyleSheet.create({
   dot: {
     width: responsive.h(5),
     height: responsive.h(5),
-    marginHorizontal: responsive.w(5),
+    marginHorizontal: responsive.h(5),
     borderRadius: responsive.h(7),
     backgroundColor: "rgb(206, 209, 212)",
   },
   activeDot: {
     width: responsive.h(5),
     height: responsive.h(5),
-    marginHorizontal: responsive.w(5),
+    marginHorizontal: responsive.h(5),
     borderRadius: responsive.h(7),
     backgroundColor: "rgb(105, 109, 116)",
   },

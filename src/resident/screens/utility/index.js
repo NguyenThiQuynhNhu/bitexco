@@ -637,7 +637,6 @@ class UtilityScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ paddingVertical: responsive.h(10) }}
             >
               <ImageProgress
                 style={{
@@ -667,8 +666,12 @@ class UtilityScreen extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ paddingVertical: responsive.h(10) }}>
-              <MyIcon size={20} name="search" color="transparent" />
+            <TouchableOpacity>
+              <MyIcon
+                size={responsive.h(20)}
+                name="search"
+                color="transparent"
+              />
             </TouchableOpacity>
           }
         />
@@ -896,7 +899,7 @@ class UtilityScreen extends Component {
                     fontStyle: "normal",
                     letterSpacing: 0,
                     color: "#3d3d3d",
-                    paddingHorizontal: responsive.w(10),
+                    paddingHorizontal: responsive.h(10),
                     textAlign: "center",
                     paddingVertical: responsive.h(10),
                   }}
@@ -954,19 +957,17 @@ class UtilityScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: responsive.h(140),
+                  fontSize: responsive.h(14),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.w(20),
+                  paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
                   color: "#fff",
                 }}
-              >
-                {}
-              </Text>
+              />
               <View
                 style={{
                   // width: Platform.isPad ? 64 : 44,

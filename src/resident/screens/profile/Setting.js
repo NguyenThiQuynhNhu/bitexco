@@ -54,10 +54,7 @@ class SettingScreen extends Component {
         <ScrollView>
           <NavBar
             leftButton={
-              <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: responsive.h(10) }}
-              >
+              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                 <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
               </TouchableOpacity>
             }
@@ -87,7 +84,7 @@ class SettingScreen extends Component {
               </View>
             }
             rightView={
-              <View style={{ paddingVertical: responsive.h(10) }}>
+              <View>
                 <MyIcon
                   name="arrow"
                   size={responsive.h(22)}
@@ -98,7 +95,7 @@ class SettingScreen extends Component {
           />
           <Text
             style={{
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
               marginVertical: responsive.h(10),
               fontFamily: "Inter-Bold",
               fontSize: responsive.h(14),

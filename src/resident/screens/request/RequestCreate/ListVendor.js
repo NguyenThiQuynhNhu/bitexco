@@ -20,7 +20,7 @@ class ListItem extends PureComponent {
         style={{
           paddingVertical: responsive.h(20),
           backgroundColor: "#fff",
-          paddingHorizontal: responsive.w(10),
+          paddingHorizontal: responsive.h(10),
         }}
         onPress={onPress}
       >

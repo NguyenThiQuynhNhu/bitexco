@@ -74,7 +74,7 @@ class DepartmentScreen extends Component {
           borderRadius: responsive.h(16),
           backgroundColor: "#ffffff",
           borderWidth: responsive.h(1),
-          marginHorizontal: responsive.w(20),
+          marginHorizontal: responsive.h(20),
           marginVertical: responsive.h(10),
           borderColor: "#e5e5e5",
         }}
@@ -88,7 +88,7 @@ class DepartmentScreen extends Component {
           <View
             style={{
               flex: 1,
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
               justifyContent: "center",
             }}
           >
@@ -134,7 +134,7 @@ class DepartmentScreen extends Component {
             size={responsive.h(15)}
             style={{
               lineHeight: responsive.h(24),
-              marginLeft: responsive.w(10),
+              marginLeft: responsive.h(10),
             }}
           />
           <Text
@@ -147,7 +147,7 @@ class DepartmentScreen extends Component {
               letterSpacing: 0,
               textAlign: "left",
               color: "#3d3d3d",
-              marginHorizontal: responsive.w(10),
+              marginHorizontal: responsive.h(10),
             }}
           >
             {Strings.setting.towerAddress}: {address}
@@ -176,7 +176,7 @@ class DepartmentScreen extends Component {
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#3d3d3d",
-                marginHorizontal: responsive.w(10),
+                marginHorizontal: responsive.h(10),
               }}
             >
               {Strings.department.code}
@@ -204,7 +204,7 @@ class DepartmentScreen extends Component {
           ItemSeparatorComponent={() => (
             <View
               style={{
-                marginHorizontal: responsive.w(10),
+                marginHorizontal: responsive.h(10),
                 height: 1,
                 backgroundColor: colors.gray2,
               }}
@@ -217,7 +217,7 @@ class DepartmentScreen extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: responsive.w(10),
+                  paddingHorizontal: responsive.h(10),
                   marginBottom: responsive.h(10),
                   justifyContent: "space-between",
                 }}
@@ -226,7 +226,7 @@ class DepartmentScreen extends Component {
                   style={{
                     fontFamily: "Inter-SemiBold",
                     fontSize: responsive.h(14),
-                    paddingLeft: responsive.w(25),
+                    paddingLeft: responsive.h(25),
                     fontWeight: "500",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -345,10 +345,7 @@ class DepartmentScreen extends Component {
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }

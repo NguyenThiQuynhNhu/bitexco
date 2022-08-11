@@ -93,7 +93,7 @@ export const IconText = ({ style, icon, text }) => {
           letterSpacing: 0,
           textAlign: "left",
           color: "#282828",
-          marginLeft: responsive.w(5),
+          marginLeft: responsive.h(5),
         }}
       >
         {text}
@@ -709,7 +709,7 @@ class HomeScreen extends Component {
           // // },
           // // shadowRadius: 14,
           // shadowOpacity: 1,
-          marginHorizontal: responsive.w(10),
+          marginHorizontal: responsive.h(10),
           marginBottom: responsive.h(10),
           width: responsive.w(182),
           height: responsive.h(216),
@@ -738,7 +738,7 @@ class HomeScreen extends Component {
               color: "#000000",
               maxWidth: responsive.w(150),
               paddingTop: responsive.h(10),
-              paddingLeft: responsive.w(10),
+              paddingLeft: responsive.h(10),
             }}
           >
             {title}
@@ -800,7 +800,7 @@ class HomeScreen extends Component {
           source={{ uri: user ? user.photoUrl : "" }}
           style={{ height: responsive.h(50), width: responsive.h(50) }}
         />
-        <View style={{ flex: 1, marginLeft: responsive.w(20) }}>
+        <View style={{ flex: 1, marginLeft: responsive.h(20) }}>
           <Text>{title}</Text>
           <Text style={{ color: "red", fontWeight: "bold" }}>
             {amountIncurred.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
@@ -936,16 +936,17 @@ class HomeScreen extends Component {
             justifyContent: "space-between",
             flexDirection: "row",
             backgroundColor: "white",
+            alignItems: "center",
 
-            maxHeight: responsive.h(550),
+            // maxHeight: responsive.h(550),
             // marginHorizontal: 10,
             padding: responsive.h(10),
           }}
         >
           <Text
             style={{
-              fontFamily: "OpenSans-Bold",
-              fontSize: fontsize.medium,
+              fontFamily: "Inter-Medium",
+              fontSize: responsive.h(fontsize.medium),
               fontWeight: "bold",
               fontStyle: "normal",
               letterSpacing: 0,
@@ -963,17 +964,17 @@ class HomeScreen extends Component {
                 flexDirection: "row",
                 display: "flex",
                 justifyContent: "space-between",
-                justifyContent: "center",
+                alignItems: "center",
               }}
             >
               <Text
                 style={{
-                  fontFamily: "OpenSans-Regular",
+                  fontFamily: "Inter-Regular",
                   paddingHorizontal: responsive.h(5),
                   marginTop: responsive.h(10),
                   letterSpacing: 0,
                   marginBottom: responsive.h(10),
-                  fontsize: responsive.h(fontsize.medium),
+                  fontsize: responsive.h(fontsize.micro),
                   color: "#afaeae",
                 }}
               >
@@ -981,14 +982,16 @@ class HomeScreen extends Component {
               </Text>
               <MyIcon
                 name="arrow-right"
-                size={responsive.h(14)}
+                size={responsive.h(fontsize.micro)}
                 color="#afaeae"
-                style={{
-                  marginTop: responsive.h(12),
-                  letterSpacing: 0,
-                  marginBottom: responsive.h(10),
-                  marginRight: responsive.w(10),
-                }}
+                style={
+                  {
+                    // marginTop: responsive.h(12),
+                    // letterSpacing: 0,
+                    // marginBottom: responsive.h(10),
+                    // marginRight: responsive.h(10),
+                  }
+                }
               />
             </View>
           </TouchableOpacity>
@@ -1327,14 +1330,13 @@ class HomeScreen extends Component {
             >
               <Text
                 style={{
-                  fontFamily: "OpenSans-Bold",
-                  fontSize: fontsize.medium,
+                  fontFamily: "Inter-Medium",
+                  fontSize: responsive.h(fontsize.medium),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
                   color: "#000000",
-                  marginVertical: responsive.h(10),
                 }}
               >
                 {item.title}
@@ -1427,7 +1429,7 @@ class HomeScreen extends Component {
   //       <View
   //         style={{
   //           paddingVertical: responsive.h(7),
-  //           paddingHorizontal: responsive.w(25),
+  //           paddingHorizontal: responsive.h(25),
   //         }}
   //       >
   //         {/* <MyIcon
@@ -1519,7 +1521,11 @@ class HomeScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <View style={{ padding: responsive.h(10), flexDirection: "row" }}>
+            <View
+              style={{
+                flexDirection: "row",
+              }}
+            >
               <TouchableOpacity onPress={() => this._onAttachment()}>
                 <ImageProgress
                   style={{
@@ -1535,7 +1541,7 @@ class HomeScreen extends Component {
 
               <View
                 style={{
-                  marginLeft: responsive.w(10),
+                  marginLeft: responsive.h(10),
                   justifyContent: "center",
                 }}
               >
@@ -1559,7 +1565,7 @@ class HomeScreen extends Component {
                     color="black"
                     size={responsive.h(12)}
                     style={{
-                      marginRight: responsive.w(3),
+                      marginRight: responsive.h(3),
                       marginVertical: responsive.h(3),
                     }}
                   />
@@ -1608,7 +1614,7 @@ class HomeScreen extends Component {
                     name="home2"
                     color="black"
                     size={responsive.h(20)}
-                    style={{ paddingHorizontal: responsive.w(10) }}
+                    style={{ marginLeft: responsive.h(10) }}
                   />
                 </TouchableOpacity>
               </View>
@@ -1697,7 +1703,7 @@ class HomeScreen extends Component {
                     <View
                       style={{
                         paddingVertical: responsive.h(7),
-                        paddingHorizontal: responsive.w(25),
+                        paddingHorizontal: responsive.h(25),
                       }}
                     >
                       {/* <MyIcon
@@ -1832,7 +1838,7 @@ class HomeScreen extends Component {
                         this.setState({ isShowModal: false });
                     }}
                     style={{
-                      marginLeft: responsive.w(50),
+                      marginLeft: responsive.h(50),
                       padding: responsive.h(5),
                       borderRadius: responsive.h(5),
                       justifyContent: "center",
@@ -1948,20 +1954,20 @@ const styles = StyleSheet.create({
   dot: {
     width: responsive.h(5),
     height: responsive.h(5),
-    marginHorizontal: responsive.w(5),
+    marginHorizontal: responsive.h(5),
     borderRadius: responsive.h(7),
     backgroundColor: "rgb(206, 209, 212)",
   },
   activeDot: {
     width: responsive.h(5),
     height: responsive.h(5),
-    marginHorizontal: responsive.w(5),
+    marginHorizontal: responsive.h(5),
     borderRadius: responsive.h(7),
     backgroundColor: "rgb(105, 109, 116)",
   },
   IconBadge: {
     top: responsive.h(-7),
-    right: responsive.w(8),
+    right: responsive.h(8),
     position: "absolute",
     borderRadius: responsive.h(45),
     minWidth: responsive.h(20),

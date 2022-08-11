@@ -284,7 +284,7 @@ class RequestDetailScreen extends Component {
           // },
           // shadowRadius: 12,
           // shadowOpacity: 1,
-          marginHorizontal: responsive.w(10),
+          marginHorizontal: responsive.h(10),
           marginVertical: responsive.h(10),
         }}
       >
@@ -318,7 +318,7 @@ class RequestDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: responsive.w(5),
+                  marginRight: responsive.h(5),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
@@ -327,7 +327,7 @@ class RequestDetailScreen extends Component {
                 <Text
                   style={{
                     margin: responsive.h(2),
-                    marginHorizontal: responsive.w(5),
+                    marginHorizontal: responsive.h(5),
                     fontSize: responsive.h(fontsize.micro),
                     color: "#fff",
                     fontFamily: "Inter-Regular",
@@ -342,7 +342,7 @@ class RequestDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: responsive.w(10),
+                paddingLeft: responsive.h(10),
                 color: "#505050",
               }}
             >
@@ -354,19 +354,16 @@ class RequestDetailScreen extends Component {
             style={{
               backgroundColor: "#fff5eb",
               borderRadius: responsive.h(15),
-              paddingHorizontal: responsive.w(10),
+              padding: responsive.h(10),
               backgroundColor: "#feefef",
               borderRadius: responsive.h(15),
               height: responsive.h(24),
               justifyContent: "center",
               alignItems: "center",
-              marginTop: responsive.h(10),
             }}
           >
             <Text
               style={{
-                margin: responsive.h(5),
-                marginHorizontal: responsive.w(10),
                 fontSize: responsive.h(14),
                 color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
@@ -381,7 +378,7 @@ class RequestDetailScreen extends Component {
             fontSize: responsive.h(11),
             color: colors.gray1,
             fontFamily: "Inter-Regular",
-            paddingLeft: responsive.w(45),
+            paddingLeft: responsive.h(45),
           }}
         >
           {moment(dateActive).format("DD/MM/YYYY HH:mm")}
@@ -519,7 +516,7 @@ class RequestDetailScreen extends Component {
                   //borderTopWidth: 10,
                   //borderBottomWidth: 10,
                   marginTop: responsive.h(-10),
-                  marginHorizontal: responsive.w(20),
+                  marginHorizontal: responsive.h(20),
                 }}
               >
                 <ImageGallery title="" data={imageCustormer} />
@@ -562,7 +559,7 @@ class RequestDetailScreen extends Component {
                     style={{
                       height: 1,
                       backgroundColor: "#f5f5f5",
-                      marginHorizontal: responsive.w(10),
+                      marginHorizontal: responsive.h(10),
                     }}
                   />
                 );
@@ -631,10 +628,7 @@ class RequestDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -662,7 +656,6 @@ class RequestDetailScreen extends Component {
             this.props.data.statusKey !== "dong" && (
               <TouchableOpacity
                 onPress={() => this.setState({ isShowModal: true })}
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <MyIcon name="reply" color="black" size={responsive.h(20)} />
                 {/* <Text style={{ color: '#fff' }}>{this.props.data.statusKey !== 'hoan_thanh' ? Strings.detailRequest.feedback : Strings.detailRequest.rating}</Text> */}

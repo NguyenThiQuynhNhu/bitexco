@@ -317,8 +317,8 @@ class ReuqestList extends Component {
                   flex: 1,
                   margin:
                     Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
-                  marginHorizontal: responsive.w(10),
-                  marginRight: responsive.w(50),
+                  marginHorizontal: responsive.h(10),
+                  marginRight: responsive.h(50),
                 }}
               />
             }
@@ -327,7 +327,6 @@ class ReuqestList extends Component {
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <Text style={{ color: "#fff" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
@@ -338,7 +337,6 @@ class ReuqestList extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("profile")}
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <ImageProgress
                   style={{
@@ -371,7 +369,6 @@ class ReuqestList extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: responsive.h(10) }}
               >
                 <MyIcon size={responsive.h(24)} name="search" color="black" />
               </TouchableOpacity>
@@ -380,7 +377,7 @@ class ReuqestList extends Component {
         )}
         <View
           style={{
-            marginHorizontal: responsive.w(10),
+            marginHorizontal: responsive.h(10),
             marginVertical: responsive.h(10),
           }}
         >
@@ -437,7 +434,7 @@ class ReuqestList extends Component {
             alignItems: "center",
             position: "absolute",
             bottom: Devices.isTablet ? responsive.h(150) : responsive.h(60),
-            right: responsive.w(20),
+            right: responsive.h(20),
           }}
         >
           <MyIcon name="plus" size={responsive.h(20)} color="#fff" />

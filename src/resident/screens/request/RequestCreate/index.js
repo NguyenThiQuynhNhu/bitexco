@@ -147,10 +147,7 @@ class CreateScreen extends Component {
             </View>
           }
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -354,7 +351,7 @@ class CreateScreen extends Component {
                       borderRadius: responsive.h(8),
                       padding: responsive.h(5),
                       marginTop: responsive.h(10),
-                      marginRight: responsive.w(10),
+                      marginRight: responsive.h(10),
                     }}
                   >
                     <MyIcon
@@ -394,7 +391,7 @@ class CreateScreen extends Component {
                       <Lightbox
                         style={{
                           marginTop: responsive.h(10),
-                          marginRight: responsive.w(10),
+                          marginRight: responsive.h(10),
                           borderRadius: responsive.h(5),
                           backgroundColor: "#eeeeee",
                         }}
@@ -831,7 +828,7 @@ class CreateScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: responsive.w(20),
+    paddingHorizontal: responsive.h(20),
     backgroundColor: "#fff",
     borderTopRightRadius: responsive.h(20),
   },

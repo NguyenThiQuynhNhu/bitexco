@@ -128,7 +128,7 @@ class VendorDetail extends Component {
             <View
               style={{
                 flex: 1,
-                marginLeft: responsive.w(10),
+                marginLeft: responsive.h(10),
                 paddingVertical: responsive.h(10),
               }}
             >
@@ -246,7 +246,7 @@ class VendorDetail extends Component {
           attribute={{
             style: {
               textAlign: "center",
-              marginHorizontal: responsive.w(20),
+              marginHorizontal: responsive.h(20),
 
               fontSize: responsive.h(fontsize.medium),
               marginTop: responsive.h(10),
@@ -367,7 +367,7 @@ class VendorDetail extends Component {
               <TouchableOpacity
                 style={{
                   marginTop: responsive.h(10),
-                  marginLeft: responsive.w(10),
+                  marginLeft: responsive.h(10),
                   position: "absolute",
                   alignItems: "center",
                   justifyContent: "center",
@@ -400,7 +400,7 @@ class VendorDetail extends Component {
               >
                 <IconText
                   wrapperStyle={{
-                    marginHorizontal: responsive.w(20),
+                    marginHorizontal: responsive.h(20),
                     alignItems: "center",
                   }}
                   attribute={{
@@ -445,7 +445,7 @@ class VendorDetail extends Component {
 
               <IconText
                 wrapperStyle={{
-                  marginHorizontal: responsive.w(20),
+                  marginHorizontal: responsive.h(20),
                   alignItems: "center",
                 }}
                 attribute={{
@@ -529,14 +529,14 @@ const styles = StyleSheet.create({
   dot: {
     width: responsive.h(5),
     height: responsive.h(5),
-    marginHorizontal: responsive.w(5),
+    marginHorizontal: responsive.h(5),
     borderRadius: responsive.h(7),
     backgroundColor: "rgb(206, 209, 212)",
   },
   activeDot: {
     width: responsive.h(5),
     height: responsive.h(5),
-    marginHorizontal: responsive.w(5),
+    marginHorizontal: responsive.h(5),
     borderRadius: responsive.h(7),
     backgroundColor: "rgb(105, 109, 116)",
   },

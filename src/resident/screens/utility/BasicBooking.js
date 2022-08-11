@@ -513,7 +513,7 @@ class BasicBookingScreen extends Component {
                     <Text
                       style={{
                         fontFamily: "Inter-Regular",
-                        marginRight: responsive.w(10),
+                        marginRight: responsive.h(10),
                         fontSize: responsive.h(14),
                         fontWeight: "normal",
                         fontStyle: "normal",
@@ -750,10 +750,7 @@ class BasicBookingScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -795,7 +792,7 @@ class BasicBookingScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  paddingHorizontal: responsive.w(10),
+                  // paddingHorizontal: responsive.h(10),
                   alignItems: "center",
                 }}
               >

@@ -19,7 +19,7 @@ class ListItemHistory extends PureComponent {
         // onPress={onPress}
         style={{
           flexDirection: "row",
-          marginHorizontal: responsive.w(20),
+          marginHorizontal: responsive.h(20),
           marginBottom: responsive.h(10),
           padding: responsive.h(10),
           borderRadius: responsive.h(20),

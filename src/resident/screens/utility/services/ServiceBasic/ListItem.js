@@ -30,24 +30,16 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
-          padding: responsive.h(5),
+          // backgroundColor: "#fff",
           borderRadius: responsive.h(12),
-          marginVertical: responsive.h(5),
-          // marginHorizontal: 10,
-          justifyContent: "center",
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          justifyContent: "center",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
-          marginHorizontal: responsive.h(10),
-          height: responsive.h(220),
-          width: responsive.w(186),
+          width: (Screen.width - responsive.h(30)) / 2,
+          margin: responsive.h(10),
+          // marginRight: index % 2 == 0 && 0,
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
+          padding: responsive.h(10),
         }}
         onPress={onPress}
       >
@@ -57,9 +49,7 @@ class ListItem extends PureComponent {
             style={{
               height: responsive.h(111),
               borderRadius: responsive.h(12),
-              width: responsive.w(170),
-              justifyContent: "center",
-              alignItems: "center",
+              width: "100%",
               marginBottom: responsive.h(10),
             }}
             source={{ uri: logo }}
@@ -111,10 +101,9 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 textAlign: "left",
                 color: "#888888",
-                height: responsive.h(40),
                 maxWidth: responsive.w(222),
               }}
-              numberOfLines={2}
+              numberOfLines={1}
               lineBreakMode="tail"
             >
               {description}

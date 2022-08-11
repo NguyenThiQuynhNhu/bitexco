@@ -32,16 +32,15 @@ class ListItem extends PureComponent {
 
     //console.log(item)
     return (
-
       <TouchableOpacity
         onPress={onPress}
         style={{
           backgroundColor: "#fff",
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          width: (Screen.width - responsive.h(30))/2,
+          width: (Screen.width - responsive.h(30)) / 2,
           margin: responsive.h(10),
-          marginRight: index % 2 == 0 && 0,
+          // marginRight: index % 2 == 0 && 0,
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
@@ -59,21 +58,21 @@ class ListItem extends PureComponent {
             style={{
               flexDirection: "row",
               display: "flex",
-              justifyContent: 'flex-start',
+              justifyContent: "flex-start",
               // alignItems: "center",
             }}
           >
-              <ImageProgress
-                // circle={true}
-                style={{
-                  height: responsive.h(41),
-                  width: responsive.h(41),
-                  borderRadius: responsive.h(22),
-                }}
-                source={{ uri: avatarResident }}
-              />
+            <ImageProgress
+              // circle={true}
+              style={{
+                height: responsive.h(41),
+                width: responsive.h(41),
+                borderRadius: responsive.h(22),
+              }}
+              source={{ uri: avatarResident }}
+            />
 
-            <View style={{marginLeft: responsive.h(10), flex: 1}}>
+            <View style={{ marginLeft: responsive.h(10), flex: 1 }}>
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
@@ -171,7 +170,7 @@ class ListItem extends PureComponent {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text

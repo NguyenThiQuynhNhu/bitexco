@@ -160,7 +160,7 @@ class RulesDetail extends Component {
               marginBottom: responsive.h(50),
             }}
           >
-            <Text style={{ color: "#cccccc", marginLeft: responsive.w(10) }}>
+            <Text style={{ color: "#cccccc", marginLeft: responsive.h(10) }}>
               {Strings.app.touchToRefresh}
             </Text>
           </View>
@@ -182,7 +182,7 @@ class RulesDetail extends Component {
         <View
           style={{
             flex: 1,
-            marginHorizontal: responsive.w(10),
+            marginHorizontal: responsive.h(10),
             marginTop: responsive.h(-5),
           }}
         >
@@ -237,7 +237,7 @@ class RulesDetail extends Component {
                 <Text
                   style={{
                     color: "#fff",
-                    marginLeft: responsive.w(10),
+                    marginLeft: responsive.h(10),
                     fontSize: responsive.h(fontsize.larg),
                   }}
                 >
@@ -269,10 +269,7 @@ class RulesDetail extends Component {
         <View style={styles.container}>
           <NavBar
             leftButton={
-              <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: responsive.h(10) }}
-              >
+              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
                 <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
               </TouchableOpacity>
             }
@@ -292,7 +289,7 @@ class RulesDetail extends Component {
               </Text>
             }
             rightView={
-              <TouchableOpacity style={{ paddingVertical: responsive.h(10) }}>
+              <TouchableOpacity>
                 <MyIcon
                   size={responsive.h(20)}
                   name="search"
@@ -316,10 +313,7 @@ class RulesDetail extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity
-              onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: responsive.h(10) }}
-            >
+            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -339,7 +333,7 @@ class RulesDetail extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ paddingVertical: responsive.h(10) }}>
+            <TouchableOpacity>
               <MyIcon size={responsive.h(20)} name="search" color="black" />
             </TouchableOpacity>
           }
