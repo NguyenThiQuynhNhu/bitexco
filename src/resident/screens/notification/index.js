@@ -293,10 +293,11 @@ class NotificationScreen extends Component {
         onEndReachedThreshold={0.5}
         //horizontal={false}
         //numColumns={2}
+
         style={{
           borderTopRightRadius: responsive.h(20),
-          marginHorizontal: Platform.OS === "ios" ? null : responsive.w(20),
-          marginTop: responsive.h(-13),
+          // marginHorizontal: Platform.OS === "ios" ? null : responsive.w(10),
+          // marginTop: responsive.h(-13),
         }}
         onEndReached={() => {
           if (

@@ -33,38 +33,35 @@ class ListItem extends PureComponent {
         <View
           style={{
             flex: 1,
-            paddingVertical: responsive.h(10),
+            padding: responsive.h(10),
             flexDirection: "row",
             alignItems: "center",
             backgroundColor:
               isRead || Platform.OS != "ios" ? "#fff" : "#eeeeee",
             borderTopRightRadius:
               Platform.OS === "ios" ? null : responsive.h(50),
-            paddingLeft: Platform.OS == "ios" ? responsive.w(15) : 0,
           }}
         >
           <View
             style={{
-              borderRadius: responsive.h(45),
+              borderRadius: responsive.h(30),
               height: responsive.h(60),
               width: responsive.h(60),
-              backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
+              borderColor: "#d2d2d2",
+              borderWidth: 1,
             }}
           >
             {/* <Icon name={ converTypeToIcon(2) } size={ 30 } color={colors.appTheme} /> */}
-            <ImageProgress
-              //circle
-              style={{
-                height: responsive.h(42),
-                width: responsive.h(42),
-              }}
-              circle
-              source={{ uri: imageUrl }}
+
+            <MyIcon
+              name="megaphone-01"
+              size={responsive.h(30)}
+              color="#d2d2d2"
             />
 
-            {!isRead ? (
+            {/* {!isRead ? (
               <View
                 style={{
                   borderRadius: responsive.h(45),
@@ -76,7 +73,7 @@ class ListItem extends PureComponent {
                   bottom: responsive.h(0),
                 }}
               />
-            ) : null}
+            ) : null} */}
           </View>
 
           <View
