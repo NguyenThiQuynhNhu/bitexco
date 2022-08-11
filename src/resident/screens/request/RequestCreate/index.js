@@ -245,7 +245,7 @@ class CreateScreen extends Component {
                   textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   fontFamily: "Inter-Regular",
                   borderRadius: responsive.h(8),
                   borderStyle: "solid",
@@ -277,7 +277,7 @@ class CreateScreen extends Component {
                   width: "100%",
                   flexDirection: "row",
                   justifyContent: "space-between",
-                  marginBottom: 10,
+                  marginBottom: responsive.h(10),
                 }}
               >
                 <Text
@@ -315,8 +315,8 @@ class CreateScreen extends Component {
                 style={{
                   width: "100%",
                   flex: 1,
-                  height: 100,
-                  padding: 10,
+                  height: responsive.h(100),
+                  padding: responsive.h(10),
                   textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
@@ -340,7 +340,7 @@ class CreateScreen extends Component {
               <ScrollView
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                style={{ marginTop: 20 }}
+                style={{ marginTop: responsive.h(20) }}
               >
                 {this.state.images.length < 5 && (
                   <View

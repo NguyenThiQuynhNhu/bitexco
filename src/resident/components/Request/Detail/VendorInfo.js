@@ -40,6 +40,7 @@ const VendorInfo = (props) => {
       <View
         style={{
           flexDirection: "row",
+          flex: 0.8,
         }}
       >
         <ImageProgress
@@ -59,7 +60,7 @@ const VendorInfo = (props) => {
           <Text
             style={{
               fontFamily: "Inter-Bold",
-              fontSize: responsive.h(14),
+              fontSize: responsive.h(15),
               fontWeight: "600",
               fontStyle: "normal",
               textAlign: "left",

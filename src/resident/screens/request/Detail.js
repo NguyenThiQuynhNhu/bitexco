@@ -291,14 +291,14 @@ class RequestDetailScreen extends Component {
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-between",
+            flex: 1,
           }}
         >
           <View
             style={{
               flexDirection: "row",
               alignItems: "center",
-              flex: 0.8,
+              // marginRight: responsive.h(20),
             }}
           >
             <ImageProgress
@@ -318,10 +318,11 @@ class RequestDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: responsive.h(5),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
+                  position: "absolute",
+                  left: responsive.h(25),
                 }}
               >
                 <Text
@@ -342,32 +343,42 @@ class RequestDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: responsive.h(10),
+                paddingLeft: isCustomer ? responsive.h(10) : responsive.h(30),
                 color: "#505050",
+                width: Screen.width * 0.65,
+                maxWidth: Screen.width * 0.65,
               }}
             >
               {isCustomer ? this.props.user.fullName : userName}
+              {isCustomer ? this.props.user.fullName : userName}
             </Text>
           </View>
-
           <View
             style={{
-              backgroundColor: "#fff5eb",
-              borderRadius: responsive.h(15),
-              padding: responsive.h(5),
-              backgroundColor: "#feefef",
-              borderRadius: responsive.h(15),
+              width: Screen.width * 0.35,
+              minWidth: Screen.width * 0.35,
+              alignItems: "flex-start",
             }}
           >
-            <Text
+            <View
               style={{
-                fontSize: responsive.h(14),
-                color: converStatusToColor(statusKey),
-                fontFamily: "Inter-Regular",
+                backgroundColor: "#fff5eb",
+                borderRadius: responsive.h(15),
+                padding: responsive.h(5),
+                backgroundColor: "#feefef",
+                borderRadius: responsive.h(15),
               }}
             >
-              {converStatusToString(statusId)}
-            </Text>
+              <Text
+                style={{
+                  fontSize: responsive.h(14),
+                  color: converStatusToColor(statusKey),
+                  fontFamily: "Inter-Regular",
+                }}
+              >
+                {converStatusToString(statusId)}
+              </Text>
+            </View>
           </View>
         </View>
         <Text
@@ -475,7 +486,7 @@ class RequestDetailScreen extends Component {
               }}
             />
             {/* Nội dung */}
-            <View style={{ marginHorizontal: 20 }}>
+            <View style={{ marginHorizontal: responsive.h(10) }}>
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
@@ -612,7 +623,10 @@ class RequestDetailScreen extends Component {
             <Spinner
               visible={this.props.isLoadingReponse}
               textContent={Strings.app.progressing}
-              textStyle={{ color: "#FFF", fontSize: fontsize.small }}
+              textStyle={{
+                color: "#FFF",
+                fontSize: responsive.h(fontsize.small),
+              }}
             />
           </View>
         </ScrollView>

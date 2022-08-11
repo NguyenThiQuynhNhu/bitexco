@@ -393,7 +393,7 @@ class BasicBookingScreen extends Component {
                       height: responsive.h(40),
                       alignItems: "center",
                       justifyContent: "space-between",
-                      paddingTop: 5,
+                      paddingTop: responsive.h(5),
                     }}
                   >
                     <Text
@@ -446,7 +446,7 @@ class BasicBookingScreen extends Component {
                   >
                     <Text
                       style={{
-                        fontSize: fontsize.larg,
+                        fontSize: responsive.h(fontsize.larg),
                         color: "#fff200",
                         alignItems: "center",
                         justifyContent: "space-between",

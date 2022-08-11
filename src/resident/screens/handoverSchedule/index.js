@@ -276,7 +276,7 @@ class HandoverScheduleScreen extends Component {
                 style={{
                   fontWeight: "bold",
                   color: "#cccccc",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   textAlign: "center",
                   marginHorizontal: responsive.h(20),
                 }}

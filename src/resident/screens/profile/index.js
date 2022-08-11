@@ -567,7 +567,7 @@ class ProfileScreen extends Component {
                   <Text
                     style={{
                       fontWeight: "bold",
-                      fontSize: fontSize.small,
+                      fontSize: responsive.h(fontSize.small),
                       color: "#fff",
                       marginTop: responsive.h(20),
                       margin: responsive.h(20),

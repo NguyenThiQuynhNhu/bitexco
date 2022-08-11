@@ -393,7 +393,7 @@ class CarCardCreateScreen extends Component {
                   textAlignVertical: "center",
                   alignContent: "flex-start",
                   alignSelf: "flex-start",
-                  fontSize: fontsize.small,
+                  fontSize: responsive.h(fontsize.small),
                   fontFamily: "Inter-Regular",
                   borderRadius: responsive.h(8),
                   borderStyle: "solid",

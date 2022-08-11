@@ -136,7 +136,7 @@ class Fee extends Component {
         >
           <RowItem
             title={Strings.fee.detail.toLocaleUpperCase()}
-            styleTitle={{ fontSize: fontsize.medium }}
+            styleTitle={{ fontSize: responsive.h(fontsize.medium) }}
             value={`${Strings.fee.unit}: VNĐ`}
           />
           {this.renderContent()}
