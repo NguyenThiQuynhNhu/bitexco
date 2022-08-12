@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 
 import { BarChart } from 'react-native-charts-wrapper';
-
+import responsive from "../../../resources/responsive";
 class StackedBarChartScreen extends React.Component {
 
   constructor(props) {
@@ -15,11 +15,11 @@ class StackedBarChartScreen extends React.Component {
     this.state = {
       legend: {
         enabled: true,
-        textSize: 14,
+        textSize: responsive.h(14),
         form: "SQUARE",
-        formSize: 14,
-        xEntrySpace: 10,
-        yEntrySpace: 5,
+        formSize: responsive.h(14),
+        xEntrySpace: responsive.h(10),
+        yEntrySpace: responsive.h(5),
         wordWrapEnabled: true
       },
       data: {
@@ -31,7 +31,7 @@ class StackedBarChartScreen extends React.Component {
             stackLabels: ['Yêu cầu mới', 'Đang xử lý', 'Đã hoàn thành', 'Đã đóng',],
             drawFilled: true,
             drawHighlightIndicators: true,
-            valueTextSize: 12,
+            valueTextSize: responsive.h(12),
             drawValues: false,
             axisDependency: 'Right'
           }
@@ -97,7 +97,7 @@ class StackedBarChartScreen extends React.Component {
               enabled: true,
               markerColor: processColor('#F0C0FF8C'),
               textColor: processColor('white'),
-              markerFontSize: 14,
+              markerFontSize: responsive.h(14),
             }}
             highlights={this.state.highlights}
             onSelect={this.handleSelect.bind(this)}
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   chart: {
-    height: 400,
+    height: responsive.h(400),
     flex: 1
   }
 });

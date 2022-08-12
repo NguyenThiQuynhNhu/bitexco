@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import colors from '../../theme/colors'
-
+import responsive from "../../resources/responsive";
 // create a component
 const Button = ({ text, textStyle, onPress, style, visible = true }) => {
 
@@ -12,8 +12,8 @@ const Button = ({ text, textStyle, onPress, style, visible = true }) => {
             <TouchableOpacity onPress={onPress}>
                 <View
                     style={{
-                        borderRadius: 5,
-                        padding: 15,
+                        borderRadius: responsive.h(5),
+                        padding: responsive.h(15),
                         justifyContent: 'center',
                         alignItems: 'center',
                         backgroundColor: colors.appBackgroundButton,
@@ -22,6 +22,7 @@ const Button = ({ text, textStyle, onPress, style, visible = true }) => {
                     }}
                 >
                     <Text style={{
+                        fontSize: responsive.h(14),
                         color: !visible ? colors.gray1 : colors.appTheme, 
                         ...textStyle
                     }}>{text}</Text>
@@ -34,8 +35,8 @@ const Button = ({ text, textStyle, onPress, style, visible = true }) => {
 // define your styles
 const styles = StyleSheet.create({
     container: {
-        borderRadius: 5,
-        padding: 10,
+        borderRadius: responsive.h(5),
+        padding: responsive.h(10),
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.appTheme,

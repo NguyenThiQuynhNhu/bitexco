@@ -7,7 +7,7 @@ import {
   processColor
 } from 'react-native';
 import update from 'immutability-helper';
-
+import responsive from "../../../resources/responsive";
 import _ from 'lodash';
 import { LineChart } from 'react-native-charts-wrapper';
 
@@ -36,9 +36,9 @@ class AxisLineChartScreen extends React.Component {
             axisMinimum: 1,
             granularityEnabled: true,
             granularity : 1,
-            labelRotationAngle: 45,
+            labelRotationAngle: responsive.h(45),
             textColor: processColor('black'),
-            textSize: 9,
+            textSize: responsive.h(9),
             textRotate: 90,
             gridColor: processColor('white'),
             axisLineColor: processColor('darkgray'),
@@ -68,7 +68,7 @@ class AxisLineChartScreen extends React.Component {
               values: this.props.dataY,
               label: '',
               config: {
-                circleRadius: 3,
+                circleRadius: responsive.h(3),
                 lineWidth: 1.5,
                 drawCircles: true,
                 drawCubicIntensity: 0.1,
@@ -76,7 +76,7 @@ class AxisLineChartScreen extends React.Component {
                 drawHighlightIndicators: true,
                 circleHoleColor: COLOR_PURPLE,
                 color: COLOR_PURPLE,
-                valueTextSize: 12,
+                valueTextSize: responsive.h(12),
                 drawValues:false
               }
             }],
@@ -130,7 +130,7 @@ class AxisLineChartScreen extends React.Component {
                             enabled: true,
                             markerColor: processColor('#0084ff'),
                             textColor: processColor('white'),
-                            markerFontSize: 14,
+                            markerFontSize: responsive.h(14),
                         }}
             chartDescription={{textColor:processColor('#ffffff00')}}
           />
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF'
   },
   chart: {  
-    height:300,  
+    height: responsive.h(300),  
     flex: 1,
 
   }

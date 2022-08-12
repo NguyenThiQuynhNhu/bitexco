@@ -48,15 +48,15 @@ class ModalPicker extends Component {
         <View style={{ flex: 1, backgroundColor: "#ffff" }}>
           <NavBar
             leftButton={
-              <TouchableOpacity onPress={onClose}>
-                <MyIcon name="arrow" size={20} color="black" />
+              <TouchableOpacity onPress={onClose} style={{padding: responsive.h(10)}}>
+                <MyIcon name="arrow" size={responsive.h(20)} color="black" />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   textAlign: "center",
                   color: "black",
                 }}
@@ -84,14 +84,15 @@ class ModalPicker extends Component {
                 >
                   <View
                     style={{
-                      paddingVertical: 20,
-                      paddingLeft: 20,
+                      paddingVertical: responsive.h(20),
+                      paddingLeft: responsive.h(20),
                       flexDirection: "row",
                       justifyContent: "space-between",
                     }}
                   >
                     <Text
                       style={{
+                        fontSize: responsive.h(14),
                         color:
                           item.id == selectedValue
                             ? colors.appTheme
@@ -101,13 +102,13 @@ class ModalPicker extends Component {
                       {item[dislayValue]}
                     </Text>
                     {item.id == selectedValue && (
-                      <Text style={{ color: colors.appTheme }}>✓</Text>
+                      <Text style={{ color: colors.appTheme, fontSize: responsive.h(14) }}>✓</Text>
                     )}
                   </View>
                 </TouchableWithoutFeedback>
               );
             }}
-            style={{ marginTop: -10 }}
+            style={{ marginTop: -responsive.h(10) }}
             keyExtractor={(item, index) => `${index}`}
             data={data}
           />

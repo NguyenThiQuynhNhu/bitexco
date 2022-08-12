@@ -22,7 +22,7 @@ import {
   resetStateByKey,
   refreshDataHandle,
 } from "../../../resident/actions/survey";
-
+import responsive from "../../../resources/responsive";
 class ListItem extends PureComponent {
   render() {
     const { item, onPress } = this.props;
@@ -31,8 +31,8 @@ class ListItem extends PureComponent {
       <TouchableOpacity
         style={{
           flexDirection: "row",
-          marginBottom: 10,
-          borderRadius: 12,
+          marginBottom: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -40,9 +40,9 @@ class ListItem extends PureComponent {
             width: 0,
             height: 4,
           },
-          shadowRadius: 10,
+          shadowRadius: responsive.h(10),
           shadowOpacity: 1,
-          marginHorizontal: 10,
+          marginHorizontal: responsive.h(10),
         }}
         onPress={onPress}
       >
@@ -55,28 +55,28 @@ class ListItem extends PureComponent {
         >
           <View
             style={{
-              borderRadius: 45,
-              height: 40,
-              width: 40,
+              borderRadius: responsive.h(45),
+              height: responsive.h(40),
+              width: responsive.h(40),
               backgroundColor: "#fff200",
               justifyContent: "center",
               alignItems: "center",
-              marginLeft: 10,
+              marginLeft: responsive.h(10),
             }}
           >
-            <MyIcon name="file-text" size={20} color={colors.appTheme} />
+            <MyIcon name="file-text" size={responsive.h(20)} color={colors.appTheme} />
           </View>
           <View
-            style={{ flex: 1, justifyContent: "space-between", margin: 10 }}
+            style={{ flex: 1, justifyContent: "space-between", margin: responsive.h(10) }}
           >
             <Text
               lineBreakMode="tail"
               numberOfLines={2}
               style={{
                 flexDirection: "row",
-                width: Screen.width - 110,
+                width: Screen.width - responsive.h(110),
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -91,13 +91,13 @@ class ListItem extends PureComponent {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(11),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -203,7 +203,7 @@ class SurveyStatisticScreen extends Component {
         data={data}
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
-        style={{ paddingHorizontal: 10, marginTop: 7 }}
+        style={{ paddingHorizontal: responsive.h(10), marginTop: 7 }}
       />
     );
   }
@@ -215,18 +215,18 @@ class SurveyStatisticScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10), }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
-                padding: 10,
-                width: Screen.width - 124,
+                padding: responsive.h(10),
+                width: Screen.width - responsive.h(124),
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -240,8 +240,8 @@ class SurveyStatisticScreen extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ paddingVertical: 10 }}>
-              <MyIcon name="reply" color="black" size={20} />
+            <TouchableOpacity style={{ padding: responsive.h(10) }}>
+              <MyIcon name="reply" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
         />

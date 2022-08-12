@@ -11,10 +11,10 @@ import ListData from "../../components/common/ListData";
 import { connect } from "react-redux";
 import { resetStateByKey } from "../../actions/requestCreate";
 import Strings from "../../utils/languages";
-import NavBar from "../../components/common/NavBar";
+import NavBar from "../../resident/components/common/NavBar";
 import { MyIcon } from "../../theme/icons";
 import fontsize from "../../theme/fontsize";
-
+import responsive from "../../resources/responsive";
 class ListUnitsGas extends Component {
   onSelected = (item) => {
     const { onSelected } = this.props.navigation.state.params;
@@ -26,10 +26,10 @@ class ListUnitsGas extends Component {
     const data = this.props.navigation.state.params.units;
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={20} color="black" />
+        <MyIcon name="arrow" size={responsive.h(20)} color="black" />
       </TouchableOpacity>
     );
     return (
@@ -39,7 +39,7 @@ class ListUnitsGas extends Component {
           body={
             <Text
               style={{
-                color: "#fff",
+                color: "#000",
                 fontSize: fontsize.medium,
                 fontWeight: "bold",
                 alignSelf: "center",
@@ -54,7 +54,7 @@ class ListUnitsGas extends Component {
         <FlatList
           //refreshing={isRefreshing}
           //onRefresh={() => this.refreshDataHandle()}
-          style={{ marginTop: -20 }}
+          style={{ }}
           data={data || []}
           keyExtractor={(item, index) => `${index}`}
           renderItem={({ item }) => {
@@ -62,13 +62,13 @@ class ListUnitsGas extends Component {
               <TouchableOpacity
                 //key={index}
                 style={{
-                  marginVertical: 20,
+                  marginVertical: responsive.h(10),
                   backgroundColor: "#fff",
-                  marginHorizontal: 20,
+                  marginHorizontal: responsive.h(10),
                 }}
                 onPress={() => this.onSelected(item)}
               >
-                <Text>{item.name}</Text>
+                <Text style={{fontSize: responsive.h(14)}}>{item.name}</Text>
               </TouchableOpacity>
             );
           }}

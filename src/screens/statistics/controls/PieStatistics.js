@@ -9,7 +9,7 @@ import {
 
 import { PieChart } from 'react-native-charts-wrapper';
 import colors from '../../../theme/colors';
-
+import responsive from "../../../resources/responsive";
 class PieChartScreen extends React.Component {
 
   constructor(props) {
@@ -70,17 +70,17 @@ class PieChartScreen extends React.Component {
           highlights={this.state.highlights}
 
           entryLabelColor={processColor('black')}
-          entryLabelTextSize={12}
+          entryLabelTextSize={responsive.h(12)}
           drawEntryLabels={true}
 
           rotationEnabled={true}
           rotationAngle={45}
           usePercentValues={true}
-          styledCenterText={{ text: '%', color: processColor(colors.appTheme), size: 20 }}
-          centerTextRadiusPercent={100}
-          holeRadius={40}
+          styledCenterText={{ text: '%', color: processColor(colors.appTheme), size: responsive.h(20) }}
+          centerTextRadiusPercent={responsive.h(100)}
+          holeRadius={responsive.h(40)}
           holeColor={processColor('#f0f0f0')}
-          transparentCircleRadius={45}
+          transparentCircleRadius={responsive.h(45)}
           transparentCircleColor={processColor('#f0f0f088')}
           maxAngle={360}
           onSelect={this.handleSelect.bind(this)}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 
   },
   chart: {
-    height: 300,
+    height: responsive.h(300),
     flex: 1,
     backgroundColor: '#fff'
   }

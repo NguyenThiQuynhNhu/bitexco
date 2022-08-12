@@ -101,7 +101,7 @@ class ListData extends Component {
         onMomentumScrollBegin={() => {
           this.onEndReachedCalledDuringMomentum = false;
         }}
-        style={{ borderTopRightRadius: 20, marginTop: 0 }}
+        style={{ marginTop: -10 }}
       />
     );
   }

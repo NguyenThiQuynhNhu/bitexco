@@ -7,7 +7,7 @@ import { MyIcon } from '../../../theme/icons';
 import ImageProgress from '../../common/ImageProgress';
 import { myFromNow } from '../../../utils/request';
 import colors from '../../../theme/colors';
-
+import responsive from "../../../resources/responsive";
 // create a component
 class ListItem extends PureComponent {
     render() {
@@ -46,18 +46,18 @@ class ListItem extends PureComponent {
                 <View
                     style={{
                         flex: 1,
-                        padding: 10,
+                        padding: responsive.h(10),
                         flexDirection: 'row',
                         alignItems: 'center',
                         backgroundColor: '#fff'
                     }}
                 >
 
-                    <View style={{ flex: 1, justifyContent: 'space-between', marginLeft: 10 }}>
+                    <View style={{ flex: 1, justifyContent: 'space-between', marginLeft: responsive.h(10) }}>
                         <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text style={{
                                 fontFamily: "Inter-SemiBold",
-                                fontSize: 16,
+                                fontSize: responsive.h(16),
                                 fontWeight: "600",
                                 fontStyle: "normal",
                                 letterSpacing: 0,
@@ -67,8 +67,8 @@ class ListItem extends PureComponent {
 
                             {indexId > 0 ? <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                                 <Text style={{
-                                    marginVertical: 5, fontFamily: "Inter-SemiBold",
-                                    fontSize: 16,
+                                    marginVertical: responsive.h(5), fontFamily: "Inter-SemiBold",
+                                    fontSize: responsive.h(16),
                                     fontWeight: "600",
                                     fontStyle: "normal",
                                     letterSpacing: 0,
@@ -76,8 +76,8 @@ class ListItem extends PureComponent {
                                     color: "#ff624d"
                                 }} numberOfLines={1}>{amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</Text>
                                 <Text style={{
-                                    marginVertical: 5, fontFamily: "Inter-Regular",
-                                    fontSize: 13,
+                                    marginVertical: responsive.h(5), fontFamily: "Inter-Regular",
+                                    fontSize: responsive.h(13),
                                     letterSpacing: 0,
                                     textAlign: "right",
                                     color: "#6f6f6f",
@@ -90,15 +90,15 @@ class ListItem extends PureComponent {
                             <View>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{
-                                        marginVertical: 5, fontFamily: "Inter-Medium",
-                                        fontSize: 12,
+                                        marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
                                         letterSpacing: 0,
                                         textAlign: "left",
                                         color: "#626262"
-                                    }} numberOfLines={1}>CS cũ: <Text style={{ marginVertical: 5, fontFamily: "Inter-Medium",
-                                    fontSize: 12,
+                                    }} numberOfLines={1}>CS cũ: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                    fontSize: responsive.h(12),
                                     fontWeight: "500",
                                     fontStyle: "normal",
                                     letterSpacing: 0,
@@ -106,15 +106,15 @@ class ListItem extends PureComponent {
                                     color: "#ff3d00" }} numberOfLines={1}>{indexOld}</Text></Text>
 
                                     <Text style={{
-                                        marginVertical: 5, fontFamily: "Inter-Medium",
-                                        fontSize: 12,
+                                        marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
                                         letterSpacing: 0,
                                         textAlign: "left",
                                         color: "#626262"
-                                    }} numberOfLines={1}>CS mới: <Text style={{ marginVertical: 5, fontFamily: "Inter-Medium",
-                                    fontSize: 12,
+                                    }} numberOfLines={1}>CS mới: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                    fontSize: responsive.h(12),
                                     fontWeight: "500",
                                     fontStyle: "normal",
                                     letterSpacing: 0,
@@ -122,16 +122,16 @@ class ListItem extends PureComponent {
                                     color: "#ff3d00" }} numberOfLines={1}>{indexNew}</Text></Text>
 
                                     <Text style={{
-                                        marginVertical: 5, fontFamily: "Inter-Medium",
-                                        fontSize: 12,
+                                        marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
                                         letterSpacing: 0,
                                         textAlign: "left",
                                         color: "#626262"
                                     }} numberOfLines={1}>Tiêu thụ: <Text style={{
-                                        marginVertical: 5, fontFamily: "Inter-Medium",
-                                        fontSize: 12,
+                                        marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
                                         letterSpacing: 0,
@@ -141,8 +141,8 @@ class ListItem extends PureComponent {
                                 </View>
                                 <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between' }}>
                                     <Text style={{
-                                        marginVertical: 5, fontFamily: "Inter-Medium",
-                                        fontSize: 12,
+                                        marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
                                         letterSpacing: 0,
@@ -151,8 +151,8 @@ class ListItem extends PureComponent {
                                     }} numberOfLines={1}>{employeeName}</Text>
 
                                     <Text style={{
-                                        marginVertical: 5, fontFamily: "Inter-Regular",
-                                        fontSize: 11,
+                                        marginVertical: responsive.h(5), fontFamily: "Inter-Regular",
+                                        fontSize: responsive.h(11),
                                         fontWeight: "normal",
                                         fontStyle: "normal",
                                         letterSpacing: 0,
@@ -163,8 +163,8 @@ class ListItem extends PureComponent {
                             </View>
                             : <View>
                                 <Text style={{
-                                    marginVertical: 5, fontFamily: "Inter-Regular",
-                                    fontSize: 11,
+                                    marginVertical: responsive.h(5), fontFamily: "Inter-Regular",
+                                    fontSize: responsive.h(11),
                                     fontWeight: "normal",
                                     fontStyle: "normal",
                                     letterSpacing: 0,

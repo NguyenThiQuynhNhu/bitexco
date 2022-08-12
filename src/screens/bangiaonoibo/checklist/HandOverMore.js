@@ -52,7 +52,7 @@ import ImageProgress from "../../../components/common/ImageProgress";
 // import TuNgayPicker from 'react-native-modal-datetime-picker';
 // import DenNgayPicker from 'react-native-modal-datetime-picker';
 // import CommentView from './CommentView';
-
+import responsive from "../../../resources/responsive";
 // create a component
 class HandOverMore extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -193,7 +193,7 @@ class HandOverMore extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -405,7 +405,7 @@ class HandOverMore extends Component {
                 modalView: this.renderCreateNote(item),
               })
             }
-            style={{ flex: 1, justifyContent: "center", paddingLeft: 10 }}
+            style={{ flex: 1, justifyContent: "center", paddingLeft: responsive.h(10),}}
           >
             <Text />
           </TouchableOpacity>,
@@ -417,17 +417,17 @@ class HandOverMore extends Component {
             flex: 1,
             flexDirection: "row",
             alignItems: "center",
-            // padding: 20,
-            paddingVertical: 15,
-            paddingRight: 20,
+            // padding: responsive.h(20),
+            paddingVertical: responsive.h(15),
+            paddingRight: responsive.h(20),
             backgroundColor: "#fff",
           }}
         >
           <View
             style={{
               // backgroundColor:colors.gray1,
-              paddingHorizontal: 15,
-              marginRight: 10,
+              paddingHorizontal: responsive.h(15),
+              marginRight: responsive.h(10),
             }}
           >
             <CheckBox
@@ -439,16 +439,16 @@ class HandOverMore extends Component {
             />
           </View>
 
-          <View style={{ flex: 1, justifyContent: "center", marginLeft: 10 }}>
+          <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10),}}>
             {/* <Text style={{ fontSize: fontSize.larg, fontWeight: 'bold' }}>{item.nhanvien}</Text> */}
-            {/* <Text numberOfLines={2} lineBreakMode="tail" style={{ marginVertical: 10 }}>{description}</Text> */}
+            {/* <Text numberOfLines={2} lineBreakMode="tail" style={{ marginVertical: responsive.h(10),}}>{description}</Text> */}
 
             <View
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingTop: 5,
+                paddingTop: responsive.h(5),
               }}
             >
               <Text style={{ color: colors.appTheme, fontWeight: "bold" }}>
@@ -465,7 +465,7 @@ class HandOverMore extends Component {
               }}
               style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
-              <Text style={{ paddingRight: 10 }}>
+              <Text style={{ paddingRight: responsive.h(10),}}>
                 {item.dutyName == ""
                   ? "Vui lòng chọn ca bàn giao..."
                   : item.dutyName}
@@ -514,7 +514,7 @@ class HandOverMore extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -536,15 +536,15 @@ class HandOverMore extends Component {
             height: "80%",
             width: "80%",
             backgroundColor: "#fff",
-            borderRadius: 10,
+            borderRadius: responsive.h(10),
           }}
         >
           <View
             style={{
-              padding: 20,
+              padding: responsive.h(20),
               backgroundColor: colors.appTheme,
-              borderTopLeftRadius: 10,
-              borderTopRightRadius: 10,
+              borderTopLeftRadius: responsive.h(10),
+              borderTopRightRadius: responsive.h(10),
             }}
           >
             <Text
@@ -563,11 +563,11 @@ class HandOverMore extends Component {
             onPress={() => this.setState({ showModal: false })}
             style={{
               backgroundColor: colors.appTheme,
-              borderRadius: 45,
-              padding: 10,
+              borderRadius: responsive.h(45),
+              padding: responsive.h(10),
               width: "80%",
               alignSelf: "center",
-              marginBottom: 10,
+              marginBottom: responsive.h(10),
             }}
           >
             <Text style={{ color: "#fff", alignSelf: "center" }}>
@@ -594,19 +594,19 @@ class HandOverMore extends Component {
               flex: 1,
               flexDirection: "row",
               alignItems: "center",
-              padding: 20,
+              padding: responsive.h(20),
               backgroundColor: "#fff",
             }}
           >
             <ImageProgress
               circle={true}
               style={{
-                height: 50,
-                width: 50,
+                height: responsive.h(50),
+                width: responsive.h(50),
               }}
               source={{ uri: customerAvatar }}
             />
-            <View style={{ flex: 1, justifyContent: "center", marginLeft: 10 }}>
+            <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10),}}>
               <Text style={{ fontSize: fontsize.larg, fontWeight: "bold" }}>
                 {customerName}
               </Text>
@@ -615,7 +615,7 @@ class HandOverMore extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingTop: 5,
+                  paddingTop: responsive.h(5),
                 }}
               >
                 <Text style={{ color: colors.gray1 }}>
@@ -628,7 +628,7 @@ class HandOverMore extends Component {
             </View>
           </View>
         </View>
-        <Text style={{ textAlign: "left", margin: 10 }}> {description}</Text>
+        <Text style={{ textAlign: "left", margin: responsive.h(10),}}> {description}</Text>
       </View>
     );
   }
@@ -708,9 +708,9 @@ class HandOverMore extends Component {
                   );
                 }}
                 style={{
-                  flex: 1,
-                  margin: Platform.OS == "ios" ? 5 : 10,
-                  marginHorizontal: 10,
+                  // flex: 1,
+                  // margin: Platform.OS == "ios" ? 5 : responsive.h(10),
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -731,7 +731,7 @@ class HandOverMore extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10),}}
               >
                 <Text style={{ color: "#fff" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -742,9 +742,9 @@ class HandOverMore extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10),}}
               >
-                <MyIcon size={20} name="arrow" color="black" />
+                <MyIcon size={responsive.h(20)} name="arrow" color="black" />
               </TouchableOpacity>
             }
             body={
@@ -761,12 +761,12 @@ class HandOverMore extends Component {
             rightView={
               <TouchableOpacity
                 onPress={() => this.item_save_click()}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10),}}
               >
                 <Icon
                   style={{
-                    fontSize: 26,
-                    paddingHorizontal: 8,
+                    fontSize: responsive.h(26),
+                    paddingHorizontal: responsive.h(8),
                     color: "black",
                   }}
                   type="FontAwesome"
@@ -788,7 +788,7 @@ class HandOverMore extends Component {
             });
           }}
           style={{
-            padding: 15,
+            padding: responsive.h(15),
             backgroundColor: colors.gray2,
             flexDirection: "row",
             justifyContent: "space-between",
@@ -796,17 +796,17 @@ class HandOverMore extends Component {
             borderBottomColor: colors.grayBorder,
           }}
         >
-          <Text style={{}}>
+          <Text style={{fontSize: responsive.h(14)}}>
             {this.state.GroupId == ""
               ? "Vui lòng chọn nhóm..."
               : this.state.GroupId.name}
           </Text>
 
-          <MyIcon size={20} name="arrow-arrow-down" color={colors.appTheme} />
+          <MyIcon size={responsive.h(20)} name="arrow-arrow-down" color={colors.appTheme} />
         </TouchableOpacity>
-        <View style={{ paddingHorizontal: 10 }}>{this._renderContent()}</View>
+        <View style={{ paddingHorizontal: responsive.h(10),}}>{this._renderContent()}</View>
         {/* <Content>
-                    <Form style={{ paddingHorizontal: 10 }}>
+                    <Form style={{ paddingHorizontal: responsive.h(10),}}>
                         <Item picker>
                             <Icon name='layer-group' type='FontAwesome5' />
                             <Picker

@@ -19,7 +19,7 @@ import fontsize from "../../../theme/fontsize";
 import colors from "../../../theme/colors";
 import { updateRequestHandle } from "../../../actions/servicesExtensionDetail";
 import NavBar from "../../../resident/components/common/NavBar";
-
+import responsive from "../../../resources/responsive";
 // create a component
 class RequestUpdateStatus extends Component {
   constructor(props) {
@@ -56,7 +56,7 @@ class RequestUpdateStatus extends Component {
       <View
         style={{
           flex: 1,
-          paddingHorizontal: 20,
+          paddingHorizontal: responsive.h(20),
         }}
       >
         <Lookup
@@ -89,7 +89,7 @@ class RequestUpdateStatus extends Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 textAlign: "left",
                 color: "#282828",
@@ -101,7 +101,7 @@ class RequestUpdateStatus extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 10,
+                fontSize: responsive.h(10),
                 textAlign: "left",
                 color: "#6f6f6f",
               }}
@@ -111,7 +111,7 @@ class RequestUpdateStatus extends Component {
           </View>
           <View
             style={{
-              marginTop: 10,
+              marginTop: responsive.h(10),
             }}
           >
             <TextInput
@@ -121,13 +121,13 @@ class RequestUpdateStatus extends Component {
               underlineColorAndroid="transparent"
               style={{
                 backgroundColor: "#fff",
-                height: 120,
+                height: responsive.h(120),
                 textAlignVertical: "top",
-                borderRadius: 8,
+                borderRadius: responsive.h(8),
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: "#cbcbcb",
-                padding: 10,
+                padding: responsive.h(10),
               }}
               placeholder={Strings.createRequest.placeholderContent}
               placeholderTextColor="#9e9e9e"
@@ -147,18 +147,18 @@ class RequestUpdateStatus extends Component {
     const { reason, content, statuspSelected } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={20} color="black" />
+        <MyIcon name="arrow" size={responsive.h(20)} color="black" />
       </TouchableOpacity>
     );
     const rightButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={this._onRequest}
       >
-        <MyIcon name="paperplane" size={24} color="black" />
+        <MyIcon name="paperplane" size={responsive.h(24)} color="black" />
       </TouchableOpacity>
     );
 
@@ -170,7 +170,7 @@ class RequestUpdateStatus extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",

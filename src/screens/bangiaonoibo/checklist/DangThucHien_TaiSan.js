@@ -218,7 +218,7 @@ class DangThucHien_TaiSan extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -262,7 +262,7 @@ class DangThucHien_TaiSan extends Component {
         renderItem={({ item }) => this.renderItemNhom(item)}
         // style={{ marginTop: -20, borderTopRightRadius: 30 }}
         contentContainerStyle={{
-          marginHorizontal: responsive.w(20),
+          marginHorizontal: responsive.h(20),
         }}
       />
 
@@ -316,23 +316,23 @@ class DangThucHien_TaiSan extends Component {
         style={{
           flex: 1,
           // backgroundColor: item.index % 2 === 0 ? "#fff" : colors.gray2,
-          paddingHorizontal: 18,
-          // paddingVertical: 10,
+          paddingHorizontal: responsive.h(18),
+          // paddingVertical: responsive.h(10),
           // borderColor: colors.grayBorder,
           // borderBottomWidth: 1,
           width: "100%",
           borderWidth: 1,
-          borderBottomWidth: 3,
-          borderRadius: 13,
-          padding: 10,
+          borderBottomWidth: responsive.h(3),
+          borderRadius: responsive.h(13),
+          padding: responsive.h(10),
           borderColor: "#f5f5f5",
-          marginBottom: 10,
+          marginBottom: responsive.h(10),
         }}
       >
         <Text
           style={{
             flex: 1,
-            paddingBottom: 10,
+            paddingBottom: responsive.h(10),
             color: item.IsNoQuality ? colors.red : "#000",
             fontSize: responsive.h(15),
             fontFamily: "Inter-Bold",
@@ -375,7 +375,7 @@ class DangThucHien_TaiSan extends Component {
             fontFamily: "Inter-SemiBold",
             fontSize: responsive.h(15),
             color: "black",
-            paddingVertical: 10,
+            paddingVertical: responsive.h(10),
           }}
         >
           Tầng: {item.key}
@@ -418,7 +418,7 @@ class DangThucHien_TaiSan extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -508,22 +508,22 @@ class DangThucHien_TaiSan extends Component {
 
   renderImages() {
     return (
-      <View style={{ marginBottom: 20 }}>
+      <View style={{ marginBottom: responsive.h(20),}}>
         {this.state.images.length > 0 ? (
           <ScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            style={{ marginTop: 10 }}
+            style={{ marginTop: responsive.h(10),}}
           >
             {this.state.images.length < 5 && (
               <View
                 style={{
                   justifyContent: "center",
                   backgroundColor: "#ffff",
-                  borderRadius: 5,
-                  padding: 5,
-                  marginTop: 10,
-                  marginRight: 10,
+                  borderRadius: responsive.h(5),
+                  padding: responsive.h(5),
+                  marginTop: responsive.h(10),
+                  marginRight: responsive.h(10),
                   height: responsive.h(80),
                 }}
               >
@@ -550,9 +550,9 @@ class DangThucHien_TaiSan extends Component {
                 <View key={y}>
                   <Lightbox
                     style={{
-                      marginTop: 10,
-                      marginRight: 10,
-                      borderRadius: 5,
+                      marginTop: responsive.h(10),
+                      marginRight: responsive.h(10),
+                      borderRadius: responsive.h(5),
                       backgroundColor: "#eeeeee",
                     }}
                     activeProps={{
@@ -561,7 +561,7 @@ class DangThucHien_TaiSan extends Component {
                   >
                     <Image
                       source={{ uri: eachImage.uri }}
-                      style={{ width: 90, height: 120, zIndex: 0 }}
+                      style={{ width: responsive.h(90), height: responsive.h(120), zIndex: 0 }}
                     />
                   </Lightbox>
 
@@ -571,14 +571,14 @@ class DangThucHien_TaiSan extends Component {
                       position: "absolute",
                       top: 0,
                       right: 0,
-                      borderRadius: 15,
+                      borderRadius: responsive.h(15),
                       marginTop: 0,
                       backgroundColor: "#505c5c5c",
                       zIndex: 1,
                       alignItems: "center",
                     }}
                   >
-                    <Text style={{ padding: 5, color: "#fff" }}> X </Text>
+                    <Text style={{ padding: responsive.h(5), color: "#fff", fontSize: responsive.h(14) }}> X </Text>
                   </TouchableOpacity>
                 </View>
               );
@@ -589,11 +589,11 @@ class DangThucHien_TaiSan extends Component {
             onPress={() => this._onAttachment()}
             style={{
               backgroundColor: "#ffff",
-              borderRadius: 5,
+              borderRadius: responsive.h(5),
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 10,
-              paddingVertical: 20,
+              marginTop: responsive.h(10),
+              paddingVertical: responsive.h(20),
             }}
           >
             <MyIcon name="camera" size={responsive.h(20)} color="gray" />
@@ -624,14 +624,14 @@ class DangThucHien_TaiSan extends Component {
           justifyContent: "center",
           backgroundColor: colors.appTheme,
           width: "80%",
-          borderRadius: 45,
-          padding: 10,
+          borderRadius: responsive.h(45),
+          padding: responsive.h(10),
           alignSelf: "center",
-          marginBottom: 10,
+          marginBottom: responsive.h(10),
         }}
       >
         <Loader_Detail flex={0} color={colors.white} />
-        <Text style={{ color: "#fff", alignSelf: "center" }}>
+        <Text style={{ color: "#fff", alignSelf: "center", fontSize: responsive.h(14) }}>
           {"Vui lòng chờ..."}
         </Text>
       </View>
@@ -654,9 +654,9 @@ class DangThucHien_TaiSan extends Component {
             borderColor: colors.appTheme,
             width: responsive.w(150),
             height: responsive.h(40),
-            borderRadius: 45,
-            padding: 10,
-            marginBottom: 10,
+            borderRadius: responsive.h(45),
+            padding: responsive.h(10),
+            marginBottom: responsive.h(10),
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -683,9 +683,9 @@ class DangThucHien_TaiSan extends Component {
             backgroundColor: colors.appTheme,
             width: responsive.w(150),
             height: responsive.h(40),
-            borderRadius: 45,
+            borderRadius: responsive.h(45),
             alignSelf: "center",
-            marginBottom: 10,
+            marginBottom: responsive.h(10),
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -716,16 +716,16 @@ class DangThucHien_TaiSan extends Component {
         <View
           style={{
             backgroundColor: "#f2f2f2",
-            borderRadius: 10,
+            borderRadius: responsive.h(10),
             maxHeight: responsive.h(600),
             width: responsive.w(380),
-            paddingHorizontal: 20,
-            paddingVertical: 10,
+            paddingHorizontal: responsive.h(20),
+            paddingVertical: responsive.h(10),
           }}
         >
           <View
             style={{
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             <Text
@@ -741,7 +741,7 @@ class DangThucHien_TaiSan extends Component {
           </View>
           <View
             style={{
-              height: 2,
+              height: responsive.h(2),
               backgroundColor: "#cfcfcf",
             }}
           />
@@ -751,18 +751,18 @@ class DangThucHien_TaiSan extends Component {
             {/* <Text style={{ margin:20,color:colors.appTheme,fontWeight:'bold',fontSize:20 }}>Hệ thống cửa nhôm kính, cửa đi, cửa sổ, vách kính</Text> */}
             <Text
               style={{
-                marginHorizontal: 10,
+                marginHorizontal: responsive.h(10),
                 fontWeight: "bold",
                 fontSize: responsive.h(16),
                 color: "black",
-                paddingVertical: 5,
+                paddingVertical: responsive.h(5),
               }}
             >
               {this.state.item.name}
             </Text>
             <Text
               style={{
-                marginHorizontal: 10,
+                marginHorizontal: responsive.h(10),
                 fontSize: responsive.h(14),
                 color: "#888888",
                 fontFamily: "Inter-Medium",
@@ -779,7 +779,7 @@ class DangThucHien_TaiSan extends Component {
               }}
             >
               {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={{ marginRight: 10,color:colors.appTheme,fontWeight:'bold',fontSize:14 }}>ĐẠT</Text>
+                                <Text style={{ marginRight: responsive.h(10),color:colors.appTheme,fontWeight:'bold',fontSize:14 }}>ĐẠT</Text>
                                 <Switch value={this.state.isDat} onValueChange={() => {
                                     this.setState({ isDat: !this.state.isDat })
                                 }} />
@@ -788,7 +788,7 @@ class DangThucHien_TaiSan extends Component {
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
                   style={{
-                    marginRight: 10,
+                    marginRight: responsive.h(10),
                     fontWeight: "bold",
                     fontSize: responsive.h(14),
                   }}
@@ -813,7 +813,7 @@ class DangThucHien_TaiSan extends Component {
                   }}
                   style={{
                     transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }],
-                    marginVertical: 20,
+                    marginVertical: responsive.h(20),
                   }}
                 />
               </View>
@@ -824,8 +824,8 @@ class DangThucHien_TaiSan extends Component {
                 height: responsive.h(100),
                 borderColor: colors.grayBorder,
                 borderWidth: 0.5,
-                borderRadius: 8,
-                paddingLeft: 10,
+                borderRadius: responsive.h(8),
+                paddingLeft: responsive.h(10),
                 color: colors.appTheme,
                 textAlignVertical: "top",
                 fontsize: responsive.h(14),
@@ -932,14 +932,14 @@ class DangThucHien_TaiSan extends Component {
           justifyContent: "center",
           backgroundColor: colors.appTheme,
           width: "80%",
-          borderRadius: 45,
-          padding: 10,
+          borderRadius: responsive.h(45),
+          padding: responsive.h(10),
           alignSelf: "center",
-          marginBottom: 10,
+          marginBottom: responsive.h(10),
         }}
       >
         <Loader_Detail flex={0} color={colors.white} />
-        <Text style={{ color: "#fff", alignSelf: "center" }}>
+        <Text style={{ color: "#fff", alignSelf: "center", fontSize: responsive.h(14) }}>
           {"vui lòng chờ...".toLocaleUpperCase()}
         </Text>
       </View>
@@ -951,9 +951,9 @@ class DangThucHien_TaiSan extends Component {
           alignItems: "flex-start",
           flexDirection: "row",
           justifyContent: "space-between",
-          marginBottom: 60,
-          padding: 10,
-          marginTop: 5,
+          marginBottom: responsive.h(60),
+          padding: responsive.h(10),
+          marginTop: responsive.h(5),
         }}
       >
         <TouchableOpacity
@@ -970,10 +970,10 @@ class DangThucHien_TaiSan extends Component {
             backgroundColor: "#fff",
             width: responsive.w(150),
             height: responsive.h(40),
-            borderRadius: 45,
-            padding: 10,
+            borderRadius: responsive.h(45),
+            padding: responsive.h(10),
             alignSelf: "center",
-            marginBottom: 10,
+            marginBottom: responsive.h(10),
             borderWidth: 1,
             borderColor: colors.appTheme,
             justifyContent: "center",
@@ -1000,9 +1000,9 @@ class DangThucHien_TaiSan extends Component {
             backgroundColor: colors.appTheme,
             width: responsive.w(150),
             height: responsive.h(40),
-            borderRadius: 45,
+            borderRadius: responsive.h(45),
             alignSelf: "center",
-            marginBottom: 10,
+            marginBottom: responsive.h(10),
             justifyContent: "center",
             alignItems: "center",
           }}
@@ -1028,7 +1028,7 @@ class DangThucHien_TaiSan extends Component {
           backgroundColor: colors.appOverView,
           justifyContent: "center",
           alignItems: "center",
-          padding: 10,
+          padding: responsive.h(10),
         }}
       >
         <View
@@ -1036,13 +1036,13 @@ class DangThucHien_TaiSan extends Component {
             height: responsive.h(584),
             width: responsive.w(380),
             backgroundColor: "#f2f2f2",
-            borderRadius: 10,
-            paddingHorizontal: 10,
+            borderRadius: responsive.h(10),
+            paddingHorizontal: responsive.h(10),
           }}
         >
           <View
             style={{
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             <Text
@@ -1052,14 +1052,14 @@ class DangThucHien_TaiSan extends Component {
                 fontWeight: "bold",
                 fontSize: responsive.h(16),
                 fontFamily: "Inter-Bold",
-                paddingVertical: 10,
+                paddingVertical: responsive.h(10),
               }}
             >
               Thêm hạng mục kiểm tra
             </Text>
             <View
               style={{
-                height: 2,
+                height: responsive.h(2),
                 backgroundColor: "#cfcfcf",
                 width: "100%",
               }}
@@ -1067,7 +1067,7 @@ class DangThucHien_TaiSan extends Component {
           </View>
           <View
             style={{
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             <TouchableOpacity
@@ -1083,17 +1083,17 @@ class DangThucHien_TaiSan extends Component {
                 });
               }}
               style={{
-                padding: 10,
+                padding: responsive.h(10),
                 backgroundColor: "#ffff",
                 flexDirection: "row",
                 justifyContent: "space-between",
-                borderRadius: 15,
-                marginBottom: 10,
+                borderRadius: responsive.h(15),
+                marginBottom: responsive.h(10),
               }}
             >
               <Text
                 style={{
-                  paddingRight: 10,
+                  paddingRight: responsive.h(10),
                   fontSize: responsive.h(14),
                   color: "#a5a5a5",
                 }}
@@ -1118,18 +1118,18 @@ class DangThucHien_TaiSan extends Component {
                 });
               }}
               style={{
-                padding: 10,
+                padding: responsive.h(10),
                 backgroundColor: colors.gray2,
                 flexDirection: "row",
                 justifyContent: "space-between",
-                borderRadius: 15,
+                borderRadius: responsive.h(15),
                 backgroundColor: "#ffff",
-                marginVertical: 10,
+                marginVertical: responsive.h(10),
               }}
             >
               <Text
                 style={{
-                  paddingRight: 10,
+                  paddingRight: responsive.h(10),
                   fontSize: responsive.h(14),
                   color: "#a5a5a5",
                 }}
@@ -1145,14 +1145,14 @@ class DangThucHien_TaiSan extends Component {
               style={{
                 height: responsive.h(100),
                 width: "100%",
-                borderRadius: 8,
-                paddingLeft: 10,
+                borderRadius: responsive.h(8),
+                paddingLeft: responsive.h(10),
                 color: colors.appTheme,
                 textAlignVertical: "top",
                 backgroundColor: "#ffff",
                 fontSize: responsive.h(14),
-                borderRadius: 16,
-                marginTop: 5,
+                borderRadius: responsive.h(16),
+                marginTop: responsive.h(5),
               }}
               underline={true}
               underlineColorAndroid="transparent"
@@ -1167,14 +1167,14 @@ class DangThucHien_TaiSan extends Component {
               style={{
                 height: responsive.h(130),
                 width: "100%",
-                borderRadius: 8,
-                paddingLeft: 10,
+                borderRadius: responsive.h(8),
+                paddingLeft: responsive.h(10),
                 color: colors.appTheme,
                 textAlignVertical: "top",
                 backgroundColor: "#ffff",
                 fontSize: responsive.h(14),
-                borderRadius: 16,
-                marginTop: 15,
+                borderRadius: responsive.h(16),
+                marginTop: responsive.h(15),
               }}
               underline={false}
               underlineColorAndroid="transparent"
@@ -1272,19 +1272,19 @@ class DangThucHien_TaiSan extends Component {
               flex: 1,
               flexDirection: "row",
               alignItems: "center",
-              padding: 20,
+              padding: responsive.h(20),
               backgroundColor: "#fff",
             }}
           >
             <ImageProgress
               circle={true}
               style={{
-                height: 50,
-                width: 50,
+                height: responsive.h(50),
+                width: responsive.h(50),
               }}
               source={{ uri: customerAvatar }}
             />
-            <View style={{ flex: 1, justifyContent: "center", marginLeft: 10 }}>
+            <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10),}}>
               <Text style={{ fontSize: fontSize.larg, fontWeight: "bold" }}>
                 {customerName}
               </Text>
@@ -1293,10 +1293,10 @@ class DangThucHien_TaiSan extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingTop: 5,
+                  paddingTop: responsive.h(5),
                 }}
               >
-                <Text style={{ color: colors.gray1 }}>
+                <Text style={{ color: colors.gray1, fontSize: responsive.h(14) }}>
                   {isRead ? "Đã nhận" : "Mới"}
                 </Text>
                 <Text style={{ color: colors.gray1 }}>
@@ -1306,7 +1306,7 @@ class DangThucHien_TaiSan extends Component {
             </View>
           </View>
         </View>
-        <Text style={{ textAlign: "left", margin: 10 }}> {description}</Text>
+        <Text style={{ textAlign: "left", margin: responsive.h(10), fontSize: responsive.h(14)}}> {description}</Text>
       </View>
     );
   }
@@ -1414,7 +1414,7 @@ class DangThucHien_TaiSan extends Component {
       >
         <Text
           style={{
-            margin: 10,
+            margin: responsive.h(10),
             fontSize: responsive.h(16),
             color: "black",
             textAlign: "center",
@@ -1520,9 +1520,9 @@ class DangThucHien_TaiSan extends Component {
                   );
                 }}
                 style={{
-                  flex: 1,
-                  margin: Platform.OS == "ios" ? 5 : 10,
-                  marginHorizontal: 10,
+                  // flex: 1,
+                  // margin: Platform.OS == "ios" ? 5 : responsive.h(10),
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -1543,7 +1543,7 @@ class DangThucHien_TaiSan extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10),}}
               >
                 <Text style={{ color: "black" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -1554,16 +1554,16 @@ class DangThucHien_TaiSan extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10),}}
               >
-                <MyIcon size={20} name="arrow" color="black" />
+                <MyIcon size={responsive.h(20)} name="arrow" color="black" />
               </TouchableOpacity>
             }
             body={
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 18,
+                  fontSize: responsive.h(18),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -1592,9 +1592,9 @@ class DangThucHien_TaiSan extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10),}}
               >
-                <MyIcon size={20} name="plus" color="black" />
+                <MyIcon size={responsive.h(20)} name="plus" color="black" />
               </TouchableOpacity>
             }
           />
@@ -1610,13 +1610,13 @@ class DangThucHien_TaiSan extends Component {
                     onPress={() => this.props.navigation.navigate('requestCreate')}
                     style={{
                         backgroundColor: colors.appTheme,
-                        width: 50,
-                        height: 50,
-                        borderRadius: 35,
+                        width: responsive.h(50),
+                        height: responsive.h(50),
+                        borderRadius: responsive.h(35),
                         justifyContent: 'center',
                         alignItems: 'center',
                         position: 'absolute',
-                        bottom: 20,
+                        bottom: responsive.h(20),
                         right: 20
                     }}>
                     <MyIcon name="plus" size={20} color="#fff" />
@@ -1653,8 +1653,8 @@ class DangThucHien_TaiSan extends Component {
                 ? colors.toast.warning
                 : colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
 
@@ -1672,14 +1672,14 @@ class DangThucHien_TaiSan extends Component {
           onPress={() => this.item_status_click()}
           style={{
             backgroundColor: colors.appTheme,
-            width: 50,
-            height: 50,
-            borderRadius: 35,
+            width: responsive.h(50),
+            height: responsive.h(50),
+            borderRadius: responsive.h(35),
             justifyContent: "center",
             alignItems: "center",
             position: "absolute",
-            bottom: 20,
-            right: 20,
+            bottom: responsive.h(20),
+            right: responsive.h(20),
           }}
         >
           <MyIcon name="check" size={30} color="#fff" />
@@ -1743,7 +1743,7 @@ const mapStateToProps = (state) => ({
   searchKey: state.checklist_dangthuchien_taisan.searchKey,
   errorResponse: state.checklist_dangthuchien_taisan.errorResponse,
   canNavigate: state.servicesBasicDetail.data == null,
-  language: state.app.language == "vi" ? 1 : 2,
+  language: state.app.language == "vi" ? 1 : responsive.h(2),
   item: state.checklist_dangthuchien.item,
 });
 

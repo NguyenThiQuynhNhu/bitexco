@@ -32,13 +32,13 @@ import ReportGroupProgressTimeComplete from "./ReportGroupProgressTimeComplete";
 import ReportGroupProgressRating from "./ReportGroupProgressRating";
 import Icon from "react-native-vector-icons/Entypo";
 import NavBar from "../../../resident/components/common/NavBar";
-
+import responsive from "../../../resources/responsive";
 const DataFilter = [
   { id: 1, value: "Ngày" },
   { id: 2, value: "Tuần" },
   { id: 3, value: "Tháng" },
   { id: 4, value: "Quý" },
-  { id: 5, value: "Năm" },
+  { id: responsive.h(5), value: "Năm" },
 ];
 
 class GroupWorkingStatisticsScreen extends React.Component {
@@ -69,12 +69,12 @@ class GroupWorkingStatisticsScreen extends React.Component {
 
   renderContent() {
     return (
-      <ScrollView style={{ flex: 1, marginTop: 10 }}>
-        <View style={{ backgroundColor: "#fff", margin: 10, borderRadius: 12 }}>
+      <ScrollView style={{ flex: 1, marginTop: responsive.h(10),}}>
+        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}>
           <View
             style={{
               flexDirection: "row",
-              padding: 10,
+              padding: responsive.h(10),
               alignItems: "center",
               justifyContent: "space-between",
             }}
@@ -82,7 +82,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 color: "#282828",
               }}
@@ -111,16 +111,16 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 >
                   <View
                     style={{
-                      borderRadius: 45,
-                      paddingRight: 12,
+                      borderRadius: responsive.h(45),
+                      paddingRight: responsive.h(12),
                       backgroundColor: "orange",
                       flexDirection: "row",
                       alignItems: "center",
                       justifyContent: "center",
-                      margin: 10,
+                      margin: responsive.h(10),
                     }}
                   >
-                    <Icon name={"dot-single"} size={20} color="#000" />
+                    <Icon name={"dot-single"} size={responsive.h(20)} color="#000" />
                     <Text
                       style={{
                         color: "#000",
@@ -137,11 +137,11 @@ class GroupWorkingStatisticsScreen extends React.Component {
           />
         </View>
 
-        <View style={{ backgroundColor: "#fff", margin: 10, borderRadius: 12 }}>
+        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}>
           <View
             style={{
               flexDirection: "row",
-              padding: 10,
+              padding: responsive.h(10),
               alignItems: "center",
               justifyContent: "space-between",
             }}
@@ -149,10 +149,10 @@ class GroupWorkingStatisticsScreen extends React.Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 color: "#282828",
-                paddingRight: 10,
+                paddingRight: responsive.h(10),
               }}
             >
               Thời gian xử lý trung bình
@@ -164,11 +164,11 @@ class GroupWorkingStatisticsScreen extends React.Component {
           />
         </View>
 
-        <View style={{ backgroundColor: "#fff", margin: 10, borderRadius: 12 }}>
+        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}>
           <View
             style={{
               flexDirection: "row",
-              padding: 10,
+              padding: responsive.h(10),
               alignItems: "center",
               justifyContent: "space-between",
             }}
@@ -176,10 +176,10 @@ class GroupWorkingStatisticsScreen extends React.Component {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 color: "#282828",
-                paddingRight: 10,
+                paddingRight: responsive.h(10),
               }}
             >
               Điểm đánh giá trung bình
@@ -206,17 +206,17 @@ class GroupWorkingStatisticsScreen extends React.Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10),}}
               onPress={() => this.props.navigation.goBack(null)}
             >
-              <MyIcon name="arrow" size={20} color="black" />
+              <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",
@@ -226,7 +226,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
             </Text>
           }
           //   rightView={
-          //     <TouchableOpacity style={{ padding: 10 }}>
+          //     <TouchableOpacity style={{ padding: responsive.h(10),}}>
           //       <MyIcon name="arrow" size={20} color={colors.appTheme} />
           //     </TouchableOpacity>
           //   }
@@ -240,9 +240,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 backgroundColor: "#fff",
                 borderBottomWidth: 1,
                 borderBottomColor: colors.grayBorder,
-                paddingVertical: 10,
-                borderTopRightRadius: 40,
-                marginTop: -10,
+                paddingVertical: responsive.h(10),
               }}
             >
               <ButtonFilter
@@ -272,11 +270,11 @@ class GroupWorkingStatisticsScreen extends React.Component {
               />
             </ScrollView>
           </View>
-          <View style={{ backgroundColor: "#fff", padding: 10 }}>
-            {/* <View style={{ flexDirection: 'row', paddingVertical: 10 }}>
+          <View style={{ backgroundColor: "#fff", padding: responsive.h(10),}}>
+            {/* <View style={{ flexDirection: 'row', paddingVertical: responsive.h(10),}}>
                             <FilterType value={typeTime.value} onPress={() => this.setState({ showModalPicker: true })} />
                             <View style={{ flex: 1, alignItems: 'center' }}>
-                                <Text style={{ color: '#0084ff', fontSize: 30, paddingHorizontal: 10 }}>{count}</Text>
+                                <Text style={{ color: '#0084ff', fontSize: 30, paddingHorizontal: responsive.h(10),}}>{count}</Text>
                             </View>
 
 
@@ -325,12 +323,12 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 paddingRight: 0,
                 paddingTop: 0,
                 paddingBottom: 0,
-                marginHorizontal: 15,
-                borderRadius: 5,
+                marginHorizontal: responsive.h(15),
+                borderRadius: responsive.h(5),
                 flexDirection: "column",
               }}
             >
-              <View style={{ padding: 12, height: 160 }}>
+              <View style={{ padding: responsive.h(12), height: responsive.h(160) }}>
                 <Text
                   style={{
                     textAlign: "center",
@@ -366,7 +364,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                         flex: 1,
                         justifyContent: "center",
                         alignItems: "center",
-                        marginRight: 5,
+                        marginRight: responsive.h(5),
                       }}
                     >
                       <Text style={{ fontSize: fontsize.small, color: "#111" }}>
@@ -392,10 +390,10 @@ class GroupWorkingStatisticsScreen extends React.Component {
                   </View>
                   {/* <View><Text style={{margin:5,flex:0.3}}>-</Text></View> */}
                 </View>
-                <View style={{ padding: 5 }}>
+                <View style={{ padding: responsive.h(5) }}>
                   <PrimaryButton
                     text="OK"
-                    style={{ padding: 10 }}
+                    style={{ padding: responsive.h(10),}}
                     onPress={this.customTime}
                   />
                 </View>
@@ -406,7 +404,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 style={{
                   borderColor: colors.grayBorder,
                   borderTopWidth: 1,
-                  paddingVertical: 20,
+                  paddingVertical: responsive.h(20),
                   justifyContent: "center",
                   alignItems: "center",
                 }}

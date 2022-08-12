@@ -6,7 +6,7 @@ import {
     onSetItem
 } from '../../../actions/water'
 import { connect } from 'react-redux';
-
+import responsive from "../../../resources/responsive";
 // create a component
 class ListData extends Component {
 
@@ -29,7 +29,7 @@ class ListData extends Component {
         return (
             <View
                 style={{
-                    paddingVertical: 20,
+                    paddingVertical: responsive.h(20),
                 }}
             >
                 <ActivityIndicator animating size="small" />
@@ -51,7 +51,7 @@ class ListData extends Component {
                 onEndReachedThreshold={0.5}
                 onEndReached={onEndReached}
                 onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false }}
-                style={{margin: 20}}
+                style={{margin: responsive.h(20)}}
             />
         );
     }

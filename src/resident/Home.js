@@ -729,7 +729,7 @@ class HomeScreen extends Component {
             numberOfLines={2}
             style={{
               flexDirection: "row",
-              fontFamily: "Inter-SemiBold",
+              fontFamily: "Inter-Bold",
               fontSize: responsive.h(14),
               fontWeight: "bold",
               fontStyle: "normal",
@@ -1740,7 +1740,7 @@ class HomeScreen extends Component {
                         style={{
                           color: "black",
                           fontSize: responsive.h(14),
-                          fontFamily: "Inter-SemiBold",
+                          fontFamily: "Inter-Bold",
                           maxWidth: responsive.w(70),
                           textAlign: "center",
                         }}

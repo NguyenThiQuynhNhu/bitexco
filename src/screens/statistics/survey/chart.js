@@ -33,7 +33,7 @@ import {
   resetStateByKey,
   refreshDataHandle,
 } from "../../../actions/reportSurvey";
-
+import responsive from "../../../resources/responsive";
 class SurveyChartScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -81,7 +81,7 @@ class SurveyChartScreen extends React.Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -112,7 +112,7 @@ class SurveyChartScreen extends React.Component {
         data={data}
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
-        style={{ paddingHorizontal: 10, marginBottom: 20 }}
+        style={{ paddingHorizontal: responsive.h(10), marginBottom: responsive.h(20),}}
       />
     );
   }
@@ -120,8 +120,8 @@ class SurveyChartScreen extends React.Component {
     return (
       <View
         style={{
-          marginBottom: 10,
-          borderRadius: 12,
+          marginBottom: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -129,10 +129,10 @@ class SurveyChartScreen extends React.Component {
             width: 0,
             height: 4,
           },
-          shadowRadius: 10,
+          shadowRadius: responsive.h(10),
           shadowOpacity: 1,
-          marginHorizontal: 10,
-          padding: 10,
+          marginHorizontal: responsive.h(10),
+          padding: responsive.h(10),
         }}
       >
         <Text
@@ -141,9 +141,9 @@ class SurveyChartScreen extends React.Component {
           style={{
             flexDirection: "row",
             flex: 1,
-            width: Screen.width - 60,
+            width: Screen.width -  responsive.h(60),
             fontFamily: "Inter-SemiBold",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             fontWeight: "600",
             fontStyle: "normal",
             letterSpacing: 0,
@@ -166,7 +166,7 @@ class SurveyChartScreen extends React.Component {
                 : null
             }
           >
-            <Text style={{ flex: 1, fontStyle: "italic", marginTop: 5 }}>
+            <Text style={{ flex: 1, fontStyle: "italic", marginTop: responsive.h(5),}}>
               {item && item.listAnswer && item.listAnswer.length > 0
                 ? "Chọn để xem chi tiết"
                 : "Chưa có dữ liệu"}
@@ -181,7 +181,7 @@ class SurveyChartScreen extends React.Component {
                   .filter((e) => e.count !== 0)}
               />
             ) : (
-              <Text style={{ flex: 1, fontStyle: "italic", marginTop: 5 }}>
+              <Text style={{ flex: 1, fontStyle: "italic", marginTop: responsive.h(5),}}>
                 'Chưa có dữ liệu'
               </Text>
             )}
@@ -194,8 +194,8 @@ class SurveyChartScreen extends React.Component {
     return (
       <View
         style={{
-          marginBottom: 10,
-          borderRadius: 12,
+          marginBottom: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           shadowColor: "rgba(0, 0, 0, 0.1)",
           elevation: 2,
@@ -203,18 +203,18 @@ class SurveyChartScreen extends React.Component {
             width: 0,
             height: 4,
           },
-          shadowRadius: 10,
+          shadowRadius: responsive.h(10),
           shadowOpacity: 1,
-          marginHorizontal: 10,
-          padding: 10,
+          marginHorizontal: responsive.h(10),
+          padding: responsive.h(10),
         }}
       >
         <Text
           style={{
             flex: 1,
-            width: Screen.width - 60,
+            width: Screen.width - responsive.h(60),
             fontFamily: "Inter-Medium",
-            fontSize: 16,
+            fontSize: responsive.h(16),
             textAlign: "left",
             color: "#282828",
           }}
@@ -230,17 +230,17 @@ class SurveyChartScreen extends React.Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10), }}
               onPress={() => this.props.navigation.goBack(null)}
             >
-              <MyIcon name="arrow" size={20} color="black" />
+              <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",
@@ -273,20 +273,20 @@ class SurveyChartScreen extends React.Component {
                 flex: 1,
                 justifyContent: "center",
                 backgroundColor: "#fff",
-                marginVertical: 60,
-                marginHorizontal: 20,
-                borderRadius: 10,
+                marginVertical: responsive.h(60),
+                marginHorizontal: responsive.h(20),
+                borderRadius: responsive.h(10),
               }}
             >
               <View
                 style={{
-                  width: Screen.width - 40,
-                  height: 50,
+                  width: Screen.width - responsive.h(40),
+                  height: responsive.h(50),
                   justifyContent: "center",
                   alignItems: "center",
                   backgroundColor: colors.appTheme,
-                  borderTopLeftRadius: 10,
-                  borderTopRightRadius: 10,
+                  borderTopLeftRadius: responsive.h(10),
+                  borderTopRightRadius: responsive.h(10),
                 }}
               >
                 <TouchableOpacity
@@ -295,15 +295,15 @@ class SurveyChartScreen extends React.Component {
                 >
                   <MyIcon
                     name="delete"
-                    size={30}
+                    size={responsive.h(30)}
                     color="#ffffff80"
-                    style={{ margin: 5 }}
+                    style={{ margin: responsive.h(5),}}
                   />
                 </TouchableOpacity>
                 <Text
                   style={{
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 16,
+                    fontSize: responsive.h(16),
                     fontWeight: "600",
                     color: "#fff",
                   }}
@@ -318,7 +318,7 @@ class SurveyChartScreen extends React.Component {
                 }
                 renderItem={this.renderItemAnswer}
                 onEndReachedThreshold={0.5}
-                style={{ paddingHorizontal: 10, marginVertical: 10 }}
+                style={{ paddingHorizontal: responsive.h(10), marginVertical: responsive.h(10) }}
               />
             </View>
           </View>

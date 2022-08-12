@@ -36,7 +36,7 @@ import Strings from "../../../utils/languages";
 import NavBar from "../../../resident/components/common/NavBar";
 import { MyIcon } from "../../../theme/icons";
 import { titleStyle } from "../../../theme/styles";
-
+import responsive from "../../../resources/responsive";
 // create a component
 class ServiceBasic extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -211,8 +211,8 @@ class ServiceBasic extends Component {
           this.onEndReachedCalledDuringMomentum = false;
         }}
         contentContainerStyle={{
-          marginVertical: 10,
-          marginHorizontal: 10,
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
         }}
         onEndReached={() => {
           if (
@@ -244,10 +244,11 @@ class ServiceBasic extends Component {
       this.setState({ dataStatus: this.props.dataStatus });
     }, 500);
   }
-  renderItem = ({ item }) => {
+  renderItem = ({ item, index }) => {
     return (
       <ListItem
         item={item}
+        index={index}
         onPress={() =>
           this.props.canNavigate
             ? this.props.navigation.navigate("serviceBasicDetail", {
@@ -264,7 +265,7 @@ class ServiceBasic extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -316,9 +317,9 @@ class ServiceBasic extends Component {
                   );
                 }}
                 style={{
-                  flex: 1,
-                  margin: Platform.OS == "ios" ? 5 : 10,
-                  marginHorizontal: 10,
+                  //flex: 1,
+                  //margin: Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -340,7 +341,7 @@ class ServiceBasic extends Component {
                     () => this.setState({ dataStatus: this.props.dataStatus })
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10) }}
               >
                 <Text style={{ color: "black" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -350,45 +351,32 @@ class ServiceBasic extends Component {
           <NavBar
             leftButton={
               <TouchableOpacity
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10) }}
                 onPress={() => this.props.navigation.goBack(null)}
               >
-                <MyIcon name="arrow" size={22} color="black" />
+                <MyIcon name="arrow" size={responsive.h(22)} color="black" />
               </TouchableOpacity>
             }
             body={<Text style={titleStyle}>Tiện ích</Text>}
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10) }}
               >
-                <MyIcon size={25} name="search" color="black" />
+                <MyIcon size={responsive.h(25)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
         )}
 
-        <View style={{ marginTop: -20, borderTopRightRadius: 20 }}>
-          {/* <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{
-                            backgroundColor: '#fff',
-                        }}
-                    >
-                        <ButtonFilter value={1} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} style={{ paddingHorizontal: 5 }} />
-                        <ButtonFilter value={2} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={3} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={4} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-
-                    </ScrollView> */}
+        <View style={{}}>
           <FlatList
             ItemSeparatorComponent={() => (
               <View
                 style={{
                   width: 1,
                   backgroundColor: colors.grayBorder,
-                  marginVertical: 10,
+                  marginVertical: responsive.h(10),
                 }}
               />
             )}
@@ -398,7 +386,6 @@ class ServiceBasic extends Component {
             //pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-              marginVertical: 10,
             }}
             //legacyImplementation={false}
             renderItem={(item) => {
@@ -410,7 +397,7 @@ class ServiceBasic extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: 5 }}
+                    style={{ paddingHorizontal: responsive.h(10) }}
                   />
                 </View>
               );
@@ -421,7 +408,7 @@ class ServiceBasic extends Component {
         <View
           style={{
             backgroundColor: "#f5f5f5",
-            height: 15,
+            height: responsive.h(15),
             width: "100%",
           }}
         />
@@ -447,7 +434,7 @@ class ServiceBasic extends Component {
             backgroundColor: colors.toast.success,
             opacity: 1,
             borderRadius: 5,
-            padding: 10,
+            padding: responsive.h(10),
           }}
         />
       </View>

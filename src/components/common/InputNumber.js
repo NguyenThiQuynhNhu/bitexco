@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Animated, TextInput, TouchableOpacity, Platform
 import { MyIcon } from '../../theme/icons';
 import colors from '../../theme/colors';
 import Strings from '../../utils/languages';
-
+import responsive from "../../resources/responsive";
 // create a component
 const InputNumber = (props) => {
     const { navbarOpacity, style, onChangeText, onClearText, onSubmitEditing, value, placeholder, keyboardType = 'numeric' } = props;
@@ -13,13 +13,13 @@ const InputNumber = (props) => {
         <Animated.View style={[
             {
                 alignItems: 'center',
-                borderRadius: 8,
+                borderRadius: responsive.h(8),
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: "#cbcbcb",
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                paddingLeft: 10
+                paddingLeft: responsive.h(10)
             }, style, { opacity: navbarOpacity }]}>
 
             
@@ -38,7 +38,7 @@ const InputNumber = (props) => {
                     padding: 0,
                     justifyContent: 'flex-start',
                     fontFamily: "Inter-Medium",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "500",
                     textAlign: "left",
                     color: "#282828"
@@ -47,9 +47,9 @@ const InputNumber = (props) => {
             />
             <MyIcon
                 name="search"
-                size={20}
+                size={responsive.h(20)}
                 color="#cbcbcb"
-                style={{ margin: 10 }}
+                style={{ margin: responsive.h(10) }}
             />
         </Animated.View>
     )

@@ -23,7 +23,7 @@ import ErrorContent from "../../../components/common/ErrorContent";
 //style
 import colors from "../../../theme/colors";
 import fontsize from "../../../theme/fontsize";
-
+import { Screen } from "../../../utils/device";
 //data
 import {
   loadDataHandle,
@@ -220,14 +220,14 @@ class index extends Component {
           onPress={() => this.setState({ showActionStatusName: true })}
           style={{
             backgroundColor: colors.white,
-            paddingVertical: 10,
-            paddingHorizontal: 10,
+            paddingVertical: responsive.h(10),
+            paddingHorizontal: responsive.h(10),
             alignItems: "center",
             justifyContent: "center",
             // borderBottomWidth: 0.5,
             // borderBottomColor: colors.appTheme,
             flexDirection: "row",
-            marginTop: -20,
+            marginTop: -responsive.h(20),
           }}
         >
           <Text
@@ -242,7 +242,7 @@ class index extends Component {
           </Text>
 
           <Icon
-            style={{ fontSize: fontsize.medium, marginHorizontal: 10 }}
+            style={{ fontSize: fontsize.medium, marginHorizontal: responsive.h(10),}}
             name="filter-list"
           />
         </TouchableOpacity>
@@ -250,7 +250,7 @@ class index extends Component {
           style={{
             flexDirection: "row",
             justifyContent: "space-around",
-            marginHorizontal: 10,
+            marginHorizontal: responsive.h(10),
           }}
         >
           <TouchableOpacity
@@ -261,23 +261,15 @@ class index extends Component {
               this.setState({ showActionDate: true });
             }}
             style={{
-              paddingVertical: 10,
+              paddingVertical: responsive.h(10),
               flex: 1,
               backgroundColor: colors.NoColor,
               alignItems: "center",
               flexDirection: "row",
               justifyContent: "center",
-              borderRadius: 12,
+              borderRadius: responsive.h(12),
               backgroundColor: "#ffffff",
-              //   shadowColor: "rgba(0, 0, 0, 0.1)",
-              //   elevation: 2,
-              //   shadowOffset: {
-              //     width: 0,
-              //     height: 4,
-              //   },
-              //   shadowRadius: 10,
-              //   shadowOpacity: 1,
-              marginHorizontal: 10,
+              marginHorizontal: responsive.h(10),
               borderWidth: 0.5,
               borderColor: "#dcdcdc",
             }}
@@ -285,14 +277,14 @@ class index extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(fontsize.medium),
+                fontSize: fontsize.medium,
                 fontWeight: "500",
               }}
             >
               {this.props.utils.Name}
             </Text>
             <Icon
-              style={{ fontSize: fontsize.larg, marginLeft: 5 }}
+              style={{ fontSize: fontsize.larg, marginLeft: responsive.h(5),}}
               name="arrow-drop-down"
               type="MaterialIcons"
             />
@@ -301,11 +293,11 @@ class index extends Component {
           <TouchableOpacity
             onPress={() => this.setState({ isTuNgayPickerVisible: true })}
             style={{
-              paddingVertical: 10,
+              paddingVertical: responsive.h(10),
               flex: 1,
               backgroundColor: colors.NoColor,
               alignItems: "center",
-              borderRadius: 12,
+              borderRadius: responsive.h(12),
               backgroundColor: "#ffffff",
               //   shadowColor: "rgba(0, 0, 0, 0.1)",
               //   elevation: 2,
@@ -313,9 +305,9 @@ class index extends Component {
               //     width: 0,
               //     height: 4,
               //   },
-              //   shadowRadius: 10,
+              //   shadowRadius: responsive.h(10),
               //   shadowOpacity: 1,
-              marginHorizontal: 10,
+              marginHorizontal: responsive.h(10),
               borderWidth: 0.5,
               borderColor: "#dcdcdc",
             }}
@@ -323,7 +315,7 @@ class index extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: responsive.h(fontsize.medium),
+                fontSize: fontsize.medium,
                 fontWeight: "500",
               }}
             >
@@ -334,13 +326,13 @@ class index extends Component {
           <TouchableOpacity
             onPress={() => this.setState({ isDenNgayPickerVisible: true })}
             style={{
-              paddingVertical: 10,
+              paddingVertical: responsive.h(10),
               flex: 1,
               backgroundColor: colors.NoColor,
               alignItems: "center",
-              borderRadius: 12,
+              borderRadius: responsive.h(12),
               backgroundColor: "#ffffff",
-              marginHorizontal: 10,
+              marginHorizontal: responsive.h(10),
 
               borderWidth: 0.5,
               borderColor: "#dcdcdc",
@@ -349,7 +341,7 @@ class index extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(fontsize.medium),
+                fontSize: fontsize.medium,
                 fontWeight: "500",
               }}
             >
@@ -360,9 +352,9 @@ class index extends Component {
         <View
           style={{
             backgroundColor: "#f5f5f5",
-            height: 15,
+            height: responsive.h(15),
             width: "100%",
-            marginVertical: 10,
+            marginVertical: responsive.h(10),
           }}
         />
 
@@ -462,7 +454,7 @@ class index extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -496,7 +488,8 @@ class index extends Component {
           renderItem={this.renderItem}
           numColumns={2}
           contentContainerStyle={{
-            marginVertical: responsive.h(10),
+            marginTop: responsive.h(10),
+            marginLeft: responsive.h(10),
           }}
         />
       </View>
@@ -514,56 +507,46 @@ class index extends Component {
                 modalView: this.renderCreateNote(item),
               })
             }
-            style={{ flex: 1, justifyContent: "center", paddingLeft: 10 }}
+            style={{ flex: 1, justifyContent: "center", paddingLeft: responsive.h(10),}}
           >
             <Text />
           </TouchableOpacity>,
         ]}
         style={{
           backgroundColor: "#fff",
-          borderRadius: 12,
-          //   shadowColor: "rgba(0, 0, 0, 0.1)",
-          //   elevation: 2,
-          //   shadowOffset: {
-          //     width: 0,
-          //     height: 4,
-          //   },
-          //   shadowRadius: 10,
-          //   shadowOpacity: 1,
-          height: responsive.h(168),
-          width: responsive.w(182),
-          marginBottom: responsive.h(35),
+          borderRadius: responsive.h(12),
+          backgroundColor: "#ffffff",
+          width: (Screen.width - responsive.h(30)) / 2,
+          marginBottom: responsive.h(10),
+          marginRight: responsive.h(10),
           borderWidth: 0.5,
-          borderColor: "#e1e1e1",
+          borderColor: "#d2d2d2",
           borderBottomWidth: 2,
-          marginHorizontal: 10,
-          padding: 5,
+          padding: responsive.h(10),
         }}
       >
         <TouchableOpacity
           onPress={() => this.item_click(item)}
           style={{
             flex: 1,
-            // alignItems: "center",
-            borderRadius: 12,
-            marginBottom: responsive.h(35),
+            borderRadius: responsive.h(12),
           }}
         >
           <View
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
+              justifyContent: 'flex-start',
               maxWidth: responsive.w(150),
               alignItems: "center",
             }}
           >
             <View
               style={{
-                width: 41,
-                height: 41,
+                width: responsive.h(45),
+                height: responsive.h(45),
                 // backgroundColor:colors.gray1,
-                borderRadius: 41 / 2,
+                borderRadius: responsive.h(25),
                 backgroundColor: "#e1e1e1",
                 justifyContent: "center",
                 alignItems: "center",
@@ -579,7 +562,7 @@ class index extends Component {
               >
                 <Text
                   style={{
-                    fontSize: responsive.h(16),
+                    fontSize: responsive.h(14),
                     fontFamily: "Inter-Regular",
                     fontWeight: "bold",
                     color: "black",
@@ -594,8 +577,9 @@ class index extends Component {
               style={{
                 color: "#000",
                 fontFamily: "Inter-Regular",
-                fontsize: responsive.h(15),
-                maxWidth: responsive.w(90),
+                fontSize: responsive.h(15),
+                marginLeft: responsive.h(10)
+                //maxWidth: responsive.w(90),
               }}
               numberOfLines={2}
               lineBreakMode="tail"
@@ -606,7 +590,7 @@ class index extends Component {
 
           <View
             style={{
-              marginVertical: responsive.h(10),
+              marginTop: responsive.h(10),
             }}
           >
             {/* <Text style={{ color: colors.gray1 }}>Khu <Text style={{ color: colors.appTheme,fontWeight:'bold' }}>{item.khu}</Text></Text> */}
@@ -678,7 +662,7 @@ class index extends Component {
       >
         <Text
           style={{
-            margin: 10,
+            margin: responsive.h(10),
             color: "black",
             fontSize: responsive.h(16),
             textAlign: "center",
@@ -713,7 +697,7 @@ class index extends Component {
       >
         <Text
           style={{
-            margin: 10,
+            margin: responsive.h(10),
             fontSize: responsive.h(16),
             color: "black",
             textAlign: "center",
@@ -738,16 +722,16 @@ class index extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10),}}
             >
-              <MyIcon size={20} name="arrow" color="black" />
+              <MyIcon size={responsive.h(20)} name="arrow" color="black" />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -759,8 +743,8 @@ class index extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ paddingVertical: 10 }}>
-              <MyIcon size={20} name="search" color="black" />
+            <TouchableOpacity style={{ padding: responsive.h(10),}}>
+              <MyIcon size={responsive.h(24)} name="search" color="transparent" />
             </TouchableOpacity>
           }
         />
@@ -774,8 +758,8 @@ class index extends Component {
                 ? colors.toast.warning
                 : colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

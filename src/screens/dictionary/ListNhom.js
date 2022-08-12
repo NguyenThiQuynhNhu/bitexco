@@ -13,7 +13,7 @@ import { resetStateByKey } from "../../actions/requestCreate";
 import Strings from "../../utils/languages";
 import { MyIcon } from "../../theme/icons";
 import fontsize from "../../theme/fontsize";
-
+import responsive from "../../resources/responsive";
 import NavBar from "../../resident/components/common/NavBar";
 
 class ListNhom extends Component {
@@ -27,10 +27,10 @@ class ListNhom extends Component {
     const data = this.props.navigation.state.params.nhom;
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={20} color="black" />
+        <MyIcon name="arrow" size={responsive.h(20)} color="black" />
       </TouchableOpacity>
     );
     return (
@@ -62,13 +62,13 @@ class ListNhom extends Component {
               <TouchableOpacity
                 //key={index}
                 style={{
-                  marginVertical: 20,
+                  marginVertical: responsive.h(20),
                   backgroundColor: "#fff",
-                  marginHorizontal: 20,
+                  marginHorizontal: responsive.h(20),
                 }}
                 onPress={() => this.onSelected(item)}
               >
-                <Text>{item.name}</Text>
+                <Text style={{fontSize: responsive.h(14)}}>{item.name}</Text>
               </TouchableOpacity>
             );
           }}

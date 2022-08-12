@@ -9,7 +9,7 @@ import {
 
 import { PieChart } from 'react-native-charts-wrapper';
 import colors from '../../../theme/colors';
-
+import responsive from "../../../resources/responsive";
 class PieChartSurveyScreen extends React.Component {
 
   constructor(props) {
@@ -31,7 +31,7 @@ class PieChartSurveyScreen extends React.Component {
           label: 'Phòng ban',
           config: {
             colors: [processColor('orange'), processColor('#3292FC'), processColor('#45bf6e'), processColor('#8CEAFF'), processColor('#ff66ff'), processColor('#ff0000'), processColor('#0080b3')],
-            valueTextSize: 12,
+            valueTextSize: responsive.h(12),
             valueTextColor: processColor('#000'),
             sliceSpace: 0,
             selectionShift: 5
@@ -40,7 +40,7 @@ class PieChartSurveyScreen extends React.Component {
       },
       description: {
         text: '',
-        textSize: 12,
+        textSize: responsive.h(12),
         textColor: processColor('darkgray'),
 
       }
@@ -70,17 +70,17 @@ class PieChartSurveyScreen extends React.Component {
           highlights={this.state.highlights}
 
           entryLabelColor={processColor('black')}
-          entryLabelTextSize={10}
+          entryLabelTextSize={responsive.h(10)}
           drawEntryLabels={true}
 
           rotationEnabled={true}
           rotationAngle={270}
           usePercentValues={true}
-          styledCenterText={{ text: '%', color: processColor(colors.appTheme), size: 20 }}
+          styledCenterText={{ text: '%', color: processColor(colors.appTheme), size: responsive.h(20) }}
           centerTextRadiusPercent={0}
-          holeRadius={20}
+          holeRadius={responsive.h(20)}
           holeColor={processColor('#f0f0f0')}
-          transparentCircleRadius={25}
+          transparentCircleRadius={responsive.h(25)}
           transparentCircleColor={processColor('#f0f0f088')}
           maxAngle={360}
           onSelect={this.handleSelect.bind(this)}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
 
   },
   chart: {
-    height: 300,
+    height: responsive.h(300),
     flex: 1,
     backgroundColor: '#fff'
   }

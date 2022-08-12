@@ -266,10 +266,10 @@ class ElectricList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={22} color="black" />
+              <MyIcon name="arrow" size={responsive.h(22)} color="black" />
             </TouchableOpacity>
           }
           body={
@@ -294,7 +294,7 @@ class ElectricList extends Component {
                   fontWeight: "500",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  textAlign: "left",
+                  textAlign: "center",
                   color: "#df2027",
                 }}
               >
@@ -302,41 +302,30 @@ class ElectricList extends Component {
               </Text>
             </View>
           }
-          // rightView={<TouchableOpacity
-          //     onPress={() => this.setState({ showFilter: true })}
-          //     style={{ padding: 10 }}
-          // >
-          //     <MyIcon
-          //         name="search"
-          //         size={25}
-          //         color="#fff"
-
-          //     />
-          // </TouchableOpacity>}
         />
-        <View style={{ borderTopRightRadius: 20 }}>
+        <View style={{}}>
           <View
             style={{
               backgroundColor: "#fff",
               justifyContent: "space-between",
-              padding: 10,
-              marginHorizontal: 20,
-              borderRadius: 20,
+              padding: responsive.h(10),
+              marginHorizontal: responsive.h(20),
+              borderRadius: responsive.h(20),
               backgroundColor: "#ffffff",
               shadowColor: "rgba(0, 0, 0, 0.08)",
               elevation: 2,
               shadowOffset: {
                 width: 0,
-                height: 4,
+                height: responsive.h(4),
               },
-              shadowRadius: 12,
+              shadowRadius: responsive.h(12),
               shadowOpacity: 1,
             }}
           >
             <View
               style={{
                 flexDirection: "row",
-                height: 40,
+                height: responsive.h(40),
                 justifyContent: "space-between",
                 alignItems: "center",
               }}
@@ -344,7 +333,7 @@ class ElectricList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   letterSpacing: 0,
                   textAlign: "left",
@@ -356,7 +345,7 @@ class ElectricList extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  height: 40,
+                  height: responsive.h(40),
                   justifyContent: "space-between",
                   width: "60%",
                 }}
@@ -416,7 +405,7 @@ class ElectricList extends Component {
                 })
               }
               style={{
-                marginTop: 10,
+                marginTop: responsive.h(10),
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -425,7 +414,7 @@ class ElectricList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   letterSpacing: 0,
                   textAlign: "left",
@@ -437,9 +426,9 @@ class ElectricList extends Component {
               <View
                 style={{
                   width: "60%",
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 8,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(8),
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
                   flexDirection: "row",
@@ -451,7 +440,7 @@ class ElectricList extends Component {
                     fontFamily: "Inter-SemiBold",
                     fontWeight: "600",
                     color: this.state.blockSelected ? "#282828" : "#a0a0a0",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                   }}
                 >
                   {this.state.blockSelected
@@ -476,7 +465,7 @@ class ElectricList extends Component {
                 })
               }
               style={{
-                marginTop: 10,
+                marginTop: responsive.h(10),
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -485,7 +474,7 @@ class ElectricList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   letterSpacing: 0,
                   textAlign: "left",
@@ -497,9 +486,9 @@ class ElectricList extends Component {
               <View
                 style={{
                   width: "60%",
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 8,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(8),
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
                   flexDirection: "row",
@@ -511,7 +500,7 @@ class ElectricList extends Component {
                     fontFamily: "Inter-SemiBold",
                     fontWeight: "600",
                     color: this.state.floorSelected ? "#282828" : "#a0a0a0",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                   }}
                 >
                   {this.state.floorSelected
@@ -520,25 +509,14 @@ class ElectricList extends Component {
                     ? floorSelected.name
                     : "Chọn Tầng"}
                 </Text>
-                <MyIcon name="arrow-down" size={14} color={colors.gray1} />
+                <MyIcon name="arrow-down" size={responsive.h(14)} color={colors.gray1} />
               </View>
             </TouchableOpacity>
-
-            {/* <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('floorList', { id: user.towerId, blockSelected, onSelected: (floorSelected) => this.setState({ floorSelected, statusId: floorSelected.id }) })}
-                            style={{ padding: 10, marginTop: 10, borderRadius: 5, backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text>{this.state.floorSelected ? this.state.floorSelected.name : floorSelected ? floorSelected.name : 'Chọn Tầng'}</Text>
-                            <MyIcon
-                                name="arrow-down"
-                                size={15}
-                                color={colors.gray1}
-                            />
-                        </TouchableOpacity> */}
 
             <View
               style={{
                 flexDirection: "row",
-                marginTop: 20,
+                marginTop: responsive.h(20),
                 justifyContent: "center",
               }}
             >
@@ -588,7 +566,7 @@ class ElectricList extends Component {
 
         {this._renderContent()}
 
-        {showFilter && (
+        {/* {showFilter && (
           <View
             style={{
               ...Device.defaultMarginTop(),
@@ -602,9 +580,9 @@ class ElectricList extends Component {
             <View
               style={{
                 width: "90%",
-                margin: 20,
+                margin: responsive.h(20),
                 alignSelf: "center",
-                padding: 10,
+                padding: responsive.h(10),
                 backgroundColor: "#fff",
                 justifyContent: "space-between",
               }}
@@ -799,15 +777,15 @@ class ElectricList extends Component {
               {this.renderActionMenu()}
             </View>
           </View>
-        )}
+        )} */}
 
         <Toast
           ref="toast"
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

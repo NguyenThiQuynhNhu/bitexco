@@ -322,7 +322,6 @@ class ReuqestList extends Component {
             <View
               style={{
                 flexDirection: "row",
-                display: "flex",
                 alignItems: "center",
               }}
             >

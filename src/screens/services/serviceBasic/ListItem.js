@@ -2,7 +2,7 @@
 import React, { Component, PureComponent } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import fontSize from "../../../theme/fontsize";
-
+import { Screen } from "../../../utils/device";
 import ImageProgress from "../../../components/common/ImageProgress";
 import {
   converStatusToColor,
@@ -18,7 +18,7 @@ import responsive from "../../../resources/responsive";
 // create a component
 class ListItem extends PureComponent {
   render() {
-    const { item, onPress } = this.props;
+    const { item, onPress, index } = this.props;
     const {
       residentName,
       serviceName,
@@ -33,78 +33,48 @@ class ListItem extends PureComponent {
         onPress={onPress}
         style={{
           backgroundColor: "#fff",
-          borderRadius: 12,
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          //   shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 1,
-          height: responsive.h(180),
-          width: responsive.w(180),
-          //   shadowOffset: {
-          //     width: 0,
-          //     height: 4,
-          //   },
-          //   shadowRadius: 10,
-          //   shadowOpacity: 1,
-          //   marginVertical: 10,
-          marginHorizontal: 10,
+          width: (Screen.width - responsive.h(30)) / 2,
+          marginBottom: responsive.h(10),
+          marginRight: responsive.h(10),
+          // margin: responsive.h(10),
+          // marginRight: index % 2 != 0 ? 0 : 10,
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
-          padding: 10,
+          padding: responsive.h(10),
         }}
       >
         <View
           style={{
             flex: 1,
-
-            display: "flex",
+            //display: "flex",
             justifyContent: "space-between",
           }}
         >
           <View
             style={{
               flexDirection: "row",
-              display: "flex",
+              //display: "flex",
               justifyContent: "space-between",
             }}
           >
-            <View
+            <ImageProgress
+              // circle={true}
               style={{
-                marginTop: 10,
+                height: responsive.h(41),
+                width: responsive.h(41),
+                borderRadius: responsive.h(22),
               }}
-            >
-              <ImageProgress
-                // circle={true}
-                style={{
-                  height: 41,
-                  width: 41,
-                  // marginTop: 8,
-                  borderRadius: 51 / 2,
-                }}
-                source={{ uri: logo }}
-              />
-            </View>
-            <View
-              style={{
-                // flex: 1,
-                // marginLeft: 10,
-                // minHeight: 35,
-                // justifyContent: "space-between",
-                // flexDirection: "column",
-                marginVertical: 5,
-              }}
-            >
+              source={{ uri: logo }}
+            />
+            <View style={{ marginLeft: responsive.h(10), flex: 1 }}>
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(15),
-                  fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
                   color: "black",
-                  textTransform: "uppercase",
-                  maxWidth: responsive.w(100),
                 }}
                 lineBreakMode="tail"
                 numberOfLines={2}
@@ -126,10 +96,8 @@ class ListItem extends PureComponent {
               </Text>
               <Text
                 style={{
-                  // margin: 2,
-                  // marginHorizontal: 5,
                   fontFamily: "Inter-Regular",
-                  fontSize: 12,
+                  fontSize: responsive.h(12),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -141,12 +109,12 @@ class ListItem extends PureComponent {
               </Text>
             </View>
           </View>
+
           <View>
             <Text
               style={{
-                // marginTop: 15,
                 fontFamily: "Inter-SemiBold",
-                fontSize: responsive.h(16),
+                fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -157,23 +125,17 @@ class ListItem extends PureComponent {
             >
               {serviceName}
             </Text>
-            {description ? (
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(13),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
-                  color: "#3d3d3d",
-                }}
-                numberOfLines={2}
-                lineBreakMode="tail"
-              >
-                {description}
-              </Text>
-            ) : null}
+            <Text
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(14),
+                color: "#3d3d3d",
+              }}
+              numberOfLines={1}
+            //lineBreakMode="tail"
+            >
+              {description}
+            </Text>
           </View>
           <View>
             <View
@@ -188,7 +150,7 @@ class ListItem extends PureComponent {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(12),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   color: "#6f6f6f",
@@ -199,7 +161,7 @@ class ListItem extends PureComponent {
               <Text
                 style={{
                   fontFamily: "Inter-Regular",
-                  fontSize: 11,
+                  fontSize: responsive.h(12),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   color: "#6f6f6f",

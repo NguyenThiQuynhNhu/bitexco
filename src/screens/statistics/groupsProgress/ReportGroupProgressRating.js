@@ -13,6 +13,7 @@ import {
 } from '../../../actions/reportGroupProgress';
 import BarChart from '../controls/BarChart';
 import fontsize from '../../../theme/fontsize';
+import responsive from "../../../resources/responsive";
 // create a component
 class ReportGroupProgressStatus extends Component {
     componentDidMount() {
@@ -36,14 +37,14 @@ class ReportGroupProgressStatus extends Component {
                 <TouchableOpacity
                     onPress={() => { this.props.refreshDataHandle() }}
                 >
-                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: 10 }}>Có lỗi xảy ra</Text>
+                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: responsive.h(10) }}>Có lỗi xảy ra</Text>
                 </TouchableOpacity>
             )
         }
         if (data.length == 0) {
             return (
                 <TouchableOpacity onPress={() => { this.props.refreshDataHandle() }}>
-                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: 10 }}>Không có dữ liệu</Text>
+                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: responsive.h(10) }}>Không có dữ liệu</Text>
                 </TouchableOpacity>
             )
         } else {

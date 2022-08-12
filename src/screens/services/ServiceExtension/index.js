@@ -74,7 +74,7 @@ class ServiceExtension extends Component {
       ],
       status:
         this.props.navigation.state.params != undefined &&
-        this.props.navigation.state.params.idStatus != undefined
+          this.props.navigation.state.params.idStatus != undefined
           ? this.props.navigation.state.params.idStatus
           : 0,
       isShowSearch: false,
@@ -164,7 +164,7 @@ class ServiceExtension extends Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -188,7 +188,7 @@ class ServiceExtension extends Component {
           title={Strings.app.error}
           onTouchScreen={
             (() => this.props.refreshDataHandle(),
-            () => this.setState({ dataStatus: this.props.dataStatus }))
+              () => this.setState({ dataStatus: this.props.dataStatus }))
           }
         />
       );
@@ -206,8 +206,8 @@ class ServiceExtension extends Component {
         ListFooterComponent={this.renderFooter}
         onEndReachedThreshold={0.5}
         contentContainerStyle={{
-          marginVertical: 10,
-          marginHorizontal: 10,
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
         }}
         onMomentumScrollBegin={() => {
           this.onEndReachedCalledDuringMomentum = false;
@@ -242,16 +242,17 @@ class ServiceExtension extends Component {
       this.setState({ dataStatus: this.props.dataStatus });
     }, 500);
   }
-  renderItem = ({ item }) => {
+  renderItem = ({ item, index }) => {
     return (
       <ListItem
+        index={index}
         item={item}
         onPress={() =>
           this.props.canNavigate
             ? this.props.navigation.navigate("serviceExtensionDetail", {
-                id: item.id,
-                avatar: item.logo,
-              })
+              id: item.id,
+              avatar: item.logo,
+            })
             : null
         }
       />
@@ -263,7 +264,7 @@ class ServiceExtension extends Component {
     return (
       <View
         style={{
-          paddingVertical: 20,
+          paddingVertical: responsive.h(20),
         }}
       >
         <ActivityIndicator animating size="small" />
@@ -311,9 +312,7 @@ class ServiceExtension extends Component {
                   );
                 }}
                 style={{
-                  flex: 1,
-                  margin: Platform.OS == "ios" ? 5 : 10,
-                  marginHorizontal: 10,
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -334,7 +333,7 @@ class ServiceExtension extends Component {
                     }
                   );
                 }}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10) }}
               >
                 <Text style={{ color: "black" }}>Huỷ</Text>
               </TouchableOpacity>
@@ -344,45 +343,32 @@ class ServiceExtension extends Component {
           <NavBar
             leftButton={
               <TouchableOpacity
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10) }}
                 onPress={() => this.props.navigation.goBack(null)}
               >
-                <MyIcon name="arrow" size={22} color="black" />
+                <MyIcon name="arrow" size={responsive.h(22)} color="black" />
               </TouchableOpacity>
             }
             body={<Text style={titleStyle}>Dịch vụ</Text>}
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
-                style={{ paddingVertical: 10 }}
+                style={{ padding: responsive.h(10) }}
               >
-                <MyIcon size={25} name="search" color="black" />
+                <MyIcon size={responsive.h(25)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
         )}
 
-        <View style={{ marginTop: -20, borderTopRightRadius: 20 }}>
-          {/* <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{
-                            backgroundColor: '#fff',
-                        }}
-                    >
-                        <ButtonFilter value={1} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} style={{ paddingHorizontal: 5 }} />
-                        <ButtonFilter value={2} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={3} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={5} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-
-                    </ScrollView> */}
+        <View style={{}}>
           <FlatList
             ItemSeparatorComponent={() => (
               <View
                 style={{
                   width: 1,
                   backgroundColor: colors.grayBorder,
-                  marginVertical: 10,
+                  marginVertical: responsive.h(10),
                 }}
               />
             )}
@@ -393,7 +379,7 @@ class ServiceExtension extends Component {
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
             contentContainerStyle={{
-              marginVertical: 10,
+              //marginVertical: 10,
             }}
             renderItem={(item) => {
               return (
@@ -415,34 +401,19 @@ class ServiceExtension extends Component {
         <View
           style={{
             backgroundColor: "#f5f5f5",
-            height: 15,
+            height: responsive.h(15),
             width: "100%",
           }}
         />
         {this._renderContent()}
-        {/* <TouchableOpacity
-                    onPress={() => this.props.navigation.navigate('requestCreate')}
-                    style={{
-                        backgroundColor: colors.appTheme,
-                        width: 50,
-                        height: 50,
-                        borderRadius: 35,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        position: 'absolute',
-                        bottom: 20,
-                        right: 20
-                    }}>
-                    <MyIcon name="plus" size={20} color="#fff" />
-                </TouchableOpacity> */}
 
         <Toast
           ref="toast"
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>

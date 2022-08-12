@@ -41,7 +41,7 @@ import axios from "axios";
 import Button from "../../../components/common/Button";
 import { get, helper, post } from "../../../services/helper";
 import { Screen } from "../../../utils/device";
-
+import responsive from "../../../resources/responsive";
 import NavBar from "../../../resident/components/common/NavBar";
 const Devices = require("react-native-device-detection");
 //
@@ -171,7 +171,7 @@ class CreateGasScreen extends Component {
   };
   renderImage() {
     return (
-      <View style={{ marginTop: 10 }}>
+      <View style={{ marginTop: responsive.h(10) }}>
         {this.state.gasRequest.linkUrl != "" ? (
           <View>
             <Text style={styles.textTitle}>Hình nhân viên up</Text>
@@ -181,29 +181,29 @@ class CreateGasScreen extends Component {
                   justifyContent: "center",
                   alignItems: "center",
                   backgroundColor: colors.grayBorder,
-                  borderRadius: 5,
-                  padding: 5,
-                  marginRight: 10,
-                  marginTop: 10,
+                  borderRadius: responsive.h(5),
+                  padding: responsive.h(5),
+                  marginRight: responsive.h(10),
+                  marginTop: responsive.h(10),
                 }}
               >
                 <MyIcon
                   onPress={() => this._onAttachment()}
                   name="camera"
-                  size={40}
+                  size={responsive.h(40)}
                   color="#a8acaf"
                 />
                 <View
                   style={{
-                    borderRadius: 2,
+                    borderRadius: responsive.h(2),
                     backgroundColor: "#abafb2",
-                    padding: 3,
+                    padding: responsive.h(3),
                   }}
                 >
                   <Text
                     style={{
                       fontFamily: "OpenSans-Regular",
-                      fontSize: 8,
+                      fontSize: responsive.h(8),
                       fontWeight: "normal",
                       fontStyle: "normal",
                       letterSpacing: 0,
@@ -218,16 +218,16 @@ class CreateGasScreen extends Component {
               {/* <ImageProgress
                                 source={ {uri: this.state.gasRequest.linkUrl} }
                                 style={{
-                                    width: 90, height: 120, zIndex: 0,marginTop: 10,justifyContent: 'center',
+                                    width: 90, height: responsive.h(120),, zIndex: 0,marginTop: responsive.h(10),justifyContent: 'center',
                                     alignItems: 'center',
                                     paddingVertical: 20
                                 }}
                             /> */}
               <Lightbox
                 style={{
-                  marginTop: 10,
-                  marginRight: 10,
-                  borderRadius: 5,
+                  marginTop: responsive.h(10),
+                  marginRight: responsive.h(10),
+                  borderRadius: responsive.h(5),
                   backgroundColor: "#eeeeee",
                 }}
                 activeProps={{
@@ -237,7 +237,7 @@ class CreateGasScreen extends Component {
               >
                 <Image
                   source={{ uri: this.state.gasRequest.linkUrl }}
-                  style={{ width: 90, height: 120, zIndex: 0, borderRadius: 8 }}
+                  style={{ width: responsive.w(90), height: responsive.h(120), zIndex: 0, borderRadius: responsive.h(8),}}
                 />
               </Lightbox>
             </View>
@@ -248,23 +248,23 @@ class CreateGasScreen extends Component {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              paddingVertical: 20,
-              borderRadius: 8,
+              paddingVertical: responsive.h(20),
+              borderRadius: responsive.h(8),
               backgroundColor: "#eaeaea",
             }}
           >
-            <MyIcon name="camera" size={40} color="#a8acaf" />
+            <MyIcon name="camera" size={responsive.h(40)} color="#a8acaf" />
             <View
               style={{
-                borderRadius: 2,
+                borderRadius: responsive.h(2),
                 backgroundColor: "#abafb2",
-                padding: 3,
+                padding: responsive.h(3),
               }}
             >
               <Text
                 style={{
                   fontFamily: "OpenSans-Regular",
-                  fontSize: 8,
+                  fontSize: responsive.h(8),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -326,33 +326,32 @@ class CreateGasScreen extends Component {
       return (
         <KeyboardAwareScrollView
           style={{
-            borderTopRightRadius: 20,
-            marginTop: 5,
-            marginHorizontal: 10,
+            marginTop: responsive.h(5),
+            marginHorizontal: responsive.h(10),
           }}
         >
           <View style={styles.container}>
             <View
               style={{
                 flex: 1,
-                borderRadius: 12,
+                borderRadius: responsive.h(12),
                 backgroundColor: "#ffffff",
                 shadowColor: "rgba(0, 0, 0, 0.08)",
-                elevation: 2,
+                elevation: responsive.h(2),
                 shadowOffset: {
                   width: 0,
-                  height: 4,
+                  height: responsive.h(4),
                 },
-                shadowRadius: 12,
+                shadowRadius: responsive.h(12),
                 shadowOpacity: 1,
-                margin: 10,
-                padding: 10,
+                margin: responsive.h(10),
+                padding: responsive.h(10),
               }}
             >
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 18,
+                  fontSize: responsive.h(18),
                   fontWeight: "600",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -367,7 +366,7 @@ class CreateGasScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingVertical: 20,
+                  paddingVertical: responsive.h(20),
                 }}
               >
                 <Text style={styles.textTitle}>Chỉ số mới (*)</Text>
@@ -382,7 +381,7 @@ class CreateGasScreen extends Component {
                     fontSize: fontsize.small,
                     color: "#f53b3b",
                     fontFamily: "Inter-SemiBold",
-                    marginLeft: 20,
+                    marginLeft: responsive.h(20),
                   }}
                   keyboardType="numeric"
                   placeholder="Nhập chỉ số mới..."
@@ -408,29 +407,29 @@ class CreateGasScreen extends Component {
                         justifyContent: "center",
                         alignItems: "center",
                         backgroundColor: colors.grayBorder,
-                        borderRadius: 8,
-                        padding: 5,
-                        marginRight: 10,
-                        marginTop: 10,
+                        borderRadius: responsive.h(8),
+                        padding: responsive.h(5),
+                        marginRight: responsive.h(10),
+                        marginTop: responsive.h(10),
                       }}
                     >
                       <MyIcon
                         onPress={() => this._onAttachment()}
                         name="camera"
-                        size={40}
+                        size={responsive.h(40)}
                         color="#a8acaf"
                       />
                       <View
                         style={{
-                          borderRadius: 2,
+                          borderRadius: responsive.h(2),
                           backgroundColor: "#abafb2",
-                          padding: 3,
+                          padding: responsive.h(3),
                         }}
                       >
                         <Text
                           style={{
                             fontFamily: "OpenSans-Regular",
-                            fontSize: 8,
+                            fontSize: responsive.h(8),
                             fontWeight: "normal",
                             fontStyle: "normal",
                             letterSpacing: 0,
@@ -455,9 +454,9 @@ class CreateGasScreen extends Component {
                       >
                         <Lightbox
                           style={{
-                            marginTop: 10,
-                            marginRight: 10,
-                            borderRadius: 5,
+                            marginTop: responsive.h(10),
+                            marginRight: responsive.h(10),
+                            borderRadius: responsive.h(5),
                             backgroundColor: "#eeeeee",
                           }}
                           activeProps={{
@@ -468,10 +467,10 @@ class CreateGasScreen extends Component {
                           <Image
                             source={{ uri: eachImage.uri }}
                             style={{
-                              width: 90,
-                              height: 120,
+                              width: responsive.w(90),
+                              height: responsive.h(120),
                               zIndex: 0,
-                              borderRadius: 8,
+                              borderRadius: responsive.h(8),
                             }}
                           />
                         </Lightbox>
@@ -484,14 +483,14 @@ class CreateGasScreen extends Component {
                             position: "absolute",
                             top: 0,
                             right: 0,
-                            borderRadius: 15,
+                            borderRadius: responsive.h(15),
                             marginTop: 0,
                             backgroundColor: "#505c5c5c",
                             zIndex: 1,
                             alignItems: "center",
                           }}
                         >
-                          <Text style={{ padding: 5, color: "#fff" }}> X </Text>
+                          <Text style={{ padding: responsive.h(5), color: "#fff", fontSize: responsive.h(14)}}> X </Text>
                         </TouchableOpacity>
                       </View>
                     );
@@ -505,7 +504,7 @@ class CreateGasScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingTop: 20,
+                  paddingTop: responsive.h(20),
                 }}
               >
                 <Text style={styles.textTitle}>Đơn vị tính</Text>
@@ -518,20 +517,20 @@ class CreateGasScreen extends Component {
                     })
                   }
                   style={{
-                    padding: 10,
-                    borderRadius: 5,
+                    padding: responsive.h(10),
+                    borderRadius: responsive.h(5),
                     borderWidth: 1,
                     borderColor: "#cbcbcb",
                     flexDirection: "row",
                     justifyContent: "space-between",
                   }}
                 >
-                  <Text style={{ paddingRight: 10, fontSize: fontsize.small }}>
+                  <Text style={{ paddingRight: responsive.h(14), fontSize: fontsize.small }}>
                     {this.state.unitSelected
                       ? this.state.unitSelected.name
                       : "Chọn đơn vị tính"}
                   </Text>
-                  <MyIcon name="arrow-down" size={14} color={colors.gray1} />
+                  <MyIcon name="arrow-down" size={responsive.h(14)} color={colors.gray1} />
                 </TouchableOpacity>
               </View>
               <View
@@ -539,7 +538,7 @@ class CreateGasScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingTop: 20,
+                  paddingTop: responsive.h(20),
                 }}
               >
                 <Text style={styles.textTitle}>Tỷ lệ VAT</Text>
@@ -547,7 +546,7 @@ class CreateGasScreen extends Component {
                   maxLength={50}
                   style={{
                     flex: 1,
-                    marginLeft: 20,
+                    marginLeft: responsive.h(20),
                     paddingHorizontal: 0,
                     paddingVertical: 0,
                     justifyContent: "flex-end",
@@ -572,7 +571,7 @@ class CreateGasScreen extends Component {
                 <Text
                   style={{
                     justifyContent: "flex-end",
-                    marginLeft: 5,
+                    marginLeft: responsive.h(5),
                     fontSize: fontsize.small,
                     fontFamily: "Inter-SemiBold",
                     color: "#282828",
@@ -585,7 +584,7 @@ class CreateGasScreen extends Component {
                 style={{
                   alignItems: "flex-start",
                   justifyContent: "space-between",
-                  paddingTop: 20,
+                  paddingTop: responsive.h(20),
                 }}
               >
                 <Text
@@ -599,10 +598,10 @@ class CreateGasScreen extends Component {
                   multiline
                   underlineColorAndroid="transparent"
                   style={{
-                    width: Screen.width - 60,
-                    height: 100,
-                    marginTop: 10,
-                    padding: 5,
+                    width: Screen.width - responsive.h(60),
+                    height: responsive.h(100),
+                    marginTop: responsive.h(10),
+                    padding: responsive.h(5),
                     textAlignVertical: Platform.OS === "ios" ? "auto" : "top",
                     alignContent: "flex-start",
                     alignSelf: "auto",
@@ -610,7 +609,7 @@ class CreateGasScreen extends Component {
                     fontFamily: "Inter-Medium",
                     borderWidth: 1,
                     borderColor: "#a0a0a0",
-                    borderRadius: 4,
+                    borderRadius: responsive.h(4),
                   }}
                   placeholder="Nhập ghi chú"
                   placeholderTextColor="#a0a0a0"
@@ -629,10 +628,10 @@ class CreateGasScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 15,
+                paddingVertical: responsive.h(15),
                 borderBottomWidth: 1,
                 borderBottomColor: "#c8c8c8",
-                marginHorizontal: 20,
+                marginHorizontal: responsive.h(20),
               }}
             >
               <Text style={styles.textTitle}>Chỉ số cũ</Text>
@@ -654,10 +653,10 @@ class CreateGasScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 15,
+                paddingVertical: responsive.h(15),
                 borderBottomWidth: 1,
                 borderBottomColor: "#c8c8c8",
-                marginHorizontal: 20,
+                marginHorizontal: responsive.h(20),
               }}
             >
               <Text style={styles.textTitle}>Số tiêu thụ</Text>
@@ -680,10 +679,10 @@ class CreateGasScreen extends Component {
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 15,
+                paddingVertical: responsive.h(15),
                 borderBottomWidth: 1,
                 borderBottomColor: "#c8c8c8",
-                marginHorizontal: 20,
+                marginHorizontal: responsive.h(20),
               }}
             >
               <Text style={styles.textTitle}>Tỷ giá QĐ</Text>
@@ -700,15 +699,15 @@ class CreateGasScreen extends Component {
               </Text>
             </View>
             <TouchableOpacity
-              onPress={() => this.setState({ isShowPopupCustomDate: true })}
+              //onPress={() => this.setState({ isShowPopupCustomDate: true })}
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 15,
+                paddingVertical: responsive.h(15),
                 borderBottomWidth: 1,
                 borderBottomColor: "#c8c8c8",
-                marginHorizontal: 20,
+                marginHorizontal: responsive.h(20),
               }}
             >
               <Text style={styles.textTitle}>Kỳ thanh toán</Text>
@@ -717,7 +716,7 @@ class CreateGasScreen extends Component {
                   justifyContent: "flex-end",
                   fontSize: fontsize.small,
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "500",
                   color: "#a0a0a0",
                 }}
@@ -727,17 +726,17 @@ class CreateGasScreen extends Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() =>
-                this.setState({ isShowPopupCustomDateThanhToan: true })
+              onPress={() =>{}
+                //this.setState({ isShowPopupCustomDateThanhToan: true })
               }
               style={{
                 flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "space-between",
-                paddingVertical: 15,
+                paddingVertical: responsive.h(15),
                 borderBottomWidth: 1,
                 borderBottomColor: "#c8c8c8",
-                marginHorizontal: 20,
+                marginHorizontal: responsive.h(20),
               }}
             >
               <Text style={styles.textTitle}>Ngày thanh toán</Text>
@@ -746,7 +745,7 @@ class CreateGasScreen extends Component {
                   justifyContent: "flex-end",
                   fontSize: fontsize.small,
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "500",
                   color: "#a0a0a0",
                 }}
@@ -765,10 +764,10 @@ class CreateGasScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingVertical: 15,
+                  paddingVertical: responsive.h(15),
                   borderBottomWidth: 1,
                   borderBottomColor: "#c8c8c8",
-                  marginHorizontal: 20,
+                  marginHorizontal: responsive.h(20),
                 }}
               >
                 <Text style={styles.textTitle}>Ngày thông báo</Text>
@@ -777,7 +776,7 @@ class CreateGasScreen extends Component {
                     justifyContent: "flex-end",
                     fontSize: fontsize.small,
                     fontFamily: "Inter-Medium",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                     fontWeight: "500",
                     color: "#a0a0a0",
                   }}
@@ -795,8 +794,8 @@ class CreateGasScreen extends Component {
                   flexDirection: "row",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  paddingVertical: 15,
-                  marginHorizontal: 20,
+                  paddingVertical: responsive.h(15),
+                  marginHorizontal: responsive.h(20),
                 }}
               >
                 <Text style={styles.textTitle}>Tổng tiền</Text>
@@ -813,7 +812,7 @@ class CreateGasScreen extends Component {
                   <Text
                     style={{
                       fontFamily: "Inter-Regular",
-                      fontSize: 11,
+                      fontSize: responsive.h(11),
                       textAlign: "right",
                       color: "#6f6f6f",
                     }}
@@ -835,20 +834,20 @@ class CreateGasScreen extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10), }}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={20} color="black" />
+              <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
           rightView={
             <TouchableOpacity
               onPress={this._onSend}
               style={{
-                paddingVertical: 10,
+                padding: responsive.h(10),
               }}
             >
-              <MyIcon name="paperplane" color="black" size={24} />
+              <MyIcon name="paperplane" color="black" size={responsive.h(24)} />
             </TouchableOpacity>
           }
           body={<Text style={titleStyle}>Ghi chỉ số</Text>}
@@ -864,8 +863,8 @@ class CreateGasScreen extends Component {
           style={{
             backgroundColor: colors.toast.warning,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
         <Modal
@@ -888,14 +887,14 @@ class CreateGasScreen extends Component {
                 paddingRight: 0,
                 paddingTop: 0,
                 paddingBottom: 0,
-                marginHorizontal: 15,
-                borderRadius: 5,
+                marginHorizontal: responsive.h(15),
+                borderRadius: responsive.h(5),
                 flexDirection: "column",
                 width: Devices.isTablet ? "50%" : "90%",
               }}
             >
-              <View style={{ padding: 12, paddingVertical: 15, height: 160 }}>
-                <Text style={{ textAlign: "center", fontSize: 17 }}>
+              <View style={{ padding: responsive.h(12), paddingVertical: responsive.h(15), height: responsive.h(160) }}>
+                <Text style={{ textAlign: "center", fontSize: responsive.h(17) }}>
                   TÙY CHỈNH THỜI GIAN
                 </Text>
                 <View
@@ -924,8 +923,8 @@ class CreateGasScreen extends Component {
                         flex: 1,
                         justifyContent: "center",
                         alignItems: "center",
-                        marginRight: 5,
-                        padding: 10,
+                        marginRight: responsive.h(5),
+                        padding: responsive.h(10),
                       }}
                     >
                       <Text
@@ -944,7 +943,7 @@ class CreateGasScreen extends Component {
                       style={{
                         borderRadius: 0,
                         flex: 1,
-                        padding: 10,
+                        padding: responsive.h(10),
                         justifyContent: "center",
                         alignItems: "center",
                       }}
@@ -958,12 +957,12 @@ class CreateGasScreen extends Component {
                       </Text>
                     </TouchableOpacity>
                   </View>
-                  {/* <View><Text style={{margin:5,flex:0.3}}>-</Text></View> */}
+                  {/* <View><Text style={{margin:responsive.h(5),flex:0.3}}>-</Text></View> */}
                 </View>
-                <View style={{ padding: 5 }}>
+                <View style={{ padding: responsive.h(5) }}>
                   <Button
                     text="OK"
-                    style={{ padding: 10 }}
+                    style={{ padding: responsive.h(10), }}
                     onPress={this.customTime}
                   />
                 </View>
@@ -974,7 +973,7 @@ class CreateGasScreen extends Component {
                 style={{
                   borderColor: colors.grayBorder,
                   borderTopWidth: 1,
-                  paddingVertical: 20,
+                  paddingVertical: responsive.h(20),
                   justifyContent: "center",
                   alignItems: "center",
                 }}
@@ -1018,11 +1017,11 @@ class CreateGasScreen extends Component {
                         backgroundColor: colors.appTheme,
                         width: 50,
                         height: 50,
-                        borderRadius: 35,
+                        borderRadius: 3responsive.h(5),
                         justifyContent: 'center',
                         alignItems: 'center',
                         position: 'absolute',
-                        bottom: 20,
+                        bottom: responsive.h(20),
                         right: 20
                     }}>
                     <MyIcon
@@ -1305,8 +1304,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    borderTopRightRadius: 20,
-    marginTop: -10,
+    borderTopRightRadius: responsive.h(20),
+    marginTop: -responsive.h(10),
   },
   imageActive: {
     flex: 1,
@@ -1314,7 +1313,7 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     fontFamily: "Inter-SemiBold",
-    fontSize: 16,
+    fontSize: responsive.h(16),
     fontWeight: "600",
     fontStyle: "normal",
     letterSpacing: 0,

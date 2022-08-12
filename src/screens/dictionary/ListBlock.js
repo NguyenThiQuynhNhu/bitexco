@@ -7,7 +7,7 @@ import { resetStateByKey } from "../../actions/requestCreate";
 import Strings from "../../utils/languages";
 import { MyIcon } from "../../theme/icons";
 import fontsize from "../../theme/fontsize";
-
+import responsive from "../../resources/responsive";
 import NavBar from "../../resident/components/common/NavBar";
 // create a component
 
@@ -20,13 +20,13 @@ class ListItem extends PureComponent {
       <TouchableOpacity
         key={index}
         style={{
-          marginVertical: 20,
+          marginVertical: responsive.h(20),
           backgroundColor: "#fff",
-          marginHorizontal: 20,
+          marginHorizontal: responsive.h(20),
         }}
         onPress={() => this.props.onSelected(item)}
       >
-        <Text>{name}</Text>
+        <Text style={{fontSize: responsive.h(14)}}>{name}</Text>
       </TouchableOpacity>
     );
   }
@@ -45,10 +45,10 @@ class ListBlock extends Component {
   render() {
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={20} color="#fff" />
+        <MyIcon name="arrow" size={responsive.h(20)} color="#000" />
       </TouchableOpacity>
     );
 
@@ -61,7 +61,7 @@ class ListBlock extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",

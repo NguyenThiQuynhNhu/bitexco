@@ -39,8 +39,10 @@ import colors from "../../../theme/colors";
 import fontSize from "../../../theme/fontsize";
 import NavBar from "../../../resident/components/common/NavBar";
 const Devices = require("react-native-device-detection");
-
-import { deleteHandle } from "../../../actions/waterDetail";
+import Strings from "../../../utils/languages";
+import PrimaryButton from "../../../components/common/PrimaryButton";
+import CircleView from "../../../components/common/CircleView";
+import responsive from "../../../resources/responsive";
 
 //data
 import firebase from "firebase";
@@ -55,10 +57,8 @@ import {
   onClearFilter,
   onSetItem,
 } from "../../../actions/water";
-import Strings from "../../../utils/languages";
-import PrimaryButton from "../../../components/common/PrimaryButton";
-import CircleView from "../../../components/common/CircleView";
-import responsive from "../../../resources/responsive";
+import { deleteHandle } from "../../../actions/waterDetail";
+
 
 // create a component
 class WaterList extends Component {
@@ -264,10 +264,10 @@ class WaterList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={22} color="black" />
+              <MyIcon name="arrow" size={responsive.h(22)} color="black" />
             </TouchableOpacity>
           }
           body={
@@ -288,11 +288,11 @@ class WaterList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
-                  fontSize: 14,
+                  fontSize: responsive.h(14),
                   fontWeight: "500",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  textAlign: "left",
+                  textAlign: "center",
                   color: "#df2027",
                 }}
               >
@@ -302,7 +302,7 @@ class WaterList extends Component {
           }
           // rightView={<TouchableOpacity
           //     onPress={() => this.setState({ showFilter: true })}
-          //     style={{ padding: 10 }}
+          //     style={{ padding: responsive.h(10) }}
           // >
           //     <MyIcon
           //         name="search"
@@ -312,29 +312,29 @@ class WaterList extends Component {
           //     />
           // </TouchableOpacity>}
         />
-        <View style={{ borderTopRightRadius: 20 }}>
+        <View style={{ }}>
           <View
             style={{
               backgroundColor: "#fff",
               justifyContent: "space-between",
-              padding: 10,
-              marginHorizontal: 20,
-              borderRadius: 20,
+              padding: responsive.h(10),
+              marginHorizontal: responsive.h(20),
+              borderRadius: responsive.h(20),
               backgroundColor: "#ffffff",
               shadowColor: "rgba(0, 0, 0, 0.08)",
               elevation: 2,
               shadowOffset: {
                 width: 0,
-                height: 4,
+                height: responsive.h(4),
               },
-              shadowRadius: 12,
+              shadowRadius: responsive.h(12),
               shadowOpacity: 1,
             }}
           >
             <View
               style={{
                 flexDirection: "row",
-                height: 40,
+                height: responsive.h(40),
                 justifyContent: "space-between",
                 alignItems: "center",
               }}
@@ -342,7 +342,7 @@ class WaterList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   letterSpacing: 0,
                   textAlign: "left",
@@ -354,7 +354,7 @@ class WaterList extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  height: 40,
+                  height: responsive.h(40),
                   justifyContent: "space-between",
                   width: "60%",
                 }}
@@ -403,7 +403,7 @@ class WaterList extends Component {
 
             {/* <TouchableOpacity
                             onPress={() => this.props.navigation.navigate('blockList', { id: user.towerId, onSelected: (blockSelected) => this.setState({ blockSelected, floorSelected: null, statusId: blockSelected.id }) })}
-                            style={{ padding: 10, marginTop: 10, borderRadius: 5, backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
+                            style={{ padding: responsive.h(10), marginTop: responsive.h(10), borderRadius: 5, backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text>{this.state.blockSelected ? this.state.blockSelected.name : blockSelected ? blockSelected.name : 'Chọn Khối nhà'}</Text>
                             <MyIcon
                                 name="arrow-down"
@@ -414,7 +414,7 @@ class WaterList extends Component {
 
                         <TouchableOpacity
                             onPress={() => this.props.navigation.navigate('floorList', { id: user.towerId, blockSelected, onSelected: (floorSelected) => this.setState({ floorSelected, statusId: floorSelected.id }) })}
-                            style={{ padding: 10, marginTop: 10, borderRadius: 5, backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
+                            style={{ padding: responsive.h(10), marginTop: responsive.h(10), borderRadius: 5, backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
                             <Text>{this.state.floorSelected ? this.state.floorSelected.name : floorSelected ? floorSelected.name : 'Chọn Tầng'}</Text>
                             <MyIcon
                                 name="arrow-down"
@@ -435,7 +435,7 @@ class WaterList extends Component {
                 })
               }
               style={{
-                marginTop: 10,
+                marginTop: responsive.h(10),
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -444,7 +444,7 @@ class WaterList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   letterSpacing: 0,
                   textAlign: "left",
@@ -456,9 +456,9 @@ class WaterList extends Component {
               <View
                 style={{
                   width: "60%",
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 8,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(8),
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
                   flexDirection: "row",
@@ -470,7 +470,7 @@ class WaterList extends Component {
                     fontFamily: "Inter-SemiBold",
                     fontWeight: "600",
                     color: this.state.blockSelected ? "#282828" : "#a0a0a0",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                   }}
                 >
                   {this.state.blockSelected
@@ -479,7 +479,7 @@ class WaterList extends Component {
                     ? blockSelected.name
                     : "Chọn Khối nhà"}
                 </Text>
-                <MyIcon name="arrow-down" size={14} color={colors.gray1} />
+                <MyIcon name="arrow-down" size={responsive.h(14)} color={colors.gray1} />
               </View>
             </TouchableOpacity>
             <TouchableOpacity
@@ -495,7 +495,7 @@ class WaterList extends Component {
                 })
               }
               style={{
-                marginTop: 10,
+                marginTop: responsive.h(10),
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
@@ -504,7 +504,7 @@ class WaterList extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: 16,
+                  fontSize: responsive.h(16),
                   fontWeight: "600",
                   letterSpacing: 0,
                   textAlign: "left",
@@ -516,9 +516,9 @@ class WaterList extends Component {
               <View
                 style={{
                   width: "60%",
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 8,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
+                  borderRadius: responsive.h(8),
                   borderWidth: 1,
                   borderColor: "#cbcbcb",
                   flexDirection: "row",
@@ -530,7 +530,7 @@ class WaterList extends Component {
                     fontFamily: "Inter-SemiBold",
                     fontWeight: "600",
                     color: this.state.floorSelected ? "#282828" : "#a0a0a0",
-                    fontSize: 14,
+                    fontSize: responsive.h(14),
                   }}
                 >
                   {this.state.floorSelected
@@ -546,7 +546,7 @@ class WaterList extends Component {
             <View
               style={{
                 flexDirection: "row",
-                marginTop: 20,
+                marginTop: responsive.h(20),
                 justifyContent: "center",
               }}
             >
@@ -594,7 +594,7 @@ class WaterList extends Component {
           {/* <View style={{ height: 10, marginHorizontal: -10, backgroundColor: colors.gray2 }} /> */}
           {/* <TouchableOpacity
                         onPress={() => this.setState({ showFilter: false })}
-                        style={{ borderRadius: 45, backgroundColor: colors.appTheme, padding: 10, position: 'absolute', top: 5, right: 5 }}>
+                        style={{ borderRadius: 45, backgroundColor: colors.appTheme, padding: responsive.h(10), position: 'absolute', top: 5, right: 5 }}>
                         <MyIcon
                             name="no"
                             color="#fff"
@@ -602,14 +602,14 @@ class WaterList extends Component {
                         />
                     </TouchableOpacity> */}
         </View>
-        {/* <View style={{ padding: 10, flexDirection: 'row', backgroundColor: colors.gray2 }}>
+        {/* <View style={{ padding: responsive.h(10), flexDirection: 'row', backgroundColor: colors.gray2 }}>
                     <Text style={{ color: colors.gray1, alignSelf: 'center', fontSize: fontSize.medium }}> Khối nhà: <Text style={{ color: colors.appTheme, alignSelf: 'center', fontSize: fontSize.medium, fontWeight: 'bold' }}> { blockSelected === null ? "Chưa chọn" : blockSelected.name }</Text></Text>
                     <Text style={{ color: colors.gray1, alignSelf: 'center', fontSize: fontSize.medium, marginLeft: 30 }}> Tầng: <Text style={{ color: colors.appTheme, alignSelf: 'center', fontSize: fontSize.medium, fontWeight: 'bold' }}> { floorSelected === null ? "Chưa chọn" : floorSelected.name }</Text></Text>
                 </View> */}
 
         {this._renderContent()}
 
-        {showFilter && (
+        {/* {showFilter && (
           <View
             style={{
               ...Device.defaultMarginTop(),
@@ -625,7 +625,7 @@ class WaterList extends Component {
                 width: "90%",
                 margin: 20,
                 alignSelf: "center",
-                padding: 10,
+                padding: responsive.h(10),
                 backgroundColor: "#fff",
                 justifyContent: "space-between",
               }}
@@ -685,8 +685,8 @@ class WaterList extends Component {
                   })
                 }
                 style={{
-                  padding: 10,
-                  marginTop: 10,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
                   borderRadius: 5,
                   backgroundColor: colors.gray2,
                   flexDirection: "row",
@@ -716,8 +716,8 @@ class WaterList extends Component {
                   })
                 }
                 style={{
-                  padding: 10,
-                  marginTop: 10,
+                  padding: responsive.h(10),
+                  marginTop: responsive.h(10),
                   borderRadius: 5,
                   backgroundColor: colors.gray2,
                   flexDirection: "row",
@@ -737,7 +737,7 @@ class WaterList extends Component {
               <View
                 style={{
                   flexDirection: "row",
-                  marginTop: 20,
+                  marginTop: responsive.h(20),
                   justifyContent: "center",
                 }}
               >
@@ -787,7 +787,7 @@ class WaterList extends Component {
               style={{
                 borderRadius: 45,
                 backgroundColor: colors.appTheme,
-                padding: 10,
+                padding: responsive.h(10),
                 position: "absolute",
                 top: 5,
                 right: 5,
@@ -820,15 +820,15 @@ class WaterList extends Component {
               {this.renderActionMenu()}
             </View>
           </View>
-        )}
+        )} */}
 
         <Toast
           ref="toast"
           style={{
             backgroundColor: colors.toast.success,
             opacity: 1,
-            borderRadius: 5,
-            padding: 10,
+            borderRadius: responsive.h(5),
+            padding: responsive.h(10),
           }}
         />
       </View>
@@ -923,7 +923,7 @@ class WaterList extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 10,
+    marginBottom: responsive.h(10),
   },
 });
 const mapStateToProps = (state) => ({

@@ -28,7 +28,7 @@ import fontsize from "../../../theme/fontsize";
 import ModalPicker from "../../../components/common/ModalPicker";
 import colors from "../../../theme/colors";
 import { updateRequestHandle } from "../../../actions/requestDetail";
-
+import responsive from "../../../resources/responsive";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 // create a component
@@ -69,7 +69,7 @@ class RequestUpdateStatus extends Component {
       <KeyboardAwareScrollView
         style={{
           flex: 1,
-          paddingHorizontal: 20,
+          paddingHorizontal: responsive.h(20),
         }}
       >
         <Lookup
@@ -93,13 +93,13 @@ class RequestUpdateStatus extends Component {
               flexDirection: "row",
 
               justifyContent: "space-between",
-              paddingBottom: 10,
+              paddingBottom: responsive.h(10),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 textAlign: "left",
                 color: "#282828",
@@ -111,7 +111,7 @@ class RequestUpdateStatus extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 10,
+                fontSize: responsive.h(10),
                 textAlign: "left",
                 color: "#6f6f6f",
               }}
@@ -127,13 +127,14 @@ class RequestUpdateStatus extends Component {
               underlineColorAndroid="transparent"
               style={{
                 backgroundColor: "#fff",
-                height: 120,
+                height: responsive.h(120),
                 textAlignVertical: "top",
-                borderRadius: 8,
+                borderRadius: responsive.h(8),
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: "#cbcbcb",
-                padding: 10,
+                padding: responsive.h(10),
+                fontSize: responsive.h(14)
               }}
               placeholder={Strings.createRequest.placeholderContent}
               placeholderTextColor="#9e9e9e"
@@ -150,29 +151,29 @@ class RequestUpdateStatus extends Component {
                   justifyContent: "center",
                   alignItems: "center",
                   backgroundColor: colors.grayBorder,
-                  borderRadius: 8,
-                  padding: 5,
-                  marginTop: 20,
-                  marginRight: 10,
+                  borderRadius: responsive.h(8),
+                  padding: responsive.h(5),
+                  marginTop: responsive.h(20),
+                  marginRight: responsive.h(10),
                 }}
               >
                 <MyIcon
                   onPress={() => this._onAttachment()}
                   name="camera"
-                  size={40}
+                  size={responsive.h(40)}
                   color="#a8acaf"
                 />
                 <View
                   style={{
                     borderRadius: 2,
                     backgroundColor: "#abafb2",
-                    padding: 3,
+                    padding: responsive.h(3),
                   }}
                 >
                   <Text
                     style={{
                       fontFamily: "OpenSans-Regular",
-                      fontSize: 8,
+                      fontSize: responsive.h(8),
                       fontWeight: "normal",
                       fontStyle: "normal",
                       letterSpacing: 0,
@@ -190,9 +191,9 @@ class RequestUpdateStatus extends Component {
                 <View key={y}>
                   <Lightbox
                     style={{
-                      marginTop: 20,
-                      marginRight: 10,
-                      borderRadius: 5,
+                      marginTop: responsive.h(20),
+                      marginRight: responsive.h(10),
+                      borderRadius: responsive.h(5),
                       backgroundColor: "#eeeeee",
                     }}
                     activeProps={{
@@ -202,10 +203,10 @@ class RequestUpdateStatus extends Component {
                     <Image
                       source={{ uri: eachImage.uri }}
                       style={{
-                        width: 90,
-                        height: 120,
+                        width: responsive.w(90),
+                        height: responsive.h(120),
                         zIndex: 0,
-                        borderRadius: 8,
+                        borderRadius: responsive.h(8),
                       }}
                     />
                   </Lightbox>
@@ -214,16 +215,16 @@ class RequestUpdateStatus extends Component {
                     onPress={() => this._deleteImage(eachImage)}
                     style={{
                       position: "absolute",
-                      top: 10,
+                      top: responsive.h(10),
                       right: 0,
-                      borderRadius: 15,
+                      borderRadius: responsive.h(15),
                       marginTop: 0,
                       backgroundColor: "#505c5c5c",
                       zIndex: 1,
                       alignItems: "center",
                     }}
                   >
-                    <Text style={{ padding: 5, color: "#fff" }}> X </Text>
+                    <Text style={{ padding: responsive.h(5), color: "#fff", fontSize: responsive.h(14) }}> X </Text>
                   </TouchableOpacity>
                 </View>
               );
@@ -235,24 +236,24 @@ class RequestUpdateStatus extends Component {
             style={{
               justifyContent: "center",
               alignItems: "center",
-              marginTop: 20,
-              paddingVertical: 20,
-              borderRadius: 8,
+              marginTop: responsive.h(20),
+              paddingVertical: responsive.h(20),
+              borderRadius: responsive.h(8),
               backgroundColor: "#eaeaea",
             }}
           >
-            <MyIcon name="camera" size={40} color="#a8acaf" />
+            <MyIcon name="camera" size={responsive.h(40)} color="#a8acaf" />
             <View
               style={{
                 borderRadius: 2,
                 backgroundColor: "#abafb2",
-                padding: 3,
+                padding: responsive.h(3),
               }}
             >
               <Text
                 style={{
                   fontFamily: "OpenSans-Regular",
-                  fontSize: 8,
+                  fontSize: responsive.h(8),
                   fontWeight: "normal",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -270,18 +271,17 @@ class RequestUpdateStatus extends Component {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-
-              paddingTop: 20,
+              paddingTop: responsive.h(20),
             }}
           >
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: 16,
+                fontSize: responsive.h(16),
                 fontWeight: "600",
                 textAlign: "left",
                 color: "#282828",
-                marginBottom: 10,
+                marginBottom: responsive.h(10),
               }}
             >
               {Strings.createRequest.reason}{" "}
@@ -289,7 +289,7 @@ class RequestUpdateStatus extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Regular",
-                fontSize: 10,
+                fontSize: responsive.h(10),
                 textAlign: "left",
                 color: "#6f6f6f",
               }}
@@ -305,13 +305,14 @@ class RequestUpdateStatus extends Component {
               underlineColorAndroid="transparent"
               style={{
                 backgroundColor: "#fff",
-                height: 100,
+                height: responsive.h(100),
                 textAlignVertical: "top",
-                borderRadius: 8,
+                borderRadius: responsive.h(8),
                 borderStyle: "solid",
                 borderWidth: 1,
                 borderColor: "#cbcbcb",
-                padding: 10,
+                padding: responsive.h(10),
+                fontSize: responsive.h(14)
               }}
               placeholder={Strings.createRequest.placeholderReason}
               placeholderTextColor="#9e9e9e"
@@ -335,18 +336,18 @@ class RequestUpdateStatus extends Component {
     const { reason, content, statuspSelected } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={22} color="black" />
+        <MyIcon name="arrow" size={responsive.h(22)} color="black" />
       </TouchableOpacity>
     );
     const rightButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={this._onRequest}
       >
-        <MyIcon name="paperplane" size={24} color="black" />
+        <MyIcon name="paperplane" size={responsive.h(24)} color="black" />
       </TouchableOpacity>
     );
 
@@ -358,7 +359,7 @@ class RequestUpdateStatus extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",

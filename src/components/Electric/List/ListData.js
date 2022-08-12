@@ -6,7 +6,7 @@ import {
     onSetItem
 } from '../../../actions/electric'
 import { connect } from 'react-redux';
-
+import responsive from "../../../resources/responsive";
 // create a component
 class ListData extends Component {
 
@@ -29,7 +29,7 @@ class ListData extends Component {
         return (
             <View
                 style={{
-                    paddingVertical: 20,
+                    paddingVertical: responsive.h(20),
                 }}
             >
                 <ActivityIndicator animating size="small" />
@@ -42,7 +42,7 @@ class ListData extends Component {
         return (
             <FlatList
                 ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: "#c8c8c8", marginHorizontal: 20 }} />}
-                style={{margin: 20}}
+                style={{margin: responsive.h(20)}}
                 refreshing={refreshing}
                 onRefresh={onRefresh}
                 data={data}

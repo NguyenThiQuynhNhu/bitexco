@@ -35,6 +35,7 @@ import fontsize from "../../../theme/fontsize";
 import Icon from "react-native-vector-icons/Entypo";
 import { onFilter } from "../../../actions/request";
 import NavBar from "../../../resident/components/common/NavBar";
+import responsive from "../../../resources/responsive";
 class GroupStatisticsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -100,7 +101,7 @@ class GroupStatisticsScreen extends React.Component {
               style={{
                 textAlign: "center",
                 fontSize: fontsize.small,
-                padding: 10,
+                padding: responsive.h(10),
               }}
             >
               Không có dữ liệu
@@ -127,7 +128,7 @@ class GroupStatisticsScreen extends React.Component {
             style={{
               textAlign: "center",
               fontSize: fontsize.small,
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             Có lỗi xảy ra
@@ -154,7 +155,7 @@ class GroupStatisticsScreen extends React.Component {
               style={{
                 textAlign: "center",
                 fontSize: fontsize.small,
-                padding: 10,
+                padding: responsive.h(10),
               }}
             >
               Không có dữ liệu
@@ -198,16 +199,16 @@ class GroupStatisticsScreen extends React.Component {
                   >
                     <View
                       style={{
-                        borderRadius: 45,
-                        paddingRight: 12,
+                        borderRadius: responsive.h(45),
+                        paddingRight: responsive.h(12),
                         backgroundColor: "orange",
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: 10,
+                        margin: responsive.h(10),
                       }}
                     >
-                      <Icon name={"dot-single"} size={20} color="#000" />
+                      <Icon name={"dot-single"} size={responsive.h(20)} color="#000" />
                       <Text
                         style={{
                           color: "#000",
@@ -236,7 +237,7 @@ class GroupStatisticsScreen extends React.Component {
             style={{
               textAlign: "center",
               fontSize: fontsize.small,
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             Có lỗi xảy ra
@@ -263,7 +264,7 @@ class GroupStatisticsScreen extends React.Component {
               style={{
                 textAlign: "center",
                 fontSize: fontsize.small,
-                padding: 10,
+                padding: responsive.h(10),
               }}
             >
               Không có dữ liệu
@@ -300,16 +301,16 @@ class GroupStatisticsScreen extends React.Component {
                   >
                     <View
                       style={{
-                        borderRadius: 45,
-                        paddingRight: 12,
+                        borderRadius: responsive.h(45),
+                        paddingRight: responsive.h(12),
                         backgroundColor: "orange",
                         flexDirection: "row",
                         alignItems: "center",
                         justifyContent: "center",
-                        margin: 10,
+                        margin: responsive.h(10),
                       }}
                     >
-                      <Icon name={"dot-single"} size={20} color="#000" />
+                      <Icon name={"dot-single"} size={responsive.h(20)} color="#000" />
                       <Text
                         style={{
                           color: "#000",
@@ -338,7 +339,7 @@ class GroupStatisticsScreen extends React.Component {
             style={{
               textAlign: "center",
               fontSize: fontsize.small,
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             Có lỗi xảy ra
@@ -355,7 +356,7 @@ class GroupStatisticsScreen extends React.Component {
       return (
         <View
           style={{
-            paddingVertical: 20,
+            paddingVertical: responsive.h(20),
           }}
         >
           <ActivityIndicator animating size="small" />
@@ -372,7 +373,7 @@ class GroupStatisticsScreen extends React.Component {
             style={{
               textAlign: "center",
               fontSize: fontsize.small,
-              padding: 10,
+              padding: responsive.h(10),
             }}
           >
             Có lỗi xảy ra
@@ -393,7 +394,7 @@ class GroupStatisticsScreen extends React.Component {
               style={{
                 textAlign: "center",
                 fontSize: fontsize.small,
-                padding: 10,
+                padding: responsive.h(10),
               }}
             >
               Không có dữ liệu
@@ -402,19 +403,19 @@ class GroupStatisticsScreen extends React.Component {
         );
       } else {
         return (
-          <ScrollView style={{ flex: 1, marginTop: 10 }}>
+          <ScrollView style={{ flex: 1, marginTop: responsive.h(10) }}>
             <View
               style={{
                 backgroundColor: "#fff",
-                margin: 10,
-                borderRadius: 12,
-                paddingBottom: 10,
+                margin: responsive.h(10),
+                borderRadius: responsive.h(12),
+                paddingBottom: responsive.h(10),
               }}
             >
               <View
                 style={{
                   flexDirection: "row",
-                  padding: 10,
+                  padding: responsive.h(10),
                   alignItems: "center",
                   justifyContent: "space-between",
                 }}
@@ -422,7 +423,7 @@ class GroupStatisticsScreen extends React.Component {
                 <Text
                   style={{
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 16,
+                    fontSize: responsive.h(16),
                     fontWeight: "600",
                     color: "#282828",
                   }}
@@ -434,12 +435,12 @@ class GroupStatisticsScreen extends React.Component {
             </View>
 
             <View
-              style={{ backgroundColor: "#fff", margin: 10, borderRadius: 12 }}
+              style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12) }}
             >
               <View
                 style={{
                   flexDirection: "row",
-                  padding: 10,
+                  padding: responsive.h(10),
                   alignItems: "center",
                   justifyContent: "space-between",
                 }}
@@ -447,10 +448,10 @@ class GroupStatisticsScreen extends React.Component {
                 <Text
                   style={{
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 16,
+                    fontSize: responsive.h(16),
                     fontWeight: "600",
                     color: "#282828",
-                    paddingRight: 10,
+                    paddingRight: responsive.h(10),
                   }}
                 >
                   Phòng ban
@@ -460,12 +461,12 @@ class GroupStatisticsScreen extends React.Component {
             </View>
 
             <View
-              style={{ backgroundColor: "#fff", margin: 10, borderRadius: 12 }}
+              style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12) }}
             >
               <View
                 style={{
                   flexDirection: "row",
-                  padding: 10,
+                  padding: responsive.h(10),
                   alignItems: "center",
                   justifyContent: "space-between",
                 }}
@@ -473,10 +474,10 @@ class GroupStatisticsScreen extends React.Component {
                 <Text
                   style={{
                     fontFamily: "Inter-SemiBold",
-                    fontSize: 16,
+                    fontSize: responsive.h(16),
                     fontWeight: "600",
                     color: "#282828",
-                    paddingRight: 10,
+                    paddingRight: responsive.h(10),
                   }}
                 >
                   Trạng thái
@@ -502,21 +503,21 @@ class GroupStatisticsScreen extends React.Component {
       count = arr[0] ? arr[0].value : 0;
     }
     return (
-      <View style={{ backgroundColor: "#eeeeee", flex: 1, marginBottom: 10 }}>
+      <View style={{ backgroundColor: "#eeeeee", flex: 1, marginBottom: responsive.h(10),}}>
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack(null)}
             >
-              <MyIcon name="arrow" size={20} color="black" />
+              <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 18,
+                fontSize: responsive.h(18),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",
@@ -526,7 +527,7 @@ class GroupStatisticsScreen extends React.Component {
             </Text>
           }
           //   rightView={
-          //     <TouchableOpacity style={{ padding: 10 }}>
+          //     <TouchableOpacity style={{ padding: responsive.h(10),}}>
           //       <MyIcon name="arrow" size={20} color={colors.appTheme} />
           //     </TouchableOpacity>
           //   }
@@ -540,9 +541,7 @@ class GroupStatisticsScreen extends React.Component {
                 backgroundColor: "#fff",
                 borderBottomWidth: 1,
                 borderBottomColor: colors.grayBorder,
-                paddingVertical: 10,
-                borderTopRightRadius: 40,
-                marginTop: -10,
+                paddingVertical: responsive.h(10),
               }}
             >
               <ButtonFilter
@@ -573,7 +572,7 @@ class GroupStatisticsScreen extends React.Component {
             </ScrollView>
           </View>
           <View style={{ backgroundColor: "#fff" }}>
-            <View style={{ flexDirection: "row", paddingVertical: 10 }}>
+            <View style={{ flexDirection: "row", paddingVertical: responsive.h(10) }}>
               <FilterType
                 value={
                   employeeSelected ? employeeSelected.name : "Chọn nhân viên"
@@ -585,7 +584,7 @@ class GroupStatisticsScreen extends React.Component {
                   style={{
                     color: "#0084ff",
                     fontSize: fontsize.larg,
-                    paddingHorizontal: 10,
+                    paddingHorizontal: responsive.h(10),
                   }}
                 >
                   {count}
@@ -595,7 +594,7 @@ class GroupStatisticsScreen extends React.Component {
             <Text
               style={{
                 alignSelf: "center",
-                marginBottom: 10,
+                marginBottom: responsive.h(10),
                 fontSize: fontsize.small,
               }}
             >
@@ -647,12 +646,12 @@ class GroupStatisticsScreen extends React.Component {
                 paddingRight: 0,
                 paddingTop: 0,
                 paddingBottom: 0,
-                marginHorizontal: 15,
-                borderRadius: 5,
+                marginHorizontal: responsive.h(15),
+                borderRadius: responsive.h(5),
                 flexDirection: "column",
               }}
             >
-              <View style={{ padding: 12, height: 160 }}>
+              <View style={{ padding: responsive.h(12), height: responsive.h(160) }}>
                 <Text
                   style={{
                     textAlign: "center",
@@ -678,7 +677,7 @@ class GroupStatisticsScreen extends React.Component {
                       alignItems: "center",
                     }}
                   >
-                    {/* <Image source={Icons.calendar} style={{ height: 30, width: 30, marginRight: 5 }} /> */}
+                    {/* <Image source={Icons.calendar} style={{ height: 30, width: 30, marginRight: responsive.h(5),}} /> */}
                     <TouchableOpacity
                       onPress={() => this._showDateTimePicker(true)}
                       bordered
@@ -688,7 +687,7 @@ class GroupStatisticsScreen extends React.Component {
                         flex: 1,
                         justifyContent: "center",
                         alignItems: "center",
-                        marginRight: 5,
+                        marginRight: responsive.h(5),
                       }}
                     >
                       <Text style={{ fontSize: fontsize.small, color: "#111" }}>
@@ -714,10 +713,10 @@ class GroupStatisticsScreen extends React.Component {
                   </View>
                   {/* <View><Text style={{margin:5,flex:0.3}}>-</Text></View> */}
                 </View>
-                <View style={{ padding: 5 }}>
+                <View style={{ padding: responsive.h(5),}}>
                   <PrimaryButton
                     text="OK"
-                    style={{ padding: 10 }}
+                    style={{ padding: responsive.h(10),}}
                     onPress={this.customTime}
                   />
                 </View>
@@ -728,7 +727,7 @@ class GroupStatisticsScreen extends React.Component {
                 style={{
                   borderColor: colors.grayBorder,
                   borderTopWidth: 1,
-                  paddingVertical: 20,
+                  paddingVertical: responsive.h(20),
                   justifyContent: "center",
                   alignItems: "center",
                 }}
@@ -867,8 +866,8 @@ class GroupStatisticsScreen extends React.Component {
 
 const styles = {
   buttonPadding: {
-    width: 20,
-    height: 20,
+    width: responsive.h(20),
+    height: responsive.h(20),
     justifyContent: "center",
     alignItems: "center",
   },
@@ -876,55 +875,55 @@ const styles = {
     backgroundColor: "#0084ff",
   },
   colorStyleButton: {
-    height: 35,
+    height: responsive.h(35),
     backgroundColor: "#0084ff",
   },
   itemStyle: {
     borderBottomWidth: 0,
-    paddingRight: 15,
-    paddingTop: 15,
-    paddingBottom: 5,
+    paddingRight: responsive.h(15),
+    paddingTop: responsive.h(15),
+    paddingBottom: responsive.h(5),
   },
   itemStyleInput: {
-    paddingRight: 15,
+    paddingRight: responsive.h(15),
     borderBottomWidth: 0,
-    paddingBottom: 5,
+    paddingBottom: responsive.h(5),
   },
   itemStyleButton: {
     borderBottomWidth: 0,
-    paddingRight: 15,
-    paddingTop: 25,
+    paddingRight: responsive.h(15),
+    paddingTop: responsive.h(25),
   },
   itemStyle2: {
     fontStyle: "italic",
-    padding: 5,
+    padding: responsive.h(5),
     borderWidth: 1,
     borderColor: "#c9c9c9",
-    borderRadius: 5,
-    fontSize: 15,
+    borderRadius: responsive.h(5),
+    fontSize: responsive.h(15),
   },
   viewFontStyle: {
-    fontSize: 15,
+    fontSize: responsive.h(15),
     fontWeight: "bold",
   },
   titleStyle: {
     alignSelf: "center",
   },
   labelRighttStyle: {
-    marginRight: 15,
+    marginRight: responsive.h(15),
   },
   roundedTextBox: {
-    marginTop: 5,
-    marginRight: 10,
-    marginLeft: 10,
+    marginTop: responsive.h(5),
+    marginRight: responsive.h(10),
+    marginLeft: responsive.h(10),
   },
   button: {
-    fontSize: 14,
-    height: 15,
-    marginRight: 10,
+    fontSize: responsive.h(14),
+    height: responsive.h(15),
+    marginRight: responsive.h(10),
   },
   textTitle: {
-    fontSize: 17,
+    fontSize: responsive.h(17),
     color: "white",
   },
 };

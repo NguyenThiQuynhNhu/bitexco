@@ -23,7 +23,7 @@ import ModalPicker from "../../../components/common/ModalPicker";
 import colors from "../../../theme/colors";
 import { updateRequestHandle } from "../../../actions/servicesExtensionDetail";
 import NavBar from "../../../resident/components/common/NavBar";
-
+import responsive from "../../../resources/responsive";
 // create a component
 class ServiceExtensionAssignEmployee extends Component {
   constructor(props) {
@@ -74,7 +74,7 @@ class ServiceExtensionAssignEmployee extends Component {
         showsVerticalScrollIndicator={false}
         style={{
           flex: 1,
-          paddingHorizontal: 20,
+          paddingHorizontal: responsive.h(20),
         }}
       >
         <Lookup
@@ -108,96 +108,7 @@ class ServiceExtensionAssignEmployee extends Component {
             })
           }
         />
-
-        {/* <TouchableOpacity style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    paddingVertical: 20,
-                    borderBottomWidth: 1,
-                    borderBottomColor: colors.grayBorder
-                }}
-                    onPress={() => this.setState({ showModalLevel: true })}
-                >
-                    <Text style={{ color: colors.blue }}>CẤP ĐỘ (*)</Text>
-                    <View style={{ justifyContent: 'flex-end', flexDirection: 'row', width: '60%' }}>
-                        <Text style={{ color: 'gray' }}>{levelSelected.value}</Text>
-                        <MyIcon
-                            size={20}
-                            color={"#C0C0C0"}
-                            name="arrow-right" />
-                    </View>
-
-                </TouchableOpacity> */}
         <View>
-          {/* <TouchableOpacity
-                        style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            paddingVertical: 20,
-                            borderBottomWidth: 1,
-                            borderBottomColor: colors.grayBorder
-                        }}
-                        onPress={() => { this.setState({ isToggleDate: true }); }}
-                    >
-                        <MyIcon
-                            name="calendar"
-                            size={20}
-                        />
-                        {this.props.language == 'en' ?
-                            <Text
-                                style={{
-                                    marginLeft: 20,
-                                    fontSize: fontsize.larg,
-                                    flex: 1,
-                                }}>{moment(day).format('MMMM Do YYYY')}</Text> :
-                            <Text
-                                style={{
-                                    marginLeft: 20,
-                                    fontSize: fontsize.larg,
-                                    flex: 1,
-                                }}>{moment(day).format('[Ngày] DD [tháng] MM[,] YYYY')}</Text>}
-
-                        <DateTimePicker
-                            cancelTextIOS={Strings.createRequest.cancel}
-                            titleIOS={Strings.createRequest.titlePicker}
-                            confirmTextIOS={Strings.createRequest.chose}
-                            mode="date"
-                            minimumDate={new Date()}
-                            isVisible={this.state.isToggleDate}
-                            onConfirm={(day) => {
-                                // this.props.resetStateByKey({ key: 'day', path: '', value: date });
-                                this.setState({ isToggleDate: false, day });
-                            }}
-                            onCancel={() => { this.setState({ isToggleDate: false }); }}
-                        />
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={() => { this.setState({ isToggleTimeFrom: true }); }}
-                        style={{ paddingVertical: 15, flexDirection: 'row', alignItems: 'center' }}>
-                        <MyIcon
-                            name="clock"
-                            size={20}
-                        />
-                        <Text style={{
-                            marginLeft: 20,
-                            fontSize: fontsize.larg,
-                            flex: 1,
-                        }}>{Strings.createRequest.at}    {moment(time).format('HH:mm')}</Text>
-                        <DateTimePicker
-                            cancelTextIOS={Strings.app.cancel}
-                            titleIOS={Strings.createRequest.at}
-                            confirmTextIOS={Strings.app.chose}
-                            mode="time"
-                            isVisible={this.state.isToggleTimeFrom}
-                            onConfirm={(time) => {
-                                // this.props.resetStateByKey({ key: 'time', path: '', value: time });
-                                this.setState({ isToggleTimeFrom: false, time });
-                            }}
-                            onCancel={() => { this.setState({ isToggleTimeFrom: false }); }}
-                        />
-                    </TouchableOpacity> */}
         </View>
         <View
           style={{
@@ -208,7 +119,7 @@ class ServiceExtensionAssignEmployee extends Component {
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
-              fontSize: 16,
+              fontSize: responsive.h(16),
               fontWeight: "600",
               textAlign: "left",
               color: "#282828",
@@ -220,7 +131,7 @@ class ServiceExtensionAssignEmployee extends Component {
           <Text
             style={{
               fontFamily: "Inter-Regular",
-              fontSize: 10,
+              fontSize: responsive.h(10),
               textAlign: "left",
               color: "#6f6f6f",
             }}
@@ -230,9 +141,7 @@ class ServiceExtensionAssignEmployee extends Component {
         </View>
         <View
           style={{
-            marginTop: 10,
-            // borderColor: colors.grayBorder,
-            // borderBottomWidth: 1,
+            marginTop: responsive.h(10),
           }}
         >
           <TextInput
@@ -242,19 +151,19 @@ class ServiceExtensionAssignEmployee extends Component {
             underlineColorAndroid="transparent"
             style={{
               backgroundColor: "#fff",
-              height: 120,
+              height: responsive.h(120),
               textAlignVertical: "top",
-              borderRadius: 8,
+              borderRadius: responsive.h(8),
               borderStyle: "solid",
               borderWidth: 1,
               borderColor: "#cbcbcb",
-              padding: 10,
+              padding: responsive.h(10),
             }}
             placeholder={Strings.createRequest.placeholderContent}
             placeholderTextColor="#9e9e9e"
             value={this.props.content}
             onChangeText={(content) => this.setState({ content })}
-            // onChangeText={(text) => { this.props.resetStateByKey({ key: 'content', path: '', value: text }); }}
+          // onChangeText={(text) => { this.props.resetStateByKey({ key: 'content', path: '', value: text }); }}
           />
         </View>
 
@@ -279,18 +188,18 @@ class ServiceExtensionAssignEmployee extends Component {
     } = this.state;
     const leftButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={() => this.props.navigation.goBack()}
       >
-        <MyIcon name="arrow" size={20} color="black" />
+        <MyIcon name="arrow" size={responsive.h(20)} color="black" />
       </TouchableOpacity>
     );
     const rightButton = (
       <TouchableOpacity
-        style={{ paddingVertical: 10 }}
+        style={{ padding: responsive.h(10) }}
         onPress={this._onRequest}
       >
-        <MyIcon name="paperplane" size={24} color="black" />
+        <MyIcon name="paperplane" size={responsive.h(24)} color="black" />
       </TouchableOpacity>
     );
 
@@ -302,7 +211,7 @@ class ServiceExtensionAssignEmployee extends Component {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 textAlign: "center",
                 color: "black",
