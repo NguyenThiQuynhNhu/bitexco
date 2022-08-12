@@ -32,15 +32,17 @@ class ListItem extends PureComponent {
 
     //console.log(item)
     return (
+
       <TouchableOpacity
         onPress={onPress}
         style={{
+          //flex: 1,
           backgroundColor: "#fff",
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           width: (Screen.width - responsive.h(30)) / 2,
-          margin: responsive.h(10),
-          // marginRight: index % 2 == 0 && 0,
+          marginBottom: responsive.h(10),
+          marginRight: responsive.h(10),
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
@@ -49,154 +51,131 @@ class ListItem extends PureComponent {
       >
         <View
           style={{
-            flex: 1,
-            display: "flex",
-            justifyContent: "space-between",
+            flexDirection: "row",
           }}
         >
-          <View
+          <ImageProgress
+            // circle={true}
             style={{
-              flexDirection: "row",
-              display: "flex",
-              justifyContent: "flex-start",
-              // alignItems: "center",
+              height: responsive.h(41),
+              width: responsive.h(41),
+              borderRadius: responsive.h(22),
             }}
-          >
-            <ImageProgress
-              // circle={true}
-              style={{
-                height: responsive.h(41),
-                width: responsive.h(41),
-                borderRadius: responsive.h(22),
-              }}
-              source={{ uri: avatarResident }}
-            />
+            source={{ uri: avatarResident }}
+          />
 
-            <View style={{ marginLeft: responsive.h(10), flex: 1 }}>
-              <Text
-                style={{
-                  fontFamily: "Inter-Bold",
-                  fontSize: responsive.h(15),
-                  color: "black",
-                  //textTransform: "uppercase",
-                }}
-                numberOfLines={2}
-                lineBreakMode="tail"
-              >
-                {residentName}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(14),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
-                  color: "#888888",
-                }}
-                numberOfLines={1}
-              >
-                MS: {contractName}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(14),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
-                  color: "#888888",
-                }}
-                numberOfLines={1}
-              >
-                {employeeName} - {departmentName}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(12),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
-                  color: converStatusToColor(statusName),
-                }}
-                numberOfLines={1}
-              >
-                {statusName}
-              </Text>
-            </View>
-          </View>
-          <View>
+          <View style={{ marginLeft: responsive.h(10), flex: 1 }}>
             <Text
               style={{
-                // marginTop: 15,
-                fontFamily: "Inter-SemiBold",
+                fontFamily: "Inter-Bold",
+                fontSize: responsive.h(15),
+                color: "black",
+                //textTransform: "uppercase",
+              }}
+              numberOfLines={2}
+              lineBreakMode="tail"
+            >
+              {residentName}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(14),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                letterSpacing: 0,
+                textAlign: "left",
+                color: "#888888",
+              }}
+              numberOfLines={1}
+            >
+              MS: {contractName}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(14),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                letterSpacing: 0,
+                textAlign: "left",
+                color: "#888888",
+              }}
+              numberOfLines={1}
+            >
+              {employeeName} - {departmentName}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(12),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                letterSpacing: 0,
+                textAlign: "left",
+                color: converStatusToColor(statusName),
+              }}
+              numberOfLines={1}
+            >
+              {statusName}
+            </Text>
+          </View>
+        </View>
+        <Text
+          style={{
+            fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 fontWeight: "600",
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#282828",
-              }}
-              numberOfLines={1}
-            >
-              {title}
-            </Text>
-            {content ? (
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(14),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
-                  color: "#3d3d3d",
-                }}
-                numberOfLines={2}
-                lineBreakMode="tail"
-              >
-                {content}
-              </Text>
-            ) : null}
-          </View>
-          <View>
-            <View
-              style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                paddingTop: responsive.h(5),
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(12),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  color: "#6f6f6f",
-                }}
-              >
-                {moment(dateCreate).format("DD/MM/YYYY")}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(12),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  color: "#6f6f6f",
-                }}
-              >
-                {moment(dateCreate).format("HH:mm")}
-              </Text>
-            </View>
-          </View>
+          }}
+          numberOfLines={1}
+        >
+          {title}
+        </Text>
+        <Text
+          style={{
+            fontFamily: "Inter-Regular",
+            fontSize: responsive.h(14),
+            color: "#3d3d3d",
+          }}
+          numberOfLines={2}
+        >
+          {content}
+        </Text>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            paddingTop: 5,
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: "Inter-Regular",
+              fontSize: responsive.h(12),
+              fontWeight: "normal",
+              fontStyle: "normal",
+              color: "#6f6f6f",
+            }}
+          >
+            {moment(dateCreate).format("DD/MM/YYYY")}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-Regular",
+              fontSize: responsive.h(12),
+              fontWeight: "normal",
+              fontStyle: "normal",
+              color: "#6f6f6f",
+            }}
+          >
+            {moment(dateCreate).format("HH:mm")}
+          </Text>
         </View>
       </TouchableOpacity>
     );

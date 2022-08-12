@@ -55,7 +55,8 @@ class ListData extends Component {
           this.onEndReachedCalledDuringMomentum = false;
         }}
         contentContainerStyle={{
-          //alignItems: data.length > 1 ? "center" : null,
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
         }}
       />
     );

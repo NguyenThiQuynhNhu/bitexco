@@ -555,9 +555,11 @@ class index extends Component {
               {/* lấy ra ký tự đầu và ký tự cuối của mã căn hộ */}
               <View
                 style={{
+                  
                   alignItems: "center",
                   textAlign: "center",
                   justifyContent: "center",
+                  
                 }}
               >
                 <Text
@@ -575,6 +577,7 @@ class index extends Component {
 
             <Text
               style={{
+                flex: 1,
                 color: "#000",
                 fontFamily: "Inter-Regular",
                 fontSize: responsive.h(15),

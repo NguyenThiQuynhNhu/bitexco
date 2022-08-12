@@ -271,6 +271,7 @@ class index extends Component {
 
             <Text
               style={{
+                flex: 1,
                 color: "#000",
                 fontFamily: "Inter-Regular",
                 fontSize: responsive.h(15),
