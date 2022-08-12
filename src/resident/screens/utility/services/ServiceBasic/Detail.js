@@ -124,7 +124,8 @@ class ServiceBasicDetailScreen extends Component {
     return listStar;
   }
 
-  renderItemChat = ({ item }) => {
+  renderItemChat = ({ item, index }) => {
+    //console.log(this.props.user);
     const {
       dateActive,
       description,
@@ -134,11 +135,151 @@ class ServiceBasicDetailScreen extends Component {
       avatarUrl,
       ratingMark,
       isCustomer,
+      statusKey,
     } = item;
     return (
+      // <View
+      //   style={{
+      //     flexDirection: "row",
+      //     borderRadius: 12,
+      //     backgroundColor: "#ffffff",
+      //     marginHorizontal: 20,
+      //     marginBottom: 10,
+      //     padding: 10,
+      //     borderTopWidth: 0.5,
+      //     borderTopColor: "#d4d4d4",
+      //   }}
+      // >
+      //   <ImageProgress
+      //     source={{
+      //       uri: `${
+      //         isCustomer ? this.props.user.photoUrl : avatarUrl || default_image
+      //       }`,
+      //     }}
+      //     circle={true}
+      //     style={{
+      //       height: 32,
+      //       width: 32,
+      //     }}
+      //   />
+
+      //   <View
+      //     style={{
+      //       width: Screen.width - 102,
+      //       justifyContent: "center",
+      //       marginLeft: 10,
+      //     }}
+      //   >
+      //     <View
+      //       style={{
+      //         flex: 1,
+      //         alignItems: "center",
+      //         flexDirection: "row",
+      //         justifyContent: "space-between",
+      //       }}
+      //     >
+      //       {isCustomer ? (
+      //         <View />
+      //       ) : (
+      //         <View
+      //           style={{
+      //             marginRight: 5,
+      //             marginVertical: 5,
+      //             backgroundColor: colors.gray1,
+      //             borderRadius: 15,
+      //           }}
+      //         >
+      //           <Text
+      //             style={{
+      //               margin: 2,
+      //               marginHorizontal: 5,
+      //               fontSize: fontsize.micro,
+      //               color: "#fff",
+      //             }}
+      //           >
+      //             BQL
+      //           </Text>
+      //         </View>
+      //       )}
+      //       <Text
+      //         style={{
+      //           fontWeight: "bold",
+      //           fontFamily: "Inter-SemiBold",
+      //           flex: 0.8,
+      //         }}
+      //       >
+      //         {isCustomer ? this.props.user.fullName : userName}
+      //       </Text>
+      //       <View
+      //         style={{
+      //           marginLeft: 10,
+      //           marginVertical: 5,
+      //           padding: 5,
+      //           borderRadius: 16,
+      //           backgroundColor: "#fff5eb",
+      //         }}
+      //       >
+      //         <Text
+      //           style={{
+      //             fontFamily: "Inter-Regular",
+      //             fontSize: 14,
+      //             fontWeight: "normal",
+      //             fontStyle: "normal",
+      //             letterSpacing: 0,
+      //             textAlign: "center",
+      //             color: converStatusToColor(statusKey),
+      //           }}
+      //         >
+      //           {statusName}
+      //         </Text>
+      //       </View>
+      //     </View>
+      //     {ratingMark === 0 || ratingMark === undefined ? (
+      //       <View />
+      //     ) : (
+      //       <View
+      //         style={{
+      //           flexDirection: "row",
+      //           alignItems: "center",
+      //           justifyContent: "center",
+      //         }}
+      //       >
+      //         {this.renderRateView(ratingMark)}
+      //       </View>
+      //     )}
+      //     <Text
+      //       style={{
+      //         marginTop: -5,
+      //         fontFamily: "Inter-Regular",
+      //         fontSize: 12,
+      //         fontWeight: "normal",
+      //         fontStyle: "normal",
+      //         letterSpacing: 0,
+      //         textAlign: "left",
+      //         color: "#7d8895",
+      //       }}
+      //     >
+      //       {moment(dateActive).format("DD/MM/YYYY HH:mm")}
+      //     </Text>
+      //     <Text
+      //       style={{
+      //         marginTop: 10,
+      //         fontFamily: "Inter-Regular",
+      //         fontSize: 14,
+      //         fontWeight: "normal",
+      //         fontStyle: "normal",
+      //         letterSpacing: 0,
+      //         textAlign: "left",
+      //         color: "#000000",
+      //       }}
+      //     >
+      //       {content}
+      //     </Text>
+      //   </View>
+      // </View>
       <View
         style={{
-          // borderRadius: 16,
+          borderRadius: responsive.h(16),
           padding: responsive.h(10),
           backgroundColor: "#ffffff",
           // shadowColor: "rgba(0, 0, 0, 0.08)",
@@ -149,14 +290,14 @@ class ServiceBasicDetailScreen extends Component {
           // },
           // shadowRadius: 12,
           // shadowOpacity: 1,
-          marginHorizontal: responsive.h(20),
-          marginVertical: responsive.h(10),
+          // marginHorizontal: responsive.h(10),
+          // marginVertical: responsive.h(10),
         }}
       >
         <View
           style={{
             flexDirection: "row",
-            display: "flex",
+            flex: 1,
             justifyContent: "space-between",
           }}
         >
@@ -164,6 +305,8 @@ class ServiceBasicDetailScreen extends Component {
             style={{
               flexDirection: "row",
               alignItems: "center",
+              flex: 1,
+              // marginRight: responsive.h(20),
             }}
           >
             <ImageProgress
@@ -183,10 +326,11 @@ class ServiceBasicDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: responsive.h(5),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
+                  position: "absolute",
+                  left: responsive.h(25),
                 }}
               >
                 <Text
@@ -207,32 +351,36 @@ class ServiceBasicDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: responsive.h(10),
+                paddingLeft: isCustomer ? responsive.h(10) : responsive.h(30),
                 color: "#505050",
+                // width: Screen.width * 0.65,
+                // maxWidth: Screen.width * 0.65,
               }}
             >
               {isCustomer ? this.props.user.fullName : userName}
+              {isCustomer ? this.props.user.fullName : userName}
             </Text>
           </View>
-
-          <View
-            style={{
-              backgroundColor: "#fff5eb",
-              borderRadius: responsive.h(15),
-              padding: responsive.h(5),
-              backgroundColor: "#feefef",
-              borderRadius: responsive.h(15),
-            }}
-          >
-            <Text
+          <View>
+            <View
               style={{
-                fontSize: responsive.h(14),
-                color: converStatusToColor(statusId),
-                fontFamily: "Inter-Regular",
+                backgroundColor: "#fff5eb",
+                borderRadius: responsive.h(15),
+                padding: responsive.h(5),
+                backgroundColor: "#feefef",
+                borderRadius: responsive.h(15),
               }}
             >
-              {converStatusToString(statusId)}
-            </Text>
+              <Text
+                style={{
+                  fontSize: responsive.h(14),
+                  color: converStatusToColor(statusKey),
+                  fontFamily: "Inter-Regular",
+                }}
+              >
+                {converStatusToString(statusId)}
+              </Text>
+            </View>
           </View>
         </View>
         <Text
@@ -356,6 +504,7 @@ class ServiceBasicDetailScreen extends Component {
             {/* Thông tin nha cung cap */}
             <View
               style={{
+                flex: 1,
                 borderRadius: responsive.h(16),
                 backgroundColor: "#ffffff",
                 marginHorizontal: responsive.h(20),

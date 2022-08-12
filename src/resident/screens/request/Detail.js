@@ -292,6 +292,7 @@ class RequestDetailScreen extends Component {
           style={{
             flexDirection: "row",
             flex: 1,
+            justifyContent: "space-between",
           }}
         >
           <View
@@ -353,13 +354,7 @@ class RequestDetailScreen extends Component {
               {isCustomer ? this.props.user.fullName : userName}
             </Text>
           </View>
-          <View
-            style={{
-              width: Screen.width * 0.35,
-              minWidth: Screen.width * 0.35,
-              alignItems: "flex-start",
-            }}
-          >
+          <View>
             <View
               style={{
                 backgroundColor: "#fff5eb",
