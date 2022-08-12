@@ -26,53 +26,49 @@ const SearchBar = (props) => {
     value,
   } = props;
   return (
-    <Animated.View
-      style={[
-        {
-          alignItems: "center",
+    <Animated.View style={[
+      {
+          alignItems: 'center',
           borderRadius: responsive.h(5),
-          backgroundColor: "#a3cd80",
-          flexDirection: "row",
-          justifyContent: "space-between",
+          backgroundColor: '#a3cd80',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
           marginVertical: responsive.h(10),
-        },
-        style,
-        { opacity: navbarOpacity },
-      ]}
-    >
-      <MyIcon
-        name="search"
-        size={responsive.h(20)}
-        color="#fff"
-        style={{ margin: responsive.h(5) }}
-      />
+      }, style, { opacity: navbarOpacity }]}>
 
-      <TextInput
-        value={value}
-        onSubmitEditing={onSubmitEditing}
-        onChangeText={(text) => onChangeText(text)}
-        placeholderTextColor="#fff"
-        placeholder={Strings.app.placeholderSearchBar}
-        underlineColorAndroid="transparent"
-        autoCorrect={false}
-        autoFocus={false}
-        style={{
-          fontSize: responsive.h(14),
-          color: "#fff",
-          flex: 1,
-          paddingVertical: 0,
-          justifyContent: "flex-start",
-        }}
-      />
-      <TouchableOpacity onPress={onClearText}>
-        <MyIcon
-          name="delete"
+      <MyIcon
+          name="search"
           size={responsive.h(20)}
           color="#fff"
           style={{ margin: responsive.h(5) }}
-        />
+      />
+
+      <TextInput
+          value={value}
+          onSubmitEditing={onSubmitEditing}
+          onChangeText={(text) => onChangeText(text)}
+          placeholderTextColor="#fff"
+          placeholder={Strings.app.placeholderSearchBar}
+          underlineColorAndroid="transparent"
+          autoCorrect={false}
+          autoFocus={false}
+          style={{
+              fontSize: responsive.h(14),
+              color: '#fff',
+              flex: 1,
+              paddingVertical: 0,
+              justifyContent: 'flex-start'
+          }}
+      />
+      <TouchableOpacity onPress={onClearText}>
+          <MyIcon
+              name="delete"
+              size={responsive.h(20)}
+              color="#fff"
+              style={{ margin: responsive.h(5) }}
+          />
       </TouchableOpacity>
-    </Animated.View>
+  </Animated.View>
   );
 };
 

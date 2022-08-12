@@ -314,11 +314,7 @@ class ReuqestList extends Component {
                   this.setState({ isShowSearch: false }, onClearText)
                 }
                 style={{
-                  // flex: 1,
-                  // margin:
-                  //   Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
-                  // marginHorizontal: responsive.h(10),
-                  paddingHorizontal: responsive.h(10),
+                  marginHorizontal: responsive.h(10),
                 }}
               />
             }
@@ -327,8 +323,9 @@ class ReuqestList extends Component {
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
+                style={{ padding: responsive.h(10) }}
               >
-                <Text style={{ color: "#fff" }}>{Strings.app.cancel}</Text>
+                <Text style={{ color: "#000", fontSize: responsive.h(14) }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
             }
           />

@@ -343,7 +343,7 @@ class ServiceBasic extends Component {
                 }}
                 style={{ padding: responsive.h(10) }}
               >
-                <Text style={{ color: "black" }}>Huỷ</Text>
+                <Text style={{ color: "black", fontSize: responsive.h(14) }}>Huỷ</Text>
               </TouchableOpacity>
             }
           />
