@@ -988,6 +988,9 @@ class PaymentHistoryScreen extends Component {
         keyExtractor={(item, index) => `${index}`}
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
+        contentContainerStyle={{
+          padding: responsive.h(10),
+        }}
         //style={{borderTopRightRadius: 20}}
         //ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: colors.grayBorder }} />}
         onEndReached={() => {

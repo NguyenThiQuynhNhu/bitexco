@@ -326,9 +326,9 @@ class ServiceExtension extends Component {
                   );
                 }}
                 style={{
-                  flex: 1,
-                  margin:
-                    Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
+                  // flex: 1,
+                  // margin:
+                  //   Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
                   marginHorizontal: responsive.h(10),
                 }}
               />
@@ -354,7 +354,7 @@ class ServiceExtension extends Component {
                   );
                 }}
               >
-                <Text style={{ color: "#fff" }}>Huỷ</Text>
+                <Text style={{ color: "black" }}>Huỷ</Text>
               </TouchableOpacity>
             }
           />

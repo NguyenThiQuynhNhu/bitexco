@@ -699,21 +699,18 @@ class HomeScreen extends Component {
           })
         }
         style={{
+          backgroundColor: "#fff",
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 14,
-          shadowOpacity: 1,
-          marginHorizontal: responsive.h(10),
+          width: (Screen.width - responsive.h(30)) / 2,
           marginBottom: responsive.h(10),
-          // width: responsive.w(182),
-          // height: responsive.h(216),
-          padding: responsive.h(5),
+          marginRight: responsive.h(10),
+          // margin: responsive.h(10),
+          // marginRight: index % 2 != 0 ? 0 : 10,
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
+          padding: responsive.h(10),
         }}
       >
         <View>
@@ -915,7 +912,7 @@ class HomeScreen extends Component {
     }
     const { banner, fees } = data;
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, backgroundColor: "white" }}>
         {!_.isNil(fees) &&
           !_.isNil(fees.amountIncurred) &&
           this.rednerItemFee(fees)}
@@ -970,7 +967,7 @@ class HomeScreen extends Component {
                   paddingHorizontal: responsive.h(5),
                   marginTop: responsive.h(10),
                   letterSpacing: 0,
-                  marginBottom: responsive.h(10),
+                  paddingBottom: responsive.h(10),
                   fontSize: responsive.h(15),
                   color: "#afaeae",
                 }}
@@ -1014,6 +1011,11 @@ class HomeScreen extends Component {
             renderItem={this.renderItem}
             // onEndReachedThreshold={0.5}
             numColumns={2}
+            contentContainerStyle={{
+              marginTop: responsive.h(10),
+              marginLeft: responsive.h(10),
+              backgroundColor: "white",
+            }}
             onEndReached={() => {
               if (
                 !this.onEndReachedCalledDuringMomentum &&
@@ -1032,9 +1034,6 @@ class HomeScreen extends Component {
                 };
                 this.props.loadDataHandleNotify(data);
               }
-            }}
-            contentContainerStyle={{
-              backgroundColor: "white",
             }}
             onMomentumScrollBegin={() => {
               this.onEndReachedCalledDuringMomentum = false;

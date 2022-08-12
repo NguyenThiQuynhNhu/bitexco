@@ -95,7 +95,11 @@ class SettingScreen extends Component {
           //   </View>
           // }
         />
-        <ScrollView>
+        <ScrollView
+          style={{
+            marginTop: responsive.h(-10),
+          }}
+        >
           {/* <Text
             style={{
               marginLeft: responsive.h(10),

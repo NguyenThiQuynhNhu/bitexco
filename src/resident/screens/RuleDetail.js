@@ -300,7 +300,11 @@ class RulesDetail extends Component {
                   padding: responsive.h(10),
                 }}
               >
-                <MyIcon size={responsive.h(20)} name="search" color="black" />
+                <MyIcon
+                  size={responsive.h(20)}
+                  name="search"
+                  color="transparent"
+                />
               </TouchableOpacity>
             }
           />

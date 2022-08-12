@@ -67,7 +67,7 @@ const ButtonFilter = (props) => {
             //right: -7,
             //position: 'absolute',
             marginTop: responsive.h(2.4),
-            borderRadius: responsive.h(45),
+            // borderRadius: responsive.h(45),
             minWidth: responsive.h(20),
             minHeight: responsive.h(20),
             alignItems: "center",
