@@ -569,7 +569,7 @@ class HandoverScheduleScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
-              style={{ paddingVertical: responsive.h(10) }}
+              style={{ padding: responsive.h(10) }}
             >
               <ImageProgress
                 style={{
@@ -597,7 +597,7 @@ class HandoverScheduleScreen extends Component {
           rightView={
             <TouchableOpacity
               onPress={() => this.props.refreshDataHandle()}
-              style={{ paddingVertical: responsive.h(10) }}
+              style={{ padding: responsive.h(10) }}
             >
               <Icon name="cycle" color="black" size={responsive.h(20)} />
             </TouchableOpacity>

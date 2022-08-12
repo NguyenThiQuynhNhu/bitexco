@@ -634,7 +634,12 @@ class RequestDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -661,6 +666,9 @@ class RequestDetailScreen extends Component {
             this.props.data &&
             this.props.data.statusKey !== "dong" && (
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() => this.setState({ isShowModal: true })}
               >
                 <MyIcon name="reply" color="black" size={responsive.h(20)} />

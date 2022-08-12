@@ -12,7 +12,6 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
       marginBottom: 10,
       height: responsive.h(102),
       justifyContent: "center",
-      paddingHorizontal: responsive.h(10),
       alignItems: "center",
     }}
   >
@@ -47,7 +46,7 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
         <View
           style={{
             justifyContent: "center",
-            //alignItems: "center",
+            alignItems: "center",
             flex: 1,
             //...Device.defaultPaddingTop(),
           }}

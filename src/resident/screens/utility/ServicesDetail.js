@@ -294,7 +294,12 @@ class ServicesScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -316,6 +321,9 @@ class ServicesScreen extends Component {
           }
           rightView={
             <TouchableOpacity
+              style={{
+                padding: responsive.h(10),
+              }}
               onPress={() =>
                 this.props.navigation.navigate("serviceExtensionResident", {
                   id: data.id,

@@ -223,7 +223,12 @@ class NotificationScreen extends Component {
         ) : (
           <NavBar
             leftButton={
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.goBack()}
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
                 <MyIcon name="arrow" size={responsive.h(20)} color="black" />
               </TouchableOpacity>
             }
@@ -244,6 +249,9 @@ class NotificationScreen extends Component {
             }
             rightView={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
                 <MyIcon size={responsive.h(24)} name="search" color="black" />

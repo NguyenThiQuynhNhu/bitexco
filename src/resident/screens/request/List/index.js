@@ -324,6 +324,9 @@ class ReuqestList extends Component {
             }
             rightView={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
@@ -336,6 +339,9 @@ class ReuqestList extends Component {
           <NavBar
             leftButton={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() => this.props.navigation.navigate("profile")}
               >
                 <ImageProgress
@@ -368,6 +374,9 @@ class ReuqestList extends Component {
             }
             rightView={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
                 <MyIcon size={responsive.h(24)} name="search" color="black" />

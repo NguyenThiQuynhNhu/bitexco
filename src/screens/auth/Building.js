@@ -47,6 +47,7 @@ import {
   loginUserByPassVendor,
   loginUserByPassResident,
 } from "../../actions/auth";
+import responsive from "../../resources/responsive";
 // create a component
 class BuildingScreen extends Component {
   static navigationOptions = {
@@ -217,7 +218,7 @@ class BuildingScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
-                  fontSize: 20,
+                  fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
@@ -232,9 +233,9 @@ class BuildingScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
             >
-              <MyIcon name="arrow" color="black" size={20} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
         />

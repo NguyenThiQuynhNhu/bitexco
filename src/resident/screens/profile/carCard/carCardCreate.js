@@ -220,7 +220,12 @@ class CarCardCreateScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -244,23 +249,16 @@ class CarCardCreateScreen extends Component {
             </Text>
           }
           rightView={
-            <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.onNext();
-                }}
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <MyIcon
-                  name="paperplane"
-                  color="black"
-                  size={responsive.h(24)}
-                />
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                this.onNext();
+              }}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
+              <MyIcon name="paperplane" color="black" size={responsive.h(24)} />
+            </TouchableOpacity>
           }
         />
         <KeyboardAwareScrollView

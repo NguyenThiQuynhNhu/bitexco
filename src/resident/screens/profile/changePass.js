@@ -115,7 +115,12 @@ class ChangePassScreen extends Component {
           leftButton={
             this.props.user &&
             this.props.user.isChangePass && (
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.goBack()}
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             )

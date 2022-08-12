@@ -760,7 +760,12 @@ class PaymentDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon
                 name="arrow"
                 size={responsive.h(fontsize.medium)}

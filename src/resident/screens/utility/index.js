@@ -636,6 +636,9 @@ class UtilityScreen extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
+              style={{
+                padding: responsive.h(10),
+              }}
               onPress={() => this.props.navigation.navigate("profile")}
             >
               <ImageProgress
@@ -666,7 +669,11 @@ class UtilityScreen extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon
                 size={responsive.h(20)}
                 name="search"

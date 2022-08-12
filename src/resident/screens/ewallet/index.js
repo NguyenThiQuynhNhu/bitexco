@@ -313,7 +313,7 @@ class PaymentScreen extends Component {
             <TouchableOpacity
               //onPress={() => this.state.isPaidSucsess ? this.props.navigation.navigate('payment') : this.props.navigation.goBack()}
               onPress={() => this.props.navigation.navigate("payment")}
-              style={{ paddingVertical: 10 }}
+              style={{ padding: 10 }}
             >
               <MyIcon
                 name="arrow"

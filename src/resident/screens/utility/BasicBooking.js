@@ -750,7 +750,12 @@ class BasicBookingScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -794,6 +799,7 @@ class BasicBookingScreen extends Component {
                   flexDirection: "row",
                   // paddingHorizontal: responsive.h(10),
                   alignItems: "center",
+                  padding: responsive.h(10),
                 }}
               >
                 <MyIcon

@@ -366,7 +366,12 @@ class SurveyDetailScreen extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -401,7 +406,12 @@ class SurveyDetailScreen extends Component {
             //   />
             // </TouchableOpacity>
             this.state.isAnswer ? null : (
-              <TouchableOpacity onPress={() => this._onSubmit()}>
+              <TouchableOpacity
+                onPress={() => this._onSubmit()}
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
                 <MyIcon name="reply" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             )

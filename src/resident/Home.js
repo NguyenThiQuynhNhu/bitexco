@@ -973,7 +973,7 @@ class HomeScreen extends Component {
                   marginTop: responsive.h(10),
                   letterSpacing: 0,
                   marginBottom: responsive.h(10),
-                  fontsize: responsive.h(15),
+                  fontSize: responsive.h(15),
                   color: "#afaeae",
                 }}
               >
@@ -1524,7 +1524,12 @@ class HomeScreen extends Component {
                 flexDirection: "row",
               }}
             >
-              <TouchableOpacity onPress={() => this._onAttachment()}>
+              <TouchableOpacity
+                onPress={() => this._onAttachment()}
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
                 <ImageProgress
                   style={{
                     height: responsive.h(40),
@@ -1539,7 +1544,6 @@ class HomeScreen extends Component {
 
               <View
                 style={{
-                  marginLeft: responsive.h(10),
                   justifyContent: "center",
                 }}
               >
@@ -1547,7 +1551,6 @@ class HomeScreen extends Component {
                   style={{
                     fontSize: responsive.h(16),
                     fontFamily: "OpenSans-Bold",
-
                     fontWeight: "bold",
                     fontStyle: "normal",
                     letterSpacing: 0,
@@ -1589,6 +1592,9 @@ class HomeScreen extends Component {
               <View style={{ flexDirection: "row" }}>
                 {this.props.data && this.props.data.rules.length > 0 ? (
                   <TouchableOpacity
+                    style={{
+                      paddingVertical: responsive.h(10),
+                    }}
                     onPress={() =>
                       this.setState({
                         showAction: true,
@@ -1604,6 +1610,9 @@ class HomeScreen extends Component {
                   </TouchableOpacity>
                 ) : null}
                 <TouchableOpacity
+                  style={{
+                    padding: responsive.h(10),
+                  }}
                   onPress={() =>
                     this.props.navigation.navigate("notificationResident")
                   }

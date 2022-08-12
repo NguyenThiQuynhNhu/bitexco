@@ -141,6 +141,9 @@ class PaymentScreen extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.navigate("profile")}
+              style={{
+                padding: responsive.h(10),
+              }}
             >
               <ImageProgress
                 style={{
@@ -179,6 +182,9 @@ class PaymentScreen extends Component {
           // }
           rightView={
             <TouchableOpacity
+              style={{
+                padding: responsive.h(10),
+              }}
               onPress={() => this.props.navigation.navigate("paymentHistory")}
             >
               <MyIcon size={24} name="history" color="black" />

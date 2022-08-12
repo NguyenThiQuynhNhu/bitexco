@@ -55,6 +55,7 @@ import { color } from "react-native-reanimated";
 import { titleStyle } from "../../theme/styles";
 //
 import { checkAnswerSurvey } from "../../resident/actions/surveyDetail";
+import responsive from "../../resources/responsive";
 // import {
 //     loadDataHandle as loadStatusRequest
 // } from '../actions/home';
@@ -332,17 +333,17 @@ class NewsScreen extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ paddingVertical: 10 }}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack()}
             >
-              <MyIcon name="arrow" size={20} color="black" />
+              <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 20,
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -386,30 +387,30 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#fff",
-    fontSize: 30,
+    fontSize: responsive.h(30),
     fontWeight: "bold",
   },
   dot: {
     width: 5,
     height: 5,
-    marginHorizontal: 5,
-    borderRadius: 7,
+    marginHorizontal: responsive.h(5),
+    borderRadius: responsive.h(7),
     backgroundColor: "rgb(206, 209, 212)",
   },
   activeDot: {
     width: 5,
     height: 5,
-    marginHorizontal: 5,
-    borderRadius: 7,
+    marginHorizontal: responsive.h(5),
+    borderRadius: responsive.h(7),
     backgroundColor: "rgb(105, 109, 116)",
   },
   IconBadge: {
     top: -7,
     right: 8,
     position: "absolute",
-    borderRadius: 45,
-    minWidth: 20,
-    minHeight: 20,
+    borderRadius: responsive.h(45),
+    minWidth: responsive.h(20),
+    minHeight: responsive.h(20),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FF0000",

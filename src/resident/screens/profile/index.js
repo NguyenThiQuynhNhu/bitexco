@@ -138,7 +138,12 @@ class ProfileScreen extends Component {
         <NavBar
           //body={<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text style={{ fontSize: fontSize.larg, color: '#fff' }}>{Strings.profile.setting.toLocaleUpperCase()}</Text></View>}
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -220,7 +225,9 @@ class ProfileScreen extends Component {
               <MenuPicker
                 icon="sphere"
                 name={Strings.profile.settinglanguage}
-                onPress={() => this.props.navigation.navigate("setting")}
+                onPress={() =>
+                  this.props.navigation.navigate("settingResident")
+                }
               />
               {this.props.typeList.length > 1 && (
                 <MenuPicker

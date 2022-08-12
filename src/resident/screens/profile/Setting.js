@@ -51,48 +51,51 @@ class SettingScreen extends Component {
     const languageValue = this.props.language == "vi" ? 0 : 1;
     return (
       <View style={styles.container}>
-        <ScrollView>
-          <NavBar
-            leftButton={
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
-              </TouchableOpacity>
-            }
-            body={
-              <View
+        <NavBar
+          leftButton={
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
+              <MyIcon name="arrow" color="#000" size={responsive.h(20)} />
+            </TouchableOpacity>
+          }
+          body={
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <Text
                 style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center",
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "center",
-                  color: "#ffffff",
+                  color: "black",
                 }}
               >
-                <Text
-                  style={{
-                    fontSize: responsive.h(fontsize.medium),
-                    color: "#fff",
-                  }}
-                >
-                  {Strings.setting.language}
-                </Text>
-              </View>
-            }
-            rightView={
-              <View>
-                <MyIcon
-                  name="arrow"
-                  size={responsive.h(22)}
-                  color={colors.appTheme}
-                />
-              </View>
-            }
-          />
+                {Strings.setting.language}
+              </Text>
+            </View>
+          }
+          // rightView={
+          //   <View>
+          //     <MyIcon
+          //       name="arrow"
+          //       size={responsive.h(22)}
+          //       color={colors.appTheme}
+          //     />
+          //   </View>
+          // }
+        />
+        <ScrollView>
           <Text
             style={{
               marginLeft: responsive.h(10),

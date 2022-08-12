@@ -327,6 +327,9 @@ class ServiceBasic extends Component {
             }
             rightView={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() => {
                   const isApplySearchKeyOld = this.state.isApplySearchKey;
                   this.setState(
@@ -350,7 +353,12 @@ class ServiceBasic extends Component {
         ) : (
           <NavBar
             leftButton={
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+              <TouchableOpacity
+                onPress={() => this.props.navigation.goBack()}
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
@@ -373,6 +381,9 @@ class ServiceBasic extends Component {
             }
             rightView={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
                 <MyIcon size={responsive.h(24)} name="search" color="black" />

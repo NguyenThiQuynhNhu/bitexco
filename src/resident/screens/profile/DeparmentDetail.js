@@ -290,7 +290,7 @@ class DepartmentScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: responsive.h(10) }}
+                style={{ padding: responsive.h(10) }}
               >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
@@ -345,7 +345,12 @@ class DepartmentScreen extends Component {
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
