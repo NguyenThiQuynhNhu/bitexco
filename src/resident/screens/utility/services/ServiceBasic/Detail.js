@@ -358,29 +358,23 @@ class ServiceBasicDetailScreen extends Component {
               }}
             >
               {isCustomer ? this.props.user.fullName : userName}
-              {isCustomer ? this.props.user.fullName : userName}
             </Text>
           </View>
           <View>
-            <View
+            <Text
               style={{
+                fontFamily: "Inter-Regular",
+                fontSize: fontsize.micro,
+                textAlign: "center",
                 backgroundColor: "#fff5eb",
                 borderRadius: responsive.h(15),
-                padding: responsive.h(5),
-                backgroundColor: "#feefef",
-                borderRadius: responsive.h(15),
+                paddingHorizontal: responsive.h(10),
+                paddingVertical: responsive.h(5),
+                color: converStatusToColor(statusId),
               }}
             >
-              <Text
-                style={{
-                  fontSize: responsive.h(14),
-                  color: converStatusToColor(statusKey),
-                  fontFamily: "Inter-Regular",
-                }}
-              >
-                {converStatusToString(statusId)}
-              </Text>
-            </View>
+              {statusName}
+            </Text>
           </View>
         </View>
         <Text
@@ -499,7 +493,7 @@ class ServiceBasicDetailScreen extends Component {
         amount,
       } = seviceBasic;
       return (
-        <ScrollView style={{ borderTopRightRadius: responsive.h(20) }}>
+        <ScrollView>
           <View style={{ flex: 1 }}>
             {/* Thông tin nha cung cap */}
             <View
@@ -549,23 +543,22 @@ class ServiceBasicDetailScreen extends Component {
                   >
                     <View
                       style={{
-                        backgroundColor: "#fff5eb",
-                        borderRadius: responsive.h(15),
-                        padding: responsive.h(5),
-                        backgroundColor: "#feefef",
-                        borderRadius: responsive.h(15),
                         justifyContent: "center",
-                        alignItems: "center",
                       }}
                     >
                       <Text
                         style={{
-                          fontSize: responsive.h(14),
-                          color: converStatusToColor(statusId),
                           fontFamily: "Inter-Regular",
+                          fontSize: responsive.h(fontsize.micro),
+                          textAlign: "center",
+                          backgroundColor: "#fff5eb",
+                          borderRadius: responsive.h(15),
+                          paddingHorizontal: responsive.h(10),
+                          paddingVertical: responsive.h(5),
+                          color: converStatusToColor(statusId),
                         }}
                       >
-                        {converStatusToString(statusId)}
+                        {statusName}
                       </Text>
                     </View>
                   </View>

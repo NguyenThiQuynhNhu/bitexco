@@ -205,6 +205,9 @@ class NotificationScreen extends Component {
             }
             rightView={
               <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }

@@ -225,8 +225,8 @@ class ReuqestList extends Component {
         //onRefresh={() => this.setState({dataStatus: this.props.dataStatus}), () => this.props.refreshDataHandle()}
         data={data}
         contentContainerStyle={{
-          marginVertical: responsive.h(10),
-          justifyContent: "center",
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
         }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}
@@ -314,19 +314,16 @@ class ReuqestList extends Component {
                   this.setState({ isShowSearch: false }, onClearText)
                 }
                 style={{
-                  flex: 1,
-                  margin:
-                    Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
-                  marginHorizontal: responsive.h(10),
-                  marginRight: responsive.h(50),
+                  // flex: 1,
+                  // margin:
+                  //   Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
+                  // marginHorizontal: responsive.h(10),
+                  paddingHorizontal: responsive.h(10),
                 }}
               />
             }
             rightView={
               <TouchableOpacity
-                style={{
-                  padding: responsive.h(10),
-                }}
                 onPress={() =>
                   this.setState({ isShowSearch: false }, onClearText)
                 }
@@ -407,7 +404,6 @@ class ReuqestList extends Component {
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
             style={{
-              borderTopRightRadius: responsive.h(20),
               marginTop: responsive.h(-15),
             }}
             renderItem={(item) => {
@@ -421,7 +417,6 @@ class ReuqestList extends Component {
                     color={item.item.colorCode}
                     statusKey={item.item.statusKey}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: 5 }}
                   />
                 </View>
               );
@@ -429,6 +424,13 @@ class ReuqestList extends Component {
             onEndReachedThreshold={0.5}
           />
         </View>
+        <View
+          style={{
+            backgroundColor: "#f5f5f5",
+            height: responsive.h(15),
+            width: "100%",
+          }}
+        />
         {this._renderContent()}
         <TouchableOpacity
           onPress={() =>

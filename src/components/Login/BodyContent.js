@@ -399,7 +399,7 @@ export const BodyContent = (props) => {
                       <MyIcon
                         name="user"
                         color={colors.appTheme}
-                        size={18}
+                        size={responsive.h(18)}
                         style={{
                           marginHorizontal: responsive.h(10),
                         }}
@@ -442,7 +442,7 @@ export const BodyContent = (props) => {
                       <MyIcon
                         name="icon-login"
                         color={colors.appTheme}
-                        size={18}
+                        size={responsive.h(18)}
                         style={{
                           marginHorizontal: responsive.h(10),
                         }}
@@ -493,7 +493,7 @@ export const BodyContent = (props) => {
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
-                  fontSize: responsive.h(15),
+                  fontSize: responsive.h(16),
                   letterSpacing: 0,
                   textAlign: "center",
                   color: colors.appTheme,

@@ -218,18 +218,19 @@ class ServiceExtensionDetailScreen extends Component {
 
           <View
             style={{
-              backgroundColor: "#fff5eb",
-              borderRadius: responsive.h(15),
-              padding: responsive.h(5),
-              backgroundColor: "#feefef",
-              borderRadius: responsive.h(15),
+              justifyContent: "center",
             }}
           >
             <Text
               style={{
-                fontSize: responsive.h(14),
-                color: converStatusToColor(statusId),
                 fontFamily: "Inter-Regular",
+                fontSize: responsive.h(fontsize.micro),
+                textAlign: "center",
+                backgroundColor: "#fff5eb",
+                borderRadius: responsive.h(15),
+                paddingHorizontal: responsive.h(10),
+                paddingVertical: responsive.h(5),
+                color: converStatusToColor(statusId),
               }}
             >
               {converStatusToString(statusId)}
@@ -374,18 +375,19 @@ class ServiceExtensionDetailScreen extends Component {
                 >
                   <View
                     style={{
-                      backgroundColor: "#fff5eb",
-                      borderRadius: responsive.h(15),
-                      padding: responsive.h(5),
-                      backgroundColor: "#feefef",
-                      borderRadius: responsive.h(15),
+                      justifyContent: "center",
                     }}
                   >
                     <Text
                       style={{
-                        fontSize: responsive.h(14),
-                        color: converStatusToColor(statusId),
                         fontFamily: "Inter-Regular",
+                        fontSize: responsive.h(fontsize.micro),
+                        textAlign: "center",
+                        backgroundColor: "#fff5eb",
+                        borderRadius: responsive.h(15),
+                        paddingHorizontal: responsive.h(10),
+                        paddingVertical: responsive.h(5),
+                        color: converStatusToColor(statusId),
                       }}
                     >
                       {converStatusToString(statusId)}

@@ -19,7 +19,8 @@ import Toast, { DURATION } from "react-native-easy-toast";
 import SearchBar from "../../../../components/common/SearchBar";
 import ErrorContent from "../../../../components/common/ErrorContent";
 
-import ButtonFilter from "../../../../components/service/basic/ButtonFilter";
+import ButtonFilter from "../../../../components/Request/List/ButtonFilter";
+
 import Spinner from "react-native-loading-spinner-overlay";
 //style
 import colors from "../../../../theme/colors";
@@ -213,7 +214,8 @@ class ServiceBasic extends Component {
         data={data}
         numColumns={2}
         contentContainerStyle={{
-          marginVertical: 10,
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
         }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}

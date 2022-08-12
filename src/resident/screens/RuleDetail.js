@@ -23,9 +23,10 @@ import { get } from "../services/helper";
 import { MyIcon } from "../theme/icons";
 import colors from "../theme/colors";
 import ErrorContent from "../components/common/ErrorContent";
-import NavBar from "../../components/common/NavBar";
 import Strings from "../utils/languages";
 import responsive from "../../resources/responsive";
+
+import NavBar from "../components/common/NavBar";
 
 // create a component
 class RulesDetail extends Component {
@@ -269,8 +270,13 @@ class RulesDetail extends Component {
         <View style={styles.container}>
           <NavBar
             leftButton={
-              <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
-                <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
+              <TouchableOpacity
+                onPress={() => this.props.navigation.goBack()}
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
+                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
             }
             body={
@@ -282,19 +288,19 @@ class RulesDetail extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "center",
-                  color: "#ffffff",
+                  color: "black",
                 }}
               >
                 {this.props.navigation.state.params.name}
               </Text>
             }
             rightView={
-              <TouchableOpacity>
-                <MyIcon
-                  size={responsive.h(20)}
-                  name="search"
-                  color="transparent"
-                />
+              <TouchableOpacity
+                style={{
+                  padding: responsive.h(10),
+                }}
+              >
+                <MyIcon size={responsive.h(20)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
@@ -313,7 +319,12 @@ class RulesDetail extends Component {
       <View style={styles.container}>
         <NavBar
           leftButton={
-            <TouchableOpacity onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity
+              onPress={() => this.props.navigation.goBack()}
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
@@ -333,7 +344,11 @@ class RulesDetail extends Component {
             </Text>
           }
           rightView={
-            <TouchableOpacity>
+            <TouchableOpacity
+              style={{
+                padding: responsive.h(10),
+              }}
+            >
               <MyIcon size={responsive.h(20)} name="search" color="black" />
             </TouchableOpacity>
           }

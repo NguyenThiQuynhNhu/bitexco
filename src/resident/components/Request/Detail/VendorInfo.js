@@ -11,6 +11,7 @@ import Strings from "../../../utils/languages";
 import ImageProgress from "../../common/ImageProgress";
 import fontSize from "../../../theme/fontsize";
 import responsive from "../../../../resources/responsive";
+import fontsize from "../../../theme/fontsize";
 
 // create a component
 const VendorInfo = (props) => {
@@ -97,53 +98,23 @@ const VendorInfo = (props) => {
       </View>
       <View
         style={{
-          alignItems: "flex-end",
+          justifyContent: "center",
         }}
       >
-        <View
+        <Text
           style={{
+            fontFamily: "Inter-Regular",
+            fontSize: responsive.h(fontsize.micro),
+            textAlign: "center",
             backgroundColor: "#fff5eb",
             borderRadius: responsive.h(15),
-            padding: responsive.h(5),
-            backgroundColor: "#feefef",
-            borderRadius: responsive.h(15),
-            justifyContent: "center",
-            alignItems: "center",
+            paddingHorizontal: responsive.h(10),
+            paddingVertical: responsive.h(5),
+            color: converStatusToColor(statusKey),
           }}
         >
-          <Text
-            style={{
-              fontSize: responsive.h(14),
-              color: converStatusToColor(statusKey),
-              fontFamily: "Inter-Regular",
-            }}
-          >
-            {converStatusToString(statusId)}
-          </Text>
-        </View>
-        <View
-          style={{
-            borderRadius: responsive.h(15),
-            padding: responsive.h(5),
-            backgroundColor: colors.appTheme,
-            borderRadius: responsive.h(15),
-            justifyContent: "center",
-            alignItems: "center",
-            marginTop: responsive.h(5),
-          }}
-        >
-          <Text
-            style={{
-              fontSize: responsive.h(14),
-              color: "#ffff",
-              fontFamily: "Inter-Regular",
-            }}
-          >
-            {userActive
-              ? `  ${userActive}`
-              : `  ${Strings.createRequest.unreceived}`}
-          </Text>
-        </View>
+          {converStatusToString(statusId)}
+        </Text>
       </View>
       {/* <Text style={{ fontSize: fontSize.larg }}>{towerName}</Text> */}
       {/* <View style={{ alignItems: 'space-between', flexDirection: 'row', alignItems: 'center', width: '100%' }}>

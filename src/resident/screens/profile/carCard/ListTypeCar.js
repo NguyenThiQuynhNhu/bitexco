@@ -5,10 +5,11 @@ import ListData from "../../../components/common/ListData";
 import { connect } from "react-redux";
 import { resetStateByKey } from "../../../actions/utilitiesBasicBooking";
 import Strings from "../../../utils/languages";
-import NavBar from "../../../components/common/NavBar";
 import fontsize from "../../../theme/fontsize";
 import { MyIcon } from "../../../theme/icons";
 import responsive from "../../../../resources/responsive";
+
+import NavBar from "../../../components/common/NavBar";
 // create a component
 
 class ListItem extends PureComponent {
@@ -53,14 +54,14 @@ class ListTypeCar extends Component {
                 padding: responsive.h(10),
               }}
             >
-              <MyIcon name="arrow" color="#fff" size={responsive.h(20)} />
+              <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
           body={
             <Text
               style={{
                 alignSelf: "center",
-                color: "#fff",
+                color: "black",
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(20),
                 fontWeight: "bold",

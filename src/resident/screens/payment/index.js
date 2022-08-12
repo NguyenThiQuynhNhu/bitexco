@@ -187,7 +187,7 @@ class PaymentScreen extends Component {
               }}
               onPress={() => this.props.navigation.navigate("paymentHistory")}
             >
-              <MyIcon size={24} name="history" color="black" />
+              <MyIcon size={responsive.h(30)} name="history" color="black" />
             </TouchableOpacity>
           }
         />
@@ -292,9 +292,7 @@ class PaymentScreen extends Component {
                   paddingVertical: responsive.h(10),
                   color: "#fff",
                 }}
-              >
-                {}
-              </Text>
+              />
               <View
                 style={{
                   // width: Platform.isPad ? 64 : 44,

@@ -46,7 +46,7 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
         <View
           style={{
             justifyContent: "center",
-            alignItems: "center",
+            // alignItems: "center",
             flex: 1,
             //...Device.defaultPaddingTop(),
           }}

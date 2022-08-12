@@ -32,12 +32,14 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
-          // backgroundColor: "#fff",
+          backgroundColor: "#fff",
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           width: (Screen.width - responsive.h(30)) / 2,
-          margin: responsive.h(10),
-          // marginRight: index % 2 == 0 && 0,
+          marginBottom: responsive.h(10),
+          marginRight: responsive.h(10),
+          // margin: responsive.h(10),
+          // marginRight: index % 2 != 0 ? 0 : 10,
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,

@@ -201,7 +201,7 @@ class NewsDetail extends Component {
             <Text
               style={{
                 color: "#cccccc",
-                marginLeft: responsive.l(10),
+                marginLeft: responsive.h(10),
                 fontSize: responsive.h(fontsize.small),
               }}
             >

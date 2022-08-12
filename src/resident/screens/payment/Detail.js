@@ -503,6 +503,10 @@ class PaymentDetailScreen extends Component {
           // shadowRadius: 10,
           // shadowOpacity: 1,
           marginVertical: responsive.h(5),
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
+          padding: responsive.h(10),
         }}
         onPress={() => this.clickItem(o)}
       >
@@ -536,7 +540,7 @@ class PaymentDetailScreen extends Component {
           style={{
             marginTop: responsive.h(5),
             fontFamily: "Inter",
-            fontSize: responsive.h(12),
+            fontSize: responsive.h(14),
             fontWeight: "500",
             fontStyle: "normal",
             letterSpacing: 0,

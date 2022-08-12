@@ -711,8 +711,9 @@ class HomeScreen extends Component {
           shadowOpacity: 1,
           marginHorizontal: responsive.h(10),
           marginBottom: responsive.h(10),
-          width: responsive.w(182),
-          height: responsive.h(216),
+          // width: responsive.w(182),
+          // height: responsive.h(216),
+          padding: responsive.h(5),
         }}
       >
         <View>
@@ -726,7 +727,7 @@ class HomeScreen extends Component {
           />
           <Text
             lineBreakMode="tail"
-            numberOfLines={2}
+            numberOfLines={1}
             style={{
               flexDirection: "row",
               fontFamily: "Inter-Bold",
@@ -736,16 +737,14 @@ class HomeScreen extends Component {
               letterSpacing: 0,
               textAlign: "left",
               color: "#000000",
-              maxWidth: responsive.w(150),
-              paddingTop: responsive.h(10),
-              paddingLeft: responsive.h(10),
+              maxWidth: responsive.w(160),
+              paddingVertical: responsive.h(5),
             }}
           >
             {title}
           </Text>
           <View
             style={{
-              padding: responsive.h(10),
               flexDirection: "column",
               justifyContent: "space-between",
             }}
@@ -760,7 +759,6 @@ class HomeScreen extends Component {
                   fontSize: responsive.h(11),
                   fontWeight: "normal",
                   fontStyle: "normal",
-                  lineHeight: responsive.h(22),
                   textAlign: "left",
                   color: "#6f6f6f",
                 }}

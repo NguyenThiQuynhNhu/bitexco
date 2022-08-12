@@ -96,7 +96,7 @@ class SettingScreen extends Component {
           // }
         />
         <ScrollView>
-          <Text
+          {/* <Text
             style={{
               marginLeft: responsive.h(10),
               marginVertical: responsive.h(10),
@@ -110,7 +110,7 @@ class SettingScreen extends Component {
             }}
           >
             {Strings.setting.language}
-          </Text>
+          </Text> */}
 
           <View style={{ backgroundColor: "white" }}>
             <LanguageItem

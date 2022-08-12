@@ -182,6 +182,7 @@ class ChangePassScreen extends Component {
                 fontSize: responsive.h(16),
                 fontWeight: "normal",
                 fontStyle: "normal",
+                padding: responsive.h(5),
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#262626",
@@ -198,7 +199,7 @@ class ChangePassScreen extends Component {
               underlineColorAndroid="transparent"
               //onSubmitEditing={onSubmitEditing}
             />
-            <MyIcon name="phone" size={18} color="#666666" />
+            <MyIcon name="phone" size={responsive.h(18)} color="#666666" />
           </View>
           <View
             style={{
@@ -216,6 +217,8 @@ class ChangePassScreen extends Component {
                 fontFamily: "Inter-Regular",
                 fontSize: responsive.h(16),
                 fontWeight: "normal",
+                padding: responsive.h(5),
+
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "left",
@@ -253,6 +256,8 @@ class ChangePassScreen extends Component {
                 fontSize: responsive.h(16),
                 fontWeight: "normal",
                 fontStyle: "normal",
+                padding: responsive.h(5),
+
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#262626",
@@ -272,7 +277,7 @@ class ChangePassScreen extends Component {
               underlineColorAndroid="transparent"
               //onSubmitEditing={onSubmitEditing}
             />
-            <MyIcon name="password2" size={18} color="#666666" />
+            <MyIcon name="password2" size={responsive.h(18)} color="#666666" />
           </View>
           <TouchableOpacity
             style={{

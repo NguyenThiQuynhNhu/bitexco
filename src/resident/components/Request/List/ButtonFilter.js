@@ -45,7 +45,8 @@ const ButtonFilter = (props) => {
           paddingHorizontal: responsive.h(5),
           flexDirection: "column",
           justifyContent: "center",
-          marginBottom: responsive.h(10),
+          // marginBottom: responsive.h(10),
+          marginVertical: responsive.h(10),
         }}
       >
         <Text

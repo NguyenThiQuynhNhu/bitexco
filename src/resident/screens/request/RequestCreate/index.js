@@ -164,7 +164,7 @@ class CreateScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  padding: responsive.h(10),
+                  paddingVertical: responsive.h(10),
                   alignItems: "center",
                 }}
               >

@@ -196,7 +196,8 @@ class ServiceExtension extends Component {
         data={data}
         numColumns={2}
         contentContainerStyle={{
-          marginVertical: responsive.h(10),
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
         }}
         //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
         renderItem={this.renderItem}

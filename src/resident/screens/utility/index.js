@@ -371,6 +371,13 @@ class UtilityScreen extends Component {
               renderItem={this.renderItem}
               numColumns={3}
             />
+            <View
+              style={{
+                height: responsive.h(15),
+                backgroundColor: "#f5f5f5",
+                width: "100%",
+              }}
+            />
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
@@ -380,14 +387,15 @@ class UtilityScreen extends Component {
                 letterSpacing: 0,
                 textAlign: "left",
                 color: "#282828",
-                marginBottom: 0,
-                marginHorizontal: responsive.h(20),
+                marginHorizontal: responsive.h(10),
+                marginVertical: responsive.h(10),
               }}
             >
               {this.state.basic
                 ? Strings.setting.utilityRegister
                 : Strings.setting.serviceRegister}
             </Text>
+
             {this.state.basic
               ? this.renderContentBasic()
               : this.renderContentEx()}
@@ -842,11 +850,13 @@ class UtilityScreen extends Component {
                 </Text>
                 <View
                   style={{
-                    borderRadius: responsive.h(22 / 2),
+                    borderRadius: responsive.h(22),
                     width: responsive.h(22),
                     height: responsive.h(22),
                     justifyContent: "center",
                     backgroundColor: "#ffe800",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <Text
@@ -856,7 +866,6 @@ class UtilityScreen extends Component {
                       fontWeight: "500",
                       fontStyle: "normal",
                       letterSpacing: 0,
-                      textAlign: "center",
                       color: "#3d3d3d",
                     }}
                   >
@@ -915,11 +924,13 @@ class UtilityScreen extends Component {
                 </Text>
                 <View
                   style={{
-                    borderRadius: responsive.h(22 / 2),
-                    width: responsive.w(22),
+                    borderRadius: responsive.h(22),
+                    width: responsive.h(22),
                     height: responsive.h(22),
                     justifyContent: "center",
                     backgroundColor: "#ffe800",
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
                 >
                   <Text
@@ -929,7 +940,6 @@ class UtilityScreen extends Component {
                       fontWeight: "500",
                       fontStyle: "normal",
                       letterSpacing: 0,
-                      textAlign: "center",
                       color: "#3d3d3d",
                     }}
                   >
@@ -989,7 +999,9 @@ class UtilityScreen extends Component {
             </TouchableOpacity>
           </ScrollView>
         </View>
+
         {this.renderContent()}
+
         <Toast
           ref="toast"
           style={{
