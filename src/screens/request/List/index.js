@@ -18,6 +18,7 @@ import {
   ScrollView,
   Item,
   Switch,
+  StatusBar,
 } from "react-native";
 import { connect } from "react-redux";
 import _ from "lodash";
@@ -308,7 +309,11 @@ class ReuqestList extends Component {
     const { depSelected, showFilter, typeId, dataStatus } = this.state;
 
     return (
-      <View style={styles.container}>
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
         <NavBar
           leftButton={
             <TouchableOpacity
@@ -328,7 +333,7 @@ class ReuqestList extends Component {
               <View
                 style={{
                   justifyContent: "flex-start",
-                  alignItems: 'center'
+                  alignItems: "center",
                 }}
               >
                 <Text
@@ -358,7 +363,7 @@ class ReuqestList extends Component {
               <View
                 style={{
                   alignItems: "center",
-                  justifyContent: 'center',
+                  justifyContent: "center",
                   flexDirection: "row",
                   marginLeft: responsive.h(60),
                 }}
@@ -376,7 +381,7 @@ class ReuqestList extends Component {
                   value={this.props.isMine}
                   onValueChange={() => this._onValueChangeSwitch()}
                   style={{
-                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }]
+                    transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }],
                   }}
                   thumbColor="black"
                   trackColor="#fffff"
@@ -390,7 +395,7 @@ class ReuqestList extends Component {
               <View style={{ alignItems: "center", flexDirection: "row" }}>
                 <TouchableOpacity
                   onPress={() => this.setState({ showFilter: true })}
-                  style={{padding: responsive.h(10)}}
+                  style={{ padding: responsive.h(10) }}
                 >
                   <MyIcon name="search" size={responsive.h(25)} color="black" />
                 </TouchableOpacity>
@@ -399,7 +404,7 @@ class ReuqestList extends Component {
           }
         />
 
-        <View style={{ }}>
+        <View style={{}}>
           <FlatList
             ItemSeparatorComponent={() => (
               <View
@@ -410,8 +415,7 @@ class ReuqestList extends Component {
                 }}
               />
             )}
-            contentContainerStyle={{
-            }}
+            contentContainerStyle={{}}
             data={dataStatus}
             keyExtractor={(item, index) => `${index}`}
             horizontal={true}
@@ -453,10 +457,12 @@ class ReuqestList extends Component {
               backgroundColor: colors.appOverView,
             }}
           >
+            {/* <StatusBar hidden /> */}
             <View
               style={{
+                marginTop: responsive.h(40),
                 width: "90%",
-                margin: responsive.h(20),
+                marginHorizontal: responsive.h(20),
                 alignSelf: "center",
                 padding: responsive.h(10),
                 backgroundColor: "#fff",
@@ -511,18 +517,26 @@ class ReuqestList extends Component {
                   justifyContent: "space-between",
                 }}
               >
-                <Text style={{ fontSize: fontSize.small }}>
+                <Text style={{ fontSize: responsive.h(fontSize.small) }}>
                   {this.props.depSelected
                     ? this.props.depSelected.name
                     : depSelected
                     ? depSelected.name
                     : "Chọn phòng ban"}
                 </Text>
-                <MyIcon name="arrow-down" size={responsive.h(20)} color={colors.gray1} />
+                <MyIcon
+                  name="arrow-down"
+                  size={responsive.h(20)}
+                  color={colors.gray1}
+                />
               </TouchableOpacity>
 
               <View
-                style={{ flexDirection: "row", marginTop: responsive.h(10), marginLeft: -responsive.h(10) }}
+                style={{
+                  flexDirection: "row",
+                  marginTop: responsive.h(10),
+                  marginLeft: -responsive.h(10),
+                }}
               >
                 <ButtonDateFilter
                   value={typeId == 0}
@@ -585,7 +599,7 @@ class ReuqestList extends Component {
                 backgroundColor: colors.appTheme,
                 padding: responsive.h(10),
                 position: "absolute",
-                top: responsive.h(5),
+                top: responsive.h(30),
                 right: responsive.h(5),
               }}
             >

@@ -243,7 +243,7 @@ class ProposalList extends Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{padding: responsive.h(10)}}
+              style={{ padding: responsive.h(10) }}
               onPress={() => this.props.navigation.goBack()}
             >
               <MyIcon name="arrow" size={responsive.h(22)} color="black" />
@@ -297,8 +297,9 @@ class ProposalList extends Component {
           >
             <View
               style={{
+                marginTop: responsive.h(40),
                 width: "90%",
-                margin: responsive.h(20),
+                marginHorizontal: responsive.h(20),
                 alignSelf: "center",
                 padding: responsive.h(10),
                 backgroundColor: "#fff",
@@ -355,16 +356,22 @@ class ProposalList extends Component {
                   justifyContent: "space-between",
                 }}
               >
-                <Text style={{
-                  fontSize: responsive.h(14)
-                }}>
+                <Text
+                  style={{
+                    fontSize: responsive.h(14),
+                  }}
+                >
                   {this.props.depSelected
                     ? this.props.depSelected.name
                     : depSelected
                     ? depSelected.name
                     : "Chọn nhóm"}
                 </Text>
-                <MyIcon name="arrow-down" size={responsive.h(20)} color={colors.gray1} />
+                <MyIcon
+                  name="arrow-down"
+                  size={responsive.h(20)}
+                  color={colors.gray1}
+                />
               </TouchableOpacity>
               <View
                 style={{
@@ -415,7 +422,7 @@ class ProposalList extends Component {
                 backgroundColor: colors.appTheme,
                 padding: responsive.h(10),
                 position: "absolute",
-                top: responsive.h(5),
+                top: responsive.h(30),
                 right: responsive.h(5),
               }}
             >

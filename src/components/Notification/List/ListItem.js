@@ -38,7 +38,7 @@ class ListItem extends PureComponent {
             alignItems: "center",
             backgroundColor:
               isRead || Platform.OS != "ios" ? "#fff" : "#eeeeee",
-            borderTopRightRadius: Platform.OS === "ios" ? null :  responsive.h(50),
+            // borderTopRightRadius: Platform.OS === "ios" ? null :  responsive.h(50),
           }}
         >
           <View
@@ -52,7 +52,11 @@ class ListItem extends PureComponent {
               borderWidth: 1,
             }}
           >
-            <MyIcon name="megaphone-01" size={responsive.h(30)} color="#d2d2d2" />
+            <MyIcon
+              name="megaphone-01"
+              size={responsive.h(30)}
+              color="#d2d2d2"
+            />
 
             {/* {!isRead ? (
               <View
@@ -69,7 +73,13 @@ class ListItem extends PureComponent {
             ) : null} */}
           </View>
 
-          <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
+          <View
+            style={{
+              flex: 1,
+              justifyContent: "center",
+              marginLeft: responsive.h(10),
+            }}
+          >
             <View style={{ flex: 1, justifyContent: "center" }}>
               <Text numberOfLines={3} lineBreakMode="tail">
                 <Text
@@ -84,7 +94,7 @@ class ListItem extends PureComponent {
                   }}
                 >
                   {title}
-                </Text>{" "}
+                </Text>
                 <Text
                   style={{
                     fontSize: responsive.h(14),

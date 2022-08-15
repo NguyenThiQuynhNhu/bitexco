@@ -517,7 +517,7 @@ class ServiceExtensionDetailScreen extends Component {
                   style={{
                     height: responsive.h(86),
                     width: responsive.w(86),
-                    borderRadius: 10
+                    borderRadius: 10,
                   }}
                   source={{ uri: logo }}
                 />
@@ -544,6 +544,8 @@ class ServiceExtensionDetailScreen extends Component {
                       fontSize: responsive.h(14),
                       textAlign: "left",
                       color: "#3d3d3d",
+                      maxWidth: Screen.width * 0.7,
+                      paddingRight: responsive.h(5),
                     }}
                   >
                     {description}
@@ -562,7 +564,9 @@ class ServiceExtensionDetailScreen extends Component {
                 <Text style={styles.textTitle}>
                   {Strings.serviceExtension.amount}
                 </Text>
-                <Text style={{ ...styles.textInfo, marginLeft: responsive.h(5) }}>
+                <Text
+                  style={{ ...styles.textInfo, marginLeft: responsive.h(5) }}
+                >
                   {amount}
                 </Text>
               </View>
@@ -760,7 +764,11 @@ class ServiceExtensionDetailScreen extends Component {
                           borderColor: colors.gray1,
                         }}
                       >
-                        <MyIcon name="x" size={responsive.h(30)} color={colors.gray1} />
+                        <MyIcon
+                          name="x"
+                          size={responsive.h(30)}
+                          color={colors.gray1}
+                        />
                       </TouchableOpacity>
                       <TouchableOpacity
                         style={{
@@ -785,7 +793,11 @@ class ServiceExtensionDetailScreen extends Component {
                           })
                         }
                       >
-                        <MyIcon name="check" size={responsive.h(30)} color="#fff" />
+                        <MyIcon
+                          name="check"
+                          size={responsive.h(30)}
+                          color="#fff"
+                        />
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -861,7 +873,11 @@ class ServiceExtensionDetailScreen extends Component {
                 onPress={() => this.setState({ showAction: true })}
                 style={{ padding: responsive.h(10) }}
               >
-                <MyIcon name="more-vertical" size={responsive.h(25)} color="black" />
+                <MyIcon
+                  name="more-vertical"
+                  size={responsive.h(25)}
+                  color="black"
+                />
               </TouchableOpacity>
             )
           }
