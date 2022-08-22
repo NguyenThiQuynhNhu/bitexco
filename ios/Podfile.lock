@@ -1,8 +1,8 @@
 PODS:
   - Base64 (1.1.2)
   - boost-for-react-native (1.63.0)
-  - BVLinearGradient (2.6.2):
-    - React-Core
+  - BVLinearGradient (2.5.6):
+    - React
   - Charts (3.2.0):
     - Charts/Core (= 3.2.0)
   - Charts/Core (3.2.0)
@@ -183,21 +183,23 @@ PODS:
     - React-Core (= 0.60.5)
   - React-RCTWebSocket (0.60.5):
     - React-Core (= 0.60.5)
-  - ReactNativeLocalization (2.3.1):
-    - React-Core
+  - ReactNativeLocalization (2.1.6):
+    - React
   - rn-fetch-blob (0.10.16):
     - React-Core
-  - RNCAsyncStorage (1.12.1):
+  - RNCAsyncStorage (1.10.0):
+    - React
+  - RNDeviceInfo (8.4.8):
     - React-Core
-  - RNDeviceInfo (8.7.1):
-    - React-Core
-  - RNGestureHandler (1.10.3):
-    - React-Core
+  - RNGestureHandler (1.6.1):
+    - React
   - RNMomosdk (1.3.1):
     - React
-  - RNReanimated (1.13.4):
-    - React-Core
-  - RNVectorIcons (6.7.0):
+  - RNReanimated (1.8.0):
+    - React
+  - RNSVG (9.13.6):
+    - React
+  - RNVectorIcons (6.6.0):
     - React
   - SSZipArchive (2.2.3)
   - SwiftyJSON (4.0.0)
@@ -241,6 +243,7 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNMomosdk (from `../node_modules/react-native-momosdk`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - SwiftyJSON (= 4.0.0)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -336,6 +339,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-momosdk"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   RNVectorIcons:
     :path: "../node_modules/react-native-vector-icons"
   yoga:
@@ -344,7 +349,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
-  BVLinearGradient: 34a999fda29036898a09c6a6b728b0b4189e1a44
+  BVLinearGradient: e3aad03778a456d77928f594a649e96995f1c872
   Charts: 680c8328bd5e90cb14f67e00d2176f3113d19141
   CodePush: 35a0d8be82686010ee70b510c3549ba8df5ca737
   DoubleConversion: 5805e889d232975c086db112ece9ed034df7a0b2
@@ -386,18 +391,19 @@ SPEC CHECKSUMS:
   React-RCTText: b074d89033583d4f2eb5faf7ea2db3a13c7553a2
   React-RCTVibration: 2105b2e0e2b66a6408fc69a46c8a7fb5b2fdade0
   React-RCTWebSocket: cd932a16b7214898b6b7f788c8bddb3637246ac4
-  ReactNativeLocalization: be60e3a0e6e8db88d9f8190719ffb75e1cdab22a
+  ReactNativeLocalization: 9abfb1717d6c6f2e3a4e444c4402d52acbf784cc
   rn-fetch-blob: 651b8d076b43d0d7aa294a3d9ec16c00aab8bef9
-  RNCAsyncStorage: cb9a623793918c6699586281f0b51cbc38f046f9
-  RNDeviceInfo: af47a7d1a09d64c8cbb8b0c883db9bca422a9813
-  RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
+  RNCAsyncStorage: b34d2399d3e25db01d5b881949b503bd3c224d57
+  RNDeviceInfo: 417b2ef4456c13a9d50ad8c57895eea837b735a8
+  RNGestureHandler: 8f09cd560f8d533eb36da5a6c5a843af9f056b38
   RNMomosdk: 250cc7423c370f1fc34b95499c68e4cf0c097c92
-  RNReanimated: c1b56d030d1616239861534d9adb531f8cffab68
-  RNVectorIcons: 368d6d8b8301224e5ffb6254191f4f8876c2be0d
+  RNReanimated: 955cf4068714003d2f1a6e2bae3fb1118f359aff
+  RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f
+  RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
   yoga: 312528f5bbbba37b4dcea5ef00e8b4033fdd9411
 
-PODFILE CHECKSUM: f268f7310547e9e53158de48d61c9971052bcca7
+PODFILE CHECKSUM: fe9c8ec46be5d5d856122c5156f5b698e68b6f04
 
 COCOAPODS: 1.11.3

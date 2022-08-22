@@ -11,6 +11,7 @@ import {
   ImageBackground,
   Text,
   Platform,
+  Dimensions
 } from "react-native";
 import { MyIcon } from "../resident/theme/icons";
 import colors from "../resident/theme/colors";
@@ -36,9 +37,11 @@ import { color } from "react-native-reanimated";
 import { app } from "firebase";
 import responsive from "../resources/responsive";
 import DistableScreen from "../resident/screens/Distable";
-
+import Svg, { Path } from 'react-native-svg';
+import { getPath, getPathUp } from '../resident/theme/path';
 const Devices = require("react-native-device-detection");
 // const DeviceInfo = require('react-native-device-info');
+const { width, height } = Dimensions.get('window');
 export default createBottomTabNavigator(
   {
     home: { screen: HomeScreen },
@@ -63,90 +66,71 @@ export default createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconTab;
         let text;
+        const d = getPath(width, responsive.h(70), responsive.h(70), 0);
         switch (routeName) {
           case "distable":
             // console.log(DeviceInfo)
+
             return (
+
               <View
                 style={{
-                  backgroundColor: "transparent",
+                  padding: 1,
+                  width: responsive.h(50),
+                  height: responsive.h(50),
+                  borderRadius: responsive.h(25),
+                  backgroundColor: '#DDDDDD',
+                  //backgroundColor: "transparent",
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
-                  // top: -1 / 10,
-                  bottom: 28,
+                  top: -responsive.h(15),
                 }}
               >
-                <View
-                  style={{
-                    width: Devices.isTablet ? 60 : Screen.width / 5 - 20,
-                    height: Devices.isTablet ? 60 : Screen.width / 5 - 20,
-                    backgroundColor: "transparent",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    position: "absolute",
-                    top: Devices.isTablet ? -75 : -60,
-                  }}
-                >
-                  <Image
-                    source={require("../resources/Tabbar/icontabbar.png")}
-                    style={{ height: 50 }}
-                  />
-                </View>
-                <Text
-                  style={{
-                    ...styles.text,
-                    color: tintColor,
-                    position: "absolute",
-                    top: Devices.isTablet ? -15 : -10,
-                  }}
-                >
-                  {/* {Strings.tabbar.notification} */}
-                </Text>
+                <ImageProgress
+                  source={{ uri: screenProps.towerLogoUrl }}
+                  circle={true}
+                  style={{ width: responsive.h(49), height: responsive.h(49) }}
+                />
               </View>
             );
+
           case "payment":
             iconTab = "thanh-ton-01";
             badge = screenProps.badge.badgePaymentR;
             text = Strings.tabbar.payment;
             return (
-              <View>
-                <View style={styles.MainView}>
-                  <View
-                    style={{
-                      position: "absolute",
-                      top: Devices.isTablet ? -50 : -40,
-                    }}
-                  >
-                    <MyIcon
-                      name={iconTab}
-                      size={Devices.isTablet ? 30 : 26}
-                      color={tintColor}
-                    />
-                    {badge !== 0 && (
-                      <View style={styles.IconBadge1}>
-                        <Text
-                          style={{
-                            color: "white",
-                            fontSize: Devices.isTablet ? 12 : 10,
-                          }}
-                        >
-                          {badge > 99 ? "99+" : badge}
-                        </Text>
-                      </View>
-                    )}
-                  </View>
-                  <Text
-                    style={{
-                      ...styles.text,
-                      color: tintColor,
-                      position: "absolute",
-                      top: -15,
-                    }}
-                  >
-                    {text}
-                  </Text>
+              <View style={styles.MainView}>
+                <View
+                  style={{
+                  }}
+                >
+                  <MyIcon
+                    name={iconTab}
+                    size={responsive.h(26)}
+                    color={tintColor}
+                  />
+                  {badge !== 0 && (
+                    <View style={styles.IconBadge1}>
+                      <Text
+                        style={{
+                          color: "white",
+                          fontSize: responsive.h(12),
+                        }}
+                      >
+                        {badge > 99 ? "99+" : badge}
+                      </Text>
+                    </View>
+                  )}
                 </View>
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: tintColor,
+                  }}
+                >
+                  {text}
+                </Text>
               </View>
             );
             break;
@@ -156,43 +140,37 @@ export default createBottomTabNavigator(
             badge = screenProps.badge.badgeRequestR;
             text = Strings.tabbar.request;
             return (
-              <View>
-                <View style={styles.MainView}>
-                  <View
-                    style={{
-                      position: "absolute",
-                      top: Devices.isTablet ? -50 : -40,
-                    }}
-                  >
-                    <MyIcon
-                      name={iconTab}
-                      size={Devices.isTablet ? 30 : 26}
-                      color={tintColor}
-                    />
-                    {badge !== 0 && (
-                      <View style={styles.IconBadge1}>
-                        <Text
-                          style={{
-                            color: "white",
-                            fontSize: Devices.isTablet ? 12 : 10,
-                          }}
-                        >
-                          {badge > 99 ? "99+" : badge}
-                        </Text>
-                      </View>
-                    )}
-                  </View>
-                  <Text
-                    style={{
-                      ...styles.text,
-                      color: tintColor,
-                      position: "absolute",
-                      top: -15,
-                    }}
-                  >
-                    {text}
-                  </Text>
+              <View style={styles.MainView}>
+                <View
+                  style={{
+                  }}
+                >
+                  <MyIcon
+                    name={iconTab}
+                    size={responsive.h(26)}
+                    color={tintColor}
+                  />
+                  {badge !== 0 && (
+                    <View style={styles.IconBadge1}>
+                      <Text
+                        style={{
+                          color: "white",
+                          fontSize: responsive.h(12),
+                        }}
+                      >
+                        {badge > 99 ? "99+" : badge}
+                      </Text>
+                    </View>
+                  )}
                 </View>
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: tintColor,
+                  }}
+                >
+                  {text}
+                </Text>
               </View>
             );
             break;
@@ -200,21 +178,16 @@ export default createBottomTabNavigator(
             iconTab = "trang-ch-01";
             badge = screenProps.badge.badgeNotifyR;
             return (
-              <View>
+              <Svg style={styles.Svg} width={width} height={responsive.h(70)}>
+                <Path fill={'#fff'} stroke="#DDDDDD" strokeWidth={2} {...{ d }} />
                 <View style={styles.MainView}>
-                  <ImageBackground
-                    source={require("../resources/Tabbar/tabbar.png")}
-                    style={styles.image}
-                  />
                   <View
                     style={{
-                      position: "absolute",
-                      top: Devices.isTablet ? -50 : -40,
                     }}
                   >
                     <MyIcon
                       name={iconTab}
-                      size={Devices.isTablet ? 30 : 26}
+                      size={responsive.h(26)}
                       color={tintColor}
                     />
                     {badge !== 0 && (
@@ -222,7 +195,7 @@ export default createBottomTabNavigator(
                         <Text
                           style={{
                             color: "white",
-                            fontSize: Devices.isTablet ? 12 : 10,
+                            fontSize: responsive.h(12),
                           }}
                         >
                           {badge > 99 ? "99+" : badge}
@@ -234,14 +207,12 @@ export default createBottomTabNavigator(
                     style={{
                       ...styles.text,
                       color: tintColor,
-                      position: "absolute",
-                      top: -15,
                     }}
                   >
                     {Strings.tabbar.home}
                   </Text>
                 </View>
-              </View>
+              </Svg>
             );
             break;
           case "schedule":
@@ -254,43 +225,37 @@ export default createBottomTabNavigator(
             badge = 0;
             text = Strings.tabbar.utility;
             return (
-              <View>
-                <View style={styles.MainView}>
-                  <View
-                    style={{
-                      position: "absolute",
-                      top: Devices.isTablet ? -50 : -40,
-                    }}
-                  >
-                    <MyIcon
-                      name={iconTab}
-                      size={Devices.isTablet ? 30 : 26}
-                      color={tintColor}
-                    />
-                    {badge !== 0 && (
-                      <View style={styles.IconBadge1}>
-                        <Text
-                          style={{
-                            color: "white",
-                            fontSize: Devices.isTablet ? 12 : 10,
-                          }}
-                        >
-                          {badge > 99 ? "99+" : badge}
-                        </Text>
-                      </View>
-                    )}
-                  </View>
-                  <Text
-                    style={{
-                      ...styles.text,
-                      color: tintColor,
-                      position: "absolute",
-                      top: -15,
-                    }}
-                  >
-                    {text}
-                  </Text>
+              <View style={styles.MainView}>
+                <View
+                  style={{
+                  }}
+                >
+                  <MyIcon
+                    name={iconTab}
+                    size={responsive.h(26)}
+                    color={tintColor}
+                  />
+                  {badge !== 0 && (
+                    <View style={styles.IconBadge1}>
+                      <Text
+                        style={{
+                          color: "white",
+                          fontSize: responsive.h(12),
+                        }}
+                      >
+                        {badge > 99 ? "99+" : badge}
+                      </Text>
+                    </View>
+                  )}
                 </View>
+                <Text
+                  style={{
+                    ...styles.text,
+                    color: tintColor,
+                  }}
+                >
+                  {text}
+                </Text>
               </View>
             );
             break;
@@ -331,8 +296,10 @@ export default createBottomTabNavigator(
         // backgroundColor: colors.appTheme,
       },
       style: {
-        marginTop: Platform.OS == "android" ? 30 : 0,
-        height: Platform.isPad || Platform.OS == "ios" ? 25 : 40,
+        // marginTop: Platform.OS == "android" ? 30 : 0,
+        // height: Platform.isPad || Platform.OS == "ios" ? 25 : 40,
+        height: responsive.h(70),
+        borderTopWidth: 0
       },
     },
     // navigationOptions: ({ navigation }) => ({
@@ -361,27 +328,31 @@ const styles = StyleSheet.create({
     right: 0,
     position: "absolute",
     borderRadius: 45,
-    minWidth: Devices.isTablet ? 15 : 12,
-    minHeight: Devices.isTablet ? 15 : 12,
+    minWidth: responsive.h(12),
+    minHeight: responsive.h(12),
     backgroundColor: "#e24444",
     alignItems: "center",
     justifyContent: "center",
   },
   MainView: {
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    width: width / 5,
+    height: responsive.h(70),
+    //borderWidth: 1.5,
+    // borderColor: '#DDDDDD',
+    // borderTopLeftRadius: 15
   },
   container: {
     //flex: 1,
     //flexDirection: "column"
   },
-  image: {
-    width: Screen.width,
-    height: responsive.h(90),
+  Svg: {
+    width: width,
+    height: responsive.h(70),
     position: "absolute",
-    bottom: Devices.isTablet ? -60 : -20,
-    left: -(Screen.width / 10),
+    //bottom: Devices.isTablet ? -60 : -20,
+    left: Platform.isPad ? -(Screen.width / 10 - responsive.h(10)) : 0,
   },
   text: {
     fontFamily: fonts.appTheme,

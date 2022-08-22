@@ -56,7 +56,8 @@ import ActionSheet from "./components/common/ActionSheet";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { default_user, default_baner } from "./theme/images";
 import Swiper from "react-native-swiper";
-import { color } from "react-native-reanimated";
+import Svg, { Path } from 'react-native-svg';
+import { getPath, getPathUp } from './theme/path';
 //
 import { checkAnswerSurvey } from "./actions/surveyDetail";
 import { refreshDataHandle as refreshDataHandleCar } from "../resident/actions/carCard";
@@ -1511,8 +1512,9 @@ class HomeScreen extends Component {
     console.log(this.state);
     const { user, badge } = this.props;
     const uri = user ? { uri: user.photoUrl } : default_user;
-
+    const d = getPath(Screen.width, 70, 70, 0);
     return (
+      
       <View style={styles.container}>
         <NavBar
           leftButton={
@@ -1625,6 +1627,9 @@ class HomeScreen extends Component {
             </View>
           }
         />
+        {/* <Svg width={Screen.width} height={70}>
+            <Path fill={'#fff'} stroke="#DDDDDD" strokeWidth={1} {...{ d }} />
+          </Svg> */}
         <ScrollView style={{ backgroundColor: "#f5f5f5" }}>
           <UpdateVersion version={this.props.version} />
           {this.renderBanner()}

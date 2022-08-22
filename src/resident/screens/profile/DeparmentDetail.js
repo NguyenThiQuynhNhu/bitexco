@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Toast, { DURATION } from "react-native-easy-toast";
 
-import { Icon } from "react-native-elements";
 
 import {
   Alert,

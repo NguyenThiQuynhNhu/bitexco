@@ -40,6 +40,7 @@ import {
 
 import Strings from "../../../../utils/languages";
 import NavBar from "../../../../components/common/NavBar";
+//import TabBar from "../../../../components/common/TabBar";
 import { MyIcon } from "../../../../theme/icons";
 import responsive from "../../../../../resources/responsive"; // create a component
 class ServiceBasic extends Component {
@@ -485,6 +486,7 @@ class ServiceBasic extends Component {
             padding: responsive.h(10),
           }}
         />
+        {/* <TabBar/> */}
       </View>
     );
   }
