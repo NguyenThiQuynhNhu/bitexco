@@ -7,12 +7,12 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
     .line()
     .x((d) => d.x)
     .y((d) => d.y)([
-      { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
+      { x: (width - circleWidth) / 2 + circleWidth + 10, y: 0 },
       { x: width, y: 0 },
       { x: width, y: height },
       { x: 0, y: height },
       { x: 0, y: 0 },
-      { x: (width - circleWidth) / 2 - 20, y: 0 },
+      { x: (width - circleWidth) / 2 - 10, y: 0 },
     ]);
 
   const curved = shape
@@ -21,21 +21,21 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
     .y((d) => d.y)
     .curve(shape.curveBasis)([
 
-      { x: (width - circleWidth) / 2 - 20, y: 0 }, // border center left
-      { x: (width - circleWidth) / 2 - 10, y: 2 },
-      { x: (width - circleWidth) / 2 - 2, y: 10 },
-      { x: (width - circleWidth) / 2, y: 17 },
+      { x: (width - circleWidth) / 2 - 10, y: 0 }, // border center left
+      { x: (width - circleWidth) / 2 - 5, y: 2 },
+      { x: (width - circleWidth) / 2 - 1, y: 8 },
+      { x: (width - circleWidth) / 2, y: 15 },
 
-      { x: width / 2 - circleWidth / 2 + 8, y: height / 2 + 2 },
-      { x: width / 2 - 10, y: height / 2 + 10 },
-      { x: width / 2, y: height / 2 + 10 },
-      { x: width / 2 + 10, y: height / 2 + 10 },
-      { x: width / 2 + circleWidth / 2 - 8, y: height / 2 + 2 },
+      { x: width / 2 - circleWidth / 2 + 8, y: height / 2 + 1 },
+      { x: width / 2  , y: height / 2 + 5 },
+      { x: width / 2 , y: height / 2 + 3 },
+      { x: width / 2 , y: height / 2 + 5 },
+      { x: width / 2 + circleWidth / 2 - 8, y: height / 2 + 1 },
 
-      { x: (width - circleWidth) / 2 + circleWidth, y: 17 }, // border center right
-      { x: (width - circleWidth) / 2 + circleWidth + 2, y: 10 },
-      { x: (width - circleWidth) / 2 + circleWidth + 10, y: 2 },
-      { x: (width - circleWidth) / 2 + circleWidth + 20, y: 0 },
+      { x: (width - circleWidth) / 2 + circleWidth, y: 15 }, // border center right
+      { x: (width - circleWidth) / 2 + circleWidth + 1, y: 8 },
+      { x: (width - circleWidth) / 2 + circleWidth + 5, y: 2 },
+      { x: (width - circleWidth) / 2 + circleWidth + 10, y: 0 },
 
     ], line);
 
@@ -54,7 +54,7 @@ export const getPath = (width: number, height: number, centerWidth: number, bord
       { x: width, y: 20 },
       { x: width, y: height },
       { x: width, y: height },
-      // bottom 
+      // bottom
       { x: width, y: height },
       { x: 0, y: height },
       // left
@@ -133,7 +133,7 @@ export const getPathUp = (width: number, height: number, circleWidth: number = 5
       { x: width, y: 50 },
       { x: width, y: height },
       { x: width, y: height },
-      // bottom 
+      // bottom
       { x: width, y: height },
       { x: 0, y: height },
       // left

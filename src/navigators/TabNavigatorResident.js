@@ -11,7 +11,7 @@ import {
   ImageBackground,
   Text,
   Platform,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import { MyIcon } from "../resident/theme/icons";
 import colors from "../resident/theme/colors";
@@ -37,11 +37,11 @@ import { color } from "react-native-reanimated";
 import { app } from "firebase";
 import responsive from "../resources/responsive";
 import DistableScreen from "../resident/screens/Distable";
-import Svg, { Path } from 'react-native-svg';
-import { getPath, getPathUp } from '../resident/theme/path';
+import Svg, { Path } from "react-native-svg";
+import { getPath, getPathUp } from "../resident/theme/path";
 const Devices = require("react-native-device-detection");
 // const DeviceInfo = require('react-native-device-info');
-const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get("window");
 export default createBottomTabNavigator(
   {
     home: { screen: HomeScreen },
@@ -66,25 +66,24 @@ export default createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconTab;
         let text;
-        const d = getPath(width, 70, 70, 0);
+        const d = getPath(width, 65, 55, 0);
         switch (routeName) {
           case "distable":
             // console.log(DeviceInfo)
 
             return (
-
               <View
                 style={{
                   padding: 1,
                   width: 50,
                   height: 50,
                   borderRadius: 25,
-                  backgroundColor: '#DDDDDD',
+                  backgroundColor: "#DDDDDD",
                   //backgroundColor: "transparent",
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
-                  top: -responsive.h(15),
+                  top: -responsive.h(22),
                 }}
               >
                 <ImageProgress
@@ -101,10 +100,7 @@ export default createBottomTabNavigator(
             text = Strings.tabbar.payment;
             return (
               <View style={styles.MainView}>
-                <View
-                  style={{
-                  }}
-                >
+                <View style={{}}>
                   <MyIcon
                     name={iconTab}
                     size={responsive.h(26)}
@@ -141,10 +137,7 @@ export default createBottomTabNavigator(
             text = Strings.tabbar.request;
             return (
               <View style={styles.MainView}>
-                <View
-                  style={{
-                  }}
-                >
+                <View style={{}}>
                   <MyIcon
                     name={iconTab}
                     size={responsive.h(26)}
@@ -178,13 +171,15 @@ export default createBottomTabNavigator(
             iconTab = "trang-ch-01";
             badge = screenProps.badge.badgeNotifyR;
             return (
-              <Svg style={styles.Svg} width={width} height={70}>
-                <Path fill={'#fff'} stroke="#DDDDDD" strokeWidth={2} {...{ d }} />
+              <Svg style={styles.Svg} width={width} height={65}>
+                <Path
+                  fill={"#fff"}
+                  stroke="#DDDDDD"
+                  strokeWidth={1.5}
+                  {...{ d }}
+                />
                 <View style={styles.MainView}>
-                  <View
-                    style={{
-                    }}
-                  >
+                  <View style={{}}>
                     <MyIcon
                       name={iconTab}
                       size={responsive.h(26)}
@@ -226,10 +221,7 @@ export default createBottomTabNavigator(
             text = Strings.tabbar.utility;
             return (
               <View style={styles.MainView}>
-                <View
-                  style={{
-                  }}
-                >
+                <View style={{}}>
                   <MyIcon
                     name={iconTab}
                     size={responsive.h(26)}
@@ -298,8 +290,8 @@ export default createBottomTabNavigator(
       style: {
         // marginTop: Platform.OS == "android" ? 30 : 0,
         // height: Platform.isPad || Platform.OS == "ios" ? 25 : 40,
-        height: 70,
-        borderTopWidth: 0
+        height: 65,
+        borderTopWidth: 0,
       },
     },
     // navigationOptions: ({ navigation }) => ({
