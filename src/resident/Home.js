@@ -24,6 +24,7 @@ import FCM, {
   WillPresentNotificationResult,
   RemoteNotificationResult,
 } from "react-native-fcm";
+import * as mineTypes from "react-native-mime-types";
 import ImageProgress from "./components/common/ImageProgress";
 import NavBar from "./components/common/NavBar";
 import UpdateVersion from "../components/common/UpdateVersion";
@@ -77,7 +78,7 @@ import { loadDataHandle as loadDataHandleSurvey } from "../resident/actions/surv
 import responsive from "../resources/responsive";
 import { icons } from "../resources/icons";
 
-import * as ImagePicker from "react-native-image-picker";
+import ImagePicker from "react-native-image-picker";
 
 // icon
 
@@ -1904,14 +1905,14 @@ class HomeScreen extends Component {
         okTitle: Strings.createRequest.allow,
       },
     };
-    ImagePicker.launchImageLibrary(options, (response) => {
-      console.log("Response showImagePicker = ", response);
+    ImagePicker.showImagePicker(options, (response) => {
+      // console.log('Response showImagePicker = ', response);
       if (response.didCancel) {
-        console.log("User cancelled photo picker");
+        // console.log('User cancelled photo picker');
       } else if (response.error) {
-        console.log("ImagePicker Error: ", response.error);
+        // console.log('ImagePicker Error: ', response.error);
       } else if (response.customButton) {
-        console.log("User tapped custom button: ", response.customButton);
+        // console.log('User tapped custom button: ', response.customButton);
       } else {
         const image = {
           data: response.data,
@@ -1922,10 +1923,7 @@ class HomeScreen extends Component {
               : response.type,
           fileName: response.fileName,
         };
-        this.props.updateProfile({
-          image,
-          fullName: this.props.user.fullName,
-        });
+        this.props.updateProfile({ image, fullName: this.props.user.fullName });
       }
     });
   };

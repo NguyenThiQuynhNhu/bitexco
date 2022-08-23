@@ -66,7 +66,7 @@ export default createBottomTabNavigator(
         const { routeName } = navigation.state;
         let iconTab;
         let text;
-        const d = getPath(width, responsive.h(70), responsive.h(70), 0);
+        const d = getPath(width, 70, 70, 0);
         switch (routeName) {
           case "distable":
             // console.log(DeviceInfo)
@@ -76,9 +76,9 @@ export default createBottomTabNavigator(
               <View
                 style={{
                   padding: 1,
-                  width: responsive.h(50),
-                  height: responsive.h(50),
-                  borderRadius: responsive.h(25),
+                  width: 50,
+                  height: 50,
+                  borderRadius: 25,
                   backgroundColor: '#DDDDDD',
                   //backgroundColor: "transparent",
                   justifyContent: "center",
@@ -90,7 +90,7 @@ export default createBottomTabNavigator(
                 <ImageProgress
                   source={{ uri: screenProps.towerLogoUrl }}
                   circle={true}
-                  style={{ width: responsive.h(49), height: responsive.h(49) }}
+                  style={{ width: 49, height: 49 }}
                 />
               </View>
             );
@@ -178,7 +178,7 @@ export default createBottomTabNavigator(
             iconTab = "trang-ch-01";
             badge = screenProps.badge.badgeNotifyR;
             return (
-              <Svg style={styles.Svg} width={width} height={responsive.h(70)}>
+              <Svg style={styles.Svg} width={width} height={70}>
                 <Path fill={'#fff'} stroke="#DDDDDD" strokeWidth={2} {...{ d }} />
                 <View style={styles.MainView}>
                   <View
@@ -298,7 +298,7 @@ export default createBottomTabNavigator(
       style: {
         // marginTop: Platform.OS == "android" ? 30 : 0,
         // height: Platform.isPad || Platform.OS == "ios" ? 25 : 40,
-        height: responsive.h(70),
+        height: 70,
         borderTopWidth: 0
       },
     },
@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: width / 5,
-    height: responsive.h(70),
+    height: 70,
     //borderWidth: 1.5,
     // borderColor: '#DDDDDD',
     // borderTopLeftRadius: 15
@@ -349,7 +349,7 @@ const styles = StyleSheet.create({
   },
   Svg: {
     width: width,
-    height: responsive.h(70),
+    height: 70,
     position: "absolute",
     //bottom: Devices.isTablet ? -60 : -20,
     left: Platform.isPad ? -(Screen.width / 10 - responsive.h(10)) : 0,

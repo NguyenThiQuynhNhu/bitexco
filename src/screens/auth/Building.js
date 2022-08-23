@@ -27,6 +27,7 @@ import { Screen } from "../../utils/device";
 import Strings from "../../resident/utils/languages";
 import { navHome } from "../../actions/nav";
 import fontsize from "../../theme/fontsize";
+import ErrorContent from "../../components/common/ErrorContent";
 import {
   loadDataHandle,
   refreshDataHandle,
@@ -239,14 +240,18 @@ class BuildingScreen extends Component {
             </TouchableOpacity>
           }
         />
-
-        <FlatList
-          //ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: colors.grayBorder }} />}
-          style={{ marginTop: -10 }}
-          data={data}
-          renderItem={this.renderItem}
-          keyExtractor={(item, index) => `${index}`}
-        />
+        { data != undefined && data.length > 0 ?
+          <FlatList
+            //ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: colors.grayBorder }} />}
+            style={{ marginTop: -10 }}
+            data={data}
+            renderItem={this.renderItem}
+            keyExtractor={(item, index) => `${index}`}
+          />
+            : <ErrorContent
+              title={Strings.app.emptyData}
+              onTouchScreen={() => this.props.refreshDataHandle()}
+            />}
       </View>
     );
   }

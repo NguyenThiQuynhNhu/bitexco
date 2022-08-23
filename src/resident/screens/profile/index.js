@@ -221,7 +221,7 @@ class ProfileScreen extends Component {
             }}
           >
             <View>
-              <View style={{ paddingVertical: responsive.h(10) }} />
+              <View style={{ paddingVertical: responsive.h(0) }} />
               <MenuPicker
                 icon="sphere"
                 name={Strings.profile.settinglanguage}
