@@ -83,7 +83,7 @@ export default createBottomTabNavigator(
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
-                  top: -responsive.h(22),
+                  top: Platform.isPad ? -25 : -17,
                 }}
               >
                 <ImageProgress
@@ -331,9 +331,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: width / 5,
     height: 70,
-    //borderWidth: 1.5,
-    // borderColor: '#DDDDDD',
-    // borderTopLeftRadius: 15
   },
   container: {
     //flex: 1,
@@ -345,6 +342,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     //bottom: Devices.isTablet ? -60 : -20,
     left: Platform.isPad ? -(Screen.width / 10 - responsive.h(10)) : 0,
+    //bottom: 0
   },
   text: {
     fontFamily: fonts.appTheme,
