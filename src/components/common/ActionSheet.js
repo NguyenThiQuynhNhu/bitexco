@@ -11,7 +11,7 @@ import {
 import FontSize from "../../theme/fontsize";
 import Color from "../../theme/colors";
 import responsive from "../../resources/responsive";
-
+import Strings from "../../utils/languages";
 // create a component
 class ActionSheet extends Component {
   state = {
@@ -22,6 +22,7 @@ class ActionSheet extends Component {
   }
   render() {
     const { data, renderItem, closeAction } = this.props;
+    console.log('ActionSheet', data)
     return (
       <Modal
         animationType="slide"
@@ -82,7 +83,7 @@ class ActionSheet extends Component {
                     color: "red",
                   }}
                 >
-                  Hủy
+                  {Strings.app.cancel}
                 </Text>
               </TouchableOpacity>
             </View>

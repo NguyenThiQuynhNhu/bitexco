@@ -33,7 +33,7 @@ class ListItem extends PureComponent {
         <View
           style={{
             flex: 1,
-            padding: responsive.h(10),
+            padding: responsive.h(15),
             flexDirection: "row",
             alignItems: "center",
             backgroundColor:

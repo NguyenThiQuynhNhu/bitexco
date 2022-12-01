@@ -4,13 +4,13 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import moment from "moment";
 import fontSize from "../../../theme/fontsize";
 import { MyIcon } from "../../../theme/icons";
-import { converTypeToIcon } from "../../../utils/notification";
+import { converTypeToString } from "../../../utils/notification";
 import ImageProgress from "../../common/ImageProgress";
 import { myFromNow } from "../../../utils/request";
 import colors from "../../../theme/colors";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import responsive from "../../../resources/responsive";
-
+import Strings from "../../../utils/languages";
 // create a component
 class ListItem extends PureComponent {
   render() {
@@ -38,7 +38,6 @@ class ListItem extends PureComponent {
             alignItems: "center",
             backgroundColor:
               isRead || Platform.OS != "ios" ? "#fff" : "#eeeeee",
-            // borderTopRightRadius: Platform.OS === "ios" ? null :  responsive.h(50),
           }}
         >
           <View
@@ -57,20 +56,6 @@ class ListItem extends PureComponent {
               size={responsive.h(30)}
               color="#d2d2d2"
             />
-
-            {/* {!isRead ? (
-              <View
-                style={{
-                  borderRadius: 45,
-                  height: 10,
-                  width: 10,
-                  backgroundColor: "red",
-                  position: "absolute",
-                  right: 10,
-                  bottom: 0,
-                }}
-              />
-            ) : null} */}
           </View>
 
           <View
@@ -136,7 +121,7 @@ class ListItem extends PureComponent {
                 numberOfLines={2}
                 lineBreakMode="tail"
               >
-                {moment(dateCreate).format("HH:mm - DD [tháng] MM, YYYY")}
+                {moment(dateCreate).format(`HH:mm - DD [${Strings.common.month}] MM, YYYY`)}
               </Text>
             </View>
           </View>

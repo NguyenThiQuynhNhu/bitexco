@@ -73,7 +73,7 @@ class RequestUpdateStatus extends Component {
         }}
       >
         <Lookup
-          fielName={`Trạng thái (*)`}
+          fielName={`${Strings.common.status} (*)`}
           text={
             statuspSelected.id != 0
               ? statuspSelected.name
@@ -181,7 +181,7 @@ class RequestUpdateStatus extends Component {
                       color: "#ffffff",
                     }}
                   >
-                    Nhấn vào để tải ảnh
+                    {Strings.createRequest.addPhoto}
                   </Text>
                 </View>
               </View>
@@ -261,7 +261,7 @@ class RequestUpdateStatus extends Component {
                   color: "#ffffff",
                 }}
               >
-                Nhấn vào để tải ảnh
+               {Strings.createRequest.textPhoto}
               </Text>
             </View>
           </TouchableOpacity>
@@ -365,7 +365,7 @@ class RequestUpdateStatus extends Component {
                 color: "black",
               }}
             >
-              Đổi trạng thái yêu cầu
+              {this.props.navigation.state.params.title}
             </Text>
           }
           rightView={rightButton}
@@ -380,7 +380,7 @@ class RequestUpdateStatus extends Component {
     const { statuspSelected, content, reason, imagesInformation } = this.state;
     if (statuspSelected.id == 0) {
       return this.refs.toast.show(
-        `Vui lòng chọn trạng thái mới`,
+        `${Strings.common.pleaseChoose} ${Strings.common.status}`,
         DURATION.LENGTH_LONG
       );
     }
@@ -398,8 +398,25 @@ class RequestUpdateStatus extends Component {
   };
 
   _onAttachment = () => {
-    // if (this.props.images && _.size(this.props.images) < 5) {
-    ImagePicker.showImagePicker(ImagePickerOption, (response) => {
+    let option = {
+      quality: 1.0,
+      maxWidth: 512,
+      maxHeight: 512,
+      storageOptions: {
+        skipBackup: true
+      },
+      title: Strings.createRequest.takeAPhoto,
+      takePhotoButtonTitle: Strings.createRequest.chooseAnImage,
+      chooseFromLibraryButtonTitle: Strings.createRequest.SelectFromGallery,
+      cancelButtonTitle: Strings.createRequest.cancel,
+      permissionDenied: {
+        title: Strings.createRequest.access,
+        text: Strings.createRequest.access2,
+        reTryTitle: Strings.createRequest.retry,
+        okTitle: Strings.createRequest.allow,
+      },
+    }
+    ImagePicker.showImagePicker(option, (response) => {
       // console.log('Response showImagePicker = ', response);
 
       if (response.didCancel) {

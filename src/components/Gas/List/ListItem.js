@@ -8,6 +8,7 @@ import ImageProgress from '../../common/ImageProgress';
 import { myFromNow } from '../../../utils/request';
 import colors from '../../../theme/colors';
 import responsive from "../../../resources/responsive";
+import Strings from "../../../utils/languages";
 // create a component
 class ListItem extends PureComponent {
     render() {
@@ -93,7 +94,7 @@ class ListItem extends PureComponent {
                                         fontStyle: "normal",
                                         letterSpacing: 0,
                                         textAlign: "left",
-                                        color: "#626262" }} numberOfLines={1}>CS cũ: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        color: "#626262" }} numberOfLines={1}>{Strings.electric.oldIndex}: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
                                         fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
@@ -107,7 +108,7 @@ class ListItem extends PureComponent {
                                         fontStyle: "normal",
                                         letterSpacing: 0,
                                         textAlign: "left",
-                                        color: "#626262" }} numberOfLines={1}>CS mới: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        color: "#626262" }} numberOfLines={1}>{Strings.electric.newIndex}: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
                                         fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
@@ -121,7 +122,7 @@ class ListItem extends PureComponent {
                                         fontStyle: "normal",
                                         letterSpacing: 0,
                                         textAlign: "left",
-                                        color: "#626262" }} numberOfLines={1}>Tiêu thụ: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
+                                        color: "#626262" }} numberOfLines={1}>{Strings.electric.amountOfConsumption}: <Text style={{ marginVertical: responsive.h(5), fontFamily: "Inter-Medium",
                                         fontSize: responsive.h(12),
                                         fontWeight: "500",
                                         fontStyle: "normal",
@@ -156,7 +157,7 @@ class ListItem extends PureComponent {
                                     fontStyle: "normal",
                                     letterSpacing: 0,
                                     textAlign: "left",
-                                    color: "#ff3d00" }} numberOfLines={1}>Chưa ghi chỉ số</Text>
+                                    color: "#ff3d00" }} numberOfLines={1}>{Strings.electric.noIndexYet}</Text>
                         </View> }
                     </View>
                 </View>

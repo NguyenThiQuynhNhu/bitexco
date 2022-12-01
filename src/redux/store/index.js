@@ -50,7 +50,7 @@ const config = {
     // 'survey',
     // 'surveyDetail',
     // 'reportSurvey',
-    "app",
+    //"app",
     "nav",
     "vendor",
     "drawer",
@@ -126,6 +126,7 @@ const config = {
     "carCard",
     "carCardCreate",
     "version",
+    'buildingDetail'
   ],
 };
 

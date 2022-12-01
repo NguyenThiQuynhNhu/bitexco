@@ -14,8 +14,9 @@ import firebase from 'firebase';
 
 
 export const getRequestStatusTotal = (dataRequest) => async (dispatch) => {
+    console.log('getRequestStatusTotal')
     try {
-        //console.log('getRequestStatusTotal')
+        
         dispatch({ type: REQUEST_GET_TOTAL_STATUS_REQUEST });
         const url = '/Vendors/RequestStatusTotal';
         const ret = await get(url, dataRequest);
@@ -58,7 +59,7 @@ export const loadDataHandle = (dataRequest) => async (dispatch) => {
                         data: ret.data
                     }
                 });
-                const retStatusR = await get('/Vendors/RequestStatusTotal', {towerId: dataRequest.towerId,  isMine: dataRequest.isMine})
+                const retStatusR = await get('/Vendors/RequestStatusTotal', {towerId: dataRequest.towerId, isMine: dataRequest.isMine, langId: dataRequest.langId,})
                         if(retStatusR !== undefined && retStatusR !== null){
                             if (retStatusR.status == 200) {
                                 dispatch({

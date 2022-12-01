@@ -28,7 +28,7 @@ class StackedBarChartScreen extends React.Component {
           label: '',
           config: {
             colors: [processColor('orange'), processColor('#3292FC'), processColor('#45bf6e'), processColor('#8CEAFF')],
-            stackLabels: ['Yêu cầu mới', 'Đang xử lý', 'Đã hoàn thành', 'Đã đóng',],
+            stackLabels: [props.dataStatus[0].name, props.dataStatus[1].name, props.dataStatus[2].name, props.dataStatus[3].name,],
             drawFilled: true,
             drawHighlightIndicators: true,
             valueTextSize: responsive.h(12),
@@ -75,8 +75,8 @@ class StackedBarChartScreen extends React.Component {
   }
 
   render() {
+    console.log('1', this.props)
     return (
-
       <View style={{ flex: 1 }}>
 
         {/* <View style={{ height: 80 }}>

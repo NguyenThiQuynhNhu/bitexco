@@ -67,7 +67,7 @@ class ListBlock extends Component {
                 color: "black",
               }}
             >
-              Chọn khối nhà
+              {Strings.common.choose} {Strings.electric.block}
             </Text>
           }
           //   rightView={

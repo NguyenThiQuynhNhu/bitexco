@@ -40,7 +40,7 @@ import {
 import { ChuyenTrang, getDate, getDateApi } from "../../../utils/Common";
 import ActionSheet from "../../../components/common/ActionSheet";
 import DateTimePicker from "react-native-modal-datetime-picker";
-
+import DatePicker from 'react-native-date-picker'
 import TuNgayPicker from "react-native-modal-datetime-picker";
 import DenNgayPicker from "react-native-modal-datetime-picker";
 import Swipeable from "react-native-swipeable";
@@ -49,6 +49,7 @@ import Strings from "../../../utils/languages";
 import moment from "moment";
 
 import NavBar from "../../../resident/components/common/NavBar";
+import { converDateToByString, converStatusToByString } from "../../../utils/handover";
 class index extends Component {
   constructor(props) {
     super(props);
@@ -203,7 +204,7 @@ class index extends Component {
                 modalView: this.renderCreateNote(item),
               })
             }
-            style={{ flex: 1, justifyContent: "center", paddingLeft: responsive.h(10),}}
+            style={{ flex: 1, justifyContent: "center", paddingLeft: responsive.h(10), }}
           >
             <Text />
           </TouchableOpacity>,
@@ -323,7 +324,7 @@ class index extends Component {
                 lineBreakMode="tail"
                 numberOfLines={2}
               >
-                {item.statusName}
+                {converStatusToByString(item.statusName)}
               </Text>
             </View>
           </View>
@@ -361,7 +362,7 @@ class index extends Component {
             fontFamily: "Inter-Medium",
           }}
         >
-          {item.name}
+          {converDateToByString(item.name)}
         </Text>
       </TouchableOpacity>
     );
@@ -404,7 +405,7 @@ class index extends Component {
             fontFamily: "Inter-Medium",
           }}
         >
-          {item.name}
+          {converStatusToByString(item.name)}
         </Text>
       </TouchableOpacity>
     );
@@ -482,19 +483,19 @@ class index extends Component {
           marginTop: responsive.h(10),
           marginLeft: responsive.h(10),
         }}
-        // ListFooterComponent={this.renderFooter}
-        // onEndReachedThreshold={0.5}
-        // onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false }}
-        // onEndReached={() => {
-        //     if (!this.onEndReachedCalledDuringMomentum && !this.props.outOfStock && this.props.currentPage > 0 && !this.props.isLoading) {
-        //         const data = {
-        //             keyword: this.state.isApplySearchKey ? this.state.searchKey : '',
-        //             currentPage: this.props.currentPage + 1,
-        //             rowPerPage: this.props.rowPerPage
-        //         };
-        //         this.props.loadDataHandle(data);
-        //     }
-        // }}
+      // ListFooterComponent={this.renderFooter}
+      // onEndReachedThreshold={0.5}
+      // onMomentumScrollBegin={() => { this.onEndReachedCalledDuringMomentum = false }}
+      // onEndReached={() => {
+      //     if (!this.onEndReachedCalledDuringMomentum && !this.props.outOfStock && this.props.currentPage > 0 && !this.props.isLoading) {
+      //         const data = {
+      //             keyword: this.state.isApplySearchKey ? this.state.searchKey : '',
+      //             currentPage: this.props.currentPage + 1,
+      //             rowPerPage: this.props.rowPerPage
+      //         };
+      //         this.props.loadDataHandle(data);
+      //     }
+      // }}
       />
     );
   }
@@ -622,7 +623,7 @@ class index extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: responsive.h(10),}}
+              style={{ padding: responsive.h(10), }}
             >
               <MyIcon size={responsive.h(20)} name="arrow" color="black" />
             </TouchableOpacity>
@@ -639,11 +640,11 @@ class index extends Component {
                 color: "black",
               }}
             >
-              Bàn giao khách hàng
+              {Strings.handover.navTitleCustomer}
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ padding: responsive.h(10),}}>
+            <TouchableOpacity style={{ padding: responsive.h(10), }}>
               <MyIcon size={responsive.h(24)} name="search" color="transparent" />
             </TouchableOpacity>
           }
@@ -668,11 +669,11 @@ class index extends Component {
                 fontFamily: "Inter-Bold",
               }}
             >
-              {this.state.statusName}
+              {converStatusToByString(this.state.statusName)}
             </Text>
 
             <Icon
-              style={{ fontSize: fontsize.medium, marginHorizontal: responsive.h(10),}}
+              style={{ fontSize: fontsize.medium, marginHorizontal: responsive.h(10), }}
               name="filter-list"
             />
           </TouchableOpacity>
@@ -719,10 +720,10 @@ class index extends Component {
                   fontWeight: "500",
                 }}
               >
-                {this.props.utils.Name}
+                {converDateToByString(this.props.utils.Name)}
               </Text>
               <Icon
-                style={{ fontSize: fontsize.larg, marginLeft: responsive.h(5),}}
+                style={{ fontSize: fontsize.larg, marginLeft: responsive.h(5), }}
                 name="arrow-drop-down"
                 type="MaterialIcons"
               />
@@ -811,7 +812,7 @@ class index extends Component {
             renderItem={this.renderActionSheetItemStatus}
             closeAction={() => this.setState({ showActionStatus: false })}
           />
-          <DateTimePicker
+          {/* <DateTimePicker
             isVisible={this.state.isDateTimePickerVisible}
             onConfirm={this._handleDatePicked}
             onCancel={this._hideDateTimePicker}
@@ -860,6 +861,46 @@ class index extends Component {
             titleIOS="Chọn thời gian"
             mode="date"
             locale="vi_VN" //https://gist.github.com/jacobbubu/1836273
+          /> */}
+          <DatePicker
+            modal
+            mode="date"
+            open={this.state.isTuNgayPickerVisible}
+            onConfirm={(date) => {
+              this.setState({ isTuNgayPickerVisible: false });
+              this.props.onChangetuNgay(date);
+              setTimeout(() => {
+                this.props.refreshDataHandle();
+              }, 500);
+            }}
+            onCancel={() => {
+              this.setState({ isTuNgayPickerVisible: false });
+            }}
+            confirmText={'Ok'}
+            title={`${Strings.common.choose} ${Strings.handover.time}`}
+            cancelText={Strings.handover.cancel}
+            date={new Date(this.props.utils.tuNgay)}
+            locale={this.props.language == 1 ? "vi_VN" : 'en_US'}
+          />
+          <DatePicker
+            modal
+            mode="date"
+            date={new Date(this.props.utils.denNgay)}
+            open={this.state.isDenNgayPickerVisible}
+            onConfirm={(date) => {
+              this.setState({ isDenNgayPickerVisible: false });
+              this.props.onChangedenNgay(date);
+              setTimeout(() => {
+                this.props.refreshDataHandle();
+              }, 500);
+            }}
+            onCancel={() => {
+              this.setState({ isDenNgayPickerVisible: false });
+            }}
+            confirmText={'Ok'}
+            title={`${Strings.common.choose} ${Strings.handover.time}`}
+            cancelText={Strings.handover.cancel}
+            locale={this.props.language == 1 ? "vi_VN" : 'en_US'}//https://gist.github.com/jacobbubu/1836273
           />
           <ActionSheet
             title="Chọn thời gian"

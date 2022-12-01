@@ -158,7 +158,7 @@ class CreateScreen extends Component {
       <View style={{ marginTop: responsive.h(10) }}>
         {this.state.waterRequest.linkUrl != "" ? (
           <View>
-            <Text style={styles.textTitle}>Hình nhân viên up</Text>
+            <Text style={styles.textTitle}>{Strings.electric.indexImage}</Text>
             <View style={{ flex: 1, flexDirection: "row" }}>
               <View
                 style={{
@@ -195,7 +195,7 @@ class CreateScreen extends Component {
                       color: "#ffffff",
                     }}
                   >
-                    Nhấn vào để tải ảnh
+                    {Strings.createRequest.addPhoto}
                   </Text>
                 </View>
               </View>
@@ -256,7 +256,7 @@ class CreateScreen extends Component {
                   color: "#ffffff",
                 }}
               >
-                Nhấn vào để tải ảnh
+                {Strings.createRequest.textPhoto}
               </Text>
             </View>
           </TouchableOpacity>
@@ -303,7 +303,8 @@ class CreateScreen extends Component {
         description,
         datePayment,
       } = this.state.waterRequest;
-
+      console.log('state', this.state)
+      console.log('props', this.props)
       const { indexId } = data;
       return (
         <KeyboardAwareScrollView
@@ -351,7 +352,7 @@ class CreateScreen extends Component {
                   paddingVertical: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Chỉ số mới (*)</Text>
+                <Text style={styles.textTitle}>{Strings.electric.newIndex} (*)</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -366,7 +367,7 @@ class CreateScreen extends Component {
                     marginLeft: responsive.h(20),
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập chỉ số mới..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.newIndex}...`}
                   placeholderTextColor="#a0a0a0"
                   value={indexNew.toString()}
                   underlineColorAndroid="transparent"
@@ -377,7 +378,7 @@ class CreateScreen extends Component {
                   }}
                 />
               </View>
-              <Text style={styles.textTitle}>Hình ảnh chỉ số</Text>
+              <Text style={styles.textTitle}>{Strings.electric.indexImage}</Text>
               {this.state.images.length > 0 ? (
                 <ScrollView
                   horizontal={true}
@@ -419,7 +420,7 @@ class CreateScreen extends Component {
                             color: "#ffffff",
                           }}
                         >
-                          Nhấn vào để tải ảnh
+                          {Strings.createRequest.addPhoto}
                         </Text>
                       </View>
                     </View>
@@ -489,7 +490,7 @@ class CreateScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Số người ưu đãi</Text>
+                <Text style={styles.textTitle}>{Strings.electric.amountOfPeopleGetEndow}</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -506,7 +507,7 @@ class CreateScreen extends Component {
                     fontFamily: "Inter-SemiBold",
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập số người..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.amountOfPeopleGetEndow}...`}
                   placeholderTextColor="#a0a0a0"
                   value={peoplePromotion.toString()}
                   //value={indexId > 0 ? peoplePromotion.toString() : this.props.data.peoplePromotion.toString()}
@@ -529,7 +530,7 @@ class CreateScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Số M3/người</Text>
+                <Text style={styles.textTitle}>{Strings.electric.m3person}</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -546,7 +547,7 @@ class CreateScreen extends Component {
                     fontFamily: "Inter-SemiBold",
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập số m3/ người..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.m3person}...`}
                   placeholderTextColor="#a0a0a0"
                   value={m3PerPeople.toString()}
                   //value={indexId > 0 ? m3PerPeople.toString() : this.props.data.m3PerPeople.toString()}
@@ -588,7 +589,7 @@ class CreateScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Tỷ lệ phí BVMT</Text>
+                <Text style={styles.textTitle}>{Strings.electric.rateBVMT}</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -605,7 +606,7 @@ class CreateScreen extends Component {
                     fontFamily: "Inter-SemiBold",
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập tỷ lệ phí BVMT..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.rateBVMT}...`}
                   placeholderTextColor="#a0a0a0"
                   value={(rateFeeEnviroment * 100).toString()}
                   //value={indexId > 0 ? rateFeeEnviroment.toString() : this.props.data.rateFeeEnviroment.toString()}
@@ -639,7 +640,7 @@ class CreateScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Tỷ lệ VAT</Text>
+                <Text style={styles.textTitle}>{Strings.electric.VATrate}</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -656,7 +657,7 @@ class CreateScreen extends Component {
                     fontFamily: "Inter-SemiBold",
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập tỷ lệ VAT..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.VATrate}...`}
                   placeholderTextColor="#a0a0a0"
                   value={(rateFeeVAT * 100).toString()}
                   //value={indexId > 0 ? rateFeeVAT.toString() : this.props.data.rateFeeVAT.toString()}
@@ -689,7 +690,7 @@ class CreateScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Ghi chú</Text>
+                <Text style={styles.textTitle}>{Strings.electric.note}</Text>
                 <TextInput
                   maxLength={500}
                   underline={false}
@@ -709,7 +710,7 @@ class CreateScreen extends Component {
                     borderColor: "#a0a0a0",
                     borderRadius: responsive.h(4),
                   }}
-                  placeholder="Nhập ghi chú..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.note}...`}
                   placeholderTextColor="#a0a0a0"
                   value={description}
                   onChangeText={(description) => {
@@ -732,7 +733,7 @@ class CreateScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Chỉ số cũ</Text>
+              <Text style={styles.textTitle}>{Strings.electric.oldIndex}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -758,7 +759,7 @@ class CreateScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Số tiêu thụ</Text>
+              <Text style={styles.textTitle}>{Strings.electric.amountOfConsumption}</Text>
               {/* <Text style={{ justifyContent: 'flex-end', fontSize: fontsize.larg }}>{ Number(indexNew) > 0 ? (indexNew - (indexId > 0 ? indexOld : this.props.data.indexNew)) : '' }</Text> */}
               <Text
                 style={{
@@ -785,7 +786,7 @@ class CreateScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Kỳ thanh toán</Text>
+              <Text style={styles.textTitle}>{Strings.electric.paymentPeriod}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -796,8 +797,8 @@ class CreateScreen extends Component {
                   color: "#a0a0a0",
                 }}
               >
-                {dateFrom === null ? "" : moment(dateFrom).format("DD/MM/YYYY")}{" "}
-                - {dateTo === null ? "" : moment(dateTo).format("DD/MM/YYYY")}
+                {!dateFrom || (dateFrom && dateFrom =='') ? "" : moment(dateFrom).format("DD/MM/YYYY")}{" "}
+                - {!dateTo || (dateTo && dateTo =='') ? "" : moment(dateTo).format("DD/MM/YYYY")}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -814,7 +815,7 @@ class CreateScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Ngày thanh toán</Text>
+              <Text style={styles.textTitle}>{Strings.electric.dateOfPayment}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -825,7 +826,7 @@ class CreateScreen extends Component {
                   color: "#a0a0a0",
                 }}
               >
-                {datePayment === null
+                {!datePayment || (datePayment && datePayment =='') 
                   ? ""
                   : moment(datePayment).format("DD/MM/YYYY")}
               </Text>
@@ -845,7 +846,7 @@ class CreateScreen extends Component {
                   marginHorizontal: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Ngày thông báo</Text>
+                <Text style={styles.textTitle}>{Strings.electric.notificationDate}</Text>
                 <Text
                   style={{
                     justifyContent: "flex-end",
@@ -856,7 +857,7 @@ class CreateScreen extends Component {
                     color: "#a0a0a0",
                   }}
                 >
-                  {dateNotify === null
+                  {!dateNotify || (dateNotify && dateNotify =='') 
                     ? ""
                     : moment(dateNotify).format("DD/MM/YYYY")}
                 </Text>
@@ -873,7 +874,7 @@ class CreateScreen extends Component {
                   marginHorizontal: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Tổng tiền</Text>
+                <Text style={styles.textTitle}>{Strings.electric.totalAmount}</Text>
                 <Text
                   style={{
                     justifyContent: "flex-end",
@@ -925,7 +926,7 @@ class CreateScreen extends Component {
               <MyIcon name="paperplane" color="black" size={responsive.h(24)} />
             </TouchableOpacity>
           }
-          body={<Text style={titleStyle}>Ghi chỉ số</Text>}
+          body={<Text style={titleStyle}>{Strings.electric.writeIndex}</Text>}
           // rightView={<IconButton materialIcon="send" color="#fff" size={24}
           //     onPress={this._onSend}
           // />}
@@ -990,7 +991,7 @@ class CreateScreen extends Component {
             >
               <View style={{ padding: responsive.h(12), paddingVertical: responsive.h(15), height: responsive.h(160) }}>
                 <Text style={{ textAlign: "center", fontSize: responsive.h(17) }}>
-                  TÙY CHỈNH THỜI GIAN
+                {Strings.statistical.custom} {Strings.statistical.time}
                 </Text>
                 <View
                   style={{
@@ -1073,7 +1074,7 @@ class CreateScreen extends Component {
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "red", fontSize: responsive.h(14) }}>ĐÓNG</Text>
+                <Text style={{ color: "red", fontSize: responsive.h(14) }}>{Strings.statistical.close}</Text>
               </TouchableOpacity>
             </View>
             <DateTimePicker
@@ -1181,7 +1182,7 @@ class CreateScreen extends Component {
     let indexOldSub = indexOld;
     if (Number(indexNew) === NaN) {
       return this.refs.toast.show(
-        `${Strings.message.pleaseType}` + " Chỉ số mới",
+        `${Strings.message.pleaseType} ${Strings.electric.newIndex}`,
         DURATION.LENGTH_LONG
       );
     }
@@ -1242,17 +1243,17 @@ class CreateScreen extends Component {
         } else {
           return Alert.alert(
             "",
-            "Cảnh báo số liệu bất thường, bạn có muốn tiếp tục?",
+            `${Strings.electric.mesWanning}?`,
             [
               {
-                text: "Huỷ",
+                text: Strings.electric.cancel,
                 onPress: () => {
                   return;
                 },
                 style: "cancel",
               },
               {
-                text: "Tiếp tục",
+                text: Strings.electric.continue,
                 onPress: () => {
                   return this._onSubmit({
                     id,

@@ -14,7 +14,7 @@ import { MyIcon } from '../../theme/icons';
 import fontSize from '../../theme/fontsize';
 import { resetStateByKey } from '../../actions/app';
 import { signOut } from '../../actions/auth';
-
+import Strings from '../../resident/utils/languages';
 // create a component
 class ModalLogOut extends Component {
     
@@ -43,7 +43,7 @@ class ModalLogOut extends Component {
                             size={200}
                             color="#fff"
                         />
-                        <Text style={{ fontSize: fontSize.medium, color: '#fff', marginTop: 20, fontFamily: "Inter-Bold", }}>Bạn có chắc chắn muốn thoát?</Text>
+                        <Text style={{ fontSize: fontSize.medium, color: '#fff', marginTop: 20, fontFamily: "Inter-Bold", }}>{Strings.profile.questionLogout}?</Text>
                         <View style={{ flexDirection: 'row', marginTop: 100 }}>
 
                             <TouchableOpacity

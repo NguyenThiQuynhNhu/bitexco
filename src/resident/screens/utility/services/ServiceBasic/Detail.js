@@ -280,18 +280,8 @@ class ServiceBasicDetailScreen extends Component {
       <View
         style={{
           borderRadius: responsive.h(16),
-          padding: responsive.h(10),
+          padding: responsive.h(15),
           backgroundColor: "#ffffff",
-          // shadowColor: "rgba(0, 0, 0, 0.08)",
-          // elevation: 2,
-          // shadowOffset: {
-          //   width: 0,
-          //   height: 4,
-          // },
-          // shadowRadius: 12,
-          // shadowOpacity: 1,
-          // marginHorizontal: responsive.h(10),
-          // marginVertical: responsive.h(10),
         }}
       >
         <View
@@ -326,11 +316,10 @@ class ServiceBasicDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
+                  marginLeft: -responsive.h(2),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
-                  position: "absolute",
-                  left: responsive.h(25),
                 }}
               >
                 <Text
@@ -351,7 +340,7 @@ class ServiceBasicDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: isCustomer ? responsive.h(10) : responsive.h(30),
+                paddingLeft: responsive.h(10),
                 color: "#505050",
                 // width: Screen.width * 0.65,
                 // maxWidth: Screen.width * 0.65,
@@ -367,7 +356,7 @@ class ServiceBasicDetailScreen extends Component {
                 fontSize: fontsize.micro,
                 textAlign: "center",
                 backgroundColor: "#fff5eb",
-                borderRadius: responsive.h(15),
+                borderRadius: responsive.h(13),
                 paddingHorizontal: responsive.h(10),
                 paddingVertical: responsive.h(5),
                 color: converStatusToColor(statusId),
@@ -501,9 +490,9 @@ class ServiceBasicDetailScreen extends Component {
                 flex: 1,
                 borderRadius: responsive.h(16),
                 backgroundColor: "#ffffff",
-                marginHorizontal: responsive.h(20),
+                marginHorizontal: responsive.h(15),
                 marginBottom: responsive.h(20),
-                marginTop: responsive.h(5),
+                marginTop: responsive.h(10),
                 borderWidth: responsive.h(1),
                 borderBottomWidth: responsive.h(2),
                 borderColor: "#eaeaea",
@@ -552,7 +541,7 @@ class ServiceBasicDetailScreen extends Component {
                           fontSize: responsive.h(fontsize.micro),
                           textAlign: "center",
                           backgroundColor: "#fff5eb",
-                          borderRadius: responsive.h(15),
+                          borderRadius: responsive.h(13),
                           paddingHorizontal: responsive.h(10),
                           paddingVertical: responsive.h(5),
                           color: converStatusToColor(statusId),
@@ -564,7 +553,7 @@ class ServiceBasicDetailScreen extends Component {
                   </View>
                   <Text
                     style={{
-                      marginVertical: responsive.h(5),
+                      marginTop: responsive.h(10),
                       fontFamily: "Inter-SemiBold",
                       fontSize: responsive.h(14),
                       textAlign: "left",
@@ -711,9 +700,9 @@ class ServiceBasicDetailScreen extends Component {
                 return (
                   <View
                     style={{
-                      height: 1,
+                      height: 2,
                       backgroundColor: "#f5f5f5",
-                      marginHorizontal: responsive.h(10),
+                      marginHorizontal: responsive.h(15),
                     }}
                   />
                 );
@@ -773,7 +762,7 @@ class ServiceBasicDetailScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -797,7 +786,7 @@ class ServiceBasicDetailScreen extends Component {
           rightView={
             <TouchableOpacity
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
               onPress={() => this.setState({ isShowModal: true })}
             >
@@ -852,7 +841,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   linearGradient: {
-    width: "90%",
+    width: "92.5%",
     borderRadius: responsive.h(5),
     backgroundColor: colors.primaryKeyColor,
   },

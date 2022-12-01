@@ -17,7 +17,6 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
         marginTop: responsive.h(10),
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "flex-start",
         ...style,
       }}
     >
@@ -37,7 +36,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
       </Text>
       <Text
         style={{
-          fontFamily: "Inter",
+          fontFamily: "Inter-Regular",
           fontSize: responsive.h(16),
           fontWeight: "500",
           fontStyle: "normal",
@@ -89,18 +88,9 @@ class ListItem extends PureComponent {
           marginHorizontal: responsive.h(20),
           marginVertical: responsive.h(10),
           borderRadius: responsive.h(12),
-          // backgroundColor: "#ffffff",
-          // shadowColor: "rgba(0, 0, 0, 0.1)",
-          // elevation: 2,
-          // shadowOffset: {
-          //   width: 0,
-          //   height: 4,
-          // },
-          // shadowRadius: 10,
-          // shadowOpacity: 1,
-          borderWidth: responsive.h(1),
-          borderBottomWidth: responsive.h(2),
-          borderColor: "#f1f1f1",
+          borderWidth: 0.5,
+          borderBottomWidth: 2,
+          borderColor: "#d2d2d2",
         }}
       >
         {/* <ImageProgress circle={true} source={{ uri: user ? user.photoUrl : '' }} style={{ height: 50, width: 50 }} /> */}
@@ -133,7 +123,7 @@ class ListItem extends PureComponent {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "right",
-                  color: "#3ba250",
+                  color: isPaid ? "#3ba250" : colors.appTheme,
                 }}
               >
                 {amountIncurred
@@ -161,7 +151,7 @@ class ListItem extends PureComponent {
           <FeildText
             name={Strings.payment.debt}
             text={amountLeft.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            textStyle={{ fontWeight: "bold", color: "#3ba250" }}
+            textStyle={{ fontWeight: "bold", color: isPaid ? "#3ba250" : colors.appTheme, }}
             nameStyle={{}}
           />
         </View>

@@ -5,8 +5,6 @@ import fontSize from "../../../theme/fontsize";
 import { Screen } from "../../../utils/device";
 import ImageProgress from "../../../components/common/ImageProgress";
 import {
-  converStatusToColor,
-  converStatusToString,
   converStatusToColorServiceByString,
 } from "../../../utils/request";
 
@@ -36,7 +34,7 @@ class ListItem extends PureComponent {
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           width: (Screen.width - responsive.h(30)) / 2,
-          marginBottom: responsive.h(10),
+          marginBottom: responsive.h(15),
           marginRight: responsive.h(10),
           // margin: responsive.h(10),
           // marginRight: index % 2 != 0 ? 0 : 10,
@@ -44,12 +42,12 @@ class ListItem extends PureComponent {
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
           padding: responsive.h(10),
+          paddingVertical: responsive.h(15),
         }}
       >
         <View
           style={{
             flex: 1,
-            //display: "flex",
             justifyContent: "space-between",
           }}
         >
@@ -58,6 +56,7 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               //display: "flex",
               justifyContent: "space-between",
+              marginBottom: responsive.h(15),
             }}
           >
             <ImageProgress
@@ -102,7 +101,7 @@ class ListItem extends PureComponent {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   textAlign: "left",
-                  color: converStatusToColor(statusName),
+                  color: converStatusToColorServiceByString(statusName),
                 }}
               >
                 {statusName}
@@ -137,39 +136,37 @@ class ListItem extends PureComponent {
               {description}
             </Text>
           </View>
-          <View>
-            <View
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: 'flex-end',
+              justifyContent: "space-between",
+              marginTop: responsive.h(15),
+            }}
+          >
+            <Text
               style={{
-                flex: 1,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                paddingTop: 5,
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(12),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                color: "#6f6f6f",
               }}
             >
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(12),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  color: "#6f6f6f",
-                }}
-              >
-                {moment(dateCreate).format("DD/MM/YYYY")}
-              </Text>
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(12),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  color: "#6f6f6f",
-                }}
-              >
-                {moment(dateCreate).format("HH:mm")}
-              </Text>
-            </View>
+              {moment(dateCreate).format("DD/MM/YYYY")}
+            </Text>
+            <Text
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(12),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                color: "#6f6f6f",
+              }}
+            >
+              {moment(dateCreate).format("HH:mm")}
+            </Text>
           </View>
         </View>
         {/* <MyIcon

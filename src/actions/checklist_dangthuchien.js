@@ -177,7 +177,7 @@ export const HandOverChangeStatus = (dataRequest) => async (dispatch) => {
                     }
                 });
 
-                return ret.data
+                return ret
                 
             }
             else {
@@ -210,8 +210,9 @@ export const HandOverFinishDate = (dataRequest) => async (dispatch) => {
         
         dispatch({ type: CHECKLIST_FINISH_DATE_REQUEST });
         // return
-        const url = 'HandOverFinishDate';
+        const url = '/HandOverFinishDate';
         const ret = await post(url,dataRequest);
+        console.log(ret)
         if (ret !== undefined && ret !== null) {
             if (ret.status == 200) {
                 //console.log(ret.data)
@@ -223,14 +224,14 @@ export const HandOverFinishDate = (dataRequest) => async (dispatch) => {
                     }
                 });
 
-                return ret.data
+                return ret
                 
             }
             else {
                 dispatch({ type: CHECKLIST_FINISH_DATE_FAILURE, payload: { data: ret.message } });
                 return {
                     status:2,
-                    message: ret.message
+                    message: ret.message || "Error"
                 }
             }
         }
@@ -238,14 +239,14 @@ export const HandOverFinishDate = (dataRequest) => async (dispatch) => {
             dispatch({ type: CHECKLIST_FINISH_DATE_FAILURE, payload: { data: ret.message } });
             return {
                 status:2,
-                message: ret.message
+                message: ret.message || "Error"
             }
         }
     } catch (error) {
         dispatch({ type: CHECKLIST_FINISH_DATE_FAILURE, payload: { data: ret.message } });
         return {
             status:2,
-            message: ret.message
+            message: ret.message || "Error"
         }
     }
 };

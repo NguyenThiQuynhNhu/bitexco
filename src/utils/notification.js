@@ -1,4 +1,5 @@
 import moment from "moment";
+import Strings from "./languages";
 
 export const converTypeToIcon = (typeId) => {
   switch (typeId) {
@@ -32,20 +33,20 @@ export const converTypeToString = (id) => {
   console.log(id);
   switch (id) {
     case "0":
-      return "Tất cả";
+      return Strings.notifycation.all;
     case "1":
-      return "Công việc";
+      return Strings.notifycation.request;
 
     case "3":
-      return "Tiện ích";
+      return Strings.notifycation.service;
     case "4":
-      return "Dịch vụ";
+      return Strings.notifycation.extension;
     case "5":
       return "Checklist";
     case "6":
-      return "Đề xuất sửa chữa";
+      return Strings.notifycation.suggestedRepair;
 
     default:
-      return "Tất cả";
+      return Strings.notifycation.all;
   }
 };

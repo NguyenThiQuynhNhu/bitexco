@@ -105,6 +105,7 @@ class ServiceBasic extends Component {
         keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
+        langId: this.props.language,
       };
       await this.props.loadDataHandle(data);
       setTimeout(() => {
@@ -124,6 +125,7 @@ class ServiceBasic extends Component {
         keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
+        langId: this.props.language,
       };
       await this.props.loadDataHandle(data);
       //await this.setState({ dataStatus: this.props.dataStatus })
@@ -136,19 +138,18 @@ class ServiceBasic extends Component {
         this.setState({ dataStatus: this.props.dataStatus });
       }, 500);
     }
-    if (
-      nextProps.errorCreate &&
-      this.props.errorCreate !== nextProps.errorCreate
-    ) {
-      if (!nextProps.errorCreate.hasError) {
-        await this.props.refreshDataHandle();
-        await this.refs.toast.show(
-          "Tạo yêu cầu thành công",
-          DURATION.LENGTH_LONG
-        );
-        //await this.setState({dataStatus: this.props.dataStatus})
-      }
-    }
+    // if (
+    //   nextProps.errorCreate &&
+    //   this.props.errorCreate !== nextProps.errorCreate
+    // ) {
+    //   if (!nextProps.errorCreate.hasError) {
+    //     await this.props.refreshDataHandle();
+    //     await this.refs.toast.show(
+    //       "Tạo yêu cầu thành công",
+    //       DURATION.LENGTH_LONG
+    //     );
+    //   }
+    // }
     if (nextProps.towerId && nextProps.towerId !== this.props.towerId) {
       await this.props.refreshDataHandle();
       //await this.setState({dataStatus: this.props.dataStatus})
@@ -227,6 +228,7 @@ class ServiceBasic extends Component {
               keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
               currentPage: this.props.currentPage + 1,
               rowPerPage: this.props.rowPerPage,
+              langId: this.props.language,
             };
             this.props.loadDataHandle(data);
           }
@@ -343,7 +345,7 @@ class ServiceBasic extends Component {
                 }}
                 style={{ padding: responsive.h(10) }}
               >
-                <Text style={{ color: "black", fontSize: responsive.h(14) }}>Huỷ</Text>
+                <Text style={{ color: "black", fontSize: responsive.h(14) }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
             }
           />
@@ -357,7 +359,7 @@ class ServiceBasic extends Component {
                 <MyIcon name="arrow" size={responsive.h(22)} color="black" />
               </TouchableOpacity>
             }
-            body={<Text style={titleStyle}>Tiện ích</Text>}
+            body={<Text style={titleStyle}>{Strings.common.service}</Text>}
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
@@ -397,7 +399,7 @@ class ServiceBasic extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: responsive.h(10) }}
+                    style={{ paddingBottom: responsive.h(10), paddingTop: responsive.h(5) }}
                   />
                 </View>
               );

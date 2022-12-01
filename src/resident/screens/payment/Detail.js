@@ -81,7 +81,7 @@ const FeildText = ({ style, name, text, nameStyle, textStyle }) => {
   );
 };
 
-const SearchField = ({}) => {
+const SearchField = ({ }) => {
   return (
     <View
       style={{
@@ -229,9 +229,9 @@ class PaymentDetailScreen extends Component {
           paddingHorizontal: responsive.h(10),
           marginBottom: responsive.h(10),
           paddingBottom: responsive.h(10),
-          borderRadius: responsive.h(5),
-          borderWidth: responsive.h(0.5),
-          borderColor: colors.gray2,
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
         }}
       >
         <FeildText
@@ -314,7 +314,7 @@ class PaymentDetailScreen extends Component {
         "Lỗi dữ liệu, bạn cần đăng nhập lại để tiếp tục. Trong trường hợp đã đăng nhập lại nhưng vẫn lỗi vui lòng liên hệ ban quản lý!",
         [
           // { text: 'HUỶ', onPress: () => undefined },
-          { text: "OK", onPress: () => {} },
+          { text: "OK", onPress: () => { } },
         ]
       );
     } else {
@@ -488,36 +488,26 @@ class PaymentDetailScreen extends Component {
     } = this.props.data;
     const pageData = items.map((o, index) => (
       <TouchableOpacity
+        key={index}
         style={{
-          width: responsive.w(Screen.width - 40),
-          //height: 120,
+          width: Screen.width - responsive.h(40),
           padding: responsive.h(10),
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          // shadowColor: "rgba(0, 0, 0, 0.1)",
-          // elevation: 2,
-          // shadowOffset: {
-          //   width: 0,
-          //   height: 4,
-          // },
-          // shadowRadius: 10,
-          // shadowOpacity: 1,
           marginVertical: responsive.h(5),
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
-          padding: responsive.h(10),
         }}
         onPress={() => this.clickItem(o)}
       >
         <FeildText
+          style={{ marginTop: 0 }}
           name={o.name}
           nameStyle={{
             fontFamily: "Inter",
             fontSize: responsive.h(16),
             fontWeight: "600",
-            fontStyle: "normal",
-            letterSpacing: 0,
             textAlign: "left",
             color: "#282828",
           }}
@@ -525,10 +515,8 @@ class PaymentDetailScreen extends Component {
             fontFamily: "Inter",
             fontSize: responsive.h(16),
             fontWeight: "600",
-            fontStyle: "normal",
-            letterSpacing: 0,
             textAlign: "right",
-            color: "#ff624d",
+            color: colors.appTheme,
           }}
           text={
             o.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " đ"
@@ -594,14 +582,9 @@ class PaymentDetailScreen extends Component {
               style={{
                 borderRadius: responsive.h(20),
                 backgroundColor: "#ffffff",
-                // shadowColor: "rgba(0, 0, 0, 0.1)",
-                // elevation: 2,
-                // shadowOffset: {
-                //   width: 0,
-                //   height: 4,
-                // },
-                // shadowRadius: 10,
-                // shadowOpacity: 1,
+                borderWidth: 0.5,
+                borderColor: "#d2d2d2",
+                borderBottomWidth: 2,
                 padding: responsive.h(10),
                 marginTop: responsive.h(20),
               }}
@@ -641,13 +624,9 @@ class PaymentDetailScreen extends Component {
                 borderRadius: responsive.h(20),
                 backgroundColor: "#ffffff",
                 shadowColor: "rgba(0, 0, 0, 0.1)",
-                elevation: responsive.h(2),
-                shadowOffset: {
-                  width: 0,
-                  height: responsive.h(4),
-                },
-                shadowRadius: responsive.h(10),
-                shadowOpacity: responsive.h(1),
+                borderWidth: 0.5,
+                borderColor: "#d2d2d2",
+                borderBottomWidth: 2,
                 padding: responsive.h(10),
                 marginTop: responsive.h(20),
               }}
@@ -660,14 +639,6 @@ class PaymentDetailScreen extends Component {
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " đ"
                 }
-              />
-              {/* <FeildText name={Strings.payment.total} nameStyle={{}} text={(amountIncurred + amountOldDebt).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' đ'} textStyle={{ color: colors.appTheme, fontWeight: 'bold' }} /> */}
-              <View
-                style={{
-                  height: 1,
-                  marginTop: responsive.h(10),
-                  backgroundColor: colors.gray2,
-                }}
               />
               <FeildText
                 name={Strings.payment.paidFront}
@@ -691,7 +662,7 @@ class PaymentDetailScreen extends Component {
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " đ"
                 }
-                textStyle={{ color: colors.appTheme, fontWeight: "bold" }}
+                textStyle={{ color: isPaid ? "#3ba250" : colors.appTheme, fontWeight: "bold" }}
                 nameStyle={{}}
               />
               {/* <FeildText name={Strings.payment.debt} text={(amountIncurred + amountOldDebt - amountPaid - amountPaidFront).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' đ'} textStyle={{ color: colors.appTheme, fontWeight: 'bold' }} nameStyle={{}} /> */}
@@ -701,10 +672,7 @@ class PaymentDetailScreen extends Component {
               style={{
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(16),
-                fontWeight: "bold",
-                fontStyle: "normal",
-                lineHeight: responsive.h(24),
-                letterSpacing: 0,
+                fontWeight: "600",
                 textAlign: "left",
                 color: "#3d3d3d",
                 marginBottom: responsive.h(10),
@@ -713,43 +681,6 @@ class PaymentDetailScreen extends Component {
             >
               {Strings.payment.detailFee}
             </Text>
-            {/* <View style={{ height: 1, backgroundColor: colors.gray2, marginHorizontal: -10 }} /> */}
-            {/* <FlatList
-                            data={items}
-                            renderItem={this.renderItem}
-                            style={{ marginTop: 10 }}
-                        /> */}
-            {/* <View style={{ height: 1, backgroundColor: colors.gray2, marginHorizontal: -10 }} />
-                        <FeildText name={Strings.payment.total} nameStyle={{}} text={amountIncurred.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' đ'} textStyle={{ color: colors.appTheme, fontWeight: 'bold' }} /> */}
-            {/*<View style={{
-                            width: Screen.width - 40,
-                            height: 120,
-                            padding: 10, borderRadius: 12,
-                            backgroundColor: "#ffffff",
-                            shadowColor: "rgba(0, 0, 0, 0.1)",
-                            elevation: 2,
-                            shadowOffset: {
-                                width: 0,
-                                height: 4
-                            },
-                            shadowRadius: 10,
-                            shadowOpacity: 1,
-                            //backgroundColor: '#000'
-
-                        }}>
-                             <Swiper
-                                dot={<View style={styles.dot} />}
-                                activeDot={
-                                    <View style={styles.activeDot} />
-                                }
-                                autoplay={true}
-                                autoplayTimeout={3}
-                                paginationStyle={{ bottom: 5 }}
-                                showsButtons={false}>
-                                {pageData}
-                            </Swiper>
-
-                        </View>*/}
             {pageData}
           </View>
         </ScrollView>
@@ -791,7 +722,20 @@ class PaymentDetailScreen extends Component {
             >
               {Strings.payment.debitNote}
             </Text>
-          }
+        }
+        rightView={
+          <TouchableOpacity
+            style={{
+              paddingHorizontal: responsive.h(20),
+            }}
+          >
+            <MyIcon
+              size={responsive.h(20)}
+              name="search"
+              color="transparent"
+            />
+          </TouchableOpacity>
+        }
         />
         {this.renderContent()}
 

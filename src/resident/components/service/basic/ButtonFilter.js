@@ -50,7 +50,7 @@ const ButtonFilter = (props) => {
             fontStyle: "normal",
             letterSpacing: 0,
             textAlign: "center",
-            color: value !== currentValue ? "#c8c8c8" : "#3d3d3d",
+            color: value !== currentValue ? "#c8c8c8" : colors.appTheme,
           }}
         >
           {text}
@@ -62,7 +62,7 @@ const ButtonFilter = (props) => {
             marginTop: 2.5,
             borderRadius: responsive.h(45),
             minWidth: responsive.h(20),
-            minHeight: 2,
+            minHeight: responsive.h(20),
             alignItems: "center",
             justifyContent: "center",
             backgroundColor: value !== currentValue ? "#fff" : "#fff5eb",
@@ -82,15 +82,6 @@ const ButtonFilter = (props) => {
             {number > 99 ? "99+" : number}
           </Text>
         </View>
-        <View
-          style={{
-            width: responsive.h(44),
-            height: responsive.h(3),
-            borderRadius: responsive.h(4),
-            backgroundColor: value !== currentValue ? "#fff" : "#a3cd80",
-            marginTop: 2.5,
-          }}
-        />
       </View>
     </TouchableOpacity>
   );

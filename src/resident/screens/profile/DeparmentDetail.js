@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Toast, { DURATION } from "react-native-easy-toast";
-
-
 import {
   Alert,
   ScrollView,
@@ -82,7 +80,7 @@ class DepartmentScreen extends Component {
           <ImageProgress
             circle
             source={{ uri: logo }}
-            style={{ height: responsive.h(48), width: responsive.h(48) }}
+            style={{ height: responsive.h(50), width: responsive.h(50) }}
           />
           <View
             style={{
@@ -97,8 +95,6 @@ class DepartmentScreen extends Component {
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(15),
                 fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
                 textAlign: "left",
               }}
             >
@@ -106,7 +102,7 @@ class DepartmentScreen extends Component {
             </Text>
             <Text
               style={{
-                marginVertical: responsive.h(10),
+                marginTop: responsive.h(2),
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(14),
                 fontStyle: "normal",
@@ -125,11 +121,12 @@ class DepartmentScreen extends Component {
           style={{
             flexDirection: "row",
             display: "flex",
+            alignItems: 'center'
           }}
         >
           <MyIcon
             name="location"
-            color="#fece1c"
+            color="black"
             size={responsive.h(15)}
             style={{
               lineHeight: responsive.h(24),
@@ -159,10 +156,10 @@ class DepartmentScreen extends Component {
             padding: responsive.h(10),
           }}
         >
-          <View style={{ display: "flex", flexDirection: "row" }}>
+          <View style={{ display: "flex", flexDirection: "row", alignItems: 'center', flex: 0.8 }}>
             <MyIcon
               name="cn-h"
-              color="#fece1c"
+              color="black"
               size={responsive.h(15)}
               style={{ lineHeight: responsive.h(24) }}
             />
@@ -189,8 +186,9 @@ class DepartmentScreen extends Component {
               fontWeight: "500",
               fontStyle: "normal",
               letterSpacing: 0,
-              textAlign: "left",
+              textAlign: 'center',
               color: "#3d3d3d",
+              flex: 0.25,
             }}
           >
             {Strings.department.default}
@@ -219,6 +217,7 @@ class DepartmentScreen extends Component {
                   paddingHorizontal: responsive.h(10),
                   marginBottom: responsive.h(10),
                   justifyContent: "space-between",
+
                 }}
               >
                 <Text
@@ -231,11 +230,13 @@ class DepartmentScreen extends Component {
                     letterSpacing: 0,
                     textAlign: "left",
                     color: "#3d3d3d",
+                    flex: 0.8
                   }}
                 >
                   {name}
                 </Text>
                 <CheckBox
+                  styles={{ flex: 0.25, alignItems: 'center' }}
                   value={isDefault}
                   onValueChange={() =>
                     this.props.onValueChange({ id, value: !isDefault })
@@ -248,53 +249,26 @@ class DepartmentScreen extends Component {
       </View>
     );
   };
-  render() {
+  renderContent(){
     const { data, isLoading, error, initComponent, user } = this.props;
     if (initComponent || isLoading) {
-      <View
+      return <View
         style={{
           paddingVertical: responsive.h(20),
         }}
       >
-        <ActivityIndicator animating size="small" />
+        <ActivityIndicator animating size='small' />
       </View>;
     } else if (error && error.hasError) {
-      <ErrorContent
+      return <ErrorContent
         title={Strings.app.error}
         onTouchScreen={() => this.props.loadDataHandle()}
       />;
-    } else if (data == null) {
-      <ErrorContent title={Strings.app.emptyData} />;
+    } else if (data == null || (data != null && data.length == 0)) {
+      return <ErrorContent title={Strings.app.emptyData} />;
     } else {
       return (
         <View style={{ flex: 1, backgroundColor: "#fff" }}>
-          <NavBar
-            body={
-              <View>
-                <Text
-                  style={{
-                    fontFamily: "Inter-Bold",
-                    fontSize: responsive.h(20),
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "center",
-                    color: "black",
-                  }}
-                >
-                  {Strings.setting.departmentInfo}
-                </Text>
-              </View>
-            }
-            leftButton={
-              <TouchableOpacity
-                onPress={() => this.props.navigation.goBack()}
-                style={{ padding: responsive.h(10) }}
-              >
-                <MyIcon name="arrow" color="black" size={responsive.h(20)} />
-              </TouchableOpacity>
-            }
-          />
           <FlatList
             //ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: colors.grayBorder }} />}
             data={data}
@@ -316,7 +290,7 @@ class DepartmentScreen extends Component {
           />
           <Modal
             visible={this.props.progressing}
-            onRequestClose={() => {}}
+            onRequestClose={() => { }}
             transparent={true}
           >
             <View
@@ -326,11 +300,12 @@ class DepartmentScreen extends Component {
                 backgroundColor: colors.appOverView,
               }}
             >
-              <ActivityIndicator />
+              <ActivityIndicator animating size='large'/>
             </View>
           </Modal>
           <Toast
             ref="toast"
+            position='center'
             style={{
               backgroundColor: this.props.errorProgress.hasError
                 ? colors.toast.error
@@ -340,42 +315,45 @@ class DepartmentScreen extends Component {
         </View>
       );
     }
+  }
+  render() {
+    const { data, isLoading, error, initComponent, user } = this.props;
     return (
       <View style={{ flex: 1, backgroundColor: "#fff" }}>
         <NavBar
+          body={
+              <Text
+                style={{
+                  fontFamily: "Inter-Bold",
+                  fontSize: responsive.h(20),
+                  fontWeight: "bold",
+                  fontStyle: "normal",
+                  letterSpacing: 0,
+                  textAlign: "center",
+                  color: "black",
+                }}
+              >
+                {Strings.setting.departmentInfo}
+              </Text>
+          }
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{
-                padding: responsive.h(10),
-              }}
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
-          body={
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: responsive.h(20),
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: "black",
-              }}
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
             >
-              {Strings.setting.departmentInfo}
-            </Text>
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
           }
         />
-        <View
-          style={{
-            paddingVertical: responsive.h(20),
-          }}
-        >
-          <ActivityIndicator animating size="small" />
-        </View>
+        
+        {this.renderContent()}
       </View>
     );
   }

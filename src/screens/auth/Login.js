@@ -12,6 +12,8 @@ import {
   ActivityIndicator,
   KeyboardAvoidingView,
   Platform,
+  SafeAreaView,
+  StatusBar
 } from "react-native";
 import firebase from "firebase";
 import { connect } from "react-redux";
@@ -58,14 +60,14 @@ class LoginScreen extends Component {
     this.state = {
       phoneNumber:
         this.props.navigation.state.params &&
-        this.props.navigation.state.params.phoneNumber
+          this.props.navigation.state.params.phoneNumber
           ? this.props.navigation.state.params.phoneNumber
-          : "",
+          : this.props.user,
       password:
         this.props.navigation.state.params &&
-        this.props.navigation.state.params.password
+          this.props.navigation.state.params.password
           ? this.props.navigation.state.params.password
-          : "",
+          : this.props.pass,
       otpCode: "",
       isPass: true,
       isRegister: false,
@@ -208,6 +210,21 @@ class LoginScreen extends Component {
     console.log("this.props", this.props);
     return (
       <View>
+        {
+          Platform.OS != 'ios' &&
+          <SafeAreaView
+            style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
+          />
+        }
+        {
+          Platform.OS != 'ios' &&
+          <StatusBar
+            barStyle="dark-content"
+            backgroundColor="transparent"
+            translucent={true}
+          />
+        }
+
         <UpdateVersion version={this.props.version} />
         <Image
           source={require("../../resources/bitexcoGroup.png")}
@@ -416,21 +433,27 @@ class LoginScreen extends Component {
         if (ret !== undefined && ret !== null) {
           if (ret.status == 200) {
             if (ret.data.length > 0) {
-              if (ret.data.length == 1) {
-                this.setState({ isLoading: false });
-                this.props.loginUserByPass({
-                  phoneNumber: phoneNumber,
-                  password: password,
-                  idNew: ret.data[0].id,
-                });
-              } else {
-                //console.log(this.state.isLoading)
-                this.setState({ isLoading: false });
-                this.props.navigation.navigate("building", {
-                  phoneNumber,
-                  password,
-                });
-              }
+              // if (ret.data.length == 1) {
+              //   this.setState({ isLoading: false });
+              //   this.props.loginUserByPass({
+              //     phoneNumber: phoneNumber,
+              //     password: password,
+              //     idNew: ret.data[0].id,
+              //   });
+              // } else {
+              //   //console.log(this.state.isLoading)
+              //   this.setState({ isLoading: false });
+              //   this.props.navigation.navigate("building", {
+              //     phoneNumber,
+              //     password,
+              //   });
+              // }
+              this.setState({ isLoading: false });
+              this.props.loginUserByPass({
+                phoneNumber: phoneNumber,
+                password: password,
+                idNew: ret.data[0].id,
+              });
             } else {
               this.setState({ isLoading: false });
               Alert.alert(
@@ -592,6 +615,8 @@ const mapStateToProps = (state) => ({
   connectString: state.auth.connectString,
   idNew: state.auth.idNew,
   version: state.version.version,
+  pass: state.user.pass,
+  user: state.user.user
 });
 const mapActionToProps = {
   navHome,

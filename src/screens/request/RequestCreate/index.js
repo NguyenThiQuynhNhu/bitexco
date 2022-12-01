@@ -16,7 +16,7 @@ import {
 } from "react-native";
 import * as mineTypes from "react-native-mime-types";
 import DateTimePicker from "react-native-modal-datetime-picker";
-
+import DatePicker from 'react-native-date-picker'
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-picker";
 import Lightbox from "react-native-lightbox";
@@ -39,6 +39,9 @@ import NavBar from "../../../resident/components/common/NavBar";
 import responsive from "../../../resources/responsive";
 import { app } from "firebase";
 
+import {
+  converNameTopPiority
+} from "../../../utils/request";
 // create a component
 class CreateScreen extends Component {
   constructor(props) {
@@ -129,17 +132,17 @@ class CreateScreen extends Component {
               <MyIcon name="arrow" size={responsive.h(20)} color="black" />
             </TouchableOpacity>
           }
-          body={<Text style={titleStyle}>Tạo công việc</Text>}
-          //   rightView={
-          //     <TouchableOpacity
-          //       onPress={this._onSend}
-          //       style={{
-          //         padding: 10,
-          //       }}
-          //     >
-          //       <MyIcon name="paperplane" color="#fff" size={24} />
-          //     </TouchableOpacity>
-          //   }
+          body={<Text style={titleStyle}>{Strings.createRequest.navTitle}</Text>}
+        //   rightView={
+        //     <TouchableOpacity
+        //       onPress={this._onSend}
+        //       style={{
+        //         padding: 10,
+        //       }}
+        //     >
+        //       <MyIcon name="paperplane" color="#fff" size={24} />
+        //     </TouchableOpacity>
+        //   }
         />
         <KeyboardAwareScrollView>
           <View style={styles.container}>
@@ -214,7 +217,7 @@ class CreateScreen extends Component {
                         /> */}
             <Lookup
               // visible={depSelected == null}
-              fielName={`Phòng ban (*)`}
+              fielName={`${Strings.common.department} (*)`}
               text={
                 depSelected
                   ? depSelected.name
@@ -230,7 +233,7 @@ class CreateScreen extends Component {
             />
             <Lookup
               visible={depSelected !== null}
-              fielName={`Nhân viên (*)`}
+              fielName={`${Strings.common.employee} (*)`}
               text={
                 employeeSelected
                   ? employeeSelected.name
@@ -247,7 +250,7 @@ class CreateScreen extends Component {
             />
             <Lookup
               visible={depSelected !== null}
-              fielName={`Nhóm công việc (*)`}
+              fielName={`${Strings.common.workingGroup} (*)`}
               text={
                 groupSelected
                   ? groupSelected.name
@@ -284,7 +287,7 @@ class CreateScreen extends Component {
                   flex: 0.4,
                 }}
               >
-                Cấp độ(*)
+                {Strings.common.priority} (*)
               </Text>
               <View
                 style={{
@@ -311,7 +314,7 @@ class CreateScreen extends Component {
                   }}
                 >
                   {levelSelected
-                    ? levelSelected.value
+                    ? converNameTopPiority(levelSelected.id)
                     : Strings.createRequest.placeholderPriority}
                 </Text>
                 <MyIcon size={responsive.h(14)} color={"#C0C0C0"} name="arrow-down" />
@@ -444,7 +447,7 @@ class CreateScreen extends Component {
                           color: "#ffffff",
                         }}
                       >
-                        Thêm ảnh
+                        {Strings.createRequest.addPhoto}
                       </Text>
                     </View>
                   </View>
@@ -528,7 +531,7 @@ class CreateScreen extends Component {
                       color: "#ffffff",
                     }}
                   >
-                    Nhấn vào để tải ảnh
+                    {Strings.createRequest.textPhoto}
                   </Text>
                 </View>
               </TouchableOpacity>
@@ -630,19 +633,22 @@ class CreateScreen extends Component {
                         : moment().format("DD/MM/YYYY")}
                     </Text>
                   )}
-                  <DateTimePicker
-                    cancelTextIOS={Strings.createRequest.cancel}
-                    titleIOS={Strings.createRequest.titlePicker}
-                    confirmTextIOS={Strings.createRequest.chose}
+                  <DatePicker
+                    modal
+                    cancelText={Strings.createRequest.cancel}
+                    title={Strings.createRequest.titlePicker}
+                    confirmText={Strings.createRequest.chose}
                     mode="date"
                     minimumDate={new Date()}
-                    isVisible={this.state.isToggleDate}
+                    open={this.state.isToggleDate}
                     onConfirm={(day) => {
                       this.setState({ isToggleDate: false, day });
                     }}
                     onCancel={() => {
                       this.setState({ isToggleDate: false });
                     }}
+                    date={new Date()}
+                    locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
                   />
                   <MyIcon
                     name="calendar2"
@@ -685,18 +691,21 @@ class CreateScreen extends Component {
                       ? moment(time).format("HH:mm")
                       : moment().format("HH:mm")}
                   </Text>
-                  <DateTimePicker
-                    cancelTextIOS={Strings.app.cancel}
-                    titleIOS={Strings.createRequest.at}
-                    confirmTextIOS={Strings.app.chose}
+                  <DatePicker
+                    modal
+                    cancelText={Strings.app.cancel}
+                    title={Strings.createRequest.at}
+                    confirmText={Strings.app.chose}
                     mode="time"
-                    isVisible={this.state.isToggleTimeFrom}
+                    open={this.state.isToggleTimeFrom}
                     onConfirm={(time) => {
                       this.setState({ isToggleTimeFrom: false, time });
                     }}
                     onCancel={() => {
                       this.setState({ isToggleTimeFrom: false });
                     }}
+                    date={new Date()}
+                    locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
                   />
                   <MyIcon name="clock2" size={responsive.h(20)} color="rgba(0, 0, 0, 0.54)" />
                 </TouchableOpacity>
@@ -888,7 +897,7 @@ class CreateScreen extends Component {
                     fontSize: responsive.h(18),
                   }}
                 >
-                  Hoàn tất
+                  {Strings.createRequest.complete}
                 </Text>
               </TouchableOpacity>
             </View>
@@ -917,6 +926,7 @@ class CreateScreen extends Component {
             { id: 3, value: "Thấp" },
           ]}
           dislayValue="value"
+          priority={true}
           onClose={() => this.setState({ showModalLevel: false })}
         />
       </View>
@@ -938,15 +948,15 @@ class CreateScreen extends Component {
       storageOptions: {
         skipBackup: true,
       },
-      title: "Chọn hình ảnh",
-      takePhotoButtonTitle: "Chụp ảnh...",
-      chooseFromLibraryButtonTitle: "Chọn ảnh từ thư viện...",
-      cancelButtonTitle: "Bỏ qua",
+      title: Strings.createRequest.takeAPhoto,
+      takePhotoButtonTitle: Strings.createRequest.chooseAnImage,
+      chooseFromLibraryButtonTitle: Strings.createRequest.SelectFromGallery,
+      cancelButtonTitle: Strings.createRequest.cancel,
       permissionDenied: {
-        title: "Cấp quyền truy cập",
-        text: "Cho phép ứng dụng chụp ảnh và chọn từ thư viên ảnh...",
-        reTryTitle: "Thử lại",
-        okTitle: "Cho phép",
+        title: Strings.createRequest.access,
+        text: Strings.createRequest.access2,
+        reTryTitle: Strings.createRequest.retry,
+        okTitle: Strings.createRequest.allow,
       },
     };
 
@@ -1010,26 +1020,26 @@ class CreateScreen extends Component {
       );
     }
 
-    if (depSelected.id == 0) {
+    if (!depSelected) {
       return this.refs.toast.show(
-        `Vui lòng chọn Phòng ban`,
+        `${Strings.common.pleaseChoose} ${Strings.common.department}`,
         DURATION.LENGTH_LONG
       );
     }
-    if (employeeSelected.id == 0) {
+    if (!employeeSelected) {
       return this.refs.toast.show(
-        `Vui lòng chọn Nhân viên`,
+        `${Strings.common.pleaseChoose} ${Strings.common.employee}`,
         DURATION.LENGTH_LONG
       );
     }
-    if (groupSelected.id == 0) {
+    if (!groupSelected) {
       return this.refs.toast.show(
-        `Vui lòng chọn Nhóm công việc`,
+        `${Strings.common.pleaseChoose} ${Strings.common.workingGroup}`,
         DURATION.LENGTH_LONG
       );
     }
-    if (levelSelected.id == 0) {
-      return this.refs.toast.show(`Vui lòng chọn Cấp độ`, DURATION.LENGTH_LONG);
+    if (!levelSelected) {
+      return this.refs.toast.show(`${Strings.common.pleaseChoose} ${Strings.common.priority}`, DURATION.LENGTH_LONG);
     }
     if (content.length == 0) {
       return this.refs.toast.show(
@@ -1085,6 +1095,7 @@ const mapStateToProps = (state) => ({
   userContact: state.requestCreate.userContact,
   phoneContact: state.requestCreate.phoneContact,
   error: state.requestCreate.error,
+  language: state.app.language,
 });
 
 //make this component available to the app

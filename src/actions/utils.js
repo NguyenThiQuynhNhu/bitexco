@@ -208,11 +208,10 @@ export const loadDate = (dataRequest) => async (dispatch) => {
     try {
         //console.log(dataRequest)
         
-        var params = {
-        }
+        var params = { }
         const url = '/HandOver/ListDate';
         const ret = await post(url);
-        //console.log(ret)
+        console.log('ListDate', ret)
         if (ret !== undefined && ret !== null) {
             if (ret.status == 200) {
               //  console.log(ret.data)

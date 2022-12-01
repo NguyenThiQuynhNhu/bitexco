@@ -79,7 +79,7 @@ class FeedbackView extends React.Component {
     return (
       <View
         style={{
-          width: "90%",
+          width: "92.5%",
           borderRadius: responsive.h(5),
         }}
       >
@@ -126,7 +126,7 @@ class FeedbackView extends React.Component {
               backgroundColor: colors.appTheme,
             }}
           >
-            <Text style={{ color: "#fff" }}>Gửi đánh giá</Text>
+            <Text style={{ color: "#fff" }}>{Strings.detailRequest.sentRate}</Text>
           </TouchableOpacity>
           {/* <PrimaryButton text="Gửi đánh giá" onPress={this.commentRequest} /> */}
         </View>

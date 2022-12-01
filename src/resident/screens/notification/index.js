@@ -195,9 +195,9 @@ class NotificationScreen extends Component {
                 onSubmitEditing={onSubmitEditing}
                 onClearText={onClearText}
                 style={{
-                  flex: 1,
-                  margin:
-                    Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
+                  // flex: 1,
+                  // margin:
+                  //   Platform.OS == "ios" ? responsive.h(15) : responsive.h(20),
                   marginHorizontal: responsive.h(10),
                   marginRight: responsive.h(50),
                 }}
@@ -230,6 +230,7 @@ class NotificationScreen extends Component {
                 onPress={() => this.props.navigation.goBack()}
                 style={{
                   padding: responsive.h(10),
+                  paddingHorizontal: responsive.h(12),
                 }}
               >
                 <MyIcon name="arrow" size={responsive.h(20)} color="black" />
@@ -254,10 +255,11 @@ class NotificationScreen extends Component {
               <TouchableOpacity
                 style={{
                   padding: responsive.h(10),
+                  paddingHorizontal: responsive.h(15),
                 }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
-                <MyIcon size={responsive.h(24)} name="search" color="black" />
+                <MyIcon size={responsive.h(26)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
@@ -304,11 +306,8 @@ class NotificationScreen extends Component {
         onEndReachedThreshold={0.5}
         //horizontal={false}
         //numColumns={2}
-
         style={{
-          borderTopRightRadius: responsive.h(20),
-          // marginHorizontal: Platform.OS === "ios" ? null : responsive.w(10),
-          // marginTop: responsive.h(-13),
+          marginTop: -responsive.h(10)
         }}
         onEndReached={() => {
           if (

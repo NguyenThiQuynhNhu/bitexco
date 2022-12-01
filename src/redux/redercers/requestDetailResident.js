@@ -53,7 +53,7 @@ export default (state = INITIAL_STATE, action) => {
                 initComponent: false,
                 isLoading: false,
                 isRefreshing: false,
-                error: { hasError: true, status: action.payload.status }
+                error: { hasError: true }
             }
         }
         case R_REQUEST_DETAIL_SUCCESS: {

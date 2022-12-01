@@ -31,6 +31,7 @@ export const loadBadge = (dataRequest) => async (dispatch) => {
         dataRequestRequestR = {
             towerId: dataRequest.towerId,
             keyword: '',
+            langId: dataRequest.langId,
             //currentPage: 1,
             //rowPerPage: 20,
             statusId: 0,
@@ -65,7 +66,7 @@ export const loadBadge = (dataRequest) => async (dispatch) => {
         }
         if (retRequestR !== undefined && retRequestR !== null) {
             if (retRequestR.status == 200) {
-                const retStatusR = await get(`/Vendors/RequestStatusTotal`, {towerId: dataRequest.towerId})
+                const retStatusR = await get(`/Vendors/RequestStatusTotal`, {towerId: dataRequest.towerId, langId: dataRequest.langId,})
                 if(retStatusR !== undefined && retStatusR !== null){
                     await retStatusR.data.forEach(item1 => {
                         item1.total2 = 0;

@@ -26,6 +26,11 @@ import NavBar from "../../components/common/NavBar";
 import { getProfile } from "../../actions/auth";
 import fontsize from "../../theme/fontsize";
 import responsive from "../../../resources/responsive";
+import { getRequestStatusTotal } from "../../../actions/request";
+import { getRequestStatusTotal as getRequestStatusTotalResident } from "../../../resident/actions/request";
+import {
+  refreshDataHandle as refreshDataHandleExResident,
+} from "../../../resident/actions/utilitiesServicesExtension";
 class SettingScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     header: null,
@@ -56,7 +61,7 @@ class SettingScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="#000" size={responsive.h(20)} />
@@ -75,8 +80,6 @@ class SettingScreen extends Component {
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(20),
                   fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
                   textAlign: "center",
                   color: "black",
                 }}
@@ -85,15 +88,13 @@ class SettingScreen extends Component {
               </Text>
             </View>
           }
-          // rightView={
-          //   <View>
-          //     <MyIcon
-          //       name="arrow"
-          //       size={responsive.h(22)}
-          //       color={colors.appTheme}
-          //     />
-          //   </View>
-          // }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
+          }
         />
         <ScrollView
           style={{
@@ -138,11 +139,21 @@ class SettingScreen extends Component {
   }
 
   onLanguageValueChange = (value) => {
+    console.log('onLanguageValueChange')
+    
     this.props.resetStateByKey({
       key: "language",
       value: value == 0 ? "vi" : "en",
+      language: value == 0 ? "vi" : "en",
     });
-    this.props.getProfile({ type: "re", langId: value == 0 ? 1 : 0 });
+    if(this.props.auth.type == 'em'){
+      this.props.getRequestStatusTotal({ towerId: this.props.user.towerId, langId: value == 0 ? 1 : 2 });
+    }
+    if(this.props.auth.type == 're'){
+      this.props.getRequestStatusTotalResident({ towerId: this.props.user.towerId, langId: value == 0 ? 1 : 2 });
+      this.props.getProfile({ type: "re", langId: value == 0 ? 1 : 0, towers: this.props.user.towers });
+      this.props.refreshDataHandleExResident()
+    }
   };
 }
 
@@ -160,6 +171,7 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  auth: state.auth,
   enableVibrate: state.app.enableVibrate,
   enableSound: state.app.enableSound,
   enableNotification: state.app.enableNotification,
@@ -169,6 +181,9 @@ const mapStateToProps = (state) => ({
 const mapActionToState = {
   resetStateByKey,
   getProfile,
+  getRequestStatusTotal,
+  getRequestStatusTotalResident,
+  refreshDataHandleExResident
 };
 
 export default connect(

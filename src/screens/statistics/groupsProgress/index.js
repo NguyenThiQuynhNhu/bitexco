@@ -16,13 +16,13 @@ import {
   timeRefreshDataHandle,
   ratingRefreshDataHandle,
 } from "../../../actions/reportGroupProgress";
-
+import DatePicker from 'react-native-date-picker'
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { MyIcon } from "../../../theme/icons";
 import fontSize from "../../../theme/fontsize";
 import colors from "../../../theme/colors";
 import PrimaryButton from "../../../components/common/PrimaryButton";
-import ModalPicker from "../../../components/common/ModalPicker";
+import ModalPicker from "../../../components/common/ModalPickerDateStatis";
 import FilterType from "../../../components/statistics/FilterType";
 import ButtonFilter from "../../../components/statistics/ButtonFilter";
 import fontsize from "../../../theme/fontsize";
@@ -33,12 +33,19 @@ import ReportGroupProgressRating from "./ReportGroupProgressRating";
 import Icon from "react-native-vector-icons/Entypo";
 import NavBar from "../../../resident/components/common/NavBar";
 import responsive from "../../../resources/responsive";
+import Strings from "../../../utils/languages";
+
+import {
+  converNameToDateStatis
+} from "../../../utils/request";
+//
+
 const DataFilter = [
   { id: 1, value: "Ngày" },
   { id: 2, value: "Tuần" },
   { id: 3, value: "Tháng" },
   { id: 4, value: "Quý" },
-  { id: responsive.h(5), value: "Năm" },
+  { id: 5, value: "Năm" },
 ];
 
 class GroupWorkingStatisticsScreen extends React.Component {
@@ -69,8 +76,8 @@ class GroupWorkingStatisticsScreen extends React.Component {
 
   renderContent() {
     return (
-      <ScrollView style={{ flex: 1, marginTop: responsive.h(10),}}>
-        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}>
+      <ScrollView style={{ flex: 1, marginTop: responsive.h(10), }}>
+        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12), }}>
           <View
             style={{
               flexDirection: "row",
@@ -87,12 +94,13 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 color: "#282828",
               }}
             >
-              Trạng thái
+              {Strings.common.status}
             </Text>
           </View>
           <ReportGroupProgressStatus
             dateFrom={this.state.startDate}
             dateTo={this.state.endDate}
+            dataStatus={this.props.dataStatus}
           />
           <FlatList
             data={this.props.dataStatus}
@@ -137,7 +145,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
           />
         </View>
 
-        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}>
+        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12), }}>
           <View
             style={{
               flexDirection: "row",
@@ -155,7 +163,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 paddingRight: responsive.h(10),
               }}
             >
-              Thời gian xử lý trung bình
+              {Strings.statistical.averageHandlingTime}
             </Text>
           </View>
           <ReportGroupProgressTimeComplete
@@ -164,7 +172,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
           />
         </View>
 
-        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}>
+        <View style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12), }}>
           <View
             style={{
               flexDirection: "row",
@@ -182,7 +190,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 paddingRight: responsive.h(10),
               }}
             >
-              Điểm đánh giá trung bình
+              {Strings.statistical.averageRating}
             </Text>
           </View>
           <ReportGroupProgressRating
@@ -206,7 +214,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ padding: responsive.h(10),}}
+              style={{ padding: responsive.h(10), }}
               onPress={() => this.props.navigation.goBack(null)}
             >
               <MyIcon name="arrow" size={responsive.h(20)} color="black" />
@@ -222,14 +230,14 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 color: "black",
               }}
             >
-              Thống kê nhóm công việc
+              {Strings.statistical.workGroupStatistics}
             </Text>
           }
-          //   rightView={
-          //     <TouchableOpacity style={{ padding: responsive.h(10),}}>
-          //       <MyIcon name="arrow" size={20} color={colors.appTheme} />
-          //     </TouchableOpacity>
-          //   }
+        //   rightView={
+        //     <TouchableOpacity style={{ padding: responsive.h(10),}}>
+        //       <MyIcon name="arrow" size={20} color={colors.appTheme} />
+        //     </TouchableOpacity>
+        //   }
         />
         <View style={{ flex: 1 }}>
           <View>
@@ -245,32 +253,32 @@ class GroupWorkingStatisticsScreen extends React.Component {
             >
               <ButtonFilter
                 value={selectedButton == 1}
-                text="1 Tuần"
+                text={`1 ${Strings.statistical.week}`}
                 onPress={() => this.setActive(1)}
               />
               <ButtonFilter
                 value={selectedButton == 2}
-                text="1 Tháng"
+                text={`1 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(2)}
               />
               <ButtonFilter
                 value={selectedButton == 3}
-                text="3 Tháng"
+                text={`3 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(3)}
               />
               <ButtonFilter
                 value={selectedButton == 4}
-                text="6 Tháng"
+                text={`6 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(4)}
               />
               <ButtonFilter
                 value={selectedButton == 5}
-                text="Tuỳ chỉnh"
+                text={`${Strings.statistical.custom}`}
                 onPress={() => this.setActive(5)}
               />
             </ScrollView>
           </View>
-          <View style={{ backgroundColor: "#fff", padding: responsive.h(10),}}>
+          <View style={{ backgroundColor: "#fff", padding: responsive.h(10), }}>
             {/* <View style={{ flexDirection: 'row', paddingVertical: responsive.h(10),}}>
                             <FilterType value={typeTime.value} onPress={() => this.setState({ showModalPicker: true })} />
                             <View style={{ flex: 1, alignItems: 'center' }}>
@@ -280,11 +288,11 @@ class GroupWorkingStatisticsScreen extends React.Component {
 
                         </View> */}
             <Text style={{ alignSelf: "center", fontSize: fontsize.small }}>
-              Từ{" "}
+              {`${Strings.statistical.from} `}
               <Text style={{ color: "#0084ff", fontSize: fontsize.small }}>
                 {moment(this.state.startDate).format("DD-MM-YYYY")}
               </Text>{" "}
-              đến{" "}
+              {`${Strings.statistical.to} `}
               <Text style={{ color: "#0084ff", fontSize: fontsize.small }}>
                 {moment(this.state.endDate).format("DD-MM-YYYY")}
               </Text>
@@ -336,7 +344,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                     color: "#2979ff",
                   }}
                 >
-                  Tuỳ chỉnh Thời gian
+                  {Strings.statistical.custom} {Strings.statistical.time}
                 </Text>
                 <View
                   style={{
@@ -393,7 +401,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 <View style={{ padding: responsive.h(5) }}>
                   <PrimaryButton
                     text="OK"
-                    style={{ padding: responsive.h(10),}}
+                    style={{ padding: responsive.h(10), }}
                     onPress={this.customTime}
                   />
                 </View>
@@ -412,14 +420,21 @@ class GroupWorkingStatisticsScreen extends React.Component {
                 <Text
                   style={{ color: colors.appTheme, fontSize: fontsize.small }}
                 >
-                  ĐÓNG
+                  {Strings.statistical.close}
                 </Text>
               </TouchableOpacity>
             </View>
-            <DateTimePicker
-              isVisible={this.state.isDateTimePickerVisible}
+            <DatePicker
+              modal
+              mode="date"
+              cancelText={Strings.app.cancel}
+              title={`${Strings.common.choose} ${Strings.handover.time}`}
+              confirmText={Strings.app.chose}
+              open={this.state.isDateTimePickerVisible}
               onConfirm={(date) => this._handleDatePicked(date)}
               onCancel={this._hideDateTimePicker}
+              date={new Date()}
+              locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
             />
           </View>
         </Modal>
@@ -527,6 +542,7 @@ class GroupWorkingStatisticsScreen extends React.Component {
 
 const mapStateToProps = (state) => ({
   dataStatus: state.drawer.data,
+  language: state.app.language,
 });
 
 const mapActionToProps = {

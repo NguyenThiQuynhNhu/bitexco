@@ -130,7 +130,7 @@ class ProposalList extends Component {
     }
 
     if (nextProps.createStatus && createStatus !== nextProps.createStatus) {
-      this.refs.toast.show("Tạo yêu cầu thành công", DURATION.LENGTH_LONG);
+      this.refs.toast.show(Strings.message.saveSuccess, DURATION.LENGTH_LONG);
     }
 
     if (nextProps.errorResponse && nextProps.errorResponse !== errorResponse) {
@@ -260,7 +260,7 @@ class ProposalList extends Component {
                   color: "black",
                 }}
               >
-                Thông báo
+                {Strings.notifycation.navTitle}
               </Text>
               <Text
                 style={{
@@ -270,7 +270,7 @@ class ProposalList extends Component {
                   fontSize: responsive.h(16),
                 }}
               >
-                Nhóm: {converTypeToString(typeId)}
+                {Strings.notifycation.source}: {converTypeToString(typeId)}
               </Text>
             </View>
           }
@@ -362,10 +362,10 @@ class ProposalList extends Component {
                   }}
                 >
                   {this.props.depSelected
-                    ? this.props.depSelected.name
+                    ? converTypeToString(this.props.depSelected.id)
                     : depSelected
-                    ? depSelected.name
-                    : "Chọn nhóm"}
+                    ? converTypeToString(depSelected.id)
+                    : `${Strings.common.choose} ${Strings.notifycation.group}`}
                 </Text>
                 <MyIcon
                   name="arrow-down"
@@ -381,7 +381,7 @@ class ProposalList extends Component {
                 }}
               >
                 <PrimaryButton
-                  text="Bỏ lọc"
+                  text={Strings.notifycation.unfiltered}
                   onPress={() =>
                     this.setState(
                       {
@@ -410,7 +410,7 @@ class ProposalList extends Component {
                       () => onFilter({ depSelected })
                     )
                   }
-                  text="Lọc dữ liệu"
+                  text={Strings.notifycation.filter}
                   style={{ marginLeft: responsive.h(10) }}
                 />
               </View>

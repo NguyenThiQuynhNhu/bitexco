@@ -46,12 +46,7 @@ import { show } from "../../../utils/Toast";
 import NavBar from "../../../components/common/NavBar";
 import { MyIcon } from "../../../theme/icons";
 import ImageProgress from "../../../components/common/ImageProgress";
-// import ActionSheet from '../../../components/common/ActionSheet';
-// import DateTimePicker from 'react-native-modal-datetime-picker';
-
-// import TuNgayPicker from 'react-native-modal-datetime-picker';
-// import DenNgayPicker from 'react-native-modal-datetime-picker';
-// import CommentView from './CommentView';
+import { converStatusToByString } from "../../../utils/handover";
 import responsive from "../../../resources/responsive";
 // create a component
 class HandOverMore extends Component {
@@ -78,17 +73,6 @@ class HandOverMore extends Component {
     };
   }
   componentDidMount() {
-    // this.props.resetStateByKey({ key: 'initList', path: '', value: true });
-    // Promise.resolve()
-    // .then(()=>{
-    // console.log('this ',this)
-    // const parram = {
-    //     name:this.props.user.username,
-    //     pass:this.props.user.password,
-    //     BuildingId:this.props.user.towerId
-    // }
-    // console.log('parram HandOverMore ',parram)
-
     this.props
       .HandOverPlanData({
         buildingId: this.props.user.towerId,
@@ -96,7 +80,7 @@ class HandOverMore extends Component {
       .then((data) => {
         this.setState({ isloading: false });
         if (data.status != 200) {
-          show("Lỗi!");
+          show(`${Strings.message.saveError}!`);
           return;
         }
         this.setState({
@@ -152,7 +136,7 @@ class HandOverMore extends Component {
     ) {
       if (!nextProps.errorCreate.hasError) {
         this.props.refreshDataHandle();
-        this.refs.toast.show("Tạo yêu cầu thành công", DURATION.LENGTH_LONG);
+        this.refs.toast.show(`${Strings.message.saveSuccess}!`, DURATION.LENGTH_LONG);
       }
     }
     if (nextProps.towerId && nextProps.towerId !== this.props.towerId) {
@@ -169,7 +153,7 @@ class HandOverMore extends Component {
             DURATION.LENGTH_LONG
           );
         } else {
-          this.refs.toast.show("Phản hồi thành công", DURATION.LENGTH_LONG);
+          this.refs.toast.show(`${Strings.message.saveSuccess}!`, DURATION.LENGTH_LONG);
         }
       });
     }
@@ -231,21 +215,6 @@ class HandOverMore extends Component {
   }
 
   async item_click(item) {
-    // alert('1')
-    // this.setState({ showModal: true, modalView: this.renderDetail(item) })
-    // this.props.navigation.navigate('home')
-    // console.log(item)
-    // this.props.goListTaiSan(item)
-
-    // this.setState({
-    //     showAction: true,
-    //     item:item
-    //  })
-    //  this.props.goListTaiSan(item)
-    //  setTimeout(()=>{
-    //     this.props.goListTaiSan(this.state.item)
-    // },500)
-    // console.log('item_click ',this.state.Dutys)
     var _temp = this.state.Apartments.map((i) => {
       if (i.apartmentId == item.apartmentId) {
         const _IsChoose = i.isChoose;
@@ -287,13 +256,13 @@ class HandOverMore extends Component {
     this.setState({ isloading: true });
 
     if (this.state.GroupId == 0) {
-      show("Vui lòng chọn nhóm!");
+      show(`${Strings.common.pleaseChoose} ${Strings.common.group}!`);
       this.setState({ isloading: false });
       return;
     }
 
     if (this.state.Apartments.filter((i) => i.isChoose).length == 0) {
-      show("Vui lòng chọn mặt bằng cần bàn giao!");
+      show(`${Strings.common.pleaseChoose} ${Strings.handover.apartment}!`);
       this.setState({ isloading: false });
       return;
     }
@@ -303,7 +272,7 @@ class HandOverMore extends Component {
         //nếu được chọn
         if (i.dutyId == null) {
           //thì kiểm tra xem đã chọn ca chưa
-          show("Vui lòng chọn ca trực!");
+          show(`${Strings.common.pleaseChoose} ${Strings.handover.shift}!`);
           this.setState({ isloading: false });
           return;
         }
@@ -467,43 +436,11 @@ class HandOverMore extends Component {
             >
               <Text style={{ paddingRight: responsive.h(10),}}>
                 {item.dutyName == ""
-                  ? "Vui lòng chọn ca bàn giao..."
+                  ? `${Strings.common.pleaseChoose} ${Strings.handover.shift}...`
                   : item.dutyName}
               </Text>
               <MyIcon name="arrow-arrow-down" size={15} color={colors.gray1} />
             </TouchableOpacity>
-
-            {/* <Picker
-                            style={{
-                                width: '100%', marginLeft: 0, paddingLeft: 0, paddingRight: 0, marginRight: 0,paddingVertical:0,marginVertical:0,
-                                // backgroundColor:colors.red,
-                            }}
-                            headerBackButtonText='Quay lại'
-                            note
-                            placeholder='Vui lòng chọn ca bàn giao!'
-                            textStyle={{ color: colors.appTheme, fontWeight: '500', marginLeft: 0, paddingLeft: 0, paddingRight: 0, marginRight: 0,paddingVertical:0,marginVertical:0 }}
-                            placeholderStyle={{ color: colors.gray1 }}
-                            iosHeader='Chọn'
-                            mode="dialog"
-                            selectedValue={item.DutyId}
-                            onValueChange={(value) => {
-                                this.item_duty_click(value,item)
-                            }}
-                        >
-                            {
-                                this.state.Dutys.map(item => {
-                                    return <Picker.Item key={item.Id} label={item.Name} value={item.Name} />
-                                })
-                            }
-
-                        </Picker> */}
-
-            {/* <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingTop: 5 }}>
-                            <Text style={{ color: colors.gray1 }}>Khu <Text style={{ color: colors.appTheme,fontWeight:'bold' }}>{item.khu}</Text></Text>
-                            <Text style={{ color: colors.gray1 }}>{moment(item.DateHandoverFrom).format('DD/MM/YYYY HH:mm')}</Text>
-                            <Text style={{ color: colors.gray1 }}>-></Text>
-                            <Text style={{ color: colors.gray1 }}>{moment(item.DateHandoverTo).format('DD/MM/YYYY HH:mm')}</Text>
-                        </View> */}
           </View>
         </TouchableOpacity>
       </Swipeable>
@@ -733,7 +670,7 @@ class HandOverMore extends Component {
                 }}
                 style={{ padding: responsive.h(10),}}
               >
-                <Text style={{ color: "#fff" }}>Huỷ</Text>
+                <Text style={{ color: "#fff" }}>{Strings.handover.cancel}</Text>
               </TouchableOpacity>
             }
           />

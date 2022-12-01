@@ -78,7 +78,7 @@ class ServiceExtensionAssignEmployee extends Component {
         }}
       >
         <Lookup
-          fielName={`Phòng ban (*)`}
+          fielName={`${Strings.common.department} (*)`}
           text={
             depSelected.id != 0
               ? depSelected.name
@@ -93,7 +93,7 @@ class ServiceExtensionAssignEmployee extends Component {
         />
         <Lookup
           visible={depSelected.id !== 0}
-          fielName={`Nhân viên (*)`}
+          fielName={`${Strings.common.employee} (*)`}
           text={
             employeeSelected.id != 0
               ? employeeSelected.name
@@ -240,13 +240,13 @@ class ServiceExtensionAssignEmployee extends Component {
     } = this.state;
     if (depSelected.id == 0) {
       return this.refs.toast.show(
-        `Vui lòng chọn phòng ban`,
+        `${Strings.common.pleaseChoose} ${Strings.common.department}`,
         DURATION.LENGTH_LONG
       );
     }
     if (employeeSelected.id == 0) {
       return this.refs.toast.show(
-        `Vui lòng chọn nhân viên`,
+        `${Strings.common.pleaseChoose} ${Strings.common.employee}`,
         DURATION.LENGTH_LONG
       );
     }

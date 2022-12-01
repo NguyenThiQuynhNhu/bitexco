@@ -174,7 +174,7 @@ class CreateGasScreen extends Component {
       <View style={{ marginTop: responsive.h(10) }}>
         {this.state.gasRequest.linkUrl != "" ? (
           <View>
-            <Text style={styles.textTitle}>Hình nhân viên up</Text>
+            <Text style={styles.textTitle}>{Strings.electric.indexImage}</Text>
             <View style={{ flex: 1, flexDirection: "row" }}>
               <View
                 style={{
@@ -211,7 +211,7 @@ class CreateGasScreen extends Component {
                       color: "#ffffff",
                     }}
                   >
-                    Nhấn vào để tải ảnh
+                    {Strings.createRequest.addPhoto}
                   </Text>
                 </View>
               </View>
@@ -272,7 +272,7 @@ class CreateGasScreen extends Component {
                   color: "#ffffff",
                 }}
               >
-                Nhấn vào để tải ảnh
+               {Strings.createRequest.textPhoto}
               </Text>
             </View>
           </TouchableOpacity>
@@ -369,7 +369,7 @@ class CreateGasScreen extends Component {
                   paddingVertical: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Chỉ số mới (*)</Text>
+                <Text style={styles.textTitle}>{Strings.electric.newIndex} (*)</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -384,7 +384,7 @@ class CreateGasScreen extends Component {
                     marginLeft: responsive.h(20),
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập chỉ số mới..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.newIndex}...`}
                   placeholderTextColor="#a0a0a0"
                   value={indexNew.toString()}
                   underlineColorAndroid="transparent"
@@ -395,7 +395,7 @@ class CreateGasScreen extends Component {
                   }}
                 />
               </View>
-              <Text style={styles.textTitle}>Hình ảnh chỉ số</Text>
+              <Text style={styles.textTitle}>{Strings.electric.indexImage}</Text>
               {this.state.images.length > 0 ? (
                 <ScrollView
                   horizontal={true}
@@ -437,7 +437,7 @@ class CreateGasScreen extends Component {
                             color: "#ffffff",
                           }}
                         >
-                          Nhấn vào để tải ảnh
+                          {Strings.createRequest.addPhoto}
                         </Text>
                       </View>
                     </View>
@@ -507,7 +507,7 @@ class CreateGasScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Đơn vị tính</Text>
+                <Text style={styles.textTitle}>{Strings.electric.unit}</Text>
                 <TouchableOpacity
                   onPress={() =>
                     this.props.navigation.navigate("unitList", {
@@ -528,7 +528,7 @@ class CreateGasScreen extends Component {
                   <Text style={{ paddingRight: responsive.h(14), fontSize: fontsize.small }}>
                     {this.state.unitSelected
                       ? this.state.unitSelected.name
-                      : "Chọn đơn vị tính"}
+                      : `${Strings.common.choose} ${Strings.electric.unit}...`}
                   </Text>
                   <MyIcon name="arrow-down" size={responsive.h(14)} color={colors.gray1} />
                 </TouchableOpacity>
@@ -541,7 +541,7 @@ class CreateGasScreen extends Component {
                   paddingTop: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Tỷ lệ VAT</Text>
+                <Text style={styles.textTitle}>{Strings.electric.VATrate}</Text>
                 <TextInput
                   maxLength={50}
                   style={{
@@ -558,7 +558,7 @@ class CreateGasScreen extends Component {
                     fontFamily: "Inter-SemiBold",
                   }}
                   keyboardType="numeric"
-                  placeholder="Nhập tỷ lệ VAT..."
+                  placeholder={`${Strings.common.type} ${Strings.electric.VATrate}...`}
                   placeholderTextColor="#a0a0a0"
                   value={rateFeeVAT.toString()}
                   underlineColorAndroid="transparent"
@@ -588,9 +588,9 @@ class CreateGasScreen extends Component {
                 }}
               >
                 <Text
-                  style={{ color: colors.appTheme, fontSize: fontsize.small }}
+                  style={styles.textTitle}
                 >
-                  Ghi chú
+                  {Strings.electric.note}
                 </Text>
                 <TextInput
                   maxLength={500}
@@ -611,7 +611,7 @@ class CreateGasScreen extends Component {
                     borderColor: "#a0a0a0",
                     borderRadius: responsive.h(4),
                   }}
-                  placeholder="Nhập ghi chú"
+                  placeholder={`${Strings.common.type} ${Strings.electric.note}...`}
                   placeholderTextColor="#a0a0a0"
                   value={description}
                   onChangeText={(description) => {
@@ -634,7 +634,7 @@ class CreateGasScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Chỉ số cũ</Text>
+              <Text style={styles.textTitle}>{Strings.electric.oldIndex}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -659,7 +659,7 @@ class CreateGasScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Số tiêu thụ</Text>
+              <Text style={styles.textTitle}>{Strings.electric.amountOfConsumption}</Text>
               {/* <Text style={{ justifyContent: 'flex-end', fontSize: fontsize.larg }}>{ Number(indexNew) > 0 ? (indexNew - (indexId > 0 ? indexOld : this.props.data.indexNew)) : '' }</Text> */}
               <Text
                 style={{
@@ -685,7 +685,7 @@ class CreateGasScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Tỷ giá QĐ</Text>
+              <Text style={styles.textTitle}>{Strings.electric.exchangeRate}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -710,7 +710,7 @@ class CreateGasScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Kỳ thanh toán</Text>
+              <Text style={styles.textTitle}>{Strings.electric.paymentPeriod}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -721,8 +721,8 @@ class CreateGasScreen extends Component {
                   color: "#a0a0a0",
                 }}
               >
-                {dateFrom === null ? "" : moment(dateFrom).format("DD/MM/YYYY")}{" "}
-                - {dateTo === null ? "" : moment(dateTo).format("DD/MM/YYYY")}
+                {!dateFrom || (dateFrom && dateFrom =='') ? "" : moment(dateFrom).format("DD/MM/YYYY")}{" "}
+                - {!dateTo || (dateTo && dateTo =='') ? "" : moment(dateTo).format("DD/MM/YYYY")}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
@@ -739,7 +739,7 @@ class CreateGasScreen extends Component {
                 marginHorizontal: responsive.h(20),
               }}
             >
-              <Text style={styles.textTitle}>Ngày thanh toán</Text>
+              <Text style={styles.textTitle}>{Strings.electric.dateOfPayment}</Text>
               <Text
                 style={{
                   justifyContent: "flex-end",
@@ -750,7 +750,7 @@ class CreateGasScreen extends Component {
                   color: "#a0a0a0",
                 }}
               >
-                {datePayment === null
+                {!datePayment || (datePayment && datePayment =='')
                   ? ""
                   : moment(datePayment).format("DD/MM/YYYY")}
               </Text>
@@ -770,7 +770,7 @@ class CreateGasScreen extends Component {
                   marginHorizontal: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Ngày thông báo</Text>
+                <Text style={styles.textTitle}>{Strings.electric.notificationDate}</Text>
                 <Text
                   style={{
                     justifyContent: "flex-end",
@@ -781,7 +781,7 @@ class CreateGasScreen extends Component {
                     color: "#a0a0a0",
                   }}
                 >
-                  {dateNotify === null
+                  {!dateNotify || (dateNotify && dateNotify =='')
                     ? ""
                     : moment(dateNotify).format("DD/MM/YYYY")}
                 </Text>
@@ -798,7 +798,7 @@ class CreateGasScreen extends Component {
                   marginHorizontal: responsive.h(20),
                 }}
               >
-                <Text style={styles.textTitle}>Tổng tiền</Text>
+                <Text style={styles.textTitle}>{Strings.electric.totalAmount}</Text>
                 <Text
                   style={{
                     justifyContent: "flex-end",
@@ -850,7 +850,7 @@ class CreateGasScreen extends Component {
               <MyIcon name="paperplane" color="black" size={responsive.h(24)} />
             </TouchableOpacity>
           }
-          body={<Text style={titleStyle}>Ghi chỉ số</Text>}
+          body={<Text style={titleStyle}>{Strings.electric.writeIndex}</Text>}
           // rightView={<IconButton materialIcon="send" color="#fff" size={24}
           //     onPress={this._onSend}
           // />}
@@ -895,7 +895,7 @@ class CreateGasScreen extends Component {
             >
               <View style={{ padding: responsive.h(12), paddingVertical: responsive.h(15), height: responsive.h(160) }}>
                 <Text style={{ textAlign: "center", fontSize: responsive.h(17) }}>
-                  TÙY CHỈNH THỜI GIAN
+                {Strings.statistical.custom} {Strings.statistical.time}
                 </Text>
                 <View
                   style={{
@@ -978,7 +978,7 @@ class CreateGasScreen extends Component {
                   alignItems: "center",
                 }}
               >
-                <Text style={{ color: "red" }}>ĐÓNG</Text>
+                <Text style={{ color: "red" }}>{Strings.statistical.close}</Text>
               </TouchableOpacity>
             </View>
             <DateTimePicker
@@ -1103,7 +1103,7 @@ class CreateGasScreen extends Component {
 
     if (Number(indexNew) === NaN) {
       return this.refs.toast.show(
-        `${Strings.message.pleaseType}` + " Chỉ số mới",
+        `${Strings.message.pleaseType} ${Strings.electric.newIndex}`,
         DURATION.LENGTH_LONG
       );
     }
@@ -1158,17 +1158,17 @@ class CreateGasScreen extends Component {
         } else {
           return Alert.alert(
             "",
-            "Cảnh báo số liệu bất thường, bạn có muốn tiếp tục?",
+            `${Strings.electric.mesWanning}?`,
             [
               {
-                text: "Huỷ",
+                text: Strings.electric.cancel,
                 onPress: () => {
                   return;
                 },
                 style: "cancel",
               },
               {
-                text: "Tiếp tục",
+                text: Strings.electric.continue,
                 onPress: () => {
                   return this._onSubmit({
                     id,

@@ -55,6 +55,7 @@ let Strings = new LocalizedStrings({
       message: "Phiên đã hết hạn. Bạn có muốn đăng nhập lại?",
       label1: "Hệ thống",
       label2: "Tiện ích",
+      link: "Liên kết"
     },
     tabbar: {
       home: "Trang chủ",
@@ -155,6 +156,7 @@ let Strings = new LocalizedStrings({
       retry: " Thử lại",
       allow: " Cho phép",
       textPhoto: "Nhấn vào để tải ảnh",
+      addPhoto: "Thêm ảnh",
     },
     detailRequest: {
       butonText: "Phản hồi",
@@ -183,7 +185,7 @@ let Strings = new LocalizedStrings({
     },
     profile: {
       title: "Quản lý tài khoản",
-      settinglanguage: "Ngôn ngữ",
+      settinglanguage: "Language",
       setting: "Cài đặt",
       logout: "Đăng xuất",
       questionLogout: "Bạn có chắc chắn muốn thoát ứng dụng?",
@@ -232,7 +234,7 @@ let Strings = new LocalizedStrings({
       title: "Tiện ích",
       option1: "Chờ duyệt",
       option2: "Đã xác nhận",
-      option3: "Đã duyệt",
+      option3: "Đã hoàn thành",
       option4: "Đã huỷ",
       message: "Lời nhắn",
       deposit: "Tiền cọc",
@@ -355,6 +357,7 @@ let Strings = new LocalizedStrings({
       label1: "System",
       label2: "Utilities",
       message: "Session has expired. Do you want to re-login?",
+      link: "Link"
     },
     tabbar: {
       home: "Home",
@@ -420,7 +423,7 @@ let Strings = new LocalizedStrings({
     listRequest: {
       option1: "New",
       option2: "In process",
-      option3: "Finish",
+      option3: "Completed",
       option4: "Closed",
     },
     createRequest: {
@@ -455,6 +458,7 @@ let Strings = new LocalizedStrings({
       retry: "Retry",
       allow: "Allow",
       textPhoto: "Click to download the photo",
+      addPhoto: "Add photo",
     },
     detailRequest: {
       butonText: "Feedback",
@@ -473,7 +477,7 @@ let Strings = new LocalizedStrings({
       ring: "Ringing",
       vibrate: "Vibrate",
       message: "When receive new notification",
-      language: "language",
+      language: "Language",
       towerInfo: "Building infomation",
       towerAddress: "Address",
       departmentInfo: "Apartment Information",
@@ -482,7 +486,7 @@ let Strings = new LocalizedStrings({
       surveySheet: "Survey Sheet",
     },
     profile: {
-      settinglanguage: "Language",
+      settinglanguage: "Ngôn ngữ",
       setting: "Setting",
       logout: "Log out",
       questionLogout: "Are you sure you want to quit this app?",
@@ -532,8 +536,8 @@ let Strings = new LocalizedStrings({
       title: "Facility",
       option1: "Waiting",
       option2: "Confirmed",
-      option3: "Approved",
-      option4: "Rejected",
+      option3: "Completed",
+      option4: "Canceled",
       message: "Message",
       deposit: "Deposit",
       maximumAmountPeople: "Maximum people",

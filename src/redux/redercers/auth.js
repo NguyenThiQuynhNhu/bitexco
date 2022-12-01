@@ -284,7 +284,12 @@ export default (state = INITIAL_STATE, action) => {
         isSurvey: action.payload
       };
     }
-    
+    case 'SAVE_TOWERS_TOPIC': {
+      return {
+        ...state,
+        user: { ...state.user, towers: action.payload.towers}
+      };
+    }
     default:
       return state;
   }

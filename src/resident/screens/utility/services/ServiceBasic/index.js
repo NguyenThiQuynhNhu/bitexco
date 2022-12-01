@@ -19,7 +19,7 @@ import Toast, { DURATION } from "react-native-easy-toast";
 import SearchBar from "../../../../components/common/SearchBar";
 import ErrorContent from "../../../../components/common/ErrorContent";
 
-import ButtonFilter from "../../../../components/Request/List/ButtonFilter";
+import ButtonFilter from "../../../../components/service/basic/ButtonFilter";
 
 import Spinner from "react-native-loading-spinner-overlay";
 //style
@@ -283,6 +283,7 @@ class ServiceBasic extends Component {
     );
   };
   render() {
+    console.log(this.props)
     const { searchKey, isApplySearchKey } = this.state;
     const { isShowSearch, dataStatus } = this.state;
     return (
@@ -322,8 +323,6 @@ class ServiceBasic extends Component {
                   );
                 }}
                 style={{
-                  flex: 1,
-                  // margin: Platform.OS == "ios" ? 5 : 10,
                   marginHorizontal: responsive.h(10),
                 }}
               />
@@ -389,26 +388,13 @@ class ServiceBasic extends Component {
                 }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
-                <MyIcon size={responsive.h(24)} name="search" color="black" />
+                <MyIcon size={responsive.h(26)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
         )}
 
         <View>
-          {/* <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{
-                            backgroundColor: '#fff',
-                        }}
-                    >
-                        <ButtonFilter value={1} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} style={{ paddingHorizontal: 5 }} />
-                        <ButtonFilter value={2} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={3} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={4} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-
-                    </ScrollView> */}
           <FlatList
             ItemSeparatorComponent={() => (
               <View
@@ -425,12 +411,10 @@ class ServiceBasic extends Component {
             //pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-              marginVertical: responsive.h(10),
             }}
             //legacyImplementation={false}
             style={{
-              borderTopRightRadius: responsive.h(20),
-              marginTop: responsive.h(-15),
+              marginTop: -responsive.h(5)
             }}
             renderItem={(item) => {
               //console.log('item',item)
@@ -442,7 +426,7 @@ class ServiceBasic extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: responsive.h(5) }}
+                    style={{ paddingHorizontal: responsive.h(10) }}
                   />
                 </View>
               );
@@ -455,6 +439,7 @@ class ServiceBasic extends Component {
             backgroundColor: "#f5f5f5",
             height: responsive.h(15),
             width: "100%",
+            marginBottom: responsive.h(5)
           }}
         />
         {this._renderContent()}

@@ -257,7 +257,7 @@ class NewsScreen extends Component {
         <ErrorContent
           title={Strings.app.error}
           onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
+            this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers }),
               this.props.refreshDataHandle();
           }}
         />
@@ -279,7 +279,7 @@ class NewsScreen extends Component {
         refreshing={isRefreshingNotify}
         onRefresh={() => {
           refreshDataHandle(),
-            this.props.getProfile({ type: "re", langId: this.props.langId });
+            this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers });
         }}
         data={dataNotify || []}
         keyExtractor={(item, index) => `${index}`}

@@ -40,17 +40,17 @@ const ImageProgress = (props) => {
     return (
       <View
         style={{
-          width: style.width + 2,
-          height: style.height + 2,
+          width: style.width,
+          height: style.height,
           borderRadius,
-          backgroundColor: colors.grayBorder,
+          backgroundColor: 'transparent',
           justifyContent: "center",
           alignItems: "center",
-          padding: 5,
+          //padding: 5,
         }}
       >
         <Image
-          style={{ ...style, borderRadius: style.width / 2 }}
+          style={{ ...style, borderRadius: borderRadius }}
           // indicator={Progress.CircleSnail}
           // indicatorProps={{
           //     size: 20,
@@ -61,10 +61,12 @@ const ImageProgress = (props) => {
             <View
               style={{
                 ...style,
-                borderRadius: style.width / 2,
-                alignItems: "center",
+                width: style.width + 2,
+                height: style.height + 2,
+                borderRadius: borderRadius,
+                backgroundColor: '#eaeaea',
                 justifyContent: "center",
-                backgroundColor: "#e6e6e6",
+                alignItems: "center",
               }}
             >
               <MyIcon

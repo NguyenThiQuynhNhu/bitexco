@@ -11,6 +11,7 @@ import {
   Image,
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker'
 import Toast, { DURATION } from "react-native-easy-toast";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Spinner from "react-native-loading-spinner-overlay";
@@ -32,6 +33,9 @@ import ImagePickerOption from "../../../constant/ImagePickerOption";
 import responsive from "../../../resources/responsive";
 import NavBar from "../../../resident/components/common/NavBar";
 
+import {
+  converNameTopPiority
+} from "../../../utils/request";
 // create a component
 class RequestAssignEmployee extends Component {
   constructor(props) {
@@ -92,7 +96,7 @@ class RequestAssignEmployee extends Component {
         }}
       >
         <Lookup
-          fielName={`Phòng ban (*)`}
+          fielName={`${Strings.common.department} (*)`}
           text={
             depSelected.id != 0
               ? depSelected.name
@@ -107,7 +111,7 @@ class RequestAssignEmployee extends Component {
         />
         <Lookup
           visible={depSelected.id !== 0}
-          fielName={`Nhân viên (*)`}
+          fielName={`${Strings.common.employee}(*)`}
           text={
             employeeSelected.id != 0
               ? employeeSelected.name
@@ -124,7 +128,7 @@ class RequestAssignEmployee extends Component {
         />
         <Lookup
           visible={depSelected.id !== 0}
-          fielName={`Nhóm công việc (*)`}
+          fielName={`${Strings.common.workingGroup} (*)`}
           text={
             groupSelected.id != 0
               ? groupSelected.name
@@ -160,7 +164,7 @@ class RequestAssignEmployee extends Component {
               flex: 0.5,
             }}
           >
-            Cấp độ (*)
+            {Strings.common.priority} (*)
           </Text>
           <View
             style={{
@@ -187,7 +191,7 @@ class RequestAssignEmployee extends Component {
               }}
             >
               {levelSelected.value
-                ? levelSelected.value
+                ? converNameTopPiority(levelSelected.id)
                 : Strings.createRequest.placeholderPriority}
             </Text>
             <MyIcon size={responsive.h(14)} color={colors.grayBorder} name="arrow-down" />
@@ -203,7 +207,7 @@ class RequestAssignEmployee extends Component {
             marginBottom: responsive.h(10),
           }}
         >
-          Thời gian
+          {Strings.createRequest.date}
         </Text>
         <View
           style={{
@@ -261,7 +265,7 @@ class RequestAssignEmployee extends Component {
               </Text>
             )}
             <MyIcon name="calendar2" size={responsive.h(20)} color={"rgba(0, 0, 0, 0.54)"} />
-            <DateTimePicker
+            {/* <DateTimePicker
               cancelTextIOS={Strings.createRequest.cancel}
               titleIOS={Strings.createRequest.titlePicker}
               confirmTextIOS={Strings.createRequest.chose}
@@ -275,7 +279,23 @@ class RequestAssignEmployee extends Component {
               onCancel={() => {
                 this.setState({ isToggleDate: false });
               }}
-            />
+            /> */}
+            <DatePicker
+            modal
+            mode="date"
+            open={this.state.isToggleDate}
+            onConfirm={(day) => {
+              this.setState({ isToggleDate: false, day });
+            }}
+            onCancel={() => {
+              this.setState({ isToggleDate: false });
+            }}
+            confirmText={Strings.createRequest.chose}
+            title={`${Strings.createRequest.titlePicker}`}
+            cancelText={Strings.createRequest.cancel}
+            date={new Date()}
+            locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
+          />
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => {
@@ -308,7 +328,7 @@ class RequestAssignEmployee extends Component {
               {moment(time).format("HH:mm")}
             </Text>
             <MyIcon name="clock2" size={responsive.h(20)} color={"rgba(0, 0, 0, 0.54)"} />
-            <DateTimePicker
+            {/* <DateTimePicker
               cancelTextIOS={Strings.app.cancel}
               titleIOS={Strings.createRequest.at}
               confirmTextIOS={Strings.app.chose}
@@ -321,7 +341,23 @@ class RequestAssignEmployee extends Component {
               onCancel={() => {
                 this.setState({ isToggleTimeFrom: false });
               }}
-            />
+            /> */}
+            <DatePicker
+            modal
+            mode="time"
+            open={this.state.isToggleTimeFrom}
+            onConfirm={(time) => {
+              this.setState({ isToggleTimeFrom: false, time });
+            }}
+            onCancel={() => {
+              this.setState({ isToggleTimeFrom: false });
+            }}
+            confirmText={Strings.createRequest.chose}
+            title={Strings.createRequest.at}
+            cancelText={Strings.createRequest.cancel}
+            date={new Date()}
+            locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
+          />
           </TouchableOpacity>
         </View>
         <View
@@ -379,7 +415,7 @@ class RequestAssignEmployee extends Component {
             placeholderTextColor="#9e9e9e"
             value={this.props.content}
             onChangeText={(content) => this.setState({ content })}
-            // onChangeText={(text) => { this.props.resetStateByKey({ key: 'content', path: '', value: text }); }}
+          // onChangeText={(text) => { this.props.resetStateByKey({ key: 'content', path: '', value: text }); }}
           />
         </View>
         {this.state.images.length > 0 ? (
@@ -420,7 +456,7 @@ class RequestAssignEmployee extends Component {
                       color: "#ffffff",
                     }}
                   >
-                    Nhấn vào để tải ảnh
+                    {Strings.createRequest.addPhoto}
                   </Text>
                 </View>
               </View>
@@ -500,7 +536,7 @@ class RequestAssignEmployee extends Component {
                   color: "#ffffff",
                 }}
               >
-                Nhấn vào để tải ảnh
+                {Strings.createRequest.textPhoto}
               </Text>
             </View>
           </TouchableOpacity>
@@ -517,6 +553,7 @@ class RequestAssignEmployee extends Component {
             { id: 3, value: "Thấp" },
           ]}
           dislayValue="value"
+          priority={true}
           onClose={() => this.setState({ showModalLevel: false })}
         />
 
@@ -592,26 +629,26 @@ class RequestAssignEmployee extends Component {
       groupSelected,
       imagesInformation,
     } = this.state;
-    if (depSelected.id == 0) {
+    if (depSelected.id ==0) {
       return this.refs.toast.show(
-        `Vui lòng chọn Phòng ban`,
+        `${Strings.common.pleaseChoose} ${Strings.common.department}`,
         DURATION.LENGTH_LONG
       );
     }
-    if (employeeSelected.id == 0) {
+    if (employeeSelected.id ==0) {
       return this.refs.toast.show(
-        `Vui lòng chọn Nhân viên`,
+        `${Strings.common.pleaseChoose} ${Strings.common.employee}`,
         DURATION.LENGTH_LONG
       );
     }
-    if (groupSelected.id == 0) {
+    if (groupSelected.id ==0) {
       return this.refs.toast.show(
-        `Vui lòng chọn Nhóm công việc`,
+        `${Strings.common.pleaseChoose} ${Strings.common.workingGroup}`,
         DURATION.LENGTH_LONG
       );
     }
-    if (levelSelected.id == 0) {
-      return this.refs.toast.show(`Vui lòng chọn Cấp độ`, DURATION.LENGTH_LONG);
+    if (levelSelected.id ==0) {
+      return this.refs.toast.show(`${Strings.common.pleaseChoose} ${Strings.common.priority}`, DURATION.LENGTH_LONG);
     }
     return this.props.updateRequestHandle(
       {
@@ -631,46 +668,64 @@ class RequestAssignEmployee extends Component {
 
   _onAttachment = () => {
     // if (this.props.images && _.size(this.props.images) < 5) {
-    ImagePicker.showImagePicker(ImagePickerOption, (response) => {
-      // console.log('Response showImagePicker = ', response);
+    let option = {
+      quality: 1.0,
+      maxWidth: 512,
+      maxHeight: 512,
+      storageOptions: {
+        skipBackup: true
+      },
+      title: Strings.createRequest.takeAPhoto,
+      takePhotoButtonTitle: Strings.createRequest.chooseAnImage,
+      chooseFromLibraryButtonTitle: Strings.createRequest.SelectFromGallery,
+      cancelButtonTitle: Strings.createRequest.cancel,
+      permissionDenied: {
+        title: Strings.createRequest.access,
+        text: Strings.createRequest.access2,
+        reTryTitle: Strings.createRequest.retry,
+        okTitle: Strings.createRequest.allow,
+      },
+    }
+    ImagePicker.showImagePicker(option, (response) => {
+  // console.log('Response showImagePicker = ', response);
 
-      if (response.didCancel) {
-        // console.log('User cancelled photo picker');
-      } else if (response.error) {
-        // console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        // console.log('User tapped custom button: ', response.customButton);
-      } else {
-        const image = {
-          uri: response.uri,
-          mineType:
-            Platform.OS === "ios"
-              ? mineTypes.lookup(response.uri)
-              : response.type,
-          bytes: response.data,
-        };
-        this.setState(
-          {
-            images: [...this.state.images, image],
-            imagesInformation: [
-              ...this.state.imagesInformation,
-              { mineType: image.mineType, bytes: image.bytes },
-            ],
-          },
-          () => {
-            console.log(this.state.imagesInformation);
-          }
-        );
+  if (response.didCancel) {
+    // console.log('User cancelled photo picker');
+  } else if (response.error) {
+    // console.log('ImagePicker Error: ', response.error);
+  } else if (response.customButton) {
+    // console.log('User tapped custom button: ', response.customButton);
+  } else {
+    const image = {
+      uri: response.uri,
+      mineType:
+        Platform.OS === "ios"
+          ? mineTypes.lookup(response.uri)
+          : response.type,
+      bytes: response.data,
+    };
+    this.setState(
+      {
+        images: [...this.state.images, image],
+        imagesInformation: [
+          ...this.state.imagesInformation,
+          { mineType: image.mineType, bytes: image.bytes },
+        ],
+      },
+      () => {
+        console.log(this.state.imagesInformation);
       }
-    });
+    );
+  }
+});
   };
 
-  _deleteImage = (item) => {
-    const array = this.state.images;
-    const index = array.indexOf(item);
-    array.splice(index, 1);
-    this.setState({ images: array });
-  };
+_deleteImage = (item) => {
+  const array = this.state.images;
+  const index = array.indexOf(item);
+  array.splice(index, 1);
+  this.setState({ images: array });
+};
 }
 
 // define your styles

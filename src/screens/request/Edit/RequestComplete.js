@@ -151,7 +151,7 @@ class RequestComplete extends Component {
                       color: "#ffffff",
                     }}
                   >
-                    Nhấn vào để tải ảnh
+                    {Strings.createRequest.addPhoto}
                   </Text>
                 </View>
               </View>
@@ -231,7 +231,7 @@ class RequestComplete extends Component {
                   color: "#ffffff",
                 }}
               >
-                Nhấn vào để tải ảnh
+                {Strings.createRequest.textPhoto}
               </Text>
             </View>
           </TouchableOpacity>
@@ -259,7 +259,7 @@ class RequestComplete extends Component {
     );
     const rightButton = (
       <TouchableOpacity
-        style={{ padding: responsive.h(20) }}
+        style={{ padding: responsive.h(10) }}
         onPress={() =>
           updateRequestHandle(
             {
@@ -292,7 +292,7 @@ class RequestComplete extends Component {
                 color: "black",
               }}
             >
-              Báo cáo hoàn thành
+              {this.props.navigation.state.params.title}
             </Text>
           }
           rightView={rightButton}
@@ -305,8 +305,25 @@ class RequestComplete extends Component {
 
   _onAttachment = () => {
     // if (this.props.images && _.size(this.props.images) < 5) {
-
-    ImagePicker.showImagePicker(ImagePickerOption, (response) => {
+      let option = {
+        quality: 1.0,
+        maxWidth: 512,
+        maxHeight: 512,
+        storageOptions: {
+          skipBackup: true
+        },
+        title: Strings.createRequest.takeAPhoto,
+        takePhotoButtonTitle: Strings.createRequest.chooseAnImage,
+        chooseFromLibraryButtonTitle: Strings.createRequest.SelectFromGallery,
+        cancelButtonTitle: Strings.createRequest.cancel,
+        permissionDenied: {
+          title: Strings.createRequest.access,
+          text: Strings.createRequest.access2,
+          reTryTitle: Strings.createRequest.retry,
+          okTitle: Strings.createRequest.allow,
+        },
+      }
+    ImagePicker.showImagePicker(option, (response) => {
       // console.log('Response showImagePicker = ', response);
 
       if (response.didCancel) {

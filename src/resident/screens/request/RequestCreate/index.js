@@ -16,6 +16,7 @@ import {
 } from "react-native";
 import Spinner from "react-native-loading-spinner-overlay";
 import * as mineTypes from "react-native-mime-types";
+import DatePicker from 'react-native-date-picker'
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-picker";
@@ -150,7 +151,7 @@ class CreateScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -164,7 +165,7 @@ class CreateScreen extends Component {
                 }}
                 style={{
                   flexDirection: "row",
-                  paddingVertical: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(15),
                   alignItems: "center",
                 }}
               >
@@ -179,9 +180,7 @@ class CreateScreen extends Component {
         />
         <KeyboardAwareScrollView
           style={{
-            borderTopRightRadius: responsive.h(20),
-            marginTop: responsive.h(-20),
-            paddingTop: responsive.h(20),
+            marginTop: responsive.h(10),
           }}
         >
           <View style={styles.container}>
@@ -584,19 +583,22 @@ class CreateScreen extends Component {
                         : moment().format("DD/MM/YYYY")}
                     </Text>
                   )}
-                  <DateTimePicker
-                    cancelTextIOS={Strings.createRequest.cancel}
-                    titleIOS={Strings.createRequest.titlePicker}
-                    confirmTextIOS={Strings.createRequest.chose}
+                  <DatePicker
+                    cancelText={Strings.createRequest.cancel}
+                    title={Strings.createRequest.titlePicker}
+                    confirmText={Strings.createRequest.chose}
                     mode="date"
+                    modal
                     minimumDate={new Date()}
-                    isVisible={this.state.isToggleDate}
+                    open={this.state.isToggleDate}
                     onConfirm={(day) => {
                       this.setState({ isToggleDate: false, day });
                     }}
                     onCancel={() => {
                       this.setState({ isToggleDate: false });
                     }}
+                    date={new Date()}
+                    locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
                   />
                   <MyIcon
                     name="calendar"
@@ -639,18 +641,21 @@ class CreateScreen extends Component {
                       ? moment(time).format("HH:mm")
                       : moment().format("HH:mm")}
                   </Text>
-                  <DateTimePicker
-                    cancelTextIOS={Strings.app.cancel}
-                    titleIOS={Strings.createRequest.at}
-                    confirmTextIOS={Strings.app.chose}
+                  <DatePicker
+                    cancelText={Strings.createRequest.cancel}
+                    title={Strings.createRequest.at}
+                    confirmText={Strings.app.chose}
                     mode="time"
-                    isVisible={this.state.isToggleTimeFrom}
+                    modal
+                    open={this.state.isToggleTimeFrom}
                     onConfirm={(time) => {
                       this.setState({ isToggleTimeFrom: false, time });
                     }}
                     onCancel={() => {
                       this.setState({ isToggleTimeFrom: false });
                     }}
+                    date={new Date()}
+                    locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
                   />
                   <MyIcon
                     name="clock"

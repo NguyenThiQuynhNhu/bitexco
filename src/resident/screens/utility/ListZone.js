@@ -8,7 +8,7 @@ import Strings from "../../utils/languages";
 import fontsize from "../../theme/fontsize";
 import { MyIcon } from "../../theme/icons";
 
-import NavBar from "../../../components/common/NavBar";
+import NavBar from '../../components/common/NavBar';
 import responsive from "../../../resources/responsive";
 // create a component
 
@@ -79,11 +79,13 @@ class ListZone extends Component {
               {Strings.serviceBasicBooking.zoneSelect}
             </Text>
           }
-          //   rightView={
-          //     <View style={{ margin: 10 }}>
-          //       <MyIcon name="arrow" color={colors.appTheme} size={20} />
-          //     </View>
-          //   }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
+          }
         />
         <ListData
           api={{

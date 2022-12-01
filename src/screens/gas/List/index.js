@@ -148,10 +148,6 @@ class GasList extends Component {
       this.props.loadDataHandle(data);
     }
 
-    if (nextProps.createStatus && createStatus !== nextProps.createStatus) {
-      this.refs.toast.show("Tạo yêu cầu thành công", DURATION.LENGTH_LONG);
-    }
-
     if (nextProps.errorResponse && nextProps.errorResponse !== errorResponse) {
       if (!nextProps.errorResponse.hasError) {
         refreshDataHandle();
@@ -163,7 +159,7 @@ class GasList extends Component {
       nextProps.processError !== this.props.processError
     ) {
       if (nextProps.processError.status === 200) {
-        this.refs.toast.show("Dữ liệu đã được cập nhật", DURATION.LENGTH_LONG);
+        this.refs.toast.show(Strings.message.saveSuccess, DURATION.LENGTH_LONG);
       } else {
         if (nextProps.processError.hasError) {
           this.refs.toast.show(
@@ -293,9 +289,10 @@ class GasList extends Component {
                   letterSpacing: 0,
                   textAlign: "center",
                   color: "#df2027",
+                  marginBottom: responsive.h(10),
                 }}
               >
-                {this.props.user.towerName.toLocaleUpperCase()} - Kỳ:{" "}
+                {this.props.user.towerName.toLocaleUpperCase()} - {Strings.electric.period}:{" "}
                 {searchKey}/{searchKey2}
               </Text>
             </View>
@@ -317,18 +314,13 @@ class GasList extends Component {
             style={{
               backgroundColor: "#fff",
               justifyContent: "space-between",
-              padding: responsive.h(10),
+              padding: responsive.h(15),
               marginHorizontal: responsive.h(20),
+              marginTop: responsive.h(10),
               borderRadius: responsive.h(20),
               backgroundColor: "#ffffff",
-              shadowColor: "rgba(0, 0, 0, 0.08)",
-              elevation: 2,
-              shadowOffset: {
-                width: 0,
-                height: responsive.h(4),
-              },
-              shadowRadius: responsive.h(12),
-              shadowOpacity: 1,
+              borderWidth: 1,
+              borderColor: "rgba(0, 0, 0, 0.08)"
             }}
           >
             <View
@@ -349,7 +341,7 @@ class GasList extends Component {
                   color: "#282828",
                 }}
               >
-                Thời gian
+                {Strings.electric.time}
               </Text>
               <View
                 style={{
@@ -362,7 +354,7 @@ class GasList extends Component {
                 <View style={{ flex: 0.5 }}>
                   <InputNumber
                     value={this.state.searchKey.toString()}
-                    placeholder="Tháng"
+                    placeholder={Strings.electric.month}
                     style={{ width: "90%", height: "100%" }}
                     onChangeText={(searchKey) => {
                       this.setState({ searchKey }, () => {
@@ -382,7 +374,7 @@ class GasList extends Component {
                 <View style={{ flex: 0.5 }}>
                   <InputNumber
                     value={this.state.searchKey2.toString()}
-                    placeholder="Năm"
+                    placeholder={Strings.electric.year}
                     style={{ width: "100%", height: "100%" }}
                     onChangeText={(searchKey2) => {
                       this.setState({ searchKey2 }, () => {
@@ -429,7 +421,7 @@ class GasList extends Component {
                   color: "#282828",
                 }}
               >
-                Khối nhà
+                {Strings.electric.block}
               </Text>
               <View
                 style={{
@@ -455,7 +447,7 @@ class GasList extends Component {
                     ? this.state.blockSelected.name
                     : blockSelected
                     ? blockSelected.name
-                    : "Chọn Khối nhà"}
+                    : `${Strings.common.choose} ${Strings.electric.block}`}
                 </Text>
                 <MyIcon name="arrow-down" size={responsive.h(14)} color={colors.gray1} />
               </View>
@@ -489,7 +481,7 @@ class GasList extends Component {
                   color: "#282828",
                 }}
               >
-                Tầng
+                {Strings.electric.floor}
               </Text>
               <View
                 style={{
@@ -515,32 +507,11 @@ class GasList extends Component {
                     ? this.state.floorSelected.name
                     : floorSelected
                     ? floorSelected.name
-                    : "Chọn Tầng"}
+                    : `${Strings.common.choose} ${Strings.electric.floor}`}
                 </Text>
                 <MyIcon name="arrow-down" size={14} color={colors.gray1} />
               </View>
             </TouchableOpacity>
-            {/* <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('blockList', { id: user.towerId, onSelected: (blockSelected) => this.setState({ blockSelected, floorSelected: null, statusId: blockSelected.id }) })}
-                            style={{ padding: responsive.h(10), marginTop: responsive.h(10), borderRadius: responsive.h(5), backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text>{this.state.blockSelected ? this.state.blockSelected.name : blockSelected ? blockSelected.name : 'Chọn Khối nhà'}</Text>
-                            <MyIcon
-                                name="arrow-down"
-                                size={15}
-                                color={colors.gray1}
-                            />
-                        </TouchableOpacity>
-
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('floorList', { id: user.towerId, blockSelected, onSelected: (floorSelected) => this.setState({ floorSelected, statusId: floorSelected.id }) })}
-                            style={{ padding: responsive.h(10), marginTop: responsive.h(10), borderRadius: responsive.h(5), backgroundColor: colors.gray2, flexDirection: 'row', justifyContent: 'space-between' }}>
-                            <Text>{this.state.floorSelected ? this.state.floorSelected.name : floorSelected ? floorSelected.name : 'Chọn Tầng'}</Text>
-                            <MyIcon
-                                name="arrow-down"
-                                size={15}
-                                color={colors.gray1}
-                            />
-                        </TouchableOpacity> */}
 
             <View
               style={{
@@ -550,7 +521,7 @@ class GasList extends Component {
               }}
             >
               <PrimaryButton
-                text="Bỏ lọc"
+                text={Strings.electric.unfiltered}
                 onPress={() =>
                   this.setState(
                     {
@@ -585,7 +556,7 @@ class GasList extends Component {
                       })
                   )
                 }
-                text="Lọc dữ liệu"
+                text={Strings.electric.filter}
                 style={{ marginLeft: responsive.h(10), fontWeight: "bold" }}
               />
             </View>

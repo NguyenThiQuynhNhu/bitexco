@@ -52,7 +52,6 @@ class ListItem extends PureComponent {
               height: responsive.h(111),
               borderRadius: responsive.h(12),
               width: "100%",
-              marginBottom: responsive.h(10),
             }}
             source={{ uri: logo }}
           />
@@ -63,6 +62,7 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               justifyContent: "space-between",
               maxWidth: responsive.w(222),
+              marginTop: responsive.h(10),
             }}
           >
             <Text
@@ -88,13 +88,12 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 // letterSpacing: 0,
 
-                color: converStatusToColor(statusId),
+                color: converStatusToColorServiceByString(statusName),
               }}
             >
               {statusName}
             </Text>
           </View>
-          <View>
             <Text
               style={{
                 fontFamily: "Inter-Regular",
@@ -104,20 +103,20 @@ class ListItem extends PureComponent {
                 textAlign: "left",
                 color: "#888888",
                 maxWidth: responsive.w(222),
+                marginTop: responsive.h(3),
               }}
               numberOfLines={1}
               lineBreakMode="tail"
             >
               {description}
             </Text>
-          </View>
 
           <View
             style={{
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              paddingTop: responsive.h(5),
+              marginTop: responsive.h(15),
             }}
           >
             <Text

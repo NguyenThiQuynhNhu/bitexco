@@ -70,7 +70,7 @@ class ListFloor extends Component {
                 color: "black",
               }}
             >
-              Chọn tầng
+              {Strings.common.choose} {Strings.electric.floor}
             </Text>
           }
           //   rightView={null}

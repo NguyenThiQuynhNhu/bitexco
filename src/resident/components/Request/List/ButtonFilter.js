@@ -47,6 +47,7 @@ const ButtonFilter = (props) => {
           justifyContent: "center",
           // marginBottom: responsive.h(10),
           marginVertical: responsive.h(10),
+          marginTop: responsive.h(5),
         }}
       >
         <Text
@@ -67,7 +68,7 @@ const ButtonFilter = (props) => {
             //right: -7,
             //position: 'absolute',
             marginTop: responsive.h(2.4),
-            // borderRadius: responsive.h(45),
+            borderRadius: responsive.h(45),
             minWidth: responsive.h(20),
             minHeight: responsive.h(20),
             alignItems: "center",
@@ -89,15 +90,6 @@ const ButtonFilter = (props) => {
             {number > 99 ? "99+" : number}
           </Text>
         </View>
-        {/* <View style={{
-                    width: Platform.isPad ? 64 : 44,
-                    height: 3,
-                    borderRadius: 4,
-                    backgroundColor: value !== currentValue ? '#fff' : '#a3cd80',
-                    marginTop: 2.5
-                }}>
-
-                </View> */}
       </View>
     </TouchableOpacity>
   );

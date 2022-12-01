@@ -33,6 +33,7 @@ import BookingBasicModal from "./BookingBasicModal";
 import Strings from "../../utils/languages";
 import { Screen } from "../../utils/device";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker'
 import Spinner from "react-native-loading-spinner-overlay";
 import Lookup from "../../components/Request/RequestCreate/Lookup";
 import IconButton from "../../../components/common/IconButton";
@@ -261,7 +262,7 @@ class BasicBookingScreen extends Component {
       const { name } = this.props.navigation.state.params.name;
       return (
         <KeyboardAwareScrollView>
-          <View style={{ flex: 1, paddingHorizontal: responsive.h(20) }}>
+          <View style={{ flex: 1, paddingHorizontal: responsive.h(15), paddingTop: responsive.h(10) }}>
             <Lookup
               fielName={Strings.serviceBasicBooking.position}
               textTile={{
@@ -377,7 +378,7 @@ class BasicBookingScreen extends Component {
                   //flex: 1,
                   flexDirection: "row",
                   justifyContent: "flex-end",
-                  backgroundColor: "#f8fff2",
+                  backgroundColor: colors.grayBorder,
                   borderRadius: responsive.h(12),
                   elevation: 3,
                 }}
@@ -399,7 +400,7 @@ class BasicBookingScreen extends Component {
                     <Text
                       style={{
                         fontSize: responsive.h(fontsize.larg),
-                        color: "#fff200",
+                        color: "#000",
                       }}
                     >
                       -
@@ -447,7 +448,7 @@ class BasicBookingScreen extends Component {
                     <Text
                       style={{
                         fontSize: responsive.h(fontsize.larg),
-                        color: "#fff200",
+                        color: "#000",
                         alignItems: "center",
                         justifyContent: "space-between",
                       }}
@@ -556,14 +557,13 @@ class BasicBookingScreen extends Component {
               >
                 {Strings.serviceBasicBooking.time} (*)
               </Text>
-              <DateTimePicker
-                cancelTextIOS={Strings.app.cancel}
-                titleIOS={Strings.createRequest.at}
-                confirmTextIOS={Strings.app.chose}
-                //minimumDate={new Date()}
-                //maximumDate={new Date(this.state.dateLimited)}
+              <DatePicker
+                cancelText={Strings.app.cancel}
+                title={Strings.createRequest.at}
+                confirmText={Strings.app.chose}
                 mode="date"
-                isVisible={this.state.isShowTime}
+                modal
+                open={this.state.isShowTime}
                 onConfirm={(time) => {
                   this.setState({ isShowTime: false, dateBook: time }, () => {
                     this._onLoadZoneTime(time);
@@ -572,6 +572,8 @@ class BasicBookingScreen extends Component {
                 onCancel={() => {
                   this.setState({ isShowTime: false });
                 }}
+                date={new Date()}
+                    locale={this.props.language == 1 ? "vi_VN" : 'en_US'}
               />
 
               <FlatList
@@ -753,7 +755,7 @@ class BasicBookingScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12), 
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -799,7 +801,7 @@ class BasicBookingScreen extends Component {
                   flexDirection: "row",
                   // paddingHorizontal: responsive.h(10),
                   alignItems: "center",
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(15), 
                 }}
               >
                 <MyIcon

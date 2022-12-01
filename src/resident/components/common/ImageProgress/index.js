@@ -23,13 +23,12 @@ const ImageProgress = ({ source, style, circle = false, type }) => {
     return (
       <View
         style={{
-          width: style.width + 2,
-          height: style.height + 2,
+          width: style.width,
+          height: style.height,
           borderRadius,
-          backgroundColor: colors.grayBorder,
+          backgroundColor: 'transparent',
           justifyContent: "center",
           alignItems: "center",
-          padding: 1,
         }}
       >
         <Image
@@ -41,10 +40,22 @@ const ImageProgress = ({ source, style, circle = false, type }) => {
             unfilledColor: "rgba(200, 200, 200, 0.2)",
           }}
           renderError={() => (
-            <ImageError
-              source={default_image}
-              style={{ height: style.width, width: style.height, borderRadius }}
-            />
+            <View
+              style={{
+                width: style.width + 2,
+                height: style.height + 2,
+                borderRadius,
+                backgroundColor: '#eaeaea',
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ImageError
+                source={default_image}
+                style={{ height: style.width, width: style.height, borderRadius }}
+              />
+            </View>
+
           )}
           source={source}
         />
@@ -53,7 +64,6 @@ const ImageProgress = ({ source, style, circle = false, type }) => {
   }
   return (
     <Image
-      //resizeMode='contain'
       style={{ ...style, alignItems: "center", justifyContent: "center" }}
       indicator={Progress.CircleSnail}
       indicatorProps={{

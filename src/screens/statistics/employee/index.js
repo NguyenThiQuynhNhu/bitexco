@@ -19,7 +19,7 @@ import {
   refreshDataHandle,
 } from "../../../actions/statistics";
 import AxisLineChartScreen from "../controls/LineStatistics";
-
+import DatePicker from 'react-native-date-picker'
 import DateTimePicker from "react-native-modal-datetime-picker";
 import { MyIcon } from "../../../theme/icons";
 import fontSize from "../../../theme/fontsize";
@@ -30,12 +30,13 @@ import PieStatistics from "../controls/PieStatistics";
 import BarChart from "../controls/BarChart";
 import FilterType from "../../../components/statistics/FilterType";
 import ButtonFilter from "../../../components/statistics/ButtonFilter";
+import NavBar from "../../../resident/components/common/NavBar";
 
 import fontsize from "../../../theme/fontsize";
 import Icon from "react-native-vector-icons/Entypo";
 import { onFilter } from "../../../actions/request";
-import NavBar from "../../../resident/components/common/NavBar";
 import responsive from "../../../resources/responsive";
+import Strings from "../../../utils/languages";
 class GroupStatisticsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -104,7 +105,7 @@ class GroupStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -131,7 +132,7 @@ class GroupStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -158,7 +159,7 @@ class GroupStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -240,7 +241,7 @@ class GroupStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -267,7 +268,7 @@ class GroupStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -342,7 +343,7 @@ class GroupStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -376,7 +377,7 @@ class GroupStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -397,7 +398,7 @@ class GroupStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -428,7 +429,7 @@ class GroupStatisticsScreen extends React.Component {
                     color: "#282828",
                   }}
                 >
-                  Thời gian
+                  {Strings.statistical.time}
                 </Text>
               </View>
               {this.renderDataLine()}
@@ -454,7 +455,7 @@ class GroupStatisticsScreen extends React.Component {
                     paddingRight: responsive.h(10),
                   }}
                 >
-                  Phòng ban
+                  {Strings.common.department}
                 </Text>
               </View>
               {this.renderDataPie()}
@@ -480,7 +481,7 @@ class GroupStatisticsScreen extends React.Component {
                     paddingRight: responsive.h(10),
                   }}
                 >
-                  Trạng thái
+                  {Strings.common.status}
                 </Text>
               </View>
               {this.renderDataPieStatus()}
@@ -523,7 +524,7 @@ class GroupStatisticsScreen extends React.Component {
                 color: "black",
               }}
             >
-              Thống kê nhân viên
+              {Strings.statistical.employeeStatistics}
             </Text>
           }
           //   rightView={
@@ -546,27 +547,27 @@ class GroupStatisticsScreen extends React.Component {
             >
               <ButtonFilter
                 value={selectedButton == 1}
-                text="1 Tuần"
+                text={`1 ${Strings.statistical.week}`}
                 onPress={() => this.setActive(1)}
               />
               <ButtonFilter
                 value={selectedButton == 2}
-                text="1 Tháng"
+                text={`1 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(2)}
               />
               <ButtonFilter
                 value={selectedButton == 3}
-                text="3 Tháng"
+                text={`3 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(3)}
               />
               <ButtonFilter
                 value={selectedButton == 4}
-                text="6 Tháng"
+                text={`6 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(4)}
               />
               <ButtonFilter
                 value={selectedButton == 5}
-                text="Tuỳ chỉnh"
+                text={`${Strings.statistical.custom}`}
                 onPress={() => this.setActive(5)}
               />
             </ScrollView>
@@ -575,7 +576,7 @@ class GroupStatisticsScreen extends React.Component {
             <View style={{ flexDirection: "row", paddingVertical: responsive.h(10) }}>
               <FilterType
                 value={
-                  employeeSelected ? employeeSelected.name : "Chọn nhân viên"
+                  employeeSelected ? employeeSelected.name : `${Strings.common.choose} ${Strings.common.employee}`
                 }
                 onPress={() => this.setState({ showModalPicker: true })}
               />
@@ -598,11 +599,11 @@ class GroupStatisticsScreen extends React.Component {
                 fontSize: fontsize.small,
               }}
             >
-              Từ{" "}
+              {`${Strings.statistical.from} `}
               <Text style={{ color: "#0084ff", fontSize: fontsize.small }}>
                 {moment(this.state.startDate).format("DD-MM-YYYY")}
               </Text>{" "}
-              đến{" "}
+              {`${Strings.statistical.to} `}
               <Text style={{ color: "#0084ff", fontSize: fontsize.small }}>
                 {moment(this.state.endDate).format("DD-MM-YYYY")}
               </Text>
@@ -659,7 +660,7 @@ class GroupStatisticsScreen extends React.Component {
                     color: "#2979ff",
                   }}
                 >
-                  Tuỳ chỉnh Thời gian
+                 {Strings.statistical.custom} {Strings.statistical.time} 
                 </Text>
                 <View
                   style={{
@@ -735,14 +736,21 @@ class GroupStatisticsScreen extends React.Component {
                 <Text
                   style={{ color: colors.appTheme, fontSize: fontsize.small }}
                 >
-                  ĐÓNG
+                  {Strings.statistical.close} 
                 </Text>
               </TouchableOpacity>
             </View>
-            <DateTimePicker
-              isVisible={this.state.isDateTimePickerVisible}
+            <DatePicker
+              modal
+              mode="date"
+              cancelText={Strings.app.cancel}
+              title={`${Strings.common.choose} ${Strings.handover.time}`}
+              confirmText={Strings.app.chose}
+              open={this.state.isDateTimePickerVisible}
               onConfirm={(date) => this._handleDatePicked(date)}
               onCancel={this._hideDateTimePicker}
+              date={new Date()}
+              locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
             />
           </View>
         </Modal>
@@ -758,6 +766,7 @@ class GroupStatisticsScreen extends React.Component {
       dateTo: endDate,
       typeTime,
       employeeId: employeeSelected ? employeeSelected.id : 0,
+      langId: this.props.langId
     });
   }
   setActive(id) {
@@ -936,6 +945,8 @@ const mapStateToProps = (state) => ({
   initComponent: state.reportGeneral.initComponent,
   towerId: state.auth.user.towerId,
   employeeData: state.statistics.listEmployee,
+  language: state.app.language,
+  langId: state.app.language == "vi" ? 1 : 2,
 });
 
 const mapActionToProps = {

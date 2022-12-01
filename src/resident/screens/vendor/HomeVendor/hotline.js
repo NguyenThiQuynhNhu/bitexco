@@ -193,7 +193,7 @@ class HotlineListScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -212,8 +212,6 @@ class HotlineListScreen extends Component {
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(20),
                   fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
                   textAlign: "center",
                   color: "black",
                 }}
@@ -221,6 +219,13 @@ class HotlineListScreen extends Component {
                 {Strings.department.titleHoline}
               </Text>
             </View>
+          }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
           }
         />
 
@@ -264,7 +269,7 @@ class HotlineListScreen extends Component {
         keyExtractor={(item, index) => `${index}`}
         renderItem={this.renderItem}
         onEndReachedThreshold={0.5}
-        style={{ marginTop: responsive.h(-15) }}
+        style={{ marginTop: responsive.h(-10) }}
         onEndReached={() => {
           if (
             !this.onEndReachedCalledDuringMomentum &&

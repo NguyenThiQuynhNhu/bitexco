@@ -140,18 +140,9 @@ class ServiceExtensionDetailScreen extends Component {
       <View
         style={{
           borderRadius: responsive.h(16),
-          padding: responsive.h(10),
+          //padding: responsive.h(10),
           backgroundColor: "#ffffff",
-          // shadowColor: "rgba(0, 0, 0, 0.08)",
-          // elevation: 2,
-          // shadowOffset: {
-          //   width: 0,
-          //   height: 4,
-          // },
-          // shadowRadius: 12,
-          // shadowOpacity: 1,
-          marginHorizontal: responsive.h(20),
-          marginVertical: responsive.h(10),
+          padding: responsive.h(15),
         }}
       >
         <View
@@ -184,7 +175,7 @@ class ServiceExtensionDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
-                  marginRight: responsive.h(5),
+                  marginLeft: -responsive.h(2),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
@@ -335,9 +326,10 @@ class ServiceExtensionDetailScreen extends Component {
               borderBottomWidth: responsive.h(2),
               borderColor: "#eaeaea",
               borderBottomColor: "#eaeaea",
-              marginHorizontal: responsive.h(20),
-              marginTop: responsive.h(5),
+              marginHorizontal: responsive.h(15),
+              marginTop: responsive.h(10),
               marginBottom: responsive.h(20),
+              padding: responsive.h(10),
             }}
           >
             {/* Thông tin nha cung cap */}
@@ -346,7 +338,7 @@ class ServiceExtensionDetailScreen extends Component {
                 flex: 1,
                 flexDirection: "row",
                 alignItems: "center",
-                padding: responsive.h(10),
+                
                 // backgroundColor: "#fff",
               }}
             >
@@ -396,7 +388,7 @@ class ServiceExtensionDetailScreen extends Component {
                 </View>
                 <Text
                   style={{
-                    marginVertical: responsive.h(5),
+                    marginTop: responsive.h(10),
                     fontFamily: "Inter-SemiBold",
                     fontSize: responsive.h(14),
                     textAlign: "left",
@@ -413,8 +405,7 @@ class ServiceExtensionDetailScreen extends Component {
               style={{
                 flexDirection: "row",
                 marginVertical: responsive.h(5),
-                paddingHorizontal: responsive.h(10),
-                marginTop: responsive.h(5),
+                marginTop: responsive.h(15),
                 justifyContent: "space-between",
               }}
             >
@@ -429,7 +420,6 @@ class ServiceExtensionDetailScreen extends Component {
               style={{
                 flexDirection: "row",
                 marginVertical: responsive.h(5),
-                paddingHorizontal: responsive.h(10),
                 justifyContent: "space-between",
               }}
             >
@@ -444,7 +434,6 @@ class ServiceExtensionDetailScreen extends Component {
               style={{
                 flexDirection: "row",
                 marginVertical: responsive.h(5),
-                paddingHorizontal: responsive.h(10),
                 justifyContent: "space-between",
               }}
             >
@@ -461,7 +450,7 @@ class ServiceExtensionDetailScreen extends Component {
                 {totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
                 <Text
                   style={{
-                    fontFamily: "Inter",
+                    fontFamily: "Inter-Regular",
                     fontSize: responsive.h(11),
                     textAlign: "right",
                     color: "#6f6f6f",
@@ -511,9 +500,9 @@ class ServiceExtensionDetailScreen extends Component {
                 return (
                   <View
                     style={{
-                      height: 1,
+                      height: 2,
                       backgroundColor: "#f5f5f5",
-                      marginHorizontal: responsive.h(10),
+                      marginHorizontal: responsive.h(15),
                     }}
                   />
                 );
@@ -587,7 +576,7 @@ class ServiceExtensionDetailScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -613,7 +602,7 @@ class ServiceExtensionDetailScreen extends Component {
             this.props.data.seviceBasic.statusId !== 5 && (
               <TouchableOpacity
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(12)
                 }}
                 onPress={() => this.setState({ isShowModal: true })}
               >
@@ -669,7 +658,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   linearGradient: {
-    width: "90%",
+    width: "92.5%",
     borderRadius: responsive.h(5),
     backgroundColor: colors.primaryKeyColor,
   },

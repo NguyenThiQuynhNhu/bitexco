@@ -48,7 +48,9 @@ import { checkVersion } from "../../resident/actions/auth";
 import { color } from "react-native-reanimated";
 import responsive from "../../resources/responsive";
 import { icons } from "../../resources/icons";
-
+import {
+  getProfile
+} from '../../actions/auth';
 class HomeScreen extends Component {
   constructor(props) {
     super(props);
@@ -149,7 +151,7 @@ class HomeScreen extends Component {
   }
 
   async componentDidMount() {
-    console.log(this.props);
+    this.props.getProfile({ type: 'em', langId: this.props.langId, towers: this.props.user.towers });
     this.props.checkVersion();
     FCM.getFCMToken().then((token) => {
       this.props.postFCMToken(token, "vendor");
@@ -160,7 +162,7 @@ class HomeScreen extends Component {
     };
     this.props.loadDataHandle(request);
     this.props.loadBadge();
-    this.props.getRequestStatusTotal({ towerId: this.props.user.towerId });
+    this.props.getRequestStatusTotal({ towerId: this.props.user.towerId, langId: this.props.langId });
     this.props.getServicesBasicStatusTotal({
       towerId: this.props.user.towerId,
     });
@@ -543,6 +545,7 @@ class HomeScreen extends Component {
       this.props.getRequestStatusTotal({
         towerId: nextProps.user !== null ? nextProps.user.towerId : -1,
         isMine: nextProps.isMine,
+        langId: this.props.langId
       });
     }
   }
@@ -880,12 +883,12 @@ class HomeScreen extends Component {
     );
   };
   renderMenuStatusRequest(menus) {
-    console.log('menus', menus)
+    console.log('menus', this.props.dataStatus)
     return (
       <FlatList
         horizontal={true}
         scrollEnabled={false}
-        data={menus}
+        data={this.props.dataStatus}
         renderItem={({ item }) => {
           const { id, name, total, colorCode, statusKey } = item;
           return (
@@ -898,7 +901,7 @@ class HomeScreen extends Component {
                 this.props.navigation.navigate("requests", { idStatus: id });
               }}
               style={{
-                width: (Screen.width - responsive.h(40)) / 4,
+                width: (Screen.width - responsive.h(20)) / 4,
                 alignItems: 'center',
                 justifyContent: "center",
               }}
@@ -906,7 +909,7 @@ class HomeScreen extends Component {
 
               <MyIcon
                 name={converIcon(statusKey)}
-                size={responsive.h(30)}
+                size={responsive.h(33)}
                 color="#fff"
                 style={{}}
               />
@@ -1011,7 +1014,7 @@ class HomeScreen extends Component {
           source={require("../../resources/bgMenu.png")}
           style={{
             //flex: 1,
-            paddingHorizontal: responsive.h(15)
+            //paddingHorizontal: responsive.h(15)
           }}
           resizeMode="cover"
         >
@@ -1020,6 +1023,7 @@ class HomeScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.openDrawer()}
+                style={{paddingHorizontal: responsive.h(15)}}
               >
                 <MyIcon name="iconNavigationMenu24Px" size={responsive.h(28)} color="black" />
               </TouchableOpacity>
@@ -1029,7 +1033,8 @@ class HomeScreen extends Component {
               <TouchableOpacity
                 onPress={() => this.props.navigation.navigate("notification")}
                 style={{
-                  alignSelf: 'flex-end'
+                  alignSelf: 'flex-end',
+                  paddingHorizontal: responsive.h(15)
                 }}
               >
                 <MyIcon name="thng-bo-01" size={responsive.h(28)} color="black" />
@@ -1046,12 +1051,12 @@ class HomeScreen extends Component {
             }
           />
           {user && (
-            <View style={{ flexDirection: "row" }}>
-              <TouchableOpacity
+            <View style={{ flexDirection: "row", marginVertical: responsive.h(5), paddingHorizontal: responsive.h(15) }}>
+              <View
                 //onPress={() => this._onAttachment()}
                 style={{
-                  height: responsive.h(55),
-                  width: responsive.h(55),
+                  height: responsive.h(50),
+                  width: responsive.h(50),
                   borderRadius: responsive.h(30),
                   borderWidth: 5,
                   borderColor: "rgba(255,255,255,0.4)",
@@ -1067,13 +1072,14 @@ class HomeScreen extends Component {
                   circle={true}
                   style={{ height: responsive.h(50), width: responsive.h(50) }}
                 />
-              </TouchableOpacity>
+              </View>
 
               <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
                 <Text
                   style={{
                     fontSize: responsive.h(16),
                     fontFamily: "Inter-Bold",
+                    fontWeight: '600',
                     color: "black",
                     marginBottom: responsive.h(5)
                   }}
@@ -1093,6 +1099,7 @@ class HomeScreen extends Component {
                     style={{
                       fontSize: responsive.h(14),
                       fontFamily: "Inter-Medium",
+                      fontWeight: '500',
                       color: "black",
                     }}
                   >
@@ -1105,11 +1112,11 @@ class HomeScreen extends Component {
           <View
             style={{
               backgroundColor: "#fe494f",
-              borderRadius: responsive.h(14),
+              //borderRadius: responsive.h(14),
               padding: responsive.h(15),
               paddingHorizontal: responsive.h(10),
-              marginTop: responsive.h(10),
-              marginBottom: responsive.h(15)
+              marginTop: responsive.h(15),
+              marginBottom: responsive.h(25)
             }}
           >
             {this.renderMenuStatusRequest(menus.request.dataStatus)}
@@ -1118,7 +1125,7 @@ class HomeScreen extends Component {
         <View
           style={{
             flex: 2,
-            marginHorizontal: responsive.h(15),
+            //marginHorizontal: responsive.h(15),
           }}
         >
           {this.props.user.towerId != null ? (
@@ -1129,6 +1136,7 @@ class HomeScreen extends Component {
               <Text
                 style={{
                   fontFamily: "Inter-Medium",
+                  fontWeight: '400',
                   textAlign: "center",
                   fontSize: responsive.h(20),
                   color: "black",
@@ -1159,11 +1167,13 @@ class HomeScreen extends Component {
                     this.props.navigation.navigate("serviceExtension")
                   }
                   style={{
-                    width: responsive.w(160),
+                    width: Screen.width/2,
                     //height: responsive.h(60),
                     backgroundColor: "#f5f5f5",
-                    borderRadius: responsive.h(10),
+                    //borderRadius: responsive.h(10),
                     justifyContent: "center",
+                    borderWidth: 0.5,
+                    borderColor: '#e9e9e9'
                   }}
                 >
                   <View
@@ -1191,23 +1201,25 @@ class HomeScreen extends Component {
                       style={{
                         fontSize: responsive.h(16),
                         fontFamily: "Inter-Bold",
-                        textTransform: "uppercase",
+                        fontWeight: '600',
                         color: "black",
                         paddingVertical: responsive.h(10),
                         paddingHorizontal: responsive.h(10),
                       }}
                     >
-                      {Strings.home.service}
+                      {Strings.home.extension.toUpperCase()}
                     </Text>
                   </View>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={{
-                    width: responsive.w(160),
+                    width: Screen.width/2,
                     //height: responsive.h(60),
                     backgroundColor: "#f5f5f5",
-                    borderRadius: responsive.h(10),
+                    //borderRadius: responsive.h(10),
                     justifyContent: "center",
+                    borderWidth: 0.5,
+                    borderColor: '#e9e9e9'
                   }}
                   onPress={() => this.props.navigation.navigate("serviceBasic")}
                 >
@@ -1235,13 +1247,14 @@ class HomeScreen extends Component {
                       style={{
                         fontSize: responsive.h(16),
                         fontFamily: "Inter-Bold",
+                        fontWeight: '600',
                         textTransform: "uppercase",
                         color: "black",
                         paddingVertical: responsive.h(10),
                         paddingHorizontal: responsive.h(10),
                       }}
                     >
-                      {Strings.home.extension}
+                      {Strings.home.service.toUpperCase()}
                     </Text>
                   </View>
                 </TouchableOpacity>
@@ -1341,7 +1354,8 @@ class HomeScreen extends Component {
               />
               <View
                 style={{
-                  marginVertical: responsive.h(15)
+                  marginVertical: responsive.h(15),
+
                 }}
               >
                 <Image
@@ -1372,6 +1386,7 @@ class HomeScreen extends Component {
                         <Icon name='lock-pattern' size={ 30 } color='#fff' />
                     </TouchableOpacity> */}
         </View>
+        
       </View>
       // </ImageBackground>
     );
@@ -1442,7 +1457,7 @@ const styles = StyleSheet.create({
   },
   IconBadge: {
     top: responsive.h(-5),
-    right: responsive.w(5),
+    right: responsive.w(20),
     position: "absolute",
     borderRadius: responsive.w(45),
     minWidth: responsive.w(12),
@@ -1468,6 +1483,7 @@ const mapStateToProps = (state) => ({
   dataStatusServicesExtension: state.drawer.dataStatusSeviceExtension,
   isMine: state.request.isMine,
   version: state.version.version,
+  langId: state.app.language == 'vi' ? 1 : 2,
 });
 
 const mapActionToState = {
@@ -1481,6 +1497,7 @@ const mapActionToState = {
   getServicesBasicStatusTotal,
   resetRequest,
   checkVersion,
+  getProfile
 };
 export default connect(
   mapStateToProps,

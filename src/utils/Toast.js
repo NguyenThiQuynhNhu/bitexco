@@ -2,11 +2,13 @@
 // import Color from '../Libs/Color';
 import { Alert, AlertIOS } from 'react-native';
 
-export const show = (message='Thành công!') => {
+import Strings from "./languages";
+export const show = (message=`${Strings.message.saveSuccess}!`) => {
     // Toast.show({
     //     text: message,
     //     type: type,
     //     duration:2000
     //   })
-    Alert.alert('Thông báo', message);
+    console.log(message)
+    Alert.alert(Strings.handover.notify, message);
 }

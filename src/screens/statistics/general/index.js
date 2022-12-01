@@ -21,26 +21,32 @@ import {
 import AxisLineChartScreen from "../controls/LineStatistics";
 
 import DateTimePicker from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker'
 import { MyIcon } from "../../../theme/icons";
 import fontSize from "../../../theme/fontsize";
 import colors from "../../../theme/colors";
 import PrimaryButton from "../../../components/common/PrimaryButton";
-import ModalPicker from "../../../components/common/ModalPicker";
+import ModalPickerDateStatis from "../../../components/common/ModalPickerDateStatis";
 import BarChart from "../controls/BarChart";
 import FilterType from "../../../components/statistics/FilterType";
 import ButtonFilter from "../../../components/statistics/ButtonFilter";
 import fontsize from "../../../theme/fontsize";
 import Icon from "react-native-vector-icons/Entypo";
 import { onFilter } from "../../../actions/request";
+import Strings from "../../../utils/languages";
 
 import NavBar from "../../../resident/components/common/NavBar";
 import responsive from "../../../resources/responsive";
+
+import {
+  converNameToDateStatis
+} from "../../../utils/request";
 const DataFilter = [
   { id: 1, value: "Ngày" },
   { id: 2, value: "Tuần" },
   { id: 3, value: "Tháng" },
   { id: 4, value: "Quý" },
-  { id: responsive.h(5), value: "Năm" },
+  { id: 5, value: "Năm" },
 ];
 
 class GeneralStatisticsScreen extends React.Component {
@@ -99,7 +105,7 @@ class GeneralStatisticsScreen extends React.Component {
             }}
           >
             <Text style={{ textAlign: "center", fontSize: fontsize.small }}>
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -120,7 +126,7 @@ class GeneralStatisticsScreen extends React.Component {
           }}
         >
           <Text style={{ textAlign: "center", fontSize: fontsize.small }}>
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -148,7 +154,7 @@ class GeneralStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -232,7 +238,7 @@ class GeneralStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -259,7 +265,7 @@ class GeneralStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
@@ -340,7 +346,7 @@ class GeneralStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -374,7 +380,7 @@ class GeneralStatisticsScreen extends React.Component {
               padding: responsive.h(10),
             }}
           >
-            Có lỗi xảy ra
+            {Strings.app.error}
           </Text>
         </TouchableOpacity>
       );
@@ -395,13 +401,13 @@ class GeneralStatisticsScreen extends React.Component {
                 padding: responsive.h(10),
               }}
             >
-              Không có dữ liệu
+              {Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         );
       } else {
         return (
-          <ScrollView style={{ flex: 1, marginTop: responsive.h(10),}}>
+          <ScrollView style={{ flex: 1, marginTop: responsive.h(10), }}>
             <View
               style={{
                 backgroundColor: "#fff",
@@ -426,14 +432,14 @@ class GeneralStatisticsScreen extends React.Component {
                     color: "#282828",
                   }}
                 >
-                  Thời gian
+                  {Strings.statistical.time}
                 </Text>
               </View>
               {this.renderDataLine()}
             </View>
 
             <View
-              style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}
+              style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12), }}
             >
               <View
                 style={{
@@ -452,14 +458,14 @@ class GeneralStatisticsScreen extends React.Component {
                     paddingRight: responsive.h(10),
                   }}
                 >
-                  Phòng ban
+                  {Strings.common.department}
                 </Text>
               </View>
               {this.renderDataPie()}
             </View>
 
             <View
-              style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12),}}
+              style={{ backgroundColor: "#fff", margin: responsive.h(10), borderRadius: responsive.h(12), }}
             >
               <View
                 style={{
@@ -478,7 +484,7 @@ class GeneralStatisticsScreen extends React.Component {
                     paddingRight: responsive.h(10),
                   }}
                 >
-                  Trạng thái
+                  {Strings.common.status}
                 </Text>
               </View>
               {this.renderDataPieStatus()}
@@ -496,11 +502,11 @@ class GeneralStatisticsScreen extends React.Component {
       count = arr[0] ? arr[0].value : 0;
     }
     return (
-      <View style={{ backgroundColor: "#eeeeee", flex: 1, marginBottom: responsive.h(10),}}>
+      <View style={{ backgroundColor: "#eeeeee", flex: 1, marginBottom: responsive.h(10), }}>
         <NavBar
           leftButton={
             <TouchableOpacity
-              style={{ padding: responsive.h(10),}}
+              style={{ padding: responsive.h(10), }}
               onPress={() => this.props.navigation.goBack(null)}
             >
               <MyIcon name="arrow" size={responsive.h(20)} color="black" />
@@ -516,14 +522,14 @@ class GeneralStatisticsScreen extends React.Component {
                 color: "black",
               }}
             >
-              Thống kê tổng hợp
+              {Strings.statistical.generalStatistics}
             </Text>
           }
-          //   rightView={
-          //     <TouchableOpacity style={{ padding: responsive.h(10),}}>
-          //       <MyIcon name="arrow" size={20} color="black" />
-          //     </TouchableOpacity>
-          //   }
+        //   rightView={
+        //     <TouchableOpacity style={{ padding: responsive.h(10),}}>
+        //       <MyIcon name="arrow" size={20} color="black" />
+        //     </TouchableOpacity>
+        //   }
         />
         <View style={{ flex: 1 }}>
           <View>
@@ -539,35 +545,35 @@ class GeneralStatisticsScreen extends React.Component {
             >
               <ButtonFilter
                 value={selectedButton == 1}
-                text="1 Tuần"
+                text={`1 ${Strings.statistical.week}`}
                 onPress={() => this.setActive(1)}
               />
               <ButtonFilter
                 value={selectedButton == 2}
-                text="1 Tháng"
+                text={`1 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(2)}
               />
               <ButtonFilter
                 value={selectedButton == 3}
-                text="3 Tháng"
+                text={`3 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(3)}
               />
               <ButtonFilter
                 value={selectedButton == 4}
-                text="6 Tháng"
+                text={`6 ${Strings.statistical.month}`}
                 onPress={() => this.setActive(4)}
               />
               <ButtonFilter
                 value={selectedButton == 5}
-                text="Tuỳ chỉnh"
+                text={`${Strings.statistical.custom}`}
                 onPress={() => this.setActive(5)}
               />
             </ScrollView>
           </View>
           <View style={{ backgroundColor: "#fff" }}>
-            <View style={{ flexDirection: "row", paddingVertical: responsive.h(10),}}>
+            <View style={{ flexDirection: "row", paddingVertical: responsive.h(10), }}>
               <FilterType
-                value={typeTime.value}
+                value={converNameToDateStatis(typeTime.id)}
                 onPress={() => this.setState({ showModalPicker: true })}
               />
               <View style={{ flex: 1, alignItems: "center" }}>
@@ -589,18 +595,18 @@ class GeneralStatisticsScreen extends React.Component {
                 fontSize: fontsize.small,
               }}
             >
-              Từ{" "}
+              {`${Strings.statistical.from} `}
               <Text style={{ color: "#0084ff", fontSize: fontsize.small }}>
                 {moment(this.state.startDate).format("DD-MM-YYYY")}
               </Text>{" "}
-              đến{" "}
+              {`${Strings.statistical.to} `}
               <Text style={{ color: "#0084ff", fontSize: fontsize.small }}>
                 {moment(this.state.endDate).format("DD-MM-YYYY")}
               </Text>
             </Text>
           </View>
           {this.renderContent()}
-          <ModalPicker
+          <ModalPickerDateStatis
             dislayValue="value"
             visible={this.state.showModalPicker}
             selectedValue={0}
@@ -645,7 +651,7 @@ class GeneralStatisticsScreen extends React.Component {
                     color: "#2979ff",
                   }}
                 >
-                  Tuỳ chỉnh Thời gian
+                  {Strings.statistical.custom} {Strings.statistical.time}
                 </Text>
                 <View
                   style={{
@@ -699,10 +705,10 @@ class GeneralStatisticsScreen extends React.Component {
                   </View>
                   {/* <View><Text style={{margin:5,flex:0.3}}>-</Text></View> */}
                 </View>
-                <View style={{ padding: responsive.h(5),}}>
+                <View style={{ padding: responsive.h(5), }}>
                   <PrimaryButton
                     text="OK"
-                    style={{ padding: responsive.h(10),}}
+                    style={{ padding: responsive.h(10), }}
                     onPress={this.customTime}
                   />
                 </View>
@@ -721,14 +727,21 @@ class GeneralStatisticsScreen extends React.Component {
                 <Text
                   style={{ color: colors.appTheme, fontSize: fontsize.small }}
                 >
-                  ĐÓNG
+                  {Strings.statistical.close}
                 </Text>
               </TouchableOpacity>
             </View>
-            <DateTimePicker
-              isVisible={this.state.isDateTimePickerVisible}
+            <DatePicker
+              modal
+              mode="date"
+              cancelText={Strings.app.cancel}
+              title={`${Strings.common.choose} ${Strings.handover.time}`}
+              confirmText={Strings.app.chose}
+              open={this.state.isDateTimePickerVisible}
               onConfirm={(date) => this._handleDatePicked(date)}
               onCancel={this._hideDateTimePicker}
+              date={new Date()}
+              locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
             />
           </View>
         </Modal>
@@ -743,6 +756,7 @@ class GeneralStatisticsScreen extends React.Component {
       dateFrom: startDate,
       dateTo: endDate,
       typeTime: typeTime.id,
+      langId: this.props.langId
     });
   }
   setActive(id) {
@@ -812,7 +826,7 @@ class GeneralStatisticsScreen extends React.Component {
   };
   getDataLineY(data) {
     const yArray = [];
-    data.map(function(b) {
+    data.map(function (b) {
       yArray.push(b.value);
     });
     return yArray;
@@ -923,6 +937,8 @@ const mapStateToProps = (state) => ({
   error: state.reportGeneral.error,
   initComponent: state.reportGeneral.initComponent,
   towerId: state.auth.user.towerId,
+  language: state.app.language,
+  langId: state.app.language == "vi" ? 1 : 2,
 });
 
 const mapActionToProps = {

@@ -23,7 +23,7 @@ class ListItem extends PureComponent {
         style={{
           paddingVertical: responsive.h(20),
           backgroundColor: "#fff",
-          paddingHorizontal: responsive.h(10),
+          paddingHorizontal: responsive.h(15),
         }}
         onPress={() => this.props.onSelected(item)}
       >
@@ -51,7 +51,7 @@ class ListTypeCar extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -70,11 +70,13 @@ class ListTypeCar extends Component {
               {Strings.carCard.carTypeText}
             </Text>
           }
-          // rightView={
-          //   <View style={{ margin: 10 }}>
-          //     <MyIcon name="arrow" color={colors.appTheme} size={20} />
-          //   </View>
-          // }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
+          }
         />
         <ListData
           api={{

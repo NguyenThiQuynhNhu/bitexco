@@ -57,10 +57,10 @@ class ListItem extends PureComponent {
               alignItems: "center",
               marginLeft: responsive.h(10),
               borderWidth: 1,
-              borderColor: "#afaeae",
+              borderColor: "#eaeaea",
             }}
           >
-            <MyIcon name="file-text" size={responsive.h(20)} color="#afaeae" />
+            <MyIcon name="kho-st-01" size={responsive.h(20)} color="#6f6f6f" />
           </View>
           {/* {!isReply ? (
             <View
@@ -230,7 +230,7 @@ class SurveyScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -239,13 +239,9 @@ class SurveyScreen extends Component {
           body={
             <Text
               style={{
-                padding: responsive.h(10),
-                width: Screen.width - 124,
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(18),
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
                 textAlign: "center",
                 color: "black",
               }}
@@ -254,6 +250,13 @@ class SurveyScreen extends Component {
             >
               {Strings.setting.surveySheet}
             </Text>
+          }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
           }
         />
         {this._renderContent()}

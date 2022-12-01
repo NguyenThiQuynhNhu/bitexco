@@ -16,6 +16,7 @@ import {
 import StackedBarChart from '../controls/StackedBarChart';
 import fontsize from '../../../theme/fontsize';
 import responsive from "../../../resources/responsive";
+import Strings from "../../../utils/languages";
 // create a component
 class ReportGroupProgressStatus extends Component {
     componentDidMount() {
@@ -30,6 +31,7 @@ class ReportGroupProgressStatus extends Component {
         this.props.setProps({ key: 'state' });
     }
     render() {
+        console.log('2', this.props)
         const { data, isLoading, error, dataStatus } = this.props;
         if (isLoading) {
             return <ActivityIndicator color='blue' />
@@ -39,20 +41,20 @@ class ReportGroupProgressStatus extends Component {
                 <TouchableOpacity
                     onPress={() => { this.props.refreshDataHandle() }}
                 >
-                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: responsive.h(10) }}>Có lỗi xảy ra</Text>
+                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: responsive.h(10) }}>{Strings.app.error}</Text>
                 </TouchableOpacity>
             )
         }
         if (data.length == 0) {
             return (
                 <TouchableOpacity onPress={() => { this.props.refreshDataHandle() }}>
-                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: responsive.h(10) }}>Không có dữ liệu</Text>
+                    <Text style={{ textAlign: 'center', fontSize: fontsize.small, padding: responsive.h(10) }}>{Strings.app.emptyData}</Text>
                 </TouchableOpacity>
             )
         } else {
             return (
                 <View>
-                    <StackedBarChart dataStackX={this.getDataStackBarX(this.props.data)} dataStackY={this.getDataStackBarY(this.props.data)} />
+                    <StackedBarChart dataStatus={this.props.dataStatus} dataStackX={this.getDataStackBarX(this.props.data)} dataStackY={this.getDataStackBarY(this.props.data)} />
                 </View>
             )
         }
@@ -62,7 +64,8 @@ class ReportGroupProgressStatus extends Component {
         loadDataGroupProgressStatus({
             towerId,
             dateFrom,
-            dateTo
+            dateTo,
+            langId: this.props.langId
         });
     }
     getDataStackBarX(data) {
@@ -83,8 +86,8 @@ const mapStateToProps = (state) => ({
     isRefreshing: state.reportGroupProgressStatus.isRefreshing,
     error: state.reportGroupProgressStatus.error,
     initComponent: state.reportGroupProgressStatus.initComponent,
-    towerId: state.auth.user.towerId
-
+    towerId: state.auth.user.towerId,
+    langId: state.app.language == "vi" ? 1 : 2,
 })
 
 const mapActionToProps = {

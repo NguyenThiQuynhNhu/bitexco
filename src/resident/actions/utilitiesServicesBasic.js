@@ -40,7 +40,7 @@ export const loadDataHandle = (dataRequest) => async (dispatch) => {
         dispatch({ type: UTILITIES_SERVICES_BASIC_GETLIST_REQUEST });
         const url = '/Residents/ServiceBasic/List';
         const ret = await get(url, dataRequest);
-        console.log(ret)
+        //console.log(ret)
         if (ret !== undefined && ret !== null) {
             if (ret.status == 200) {
                 const retStatusR = await get('/Residents/ServiceBasic/GetTotalStatus', {towerId: dataRequest.towerId, serviceId: dataRequest.serviceId})

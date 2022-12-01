@@ -22,6 +22,8 @@ export default (state = INITIAL_STATE, action) => {
     switch (action.type) {
         
         case 'APP_RESET_BY_KEY': {
+            console.log(action)
+            console.log(action.payload)
             if (action.payload.key === 'state') {
                 return INITIAL_STATE;
             }

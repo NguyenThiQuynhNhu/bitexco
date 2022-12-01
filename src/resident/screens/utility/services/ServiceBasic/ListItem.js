@@ -5,10 +5,12 @@ import fontSize from "../../../../theme/fontsize";
 
 import ImageProgress from "../../../../components/common/ImageProgress";
 import {
-  converStatusToColor,
-  converStatusToString,
   converStatusToColorServiceByString,
 } from "../../../../utils/request";
+import {
+  converStatusToString,
+} from "../../../../utils/serviceBasic";
+
 import { MyIcon } from "../../../../theme/icons";
 
 import moment from "moment";
@@ -36,8 +38,6 @@ class ListItem extends PureComponent {
           width: (Screen.width - responsive.h(30)) / 2,
           marginBottom: responsive.h(10),
           marginRight: responsive.h(10),
-          // margin: responsive.h(10),
-          // marginRight: index % 2 != 0 ? 0 : 10,
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
@@ -45,14 +45,13 @@ class ListItem extends PureComponent {
         }}
         onPress={onPress}
       >
-        <View>
+        <View style={{}}>
           <ImageProgress
             //circle={true}
             style={{
               height: responsive.h(111),
               borderRadius: responsive.h(12),
               width: "100%",
-              marginBottom: responsive.h(10),
             }}
             source={{ uri: logo }}
           />
@@ -63,6 +62,7 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               justifyContent: "space-between",
               maxWidth: responsive.w(222),
+              marginTop: responsive.h(10)
             }}
           >
             <Text
@@ -88,13 +88,12 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 // letterSpacing: 0,
 
-                color: converStatusToColor(statusId),
+                color: converStatusToColorServiceByString(statusName),
               }}
             >
-              {statusName}
+              {converStatusToString(statusId)}
             </Text>
           </View>
-          <View>
             <Text
               style={{
                 fontFamily: "Inter-Regular",
@@ -104,20 +103,20 @@ class ListItem extends PureComponent {
                 textAlign: "left",
                 color: "#888888",
                 maxWidth: responsive.w(222),
+                marginTop: responsive.h(3)
               }}
               numberOfLines={1}
               lineBreakMode="tail"
             >
               {description}
             </Text>
-          </View>
 
           <View
             style={{
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              paddingTop: responsive.h(5),
+              marginTop: responsive.h(15),
             }}
           >
             <Text
@@ -147,24 +146,7 @@ class ListItem extends PureComponent {
               {moment(dateBook).format("HH:mm")}
             </Text>
           </View>
-        </View>
-
-        {/* {statusName == "Mới" && (
-          <TouchableOpacity
-            style={{
-              borderRadius: 45,
-              height: 40,
-              width: 40,
-              backgroundColor: "red",
-              justifyContent: "center",
-              alignItems: "center",
-              margin: 10,
-            }}
-            onPress={() => deleteService(item.id)}
-          >
-            <MyIcon name="x" size={20} color="#fff" />
-          </TouchableOpacity>
-        )} */}
+        </View> 
       </TouchableOpacity>
     );
   }

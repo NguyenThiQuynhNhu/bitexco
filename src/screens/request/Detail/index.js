@@ -21,6 +21,8 @@ import Toast, { DURATION } from "react-native-easy-toast";
 import LinearGradient from "react-native-linear-gradient";
 import Lightbox from "react-native-lightbox";
 import moment from "moment";
+import vi from 'moment/locale/vi';
+import us from 'moment/locale/en-au';
 import { TabNavigator, TabBarTop } from "react-navigation";
 import {
   loadDataHandle,
@@ -82,7 +84,7 @@ class RequestDetailScreen extends Component {
         const { user } = this.props;
         const { id } = this.state.itemfromList;
 
-        this.props.loadDataHandle({ id });
+        this.props.loadDataHandle({ id, langId: this.props.langId });
         this.refs.toast.show("Xử lý thành công", DURATION.LENGTH_LONG);
       }
     }
@@ -91,7 +93,7 @@ class RequestDetailScreen extends Component {
     const { user } = this.props;
     const { id } = this.state.itemfromList;
     this.props.navigation.setParams({ onResponse: this._onResponse });
-    this.props.loadDataHandle({ id });
+    this.props.loadDataHandle({ id, langId: this.props.langId });
   }
 
   componentWillUnmount() {
@@ -135,7 +137,7 @@ class RequestDetailScreen extends Component {
           </Text>
           <Text>{content}</Text>
           <Text style={{ fontSize: fontsize.micro, color: colors.gray1 }}>
-            {moment(dateActive).fromNow()}
+          {moment(dateCreate).locale(this.props.language == 'vi' ? this.props.language : 'us', us).fromNow()}
           </Text>
         </View>
       </View>
@@ -164,11 +166,13 @@ class RequestDetailScreen extends Component {
                 });
               //Đổi Trạng Thái Yêu Cầu
               case "doi_trang_thai":
-                return this.props.navigation.navigate("requestUpdateStatus");
+                return this.props.navigation.navigate("requestUpdateStatus", {
+                  title: moduleName,
+                });
               //Hoàn thành
               case "hoan_thanh":
                 return this.props.navigation.navigate("requestComplete", {
-                  keyTrangThai: "hoan_thanh",
+                  keyTrangThai: "hoan_thanh", title: moduleName,
                 });
               default:
                 break;
@@ -287,7 +291,7 @@ class RequestDetailScreen extends Component {
                     color: "#000000",
                   }}
                 >
-                  {residentName || userContact} 55555 55555 555555 55555 5555 55555
+                  {residentName || userContact}
                 </Text>
                 <View>
                   <View>
@@ -449,7 +453,7 @@ class RequestDetailScreen extends Component {
                         style={{
                           backgroundColor: "#fff",
                           height: responsive.h(100),
-                          borderRadius: responsive.h(8),
+                          //borderRadius: responsive.h(8),
                           borderWidth: 1,
                           margin: responsive.h(10),
                           marginLeft: responsive.h(10),
@@ -622,7 +626,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   linearGradient: {
-    width: "90%",
+    width: "92.5%",
     borderRadius: 16,
     backgroundColor: colors.primaryKeyColor,
   },
@@ -634,6 +638,8 @@ const mapStateToProps = (state) => ({
   isLoading: state.requestDetail.isLoading,
   errorResponse: state.requestDetail.errorResponse,
   error: state.requestDetail.error,
+  language: state.app.language,
+  langId: state.app.language == 'vi' ? 1 : 2,
 });
 
 const mapActionToProps = {

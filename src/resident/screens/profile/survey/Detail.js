@@ -38,7 +38,7 @@ class SurveyDetailScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isAnswer: true,
+      isAnswer: false,
       color: colors.toast.success,
     };
   }
@@ -104,14 +104,9 @@ class SurveyDetailScreen extends Component {
           marginBottom: responsive.h(10),
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: responsive.h(10),
-          shadowOpacity: 1,
+          borderWidth: 0.5,
+          borderBottomWidth: responsive.h(2),
+          borderColor: "#eaeaea",
           marginHorizontal: responsive.h(10),
         }}
       >
@@ -175,14 +170,14 @@ class SurveyDetailScreen extends Component {
                           borderWidth: 1,
                           borderColor:
                             itemAnswer.item.isReply ||
-                            this.state[`${id}${itemAnswer.item.id}`]
+                              this.state[`${id}${itemAnswer.item.id}`]
                               ? colors.appTheme
                               : "#000",
                           borderRadius: responsive.h(10),
                         }}
                       >
                         {itemAnswer.item.isReply ||
-                        this.state[`${id}${itemAnswer.item.id}`] ? (
+                          this.state[`${id}${itemAnswer.item.id}`] ? (
                           <Text
                             style={{
                               color: colors.appTheme,
@@ -193,7 +188,7 @@ class SurveyDetailScreen extends Component {
                           </Text>
                         ) : null}
                       </View>
-                      <Text style={{ flex: 1, marginLeft: responsive.h(10) }}>
+                      <Text style={{ flex: 1, marginLeft: responsive.h(10), fontFamily: 'Inter-Regular', color: '#6b6b6b' }}>
                         {itemAnswer.item.answerName}
                       </Text>
                     </TouchableOpacity>
@@ -369,7 +364,7 @@ class SurveyDetailScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -378,10 +373,8 @@ class SurveyDetailScreen extends Component {
           body={
             <Text
               style={{
-                padding: responsive.h(10),
-                width: Screen.width - 124,
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(18),
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -395,29 +388,25 @@ class SurveyDetailScreen extends Component {
             </Text>
           }
           rightView={
-            // <TouchableOpacity
-            //   onPress={() => (this.state.isAnswer ? null : this._onSubmit())}
-            //   style={{ padding: 10 }}
-            // >
-            //   <MyIcon
-            //     name="reply"
-            //     color={this.state.isAnswer ? colors.appTheme : "black"}
-            //     size={20}
-            //   />
-            // </TouchableOpacity>
-            this.state.isAnswer ? null : (
+            this.state.isAnswer ?
               <TouchableOpacity
-                onPress={() => this._onSubmit()}
-                style={{
-                  padding: responsive.h(10),
-                }}
+                style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
               >
-                <MyIcon name="reply" color="black" size={responsive.h(20)} />
+                <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
               </TouchableOpacity>
-            )
+              : (
+                <TouchableOpacity
+                  onPress={() => this._onSubmit()}
+                  style={{
+                    padding: responsive.h(10), paddingHorizontal: responsive.h(12)
+                  }}
+                >
+                  <MyIcon name="reply" color="black" size={responsive.h(20)} />
+                </TouchableOpacity>
+              )
           }
         />
-        <Text
+        {this.state.isAnswer && <Text
           style={{
             //fontFamily: "Inter-SemiBold",
             fontSize: responsive.h(14),
@@ -426,8 +415,8 @@ class SurveyDetailScreen extends Component {
             margin: responsive.h(10),
           }}
         >
-          {!this.state.isAnswer ? "" : Strings.surveyDetail.isAnswer}
-        </Text>
+          {Strings.surveyDetail.isAnswer}
+        </Text>}
         <KeyboardAwareScrollView>
           {this._renderContent()}
         </KeyboardAwareScrollView>

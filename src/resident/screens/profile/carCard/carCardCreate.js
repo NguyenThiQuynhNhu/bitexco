@@ -223,7 +223,7 @@ class CarCardCreateScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -233,12 +233,9 @@ class CarCardCreateScreen extends Component {
             <Text
               style={{
                 padding: responsive.h(10),
-                width: Screen.width - responsive.w(124),
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(18),
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
                 textAlign: "center",
                 color: "black",
               }}
@@ -254,7 +251,7 @@ class CarCardCreateScreen extends Component {
                 this.onNext();
               }}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="paperplane" color="black" size={responsive.h(24)} />
@@ -263,8 +260,8 @@ class CarCardCreateScreen extends Component {
         />
         <KeyboardAwareScrollView
           style={{
-            borderTopRightRadius: responsive.h(20),
-            paddingHorizontal: responsive.h(20),
+            paddingHorizontal: responsive.h(15),
+            paddingVertical: responsive.h(10)
           }}
         >
           <View style={styles.container}>
@@ -272,7 +269,6 @@ class CarCardCreateScreen extends Component {
               style={{
                 alignItems: "flex-start",
                 justifyContent: "space-between",
-                borderTopRightRadius: responsive.h(20),
               }}
             >
               <Text

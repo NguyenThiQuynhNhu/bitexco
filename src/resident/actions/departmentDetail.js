@@ -19,7 +19,7 @@ export const loadDataHandle = (dataRequest) => async (dispatch) => {
         dispatch({ type: DEPARMENT_DETAIL_REQUEST });
         const url = '/Residents/TowerJoined';
         const ret = await get(url, dataRequest);
-        //console.log(ret)
+        console.log(ret)
         if (ret !== undefined && ret !== null) {
             if (ret.status == 200) {
                 dispatch({ type: DEPARMENT_DETAIL_SUCCESS, payload: { data: ret.data } });
@@ -77,6 +77,10 @@ export const updateDepartmentDefault = (dataRequest) => async (dispatch) => {
 export const resetStateByKey = ({ key, path, value }) => ({
     type: DEPARMENT_DETAIL_RESET_BY_KEY,
     payload: { key, path, value }
+});
+
+export const refreshDataHandle = () => ({
+    type: 'DEPARMENT_DETAIL_REFRESHING'
 });
 
 export const onValueChange = (payload) => ({

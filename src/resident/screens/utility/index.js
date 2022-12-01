@@ -283,10 +283,10 @@ class UtilityScreen extends Component {
           style={{
             width: responsive.h(40),
             height: responsive.h(40),
-            backgroundColor: "#fff200",
+            backgroundColor: colors.appTheme,
             justifyContent: "center",
             alignItems: "center",
-            borderRadius: responsive.h(20),
+            borderRadius: responsive.h(5),
           }}
         >
           <ImageProgress
@@ -302,11 +302,8 @@ class UtilityScreen extends Component {
         <Text
           style={{
             marginTop: responsive.h(10),
-            fontFamily: "Inter-SemiBold",
+            fontFamily: "Inter-Regular",
             fontSize: responsive.h(14),
-            fontWeight: "600",
-            fontStyle: "normal",
-            letterSpacing: 0,
             textAlign: "center",
             color: "#000000",
           }}
@@ -365,7 +362,7 @@ class UtilityScreen extends Component {
         return (
           <ScrollView style={{}} showsVerticalScrollIndicator={false}>
             <FlatList
-              style={{ alignSelf: "center", marginBottom: responsive.h(10) }}
+              style={{ alignSelf: "center", margin: responsive.h(10) }}
               scrollEnabled={false}
               data={this.state.basic ? utilities : services}
               renderItem={this.renderItem}
@@ -376,6 +373,7 @@ class UtilityScreen extends Component {
                 height: responsive.h(15),
                 backgroundColor: "#f5f5f5",
                 width: "100%",
+                marginBottom: responsive.h(10),
               }}
             />
             <Text
@@ -477,10 +475,11 @@ class UtilityScreen extends Component {
       <FlatList
         keyExtractor={(item, index) => `${index}`}
         refreshing={isRefreshingBasic}
-        //onRefresh={() => this.props.refreshDataHandleBasic()}
         data={dataBasic}
-        //style={{height: Screen.height - 380}}
-        //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
+        contentContainerStyle={{
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
+        }}
         renderItem={this.renderItemBasic}
         ListFooterComponent={this.renderFooter}
         onEndReachedThreshold={0.5}
@@ -573,12 +572,13 @@ class UtilityScreen extends Component {
       <FlatList
         keyExtractor={(item, index) => `${index}`}
         refreshing={isRefreshingEx}
-        //onRefresh={() => this.props.refreshDataHandleEx()}
         data={dataEx}
-        //ItemSeparatorComponent={() => <View style={{ backgroundColor: colors.grayBorder, height: 1 }} />}
+        contentContainerStyle={{
+          marginTop: responsive.h(10),
+          marginLeft: responsive.h(10),
+        }}
         renderItem={this.renderItemEx}
         numColumns={2}
-        //style={{height: Screen.height - 380}}
         ListFooterComponent={this.renderFooter}
         onEndReachedThreshold={0.5}
         onMomentumScrollBegin={() => {
@@ -651,8 +651,8 @@ class UtilityScreen extends Component {
             >
               <ImageProgress
                 style={{
-                  height: responsive.h(40),
-                  width: responsive.h(40),
+                  height: responsive.h(50),
+                  width: responsive.h(50),
                 }}
                 circle={true}
                 resizeMode="stretch"
@@ -679,7 +679,7 @@ class UtilityScreen extends Component {
           rightView={
             <TouchableOpacity
               style={{
-                padding: responsive.h(10),
+                paddingHorizontal: responsive.h(20),
               }}
             >
               <MyIcon
@@ -691,138 +691,26 @@ class UtilityScreen extends Component {
           }
         />
 
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginHorizontal: 20,
-            marginTop: -10,
-            alignItems: "center",
-            padding: 10,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.basicClick()}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: !this.state.basic ? "#c8c8c8" : "#3d3d3d",
-              }}
-            >
-              {Strings.serviceBasic.title}
-            </Text>
-            <View
-              style={{
-                marginTop: 5,
-                borderRadius: 45,
-                minWidth: 25,
-                minHeight: 25,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: !this.state.basic ? "#fff" : "#f8fbf5",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "Inter-Medium",
-                  fontSize: 13,
-                  fontWeight: "500",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "center",
-                  color: !this.state.basic ? "#c8c8c8" : "#a3cd80",
-                }}
-              >
-                {!this.props.data
-                  ? "0"
-                  : this.props.data.filter((o) => o.typeId == 0).length}
-              </Text>
-            </View>
-            <View
-              style={{
-                width: Platform.basic ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: !this.state.basic ? "#fff" : "#a3cd80",
-                marginTop: 5,
-              }}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => this.exClick()}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: this.state.basic ? "#c8c8c8" : "#3d3d3d",
-              }}
-            >
-              {Strings.serviceExtension.title}
-            </Text>
-            <View
-              style={{
-                marginTop: 5,
-                borderRadius: 45,
-                minWidth: 25,
-                minHeight: 25,
-                alignItems: "center",
-                justifyContent: "center",
-                backgroundColor: this.state.basic ? "#fff" : "#f8fbf5",
-              }}
-            >
-              <Text
-                style={{
-                  fontFamily: "Inter-Medium",
-                  fontSize: 13,
-                  fontWeight: "500",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "center",
-                  color: this.state.basic ? "#c8c8c8" : "#a3cd80",
-                }}
-              >
-                {!this.props.data
-                  ? "0"
-                  : this.props.data.filter((o) => o.typeId == 1).length}
-              </Text>
-            </View>
-            <View
-              style={{
-                width: Platform.isPad ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: this.state.basic ? "#fff" : "#a3cd80",
-                marginTop: 5,
-              }}
-            />
-          </TouchableOpacity>
-        </View> */}
         <View>
           <ScrollView
             horizontal
-            contentContainerStyle={{
-              flex: 1,
-              height: "100%",
-            }}
+            showsHorizontalScrollIndicator={false}
           >
+            <View
+              style={{
+                backgroundColor: "#f1f1f1",
+                width: Screen.width,
+                height: responsive.h(3),
+                borderRadius: 4,
+                position: 'absolute',
+                bottom: 0,
+              }}
+            />
             <TouchableOpacity
               onPress={() => this.basicClick()}
               style={{
-                width: responsive.h(120),
+                justifyContent: 'center',
+                paddingVertical: responsive.h(10)
               }}
             >
               <View
@@ -836,14 +724,10 @@ class UtilityScreen extends Component {
                   style={{
                     fontFamily: "Inter-Bold",
                     fontSize: responsive.h(14),
-                    paddingLeft: responsive.h(20),
                     fontWeight: "bold",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
                     color: "#3d3d3d",
-                    paddingHorizontal: responsive.h(10),
                     textAlign: "center",
-                    paddingVertical: responsive.h(10),
+                    marginLeft: responsive.h(20),
                   }}
                 >
                   {Strings.serviceBasic.title}
@@ -854,9 +738,10 @@ class UtilityScreen extends Component {
                     width: responsive.h(22),
                     height: responsive.h(22),
                     justifyContent: "center",
-                    backgroundColor: "#ffe800",
+                    backgroundColor: "#fff5eb",
                     justifyContent: "center",
                     alignItems: "center",
+                    marginHorizontal: responsive.h(10)
                   }}
                 >
                   <Text
@@ -876,17 +761,26 @@ class UtilityScreen extends Component {
                 </View>
               </View>
 
-              <View
+              {/* <View
                 style={{
-                  // width: Platform.basic ? 64 : 44,
-                  width: "130%",
+                  width: "100%",
                   height: 3,
                   borderRadius: responsive.h(4),
                   backgroundColor: this.state.basic
                     ? colors.appTheme
                     : "#f1f1f1",
-                  marginTop: responsive.h(5),
-                  paddingHorizontal: responsive.h(20),
+                }}
+              /> */}
+              <View
+                style={{
+                  backgroundColor: this.state.basic
+                    ? colors.appTheme
+                    : "#f1f1f1",
+                  width: '100%',
+                  height: responsive.h(3),
+                  borderRadius: 4,
+                  position: 'absolute',
+                  bottom: 0,
                 }}
               />
             </TouchableOpacity>
@@ -894,10 +788,8 @@ class UtilityScreen extends Component {
             <TouchableOpacity
               onPress={() => this.exClick()}
               style={{
-                // flex: 1,
-                // justifyContent: "center",
-                // alignItems: "center",
-                width: responsive.w(120),
+                justifyContent: 'center',
+                paddingVertical: responsive.h(10)
               }}
             >
               <View
@@ -913,11 +805,9 @@ class UtilityScreen extends Component {
                     fontSize: responsive.h(14),
                     fontWeight: "bold",
                     fontStyle: "normal",
-                    letterSpacing: 0,
                     color: "#3d3d3d",
-                    paddingHorizontal: responsive.h(10),
                     textAlign: "center",
-                    paddingVertical: responsive.h(10),
+                    marginLeft: responsive.h(20),
                   }}
                 >
                   {Strings.serviceExtension.title}
@@ -928,9 +818,10 @@ class UtilityScreen extends Component {
                     width: responsive.h(22),
                     height: responsive.h(22),
                     justifyContent: "center",
-                    backgroundColor: "#ffe800",
+                    backgroundColor: "#fff5eb",
                     justifyContent: "center",
                     alignItems: "center",
+                    marginHorizontal: responsive.h(10)
                   }}
                 >
                   <Text
@@ -950,50 +841,26 @@ class UtilityScreen extends Component {
                 </View>
               </View>
 
-              <View
+              {/* <View
                 style={{
-                  // width: Platform.isPad ? 64 : 44,
-                  width: this.state.basic ? "150%" : "130%",
+                  width: '100%',
                   height: 3,
                   borderRadius: responsive.h(4),
                   backgroundColor: !this.state.basic
                     ? colors.appTheme
                     : "#f1f1f1",
-                  marginTop: responsive.h(5),
                 }}
-              />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                backgroundColor: "#fff",
-              }}
-              disabled={true}
-            >
-              <Text
-                style={{
-                  fontFamily: "Inter-Bold",
-                  fontSize: responsive.h(14),
-                  fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.h(20),
-                  textAlign: "center",
-                  paddingVertical: responsive.h(10),
-                  color: "#fff",
-                }}
-              />
+              /> */}
               <View
                 style={{
-                  // width: Platform.isPad ? 64 : 44,
-                  width: this.state.type == 3 ? "200%" : "130%",
-                  height: 3,
-                  borderRadius: responsive.h(4),
-                  backgroundColor:
-                    this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                  marginTop: responsive.h(5),
+                  backgroundColor: !this.state.basic
+                    ? colors.appTheme
+                    : "#f1f1f1",
+                  width: '100%',
+                  height: responsive.h(3),
+                  borderRadius: 4,
+                  position: 'absolute',
+                  bottom: 0,
                 }}
               />
             </TouchableOpacity>

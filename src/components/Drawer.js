@@ -41,6 +41,7 @@ import FCM, { FCMEvent } from "react-native-fcm";
 import LinearGradient from "react-native-linear-gradient";
 import fontSize from "../theme/fontsize";
 import Strings from "../utils/languages";
+import Strings2 from '../resident/utils/languages';
 import ModalLogOut from "../components/common/ModalLogOut";
 import responsive from "../resources/responsive";
 class Drawer extends Component {
@@ -50,83 +51,12 @@ class Drawer extends Component {
       isShowModalLogout: false,
       showListVendor: false,
       isShowModalType: false,
-      menuReport: [
-        {
-          id: 10,
-          icon: "overview",
-          name: "Tổng hợp",
-        },
-        {
-          id: 11,
-          icon: "phng-ban-01",
-          name: "Phòng ban",
-        },
-        {
-          id: 12,
-          icon: "nhn-vin-01",
-          name: "Nhân viên",
-        },
-        {
-          id: 13,
-          icon: "nhm-cv-01",
-          name: "Nhóm công việc",
-        },
-        {
-          id: 14,
-          icon: "kho-st-01",
-          name: "Khảo sát",
-        },
-      ],
-      menuSetting: [
-        // {
-        //     id: 0,
-        //     icon: 'setting',
-        //     name: 'Thông báo'
-        // },
-        {
-          id: 3,
-          icon: "i-vai-tr-ng-dng-01",
-          name: "Đổi vài trò người dùng",
-        },
-        {
-          id: 4,
-          icon: "danh-sch-ta-nh-01",
-          name: "Danh sách toà nhà",
-        },
-        // {
-        //     id: 1,
-        //     icon: 'settings',
-        //     name: 'Cài đặt'
-        // },
-        {
-          id: 2,
-          icon: "ng-xut-01",
-          name: "Đăng xuất",
-        },
-      ],
-      menuSetting1: [
-        // {
-        //     id: 0,
-        //     icon: 'setting',
-        //     name: 'Thông báo'
-        // },
-        {
-          id: 1,
-          icon: "settings",
-          name: "Cài đặt",
-        },
-        {
-          id: 2,
-          icon: "logout",
-          name: "Đăng xuất",
-        },
-      ],
       isMine: false,
     };
   }
 
   componentDidMount() {
-    this.props.getRequestStatusTotal({ towerId: this.props.towerId });
+    this.props.getRequestStatusTotal({ towerId: this.props.towerId, langId: this.props.langId });
     this.props.loadDataHandle();
   }
 
@@ -135,6 +65,7 @@ class Drawer extends Component {
       this.props.getRequestStatusTotal({
         towerId: nextProps.user !== null ? nextProps.user.towerId : -1,
         isMine: nextProps.isMine,
+        langId: nextProps.langId
       });
     }
     if (
@@ -143,7 +74,7 @@ class Drawer extends Component {
       nextProps.user !== this.props.user
     ) {
       this.props.getRequestStatusTotal({
-        towerId: nextProps.user !== null ? nextProps.user.towerId : -1,
+        towerId: nextProps.user !== null ? nextProps.user.towerId : -1, langId: nextProps.langId
       });
     }
   }
@@ -153,29 +84,30 @@ class Drawer extends Component {
       <View>
         <TouchableOpacity
           style={{
-            marginTop: responsive.h(10),
+            marginTop: responsive.h(0),
             // paddingHorizontal: 20,
             flexDirection: "row",
             alignItems: "center",
             justifyContent: "space-between",
-            paddingLeft : responsive.h(20),
+            paddingLeft: responsive.h(15),
+            paddingRight: responsive.h(5),
           }}
         >
-          <Text style={styles.textTitle}>Phản ánh</Text>
+          <Text style={styles.textTitle}>{Strings.setting.request}</Text>
           <View
             style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}
           >
             <Text
               style={{
-                marginRight : responsive.h(10),
+                marginRight: responsive.h(10),
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(14),
                 fontWeight: "bold",
                 textAlign: "left",
-                color: "#494856",
+                color: "#000",
               }}
             >
-              Của tôi
+              {Strings.setting.mine}
             </Text>
             <Switch
               style={{ transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }] }}
@@ -202,26 +134,26 @@ class Drawer extends Component {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            paddingVertical : responsive.h(10),
+            paddingVertical: responsive.h(10),
           }}
         >
           <View
             style={{
-              borderRadius : responsive.h(6),
+              borderRadius: responsive.h(6),
               backgroundColor: colors.grayBorder,
-              padding : responsive.h(5),
+              padding: responsive.h(5),
               alignItems: "center",
               justifyContent: "center",
-              marginRight : responsive.h(10),
-              marginLeft : responsive.h(20),
-              width: responsive.h(30), 
-              height: responsive.h(30), 
+              marginRight: responsive.h(10),
+              marginLeft: responsive.h(15),
+              width: responsive.h(30),
+              height: responsive.h(30),
             }}
           >
-            <MyIcon name={converStatusToIcon(0)} color="black" size = {responsive.h(18)}/>
+            <MyIcon name={converStatusToIcon(0)} color="black" size={responsive.h(18)} />
           </View>
 
-          <Text style={styles.textInfo}>Tất cả</Text>
+          <Text style={styles.textInfo}>{Strings.request.all}</Text>
         </TouchableOpacity>
         <FlatList
           scrollEnabled={false}
@@ -240,20 +172,20 @@ class Drawer extends Component {
                 style={{
                   flexDirection: "row",
                   alignItems: "center",
-                  paddingVertical : responsive.h(10),
+                  paddingVertical: responsive.h(10),
                 }}
               >
                 <View
                   style={{
-                    borderRadius : responsive.h(6),
+                    borderRadius: responsive.h(6),
                     backgroundColor: colors.grayBorder,
                     //padding : responsive.h(5),
                     alignItems: "center",
                     justifyContent: "center",
-                    marginRight : responsive.h(10),
-                    marginLeft : responsive.h(20),
-                    width: responsive.h(30), 
-                    height: responsive.h(30), 
+                    marginRight: responsive.h(10),
+                    marginLeft: responsive.h(15),
+                    width: responsive.h(30),
+                    height: responsive.h(30),
                   }}
                 >
                   <MyIcon
@@ -273,10 +205,10 @@ class Drawer extends Component {
                       backgroundColor: colorCode,
                       alignItems: "center",
                       justifyContent: "center",
-                      marginHorizontal: responsive.h(10),
+                      marginHorizontal: responsive.h(15),
                     }}
                   >
-                    <Text style={{ fontSize: responsive.h(10), margin: responsive.h(2), color: "#fff" }}>
+                    <Text style={{ fontSize: responsive.h(10), margin: responsive.h(2), color: "#fff", fontWeight: 'bold' }}>
                       {total}
                     </Text>
                   </View>
@@ -309,7 +241,7 @@ class Drawer extends Component {
                   case 0:
                     break;
                   case 1:
-                    return this.props.navigation.navigate("setting");
+                    return this.props.navigation.navigate("settingResident");
                   case 2:
                     {
                       this.setState({ isShowModalLogout: true });
@@ -350,34 +282,58 @@ class Drawer extends Component {
                     break;
                 }
               }}
-              // style={{
-              //     flexDirection: 'row',
-              //     alignItems: 'center',
-              //     paddingVertical : responsive.h(10)
-              // }}
+            // style={{
+            //     flexDirection: 'row',
+            //     alignItems: 'center',
+            //     paddingVertical : responsive.h(10)
+            // }}
             >
-              {id != 4 ? (
-                <View
+              <View
                   style={{
                     flexDirection: "row",
                     alignItems: "center",
-                    paddingVertical : responsive.h(10),
+                    paddingVertical: responsive.h(10),
                   }}
                 >
                   <View
                     style={{
-                      borderRadius : responsive.h(6),
+                      borderRadius: responsive.h(6),
                       backgroundColor: colors.grayBorder,
                       //padding : responsive.h(5),
                       alignItems: "center",
                       justifyContent: "center",
-                      marginRight : responsive.h(10),
-                      marginLeft : responsive.h(20),
-                      width: responsive.h(30), 
-                      height: responsive.h(30), 
+                      marginRight: responsive.h(10),
+                      marginLeft: responsive.h(15),
+                      width: responsive.h(30),
+                      height: responsive.h(30),
                     }}
                   >
-                    <MyIcon name={icon} color="black" size = {responsive.h(18)}/>
+                    <MyIcon name={icon} color="black" size={responsive.h(18)} />
+                  </View>
+                  <Text style={{ flex: 1, ...styles.textInfo }}>{name}</Text>
+                </View>
+              {/* {id != 4 ? (
+                <View
+                  style={{
+                    flexDirection: "row",
+                    alignItems: "center",
+                    paddingVertical: responsive.h(10),
+                  }}
+                >
+                  <View
+                    style={{
+                      borderRadius: responsive.h(6),
+                      backgroundColor: colors.grayBorder,
+                      //padding : responsive.h(5),
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginRight: responsive.h(10),
+                      marginLeft: responsive.h(20),
+                      width: responsive.h(30),
+                      height: responsive.h(30),
+                    }}
+                  >
+                    <MyIcon name={icon} color="black" size={responsive.h(18)} />
                   </View>
                   <Text style={{ flex: 1, ...styles.textInfo }}>{name}</Text>
                 </View>
@@ -388,23 +344,23 @@ class Drawer extends Component {
                       style={{
                         flexDirection: "row",
                         alignItems: "center",
-                        paddingVertical : responsive.h(10),
+                        paddingVertical: responsive.h(10),
                       }}
                     >
                       <View
                         style={{
-                          borderRadius : responsive.h(6),
+                          borderRadius: responsive.h(6),
                           backgroundColor: colors.grayBorder,
                           //padding : responsive.h(5),
                           alignItems: "center",
                           justifyContent: "center",
-                          marginRight : responsive.h(10),
-                          marginLeft : responsive.h(20),
-                          width: responsive.h(30), 
-                      height: responsive.h(30), 
+                          marginRight: responsive.h(10),
+                          marginLeft: responsive.h(20),
+                          width: responsive.h(30),
+                          height: responsive.h(30),
                         }}
                       >
-                        <MyIcon name={icon} color="black" size = {responsive.h(18)}/>
+                        <MyIcon name={icon} color="black" size={responsive.h(18)} />
                       </View>
 
                       <Text style={{ flex: 1, ...styles.textInfo }}>
@@ -413,7 +369,7 @@ class Drawer extends Component {
                     </View>
                   ) : null}
                 </View>
-              )}
+              )} */}
             </TouchableOpacity>
           );
         }}
@@ -457,7 +413,7 @@ class Drawer extends Component {
               borderRadius: responsive.h(25),
               width: responsive.h(45),
               height: responsive.h(45),
-              marginHorizontal: responsive.h(20),
+              marginHorizontal: responsive.h(15),
               marginVertical: responsive.h(10),
             }}
           >
@@ -488,7 +444,7 @@ class Drawer extends Component {
                     borderRadius: responsive.h(30),
                     width: responsive.h(45),
                     height: responsive.h(45),
-                    marginHorizontal: responsive.h(20),
+                    marginHorizontal: responsive.h(15),
                     marginVertical: responsive.h(10),
                   }}
                 >
@@ -498,7 +454,6 @@ class Drawer extends Component {
                     style={{ width: responsive.h(40), height: responsive.h(40) }}
                   />
                 </View>
-
                 <Text style={{ flex: 1, fontSize: responsive.h(14) }}>{name}</Text>
               </TouchableOpacity>
             );
@@ -528,7 +483,62 @@ class Drawer extends Component {
     const fullName = user !== null ? user.name : "";
     const towerName = user !== null ? user.towerName : "";
     const photoUrl = user ? user.photoUrl : "";
-    //console.log(this.props.dataVendor)
+    let menuReport = [
+      {
+        id: 10,
+        icon: "overview",
+        name: Strings.setting.general,
+      },
+      {
+        id: 11,
+        icon: "phng-ban-01",
+        name: Strings.setting.department,
+      },
+      {
+        id: 12,
+        icon: "nhn-vin-01",
+        name: Strings.setting.staff,
+      },
+      {
+        id: 13,
+        icon: "nhm-cv-01",
+        name: Strings.setting.workingGroup,
+      },
+      {
+        id: 14,
+        icon: "kho-st-01",
+        name: Strings.setting.survey,
+      },
+    ]
+    let menuSetting = [
+      {
+        id: 3,
+        icon: "i-vai-tr-ng-dng-01",
+        name: Strings.setting.changeTypeUser,
+      },
+      {
+        id: 1,
+        icon: 'sphere',
+        name: Strings.setting.language
+      },
+      {
+        id: 2,
+        icon: "ng-xut-01",
+        name: Strings.setting.logout,
+      },
+    ]
+    let menuSetting1 = [
+      {
+        id: 1,
+        icon: 'sphere',
+        name: Strings.setting.language
+      },
+      {
+        id: 2,
+        icon: "ng-xut-01",
+        name: Strings.setting.logout,
+      },
+    ]
     return (
       <View
         style={{
@@ -538,72 +548,74 @@ class Drawer extends Component {
         }}
       >
         <SafeAreaView
-        style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
-      />
-      <StatusBar
-        barStyle="dark-content"
-        backgroundColor="transparent"
-        translucent={true}
-      />
+          style={{ flex: 0, backgroundColor: "transparent", border: 0 }}
+        />
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent={true}
+        />
         {/* header */}
 
         {user && (
-            <View style={{ flexDirection: "row", marginTop: Platform.OS == 'ios' ? 0 : StatusBar.currentHeight }}>
-              <TouchableOpacity
-                //onPress={() => this._onAttachment()}
+          <View style={{ flexDirection: "row", marginTop: Platform.OS == 'ios' ? 0 : StatusBar.currentHeight,
+          marginHorizontal: responsive.h(15), marginBottom: responsive.h(15) }}>
+            <TouchableOpacity
+              onPress={() => this._onAttachment()}
+              style={{
+                height: responsive.h(50),
+                width: responsive.h(50),
+                borderRadius: responsive.h(30),
+                borderWidth: 5,
+                borderColor: "rgba(255,255,255,0.4)",
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: this.props.isLoading
+                  ? "#fff"
+                  : "transparent",
+              }}
+            >
+              <ImageProgress
+                source={{ uri: photoUrl }}
+                circle={true}
+                style={{ height: responsive.h(50), width: responsive.h(50) }}
+              />
+            </TouchableOpacity>
+
+            <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
+              <Text
                 style={{
-                  height: responsive.h(55),
-                  width: responsive.h(55),
-                  borderRadius: responsive.h(30),
-                  borderWidth: 5,
-                  borderColor: "rgba(255,255,255,0.4)",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: this.props.isLoading
-                    ? "#fff"
-                    : "transparent",
+                  fontSize: responsive.h(16),
+                  fontFamily: "Inter-Bold",
+                  fontWeight: '600',
+                  color: "black",
+                  marginBottom: responsive.h(5)
                 }}
               >
-                <ImageProgress
-                  source={{ uri: photoUrl }}
-                  circle={true}
-                  style={{ height: responsive.h(50), width: responsive.h(50) }}
+                {fullName}
+              </Text>
+              <View style={{ flexDirection: "row", alignItems: 'center', display: "flex" }}>
+                <MyIcon
+                  name="profile1"
+                  size={responsive.h(11)}
+                  color="black"
+                  style={{
+                    marginRight: responsive.h(5),
+                  }}
                 />
-              </TouchableOpacity>
-
-              <View style={{ flex: 1, justifyContent: "center", marginLeft: responsive.h(10) }}>
                 <Text
                   style={{
-                    fontSize: responsive.h(16),
-                    fontFamily: "Inter-Bold",
+                    fontSize: responsive.h(14),
+                    fontFamily: "Inter-Medium",
                     color: "black",
-                    marginBottom: responsive.h(5)
                   }}
                 >
-                  {fullName}
+                  {towerName}
                 </Text>
-                <View style={{ flexDirection: "row", alignItems: 'center', display: "flex" }}>
-                  <MyIcon
-                    name="profile1"
-                    size={responsive.h(11)}
-                    color="black"
-                    style={{
-                      marginRight: responsive.h(5),
-                    }}
-                  />
-                  <Text
-                    style={{
-                      fontSize: responsive.h(14),
-                      fontFamily: "Inter-Medium",
-                      color: "black",
-                    }}
-                  >
-                    {towerName}
-                  </Text>
-                </View>
               </View>
             </View>
-          )}
+          </View>
+        )}
         {this.state.showListVendor ? (
           this.renderVendorList(user)
         ) : (
@@ -686,44 +698,41 @@ class Drawer extends Component {
               {this.renderMenuStatus(this.props.dataStatus)}
 
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
-
-              <TouchableOpacity
-                onPress={() => this.props.navigation.navigate("serviceBasic")}
-                style={{ paddingVertical : responsive.h(20), paddingLeft : responsive.h(20) }}
-              >
-                <Text style={styles.textTitle}>Tiện ích</Text>
-              </TouchableOpacity>
-
-              <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
-
               <TouchableOpacity
                 onPress={() =>
                   this.props.navigation.navigate("serviceExtension")
                 }
-                style={{ paddingVertical : responsive.h(20), paddingLeft : responsive.h(20) }}
+                style={{ paddingVertical: responsive.h(20), paddingLeft: responsive.h(15) }}
               >
-                <Text style={styles.textTitle}>Dịch vụ</Text>
+                <Text style={styles.textTitle}>{Strings.setting.extension}</Text>
+              </TouchableOpacity>
+              <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
+              <TouchableOpacity
+                onPress={() => this.props.navigation.navigate("serviceBasic")}
+                style={{ paddingVertical: responsive.h(20), paddingLeft: responsive.h(15) }}
+              >
+                <Text style={styles.textTitle}>{Strings.setting.service}</Text>
               </TouchableOpacity>
 
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
               <View
-                style={{ paddingTop : responsive.h(20), paddingLeft : responsive.h(20), paddingBottom : responsive.h(5) }}
+                style={{ paddingTop: responsive.h(20), paddingLeft: responsive.h(15), paddingBottom: responsive.h(5) }}
               >
-                <Text style={styles.textTitle}>Thống kê hệ thống</Text>
+                <Text style={styles.textTitle}>{Strings.setting.systemStatistics}</Text>
               </View>
-              {this.renderMenu(this.state.menuReport)}
+              {this.renderMenu(menuReport)}
 
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
               <View
-                style={{ paddingTop : responsive.h(20), paddingLeft : responsive.h(20), paddingBottom : responsive.h(5) }}
+                style={{ paddingTop: responsive.h(20), paddingLeft: responsive.h(15), paddingBottom: responsive.h(5) }}
               >
-                <Text style={styles.textTitle}>Hệ thống</Text>
+                <Text style={styles.textTitle}>{Strings.setting.system}</Text>
               </View>
 
               {this.renderMenu(
                 this.props.typeList.length > 1
-                  ? this.state.menuSetting
-                  : this.state.menuSetting1
+                  ? menuSetting
+                  : menuSetting1
               )}
               <View style={{ height: 1, backgroundColor: colors.grayBorder }} />
               <View
@@ -771,7 +780,7 @@ class Drawer extends Component {
                   }}
                 >
                   <ActivityIndicator />
-                  <Text>Đang tải</Text>
+                  <Text>{Strings2.app.loading}</Text>
                 </View>
               ) : (
                 <View style={{ flex: 1, marginTop: responsive.h(70), alignItems: "center" }}>
@@ -788,7 +797,7 @@ class Drawer extends Component {
                       fontWeight: "bold",
                     }}
                   >
-                    Phiên đã hết hạn. Bạn có muốn đăng nhập lại?
+                    {Strings2.app.message}
                   </Text>
 
                   <View style={{ flexDirection: "row", marginTop: responsive.h(100) }}>
@@ -847,7 +856,7 @@ class Drawer extends Component {
                   }}
                 >
                   <ActivityIndicator />
-                  <Text style={{fontSize: responsive.h(14),}}>Đang tải</Text>
+                  <Text style={{ fontSize: responsive.h(14), }}>{Strings2.app.loading}</Text>
                 </View>
               ) : (
                 <View style={{ flex: 1, marginTop: responsive.h(70), alignItems: "center" }}>
@@ -975,7 +984,8 @@ const styles = StyleSheet.create({
     color: "#000",
   },
   textInfo: {
-    fontFamily: "OpenSans-Regular",
+    fontFamily: "Inter-Regular",
+    fontWeight: '600',
     fontSize: responsive.h(16),
     textAlign: "left",
     color: "#494856",
@@ -997,6 +1007,7 @@ const mapStateToProps = (state) => ({
   otpCode: state.auth.otpCode,
   password: state.auth.Pass,
   dataBuilding: state.building.data,
+  langId: state.app.language == "vi" ? 1 : 2,
 });
 const mapActionToProps = {
   resetStateByKey,

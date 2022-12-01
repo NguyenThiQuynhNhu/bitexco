@@ -22,7 +22,7 @@ import {
   SIGNIN_FAILURE,
 } from "./actionTypes";
 import FCM from "react-native-fcm";
-import { helper, get, post, getVersion, get2 } from "../services/helper";
+import { helper, get, post, getVersion, get2, get3 } from "../services/helper";
 
 export const resetStateByKey = ({ key, path, value }) => ({
   type: AUTH_RESET_BY_KEY,
@@ -588,6 +588,8 @@ export const getProfile = (dataRequest) => async (dispatch) => {
     console.log("getProfile1", ret);
     if (ret !== undefined && ret !== null) {
       if (ret.status == 200) {
+        await dispatch(unsubscribeFromTopics(dataRequest.towers));
+        await  dispatch(subscribeToTopics(ret.data.towers))
         if (!ret.data.isChangePass) {
           dispatch({ type: "GO_CHANGE_PASS" });
         }
@@ -598,18 +600,12 @@ export const getProfile = (dataRequest) => async (dispatch) => {
           langId: 0,
         });
         console.log("getProfile2", ret1);
-        const url2 = "/Banner/GetListBanner";
-        const ret2 = await get2(url2, {
-          id: ret.data.id,
-          title: ret.data.title,
-          link: ret.data.link,
-          imageLink: ret.data.imageLink,
-          display: ret.data.display,
-          header: ret.data.footer,
-          footer: ret.data.footer,
-        });
+        const url2 = "/Banner/GetListBannerByTowerID";
+        const ret2 = await get(url2, {towerId: ret.data.towerId, isHeader: false});
+        const ret3 = await get(url2, {towerId: ret.data.towerId, isHeader: true});
+        let bannerHeader = ret2.data ? ret2.data : []
+        let bannerFooter = ret3.data ? ret3.data : []
         console.log("getProfile3", ret2);
-
         if (ret1 !== undefined && ret1 !== null) {
           if ((await ret1.status) == 200) {
             dispatch(subscribeToTopics(ret.data.towers));
@@ -617,7 +613,7 @@ export const getProfile = (dataRequest) => async (dispatch) => {
             dispatch({
               type: VENDORS_HOME_SUCCESS,
               payload: {
-                data: { ...ret1.data, banner: ret2.data },
+                data: { ...ret1.data, banner: bannerHeader.concat(bannerFooter)},
                 profile: ret.data,
               },
             });

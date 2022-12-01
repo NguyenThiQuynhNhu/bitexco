@@ -27,6 +27,7 @@ import BookingModal from "./BookingModal";
 import Strings from "../../utils/languages";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import responsive from "../../../resources/responsive";
+import { Screen } from "../../utils/device";
 // create a component
 class ServicesScreen extends Component {
   static navigationOptions = {
@@ -95,22 +96,16 @@ class ServicesScreen extends Component {
           marginBottom: responsive.h(20),
           backgroundColor: "#fff",
           borderRadius: responsive.h(12),
-          //backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
         }}
       >
         <ImageProgress
           source={{ uri: logo }}
           style={{
             height: responsive.h(150),
-            width: "100%",
+            width: Screen.width - responsive.w(40),
             borderTopRightRadius: responsive.h(12),
             borderTopLeftRadius: responsive.h(12),
           }}
@@ -244,6 +239,7 @@ class ServicesScreen extends Component {
           data={data}
           renderItem={this.renderItem}
           keyExtractor={(item, index) => `${index}`}
+          style={{marginTop: responsive.h(10)}}
         />
       );
     }
@@ -257,7 +253,7 @@ class ServicesScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -278,6 +274,9 @@ class ServicesScreen extends Component {
           }
           rightView={
             <TouchableOpacity
+            style={{
+              padding: responsive.h(10), paddingHorizontal: responsive.h(12)
+            }}
             //onPress={() => this.props.navigation.navigate('serviceExtensionResident', {name: this.props.navigation.state.params.name, dataId: data})}
             >
               <Icon

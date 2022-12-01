@@ -55,9 +55,6 @@ class ListItem extends PureComponent {
                 height: responsive.h(111),
                 borderRadius: responsive.h(12),
                 width: "100%",
-                marginBottom: responsive.h(10),
-                // borderWidth: 1,
-                // borderColor: "black",
               }}
               source={{ uri: logo }}
             />
@@ -68,6 +65,7 @@ class ListItem extends PureComponent {
               flexDirection: "row",
               justifyContent: "space-between",
               maxWidth: responsive.w(222),
+              marginTop: responsive.h(10),
             }}
           >
             <Text
@@ -109,6 +107,7 @@ class ListItem extends PureComponent {
                 textAlign: "left",
                 color: "#888888",
                 maxWidth: responsive.w(222),
+                marginTop: responsive.h(5),
               }}
               numberOfLines={1}
               lineBreakMode="tail"
@@ -121,7 +120,7 @@ class ListItem extends PureComponent {
                 display: "flex",
                 justifyContent: "space-between",
                 flexDirection: "row",
-                paddingTop: responsive.h(5),
+                marginTop: responsive.h(5),
               }}
             >
               <Text

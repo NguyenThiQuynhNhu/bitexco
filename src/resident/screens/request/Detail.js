@@ -82,7 +82,7 @@ class RequestDetailScreen extends Component {
       if (nextProps.errorProgress.hasError) {
         this.refs.toast.show(Strings.message.saveError, DURATION.LENGTH_LONG);
       } else {
-        this.props.loadDataHandle({ requestId: this.state.itemfromList.id });
+        this.props.loadDataHandle({ requestId: this.state.itemfromList.id, langId: this.props.langId });
         this.refs.toast.show(
           Strings.detailRequest.rateSuccess,
           DURATION.LENGTH_LONG
@@ -92,7 +92,7 @@ class RequestDetailScreen extends Component {
   }
   componentDidMount() {
     this.props.navigation.setParams({ onResponse: this._onResponse });
-    this.props.loadDataHandle({ requestId: this.state.itemfromList.id });
+    this.props.loadDataHandle({ requestId: this.state.itemfromList.id, langId: this.props.langId });
   }
   componentWillUnmount() {
     this.props.resetStateByKey({ key: "state" });
@@ -274,10 +274,10 @@ class RequestDetailScreen extends Component {
       <View
         style={{
           borderRadius: responsive.h(16),
-          padding: responsive.h(10),
+          paddingVertical: responsive.h(15),
           backgroundColor: "#ffffff",
           // shadowColor: "rgba(0, 0, 0, 0.08)",
-          // elevation: 2,
+          // elevation: 
           // shadowOffset: {
           //   width: 0,
           //   height: 4,
@@ -304,11 +304,10 @@ class RequestDetailScreen extends Component {
           >
             <ImageProgress
               source={{
-                uri: `${
-                  isCustomer
+                uri: `${isCustomer
                     ? this.props.user.photoUrl
                     : avatarUrl || default_image
-                }`,
+                  }`,
               }}
               circle={true}
               style={{
@@ -319,11 +318,10 @@ class RequestDetailScreen extends Component {
             {isCustomer ? null : (
               <View
                 style={{
+                  marginLeft: -responsive.h(2),
                   marginVertical: responsive.h(5),
                   backgroundColor: colors.gray1,
                   borderRadius: responsive.h(15),
-                  position: "absolute",
-                  left: responsive.h(25),
                 }}
               >
                 <Text
@@ -344,13 +342,12 @@ class RequestDetailScreen extends Component {
                 fontFamily: "Inter-SemiBold",
                 fontSize: responsive.h(14),
                 textAlign: "left",
-                paddingLeft: isCustomer ? responsive.h(10) : responsive.h(30),
+                paddingLeft: responsive.h(10),
                 color: "#505050",
-                width: Screen.width * 0.65,
+                //width: Screen.width * 0.65,
                 maxWidth: Screen.width * 0.65,
               }}
             >
-              {isCustomer ? this.props.user.fullName : userName}
               {isCustomer ? this.props.user.fullName : userName}
             </Text>
           </View>
@@ -381,7 +378,7 @@ class RequestDetailScreen extends Component {
             fontSize: responsive.h(11),
             color: colors.gray1,
             fontFamily: "Inter-Regular",
-            paddingLeft: responsive.h(45),
+            marginLeft: responsive.h(40),
           }}
         >
           {moment(dateActive).format("DD/MM/YYYY HH:mm")}
@@ -455,14 +452,13 @@ class RequestDetailScreen extends Component {
         <ScrollView
           style={{
             borderTopRightRadius: responsive.h(20),
-            marginVertical: responsive.h(10),
+            margin: responsive.h(15),
+            marginTop: -responsive.h(10)
           }}
         >
           <View
             style={{
               flex: 1,
-              borderTopRightRadius: responsive.h(20),
-              marginTop: responsive.h(-20),
             }}
           >
             {/* Thông tin nha cung cap */}
@@ -481,7 +477,7 @@ class RequestDetailScreen extends Component {
               }}
             />
             {/* Nội dung */}
-            <View style={{ marginHorizontal: responsive.h(10) }}>
+            <View style={{}}>
               <Text
                 style={{
                   fontFamily: "Inter-SemiBold",
@@ -497,7 +493,7 @@ class RequestDetailScreen extends Component {
               </Text>
               <Text
                 style={{
-                  marginTop: responsive.h(5),
+                  marginTop: responsive.h(7),
                   fontFamily: "Inter-Regular",
                   fontSize: responsive.h(13),
                   fontWeight: "normal",
@@ -519,7 +515,6 @@ class RequestDetailScreen extends Component {
                   //borderTopWidth: 10,
                   //borderBottomWidth: 10,
                   marginTop: responsive.h(-10),
-                  marginHorizontal: responsive.h(20),
                 }}
               >
                 <ImageGallery title="" data={imageCustormer} />
@@ -530,15 +525,7 @@ class RequestDetailScreen extends Component {
             {imageAdmin.length !== 0 && (
               <View
                 style={{
-                  // borderColor: colors.grayBorder,
-                  // borderTopWidth: imageCustormer.length != 0 ? 0 : 10,
-                  // borderBottomWidth: 10,
-                  // marginHorizontal: -10,
-                  // paddingLeft: 10,
-                  // paddingBottom: 10
                   marginTop: imageCustormer.length != 0 ? responsive.h(20) : 0,
-                  marginHorizontal:
-                    imageCustormer.length != 0 ? responsive.w(20) : 0,
                 }}
               >
                 <ImageGallery
@@ -554,15 +541,15 @@ class RequestDetailScreen extends Component {
               keyExtractor={(item, index) => `${index}`}
               renderItem={(item) => this.renderItemChat(item)}
               contentContainerStyle={{
-                marginTop: responsive.h(10),
+                marginTop: responsive.h(15),
               }}
               ItemSeparatorComponent={() => {
                 return (
                   <View
                     style={{
-                      height: 1,
+                      height: 2,
                       backgroundColor: "#f5f5f5",
-                      marginHorizontal: responsive.h(10),
+                      //marginHorizontal: responsive.h(15),
                     }}
                   />
                 );
@@ -630,6 +617,7 @@ class RequestDetailScreen extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <View style={styles.container}>
         <NavBar
@@ -637,7 +625,7 @@ class RequestDetailScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -647,7 +635,6 @@ class RequestDetailScreen extends Component {
             <Text
               style={{
                 padding: responsive.h(10),
-                width: Screen.width - responsive.w(124),
                 fontFamily: "Inter-Bold",
                 fontSize: responsive.h(18),
                 fontWeight: "bold",
@@ -667,7 +654,7 @@ class RequestDetailScreen extends Component {
             this.props.data.statusKey !== "dong" && (
               <TouchableOpacity
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(12)
                 }}
                 onPress={() => this.setState({ isShowModal: true })}
               >
@@ -715,7 +702,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   linearGradient: {
-    width: "90%",
+    width: "92.5%",
     borderRadius: responsive.h(5),
     backgroundColor: colors.primaryKeyColor,
   },
@@ -754,6 +741,7 @@ const mapStateToProps = (state) => ({
   errorProgress: state.requestDetailResident.errorProgress,
   error: state.requestDetailResident.error,
   emptyData: state.requestDetailResident.emptyData,
+  langId: state.app.language == "vi" ? 1 : 2,
 });
 
 const mapActionToProps = {

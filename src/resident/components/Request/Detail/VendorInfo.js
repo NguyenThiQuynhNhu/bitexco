@@ -34,7 +34,7 @@ const VendorInfo = (props) => {
         alignItems: "center",
         justifyContent: "space-between",
         backgroundColor: "#fff",
-        paddingHorizontal: responsive.h(10),
+        //paddingHorizontal: responsive.h(10),
         paddingVertical: responsive.h(20),
       }}
     >
@@ -47,15 +47,15 @@ const VendorInfo = (props) => {
         <ImageProgress
           circle={true}
           style={{
-            height: responsive.h(70),
-            width: responsive.h(70),
+            height: responsive.h(65),
+            width: responsive.h(65),
           }}
           source={{ uri: logo }}
         />
         <View
           style={{
-            justifyContent: "center",
-            marginLeft: responsive.h(10),
+            justifyContent: 'space-between',
+            marginLeft: responsive.h(20),
           }}
         >
           <Text
@@ -96,26 +96,53 @@ const VendorInfo = (props) => {
           </Text>
         </View>
       </View>
-      <View
-        style={{
-          justifyContent: "center",
-        }}
-      >
-        <Text
+      <View style={{
+        flexDirection: 'column'
+      }}>
+        <View
           style={{
-            fontFamily: "Inter-Regular",
-            fontSize: responsive.h(fontsize.micro),
-            textAlign: "center",
-            backgroundColor: "#fff5eb",
-            borderRadius: responsive.h(15),
-            paddingHorizontal: responsive.h(10),
-            paddingVertical: responsive.h(5),
-            color: converStatusToColor(statusKey),
+            justifyContent: "center",
+            marginBottom: responsive.h(7)
           }}
         >
-          {converStatusToString(statusId)}
-        </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-Regular",
+              fontSize: responsive.h(fontsize.micro),
+              textAlign: "center",
+              backgroundColor: "#fff5eb",
+              borderRadius: responsive.h(15),
+              paddingHorizontal: responsive.h(10),
+              paddingVertical: responsive.h(5),
+              color: converStatusToColor(statusKey),
+            }}
+          >
+            {converStatusToString(statusId)}
+          </Text>
+        </View>
+        <View
+          style={{
+            justifyContent: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: "Inter-Regular",
+              fontWeight: '600',
+              fontSize: responsive.h(fontsize.micro),
+              textAlign: "center",
+              backgroundColor: colors.appTheme,
+              borderRadius: responsive.h(12),
+              paddingHorizontal: responsive.h(10),
+              paddingVertical: responsive.h(5),
+              color: '#fff',
+            }}
+          >
+            {userActive ? `${userActive}` : `${Strings.createRequest.unreceived}`}
+          </Text>
+        </View>
       </View>
+
       {/* <Text style={{ fontSize: fontSize.larg }}>{towerName}</Text> */}
       {/* <View style={{ alignItems: 'space-between', flexDirection: 'row', alignItems: 'center', width: '100%' }}>
                     <View>

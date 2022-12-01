@@ -45,7 +45,7 @@ class ListUnitsGas extends Component {
                 alignSelf: "center",
               }}
             >
-              CHỌN ĐƠN VỊ
+             {Strings.common.choose}
             </Text>
           }
           rightView={null}

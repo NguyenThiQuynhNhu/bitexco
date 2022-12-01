@@ -1,18 +1,19 @@
 import React from "react";
-import { ImageBackground, View, StatusBar, SafeAreaView } from "react-native";
+import { ImageBackground, View, StatusBar, SafeAreaView, Platform } from "react-native";
 import responsive from "../../../resources/responsive";
 import colors from "../../theme/colors";
-import Device from "../../utils/device";
+import Device, {Screen} from "../../utils/device";
 
 const NavBar = ({ leftButton, body, rightView, style }) => (
   <ImageBackground
     source={require("../../../resources/bgHeader.png")}
     style={{
       marginTop: -2,
-      marginBottom: 10,
-      height: responsive.h(102),
+      marginBottom: responsive.h(10),
+      height: responsive.h(110),
       justifyContent: "center",
       alignItems: "center",
+      width: Screen.width,
     }}
   >
     <SafeAreaView
@@ -30,6 +31,7 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
         justifyContent: "center",
         alignItems: "center",
         flex: 1,
+        width: Screen.width,
         //...Device.defaultNavBarStyle(),
         ...style,
       }}
@@ -39,16 +41,14 @@ const NavBar = ({ leftButton, body, rightView, style }) => (
           backgroundColor: "transparent",
           flexDirection: "row",
           justifyContent: "space-between",
+          width: Screen.width,
           //alignItems: "center",
         }}
       >
         <View style={{ justifyContent: "center" }}>{leftButton}</View>
         <View
           style={{
-            justifyContent: "center",
-            // alignItems: "center",
-            flex: 1,
-            //...Device.defaultPaddingTop(),
+            justifyContent: "center", flex: 1
           }}
         >
           {body}

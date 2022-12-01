@@ -86,7 +86,7 @@ class ChangePassScreen extends Component {
       nextProps.content !== this.props.content
     ) {
       await Alert.alert(Strings.message.alert, "Thành công");
-      await this.props.getProfile({ type: "re", langId: this.props.langId });
+      await this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers });
       await this.props.navigation.goBack();
     }
   }
@@ -118,7 +118,7 @@ class ChangePassScreen extends Component {
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(12)
                 }}
               >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -138,9 +138,6 @@ class ChangePassScreen extends Component {
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(20),
                   fontWeight: "bold",
-                  fontStyle: "normal",
-                  lineHeight: responsive.h(24),
-                  letterSpacing: 0,
                   textAlign: "center",
                   color: "black",
                 }}
@@ -148,6 +145,13 @@ class ChangePassScreen extends Component {
                 {Strings.login.changePass}
               </Text>
             </View>
+          }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
           }
         />
 

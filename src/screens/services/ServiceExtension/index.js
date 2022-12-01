@@ -19,7 +19,7 @@ import Toast, { DURATION } from "react-native-easy-toast";
 import SearchBar from "../../../components/common/SearchBar";
 import ErrorContent from "../../../components/common/ErrorContent";
 
-import ButtonFilter from "../../../resident/components/Request/List/ButtonFilter";
+import ButtonFilter from "../../../resident/components/service/extension";
 //style
 import colors from "../../../theme/colors";
 import fontsize from "../../../theme/fontsize";
@@ -103,6 +103,7 @@ class ServiceExtension extends Component {
         keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
+        langId: this.props.language,
       };
       this.props.loadDataHandle(data);
       setTimeout(() => {
@@ -120,6 +121,7 @@ class ServiceExtension extends Component {
         keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
+        langId: this.props.language,
       };
       await this.props.loadDataHandle(data);
       //await this.setState({ dataStatus: this.props.dataStatus })
@@ -225,6 +227,7 @@ class ServiceExtension extends Component {
               keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
               currentPage: this.props.currentPage + 1,
               rowPerPage: this.props.rowPerPage,
+              langId: this.props.language,
             };
             this.props.loadDataHandle(data);
           }
@@ -335,7 +338,7 @@ class ServiceExtension extends Component {
                 }}
                 style={{ padding: responsive.h(10) }}
               >
-                <Text style={{ color: "black" }}>Huỷ</Text>
+                <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
             }
           />
@@ -349,7 +352,7 @@ class ServiceExtension extends Component {
                 <MyIcon name="arrow" size={responsive.h(22)} color="black" />
               </TouchableOpacity>
             }
-            body={<Text style={titleStyle}>Dịch vụ</Text>}
+            body={<Text style={titleStyle}>{Strings.common.extension}</Text>}
             rightView={
               <TouchableOpacity
                 onPress={() => this.setState({ isShowSearch: true })}
@@ -390,7 +393,7 @@ class ServiceExtension extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: 5 }}
+                    style={{ paddingBottom: responsive.h(10), paddingTop: responsive.h(5) }}
                   />
                 </View>
               );

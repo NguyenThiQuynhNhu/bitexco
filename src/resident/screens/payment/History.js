@@ -698,8 +698,21 @@ class PaymentHistoryScreen extends Component {
               {Strings.payment.paymentHistory}
             </Text>
           }
+          rightView={
+            <TouchableOpacity
+              style={{
+                paddingHorizontal: responsive.h(20),
+              }}
+            >
+              <MyIcon
+                size={responsive.h(20)}
+                name="search"
+                color="transparent"
+              />
+            </TouchableOpacity>
+          }
         />
-        <View>
+        {/* <View>
           <ScrollView
             horizontal
             contentContainerStyle={{
@@ -814,77 +827,11 @@ class PaymentHistoryScreen extends Component {
               />
             </TouchableOpacity>
           </ScrollView>
-        </View>
-
-        {/* <View
-          style={{
-            flexDirection: "row",
-            justifyContent: "space-between",
-            marginHorizontal: 20,
-            marginTop: -10,
-            alignItems: "center",
-            padding: 10,
-          }}
-        >
-          <TouchableOpacity
-            onPress={() => this.setState({ type: 1 })}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: this.state.type == 2 ? "#c8c8c8" : "#3d3d3d",
-              }}
-            >
-              Thanh toán điện tử
-            </Text>
-            <View
-              style={{
-                width: Platform.isPad ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: this.state.type == 2 ? "#fff" : "#a3cd80",
-                marginTop: 5,
-              }}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() => this.setState({ type: 2 })}
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Bold",
-                fontSize: 14,
-                fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
-                textAlign: "center",
-                color: this.state.type == 1 ? "#c8c8c8" : "#3d3d3d",
-              }}
-            >
-              Thanh toán thường
-            </Text>
-            <View
-              style={{
-                width: Platform.isPad ? 64 : 44,
-                height: 3,
-                borderRadius: 4,
-                backgroundColor: this.state.type == 1 ? "#fff" : "#a3cd80",
-                marginTop: 5,
-              }}
-            />
-          </TouchableOpacity>
         </View> */}
-        {this.state.type == 2
+        {/* {this.state.type == 2
           ? this.renderContent()
-          : this.renderContentEwallet()}
+          : this.renderContentEwallet()} */}
+          {this.renderContent()}
       </View>
     );
   }

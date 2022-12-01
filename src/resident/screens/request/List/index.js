@@ -131,6 +131,7 @@ class ReuqestList extends Component {
         keyword: nextProps.isApplySearchKey ? nextProps.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
+        langId: this.props.langId
       };
       this.props.loadDataHandle(data);
       setTimeout(() => {
@@ -147,6 +148,7 @@ class ReuqestList extends Component {
         keyword: nextProps.isApplySearchKey ? nextProps.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
+        langId: this.props.langId
       };
       this.props.loadDataHandle(data);
     }
@@ -166,6 +168,9 @@ class ReuqestList extends Component {
     if (nextProps.towerId && nextProps.towerId !== this.props.towerId) {
       this.props.refreshDataHandle();
       this.setState({ dataStatus: this.props.dataStatus });
+    }
+    if (nextProps.langId && nextProps.langId !== this.props.langId) {
+      this.props.refreshDataHandle();
     }
   }
   componentWillUnmount() {
@@ -249,6 +254,7 @@ class ReuqestList extends Component {
               keyword: this.props.isApplySearchKey ? this.props.searchKey : "",
               currentPage: this.props.currentPage + 1,
               rowPerPage: this.props.rowPerPage,
+              langId: this.props.langId
             };
             this.props.loadDataHandle(data);
           }
@@ -291,6 +297,8 @@ class ReuqestList extends Component {
     );
   };
   render() {
+    console.log(this.props)
+    console.log(this.state)
     const {
       searchKey,
       onSubmitEditing,
@@ -314,7 +322,7 @@ class ReuqestList extends Component {
                   this.setState({ isShowSearch: false }, onClearText)
                 }
                 style={{
-                  marginHorizontal: responsive.h(10),
+                  marginHorizontal: responsive.h(10)
                 }}
               />
             }
@@ -334,14 +342,14 @@ class ReuqestList extends Component {
             leftButton={
               <TouchableOpacity
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(15)
                 }}
                 onPress={() => this.props.navigation.navigate("profile")}
               >
                 <ImageProgress
                   style={{
-                    height: responsive.h(40),
-                    width: responsive.h(40),
+                    height: responsive.h(50),
+                    width: responsive.h(50),
                   }}
                   circle={true}
                   resizeMode="stretch"
@@ -369,21 +377,16 @@ class ReuqestList extends Component {
             rightView={
               <TouchableOpacity
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingRight: responsive.h(15), paddingLeft: responsive.h(30)
                 }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
-                <MyIcon size={responsive.h(24)} name="search" color="black" />
+                <MyIcon size={responsive.h(26)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
         )}
-        <View
-          style={{
-            marginHorizontal: responsive.h(10),
-            marginVertical: responsive.h(10),
-          }}
-        >
+        <View>
           <FlatList
             ItemSeparatorComponent={() => (
               <View
@@ -394,14 +397,13 @@ class ReuqestList extends Component {
                 }}
               />
             )}
-            data={dataStatus}
+            data={this.props.dataStatus}
             keyExtractor={(item, index) => `${index}`}
             horizontal={true}
             //pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
             style={{
-              marginTop: responsive.h(-15),
             }}
             renderItem={(item) => {
               return (
@@ -414,6 +416,7 @@ class ReuqestList extends Component {
                     color={item.item.colorCode}
                     statusKey={item.item.statusKey}
                     onSelectedChange={this._onSelectedChange}
+                    style={{ paddingHorizontal: responsive.h(10) }}
                   />
                 </View>
               );
@@ -426,6 +429,7 @@ class ReuqestList extends Component {
             backgroundColor: "#f5f5f5",
             height: responsive.h(15),
             width: "100%",
+            marginBottom: responsive.h(10),
           }}
         />
         {this._renderContent()}
@@ -510,6 +514,7 @@ const mapStateToProps = (state) => ({
   errorCreate: state.requestCreateResident.error,
   canNavigate: state.requestCreateResident.data == null,
   language: state.app.language,
+  langId: state.app.language == "vi" ? 1 : 2,
   user: state.auth.user,
   dataStatus: state.drawer.data,
 });

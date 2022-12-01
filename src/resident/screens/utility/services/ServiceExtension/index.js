@@ -19,7 +19,7 @@ import Toast, { DURATION } from "react-native-easy-toast";
 import SearchBar from "../../../../components/common/SearchBar";
 import ErrorContent from "../../../../components/common/ErrorContent";
 import Spinner from "react-native-loading-spinner-overlay";
-import ButtonFilter from "../../../../components/Request/List/ButtonFilter";
+import ButtonFilter from "../../../../components/service/extension";
 //style
 import colors from "../../../../theme/colors";
 import fontsize from "../../../../theme/fontsize";
@@ -89,11 +89,12 @@ class ServiceExtension extends Component {
         keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
-        langId: this.props.langId,
+        langId: nextProps.langId,
         serviceId: this.props.navigation.state.params
           ? this.props.navigation.state.params.id
           : 0,
       };
+      console.log(data)
       await this.props.loadDataHandle(data);
       await this.setState({ dataIsGroup: this.props.data });
     }
@@ -103,11 +104,12 @@ class ServiceExtension extends Component {
         keyword: this.state.isApplySearchKey ? this.state.searchKey : "",
         currentPage: nextProps.currentPage + 1,
         rowPerPage: this.props.rowPerPage,
-        langId: this.props.langId,
+        langId: nextProps.langId,
         serviceId: this.props.navigation.state.params
           ? this.props.navigation.state.params.id
           : 0,
       };
+      console.log(data)
       await this.props.loadDataHandle(data);
       await this.setState({ dataIsGroup: this.props.data });
       setTimeout(() => {
@@ -127,6 +129,10 @@ class ServiceExtension extends Component {
       }
     }
     if (nextProps.towerId && nextProps.towerId !== this.props.towerId) {
+      this.props.refreshDataHandle();
+    }
+    if (nextProps.langId && nextProps.langId !== this.props.langId) {
+      console.log('refreshDataHandle')
       this.props.refreshDataHandle();
     }
     //
@@ -326,9 +332,6 @@ class ServiceExtension extends Component {
                   );
                 }}
                 style={{
-                  // flex: 1,
-                  // margin:
-                  //   Platform.OS == "ios" ? responsive.h(5) : responsive.h(10),
                   marginHorizontal: responsive.h(10),
                 }}
               />
@@ -354,7 +357,7 @@ class ServiceExtension extends Component {
                   );
                 }}
               >
-                <Text style={{ color: "black" }}>Huỷ</Text>
+                <Text style={{ color: "black" }}>{Strings.app.cancel}</Text>
               </TouchableOpacity>
             }
           />
@@ -364,7 +367,7 @@ class ServiceExtension extends Component {
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(12)
                 }}
               >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -390,30 +393,17 @@ class ServiceExtension extends Component {
             rightView={
               <TouchableOpacity
                 style={{
-                  padding: responsive.h(10),
+                  padding: responsive.h(10), paddingHorizontal: responsive.h(12)
                 }}
                 onPress={() => this.setState({ isShowSearch: true })}
               >
-                <MyIcon size={responsive.h(24)} name="search" color="black" />
+                <MyIcon size={responsive.h(26)} name="search" color="black" />
               </TouchableOpacity>
             }
           />
         )}
 
         <View>
-          {/* <ScrollView
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        style={{
-                            backgroundColor: '#fff',
-                        }}
-                    >
-                        <ButtonFilter value={1} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} style={{ paddingHorizontal: 5 }} />
-                        <ButtonFilter value={2} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={3} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-                        <ButtonFilter value={5} currentValue={this.state.status} onSelectedChange={this._onSelectedChange} />
-
-                    </ScrollView> */}
           <FlatList
             ItemSeparatorComponent={() => (
               <View
@@ -429,13 +419,11 @@ class ServiceExtension extends Component {
             horizontal={true}
             //pagingEnabled={true}
             contentContainerStyle={{
-              marginVertical: responsive.h(10),
             }}
             showsHorizontalScrollIndicator={false}
             //legacyImplementation={false}
             style={{
-              borderTopRightRadius: responsive.h(20),
-              marginTop: responsive.h(-15),
+              marginTop: -responsive.h(5)
             }}
             renderItem={(item) => {
               return (
@@ -446,7 +434,7 @@ class ServiceExtension extends Component {
                     title={item.item.statusName}
                     total={item.item.total}
                     onSelectedChange={this._onSelectedChange}
-                    style={{ paddingHorizontal: responsive.h(5) }}
+                    style={{ paddingHorizontal: responsive.h(10) }}
                   />
                 </View>
               );
@@ -459,6 +447,7 @@ class ServiceExtension extends Component {
             backgroundColor: "#f5f5f5",
             height: responsive.h(15),
             width: "100%",
+            marginBottom: responsive.h(5),
           }}
         />
         {this._renderContent()}

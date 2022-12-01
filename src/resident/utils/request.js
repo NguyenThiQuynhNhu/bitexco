@@ -18,10 +18,15 @@ export const converStatusToColorService = (id) => {
     }
 }
 export const converStatusToColorServiceByString = (id) => {
+
     switch (id) {
         case 'Đang xử lý': return '#fab53e';
+        case 'In Progress': return '#fab53e';
         case 'Đã hoàn thành': return '#2ca935';
+        case 'Completed': return '#2ca935';
         case 'Đã đóng': return '#333';
+        case 'Closed': return '#333';
+        case 'Đã hủy': return '#333';
         default: return '#FF0000';
     }
 }

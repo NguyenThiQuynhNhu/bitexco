@@ -18,24 +18,22 @@ class ListItemHistory extends PureComponent {
       <View
         // onPress={onPress}
         style={{
-          flexDirection: "row",
-          marginHorizontal: responsive.h(20),
+          marginHorizontal: responsive.h(10),
           marginBottom: responsive.h(10),
           padding: responsive.h(10),
           borderRadius: responsive.h(20),
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
+          borderWidth: 0.5,
+          borderBottomWidth: 2,
+          borderColor: "#d2d2d2",
         }}
       >
-        {/* <ImageProgress circle={true} source={{ uri: user ? user.photoUrl : '' }} style={{ height: 50, width: 50 }} /> */}
-        <View style={{ flex: 1 }}>
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: responsive.h(5),
+        }}>
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
@@ -45,10 +43,32 @@ class ListItemHistory extends PureComponent {
               letterSpacing: 0,
               textAlign: "left",
               color: "#282828",
+              flex: 1
             }}
           >
             {serviceName}
           </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-Bold",
+              fontSize: responsive.h(16),
+              fontWeight: "600",
+              fontStyle: "normal",
+              letterSpacing: 0,
+              textAlign: "right",
+              color: colors.appTheme,
+              flex: 1
+            }}
+          >
+            {amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} đ
+          </Text>
+        </View>
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: responsive.h(5),
+        }}>
           <Text
             style={{
               fontFamily: "Inter-Medium",
@@ -64,40 +84,6 @@ class ListItemHistory extends PureComponent {
           </Text>
           <Text
             style={{
-              fontFamily: "Inter-Medium",
-              fontSize: responsive.h(12),
-              fontWeight: "500",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              textAlign: "left",
-              color: "#626262",
-            }}
-          >
-            {description}
-          </Text>
-        </View>
-        <View
-          style={{
-            width: "30%",
-            justifyContent: "flex-start",
-            alignItems: "flex-end",
-          }}
-        >
-          <Text
-            style={{
-              fontFamily: "Inter-Bold",
-              fontSize: responsive.h(16),
-              fontWeight: "600",
-              fontStyle: "normal",
-              letterSpacing: 0,
-              textAlign: "right",
-              color: "#ff624d",
-            }}
-          >
-            {amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} đ
-          </Text>
-          <Text
-            style={{
               fontFamily: "Inter-Regular",
               fontSize: responsive.h(11),
               fontWeight: "normal",
@@ -108,6 +94,27 @@ class ListItemHistory extends PureComponent {
             }}
           >
             {moment(dateOfPaid).format("DD/MM/YYYY")}
+          </Text>
+        </View>
+        <View style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: responsive.h(5),
+        }}>
+          <Text
+            style={{
+              fontFamily: "Inter-Medium",
+              fontSize: responsive.h(12),
+              fontWeight: "500",
+              fontStyle: "normal",
+              letterSpacing: 0,
+              textAlign: "left",
+              color: "#626262",
+              marginBottom: responsive.h(5),
+            }}
+          >
+            {description}
           </Text>
           <Text
             style={{

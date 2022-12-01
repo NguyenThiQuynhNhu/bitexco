@@ -69,7 +69,7 @@ class ServiceBasicDetailScreen extends Component {
     ) {
       if (nextProps.errorResponse.hasError) {
         this.refs.toast.show(
-          `Xảy ra lỗi  ${nextProps.errorResponse.message}`,
+          `${Strings.message.saveError} ${nextProps.errorResponse.message}`,
           DURATION.LENGTH_LONG
         );
       } else {
@@ -77,7 +77,7 @@ class ServiceBasicDetailScreen extends Component {
           id: this.props.navigation.state.params.id,
           langId: this.props.langId,
         });
-        this.refs.toast.show("Xử lý thành công", DURATION.LENGTH_LONG);
+        this.refs.toast.show(Strings.message.saveSuccess, DURATION.LENGTH_LONG);
       }
     }
     if (
@@ -86,7 +86,7 @@ class ServiceBasicDetailScreen extends Component {
     ) {
       if (nextProps.errorProgress.hasError) {
         this.refs.toast.show(
-          `Xảy ra lỗi  ${nextProps.errorProgress.message}`,
+          `${Strings.message.saveError} ${nextProps.errorProgress.message}`,
           DURATION.LENGTH_LONG
         );
       } else {
@@ -94,7 +94,7 @@ class ServiceBasicDetailScreen extends Component {
           id: this.props.navigation.state.params.id,
           langId: this.props.langId,
         });
-        this.refs.toast.show("Đánh giá thành công", DURATION.LENGTH_LONG);
+        this.refs.toast.show(Strings.message.saveSuccess, DURATION.LENGTH_LONG);
       }
     }
   }
@@ -163,7 +163,6 @@ class ServiceBasicDetailScreen extends Component {
             style={{
               justifyContent: "center",
               flex: 1,
-              marginLeft: responsive.h(10),
             }}
           >
             <View
@@ -177,7 +176,7 @@ class ServiceBasicDetailScreen extends Component {
               {isCustomer ? null : (
                 <View
                   style={{
-                    marginRight: responsive.h(5),
+                    marginLeft: -responsive.h(2),
                     marginVertical: responsive.h(5),
                     backgroundColor: colors.gray1,
                     borderRadius: responsive.h(15),
@@ -201,8 +200,9 @@ class ServiceBasicDetailScreen extends Component {
                   fontFamily: "Inter-SemiBold",
                   fontSize: responsive.h(15),
                   textAlign: "left",
-                  flex: 0.8,
+                  flex: 1,
                   color: "#292929",
+                  marginHorizontal: responsive.h(10)
                 }}
               >
                 {userName}
@@ -218,7 +218,7 @@ class ServiceBasicDetailScreen extends Component {
                     fontSize: fontsize.micro,
                     textAlign: "center",
                     backgroundColor: "#fff5eb",
-                    borderRadius: responsive.h(15),
+                    borderRadius: responsive.h(12),
                     paddingHorizontal: responsive.h(10),
                     paddingVertical: responsive.h(5),
                     color: converStatusToColor(statusId),
@@ -319,7 +319,7 @@ class ServiceBasicDetailScreen extends Component {
         <Text
           style={{
             backgroundColor: colors.grayBorder,
-            borderRadius: responsive.h(15),
+            borderRadius: responsive.h(12),
             marginRight: responsive.h(5),
             padding: responsive.h(5),
             fontFamily: "Inter-Medium",
@@ -343,7 +343,7 @@ class ServiceBasicDetailScreen extends Component {
     if (error && error.hasError) {
       return (
         <ErrorContent
-          title={Strings.app.error + " hoặc phiếu yêu cầu không còn tồn tại"}
+          title={Strings.app.error}
           onTouchScreen={() => this.props.refreshDataHandle()}
         />
       );
@@ -384,7 +384,6 @@ class ServiceBasicDetailScreen extends Component {
         residentPhone,
         amount,
       } = seviceBasic;
-      console.log("data tien ich", seviceBasic);
       return (
         <ScrollView style={{}}>
           <View style={{ flex: 1 }}>
@@ -394,7 +393,7 @@ class ServiceBasicDetailScreen extends Component {
                 //display: "flex",
                 justifyContent: "space-between",
                 flexDirection: "row",
-                marginHorizontal: responsive.h(10),
+                marginHorizontal: responsive.h(15),
                 paddingVertical: responsive.h(10),
               }}
             >
@@ -489,13 +488,13 @@ class ServiceBasicDetailScreen extends Component {
                     paddingVertical: responsive.h(5),
                     paddingHorizontal: responsive.h(10),
                     backgroundColor: "#fff5eb",
-                    borderRadius: responsive.h(15),
+                    borderRadius: responsive.h(12),
                     fontFamily: "Inter-Regular",
                     fontSize: fontsize.micro,
                     color: converStatusToColor(statusId),
                   }}
                 >
-                  {employeeName}
+                  {statusName}
                 </Text>
               </View>
             </View>
@@ -503,7 +502,7 @@ class ServiceBasicDetailScreen extends Component {
               style={{
                 borderRadius: responsive.h(16),
                 backgroundColor: "#ffffff",
-                margin: responsive.h(10),
+                margin: responsive.h(15),
                 marginTop: -responsive.h(10),
                 paddingVertical: responsive.h(20),
                 paddingHorizontal: responsive.w(15),
@@ -522,9 +521,9 @@ class ServiceBasicDetailScreen extends Component {
                   style={{
                     height: responsive.h(86),
                     width: responsive.w(86),
-                    borderRadius: 10,
+                    //borderRadius: 10,
                   }}
-                  source={{ uri: this.props.navigation.state.params.avatar }}
+                  source={{ uri: logo }}
                 />
 
                 <View
@@ -573,7 +572,7 @@ class ServiceBasicDetailScreen extends Component {
                 style={{
                   flexDirection: "row",
                   marginBottom: responsive.h(10),
-                  marginTop: responsive.h(5),
+                  marginTop: responsive.h(10),
                   justifyContent: "space-between",
                 }}
               >
@@ -596,7 +595,7 @@ class ServiceBasicDetailScreen extends Component {
                   {Strings.serviceExtension.dateCreate}
                 </Text>
                 <Text style={{ ...styles.textInfo }}>
-                  {moment(dateCreate).format("DD/MM/YYYY")} vào lúc{" "}
+                  {moment(dateCreate).format("DD/MM/YYYY")} {Strings.common.at}{" "}
                   {moment(dateCreate).format("HH:mm")}
                 </Text>
               </View>
@@ -623,32 +622,56 @@ class ServiceBasicDetailScreen extends Component {
                 }}
               >
                 <Text style={styles.textTitle}>
+                  {Strings.serviceBasicBooking.position}
+                </Text>
+                <Text style={{ ...styles.textInfo }}>
+                  {zoneName}
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginBottom: responsive.h(10),
+                  justifyContent: "space-between",
+                }}
+              >
+                <Text style={styles.textTitle}>
                   {Strings.serviceBasicBooking.deposit}
                 </Text>
-                <Text
-                  style={{
-                    ...styles.textInfo,
-                    color: "#ff624d",
-                    marginLeft: 5,
-                  }}
-                >
-                  {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+                <View style={{
+                  flexDirection: "row",
+                  alignItems: 'flex-start'
+                }}>
                   <Text
                     style={{
-                      fontFamily: "Inter",
-                      fontSize: responsive.h(11),
+                      ...styles.textInfo,
+                      color: "#de2027",
+                      marginHorizontal: 2,
+
+                    }}
+                  >
+                    {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}{" "}
+
+                  </Text>
+                  <Text
+                    style={{
+                      fontFamily: "Inter-SemiBold",
+                      fontSize: responsive.h(8),
                       textAlign: "right",
+                      textAlignVertical: 'top',
                       color: "#292929",
                     }}
                   >
                     VNĐ
                   </Text>
-                </Text>
+                </View>
+
               </View>
             </View>
             {/* Chat */}
             <View>
               <FlatList
+                ItemSeparatorComponent={() => <View style={{ height: 2, backgroundColor: colors.grayBorder, marginHorizontal: responsive.h(15), }} />}
                 data={historys || []}
                 keyExtractor={(item, index) => `${index}`}
                 renderItem={(item) => this.renderItemChat(item)}
@@ -710,7 +733,7 @@ class ServiceBasicDetailScreen extends Component {
                         style={{
                           backgroundColor: "#fff",
                           height: responsive.h(100),
-                          borderRadius: responsive.h(8),
+                          //borderRadius: responsive.h(8),
                           borderWidth: 1,
                           padding: responsive.h(10),
                           margin: responsive.h(20),
@@ -810,7 +833,7 @@ class ServiceBasicDetailScreen extends Component {
       .then((supported) => {
         if (!supported) {
           this.refs.toast.show(
-            `Số điện thoại không đúng!Vui lòng kiểm tra lại.`,
+            Strings.message.saveError,
             DURATION.LENGTH_LONG
           );
         } else {
@@ -819,7 +842,7 @@ class ServiceBasicDetailScreen extends Component {
       })
       .catch((error) => {
         this.refs.toast.show(
-          `Xảy ra lỗi! Vui lòng thử lại.`,
+          Strings.message.saveError,
           DURATION.LENGTH_LONG
         );
       });
@@ -901,7 +924,7 @@ const styles = StyleSheet.create({
   },
   linearGradient: {
     borderRadius: responsive.h(16),
-    width: "90%",
+    width: "92.5%",
     backgroundColor: colors.primaryKeyColor,
   },
   cardView: {
@@ -933,16 +956,14 @@ const styles = StyleSheet.create({
   textTitle: {
     fontFamily: "Inter-SemiBold",
     fontSize: responsive.h(15),
-    fontWeight: "500",
     textAlign: "right",
     color: "#3d3d3d",
   },
   textInfo: {
     fontFamily: "Inter-SemiBold",
     fontSize: responsive.h(15),
-    fontWeight: "600",
     textAlign: "right",
-    color: "#282828",
+    color: "#3d3d3d",
   },
 });
 const mapStateToProps = (state) => ({

@@ -15,6 +15,7 @@ import {
   Image,
   SectionList,
   Linking,
+  RefreshControl
 } from "react-native";
 import { connect } from "react-redux";
 import moment from "moment";
@@ -122,13 +123,13 @@ class HomeScreen extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.towerId && nextProps.towerId !== this.props.towerId) {
-      this.props.getProfile({ type: "re", langId: this.props.langId });
+      this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers });
     }
     if (
       nextProps.departmentId &&
       nextProps.departmentId !== this.props.departmentId
     ) {
-      this.props.getProfile({ type: "re", langId: this.props.langId });
+      this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers });
     }
     if (
       nextProps.initListNotify &&
@@ -170,7 +171,8 @@ class HomeScreen extends Component {
   }
 
   async loadData() {
-    this.props.getProfile({ type: "re", langId: this.props.langId });
+
+    this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers });
     this.props.loadBadge({
       towerId: this.props.towerId,
       keyword: "",
@@ -202,7 +204,6 @@ class HomeScreen extends Component {
         this.setState({ isShowModal: false });
       }
     }, 500);
-    // this.props.loadStatusRequest(request);
   }
 
   async componentDidMount() {
@@ -340,7 +341,7 @@ class HomeScreen extends Component {
 
               case "3": //Tiện ích
                 setTimeout(() => {
-                  this.props.navigation.navigate("serviceBasicDetail", {
+                  this.props.navigation.navigate("serviceBasicDetailResident", {
                     id: notif.itemData.id,
                   });
                 }, 500);
@@ -598,82 +599,8 @@ class HomeScreen extends Component {
             break;
         }
       }
-      {
-        /*const itemData = JSON.parse(notif.item);
-            // Tạo notification Local khi app đang chế độ foreground
-            if (Platform.OS === 'ios' && notif._notificationType === NotificationType.WillPresent && !notif.local_notification) {
-                notif.finish(WillPresentNotificationResult.All)
-                this.props.AddItemToList(itemData)
-                return;
-            }
-            if (notif.opened_from_tray) {
-                switch (notif.actionId) {
-                    case "1"://Yêu cầu
-                        setTimeout(() => {
-                            this.props.navigation.navigate('requestDetailResident', itemData)
-                        }, 500)
-                        break;
-
-                    case "2"://Tin tức
-                        setTimeout(() => {
-                            this.props.navigation.navigate('newsDetail', { item: itemData, type: itemData.typeId })
-                        }, 500)
-                        break;
-
-                    case "3"://Tiện ích
-                        setTimeout(() => {
-                            this.props.navigation.navigate('serviceBasicDetail', { id: itemData.id });
-                        }, 500)
-                        break;
-
-                    case "4"://Dịch vụ
-                        setTimeout(() => {
-                            this.props.navigation.navigate('serviceExtensionDetailResident', { id: itemData.id });
-                        }, 500);
-                        break;
-                    case "9"://Dịch vụ
-                        setTimeout(() => {
-                            this.props.navigation.navigate('handoverSchedule', { date: item.dateHandover })
-                        }, 500);
-                        break;
-                    case "10"://Khảo sát
-                        setTimeout(() => {
-                            this.props.navigation.navigate('surveyDetail', { id: itemData.id, name: itemData.title })
-                        }, 500);
-                        break;
-                }
-            } else if (Platform.OS === 'android' && !notif.local_notification) {
-                //console.log("Platform.OS === android");
-
-                FCM.presentLocalNotification({
-                    vibrate: 500,
-                    title: "Hello",
-                    body: "Test Notification",
-                    big_text: "i am large, i am large, i am large, i am large,",
-                    show_in_foreground: true,
-                    number: 10
-                });
-
-                if (notif.actionId === 2)
-                    this.props.AddItemToList(itemData);
-            }
-
-            if (Platform.OS === 'ios') {
-                switch (notif._notificationType) {
-                    case NotificationType.Remote:
-                        notif.finish(RemoteNotificationResult.NewData)
-                        break;
-                    case NotificationType.NotificationResponse:
-                        notif.finish();
-                        break;
-                    case NotificationType.WillPresent:
-                        notif.finish(WillPresentNotificationResult.All)
-                        break;
-                }
-            } */
-      }
     });
-    this.props.getProfile({ type: "re", langId: this.props.langId });
+    this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers });
   }
   // componentWillUnmount() {
   //   this.props.resetStateByKey({ key: "state" });
@@ -704,7 +631,7 @@ class HomeScreen extends Component {
           backgroundColor: "#fff",
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          width: (Screen.width - responsive.h(30)) / 2,
+          width: (Screen.width - responsive.h(40)) / 2,
           marginBottom: responsive.h(10),
           marginRight: responsive.h(10),
           // margin: responsive.h(10),
@@ -712,61 +639,61 @@ class HomeScreen extends Component {
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
-          padding: responsive.h(10),
+          padding: responsive.h(7),
+          justifyContent: 'space-between'
         }}
       >
         <View>
           <ImageProgress
             style={{
               height: responsive.h(126),
-              width: responsive.w(174),
+              width: '100%',
               borderRadius: responsive.h(12),
             }}
             source={{ uri: imageUrl }}
           />
           <Text
             lineBreakMode="tail"
-            numberOfLines={1}
+            numberOfLines={2}
             style={{
               flexDirection: "row",
               fontFamily: "Inter-Bold",
+              fontWeight: '500',
               fontSize: responsive.h(14),
-              fontWeight: "bold",
-              fontStyle: "normal",
-              letterSpacing: 0,
               textAlign: "left",
               color: "#000000",
               maxWidth: responsive.w(160),
-              paddingVertical: responsive.h(5),
+              paddingVertical: responsive.h(10),
             }}
           >
             {title}
           </Text>
+        </View>
+        <View
+          style={{
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
           <View
-            style={{
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            <View
-              style={{ flexDirection: "row", justifyContent: "space-between" }}
+            <IconText icon="ic_luot_xem" text={totalRead} />
+            <Text
+              style={{
+                fontFamily: "Inter-Regular",
+                fontSize: responsive.h(11),
+                fontWeight: "normal",
+                fontStyle: "normal",
+                textAlign: "left",
+                color: "#6f6f6f",
+              }}
             >
-              <IconText icon="ic_luot_xem" text={totalRead} />
-              <Text
-                style={{
-                  fontFamily: "Inter-Regular",
-                  fontSize: responsive.h(11),
-                  fontWeight: "normal",
-                  fontStyle: "normal",
-                  textAlign: "left",
-                  color: "#6f6f6f",
-                }}
-              >
-                {moment(dateCreate).format("DD/MM/YYYY HH:mm")}
-              </Text>
-            </View>
+              {moment(dateCreate).format("DD/MM/YYYY HH:mm")}
+            </Text>
           </View>
         </View>
+
       </TouchableOpacity>
     );
   };
@@ -865,6 +792,87 @@ class HomeScreen extends Component {
       </TouchableOpacity>
     );
   };
+  renderNews() {
+    const {
+      dataNotify,
+      isRefreshingNotify,
+      refreshDataHandle,
+      emptyDataNotify,
+      errorNotify,
+    } = this.props;
+    if (emptyDataNotify) {
+      return (
+        <ErrorContent
+          title={Strings.app.emptyData}
+          onTouchScreen={() => {
+            this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers }),
+              this.props.refreshDataHandle();
+          }}
+        />
+      );
+    }
+    if (errorNotify && errorNotify.hasError) {
+      return (
+        <ErrorContent
+          title={Strings.app.error}
+          onTouchScreen={() => {
+            this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers }),
+              this.props.refreshDataHandle();
+          }}
+        />
+      );
+    }
+    if (dataNotify) {
+      var dataNotifyTop4 = dataNotify.slice(0, 4);
+      return (
+        <FlatList
+          refreshing={isRefreshingNotify}
+          onRefresh={() => {
+            refreshDataHandle(),
+              this.props.getProfile({
+                type: "re",
+                langId: this.props.langId,
+                towers: this.props.user.towers
+              });
+          }}
+          data={dataNotifyTop4 || []}
+          keyExtractor={(item, index) => `${index}`}
+          renderItem={this.renderItem}
+          // onEndReachedThreshold={0.5}
+          numColumns={2}
+          contentContainerStyle={{
+            marginTop: responsive.h(10),
+            marginHorizontal: responsive.h(15),
+            backgroundColor: "white",
+          }}
+          onEndReached={() => {
+            if (
+              !this.onEndReachedCalledDuringMomentum &&
+              !this.props.outOfStockNotify &&
+              this.props.currentPageNotify > 0 &&
+              !this.props.isLoadingNotify
+            ) {
+              const data = {
+                towerId: this.props.towerId,
+                keyword: this.props.isApplySearchKeyNotify
+                  ? this.props.searchKeyNotify
+                  : "",
+                currentPage: this.props.currentPageNotify + 1,
+                rowPerPage: this.props.rowPerPageNotify,
+                typeNews: 1,
+              };
+              this.props.loadDataHandleNotify(data);
+            }
+          }}
+          onMomentumScrollBegin={() => {
+            this.onEndReachedCalledDuringMomentum = false;
+          }}
+          ListFooterComponent={this.renderFooter}
+        />
+      )
+    }
+
+  }
   renderContent() {
     const {
       isLoading,
@@ -895,29 +903,19 @@ class HomeScreen extends Component {
         <ErrorContent
           title={Strings.app.error}
           onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
+            this.props.getProfile({ type: "re", langId: this.props.langId, towers: this.props.user.towers }),
               this.props.refreshDataHandle();
           }}
         />
       );
     }
-    if (emptyDataNotify) {
-      return (
-        <ErrorContent
-          title={Strings.app.emptyData}
-          onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
-              this.props.refreshDataHandle();
-          }}
-        />
-      );
-    }
+
     const { banner, fees } = data;
     return (
-      <View style={{ flex: 1, backgroundColor: "white" }}>
-        {!_.isNil(fees) &&
+      <View style={{ flex: 1, backgroundColor: "white", }}>
+        {/* {!_.isNil(fees) &&
           !_.isNil(fees.amountIncurred) &&
-          this.rednerItemFee(fees)}
+          this.rednerItemFee(fees)} */}
         {/* <ScrollView style={{ marginTop: 10}} showsVerticalScrollIndicato={false}> */}
 
         {/* <FlatList
@@ -934,18 +932,15 @@ class HomeScreen extends Component {
             flexDirection: "row",
             backgroundColor: "white",
             alignItems: "center",
-
-            // maxHeight: responsive.h(550),
-            // marginHorizontal: 10,
-            padding: responsive.h(10),
+            padding: responsive.h(15),
+            paddingBottom: responsive.h(5)
           }}
         >
           <Text
             style={{
               fontFamily: "Inter-SemiBold",
+              fontWeight: '500',
               fontSize: responsive.h(20),
-              fontStyle: "normal",
-              letterSpacing: 0,
               textAlign: "left",
               color: "#000000",
             }}
@@ -980,399 +975,158 @@ class HomeScreen extends Component {
                 name="arrow-right"
                 size={responsive.h(15)}
                 color="#afaeae"
-                style={
-                  {
-                    // marginTop: responsive.h(12),
-                    // letterSpacing: 0,
-                    // marginBottom: responsive.h(10),
-                    // marginRight: responsive.h(10),
-                  }
-                }
+                style={{}}
               />
             </View>
           </TouchableOpacity>
         </View>
-
-        {errorNotify && errorNotify.hasError ? (
-          <ErrorContent
-            title={Strings.app.error}
-            onTouchScreen={() => refreshDataHandle()}
-          />
-        ) : (
-          <FlatList
-            refreshing={isRefreshingNotify}
-            onRefresh={() => {
-              refreshDataHandle(),
-                this.props.getProfile({
-                  type: "re",
-                  langId: this.props.langId,
-                });
-            }}
-            data={dataNotify || []}
-            keyExtractor={(item, index) => `${index}`}
-            renderItem={this.renderItem}
-            // onEndReachedThreshold={0.5}
-            numColumns={2}
-            contentContainerStyle={{
-              marginTop: responsive.h(10),
-              marginLeft: responsive.h(10),
-              backgroundColor: "white",
-            }}
-            onEndReached={() => {
-              if (
-                !this.onEndReachedCalledDuringMomentum &&
-                !this.props.outOfStockNotify &&
-                this.props.currentPageNotify > 0 &&
-                !this.props.isLoadingNotify
-              ) {
-                const data = {
-                  towerId: this.props.towerId,
-                  keyword: this.props.isApplySearchKeyNotify
-                    ? this.props.searchKeyNotify
-                    : "",
-                  currentPage: this.props.currentPageNotify + 1,
-                  rowPerPage: this.props.rowPerPageNotify,
-                  typeNews: 1,
-                };
-                this.props.loadDataHandleNotify(data);
-              }
-            }}
-            onMomentumScrollBegin={() => {
-              this.onEndReachedCalledDuringMomentum = false;
-            }}
-            ListFooterComponent={this.renderFooter}
-          />
-        )}
-        {/* </ScrollView> */}
+        {this.renderNews()}
       </View>
     );
   }
   renderBanner() {
     const {
-      isLoading,
-      data,
-      error,
-      initComponent,
-      user,
-      dataNotify,
-      isRefreshingNotify,
-      refreshDataHandle,
-      emptyDataNotify,
-      errorNotify,
+      data
     } = this.props;
-    console.log("data get2", this.props);
-    if (initComponent) {
-      return (
-        <View>
-          <ActivityIndicator animating size="small" />
-        </View>
-      );
-    }
-    if (error && error.hasError) {
-      return (
-        <ErrorContent
-          title={Strings.app.error}
-          onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
-              this.props.refreshDataHandle();
-          }}
-        />
-      );
-    }
-    if (emptyDataNotify) {
-      return (
-        <ErrorContent
-          title={Strings.app.emptyData}
-          onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
-              this.props.refreshDataHandle();
-          }}
-        />
-      );
-    }
-    const { banner } = data;
-    // const url = "google.com";
-
-    // const OpenURLButton = () => {
-    //   const handlePress = useCallback(async () => {
-    //     // Checking if the link is supported for links with custom URL scheme.
-    //     const supported = await Linking.canOpenURL(url);
-
-    //     if (supported) {
-    //       // Opening the link with some app, if the URL scheme is "http" the web link shoculd be opened
-    //       // by some browser in the mobile
-    //       await Linking.openURL(url);
-    //     } else {
-    //       Alert.alert(`Don't know how to open this URL: ${url}`);
-    //     }
-    //   }, [url]);
-    //   return <TouchableOpacity onPress={() => handlePress} />;
-    // };
-
-    const pageData = data.banner.map(
-      (o, index) =>
-        data.banner[index].display &&
-        data.banner[index].header && (
-          <TouchableOpacity
-            onPress={() =>
-              Linking.canOpenURL(data.banner[index].link)
-                .then((supported) => {
-                  if (!supported) {
-                    console.log("Can't handle url: " + data.banner[index].link);
-                  } else {
-                    return Linking.openURL(`${data.banner[index].link}`);
-                  }
-                })
-                .catch((err) => console.error("An error occurred", err))
-            }
-          >
-            <ImageProgress
-              source={{ uri: data.banner[index].imageLink }}
-              style={{
-                height: responsive.h(180),
-                width: "100%",
-              }}
-            />
-          </TouchableOpacity>
-        )
-    );
-
-    return (
-      <View style={{ flex: 1 }}>
-        <View
-          style={{
-            borderRadius: responsive.h(20),
-            backgroundColor: "#ffffff",
-            // shadowColor: "rgba(0, 0, 0, 0.1)",
-            // elevation: 2,
-            // shadowOffset: {
-            //   width: 0,
-            //   height: 4,
-            // },
-            // shadowRadius: 20,
-            // shadowOpacity: 1,
-            height: responsive.h(180),
-            // marginHorizontal: 20,
-          }}
-        >
-          <Swiper
-            dot={<View style={styles.dot} />}
-            activeDot={<View style={styles.activeDot} />}
-            autoplay={true}
-            autoplayTimeout={5}
-            paginationStyle={{ bottom: responsive.h(5) }}
-            showsButtons={false}
-          >
-            {data.banner.length > 0 ? (
-              pageData
-            ) : (
-              <Image
+    if (data && data.banner && (data.banner.filter(i => i.header)).length > 0) {
+      const pageData = data.banner.map(
+        (o, index) =>
+          data.banner[index].isDisplay &&
+          data.banner[index].header && (
+            <TouchableOpacity
+              key={index}
+              onPress={() =>
+                Linking.canOpenURL(data.banner[index].link)
+                  .then((supported) => {
+                    if (!supported) {
+                      console.log("Can't handle url: " + data.banner[index].link);
+                    } else {
+                      return Linking.openURL(`${data.banner[index].link}`);
+                    }
+                  })
+                  .catch((err) => console.error("An error occurred", err))
+              }
+            >
+              <ImageProgress
+                resizeMode='cover'
+                source={{ uri: data.banner[index].imageLink }}
                 style={{
                   height: responsive.h(180),
                   width: "100%",
                 }}
-                source={default_baner}
               />
-            )}
-          </Swiper>
+            </TouchableOpacity>
+          )
+      );
+      return (
+        <View style={{ flex: 1 }}>
+          <View
+            style={{
+              borderRadius: responsive.h(20),
+              backgroundColor: "#ffffff",
+              height: responsive.h(180),
+            }}
+          >
+            <Swiper
+              dot={<View style={styles.dot} />}
+              activeDot={<View style={styles.activeDot} />}
+              autoplay={true}
+              autoplayTimeout={5}
+              paginationStyle={{ bottom: responsive.h(5) }}
+              showsButtons={false}
+            >
+              {data.banner.length > 0 ? (
+                pageData
+              ) : (
+                <Image
+                  style={{
+                    height: responsive.h(180),
+                    width: "100%",
+                  }}
+                  source={default_baner}
+                />
+              )}
+            </Swiper>
+          </View>
         </View>
-        {/* {!_.isNil(fees) &&
-          !_.isNil(fees.amountIncurred) &&
-          this.rednerItemFee(fees)} */}
-      </View>
-    );
+      );
+    }
+    return null
   }
   renderBannerBottom() {
     const {
-      isLoading,
       data,
-      error,
-      initComponent,
-      user,
-      dataNotify,
-      isRefreshingNotify,
-      refreshDataHandle,
-      emptyDataNotify,
-      errorNotify,
     } = this.props;
     console.log("data get2", this.props);
-    if (initComponent) {
+    if (data && data.banner && (data.banner.filter(i => i.footer)).length > 0) {
       return (
-        <View>
-          <ActivityIndicator animating size="small" />
-        </View>
-      );
-    }
-    if (error && error.hasError) {
-      return (
-        <ErrorContent
-          title={Strings.app.error}
-          onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
-              this.props.refreshDataHandle();
-          }}
-        />
-      );
-    }
-    if (emptyDataNotify) {
-      return (
-        <ErrorContent
-          title={Strings.app.emptyData}
-          onTouchScreen={() => {
-            this.props.getProfile({ type: "re", langId: this.props.langId }),
-              this.props.refreshDataHandle();
-          }}
-        />
-      );
-    }
-    // const { banner } = data;
-    // const url = "google.com";
-
-    // const OpenURLButton = () => {
-    //   const handlePress = useCallback(async () => {
-    //     // Checking if the link is supported for links with custom URL scheme.
-    //     const supported = await Linking.canOpenURL(url);
-
-    //     if (supported) {
-    //       // Opening the link with some app, if the URL scheme is "http" the web link shoculd be opened
-    //       // by some browser in the mobile
-    //       await Linking.openURL(url);
-    //     } else {
-    //       Alert.alert(`Don't know how to open this URL: ${url}`);
-    //     }
-    //   }, [url]);
-    //   return <TouchableOpacity onPress={() => handlePress} />;
-    // };
-
-    // const pageData = data.banner.map(
-    //   (o, index) =>
-    //     data.banner[index].display &&
-    //     data.banner[index].footer && (
-    //       <View
-    //         style={{
-    //           marginBottom: 10,
-    //           backgroundColor: "white",
-    //           paddingVertical: 10,
-    //         }}
-    //       >
-    //         <Text
-    //           style={{
-    //             fontFamily: "OpenSans-Bold",
-    //             fontSize: fontsize.medium,
-    //             fontWeight: "bold",
-    //             fontStyle: "normal",
-    //             letterSpacing: 0,
-    //             textAlign: "left",
-    //             color: "#000000",
-    //             marginTop: 10,
-    //             marginBottom: 10,
-    //             paddingHorizontal: 20,
-    //           }}
-    //         >
-    //           {data.banner[index].title}
-    //         </Text>
-    //         <TouchableOpacity
-    //           onPress={() =>
-    //             Linking.canOpenURL(data.banner[index].link)
-    //               .then((supported) => {
-    //                 if (!supported) {
-    //                   console.log(
-    //                     "Can't handle url: " + data.banner[index].link
-    //                   );
-    //                 } else {
-    //                   return Linking.openURL(`${data.banner[index].link}`);
-    //                 }
-    //               })
-    //               .catch((err) => console.error("An error occurred", err))
-    //           }
-    //         >
-    //           <Image
-    //             source={{ uri: data.banner[index].imageLink }}
-    //             style={{
-    //               height: responsive.h(160),
-    //               width: responsive.w(380),
-    //               alignSelf: "center",
-    //             }}
-    //           />
-
-    //           {/* <ImageProgress
-    //             source={{ uri: data.banner[index].imageLink }}
-    //             style={{
-    //               height: responsive.h(180),
-    //               width: "100%",
-    //             }}
-    //           /> */}
-    //         </TouchableOpacity>
-    //       </View>
-    //     )
-    // );
-
-    return (
-      <FlatList
-        data={data.banner || []}
-        horizontal
-        keyExtractor={(item, index) => `${index}`}
-        ListEmptyComponent={
-          <View style={{ justifyContent: "center", alignItems: "center" }}>
-            <Text>{Strings.app.emptyData}</Text>
-          </View>
-        }
-        renderItem={({ item }) =>
-          item.display &&
-          item.footer && (
-            <View
-              style={{
-                padding: responsive.h(10),
-                backgroundColor: "#ffff",
-              }}
-            >
-              <Text
+        <FlatList
+          data={data.banner || []}
+          horizontal
+          keyExtractor={(item, index) => `${index}`}
+          ListEmptyComponent={
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
+              <Text>{Strings.app.emptyData}</Text>
+            </View>
+          }
+          renderItem={({ item }) =>
+            item.isDisplay &&
+            item.footer && (
+              <View
                 style={{
-                  fontFamily: "Inter-SemiBold",
-                  fontSize: responsive.h(20),
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  textAlign: "left",
-                  color: "#000000",
+                  padding: responsive.h(15),
+                  backgroundColor: "#ffff",
                 }}
               >
-                {item.title}
-              </Text>
-              <TouchableOpacity
-                onPress={() =>
-                  Linking.canOpenURL(item.link)
-                    .then((supported) => {
-                      if (!supported) {
-                        console.log("Can't handle url: " + item.link);
-                      } else {
-                        return Linking.openURL(`${item.link}`);
-                      }
-                    })
-                    .catch((err) => console.error("An error occurred", err))
-                }
-              >
-                <Image
-                  source={{ uri: item.imageLink }}
+                <Text
                   style={{
-                    height: responsive.h(180),
-                    width: Screen.width,
-                    alignSelf: "center",
+                    fontFamily: "Inter-SemiBold",
+                    fontWeight: '500',
+                    fontSize: responsive.h(20),
+                    textAlign: "left",
+                    color: "#000000",
+                    marginBottom: responsive.h(15),
                   }}
-                />
+                >
+                  {item.title}
+                </Text>
+                <TouchableOpacity
+                  onPress={() =>
+                    Linking.canOpenURL(item.link)
+                      .then((supported) => {
+                        if (!supported) {
+                          console.log("Can't handle url: " + item.link);
+                        } else {
+                          return Linking.openURL(`${item.link}`);
+                        }
+                      })
+                      .catch((err) => console.error("An error occurred", err))
+                  }
+                >
+                  <Image
+                    source={{ uri: item.imageLink }}
+                    style={{
+                      height: responsive.h(180),
+                      width: Screen.width - responsive.h(30),
+                      alignSelf: "center",
+                    }}
+                  />
 
-                {/* <ImageProgress
+                  {/* <ImageProgress
                 source={{ uri: data.banner[index].imageLink }}
                 style={{
                   height: responsive.h(180),
                   width: "100%",
                 }}
               /> */}
-              </TouchableOpacity>
-            </View>
-          )
-        }
-      />
-    );
+                </TouchableOpacity>
+              </View>
+            )
+          }
+        />
+      );
+    }
+    return null
   }
 
   renderFooter = () => {
@@ -1388,80 +1142,7 @@ class HomeScreen extends Component {
       </View>
     );
   };
-  // renderListMenu = ({ item }) => {
-  //   return (
-  //     <TouchableOpacity
-  //       onPress={() => {
-  //         switch (item.id) {
-  //           case 1:
-  //             break;
-  //           case 2:
-  //             break;
-  //           case 3:
-  //             break;
-  //           case 4:
-  //             break;
-  //           case 5:
-  //             break;
-  //           case 6:
-  //             break;
-  //           case 7:
-  //             break;
-  //           case 8:
-  //             break;
-  //           case 9:
-  //             break;
-  //         }
-  //       }}
-  //       style={{
-  //         height: responsive.h(130),
-  //         width: responsive.w(128),
-  //         alignItems: "center",
-  //         borderBottomWidth: 2,
-  //         borderRightWidth: 2,
-  //         borderColor: "#f5f5f5",
-  //         justifyContent: "center",
-  //       }}
-  //     >
-  //       <View
-  //         style={{
-  //           paddingVertical: responsive.h(7),
-  //           paddingHorizontal: responsive.h(25),
-  //         }}
-  //       >
-  //         {/* <MyIcon
-  //           name={item.icon}
-  //           size={responsive.h(34)}
-  //           style={{ alignSelf: "center" }}
-  //         /> */}
-  //         <Image
-  //           source={item.icon}
-  //           style={{
-  //             // height: responsive.h(40),
-  //             // width: responsive.w(40),
-  //             alignSelf: "center",
-  //             marginVertical: responsive.h(10),
-  //           }}
-  //         />
-  //         <Text
-  //           style={{
-  //             color: "black",
-  //             fontSize: responsive.h(14),
-  //             fontFamily: "OpenSans-Regular",
-  //             fontStyle: "normal",
-  //             fontWeight: "700",
-  //             maxWidth: responsive.w(70),
-  //             textAlign: "center",
-  //           }}
-  //         >
-  //           {item.name}
-  //         </Text>
-  //       </View>
-  //     </TouchableOpacity>
-  //   );
-  // };
-
-  render() {
+  renderMenu() {
     const listMenuItem = [
       {
         id: 1,
@@ -1500,7 +1181,196 @@ class HomeScreen extends Component {
       },
       {
         id: 8,
-        name: Strings.home.roleChange,
+        name: Strings.profile.settinglanguage,
+        icon: icons.language,
+      },
+
+      {
+        id: 9,
+        name: Strings.home.accountManagement,
+        icon: icons.personSt,
+      },
+    ];
+    const { user, badge } = this.props;
+    {/* menu */ }
+    return (
+      <View
+        style={{
+          backgroundColor: "white",
+        }}
+      >
+        <Text
+          style={{
+            fontFamily: "Inter-Regular",
+            fontWeight: '500',
+            textAlign: "center",
+            fontSize: responsive.h(20),
+            color: "black",
+            paddingTop: responsive.h(20),
+            backgroundColor: "white",
+          }}
+        >
+          {Strings.home.categories}
+        </Text>
+        <Image
+          source={require("../resources/line.png")}
+          height={responsive.h(5)}
+          style={{
+            alignSelf: "center",
+            marginTop: responsive.h(10),
+            marginBottom: responsive.h(20),
+          }}
+        />
+        <SafeAreaView>
+          <FlatList
+            data={listMenuItem}
+            renderItem={({ item }) => (
+              <TouchableOpacity
+                onPress={() => {
+                  switch (item.id) {
+                    case 1:
+                      this.props.navigation.navigate("department");
+                      break;
+                    case 2:
+                      this.props.navigation.navigate(
+                        "serviceBasicResident"
+                      );
+                      break;
+                    case 3:
+                      this.props.navigation.navigate(
+                        "serviceExtensionResident"
+                      );
+                      break;
+                    case 4:
+                      this.props.navigation.navigate("survey");
+                      break;
+                    case 5:
+                      this.props.navigation.navigate("carCardList");
+                      break;
+                    case 6:
+                      this.props.navigation.navigate("hotline");
+                      break;
+                    case 7:
+                      this.props.navigation.navigate("building")
+                      break;
+                    case 8:
+                      this.props.navigation.navigate("settingResident")
+                      break;
+
+                    case 9:
+                      this.props.navigation.navigate("profile");
+                      break;
+                  }
+                }}
+                style={{
+                  height: responsive.h(130),
+                  width: responsive.w(128),
+                  alignItems: "center",
+                  borderBottomWidth: responsive.h(2),
+                  borderRightWidth: responsive.w(2),
+                  borderColor: "#f5f5f5",
+                  justifyContent: "center",
+                }}
+              >
+                <View
+                  style={{
+                    paddingVertical: responsive.h(7),
+                    paddingHorizontal: responsive.h(25),
+                  }}
+                >
+                  <MyIcon
+                    name={item.icon}
+                    size={responsive.h(31)}
+                    color="black"
+                    style={{
+                      alignSelf: "center",
+                      marginVertical: responsive.h(10),
+                    }}
+                  />
+                  <Text
+                    style={{
+                      color: "black",
+                      fontSize: responsive.h(14),
+                      fontFamily: "Inter-Regular",
+                      fontWeight: '500',
+                      maxWidth: responsive.w(70),
+                      textAlign: "center",
+                    }}
+                  >
+                    {item.name}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id}
+            numColumns={3}
+            contentContainerStyle={{
+              justifyContent: "center",
+              alignItems: "center",
+              borderLeftWidth: responsive.w(2),
+              borderTopWidth: responsive.h(2),
+              borderColor: "#f5f5f5",
+              maxWidth: responsive.w(385),
+              Width: responsive.w(385),
+              maxHeight: responsive.h(391),
+              alignSelf: "center",
+              marginVertical: responsive.h(10),
+              backgroundColor: "white",
+            }}
+            scrollEnabled={false}
+          />
+        </SafeAreaView>
+        <View
+          style={{
+            marginTop: responsive.h(10),
+            height: responsive.h(20),
+            backgroundColor: "#f5f5f5",
+            width: '100%'
+          }}
+        />
+      </View>
+    )
+  }
+  render() {
+    const listMenuItem = [
+      {
+        id: 1,
+        name: Strings.home.projectInformation,
+        icon: icons.infoProject,
+      },
+      {
+        id: 2,
+        name: Strings.home.registeredUtility,
+        icon: icons.utils,
+      },
+      {
+        id: 3,
+        name: Strings.home.registeredService,
+        icon: icons.registeredService,
+      },
+      {
+        id: 4,
+        name: Strings.home.survey,
+        icon: icons.survey,
+      },
+      {
+        id: 5,
+        name: Strings.home.carCard,
+        icon: icons.card,
+      },
+      {
+        id: 6,
+        name: Strings.home.contact,
+        icon: icons.contact,
+      },
+      {
+        id: 7,
+        name: Strings.profile.settinglanguage,
+        icon: icons.language,
+      },
+      {
+        id: 8,
+        name: Strings.login.changePass,
         icon: icons.person,
       },
       {
@@ -1509,91 +1379,96 @@ class HomeScreen extends Component {
         icon: icons.personSt,
       },
     ];
-    console.log("props", this.props);
-    console.log(this.state);
-    const { user, badge } = this.props;
+    const { user, badge, isLoading } = this.props;
     const uri = user ? { uri: user.photoUrl } : default_user;
     const d = getPath(Screen.width, 70, 70, 0);
     return (
-      
+
       <View style={styles.container}>
         <NavBar
-          leftButton={
+          body={
             <View
               style={{
                 flexDirection: "row",
+                justifyContent: 'space-between',
+                height: '100%',
+                width: '100%',
+                paddingTop: Platform.isPad || Platform.OS === 'android' ? responsive.h(10) : 0
               }}
             >
-              <TouchableOpacity
-                onPress={() => this._onAttachment()}
-                style={{
-                  padding: responsive.h(10),
-                }}
-              >
-                <ImageProgress
+              {/* trái */}
+              <View style={{
+                flexDirection: "row",
+                flex: 1
+              }}>
+                <TouchableOpacity
+                  onPress={() => this._onAttachment()}
                   style={{
-                    height: responsive.h(40),
-                    width: responsive.h(40),
-                  }}
-                  circle={true}
-                  resizeMode="stretch"
-                  type="0"
-                  source={user && !_.isNil(user.photoUrl) ? uri : default_user}
-                />
-              </TouchableOpacity>
-
-              <View
-                style={{
-                  justifyContent: "center",
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: responsive.h(16),
-                    fontFamily: "OpenSans-Bold",
-                    fontWeight: "bold",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "left",
-                    color: "black",
+                    paddingHorizontal: responsive.h(15),
+                    paddingRight: 10
                   }}
                 >
-                  {user ? user.fullName : ""}
-                </Text>
-                <View style={{ display: "flex", flexDirection: "row" }}>
-                  <MyIcon
-                    name="call"
-                    color="black"
-                    size={responsive.h(12)}
+                  <ImageProgress
                     style={{
-                      marginRight: responsive.h(3),
-                      marginVertical: responsive.h(3),
+                      height: responsive.h(50),
+                      width: responsive.h(50),
                     }}
+                    circle={true}
+                    resizeMode="stretch"
+                    type="0"
+                    source={user && !_.isNil(user.photoUrl) ? uri : default_user}
                   />
+                </TouchableOpacity>
+                <View
+                  style={{
+                    justifyContent: "center",
+                    height: responsive.h(50),
+                    minHeight: responsive.h(50)
+                  }}
+                >
                   <Text
+                    numberOfLines={2}
                     style={{
-                      fontFamily: "OpenSans-Regular",
-                      fontWeight: "bold",
-                      fontStyle: "normal",
-                      letterSpacing: 0,
+                      fontSize: responsive.h(16),
+                      fontFamily: "Inter-Bold",
+                      fontWeight: '600',
                       textAlign: "left",
                       color: "black",
-                      fontSize: responsive.h(14),
                     }}
                   >
-                    {user ? user.phoneNumber : ""}
+                    {user ? user.fullName : ""}
                   </Text>
+                  <View style={{ display: "flex", flexDirection: "row", marginTop: responsive.h(2) }}>
+                    <MyIcon
+                      name="call"
+                      color="black"
+                      size={responsive.h(14)}
+                      style={{
+                        marginRight: responsive.h(3),
+                        marginVertical: responsive.h(3),
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontFamily: "Inter-Bold",
+                        fontWeight: '600',
+                        textAlign: "left",
+                        color: "black",
+                        fontSize: responsive.h(14),
+                      }}
+                    >
+                      {user ? user.phoneNumber : ""}
+                    </Text>
+                  </View>
                 </View>
               </View>
-            </View>
-          }
-          rightView={
-            <View>
-              <View style={{ flexDirection: "row" }}>
+              {/* phải */}
+              <View style={{ flexDirection: "row", height: '100%', flex: 1, justifyContent: 'flex-end' }}>
                 {this.props.data && this.props.data.rules.length > 0 ? (
                   <TouchableOpacity
                     style={{
-                      paddingVertical: responsive.h(10),
+                      paddingHorizontal: responsive.h(5),
+                      paddingVertical: responsive.h(5),
                     }}
                     onPress={() =>
                       this.setState({
@@ -1605,176 +1480,60 @@ class HomeScreen extends Component {
                     <MyIcon
                       name="ic_quy_dinh1"
                       color="black"
-                      size={responsive.h(20)}
+                      size={responsive.h(22)}
                     />
                   </TouchableOpacity>
                 ) : null}
                 <TouchableOpacity
                   style={{
-                    padding: responsive.h(10),
+                    paddingHorizontal: responsive.h(15),
+                    paddingVertical: responsive.h(5),
                   }}
                   onPress={() =>
                     this.props.navigation.navigate("notificationResident")
                   }
                 >
-                  <MyIcon
-                    name="home2"
-                    color="black"
-                    size={responsive.h(20)}
-                    style={{ marginLeft: responsive.h(10) }}
-                  />
+                  <View>
+                    <MyIcon
+                      name="home2"
+                      color="black"
+                      size={responsive.h(22)}
+                      style={{}}
+                    />
+                    <View style={styles.IconBadge}>
+                      <Text
+                        style={{
+                          color: "white",
+                          fontSize: responsive.h(10),
+                        }}
+                      >
+                        {badge.badgeNotifyR > 99 ? "99+" : badge.badgeNotifyR}
+                      </Text>
+                    </View>
+                  </View>
+
                 </TouchableOpacity>
               </View>
             </View>
           }
         />
-        {/* <Svg width={Screen.width} height={70}>
-            <Path fill={'#fff'} stroke="#DDDDDD" strokeWidth={1} {...{ d }} />
-          </Svg> */}
-        <ScrollView style={{ backgroundColor: "#f5f5f5" }}>
-          <UpdateVersion version={this.props.version} />
-          {this.renderBanner()}
-          <View
-            style={{
-              marginBottom: responsive.h(20),
-              backgroundColor: "white",
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "Inter-Medium",
-                textAlign: "center",
-                fontSize: responsive.h(20),
-                color: "black",
-                paddingTop: responsive.h(20),
-                backgroundColor: "white",
-              }}
-            >
-              {Strings.home.categories}
-            </Text>
-            <Image
-              source={require("../resources/line.png")}
-              height={responsive.h(5)}
-              style={{
-                alignSelf: "center",
-                marginTop: responsive.h(10),
-                marginBottom: responsive.h(20),
+
+        <ScrollView style={{ backgroundColor: "#fff", marginTop: -responsive.h(10) }} contentContainerStyle={{ paddingBottom: 20 }}
+          refreshControl={
+            <RefreshControl
+              refreshing={isLoading}
+              onRefresh={() => {
+                this.loadData(),
+                  this.props.refreshDataHandle();
               }}
             />
-            <SafeAreaView>
-              <FlatList
-                data={listMenuItem}
-                renderItem={({ item }) => (
-                  <TouchableOpacity
-                    onPress={() => {
-                      switch (item.id) {
-                        case 1:
-                          this.props.navigation.navigate("department");
-                          break;
-                        case 2:
-                          this.props.navigation.navigate(
-                            "serviceBasicResident"
-                          );
-                          break;
-                        case 3:
-                          this.props.navigation.navigate(
-                            "serviceExtensionResident"
-                          );
-                          break;
-                        case 4:
-                          this.props.navigation.navigate("survey");
-                          break;
-                        case 5:
-                          this.props.navigation.navigate("carCardList");
-                          break;
-                        case 6:
-                          this.props.navigation.navigate("hotline");
-                          break;
-                        case 7:
-                          this.props.navigation.navigate("building");
-                          break;
-                        case 8:
-                          break;
-                        case 9:
-                          this.props.navigation.navigate("profile");
-                          break;
-                      }
-                    }}
-                    style={{
-                      height: responsive.h(130),
-                      width: responsive.w(128),
-                      alignItems: "center",
-                      borderBottomWidth: responsive.h(2),
-                      borderRightWidth: responsive.w(2),
-                      borderColor: "#f5f5f5",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <View
-                      style={{
-                        paddingVertical: responsive.h(7),
-                        paddingHorizontal: responsive.h(25),
-                      }}
-                    >
-                      {/* <MyIcon
-                      name={item.icon}
-                      size={responsive.h(34)}
-                      style={{ alignSelf: "center" }}
-                    /> */}
-                      {/* <Image
-                        source={item.icon}
-                        style={{
-                          // height: responsive.h(40),
-                          // width: responsive.w(40),
-                          alignSelf: "center",
-                          marginVertical: responsive.h(10),
-                        }}
-                      /> */}
-                      <MyIcon
-                        name={item.icon}
-                        size={responsive.h(31)}
-                        color="black"
-                        style={{
-                          alignSelf: "center",
-                          marginVertical: responsive.h(10),
-                        }}
-                      />
-                      <Text
-                        style={{
-                          color: "black",
-                          fontSize: responsive.h(14),
-                          fontFamily: "Inter-Bold",
-                          maxWidth: responsive.w(70),
-                          textAlign: "center",
-                        }}
-                      >
-                        {item.name}
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                )}
-                keyExtractor={(item) => item.id}
-                numColumns={3}
-                contentContainerStyle={{
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderLeftWidth: responsive.w(2),
-                  borderTopWidth: responsive.h(2),
-                  borderColor: "#f5f5f5",
-                  maxWidth: responsive.w(385),
-                  Width: responsive.w(385),
-                  maxHeight: responsive.h(391),
-                  alignSelf: "center",
-                  marginVertical: responsive.h(10),
-                  backgroundColor: "white",
-                }}
-                scrollEnabled={false}
-              />
-            </SafeAreaView>
-          </View>
+          }
+        >
+          <UpdateVersion version={this.props.version} />
+          {this.renderBanner()}
+          {this.renderMenu()}
           {this.renderContent()}
           {this.renderBannerBottom()}
-
           <Modal
             animationType="slide"
             transparent
@@ -1873,17 +1632,6 @@ class HomeScreen extends Component {
           />
         </ScrollView>
       </View>
-      //         <View style={styles.container}>
-      //     <Svg height={50} width={Screen.width/5}>
-      //       <Path
-      //         d="M-17.5 378.5C31.5 32.5 302.5 463 375 89C447.5 -285 375 644 375 644H0C0 644 -66.5 724.5 -17.5 378.5Z" // put your path here
-      //         fill="blue"
-      //         stroke="blue"
-      //       />
-      //     </Svg>
-      //     <View style={{backgroundColor: 'blue', flex: 1}}>
-      //     </View>
-      //   </View>
     );
   }
   _onAttachment = () => {
@@ -1973,15 +1721,26 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(105, 109, 116)",
   },
   IconBadge: {
-    top: responsive.h(-7),
-    right: responsive.h(8),
+    top: -responsive.h(7),
+    right: -responsive.h(3),
     position: "absolute",
     borderRadius: responsive.h(45),
-    minWidth: responsive.h(20),
-    minHeight: responsive.h(20),
+    minWidth: responsive.h(14),
+    minHeight: responsive.h(14),
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#FF0000",
+  },
+  IconBadge1: {
+    top: 0,
+    right: 0,
+    position: "absolute",
+    borderRadius: 45,
+    minWidth: responsive.h(12),
+    minHeight: responsive.h(12),
+    backgroundColor: "#e24444",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

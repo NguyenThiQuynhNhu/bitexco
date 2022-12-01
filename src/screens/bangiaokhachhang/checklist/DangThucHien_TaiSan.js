@@ -70,12 +70,13 @@ import ImagePickerOption from "../../../constant/ImagePickerOption";
 
 import ActionSheet from "../../../components/common/ActionSheet";
 import DateTimePicker from "react-native-modal-datetime-picker";
-
+import DatePicker from 'react-native-date-picker'
 const { width, height } = Dimensions.get("window");
 const icon_add = width / 7.3;
 
 import NavBar from "../../../resident/components/common/NavBar";
 import responsive from "../../../resources/responsive";
+import { converStatusToByString } from "../../../utils/handover";
 // create a component
 class DangThucHien_TaiSan extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -171,7 +172,7 @@ class DangThucHien_TaiSan extends Component {
     ) {
       if (!nextProps.errorCreate.hasError) {
         this.props.refreshDataHandle();
-        this.refs.toast.show("Tạo yêu cầu thành công", DURATION.LENGTH_LONG);
+        this.refs.toast.show(`${Strings.message.saveSuccess}!`, DURATION.LENGTH_LONG);
       }
     }
     if (nextProps.towerId && nextProps.towerId !== this.props.towerId) {
@@ -188,7 +189,7 @@ class DangThucHien_TaiSan extends Component {
             DURATION.LENGTH_LONG
           );
         } else {
-          this.refs.toast.show("Phản hồi thành công", DURATION.LENGTH_LONG);
+          this.refs.toast.show(`${Strings.message.saveSuccess}!`, DURATION.LENGTH_LONG);
         }
       });
     }
@@ -339,7 +340,7 @@ class DangThucHien_TaiSan extends Component {
               fontSize: responsive.h(14),
             }}
           >
-            Ghi chú:{" "}
+            {Strings.handover.note}:{" "}
           </Text>
           {item.note}
         </Text>
@@ -359,7 +360,7 @@ class DangThucHien_TaiSan extends Component {
             paddingVertical: responsive.h(10),
           }}
         >
-          Tầng: {item.key}
+          {Strings.electric.floor}: {item.key}
         </Text>
         {item.values.map((i) => {
           return this.renderItemTaiSan(i);
@@ -385,7 +386,7 @@ class DangThucHien_TaiSan extends Component {
             color: colors.appTheme,
           }}
         >
-          Nhóm: {item.key}
+          {Strings.common.group}: {item.key}
         </Text>
 
         {/* sắp xếp tăng dần trước khi đưa dữ liệu đi */}
@@ -408,10 +409,25 @@ class DangThucHien_TaiSan extends Component {
   };
 
   _onAttachment = () => {
-    // show('Đang cập nhật!')
-    // return
-    // if (this.props.images && _.size(this.props.images) < 5) {
-    ImagePicker.showImagePicker(ImagePickerOption, (response) => {
+    const options = {
+      quality: 1.0,
+      maxWidth: 512,
+      maxHeight: 512,
+      storageOptions: {
+        skipBackup: true,
+      },
+      title: Strings.createRequest.takeAPhoto,
+      takePhotoButtonTitle: Strings.createRequest.chooseAnImage,
+      chooseFromLibraryButtonTitle: Strings.createRequest.SelectFromGallery,
+      cancelButtonTitle: Strings.createRequest.cancel,
+      permissionDenied: {
+        title: Strings.createRequest.access,
+        text: Strings.createRequest.access2,
+        reTryTitle: Strings.createRequest.retry,
+        okTitle: Strings.createRequest.allow,
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
       // console.log('Response showImagePicker = ', response);
 
       if (response.didCancel) {
@@ -445,17 +461,17 @@ class DangThucHien_TaiSan extends Component {
     if (item.uri.substring(0, 4).toLowerCase() === "http") {
       //ảnh đã up lên server rồi nên xoá trên server trước khi xoá trong mảng
       Alert.alert(
-        "Thông báo",
-        "Bạn có chắc chắn muốn xoá?",
+        Strings.handover.notify,
+        `${Strings.handover.mesDeleteImage}?`,
         [
           //   {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
           {
-            text: "Huỷ",
+            text: Strings.handover.cancel,
             onPress: () => console.log("Cancel Pressed"),
             style: "cancel",
           },
           {
-            text: "Xoá",
+            text: Strings.handover.ok,
             onPress: () => {
               this.props.DeleteImages(item.url).then((data) => {
                 //nếu xoá ok thì xoá hẳn trong mảng images
@@ -463,15 +479,6 @@ class DangThucHien_TaiSan extends Component {
                 const index = array.indexOf(item);
                 array.splice(index, 1);
                 this.setState({ images: array });
-                // if(data){
-                //     const array = this.state.images;
-                //     const index = array.indexOf(item);
-                //     array.splice(index, 1);
-                //     this.setState({ images: array });
-                // }
-                // else{
-                //     show('Lỗi: Vui lòng thử lại sau!')
-                // }
               });
             },
           },
@@ -487,335 +494,54 @@ class DangThucHien_TaiSan extends Component {
     }
   };
 
-  // renderImages() {
-  //   return (
-  //     <View style={{ paddingHorizontal: responsive.h(10), marginBottom: responsive.h(20),}}>
-  //       {this.state.images.length > 0 ? (
-  //         <ScrollView
-  //           horizontal={true}
-  //           showsHorizontalScrollIndicator={false}
-  //           style={{ marginTop: responsive.h(10),}}
-  //         >
-  //           {this.state.images.length < 5 && (
-  //             <View
-  //               style={{
-  //                 justifyContent: "center",
-  //                 backgroundColor: colors.grayBorder,
-  //                 borderRadius: responsive.h(5),
-  //                 padding: responsive.h(5),
-  //                 marginTop: responsive.h(10),
-  //                 marginRight: responsive.h(10),
-  //                 width: responsive.w(90),
-  //                 height: responsive.h(120),
-  //               }}
-  //             >
-  //               <MyIcon
-  //                 onPress={() => this._onAttachment()}
-  //                 name="camera"
-  //                 size={80}
-  //                 color="gray"
-  //               />
-  //             </View>
-  //           )}
-  //           {this.state.images.map((eachImage, y) => {
-  //             return (
-  //               <View key={y}>
-  //                 <Lightbox
-  //                   style={{
-  //                     marginTop: responsive.h(10),
-  //                     marginRight: responsive.h(10),
-  //                     borderRadius: responsive.h(5),
-  //                     backgroundColor: "#eeeeee",
-  //                   }}
-  //                   activeProps={{
-  //                     style: styles.imageActive,
-  //                   }}
-  //                 >
-  //                   <Image
-  //                     source={{ uri: eachImage.uri }}
-  //                     style={{ width: responsive.w(90), height: responsive.h(120), zIndex: 0 }}
-  //                   />
-  //                 </Lightbox>
-
-  //                 <TouchableOpacity
-  //                   onPress={() => this._deleteImage(eachImage)}
-  //                   style={{
-  //                     position: "absolute",
-  //                     top: 0,
-  //                     right: 0,
-  //                     borderRadius: responsive.h(15),
-  //                     marginTop: 0,
-  //                     backgroundColor: "#505c5c5c",
-  //                     zIndex: 1,
-  //                     alignItems: "center",
-  //                   }}
-  //                 >
-  //                   <Text style={{ padding: responsive.h(5), color: "#fff" }}> X </Text>
-  //                 </TouchableOpacity>
-  //               </View>
-  //             );
-  //           })}
-  //         </ScrollView>
-  //       ) : (
-  //         <TouchableOpacity
-  //           onPress={() => this._onAttachment()}
-  //           style={{
-  //             backgroundColor: colors.grayBorder,
-  //             borderRadius: responsive.h(5),
-  //             justifyContent: "center",
-  //             alignItems: "center",
-  //             marginTop: responsive.h(10),
-  //             paddingVertical: responsive.h(20),
-  //           }}
-  //         >
-  //           <MyIcon name="camera" size={80} color="gray" />
-  //         </TouchableOpacity>
-  //       )}
-  //       {/* <Spinner visible={this.props.isLoadingReponse} textContent={Strings.app.progressing} textStyle={{ color: '#FFF', fontSize: fontsize.small }} /> */}
-  //       {/* <ActionSheet visible={showAction} data={methodProcess} renderItem={this.renderActionSheetItem} /> */}
-  //     </View>
-  //   );
-  // }
-
-  // renderDetail() {
-  //   const loadingJSX = (
-  //     <View
-  //       style={{
-  //         flexDirection: "row",
-  //         alignItems: "center",
-  //         justifyContent: "center",
-  //         backgroundColor: colors.appTheme,
-  //         width: "80%",
-  //         borderRadius: responsive.h(45),
-  //         padding: responsive.h(10),
-  //         alignSelf: "center",
-  //         marginBottom: responsive.h(10),
-  //       }}
-  //     >
-  //       <Loader_Detail flex={0} color={colors.white} />
-  //       <Text style={{ color: "#fff", alignSelf: "center" }}>
-  //         {"Vui lòng chờ..."}
-  //       </Text>
-  //     </View>
-  //   );
-
-  //   const btnJSX = (
-  //     <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
-  //       <TouchableOpacity
-  //         onPress={() => {
-  //           this.setState({
-  //             isDat: false,
-  //             isKhongDat: false,
-  //             ghiChu: "",
-  //             showModal: false,
-  //             images: [],
-  //           });
-  //         }}
-  //         style={{
-  //           borderWidth: 1,
-  //           borderColor: colors.appTheme,
-  //           width: "40%",
-  //           borderRadius: responsive.h(45),
-  //           padding: responsive.h(10),
-  //           alignSelf: "center",
-  //           marginBottom: responsive.h(10),
-  //         }}
-  //       >
-  //         <Text style={{ color: colors.appTheme, alignSelf: "center" }}>
-  //           {"Huỷ"}
-  //         </Text>
-  //       </TouchableOpacity>
-
-  //       <TouchableOpacity
-  //         onPress={() => {
-  //           // this.setState({ showModal: false })
-  //           // alert(this.state.isBinhThuong + '')
-  //           this.item_thuchien();
-  //         }}
-  //         style={{
-  //           backgroundColor: colors.appTheme,
-  //           width: "40%",
-  //           borderRadius: responsive.h(45),
-  //           padding: responsive.h(10),
-  //           alignSelf: "center",
-  //           marginBottom: responsive.h(10),
-  //         }}
-  //       >
-  //         <Text style={{ color: "#fff", alignSelf: "center" }}>
-  //           {"Thực hiện"}
-  //         </Text>
-  //       </TouchableOpacity>
-  //     </View>
-  //   );
-
-  //   return (
-  //     <View
-  //       style={{
-  //         flex: 1,
-  //         backgroundColor: colors.appOverView,
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //       }}
-  //     >
-  //       <View
-  //         style={{
-  //           height: "80%",
-  //           width: "90%",
-  //           backgroundColor: "#fff",
-  //           borderRadius: responsive.h(10),
-  //         }}
-  //       >
-  //         <View
-  //           style={{
-  //             padding: responsive.h(20),
-  //             backgroundColor: colors.appTheme,
-  //             borderTopLeftRadius: responsive.h(10),
-  //             borderTopRightRadius: responsive.h(10),
-  //           }}
-  //         >
-  //           <Text
-  //             style={{
-  //               alignSelf: "center",
-  //               color: "#fff",
-  //               fontWeight: "bold",
-  //               fontSize: fontsize.medium,
-  //             }}
-  //           >
-  //             Bàn giao
-  //           </Text>
-  //         </View>
-  //         <ScrollView>
-  //           {/* {data && this.renderData(data)} */}
-
-  //           {/* <Text style={{ margin:20,color:colors.appTheme,fontWeight:'bold',fontSize:20 }}>Hệ thống cửa nhôm kính, cửa đi, cửa sổ, vách kính</Text> */}
-  //           <Text
-  //             style={{
-  //               marginHorizontal: responsive.h(20),
-  //               marginTop: responsive.h(15),
-  //               fontWeight: "bold",
-  //               fontSize: 14,
-  //             }}
-  //           >
-  //             {this.state.item.name}
-  //           </Text>
-  //           <Text
-  //             style={{
-  //               marginHorizontal: responsive.h(20),
-  //               marginVertical: responsive.h(10),
-  //               fontWeight: "400",
-  //               fontSize: 14,
-  //             }}
-  //           >
-  //             {this.state.item.description}
-  //           </Text>
-
-  //           <View
-  //             style={{
-  //               flexDirection: "row",
-  //               alignItems: "center",
-  //               justifyContent: "space-around",
-  //             }}
-  //           >
-  //             {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-  //                               <Text style={{ marginRight: responsive.h(10),color:colors.appTheme,fontWeight:'bold',fontSize:14 }}>ĐẠT</Text>
-  //                               <Switch value={this.state.isDat} onValueChange={() => {
-  //                                   this.setState({ isDat: !this.state.isDat })
-  //                               }} />
-  //                           </View> */}
-
-  //             <View style={{ flexDirection: "row", alignItems: "center" }}>
-  //               <Text
-  //                 style={{ marginRight: responsive.h(10), fontWeight: "bold", fontSize: 14 }}
-  //               >
-  //                 Đạt /
-  //                 <Text
-  //                   style={{
-  //                     color: this.state.isKhongDat
-  //                       ? colors.red
-  //                       : colors.appTheme,
-  //                     fontWeight: "bold",
-  //                     fontSize: 14,
-  //                   }}
-  //                 >
-  //                   {" "}
-  //                   Không đạt
-  //                 </Text>
-  //               </Text>
-  //               <Switch
-  //                 value={this.state.isKhongDat}
-  //                 onValueChange={() => {
-  //                   this.setState({ isKhongDat: !this.state.isKhongDat });
-  //                 }}
-  //               />
-  //             </View>
-  //           </View>
-
-  //           <TextInput
-  //             style={{
-  //               height: 100,
-  //               borderColor: colors.grayBorder,
-  //               borderWidth: 0.5,
-  //               margin: responsive.h(10),
-  //               borderRadius: responsive.h(8),
-  //               paddingLeft: responsive.h(10),
-  //               color: colors.appTheme,
-  //               textAlignVertical: "top",
-  //             }}
-  //             underline={false}
-  //             multiline
-  //             underlineColorAndroid="transparent"
-  //             onChangeText={(text) => this.setState({ ghiChu: text })}
-  //             value={this.state.ghiChu}
-  //             placeholder="Ghi chú..."
-  //             placeholderTextColor={colors.gray1}
-  //             //   multiline={true}
-  //           />
-
-  //           {this.renderImages()}
-  //         </ScrollView>
-
-  //         {this.state.isSave ? loadingJSX : btnJSX}
-  //       </View>
-  //     </View>
-  //   );
-  // }
   renderImages() {
     return (
-      <View style={{ marginBottom: responsive.h(20),}}>
+      <View style={{ marginBottom: responsive.h(20), }}>
         {this.state.images.length > 0 ? (
           <ScrollView
             horizontal={true}
             showsHorizontalScrollIndicator={false}
-            style={{ marginTop: responsive.h(10),}}
+            style={{ marginTop: responsive.h(10), }}
           >
             {this.state.images.length < 5 && (
               <View
                 style={{
                   justifyContent: "center",
-                  backgroundColor: "#ffff",
+                  alignItems: "center",
+                  backgroundColor: colors.grayBorder,
                   borderRadius: responsive.h(5),
                   padding: responsive.h(5),
-                  marginTop: responsive.h(10),
                   marginRight: responsive.h(10),
-                  height: responsive.h(80),
+                  marginTop: responsive.h(10),
                 }}
               >
                 <MyIcon
                   onPress={() => this._onAttachment()}
                   name="camera"
-                  size={responsive.h(20)}
-                  color="gray"
+                  size={responsive.h(40)}
+                  color="#a8acaf"
                 />
-                <Text
+                <View
                   style={{
-                    textAlign: "center",
-                    color: colors.gray1,
-                    fontFamily: "Inter-Medium",
-                    fontSize: responsive.h(14),
+                    borderRadius: responsive.h(2),
+                    backgroundColor: "#abafb2",
+                    padding: responsive.h(3),
                   }}
                 >
-                  Nhấn vào để tải ảnh
-                </Text>
+                  <Text
+                    style={{
+                      fontFamily: "OpenSans-Regular",
+                      fontSize: responsive.h(8),
+                      fontWeight: "normal",
+                      fontStyle: "normal",
+                      letterSpacing: 0,
+                      textAlign: "left",
+                      color: "#ffffff",
+                    }}
+                  >
+                    {Strings.createRequest.addPhoto}
+                  </Text>
+                </View>
               </View>
             )}
             {this.state.images.map((eachImage, y) => {
@@ -834,7 +560,7 @@ class DangThucHien_TaiSan extends Component {
                   >
                     <Image
                       source={{ uri: eachImage.uri }}
-                      style={{ width: responsive.w(90), height: responsive.h(120), zIndex: 0 }}
+                      style={{ width: responsive.w(90), height: responsive.h(120), zIndex: 0, borderRadius: responsive.h(8) }}
                     />
                   </Lightbox>
 
@@ -875,10 +601,10 @@ class DangThucHien_TaiSan extends Component {
                 textAlign: "center",
                 color: colors.gray1,
                 fontFamily: "Inter-Regular",
-                fontSize: responsive.h(14),
+                fontsize: responsive.h(14),
               }}
             >
-              Nhấn vào để tải ảnh
+              {Strings.createRequest.textPhoto}
             </Text>
           </TouchableOpacity>
         )}
@@ -905,7 +631,7 @@ class DangThucHien_TaiSan extends Component {
       >
         <Loader_Detail flex={0} color={colors.white} />
         <Text style={{ color: "#fff", alignSelf: "center", fontSize: responsive.h(14) }}>
-          {"Vui lòng chờ..."}
+        {`${Strings.message.pleaseWait}...`}
         </Text>
       </View>
     );
@@ -947,7 +673,7 @@ class DangThucHien_TaiSan extends Component {
                 fontFamily: "Inter-Bold",
               }}
             >
-              {"Huỷ"}
+              {Strings.handover.cancel}
             </Text>
           </TouchableOpacity>
 
@@ -976,7 +702,7 @@ class DangThucHien_TaiSan extends Component {
                 fontFamily: "Inter-Bold",
               }}
             >
-              {"Thực hiện"}
+              {Strings.handover.ok}
             </Text>
           </TouchableOpacity>
         </View>
@@ -1015,7 +741,7 @@ class DangThucHien_TaiSan extends Component {
                 fontSize: responsive.h(16),
               }}
             >
-              Bàn giao
+              {Strings.handover.handover}
             </Text>
           </View>
           <View
@@ -1057,13 +783,6 @@ class DangThucHien_TaiSan extends Component {
                 justifyContent: "space-around",
               }}
             >
-              {/* <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Text style={{ marginRight: responsive.h(10),color:colors.appTheme,fontWeight:'bold',fontSize:14 }}>ĐẠT</Text>
-                                <Switch value={this.state.isDat} onValueChange={() => {
-                                    this.setState({ isDat: !this.state.isDat })
-                                }} />
-                            </View> */}
-
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Text
                   style={{
@@ -1072,7 +791,7 @@ class DangThucHien_TaiSan extends Component {
                     fontSize: responsive.h(14),
                   }}
                 >
-                  Đạt /
+                  {Strings.handover.complete} /
                   <Text
                     style={{
                       color: this.state.isKhongDat
@@ -1082,7 +801,7 @@ class DangThucHien_TaiSan extends Component {
                       fontSize: responsive.h(14),
                     }}
                   >
-                    Không đạt
+                    {Strings.handover.failed}
                   </Text>
                 </Text>
                 <Switch
@@ -1116,7 +835,7 @@ class DangThucHien_TaiSan extends Component {
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({ ghiChu: text })}
               value={this.state.ghiChu}
-              placeholder="Ghi chú..."
+              placeholder={`${Strings.handover.note}...`}
               placeholderTextColor="#a5a5a5"
               //   multiline={true}
             />
@@ -1131,17 +850,9 @@ class DangThucHien_TaiSan extends Component {
   }
 
   item_thuchien = async () => {
-    // this.setState({ showModal: false },()=>{
-    //     show('thanh cong')
-    // })
-    // console.log(this.state.images)
     this.setState({ isSave: true });
     // return
     await this.props.UploadImages(this.state.images).then((data) => {
-      //console.log(data)
-      // console.log('data '+data.length)
-      // console.log('state '+this.state.images.length)
-      // return
       if (data.length === this.state.images.length) {
         // return
         var _item = this.state.item;
@@ -1193,7 +904,7 @@ class DangThucHien_TaiSan extends Component {
                     isSave: false,
                   },
                   () => {
-                    show("Lỗi: Vui lòng thử lại sau!");
+                    show(`${Strings.message.saveError}!`);
                   }
                 );
               }
@@ -1223,7 +934,7 @@ class DangThucHien_TaiSan extends Component {
       >
         <Loader_Detail flex={0} color={colors.white} />
         <Text style={{ color: "#fff", alignSelf: "center", fontSize: responsive.h(14)}}>
-          {"vui lòng chờ...".toLocaleUpperCase()}
+        {`${Strings.message.pleaseWait}...`.toLocaleUpperCase()}
         </Text>
       </View>
     );
@@ -1271,7 +982,7 @@ class DangThucHien_TaiSan extends Component {
               fontSize: responsive.h(16),
             }}
           >
-            {"Huỷ"}
+            {Strings.handover.cancel}
           </Text>
         </TouchableOpacity>
 
@@ -1298,7 +1009,7 @@ class DangThucHien_TaiSan extends Component {
               fontSize: responsive.h(16),
             }}
           >
-            {"Thực hiện"}
+            {Strings.handover.ok}
           </Text>
         </TouchableOpacity>
       </View>
@@ -1338,7 +1049,7 @@ class DangThucHien_TaiSan extends Component {
                 paddingVertical: responsive.h(10),
               }}
             >
-              Thêm hạng mục kiểm tra
+              {Strings.handover.add} {Strings.handover.nameTestItem}
             </Text>
             <View
               style={{
@@ -1382,7 +1093,7 @@ class DangThucHien_TaiSan extends Component {
                 }}
               >
                 {this.state.nhom == ""
-                  ? "Vui lòng chọn nhóm"
+                  ? `${Strings.common.choose} ${Strings.common.group}`
                   : this.state.nhom.name}
               </Text>
               <MyIcon name="arrow-down" size={15} color={colors.gray1} />
@@ -1418,7 +1129,7 @@ class DangThucHien_TaiSan extends Component {
                 }}
               >
                 {this.state.tang == ""
-                  ? "Vui lòng chọn tầng"
+                  ? `${Strings.common.choose} ${Strings.electric.floor}`
                   : this.state.tang.name}
               </Text>
               <MyIcon name="arrow-down" size={15} color={colors.gray1} />
@@ -1441,7 +1152,7 @@ class DangThucHien_TaiSan extends Component {
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({ hangmuc: text })}
               value={this.state.hangmuc}
-              placeholder="Hạng mục kiểm tra..."
+              placeholder={`${Strings.handover.nameTestItem}...`}
               placeholderTextColor="#a5a5a5"
               multiline={true}
             />
@@ -1463,7 +1174,7 @@ class DangThucHien_TaiSan extends Component {
               underlineColorAndroid="transparent"
               onChangeText={(text) => this.setState({ mota: text })}
               value={this.state.mota}
-              placeholder="Mô tả..."
+              placeholder={`${Strings.handover.describe}...`}
               placeholderTextColor="#a5a5a5"
               multiline={true}
             />
@@ -1649,10 +1360,10 @@ class DangThucHien_TaiSan extends Component {
             this.props
               .HandOverChangeStatus(dataSend)
               .then((data) => {
-                if (data.status === 1) {
+                if (data.status === 200) {
                   if (!isUpdateTime) {
                     setTimeout(() => {
-                      show("Thành công!");
+                      show(`${Strings.message.saveSuccess}!`);
                       this.props.refreshDataHandle();
                     }, 500);
                   }
@@ -1665,7 +1376,9 @@ class DangThucHien_TaiSan extends Component {
               .then(() => {
                 if (isUpdateTime) {
                   //nếu rơi vào trạng thái đang còn lỗi thì cập nhật lại thời gia dự kiến hoàn thành tiếp theo
-                  this._showDateTimePicker();
+                  setTimeout(() => {
+                    this._showDateTimePicker();
+                  }, 500);
                 }
               });
           });
@@ -1687,7 +1400,7 @@ class DangThucHien_TaiSan extends Component {
             fontFamily: "Inter-Medium",
           }}
         >
-          {name}
+          {converStatusToByString(name)}
         </Text>
       </TouchableOpacity>
     );
@@ -1731,9 +1444,10 @@ class DangThucHien_TaiSan extends Component {
         // return
 
         this.props.HandOverFinishDate(data).then((data) => {
-          if (data.status === 1) {
+          console.log(data)
+          if (data.status === 200) {
             setTimeout(() => {
-              show("Thành công!");
+              show(`${Strings.message.saveSuccess}!`);
               this.props.refreshDataHandle();
             }, 500);
           } else {
@@ -1811,7 +1525,7 @@ class DangThucHien_TaiSan extends Component {
                 }}
                 style={{ padding: responsive.h(10),}}
               >
-                <Text style={{ color: "black" }}>Huỷ</Text>
+                <Text style={{ color: "black" }}>{Strings.handover.cancel}</Text>
               </TouchableOpacity>
             }
           />
@@ -1837,7 +1551,7 @@ class DangThucHien_TaiSan extends Component {
                   color: "black",
                 }}
               >
-                Danh mục tài sản
+                {Strings.handover.navTitleDetail}
               </Text>
             }
             rightView={
@@ -1956,7 +1670,7 @@ class DangThucHien_TaiSan extends Component {
           renderItem={this.renderActionSheetItemStatus}
           closeAction={() => this.setState({ showActionStatus: false })}
         />
-        <DateTimePicker
+        {/* <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDatePicked}
           onCancel={this._hideDateTimePicker}
@@ -1965,6 +1679,18 @@ class DangThucHien_TaiSan extends Component {
           titleIOS="Chọn thời gian"
           mode="date"
           locale="vi_VN" //https://gist.github.com/jacobbubu/1836273
+        /> */}
+        <DatePicker
+          modal
+          mode="date"
+          open={this.state.isDateTimePickerVisible}
+          onConfirm={this._handleDatePicked}
+          onCancel={this._hideDateTimePicker}
+          confirmText={'Ok'}
+          title={`${Strings.handover.mesTimeUpdate}`}
+          cancelText={Strings.handover.cancel}
+          date={new Date()}
+          locale={this.props.language == 1 ? "vi_VN" : 'en_US'}
         />
       </View>
     );
@@ -2009,7 +1735,7 @@ const mapStateToProps = (state) => ({
   searchKey: state.checklist_dangthuchien_taisan_khachhang.searchKey,
   errorResponse: state.checklist_dangthuchien_taisan_khachhang.errorResponse,
   canNavigate: state.servicesBasicDetail.data == null,
-  language: state.app.language == "vi" ? 1 : responsive.h(2),
+  language: state.app.language == "vi" ? 1 : 2,
   item: state.checklist_dangthuchien_khachhang.item,
 });
 

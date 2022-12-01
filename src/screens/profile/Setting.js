@@ -23,7 +23,7 @@ import { resetStateByKey } from "../../actions/app";
 import { MyIcon } from "../../theme/icons";
 import Strings from "../../utils/languages";
 import NavBar from "../../resident/components/common/NavBar";
-
+import { getRequestStatusTotal } from "../../actions/request";
 class SettingScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
     headerTitle: Strings.setting.language.toLocaleUpperCase(),
@@ -52,7 +52,6 @@ class SettingScreen extends Component {
   onValueChange(key, value) {
     this.props.resetStateByKey({ key: value });
   }
-
   render() {
     const languageValue = this.props.language == "vi" ? 0 : 1;
     const leftButton = (
@@ -108,6 +107,7 @@ class SettingScreen extends Component {
 
   onLanguageValueChange = (value) => {
     this.props.resetStateByKey({ language: value == 0 ? "vi" : "en" });
+    
   };
 }
 
@@ -133,6 +133,7 @@ const mapStateToProps = (state) => ({
 });
 const mapActionToState = {
   resetStateByKey,
+  getRequestStatusTotal
 };
 
 export default connect(

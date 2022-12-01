@@ -9,6 +9,9 @@ import { MyIcon } from "../../../theme/icons";
 import fontsize from "../../../theme/fontsize";
 import responsive from "../../../resources/responsive";
 import NavBar from "../../../resident/components/common/NavBar";
+import {
+  converTypeToString
+} from "../../../utils/notification";
 // create a component
 
 class ListItem extends PureComponent {
@@ -26,7 +29,7 @@ class ListItem extends PureComponent {
         }}
         onPress={() => this.props.onSelected(item)}
       >
-        <Text style={{fontSize: fontsize.small,}}>{name}</Text>
+        <Text style={{fontSize: fontsize.small}}>{converTypeToString(id)}</Text>
       </TouchableOpacity>
     );
   }
@@ -66,7 +69,7 @@ class ListStatus extends Component {
                 alignSelf: "center",
               }}
             >
-              CHỌN NHÓM
+              {Strings.common.choose} {Strings.notifycation.group}
             </Text>
           }
           rightView={null}

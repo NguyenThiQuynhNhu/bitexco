@@ -17,11 +17,7 @@ import moment from "moment";
 import "moment/locale/vi";
 
 import Strings from "../../utils/languages";
-import {
-  loadDataHandle,
-  resetStateByKey,
-  refreshDataHandle,
-} from "../../actions/fee";
+
 import ErrorContent from "../../components/common/ErrorContent";
 
 import ListItem from "./ListItem";
@@ -37,7 +33,13 @@ import _ from "lodash";
 import Base64 from "crypto-js/enc-base64";
 import { WebView } from "react-native-webview";
 import responsive from "../../../resources/responsive";
-
+import { Screen } from "../../utils/device";
+//data
+import {
+  loadDataHandle,
+  resetStateByKey,
+  refreshDataHandle,
+} from "../../actions/fee";
 // create a component
 class PaymentScreen extends Component {
   static navigationOptions = {
@@ -147,8 +149,8 @@ class PaymentScreen extends Component {
             >
               <ImageProgress
                 style={{
-                  height: responsive.h(40),
-                  width: responsive.h(40),
+                  height: responsive.h(50),
+                  width: responsive.h(50),
                 }}
                 circle={true}
                 resizeMode="stretch"
@@ -183,7 +185,7 @@ class PaymentScreen extends Component {
           rightView={
             <TouchableOpacity
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingLeft: responsive.h(25)
               }}
               onPress={() => this.props.navigation.navigate("paymentHistory")}
             >
@@ -195,23 +197,32 @@ class PaymentScreen extends Component {
           <ScrollView
             horizontal
             contentContainerStyle={{
-              flex: 1,
-              height: "100%",
             }}
+            showsHorizontalScrollIndicator={false}
           >
+            <View
+              style={{
+                backgroundColor: "#f1f1f1",
+                width: Screen.width,
+                height: responsive.h(3),
+                borderRadius: 4,
+                position: 'absolute',
+                bottom: 0,
+              }}
+            />
             <TouchableOpacity onPress={() => this.setState({ paid: false })}>
               <Text
                 style={{
                   fontFamily: "Inter-Bold",
                   fontSize: responsive.h(14),
-                  paddingLeft: responsive.h(20),
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: !this.state.paid ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.h(10),
                   textAlign: "center",
-                  paddingVertical: responsive.h(10),
+                  marginHorizontal: responsive.h(20),
+                  marginTop: responsive.h(10),
+                  marginBottom: responsive.h(15)
                 }}
               >
                 {Strings.payment.unpaidStatus}
@@ -219,14 +230,14 @@ class PaymentScreen extends Component {
               <View
                 style={{
                   // width: Platform.basic ? 64 : 44,
-                  width: "130%",
+                  width: "100%",
                   height: responsive.h(3),
                   borderRadius: responsive.h(4),
                   backgroundColor: !this.state.paid
                     ? colors.appTheme
                     : "#f1f1f1",
-                  marginTop: responsive.h(5),
-                  paddingHorizontal: responsive.h(20),
+                    position: 'absolute',
+                  bottom: 0,
                 }}
               />
             </TouchableOpacity>
@@ -249,10 +260,10 @@ class PaymentScreen extends Component {
                   fontStyle: "normal",
                   letterSpacing: 0,
                   color: this.state.paid ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.h(10),
                   textAlign: "center",
-                  paddingLeft: responsive.h(20),
-                  paddingVertical: responsive.h(10),
+                  marginHorizontal: responsive.h(20),
+                  marginTop: responsive.h(10),
+                  marginBottom: responsive.h(15)
                 }}
               >
                 {Strings.payment.paidStatus}
@@ -261,47 +272,14 @@ class PaymentScreen extends Component {
               <View
                 style={{
                   // width: Platform.isPad ? 64 : 44,
-                  width: this.state.paid ? "130%" : "160%",
+                  width: '100%',
                   height: responsive.h(3),
                   borderRadius: responsive.h(4),
                   backgroundColor: this.state.paid
                     ? colors.appTheme
                     : "#f1f1f1",
-                  marginTop: responsive.h(5),
-                }}
-              />
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                backgroundColor: "#fff",
-              }}
-              disabled={true}
-            >
-              <Text
-                style={{
-                  fontFamily: "Inter-Bold",
-                  fontSize: responsive.h(14),
-                  fontWeight: "bold",
-                  fontStyle: "normal",
-                  letterSpacing: 0,
-                  color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
-                  paddingHorizontal: responsive.h(20),
-                  textAlign: "center",
-                  paddingVertical: responsive.h(10),
-                  color: "#fff",
-                }}
-              />
-              <View
-                style={{
-                  // width: Platform.isPad ? 64 : 44,
-                  width: this.state.type == 3 ? "130%" : "160%",
-                  height: responsive.h(3),
-                  borderRadius: responsive.h(4),
-                  backgroundColor:
-                    this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                  marginTop: responsive.h(5),
+                    position: 'absolute',
+                  bottom: 0,
                 }}
               />
             </TouchableOpacity>
@@ -498,6 +476,7 @@ class PaymentScreen extends Component {
           this.onEndReachedCalledDuringMomentum = false;
         }}
         ListFooterComponent={this.renderFooter}
+        style={{marginTop: responsive.h(10)}}
       />
     );
   }

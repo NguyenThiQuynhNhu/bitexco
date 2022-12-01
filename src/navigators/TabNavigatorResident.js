@@ -67,6 +67,7 @@ export default createBottomTabNavigator(
         let iconTab;
         let text;
         const d = getPath(width, 65, 55, 0);
+        const d1 = getPath(width, 70, 55, 0);
         switch (routeName) {
           case "distable":
             // console.log(DeviceInfo)
@@ -74,23 +75,25 @@ export default createBottomTabNavigator(
             return (
               <View
                 style={{
-                  padding: 1,
+                  // padding: 1,
                   width: 50,
                   height: 50,
                   borderRadius: 25,
-                  backgroundColor: "#DDDDDD",
                   //backgroundColor: "transparent",
                   justifyContent: "center",
                   alignItems: "center",
                   position: "absolute",
                   top: Platform.isPad ? -25 : -17,
+                  elevation: 1
                 }}
               >
+                <View style={{ ...styles.MainView, position: 'absolute', height: 5, bottom: -35, backgroundColor: '#fff' }} />
                 <ImageProgress
                   source={{ uri: screenProps.towerLogoUrl }}
                   circle={true}
-                  style={{ width: 49, height: 49 }}
+                  style={{ width: 53, height: 53 }}
                 />
+
               </View>
             );
 
@@ -173,9 +176,9 @@ export default createBottomTabNavigator(
             return (
               <Svg style={styles.Svg} width={width} height={65}>
                 <Path
-                  fill={"#fff"}
+                  fill={"#none"}
                   stroke="#DDDDDD"
-                  strokeWidth={1.5}
+                  strokeWidth={1}
                   {...{ d }}
                 />
                 <View style={styles.MainView}>
@@ -185,7 +188,7 @@ export default createBottomTabNavigator(
                       size={responsive.h(26)}
                       color={tintColor}
                     />
-                    {badge !== 0 && (
+                    {/* {badge !== 0 && (
                       <View style={styles.IconBadge1}>
                         <Text
                           style={{
@@ -196,7 +199,7 @@ export default createBottomTabNavigator(
                           {badge > 99 ? "99+" : badge}
                         </Text>
                       </View>
-                    )}
+                    )} */}
                   </View>
                   <Text
                     style={{
@@ -330,7 +333,9 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width: width / 5,
-    height: 70,
+    height: 65,
+    marginTop: 5,
+    backgroundColor: '#fff'
   },
   container: {
     //flex: 1,
@@ -341,7 +346,7 @@ const styles = StyleSheet.create({
     height: 70,
     position: "absolute",
     //bottom: Devices.isTablet ? -60 : -20,
-    left: Platform.isPad ? -(Screen.width / 10 - responsive.h(10)) : 0,
+    left: Platform.isPad ? -(Screen.width / 10 - responsive.h(8.5)) : 0,
     //bottom: 0
   },
   text: {

@@ -13,10 +13,13 @@ import _ from "lodash";
 import { MyIcon } from "../../theme/icons";
 import colors from "../../theme/colors";
 import index from "../../screens/statistics/general";
+import {
+  converNameTopPiority
+} from "../../utils/request";
 
 import NavBar from "../../resident/components/common/NavBar";
 import responsive from "../../resources/responsive";
-
+import Strings from "../../utils/languages";
 // create a component
 class ModalPicker extends Component {
   constructor(props) {
@@ -40,6 +43,7 @@ class ModalPicker extends Component {
       visible,
       dislayValue,
       style,
+      priority = false
     } = this.props;
 
     const { selectedValue } = this.state;
@@ -61,7 +65,7 @@ class ModalPicker extends Component {
                   color: "black",
                 }}
               >
-                Chọn
+                {Strings.common.choose}
               </Text>
             }
             // rightView={
@@ -99,7 +103,8 @@ class ModalPicker extends Component {
                             : "darkgrey",
                       }}
                     >
-                      {item[dislayValue]}
+                      
+                      {priority ? converNameTopPiority(item.id): item[dislayValue]}
                     </Text>
                     {item.id == selectedValue && (
                       <Text style={{ color: colors.appTheme, fontSize: responsive.h(14) }}>✓</Text>

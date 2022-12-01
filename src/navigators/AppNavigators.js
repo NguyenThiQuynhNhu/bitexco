@@ -61,7 +61,6 @@ import ProposalStatusScreen from "../screens/proposal/List/ListStatus";
 
 import ChecklistScreen from "../screens/checklist/List";
 import MaintenanceScreen from "../screens/maintenance/List";
-
 import PropertiesScreen from "../screens/checklist/Detail/property";
 import HistoryScreen from "../screens/checklist/Detail/history2";
 
@@ -111,6 +110,7 @@ import Notification_Bangiao_Detail from "../screens/notification/notification_ba
 import ChecklistOfflineScreen from "../screens/checklistOffline/List";
 import ChecklistOfflineDetailScreen from "../screens/checklistOffline/Detail";
 import MainScreen from "../navigators/TabNavigatorResident";
+import HomeScreen from "../resident/Home";
 import ProfileScreen from "../resident/screens/profile";
 import NotificationResidentScreen from "../resident/screens/notification";
 import NewsDetail from "../resident/screens/notification/Detail";
@@ -134,7 +134,7 @@ import HotlineScreen from "../resident/screens/vendor/HomeVendor/hotline";
 import RuleDetailScreen from "../resident/screens/RuleDetail";
 import ChangePassScreen from "../resident/screens/profile/changePass";
 import HandoverScheduleScreen from "../resident/screens/handoverSchedule/index";
-import BuildingScreen from "../screens/auth/Building";
+import BuildingScreen from "../screens/building";
 import SurveyScreen from "../resident/screens/profile/survey/index";
 import SurveyDetailScreen from "../resident/screens/profile/survey/Detail";
 import CarCardScreen from "../resident/screens/profile/carCard";
@@ -142,6 +142,15 @@ import CarCardCreateScreen from "../resident/screens/profile/carCard/carCardCrea
 import ListTypeCar from "../resident/screens/profile/carCard/ListTypeCar";
 import NewsEm from "../screens/news";
 import DeparmentDetail from "../resident/screens/profile/DeparmentDetail";
+import BuildingDetailScreen from "../screens/building/detail";
+
+import RequestResidentScreen from "../resident/screens/request/List";
+
+import NotificationResidenScreen from "../resident/screens/notification";
+
+import UtilityResidentScreen from "../resident/screens/utility";
+
+import PaymenttResidentScreen from "../resident/screens/payment";
 export const Navigator = createStackNavigator(
   {
     splash: {
@@ -402,6 +411,7 @@ export const Navigator = createStackNavigator(
     main: {
       screen: MainScreen,
     },
+    home: { screen: HomeScreen },
     profile: {
       screen: ProfileScreen,
     },
@@ -487,6 +497,12 @@ export const Navigator = createStackNavigator(
     carCardCreate: { screen: CarCardCreateScreen },
     listTypeCar: { screen: ListTypeCar },
     listNewsEm: { screen: NewsEm },
+    builđingDetail : { screen: BuildingDetailScreen},
+
+    requestsResiden : { screen: RequestResidentScreen},
+    notificationResident : { screen: NotificationResidenScreen},
+    utilityResident : { screen: UtilityResidentScreen},
+    paymentResident : { screen: PaymenttResidentScreen},
   },
   {
     initialRouteName: "splash",

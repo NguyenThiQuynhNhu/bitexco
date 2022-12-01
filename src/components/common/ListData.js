@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, FlatList, ActivityIndicator } from 'react-nativ
 import { get, helper } from '../../services/helper';
 import colors from '../../theme/colors';
 import ErrorContent from './ErrorContent';
-
+import Strings from "../../utils/languages";
 
 // create a component
 class ListData extends Component {
@@ -118,10 +118,10 @@ class ListData extends Component {
             emptyData
         } = this.state
         if (error && error.hasError) {
-            return <ErrorContent title="Lỗi kết nối" />
+            return <ErrorContent title={Strings.app.error} />
         }
         if (emptyData) {
-            return <ErrorContent title="Không có dữ liệu" />
+            return <ErrorContent title={Strings.app.emptyData} />
         }
         return (
             <View style={styles.container}>

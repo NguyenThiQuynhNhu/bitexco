@@ -17,7 +17,8 @@ const INITIAL_STATE = {
     isLoading: false,
     error: null,
     progressing: false,
-    errorProgress: false
+    errorProgress: false,
+    isRefreshing: false,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -35,6 +36,13 @@ export default (state = INITIAL_STATE, action) => {
                 [action.payload.key]: action.payload.value
             };
         }
+        case 'DEPARMENT_DETAIL_REFRESHING': {
+            return {
+                ...state,
+                isRefreshing: true,
+                data: INITIAL_STATE.data
+            };
+        }
         case DEPARMENT_DETAIL_REQUEST: {
             return {
                 ...state,
@@ -48,6 +56,7 @@ export default (state = INITIAL_STATE, action) => {
                 ...state,
                 initComponent: false,
                 isLoading: false,
+                isRefreshing: false,
                 data: action.payload.data,
                 error: { hasError: false }
             };
@@ -56,9 +65,10 @@ export default (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoading: false,
+                isRefreshing: false,
                 error: {
                     hasError: true,
-                    error: action.payload.data
+                    //error: action.payload.data
                 }
             };
         }

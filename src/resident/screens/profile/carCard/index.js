@@ -50,20 +50,22 @@ class ListItem extends PureComponent {
     return (
       <TouchableOpacity
         style={{
+          flexDirection: "row",
           marginBottom: responsive.h(10),
           borderRadius: responsive.h(12),
-          // backgroundColor: "#ffffff",
+          backgroundColor: "#ffffff",
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
           // shadowColor: "rgba(0, 0, 0, 0.1)",
           // elevation: 2,
           // shadowOffset: {
           //   width: 0,
           //   height: 4,
           // },
-          borderWidth: responsive.h(2),
-          borderColor: "#f1f1f1",
           // shadowRadius: 10,
-          shadowOpacity: 1,
-          marginHorizontal: 10,
+          // shadowOpacity: 1,
+          marginHorizontal: responsive.h(10),
         }}
         onPress={onPress}
       >
@@ -283,14 +285,9 @@ class ListItem3 extends PureComponent {
           marginBottom: responsive.h(10),
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.1)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 10,
-          shadowOpacity: 1,
+          borderWidth: 0.5,
+          borderColor: "#d2d2d2",
+          borderBottomWidth: 2,
           marginHorizontal: responsive.h(10),
         }}
         onPress={onPress}
@@ -581,14 +578,13 @@ class CarCardScreen extends Component {
         </View>
       );
     }
-    if (emptyData) {
-      return (
-        <ErrorContent
-          title={Strings.app.emptyData}
-          onTouchScreen={() => this.props.refreshDataHandle()}
-        />
-      );
-    }
+    if (emptyData) return (
+      <ErrorContent
+        title={Strings.app.emptyData}
+        onTouchScreen={() => this.props.refreshDataHandle()}
+      />
+    )
+
     if (error && error.hasError) {
       return (
         <ErrorContent
@@ -597,29 +593,60 @@ class CarCardScreen extends Component {
         />
       );
     }
-    return (
-      <FlatList
-        keyExtractor={(item, index) => `${index}`}
-        refreshing={isRefreshing}
-        onRefresh={() => this.props.refreshDataHandle()}
-        data={data}
-        renderItem={
-          this.state.type == 1
-            ? this.renderItem1
-            : this.state.type == 2
-            ? this.renderItem3
-            : this.renderItem2
-        }
-        onEndReachedThreshold={0.5}
-        style={{
-          paddingHorizontal: responsive.h(10),
-          marginTop: responsive.h(7),
-        }}
-        contentContainerStyle={{
-          marginTop: responsive.h(10),
-        }}
-      />
-    );
+    if (data) {
+      let data1 = data.filter(i => i.isMonthlyTicket);
+      let data2 = data.filter(i => !i.isMonthlyTicket && !i.isApproval);
+      let data3 = data.filter(i => !i.isMonthlyTicket && i.isStop);
+      if (this.state.type == 1 && data1.length == 0) {
+        return (
+          <ErrorContent
+            title={Strings.app.emptyData}
+            onTouchScreen={() => this.props.refreshDataHandle()}
+          />
+        )
+      }
+      if (this.state.type == 3 && data2.length == 0) {
+        return (
+          <ErrorContent
+            title={Strings.app.emptyData}
+            onTouchScreen={() => this.props.refreshDataHandle()}
+          />
+        )
+      }
+      if (this.state.type == 2 && data3.length == 0) {
+        return (
+          <ErrorContent
+            title={Strings.app.emptyData}
+            onTouchScreen={() => this.props.refreshDataHandle()}
+          />
+        )
+      }
+      return (
+        <FlatList
+          keyExtractor={(item, index) => `${index}`}
+          refreshing={isRefreshing}
+          onRefresh={() => this.props.refreshDataHandle()}
+          data={data}
+          renderItem={
+            this.state.type == 1
+              ? this.renderItem1
+              : this.state.type == 2
+                ? this.renderItem3
+                : this.renderItem2
+          }
+          onEndReachedThreshold={0.5}
+          style={{
+            flex: 1,
+            paddingHorizontal: responsive.h(10),
+            marginTop: responsive.h(7),
+          }}
+          contentContainerStyle={{
+            marginTop: responsive.h(10),
+          }}
+        />
+      );
+    }
+
   }
   render() {
     return (
@@ -629,7 +656,7 @@ class CarCardScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -638,13 +665,9 @@ class CarCardScreen extends Component {
           body={
             <Text
               style={{
-                padding: responsive.h(10),
-                // width: Screen.width - 124,
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(18),
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
-                fontStyle: "normal",
-                letterSpacing: 0,
                 textAlign: "center",
                 color: "black",
               }}
@@ -654,15 +677,31 @@ class CarCardScreen extends Component {
               {Strings.carCard.title}
             </Text>
           }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
+          }
         />
-        <View>
+        <View style={{}}>
           <ScrollView
             horizontal
+            showsHorizontalScrollIndicator={false}
             contentContainerStyle={{
-              flex: 1,
-              height: "100%",
             }}
           >
+            <View
+              style={{
+                backgroundColor: "#f1f1f1",
+                width: Screen.width,
+                height: responsive.h(3),
+                borderRadius: 4,
+                position: 'absolute',
+                bottom: 0,
+              }}
+            />
             <TouchableOpacity onPress={() => this.setState({ type: 1 })}>
               <Text
                 style={{
@@ -672,7 +711,7 @@ class CarCardScreen extends Component {
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  color: this.state.type == 1 ? "#3d3d3d" : "#c8c8c8",
+                  color: "#3d3d3d",
                   paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
@@ -682,26 +721,18 @@ class CarCardScreen extends Component {
               </Text>
               <View
                 style={{
-                  // width: Platform.basic ? 64 : 44,
-                  width: Screen.width / 3,
+                  width: '100%',
                   height: responsive.h(3),
                   borderRadius: 4,
                   backgroundColor:
                     this.state.type == 1 ? colors.appTheme : "#f1f1f1",
-                  marginTop: responsive.h(5),
-                  paddingHorizontal: responsive.h(20),
                 }}
               />
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => this.setState({ type: 2 })}
-              style={
-                {
-                  // flex: 1,
-                  // justifyContent: "center",
-                  // alignItems: "center",
-                }
+              style={{}
               }
             >
               <Text
@@ -711,7 +742,7 @@ class CarCardScreen extends Component {
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  color: this.state.type == 2 ? "#3d3d3d" : "#c8c8c8",
+                  color: "#3d3d3d",
                   paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
@@ -721,23 +752,18 @@ class CarCardScreen extends Component {
               </Text>
               <View
                 style={{
-                  // width: Platform.isPad ? 64 : 44,
-                  // width: this.state.type == 2 ? "150%" : "130%",
-                  width: Screen.width / 3,
-                  height: responsive.h(3),
-                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 2 ? colors.appTheme : "#f1f1f1",
-                  marginTop: responsive.h(5),
+                  width: '100%',
+                  height: responsive.h(3),
+                  borderRadius: 4,
                 }}
               />
             </TouchableOpacity>
 
             <TouchableOpacity
               onPress={() => this.setState({ type: 3 })}
-              style={{
-                flex: 1,
-              }}
+              style={{}}
             >
               <Text
                 style={{
@@ -746,7 +772,7 @@ class CarCardScreen extends Component {
                   fontWeight: "bold",
                   fontStyle: "normal",
                   letterSpacing: 0,
-                  color: this.state.type == 3 ? "#3d3d3d" : "#c8c8c8",
+                  color: "#3d3d3d",
                   paddingHorizontal: responsive.h(20),
                   textAlign: "center",
                   paddingVertical: responsive.h(10),
@@ -756,17 +782,15 @@ class CarCardScreen extends Component {
               </Text>
               <View
                 style={{
-                  // width: Platform.isPad ? 64 : 44,
-                  // width: this.state.type == 3 ? "200%" : "130%",
-                  width: Screen.width / 3,
-                  height: responsive.h(3),
-                  borderRadius: responsive.h(4),
                   backgroundColor:
                     this.state.type == 3 ? colors.appTheme : "#f1f1f1",
-                  marginTop: responsive.h(5),
+                  width: '100%',
+                  height: responsive.h(3),
+                  borderRadius: 4,
                 }}
               />
             </TouchableOpacity>
+
           </ScrollView>
         </View>
         {this._renderContent()}
@@ -838,3 +862,4 @@ export default connect(
   mapStateToProps,
   mapActionToProps
 )(CarCardScreen);
+

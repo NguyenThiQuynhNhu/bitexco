@@ -62,17 +62,17 @@ const MenuPicker = ({ name, onPress, icon }) => {
     >
       <View
         style={{
-          width: responsive.h(30),
-          height: responsive.h(30),
-          borderRadius: responsive.h(6),
-          backgroundColor: colors.gray2,
+          width: responsive.h(35),
+          height: responsive.h(35),
+          borderRadius: responsive.h(20),
+          backgroundColor: '#e4e6eb',
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         <MyIcon
           name={icon}
-          size={responsive.h(20)}
+          size={responsive.h(22)}
           color={"black"}
           //style={{ marginHorizontal: 20 }}
         />
@@ -80,11 +80,9 @@ const MenuPicker = ({ name, onPress, icon }) => {
 
       <Text
         style={{
-          fontFamily: "OpenSans-Regular",
+          fontFamily: "Inter-Regular",
           fontSize: responsive.h(16),
-          fontWeight: "normal",
-          fontStyle: "normal",
-          letterSpacing: 0,
+          fontWeight: '600',
           textAlign: "left",
           color: "#494856",
           marginLeft: responsive.h(10),
@@ -141,7 +139,7 @@ class ProfileScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -150,12 +148,9 @@ class ProfileScreen extends Component {
           body={
             <Text
               style={{
-                padding: responsive.h(10),
-                width: Screen.width - responsive.w(124),
                 fontFamily: "Inter-Bold",
-                fontSize: responsive.h(18),
+                fontSize: responsive.h(20),
                 fontWeight: "bold",
-                fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "center",
                 color: "black",
@@ -165,6 +160,13 @@ class ProfileScreen extends Component {
             >
               {Strings.profile.title}
             </Text>
+          }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
           }
         />
         {/* <View style={{ padding: 10, flexDirection: 'row', alignItems: 'center', backgroundColor: colors.appTheme, marginTop: -30 }}>
@@ -222,27 +224,27 @@ class ProfileScreen extends Component {
           >
             <View>
               <View style={{ paddingVertical: responsive.h(0) }} />
-              <MenuPicker
+              {/* <MenuPicker
                 icon="sphere"
                 name={Strings.profile.settinglanguage}
                 onPress={() =>
                   this.props.navigation.navigate("settingResident")
                 }
-              />
+              /> */}
               {this.props.typeList.length > 1 && (
                 <MenuPicker
-                  icon="profile"
+                  icon="i-vai-tr-ng-dng-01"
                   name={Strings.profile.changeTypeUser}
                   onPress={() => this.setState({ isShowModalType: true })}
                 />
               )}
 
               <MenuPicker
-                icon="info3"
+                icon="password"
                 name={Strings.login.changePass}
                 onPress={() => this.props.navigation.navigate("changePass")}
               />
-              {isListBuilding > 0 ? (
+              {/* {isListBuilding > 0 ? (
                 <MenuPicker
                   icon="layers"
                   name={Strings.login.listBuilding}
@@ -253,10 +255,10 @@ class ProfileScreen extends Component {
                     })
                   }
                 />
-              ) : null}
+              ) : null} */}
 
               <MenuPicker
-                icon="switch"
+                icon="ng-xut-01"
                 name={Strings.profile.logout}
                 onPress={() => this.setState({ isShowModal: true })}
               />

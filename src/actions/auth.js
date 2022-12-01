@@ -169,7 +169,7 @@ export const getOtpCodeNoType = (phoneNumber, isNew = true) => async (dispatch) 
 
 export const loginUser = ({ phoneNumber, type, otpCode, password }) => async (dispatch) => {
   FCM.getFCMToken().then(async tokenDevice => {
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: LOGIN_REQUEST, payload: { data: {phoneNumber, password} } });
     try {
       // let response = await axios.post(`${helper.URL_API}/accounts/verifyOTP`,
       //   {
@@ -276,7 +276,7 @@ export const loginUserByPass = ({ phoneNumber, password, idNew }) => async (disp
     })
   FCM.getFCMToken().then(async tokenDevice => {
     console.log('loginUserByPass', tokenDevice);
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: LOGIN_REQUEST, payload: { data: {phoneNumber, password} } });
     //console.log('loginUserByPass', `${helper.URL_API}/accounts/LoginPhone?ConnectString=${connectString}`);
     try {
       const URL_API = helper.URL_API == 'https://apimyhome.dip.vn/api' ?
@@ -429,7 +429,7 @@ export const loginUserByPass = ({ phoneNumber, password, idNew }) => async (disp
 export const loginUserByPassVendor = ({ phoneNumber, password, type, idNew }) => async (dispatch) => {
 
   FCM.getFCMToken().then(async tokenDevice => {
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: LOGIN_REQUEST, payload: { data: {phoneNumber, password} } });
     try {
       const URL_API = helper.URL_API == 'https://apimyhome.dip.vn/api' ?
         `${helper.URL_API}/accounts/LoginByPass?idNew=${idNew}` : `${helper.URL_API}/accounts/LoginByPass?idNew=${idNew}&isPersonal=true`;
@@ -506,7 +506,7 @@ export const loginUserByPassVendor = ({ phoneNumber, password, type, idNew }) =>
 export const loginUserByPassResident = ({ phoneNumber, password, type, idNew }) => async (dispatch) => {
   console.log('loginUserByPassResident');
   FCM.getFCMToken().then(async tokenDevice => {
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: LOGIN_REQUEST, payload: { data: {phoneNumber, password} } });
     try {
       const URL_API = helper.URL_API == 'https://apimyhome.dip.vn/api' ?
         `${helper.URL_API}/Customer/Login?idNew=${idNew}` : `${helper.URL_API}/Customer/Login?idNew=${idNew}&isPersonal=true`;
@@ -584,7 +584,7 @@ export const loginUserByPassResident = ({ phoneNumber, password, type, idNew }) 
 export const getProfilePayment = ({ phoneNumber, password, type, idNew }) => async (dispatch) => {
   console.log('getProfilePayment');
   FCM.getFCMToken().then(async tokenDevice => {
-    dispatch({ type: LOGIN_REQUEST });
+    dispatch({ type: LOGIN_REQUEST, payload: { data: {phoneNumber, password} } });
     try {
       const URL_API = helper.URL_API == 'https://apimyhome.dip.vn/api' ?
         `${helper.URL_API}/Customer/Login?idNew=${idNew}` : `${helper.URL_API}/Customer/Login?idNew=${idNew}&isPersonal=true`;
@@ -684,7 +684,7 @@ export const signIn = ({ phoneNumber, password }) => async (dispatch) => {
       if (response.status === 200) {
         try {
           dispatch({ type: SIGNIN_SUCCESS });
-          dispatch({ type: LOGIN_REQUEST });
+          dispatch({ type: LOGIN_REQUEST, payload: { data: {phoneNumber, password} } });
           try {
             // let response = await axios.post(`${helper.URL_API}/Customer/Login`,
             //   {
@@ -1105,3 +1105,34 @@ export const demo = () => dispatch => {
     //payload: { data: 'em' }
   });
 }
+export const getProfile = (dataRequest) => async (dispatch) => {
+  try {
+    console.log('getProfile');
+    const url = `/accounts/getProfile`;
+    const ret = await get(url, dataRequest);
+    console.log('getProfile', ret)
+    if (ret !== undefined && ret !== null) {
+      if (ret.status == 200) {
+        await dispatch(unsubscribeFromTopics(dataRequest.towers));
+        await dispatch(subscribeToTopics(ret.data.towers))
+        await dispatch({
+          type: 'SAVE_TOWERS_TOPIC',
+          payload: { towers: ret.data.towers }
+        });
+      }
+      else {
+        if (ret.data !== undefined && ret.data.message !== undefined && ret.data.message == 'DATA_NOT_FOUND') {// đăng xuất
+          FCM.getFCMToken().then(token => {
+            dispatch(signOut({ towers: dataRequest.towers, tokenDevice: token }));
+          });
+        }
+        //
+      }
+    }
+    else {
+      //
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};

@@ -66,7 +66,7 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
               style={{
                 backgroundColor: "#fff",
                 height: responsive.h(100),
-                borderRadius: responsive.h(8),
+                //borderRadius: responsive.h(8),
                 borderWidth: responsive.h(1),
                 padding: responsive.h(10),
                 margin: responsive.h(20),
@@ -131,7 +131,7 @@ const CommentView = ({ onYes, onChangeText, onClose }) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    width: "90%",
+    width: "92.5%",
     height: responsive.h(250),
     borderRadius: responsive.h(16),
     borderBottomWidth: responsive.h(2),

@@ -12,6 +12,7 @@ import {
   Platform,
 } from "react-native";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker'
 import moment from "moment";
 import { connect } from "react-redux";
 import { MyIcon } from "../../theme/icons";
@@ -246,7 +247,7 @@ class BookingModal extends Component {
                         flexDirection: "row",
                         justifyContent: "flex-end",
                         borderRadius: responsive.h(12),
-                        backgroundColor: "#f8fff2",
+                        backgroundColor: colors.grayBorder,
                         shadowColor: "rgba(0, 0, 0, 0.06)",
                         elevation: 2,
                         shadowOffset: {
@@ -277,7 +278,7 @@ class BookingModal extends Component {
                               textAlign: "center",
                               fontFamily: "Inter-SemiBold",
                               fontSize: responsive.h(16),
-                              color: "#fff200",
+                              color: "#000",
                             }}
                           >
                             -
@@ -325,7 +326,7 @@ class BookingModal extends Component {
                               textAlign: "center",
                               fontFamily: "Inter-SemiBold",
                               fontSize: responsive.h(16),
-                              color: "#fff200",
+                              color: "#000",
                               alignItems: "center",
                             }}
                           >
@@ -590,20 +591,23 @@ class BookingModal extends Component {
                 text={Strings.serviceExtension.bookService}
                 onPress={this._onSubmit}
               />
-              <DateTimePicker
-                cancelTextIOS={Strings.app.cancel}
-                titleIOS={Strings.createRequest.at}
-                confirmTextIOS={Strings.app.chose}
-                minimumDate={new Date()}
-                maximumDate={new Date(dateLimited)}
+              <DatePicker
+                cancelText={Strings.app.cancel}
+                title={Strings.createRequest.at}
+                confirmText={Strings.app.chose}
+                // minimumDate={new Date()}
+                // maximumDate={new Date(dateLimited)}
                 mode="datetime"
-                isVisible={this.state.isShowTime}
+                modal
+                open={this.state.isShowTime}
                 onConfirm={(time) => {
                   this.setState({ isShowTime: false, time });
                 }}
                 onCancel={() => {
                   this.setState({ isShowTime: false });
                 }}
+                date={new Date()}
+                locale={this.props.language == 1 ? "vi_VN" : 'en_US'}
               />
             </View>
           )}

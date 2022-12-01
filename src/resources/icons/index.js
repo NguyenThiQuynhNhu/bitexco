@@ -17,4 +17,5 @@ export const icons = {
   checkingDaily: "ktra-nh-k-01",
   internalHandover: "bn-giao-ni-b-01",
   customerHandover: "bn-giao-khch-hng-01",
+  language: 'sphere'
 };

@@ -12,18 +12,33 @@ import {
   KeyboardAvoidingView,
 } from "react-native";
 import { connect } from "react-redux";
-// import ListItem from './ListItem'
-import Swipeable from "react-native-swipeable";
 
-import Toast, { DURATION } from "react-native-easy-toast";
-import moment from "moment";
-import ErrorContent from "../../../components/common/ErrorContent";
-
-// import ButtonFilter from '../../../components/Service/Basic/ButtonFilter';
 //style
 import colors from "../../../theme/colors";
 import fontsize from "../../../theme/fontsize";
 import { Screen } from "../../../utils/device";
+import Strings from "../../../utils/languages";
+import { color } from "react-native-reanimated";
+import { converDateToByString, converStatusToByString } from "../../../utils/handover";
+import responsive from "../../../resources/responsive";
+//
+import { show } from "../../../utils/Toast";
+import ImageProgress from "../../../components/common/ImageProgress";
+import ActionSheet from "../../../components/common/ActionSheet";
+import DateTimePicker from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker'
+import TuNgayPicker from "react-native-modal-datetime-picker";
+import DenNgayPicker from "react-native-modal-datetime-picker";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import NavBar from "../../../resident/components/common/NavBar";
+import { MyIcon } from "../../../theme/icons";
+import { resetStateByKeyEwalle } from "../../../resident/actions/paymentHistory";
+import Swipeable from "react-native-swipeable";
+import Toast, { DURATION } from "react-native-easy-toast";
+import moment from "moment";
+import ErrorContent from "../../../components/common/ErrorContent";
+//
+import { getDate, getDateTime, getDateApi } from "../../../utils/Common";
 //data
 import {
   loadDataHandle,
@@ -42,25 +57,6 @@ import {
   loadDate,
   onChangeDateName,
 } from "../../../actions/utils";
-
-import Strings from "../../../utils/languages";
-import { getDate, getDateTime, getDateApi } from "../../../utils/Common";
-import { show } from "../../../utils/Toast";
-import ImageProgress from "../../../components/common/ImageProgress";
-import ActionSheet from "../../../components/common/ActionSheet";
-import DateTimePicker from "react-native-modal-datetime-picker";
-
-import TuNgayPicker from "react-native-modal-datetime-picker";
-import DenNgayPicker from "react-native-modal-datetime-picker";
-import Icon from "react-native-vector-icons/MaterialIcons";
-
-import NavBar from "../../../resident/components/common/NavBar";
-
-import { MyIcon } from "../../../theme/icons";
-import { resetStateByKeyEwalle } from "../../../resident/actions/paymentHistory";
-import responsive from "../../../resources/responsive";
-import { color } from "react-native-reanimated";
-
 // create a component
 class index extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -214,6 +210,7 @@ class index extends Component {
   }
 
   _renderContent() {
+    console.log(this.props)
     return (
       <View style={{ flex: 1 }}>
         <TouchableOpacity
@@ -238,11 +235,11 @@ class index extends Component {
               fontFamily: "Inter-Bold",
             }}
           >
-            {this.state.statusName}
+            {converStatusToByString(this.state.statusName)}
           </Text>
 
           <Icon
-            style={{ fontSize: fontsize.medium, marginHorizontal: responsive.h(10),}}
+            style={{ fontSize: fontsize.medium, marginHorizontal: responsive.h(10), }}
             name="filter-list"
           />
         </TouchableOpacity>
@@ -281,10 +278,10 @@ class index extends Component {
                 fontWeight: "500",
               }}
             >
-              {this.props.utils.Name}
+              {converDateToByString(this.props.utils.Name)}
             </Text>
             <Icon
-              style={{ fontSize: fontsize.larg, marginLeft: responsive.h(5),}}
+              style={{ fontSize: fontsize.larg, marginLeft: responsive.h(5), }}
               name="arrow-drop-down"
               type="MaterialIcons"
             />
@@ -299,14 +296,6 @@ class index extends Component {
               alignItems: "center",
               borderRadius: responsive.h(12),
               backgroundColor: "#ffffff",
-              //   shadowColor: "rgba(0, 0, 0, 0.1)",
-              //   elevation: 2,
-              //   shadowOffset: {
-              //     width: 0,
-              //     height: 4,
-              //   },
-              //   shadowRadius: responsive.h(10),
-              //   shadowOpacity: 1,
               marginHorizontal: responsive.h(10),
               borderWidth: 0.5,
               borderColor: "#dcdcdc",
@@ -373,7 +362,7 @@ class index extends Component {
           renderItem={this.renderActionSheetItemStatus}
           closeAction={() => this.setState({ showActionStatus: false })}
         />
-        <DateTimePicker
+        {/* <DateTimePicker
           isVisible={this.state.isDateTimePickerVisible}
           onConfirm={this._handleDatePicked}
           onCancel={this._hideDateTimePicker}
@@ -382,9 +371,9 @@ class index extends Component {
           titleIOS="Chọn thời gian"
           mode="date"
           locale="vi_VN" //https://gist.github.com/jacobbubu/1836273
-        />
+        /> */}
 
-        <TuNgayPicker
+        {/* <TuNgayPicker
           date={new Date(this.props.utils.tuNgay)}
           isVisible={this.state.isTuNgayPickerVisible}
           onConfirm={(date) => {
@@ -402,11 +391,32 @@ class index extends Component {
           titleIOS="Chọn thời gian"
           mode="date"
           locale="vi_VN" //https://gist.github.com/jacobbubu/1836273
+        /> */}
+        <DatePicker
+          modal
+          mode="date"
+          open={this.state.isTuNgayPickerVisible}
+          onConfirm={(date) => {
+            this.setState({ isTuNgayPickerVisible: false });
+            this.props.onChangetuNgay(date);
+            setTimeout(() => {
+              this.props.refreshDataHandle();
+            }, 500);
+          }}
+          onCancel={() => {
+            this.setState({ isTuNgayPickerVisible: false });
+          }}
+          confirmText={'Ok'}
+          title={`${Strings.common.choose} ${Strings.handover.time}`}
+          cancelText={Strings.handover.cancel}
+          date={new Date(this.props.utils.tuNgay)}
+          locale={this.props.language == 1 ? "vi_VN" : 'en_US'}
         />
-
-        <DenNgayPicker
+        <DatePicker
+          modal
+          mode="date"
           date={new Date(this.props.utils.denNgay)}
-          isVisible={this.state.isDenNgayPickerVisible}
+          open={this.state.isDenNgayPickerVisible}
           onConfirm={(date) => {
             this.setState({ isDenNgayPickerVisible: false });
             this.props.onChangedenNgay(date);
@@ -417,11 +427,10 @@ class index extends Component {
           onCancel={() => {
             this.setState({ isDenNgayPickerVisible: false });
           }}
-          cancelTextIOS="Huỷ"
-          confirmTextIOS="Xác nhận"
-          titleIOS="Chọn thời gian"
-          mode="date"
-          locale="vi_VN" //https://gist.github.com/jacobbubu/1836273
+          confirmText={'Ok'}
+          title={`${Strings.common.choose} ${Strings.handover.time}`}
+          cancelText={Strings.handover.cancel}
+          locale={this.props.language == 1 ? "vi_VN" : 'en_US'}//https://gist.github.com/jacobbubu/1836273
         />
         <ActionSheet
           title="Chọn thời gian"
@@ -507,7 +516,7 @@ class index extends Component {
                 modalView: this.renderCreateNote(item),
               })
             }
-            style={{ flex: 1, justifyContent: "center", paddingLeft: responsive.h(10),}}
+            style={{ flex: 1, justifyContent: "center", paddingLeft: responsive.h(10), }}
           >
             <Text />
           </TouchableOpacity>,
@@ -555,11 +564,11 @@ class index extends Component {
               {/* lấy ra ký tự đầu và ký tự cuối của mã căn hộ */}
               <View
                 style={{
-                  
+
                   alignItems: "center",
                   textAlign: "center",
                   justifyContent: "center",
-                  
+
                 }}
               >
                 <Text
@@ -630,7 +639,7 @@ class index extends Component {
                 lineBreakMode="tail"
                 numberOfLines={2}
               >
-                {item.statusName}
+                {converStatusToByString(item.statusName)}
               </Text>
             </View>
           </View>
@@ -672,7 +681,7 @@ class index extends Component {
             fontFamily: "Inter-Medium",
           }}
         >
-          {item.name}
+          {converStatusToByString(item.name)}
         </Text>
       </TouchableOpacity>
     );
@@ -707,7 +716,7 @@ class index extends Component {
             fontFamily: "Inter-Medium",
           }}
         >
-          {item.name}
+          {converDateToByString(item.name)}
         </Text>
       </TouchableOpacity>
     );
@@ -725,7 +734,7 @@ class index extends Component {
           leftButton={
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
-              style={{ padding: responsive.h(10),}}
+              style={{ padding: responsive.h(10), }}
             >
               <MyIcon size={responsive.h(20)} name="arrow" color="black" />
             </TouchableOpacity>
@@ -742,11 +751,11 @@ class index extends Component {
                 color: "black",
               }}
             >
-              Bàn giao nội bộ
+              {Strings.handover.navTitleInternal}
             </Text>
           }
           rightView={
-            <TouchableOpacity style={{ padding: responsive.h(10),}}>
+            <TouchableOpacity style={{ padding: responsive.h(10), }}>
               <MyIcon size={responsive.h(24)} name="search" color="transparent" />
             </TouchableOpacity>
           }

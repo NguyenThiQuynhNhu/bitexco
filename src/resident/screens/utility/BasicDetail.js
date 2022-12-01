@@ -130,7 +130,7 @@ class ServicesScreen extends Component {
       } = data;
       const { name } = this.props.navigation.state.params;
       return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, marginTop: responsive.h(10) }}>
           <View
             style={{
               width: Screen.width - responsive.w(40),
@@ -325,7 +325,7 @@ class ServicesScreen extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ paddingVertical: responsive.h(10) }}
+                style={{ paddingVertical: responsive.h(10), paddingHorizontal: responsive.h(12) }}
               >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
@@ -360,7 +360,7 @@ class ServicesScreen extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -384,7 +384,7 @@ class ServicesScreen extends Component {
           rightView={
             <TouchableOpacity
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
               onPress={() =>
                 this.props.navigation.navigate("serviceBasicResident", {

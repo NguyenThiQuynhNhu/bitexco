@@ -64,12 +64,12 @@ export default class Device {
 
   static defaultMarginBottom() {
     return Device.select({
-      ipX: {
-        marginBottom: -40
-      },
-      isXSMax: {
-        marginBottom: -40
-      },
+      // ipX: {
+      //   marginBottom: -40
+      // },
+      // isXSMax: {
+      //   marginBottom: -40
+      // },
       ios: {
         marginBottom: 0
       },

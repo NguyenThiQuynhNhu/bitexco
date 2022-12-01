@@ -60,7 +60,7 @@ class RequestUpdateStatus extends Component {
         }}
       >
         <Lookup
-          fielName={`Trạng thái (*)`}
+          fielName={`${Strings.common.status} (*)`}
           text={
             statuspSelected.id != 0
               ? statuspSelected.name
@@ -176,7 +176,7 @@ class RequestUpdateStatus extends Component {
                 color: "black",
               }}
             >
-              Đổi trạng thái yêu cầu
+              {this.props.navigation.state.params.title}
             </Text>
           }
           rightView={rightButton}
@@ -191,7 +191,7 @@ class RequestUpdateStatus extends Component {
     const { statuspSelected, content, reason } = this.state;
     if (statuspSelected.id == 0) {
       return this.refs.toast.show(
-        `Vui lòng chọn trạng thái mới`,
+        `${Strings.common.pleaseChoose} ${Strings.common.status}`,
         DURATION.LENGTH_LONG
       );
     }

@@ -79,6 +79,8 @@ import reportSurvey from './reportSurvey'
 import carCard from './carCard'
 import carCardCreate from './carCardCreate'
 import version from './version'
+import user from './user'
+import buildingDetail from './buildingDetail'
 import { AppNavigator } from '../../navigators/AppNavigators'
 
 const navReducer = createNavigationReducer(AppNavigator)
@@ -161,7 +163,9 @@ const reducers = combineReducers({
     reportSurvey,
     carCard,
     carCardCreate,
-    version
+    version,
+    user,
+    buildingDetail
 
 })
 

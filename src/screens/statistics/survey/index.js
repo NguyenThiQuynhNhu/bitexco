@@ -182,7 +182,7 @@ class SurveyStatisticScreen extends Component {
     if (emptyData) {
       return (
         <ErrorContent
-          title="Không có dữ liệu"
+          title={Strings.app.emptyData}
           onTouchScreen={() => this.props.refreshDataHandle()}
         />
       );
@@ -190,7 +190,7 @@ class SurveyStatisticScreen extends Component {
     if (error && error.hasError) {
       return (
         <ErrorContent
-          title="Lỗi kết nối"
+          title={Strings.app.error}
           onTouchScreen={() => this.props.refreshDataHandle()}
         />
       );
@@ -236,12 +236,12 @@ class SurveyStatisticScreen extends Component {
               numberOfLines={2}
               lineBreakMode="tail"
             >
-              Danh sách phiếu
+              {Strings.survey.navTitle}
             </Text>
           }
           rightView={
             <TouchableOpacity style={{ padding: responsive.h(10) }}>
-              <MyIcon name="reply" color="black" size={responsive.h(20)} />
+              <MyIcon name="reply" color='transparent' size={responsive.h(20)} />
             </TouchableOpacity>
           }
         />

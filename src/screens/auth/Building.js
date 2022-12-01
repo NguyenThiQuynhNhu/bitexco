@@ -28,26 +28,13 @@ import Strings from "../../resident/utils/languages";
 import { navHome } from "../../actions/nav";
 import fontsize from "../../theme/fontsize";
 import ErrorContent from "../../components/common/ErrorContent";
-import {
-  loadDataHandle,
-  refreshDataHandle,
-  resetStateByKey,
-} from "../../actions/building";
 import ImageProgress from "../../components/common/ImageProgress";
 import NavBar from "../../resident/components/common/NavBar";
 import { MyIcon } from "../../theme/icons";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {
-  getOtpCodeHaveType,
-  loginUser,
-  changePhone,
-  loginUserByPass,
-  getOtpCodeNoType,
-  setTypeResident,
-  setTypeVendor,
-  loginUserByPassVendor,
-  loginUserByPassResident,
-} from "../../actions/auth";
+  loadDataHandle as loadDataHandleBuilding,
+} from "../../resident/actions/departmentDetail";
 import responsive from "../../resources/responsive";
 // create a component
 class BuildingScreen extends Component {
@@ -68,73 +55,43 @@ class BuildingScreen extends Component {
     };
   }
   componentDidMount() {
-    this.props.resetStateByKey({ key: "initList", path: "", value: true });
+    this.props.loadDataHandleBuilding();
   }
   async componentWillReceiveProps(nextProps) {
-    const { isRefreshing, initList, refreshDataHandle } = this.props;
-    if (nextProps.isRefreshing && nextProps.isRefreshing !== isRefreshing) {
-      if (this.props.navigation.state.params) {
-        this.props.loadDataHandle(this.props.navigation.state.params);
-      }
-    }
-    if (nextProps.initList && nextProps.initList !== initList) {
-      if (this.props.navigation.state.params) {
-        await this.props.loadDataHandle(this.props.navigation.state.params);
-        // if(nextProps.data.length == 1){
-        //     await this._onSelect(nextProps.data[0])
-        // }
-      }
-    }
   }
   // componentWillUnmount() {
   //     console.log('componentWillUnmount')
   //     this.props.resetStateByKey({ key: 'state' })
   // }
   _onSelect(item) {
-    this.props.navigation.navigate("login", {
-      phoneNumber: this.props.navigation.state.params.phoneNumber,
-      password: this.props.navigation.state.params.password,
-    });
-    this.props.loginUserByPass({
-      phoneNumber: this.props.navigation.state.params.phoneNumber,
-      password: this.props.navigation.state.params.password,
-      idNew: item.id,
-    });
-    //this.props.loginUserByPass({phoneNumber: this.props.navigation.state.params.phoneNumber, password: this.props.navigation.state.params.password, connectString: this.props.auth.connectString})
   }
   renderItem = ({ item, index }) => {
-    const { building_Name, logo, building_Address, hotline } = item;
+    const { name, logo } = item;
     return (
       <TouchableOpacity
         onPress={() => this._onSelect(item)}
         style={{
           flex: 1,
-          marginHorizontal: 20,
-          marginBottom: 10,
-          marginTop: 10,
-          borderRadius: 10,
+          marginHorizontal: responsive.h(20),
+          marginBottom: responsive.h(10),
+          marginTop: responsive.h(10),
+          borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
-          shadowColor: "rgba(0, 0, 0, 0.08)",
-          elevation: 2,
-          shadowOffset: {
-            width: 0,
-            height: 4,
-          },
-          shadowRadius: 12,
-          shadowOpacity: 1,
+          borderWidth: 0.5,
+          borderColor: "#eaeaea",
         }}
       >
-        <View style={{ flexDirection: "row", padding: 10 }}>
+        <View style={{ flexDirection: "row", padding: responsive.h(10) }}>
           <ImageProgress
             circle
             source={{ uri: logo }}
-            style={{ height: 70, width: 70 }}
+            style={{ height: responsive.h(70), width: responsive.h(70) }}
           />
-          <View style={{ flex: 1, marginLeft: 10, justifyContent: "center" }}>
+          <View style={{ flex: 1, marginLeft: responsive.h(10), justifyContent: "center" }}>
             <Text
               style={{
                 fontFamily: "Inter-Bold",
-                fontSize: 16,
+                fontSize: fontsize.medium,
                 fontWeight: "bold",
                 fontStyle: "normal",
                 letterSpacing: 0,
@@ -142,57 +99,8 @@ class BuildingScreen extends Component {
                 color: colors.appTheme,
               }}
             >
-              {building_Name}
+              {name}
             </Text>
-            {hotline == "" || hotline == null ? null : (
-              <View style={{ flex: 1, flexDirection: "row", marginTop: 10 }}>
-                <Icon
-                  name="phone"
-                  size={20}
-                  color="gray"
-                  style={{ marginRight: 10 }}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Inter-Medium",
-                    fontSize: 14,
-                    fontWeight: "500",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "left",
-                    color: "#3d3d3d",
-                  }}
-                >
-                  {hotline}
-                </Text>
-              </View>
-            )}
-            {building_Address == "" || building_Address == null ? null : (
-              <View style={{ flex: 1, flexDirection: "row" }}>
-                <Icon
-                  name="card-bulleted-outline"
-                  size={20}
-                  color="gray"
-                  style={{ marginRight: 10 }}
-                />
-                <Text
-                  style={{
-                    fontFamily: "Inter-Medium",
-                    fontSize: 14,
-                    fontWeight: "500",
-                    fontStyle: "normal",
-                    letterSpacing: 0,
-                    textAlign: "left",
-                    color: "#3d3d3d",
-                  }}
-                >
-                  {building_Address}
-                </Text>
-              </View>
-            )}
-
-            {/* <Text style={{ marginVertical: 10, fontSize: fontsize.small }}>Hotline: {hotline}</Text>
-                <Text style={{fontSize: fontsize.small}}>{Strings.setting.towerAddress}: {building_Address}</Text> */}
           </View>
         </View>
       </TouchableOpacity>
@@ -200,6 +108,7 @@ class BuildingScreen extends Component {
   };
   render() {
     const { isLoading, data } = this.props;
+    console.log(this.props)
     return (
       <View
         style={{
@@ -239,21 +148,44 @@ class BuildingScreen extends Component {
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
             </TouchableOpacity>
           }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
+          }
         />
-        { data != undefined && data.length > 0 ?
-          <FlatList
-            //ItemSeparatorComponent={() => <View style={{ height: 1, backgroundColor: colors.grayBorder }} />}
-            style={{ marginTop: -10 }}
-            data={data}
-            renderItem={this.renderItem}
-            keyExtractor={(item, index) => `${index}`}
-          />
-            : <ErrorContent
-              title={Strings.app.emptyData}
-              onTouchScreen={() => this.props.refreshDataHandle()}
-            />}
+        {this.renderContent()}
       </View>
     );
+  }
+  renderContent() {
+    const { data, isLoading, error, initComponent, user } = this.props;
+    if (initComponent || isLoading) {
+      return <View
+        style={{
+          paddingVertical: responsive.h(20),
+        }}
+      >
+        <ActivityIndicator animating size='small' />
+      </View>;
+    } else if (error && error.hasError) {
+      return <ErrorContent
+        title={Strings.app.error}
+        onTouchScreen={() => this.props.loadDataHandle()}
+      />;
+    } else if (data == null || (data != null && data.length == 0)) {
+      return <ErrorContent title={Strings.app.emptyData} />;
+    } else {
+      return (
+        <FlatList
+          data={data}
+          renderItem={this.renderItem}
+          keyExtractor={(item, index) => `${index}`}
+        />
+      );
+    }
   }
 }
 
@@ -266,19 +198,22 @@ const styles = StyleSheet.create({
   },
 });
 const mapStateToProps = (state) => ({
-  initList: state.building.initList,
-  isLoading: state.building.isLoading,
-  error: state.building.error,
-  emptyData: state.building.emptyData,
-  data: state.building.data,
-  isRefreshing: state.building.isRefreshing,
+  // initList: state.building.initList,
+  // isLoading: state.building.isLoading,
+  // error: state.building.error,
+  // emptyData: state.building.emptyData,
+  // data: state.building.data,
+  // isRefreshing: state.building.isRefreshing,
+  initComponent: state.departmentDetail.initComponent,
+  data: state.departmentDetail.data,
+  error: state.departmentDetail.error,
+  errorProgress: state.departmentDetail.errorProgress,
+  language: state.app.language,
+  isLoading: state.departmentDetail.isLoading,
   auth: state.auth,
 });
 const mapActionToProps = {
-  loadDataHandle,
-  refreshDataHandle,
-  resetStateByKey,
-  loginUserByPass,
+  loadDataHandleBuilding
 };
 
 //make this component available to the app

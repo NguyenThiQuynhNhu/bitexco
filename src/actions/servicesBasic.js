@@ -41,32 +41,33 @@ export const loadDataHandle = (dataRequest) => async (dispatch) => {
             if (ret.status == 200) {
                 //const retStatusR = await get('/Vendors/ServiceBasic/GetTotalStatus', {towerId: dataRequest.towerId})
                 //if(retStatusR !== undefined && retStatusR !== null){
-                    //if (retStatusR.status == 200) {
-                        //console.log(ret)
+                //if (retStatusR.status == 200) {
+                //console.log(ret)
+                dispatch({
+                    type: SERVICES_BASIC_GETLIST_SUCCESS,
+                    payload: {
+                        data: { data: ret.data }
+                    }
+                });
+                //}else {
+                //dispatch({ type: SERVICES_BASIC_GETLIST_FAILURE, payload: { data: retStatusR.message } });
+                //}
+                //}else {
+                //dispatch({ type: SERVICES_BASIC_GETLIST_FAILURE, payload: { data: retStatusR.message } });
+                //}
+                const retStatusR = await get('/Vendors/ServiceBasic/GetTotalStatus', { towerId: dataRequest.towerId, isMine: dataRequest.isMine })
+                //console.log('getServicesBasicStatusTotal2', retStatusR)
+                if (retStatusR !== undefined && retStatusR !== null) {
+                    if (retStatusR.status == 200) {
                         dispatch({
-                            type: SERVICES_BASIC_GETLIST_SUCCESS,
+                            type: 'SERVICE_BASIC_GET_TOTAL_STATUS_SUCCESS',
                             payload: {
-                                data: {data: ret.data}
+                                data: retStatusR.data
                             }
                         });
-                    //}else {
-                        //dispatch({ type: SERVICES_BASIC_GETLIST_FAILURE, payload: { data: retStatusR.message } });
-                    //}
-                //}else {
-                    //dispatch({ type: SERVICES_BASIC_GETLIST_FAILURE, payload: { data: retStatusR.message } });
-                //}
-                const retStatusR = await get('/Vendors/ServiceBasic/GetTotalStatus', {towerId: dataRequest.towerId,  isMine: dataRequest.isMine})
-                        if(retStatusR !== undefined && retStatusR !== null){
-                            if (retStatusR.status == 200) {
-                                dispatch({
-                                    type: 'SERVICE_BASIC_GET_TOTAL_STATUS_SUCCESS',
-                                    payload: {
-                                        data: retStatusR.data
-                                    }
-                                });
-                            }
-                        }
-                
+                    }
+                }
+
             }
             else {
                 dispatch({ type: SERVICES_BASIC_GETLIST_FAILURE, payload: { data: ret.message } });

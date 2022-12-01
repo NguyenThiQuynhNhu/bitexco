@@ -151,10 +151,6 @@ class ElectricList extends Component {
       this.props.loadDataHandle(data);
     }
 
-    if (nextProps.createStatus && createStatus !== nextProps.createStatus) {
-      this.refs.toast.show("Tạo yêu cầu thành công", DURATION.LENGTH_LONG);
-    }
-
     if (nextProps.errorResponse && nextProps.errorResponse !== errorResponse) {
       if (!nextProps.errorResponse.hasError) {
         refreshDataHandle();
@@ -166,7 +162,7 @@ class ElectricList extends Component {
       nextProps.processError !== this.props.processError
     ) {
       if (nextProps.processError.status === 200) {
-        this.refs.toast.show("Dữ liệu đã được cập nhật", DURATION.LENGTH_LONG);
+        this.refs.toast.show(Strings.message.saveSuccess, DURATION.LENGTH_LONG);
       } else {
         if (nextProps.processError.hasError) {
           this.refs.toast.show(
@@ -285,7 +281,7 @@ class ElectricList extends Component {
                   color: "black",
                 }}
               >
-                Điện
+                {Strings.electric.navTitleElectric}
               </Text>
               <Text
                 style={{
@@ -296,9 +292,10 @@ class ElectricList extends Component {
                   letterSpacing: 0,
                   textAlign: "center",
                   color: "#df2027",
+                  marginBottom: responsive.h(10),
                 }}
               >
-                {this.props.user.towerName} - Kỳ: {searchKey}/{searchKey2}
+                {this.props.user.towerName} - {Strings.electric.period}: {searchKey}/{searchKey2}
               </Text>
             </View>
           }
@@ -308,18 +305,13 @@ class ElectricList extends Component {
             style={{
               backgroundColor: "#fff",
               justifyContent: "space-between",
-              padding: responsive.h(10),
+              padding: responsive.h(15),
+              marginTop: responsive.h(10),
               marginHorizontal: responsive.h(20),
               borderRadius: responsive.h(20),
               backgroundColor: "#ffffff",
-              shadowColor: "rgba(0, 0, 0, 0.08)",
-              elevation: 2,
-              shadowOffset: {
-                width: 0,
-                height: responsive.h(4),
-              },
-              shadowRadius: responsive.h(12),
-              shadowOpacity: 1,
+              borderWidth: 1,
+              borderColor: "rgba(0, 0, 0, 0.08)"
             }}
           >
             <View
@@ -340,7 +332,7 @@ class ElectricList extends Component {
                   color: "#282828",
                 }}
               >
-                Thời gian
+                {Strings.electric.time}
               </Text>
               <View
                 style={{
@@ -353,7 +345,7 @@ class ElectricList extends Component {
                 <View style={{ flex: 0.5 }}>
                   <InputNumber
                     value={this.state.searchKey.toString()}
-                    placeholder="Tháng"
+                    placeholder={Strings.electric.month}
                     style={{ width: "90%", height: "100%" }}
                     onChangeText={(searchKey) => {
                       this.setState({ searchKey }, () => {
@@ -373,7 +365,7 @@ class ElectricList extends Component {
                 <View style={{ flex: 0.5 }}>
                   <InputNumber
                     value={this.state.searchKey2.toString()}
-                    placeholder="Năm"
+                    placeholder={Strings.electric.year}
                     style={{ width: "100%", height: "100%" }}
                     onChangeText={(searchKey2) => {
                       this.setState({ searchKey2 }, () => {
@@ -421,7 +413,7 @@ class ElectricList extends Component {
                   color: "#282828",
                 }}
               >
-                Khối nhà
+                {Strings.electric.block}
               </Text>
               <View
                 style={{
@@ -447,7 +439,7 @@ class ElectricList extends Component {
                     ? this.state.blockSelected.name
                     : blockSelected
                     ? blockSelected.name
-                    : "Chọn Khối nhà"}
+                    : `${Strings.common.choose} ${Strings.electric.block}`}
                 </Text>
                 <MyIcon name="arrow-down" size={14} color={colors.gray1} />
               </View>
@@ -481,7 +473,7 @@ class ElectricList extends Component {
                   color: "#282828",
                 }}
               >
-                Tầng
+                {Strings.electric.floor}
               </Text>
               <View
                 style={{
@@ -507,7 +499,7 @@ class ElectricList extends Component {
                     ? this.state.floorSelected.name
                     : floorSelected
                     ? floorSelected.name
-                    : "Chọn Tầng"}
+                    : `${Strings.common.choose} ${Strings.electric.floor}`}
                 </Text>
                 <MyIcon name="arrow-down" size={responsive.h(14)} color={colors.gray1} />
               </View>
@@ -521,7 +513,7 @@ class ElectricList extends Component {
               }}
             >
               <PrimaryButton
-                text="Bỏ lọc"
+                text={Strings.electric.unfiltered}
                 onPress={() =>
                   this.setState(
                     {
@@ -556,7 +548,7 @@ class ElectricList extends Component {
                       })
                   )
                 }
-                text="Lọc dữ liệu"
+                text={Strings.electric.filter}
                 style={{ marginLeft: 10, fontWeight: "bold" }}
               />
             </View>
@@ -565,219 +557,6 @@ class ElectricList extends Component {
         </View>
 
         {this._renderContent()}
-
-        {/* {showFilter && (
-          <View
-            style={{
-              ...Device.defaultMarginTop(),
-              flex: 1,
-              height: "100%",
-              width: "100%",
-              position: "absolute",
-              backgroundColor: colors.appOverView,
-            }}
-          >
-            <View
-              style={{
-                width: "90%",
-                margin: responsive.h(20),
-                alignSelf: "center",
-                padding: responsive.h(10),
-                backgroundColor: "#fff",
-                justifyContent: "space-between",
-              }}
-            >
-              <View style={{ flexDirection: "row", height: 40 }}>
-                <View style={{ width: "50%" }}>
-                  <InputNumber
-                    value={this.state.searchKey.toString()}
-                    placeholder="Tháng"
-                    style={{ width: "95%", height: "100%", paddingRight: 10 }}
-                    onChangeText={(searchKey) => {
-                      this.setState({ searchKey }, () => {
-                        if (searchKey.length === 0) {
-                          if (this.state.isApplySearchKey) {
-                            this.setState({
-                              searchKey: "",
-                              isApplySearchKey: false,
-                            });
-                          }
-                        }
-                      });
-                    }}
-                  />
-                </View>
-
-                <View style={{ width: "50%" }}>
-                  <InputNumber
-                    value={this.state.searchKey2.toString()}
-                    placeholder="Năm"
-                    style={{ width: "100%", height: "100%" }}
-                    onChangeText={(searchKey2) => {
-                      this.setState({ searchKey2 }, () => {
-                        if (searchKey2.length === 0) {
-                          if (this.state.isApplySearchKey) {
-                            this.setState({
-                              searchKey2: "",
-                              isApplySearchKey: false,
-                            });
-                          }
-                        }
-                      });
-                    }}
-                  />
-                </View>
-              </View>
-
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate("blockList", {
-                    id: user.towerId,
-                    onSelected: (blockSelected) =>
-                      this.setState({
-                        blockSelected,
-                        floorSelected: null,
-                        statusId: blockSelected.id,
-                      }),
-                  })
-                }
-                style={{
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 5,
-                  backgroundColor: colors.gray2,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text>
-                  {this.state.blockSelected
-                    ? this.state.blockSelected.name
-                    : blockSelected
-                    ? blockSelected.name
-                    : "Chọn Khối nhà"}
-                </Text>
-                <MyIcon name="arrow-down" size={15} color={colors.gray1} />
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                onPress={() =>
-                  this.props.navigation.navigate("floorList", {
-                    id: user.towerId,
-                    blockSelected,
-                    onSelected: (floorSelected) =>
-                      this.setState({
-                        floorSelected,
-                        statusId: floorSelected.id,
-                      }),
-                  })
-                }
-                style={{
-                  padding: 10,
-                  marginTop: 10,
-                  borderRadius: 5,
-                  backgroundColor: colors.gray2,
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Text>
-                  {this.state.floorSelected
-                    ? this.state.floorSelected.name
-                    : floorSelected
-                    ? floorSelected.name
-                    : "Chọn Tầng"}
-                </Text>
-                <MyIcon name="arrow-down" size={15} color={colors.gray1} />
-              </TouchableOpacity>
-
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginTop: 20,
-                  justifyContent: "center",
-                }}
-              >
-                <PrimaryButton
-                  text="Bỏ lọc"
-                  onPress={() =>
-                    this.setState(
-                      {
-                        searchKey: new Date().getMonth() + 1,
-                        searchKey2: new Date().getFullYear(),
-                        isApplySearchKey: false,
-                        showFilter: false,
-                        blockSelected: null,
-                        floorSelected: null,
-                        statusId: -1,
-                      },
-                      () => onClearFilter()
-                    )
-                  }
-                />
-                <PrimaryButton
-                  visible={
-                    this.props.floorSelected !== null || floorSelected !== null
-                  }
-                  onPress={() =>
-                    this.setState(
-                      {
-                        showFilter: false,
-                        isApplySearchKey: this.state.searchKey.length !== 0,
-                      },
-                      () =>
-                        onFilter({
-                          blockSelected,
-                          floorSelected,
-                          searchKey: this.state.searchKey,
-                          searchKey2: this.state.searchKey2,
-                        })
-                    )
-                  }
-                  text="Lọc dữ liệu"
-                  style={{ marginLeft: 10, fontWeight: "bold" }}
-                />
-              </View>
-            </View>
-            <TouchableOpacity
-              onPress={() => this.setState({ showFilter: false })}
-              style={{
-                borderRadius: 45,
-                backgroundColor: colors.appTheme,
-                padding: 10,
-                position: "absolute",
-                top: 5,
-                right: 5,
-              }}
-            >
-              <MyIcon name="no" color="#fff" size={10} />
-            </TouchableOpacity>
-          </View>
-        )}
-
-        {this.state.showAction && (
-          <View
-            style={{
-              height: "100%",
-              width: "100%",
-              position: "absolute",
-              backgroundColor: colors.appOverView,
-              justifyContent: "center",
-              alignItems: "center",
-              paddingBottom: 20,
-            }}
-          >
-            <View
-              style={{
-                width: Devices.isTablet ? "50%" : "90%",
-                borderRadius: 5,
-                backgroundColor: "#fff",
-              }}
-            >
-              {this.renderActionMenu()}
-            </View>
-          </View>
-        )} */}
 
         <Toast
           ref="toast"

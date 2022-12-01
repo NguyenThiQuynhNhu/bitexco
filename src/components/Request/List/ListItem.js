@@ -41,12 +41,14 @@ class ListItem extends PureComponent {
           borderRadius: responsive.h(12),
           backgroundColor: "#ffffff",
           width: (Screen.width - responsive.h(30)) / 2,
-          marginBottom: responsive.h(10),
+          marginBottom: responsive.h(15),
           marginRight: responsive.h(10),
           borderWidth: 0.5,
           borderColor: "#d2d2d2",
           borderBottomWidth: 2,
           padding: responsive.h(10),
+          paddingVertical: responsive.h(15),
+          justifyContent: 'space-between'
         }}
       >
         <View
@@ -68,6 +70,7 @@ class ListItem extends PureComponent {
             <Text
               style={{
                 fontFamily: "Inter-Bold",
+                fontWeight: '600',
                 fontSize: responsive.h(15),
                 color: "black",
                 //textTransform: "uppercase",
@@ -113,7 +116,7 @@ class ListItem extends PureComponent {
                 fontStyle: "normal",
                 letterSpacing: 0,
                 textAlign: "left",
-                color: converStatusToColor(statusName),
+                color: colorCode,
               }}
               numberOfLines={1}
             >
@@ -121,6 +124,7 @@ class ListItem extends PureComponent {
             </Text>
           </View>
         </View>
+        <View style={{marginTop: responsive.h(15)}}>
         <Text
           style={{
             fontFamily: "Inter-SemiBold",
@@ -145,13 +149,15 @@ class ListItem extends PureComponent {
         >
           {content}
         </Text>
+        </View>
+        
         <View
           style={{
             flex: 1,
             flexDirection: "row",
-            alignItems: "center",
+            alignItems: 'flex-end',
             justifyContent: "space-between",
-            paddingTop: 5,
+            marginTop: 5,
           }}
         >
           <Text

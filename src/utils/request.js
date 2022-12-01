@@ -1,6 +1,7 @@
 import Strings from "./languages";
 import moment from "moment";
-
+import vi from 'moment/locale/vi';
+import us from 'moment/locale/en-au';
 // export const converStatusToColor = (id) => {
 //     switch (id) {
 //         case 2: return '#fab53e';
@@ -46,14 +47,44 @@ export const converStatusToColorService = (id) => {
   }
 };
 
+export const converNameTopPiority = (id) => {
+  switch (id) {
+    case 3:
+      return Strings.common.low;
+    case 1:
+      return Strings.common.emergency;
+    case 2:
+      return Strings.common.normal;
+    default:
+      return "";
+  }
+};
+
+export const converNameToDateStatis = (id) => {
+  switch (id) {
+    case 1:
+      return Strings.statistical.date;
+    case 2:
+      return Strings.statistical.week;
+    case 3:
+      return Strings.statistical.month;
+    case 4:
+      return Strings.statistical.year;
+    case 5:
+      return Strings.statistical.quarter;
+    default:
+      return "";
+  }
+};
+
 export const converTypeToSource = (id) => {
   switch (id) {
     case 0:
-      return "Tất cả";
+      return Strings.request.all;
     case 1:
-      return "Từ cư dân";
+      return Strings.request.fromResidents;
     case 2:
-      return "Từ vận hành";
+      return Strings.request.operatingWord;
     default:
       return "";
   }
@@ -136,11 +167,13 @@ export const myFromNow = (created_at) => {
   if (duration == 0) {
     time = moment(created_at).fromNow();
   } else if (duration == 1) {
-    time = moment(created_at).format("[Hôm qua lúc] HH:mm");
-  } else if (duration <= 7) {
-    time = moment(created_at).format("dddd [lúc] HH:mm");
-  } else {
-    time = moment(created_at).format("DD [tháng] MM [lúc] HH:mm");
+    time = moment(created_at).format(`[${Strings.common.yesterday} ${Strings.common.at}] HH:mm`);
+  }
+  // else if (duration <= 7) {
+  //   time = moment(created_at).format(`dddd [${Strings.common.at}] HH:mm`);
+  // } 
+  else {
+    time = moment(created_at).format(`DD/MM/yyyy [${Strings.common.at}] HH:mm`);
   }
 
   return time;

@@ -7,9 +7,9 @@ import colors from "../../theme/colors";
 // create a component
 class CheckBox extends PureComponent {
   render() {
-    const { value, onValueChange, visible = true } = this.props;
+    const { value, onValueChange, visible = true, styles } = this.props;
     return (
-      <View pointerEvents={visible ? "auto" : "none"}>
+      <View pointerEvents={visible ? "auto" : "none"} style={{...styles}}>
         <TouchableOpacity onPress={onValueChange}>
           <MyIcon
             name={value ? "checkbox-checked" : "checkbox-unchecked"}

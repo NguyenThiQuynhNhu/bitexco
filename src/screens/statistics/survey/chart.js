@@ -27,6 +27,7 @@ import Icon from "react-native-vector-icons/Entypo";
 import { Screen } from "../../../utils/device";
 import ErrorContent from "../../../components/common/ErrorContent";
 import NavBar from "../../../resident/components/common/NavBar";
+import Strings from "../../../utils/languages";
 //
 import {
   loadDataHandle,
@@ -91,7 +92,7 @@ class SurveyChartScreen extends React.Component {
     if (emptyData) {
       return (
         <ErrorContent
-          title="Không có dữ liệu"
+          title={Strings.app.emptyData}
           onTouchScreen={() => this.props.refreshDataHandle()}
         />
       );
@@ -99,7 +100,7 @@ class SurveyChartScreen extends React.Component {
     if (error && error.hasError) {
       return (
         <ErrorContent
-          title="Lỗi kết nối"
+          title={Strings.app.error}
           onTouchScreen={() => this.props.refreshDataHandle()}
         />
       );
@@ -168,8 +169,8 @@ class SurveyChartScreen extends React.Component {
           >
             <Text style={{ flex: 1, fontStyle: "italic", marginTop: responsive.h(5),}}>
               {item && item.listAnswer && item.listAnswer.length > 0
-                ? "Chọn để xem chi tiết"
-                : "Chưa có dữ liệu"}
+                ? Strings.survey.selectToSeeDetails
+                : Strings.app.emptyData}
             </Text>
           </TouchableOpacity>
         ) : (
@@ -182,7 +183,7 @@ class SurveyChartScreen extends React.Component {
               />
             ) : (
               <Text style={{ flex: 1, fontStyle: "italic", marginTop: responsive.h(5),}}>
-                'Chưa có dữ liệu'
+                {Strings.app.emptyData}
               </Text>
             )}
           </View>
@@ -225,6 +226,8 @@ class SurveyChartScreen extends React.Component {
     );
   };
   render() {
+    //console.log(this.props)
+    const { name } = this.props.navigation.state.params
     return (
       <View style={{ flex: 1 }}>
         <NavBar
@@ -246,7 +249,7 @@ class SurveyChartScreen extends React.Component {
                 color: "black",
               }}
             >
-              Danh sách câu hỏi chi tiết
+              {name}
             </Text>
           }
           //   rightView={
@@ -308,7 +311,7 @@ class SurveyChartScreen extends React.Component {
                     color: "#fff",
                   }}
                 >
-                  Danh sách câu trả lời
+                  {Strings.survey.listOfAnswers}
                 </Text>
               </View>
               <FlatList

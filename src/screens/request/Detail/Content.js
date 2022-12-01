@@ -57,7 +57,7 @@ class Content extends Component {
 
         {imageAdmin.length !== 0 && (
           <View style={{ marginTop: responsive.h(10) }}>
-            <ImageGallery data={imageAdmin} title="Ảnh nhân viên up" />
+            <ImageGallery data={imageAdmin} title={Strings.detailRequest.imageEmployee} />
           </View>
         )}
         {/* <View

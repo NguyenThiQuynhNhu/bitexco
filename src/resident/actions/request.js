@@ -22,10 +22,59 @@ export const demo = (value, data) => async (dispatch) => {
     });
 
 }
+export const getRequestStatusTotal = (dataRequest) => async (dispatch) => {
+    console.log('getRequestStatusTotal')
+    try {
+
+        const urlRequestR = '/Residents/GetTotalStatus';
+        const retRequestR = await get(urlRequestR, {
+            towerId: dataRequest.towerId,
+            keyword: '',
+            statusId: 0,
+            langId: dataRequest.langId,
+        });
+        if (retRequestR !== undefined && retRequestR !== null) {
+            if (retRequestR.status == 200) {
+                const retStatusR = await get('/Vendors/RequestStatusTotal', { towerId: dataRequest.towerId, langId: dataRequest.langId })
+                //console.log(retStatusR);
+                if (retStatusR !== undefined && retStatusR !== null) {
+                    await retStatusR.data.forEach(item1 => {
+                        item1.total2 = 0;
+                        //item1.currentValue = 0;
+                        retRequestR.data.forEach(item2 => {
+                            if (item1.id == item2.statusId) {
+                                item1.total2 = item2.total
+                            }
+                        });
+                    });
+                }
+                await dispatch({
+                    type: REQUEST_GET_TOTAL_STATUS_SUCCESS,
+                    payload: {
+                        data: retStatusR.data
+                    }
+                });
+                const result2 = retRequestR.data.filter(item => item.statusKey == 'moi');
+                // dispatch({ type: BADGE_REQUEST_R_SUCCESS, payload: result2.length });
+                if (result2.length > 0) {
+                    dispatch({ type: BADGE_REQUEST_R_SUCCESS, payload: result2[0].total });
+                } else {
+                    dispatch({ type: BADGE_REQUEST_R_SUCCESS, payload: 0 });
+                }
+            } else {
+                //
+            }
+        } else {
+            //
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
 export const loadDataHandle = (dataRequest) => async (dispatch) => {
 
     try {
-        //console.log(dataRequest);
+        console.log(dataRequest);
         dispatch({ type: R_REQUESTS_GETLIST_REQUEST });
         const url = '/Residents/RequestList';
         const ret = await get(url, dataRequest);
@@ -39,21 +88,22 @@ export const loadDataHandle = (dataRequest) => async (dispatch) => {
                     }
                 });
                 const urlRequestR = '/Residents/GetTotalStatus';
-                const retRequestR = await get(urlRequestR,{
+                const retRequestR = await get(urlRequestR, {
                     towerId: dataRequest.towerId,
                     keyword: '',
                     statusId: 0,
+                    langId: dataRequest.langId,
                 });
                 if (retRequestR !== undefined && retRequestR !== null) {
                     if (retRequestR.status == 200) {
-                        const retStatusR = await get('/Vendors/RequestStatusTotal', {towerId: dataRequest.towerId})
+                        const retStatusR = await get('/Vendors/RequestStatusTotal', { towerId: dataRequest.towerId, langId: dataRequest.langId })
                         //console.log(retStatusR);
-                        if(retStatusR !== undefined && retStatusR !== null){
+                        if (retStatusR !== undefined && retStatusR !== null) {
                             await retStatusR.data.forEach(item1 => {
                                 item1.total2 = 0;
                                 //item1.currentValue = 0;
                                 retRequestR.data.forEach(item2 => {
-                                    if(item1.id == item2.statusId){
+                                    if (item1.id == item2.statusId) {
                                         item1.total2 = item2.total
                                     }
                                 });
@@ -67,15 +117,15 @@ export const loadDataHandle = (dataRequest) => async (dispatch) => {
                         });
                         const result2 = retRequestR.data.filter(item => item.statusKey == 'moi');
                         // dispatch({ type: BADGE_REQUEST_R_SUCCESS, payload: result2.length });
-                        if(result2.length > 0){
+                        if (result2.length > 0) {
                             dispatch({ type: BADGE_REQUEST_R_SUCCESS, payload: result2[0].total });
-                        }else{
+                        } else {
                             dispatch({ type: BADGE_REQUEST_R_SUCCESS, payload: 0 });
                         }
-                    }else {
+                    } else {
                         dispatch({ type: R_REQUESTS_GETLIST_FAILURE });
                     }
-                }else {
+                } else {
                     dispatch({ type: R_REQUESTS_GETLIST_FAILURE });
                 }
                 // const result2 = await ret.data.filter(item => item.statusId == 1);

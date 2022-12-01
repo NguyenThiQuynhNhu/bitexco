@@ -61,6 +61,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    Security.insertProviderAt(new org.conscrypt.OpenSSLProvider(), 1);
+    //Security.insertProviderAt(new org.conscrypt.OpenSSLProvider(), 1);
   }
 }

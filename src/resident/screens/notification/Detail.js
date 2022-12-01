@@ -223,7 +223,7 @@ class NewsDetail extends Component {
     }
     if (this.state.data) {
       return (
-        <View style={{ flex: 1, marginHorizontal: responsive.h(20) }}>
+        <View style={{ flex: 1, marginHorizontal: responsive.h(10), marginBottom: responsive.h(15), marginTop: 0 }}>
           {/* <View style={{ height: '100%', width: '100%' }}> */}
           <WebView
             style={{ flex: 1 }}
@@ -276,7 +276,7 @@ class NewsDetail extends Component {
                         mixedContentMode="compatibility"
                     /> */}
           <View
-            style={{ flexDirection: "row", backgroundColor: colors.appTheme }}
+            style={{ flexDirection: "row", backgroundColor: colors.appTheme, marginHorizontal: responsive.h(5) }}
           >
             {this.state.data.link.length > 0 && (
               <TouchableOpacity
@@ -311,7 +311,7 @@ class NewsDetail extends Component {
                     fontSize: responsive.h(fontsize.small),
                   }}
                 >
-                  Liên kết
+                  {Strings.app.link}
                 </Text>
               </TouchableOpacity>
             )}
@@ -388,7 +388,7 @@ class NewsDetail extends Component {
             leftButton={
               <TouchableOpacity
                 onPress={() => this.props.navigation.goBack()}
-                style={{ padding: responsive.h(10) }}
+                style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
               >
                 <MyIcon name="arrow" color="black" size={responsive.h(20)} />
               </TouchableOpacity>
@@ -407,6 +407,13 @@ class NewsDetail extends Component {
               >
                 {this.props.navigation.state.params.item.towerName.toLocaleUpperCase()}
               </Text>
+            }
+            rightView={
+              <TouchableOpacity
+                style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+              >
+                <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+              </TouchableOpacity>
             }
           />
           <View
@@ -427,7 +434,7 @@ class NewsDetail extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -447,6 +454,13 @@ class NewsDetail extends Component {
             >
               {this.props.navigation.state.params.item.towerName.toLocaleUpperCase()}
             </Text>
+          }
+          rightView={
+            <TouchableOpacity
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
+            >
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
+            </TouchableOpacity>
           }
         />
         {this.renderContent()}

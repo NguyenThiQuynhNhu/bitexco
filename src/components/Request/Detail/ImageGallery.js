@@ -31,7 +31,7 @@ const ImageGallery = (props) => {
                                 }}
 
                             >
-                                <Image source={{ uri: eachImage.url }} style={{ width: 90, height: 120, borderRadius: 8 }} />
+                                <Image source={{ uri: eachImage.url }} style={{ width: 90, height: 120, borderRadius: 0 }} />
                             </Lightbox>
                         </View>
                     );

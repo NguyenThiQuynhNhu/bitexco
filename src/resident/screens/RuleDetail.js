@@ -296,15 +296,9 @@ class RulesDetail extends Component {
             }
             rightView={
               <TouchableOpacity
-                style={{
-                  padding: responsive.h(10),
-                }}
+                style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
               >
-                <MyIcon
-                  size={responsive.h(20)}
-                  name="search"
-                  color="transparent"
-                />
+                <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
               </TouchableOpacity>
             }
           />
@@ -326,7 +320,7 @@ class RulesDetail extends Component {
             <TouchableOpacity
               onPress={() => this.props.navigation.goBack()}
               style={{
-                padding: responsive.h(10),
+                padding: responsive.h(10), paddingHorizontal: responsive.h(12)
               }}
             >
               <MyIcon name="arrow" color="black" size={responsive.h(20)} />
@@ -349,11 +343,9 @@ class RulesDetail extends Component {
           }
           rightView={
             <TouchableOpacity
-              style={{
-                padding: responsive.h(10),
-              }}
+              style={{ padding: responsive.h(10), paddingHorizontal: responsive.h(12) }}
             >
-              <MyIcon size={responsive.h(20)} name="search" color="black" />
+              <MyIcon name="arrow" color="transparent" size={responsive.h(20)} />
             </TouchableOpacity>
           }
         />

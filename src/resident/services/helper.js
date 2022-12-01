@@ -115,6 +115,17 @@ export async function get2(url, params = null) {
     return -1;
   }
 }
+export async function get3(url, params = null) {
+  let token = await firebase.auth().currentUser.getIdToken();
+  let ret = await axios.get(`${helper.URL_API}` + url, {
+    method: "GET",
+    headers: {
+      Authorization: `bearer ${token}`,
+    },
+    params,
+  });
+  console.log('test api', ret)
+}
 export async function getVersion(url, params = null) {
   try {
     if (helper.URL_API == "https://apimyhome.dip.vn/api") {

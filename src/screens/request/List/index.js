@@ -134,6 +134,7 @@ class ReuqestList extends Component {
         currentPage: nextProps.currentPage + 1,
         rowPerPage,
         departmentId: nextProps.depSelected ? nextProps.depSelected.id : 0,
+        langId: this.props.langId
       };
       await this.props.loadDataHandle(data);
       //console.log('2pp', this.props)
@@ -157,6 +158,7 @@ class ReuqestList extends Component {
         currentPage: nextProps.currentPage + 1,
         rowPerPage,
         departmentId: depSelected ? depSelected.id : 0,
+        langId: this.props.langId
       };
       await this.props.loadDataHandle(data);
       setTimeout(() => {
@@ -173,7 +175,7 @@ class ReuqestList extends Component {
     }
 
     if (nextProps.createStatus && createStatus !== nextProps.createStatus) {
-      this.refs.toast.show("Tạo yêu cầu thành công", DURATION.LENGTH_LONG);
+      this.refs.toast.show(Strings.message.saveSuccess, DURATION.LENGTH_LONG);
     }
 
     if (nextProps.errorResponse && nextProps.errorResponse !== errorResponse) {
@@ -262,6 +264,7 @@ class ReuqestList extends Component {
               currentPage: this.props.currentPage + 1,
               rowPerPage: this.props.rowPerPage,
               departmentId: depSelected ? depSelected.id : 0,
+              langId: this.props.langId
             };
             this.props.loadDataHandle(data);
           }
@@ -328,6 +331,7 @@ class ReuqestList extends Component {
               style={{
                 flexDirection: "row",
                 alignItems: "center",
+                justifyContent: 'center',
               }}
             >
               <View
@@ -347,7 +351,7 @@ class ReuqestList extends Component {
                     color: "black",
                   }}
                 >
-                  Công việc
+                  {Strings.request.title}
                 </Text>
                 <Text
                   style={{
@@ -357,7 +361,7 @@ class ReuqestList extends Component {
                     fontFamily: "Inter-Regular",
                   }}
                 >
-                  Nguồn: {converTypeToSource(typeId)}
+                  {Strings.request.source}: {converTypeToSource(typeId)}
                 </Text>
               </View>
               <View
@@ -375,7 +379,7 @@ class ReuqestList extends Component {
                     color: "black",
                   }}
                 >
-                  Của tôi
+                  {Strings.request.mine}
                 </Text>
                 <Switch
                   value={this.props.isMine}
@@ -397,7 +401,7 @@ class ReuqestList extends Component {
                   onPress={() => this.setState({ showFilter: true })}
                   style={{ padding: responsive.h(10) }}
                 >
-                  <MyIcon name="search" size={responsive.h(25)} color="black" />
+                  <MyIcon name="search" size={responsive.h(26)} color="black" />
                 </TouchableOpacity>
               </View>
             </View>
@@ -430,7 +434,7 @@ class ReuqestList extends Component {
                   color={item.item.colorCode}
                   statusKey={item.item.statusKey}
                   onSelectedChange={this._onSelectedChange}
-                  style={{ paddingHorizontal: 5 }}
+                  style={{ paddingBottom: responsive.h(10), paddingTop: responsive.h(5) }}
                 />
               );
             }}
@@ -522,7 +526,7 @@ class ReuqestList extends Component {
                     ? this.props.depSelected.name
                     : depSelected
                     ? depSelected.name
-                    : "Chọn phòng ban"}
+                    : Strings.common.choose + " " + Strings.common.department }
                 </Text>
                 <MyIcon
                   name="arrow-down"
@@ -540,17 +544,17 @@ class ReuqestList extends Component {
               >
                 <ButtonDateFilter
                   value={typeId == 0}
-                  text="Tất cả"
+                  text={Strings.request.all}
                   onPress={() => this.setTypeActive(0)}
                 />
                 <ButtonDateFilter
                   value={typeId == 1}
-                  text="Từ cư dân"
+                  text={Strings.request.fromResidents}
                   onPress={() => this.setTypeActive(1)}
                 />
                 <ButtonDateFilter
                   value={typeId == 2}
-                  text="Từ vận hành"
+                  text={Strings.request.operatingWord}
                   onPress={() => this.setTypeActive(2)}
                 />
               </View>
@@ -563,7 +567,7 @@ class ReuqestList extends Component {
                 }}
               >
                 <PrimaryButton
-                  text="Bỏ lọc"
+                  text={Strings.request.unfiltered}
                   onPress={() =>
                     this.setState(
                       {
@@ -587,7 +591,7 @@ class ReuqestList extends Component {
                       () => onFilter({ depSelected })
                     )
                   }
-                  text="Lọc dữ liệu"
+                  text={Strings.request.filter}
                   style={{ marginLeft: responsive.h(10) }}
                 />
               </View>
@@ -695,6 +699,7 @@ const mapStateToProps = (state) => ({
   depSelected: state.request.depSelected,
   dataStatus: state.drawer.data,
   idNew: state.auth.idNew,
+  langId: state.app.language == 'vi' ? 1 : 2,
 });
 
 const mapActionToState = {

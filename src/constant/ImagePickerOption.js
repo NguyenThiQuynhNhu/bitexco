@@ -1,3 +1,6 @@
+
+import Strings from "../utils/languages"; 
+
 export default ImagePickerOption = {
     quality: 1.0,
     maxWidth: 512,
@@ -5,9 +8,14 @@ export default ImagePickerOption = {
     storageOptions: {
         skipBackup: true
     },
-    title: 'Chọn hình ảnh',
-    takePhotoButtonTitle: 'Chụp ảnh...',
-    chooseFromLibraryButtonTitle: 'Chọn ảnh từ thư viện...',
-    cancelButtonTitle: 'Bỏ qua',
-    permissionDenied: { title: 'Cấp quyền truy cập', text: 'Cho phép ứng dụng chụp ảnh và chọn từ thư viên ảnh...', reTryTitle: 'Thử lại', okTitle: 'Cho phép' }
+    title: Strings.createRequest.takeAPhoto,
+      takePhotoButtonTitle: Strings.createRequest.chooseAnImage,
+      chooseFromLibraryButtonTitle: Strings.createRequest.SelectFromGallery,
+      cancelButtonTitle: Strings.createRequest.cancel,
+    permissionDenied: {
+        title: Strings.createRequest.access,
+        text: Strings.createRequest.access2,
+        reTryTitle: Strings.createRequest.retry,
+        okTitle: Strings.createRequest.allow,
+      },
 }

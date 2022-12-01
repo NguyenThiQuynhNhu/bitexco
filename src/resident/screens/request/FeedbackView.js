@@ -80,7 +80,7 @@ class FeedbackView extends React.Component {
     return (
       <View
         style={{
-          width: "90%",
+          width: "92.5%",
           borderRadius: responsive.h(16),
         }}
       >

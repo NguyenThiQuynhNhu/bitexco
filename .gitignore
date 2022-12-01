@@ -29,6 +29,10 @@ build/
 .gradle
 local.properties
 *.iml
+android1/
+android/java_pid1410.hprof
+android/java_pid15203.hprof
+
 
 # node.js
 #
@@ -57,7 +61,4 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
-android1/
-android/java_pid1410.hprof
-android/java_pid15203.hprof
 
