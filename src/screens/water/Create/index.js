@@ -43,6 +43,9 @@ const Devices = require("react-native-device-detection");
 import Button from "../../../components/common/Button";
 import responsive from "../../../resources/responsive";
 import NavBar from "../../../resident/components/common/NavBar";
+
+import DatePicker from 'react-native-date-picker';
+
 //
 import {
   loadDataHandle,
@@ -802,8 +805,9 @@ class CreateScreen extends Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() =>{}
-                //this.setState({ isShowPopupCustomDateThanhToan: true })
+              onPress={() =>{
+                this.setState({ isShowPopupCustomDateThanhToan: true })
+              }
               }
               style={{
                 flexDirection: "row",
@@ -1091,14 +1095,28 @@ class CreateScreen extends Component {
             />
           </View>
         </Modal>
-        <DateTimePicker
+        {/* <DateTimePicker
           isVisible={this.state.isShowPopupCustomDateThanhToan}
           onConfirm={(date) => this._handleDatePickedThanhToan(date)}
           onCancel={this._hideDateTimePicker}
           mode="date"
           //date={new Date('01/09/2021')}
           date={new Date(this.state.waterRequest.datePayment)}
-        />
+        /> */}
+             <DatePicker
+                    modal
+                    cancelText={Strings.createRequest.cancel}
+                    title={Strings.electric.dateOfPayment}
+                    confirmText={Strings.createRequest.chose}
+                    mode="date"
+                    // minimumDate={new Date()}
+                    open={this.state.isShowPopupCustomDateThanhToan}
+                    onConfirm={(date) => this._handleDatePickedThanhToan(date)}
+
+                    onCancel={this._hideDateTimePicker}
+                    date={new Date(this.state.waterRequest.datePayment)}
+                    locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
+           />
         <DateTimePicker
           isVisible={this.state.isShowPopupCustomDateThongBao}
           onConfirm={(date) => this._handleDatePickedThongBao(date)}

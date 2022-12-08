@@ -18,6 +18,8 @@ import {
 } from "react-native";
 import * as mineTypes from "react-native-mime-types";
 import DateTimePicker from "react-native-modal-datetime-picker";
+import DatePicker from 'react-native-date-picker';
+
 
 import { connect } from "react-redux";
 import ImagePicker from "react-native-image-picker";
@@ -546,6 +548,7 @@ class CreateElectricScreen extends Component {
                         rateFeeVAT: Number(rateFeeVAT) / 100,
                       },
                     });
+                    console.log("vat",this.state.waterRequest.rateFeeVAT )
                   }}
                 />
                 <Text
@@ -680,8 +683,10 @@ class CreateElectricScreen extends Component {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() =>{}
-                //this.setState({ isShowPopupCustomDateThanhToan: true })
+              onPress={() =>{
+                                this.setState({ isShowPopupCustomDateThanhToan: true })
+
+              }
               }
               style={{
                 flexDirection: "row",
@@ -966,22 +971,35 @@ class CreateElectricScreen extends Component {
             />
           </View>
         </Modal>
-        <DateTimePicker
+        {/* <DateTimePicker
           isVisible={this.state.isShowPopupCustomDateThanhToan}
           onConfirm={(date) => this._handleDatePickedThanhToan(date)}
           onCancel={this._hideDateTimePicker}
           mode="date"
           //date={new Date('01/09/2021')}
           date={new Date(this.state.waterRequest.datePayment)}
-        />
-        <DateTimePicker
+        /> */}
+         <DatePicker
+                    modal
+                    cancelText={Strings.createRequest.cancel}
+                    title={Strings.electric.dateOfPayment}
+                    confirmText={Strings.createRequest.chose}
+                    mode="date"
+                    // minimumDate={new Date()}
+                    open={this.state.isShowPopupCustomDateThanhToan}
+                    onConfirm={(date) => this._handleDatePickedThanhToan(date)}
+                    onCancel={this._hideDateTimePicker}
+                    date={new Date(this.state.waterRequest.datePayment)}
+                    locale={this.props.language == 'vi' ? "vi_VN" : 'en_US'}
+          />
+        {/* <DateTimePicker
           isVisible={this.state.isShowPopupCustomDateThongBao}
           onConfirm={(date) => this._handleDatePickedThongBao(date)}
           onCancel={this._hideDateTimePicker}
           mode="date"
           //date={new Date('01/09/2021')}
           date={new Date(this.state.waterRequest.dateNotify)}
-        />
+        /> */}
       </View>
     );
   }
